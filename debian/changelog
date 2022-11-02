@@ -816,6 +816,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - Set MODULE_SIG_ALL to sign all modules.
     - Not longer request Secure Boot signing for modules.
     - Don't trust Secure Boot key any longer.
+  * Use abi name 0 for everything before unstable.
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
