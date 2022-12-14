@@ -433,18 +433,6 @@ endif
 	  install-image_$(ARCH)_$(FEATURESET)_$(FLAVOUR)_dt \
 	  DIR='$(DIR)' PACKAGE_DIR='$(PACKAGE_DIR)' REAL_VERSION='$(REAL_VERSION)'
 	+$(MAKE_CLEAN) -C $(DIR) modules_install DEPMOD='$(CURDIR)/debian/bin/no-depmod' INSTALL_MOD_PATH='$(CURDIR)'/$(PACKAGE_DIR) INSTALL_MOD_STRIP=1
-ifeq ($(call if_package,linux-image-$(ABINAME)$(LOCALVERSION)-dbg,y),y)
-# We are building debug info, so add debug links
-	set -o pipefail; \
-	find $(PACKAGE_DIR) -name '*.ko' | sed 's|$(PACKAGE_DIR)/lib/modules/$(REAL_VERSION)/kernel/||' | while read module ; do \
-	  $(CROSS_COMPILE)objcopy --add-gnu-debuglink=$(DIR)/$$module $(PACKAGE_DIR)/lib/modules/$(REAL_VERSION)/kernel/$$module || exit; \
-	done
-# stripping the modules removes signatures as well - if automated signing is enabled with
-# an ephemeral key, re-do the sign step
-	+if grep -qs '^CONFIG_MODULE_SIG_ALL=y' $(DIR)/.config; then \
-		$(MAKE_CLEAN) -C $(DIR) modules_sign INSTALL_MOD_PATH='$(CURDIR)'/$(PACKAGE_DIR); \
-	fi
-endif
 	cp $(DIR)/.config $(PACKAGE_DIR)/boot/config-$(REAL_VERSION)
 	echo "ffffffffffffffff B The real System.map is in the linux-image-<version>-dbg package" \
 		> $(PACKAGE_DIR)/boot/System.map-$(REAL_VERSION)
