@@ -811,6 +811,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * Drop not needed extra step to add debug links
   * Sign modules using an ephemeral key: (closes: #1040901)
     - Set MODULE_SIG_ALL to sign all modules.
+    - Not longer request Secure Boot signing for modules.
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 

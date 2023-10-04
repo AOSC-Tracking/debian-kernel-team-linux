@@ -23,12 +23,6 @@ install-signed:
 	mkdir -p $(PACKAGE_DIR)/lib/modules/$(KERNEL_VERSION)
 	rsync -a $(addprefix /lib/modules/$(KERNEL_VERSION)/,kernel modules.builtin modules.builtin.modinfo modules.order) \
 		$(PACKAGE_DIR)/lib/modules/$(KERNEL_VERSION)/
-	while read path; do \
-		/usr/lib/linux-kbuild-$(VERSION)/scripts/sign-file -s \
-			$(SIGNATURE_DIR)/lib/modules/$(KERNEL_VERSION)/$$path \
-			sha256 dummy \
-			$(PACKAGE_DIR)/lib/modules/$(KERNEL_VERSION)/$${path%.sig}; \
-	done < <(find $(SIGNATURE_DIR)/lib/modules/$(KERNEL_VERSION) -name '*.sig' -printf '%P\n')
 # Copy any device tree files
 	if [ -d /usr/lib/linux-image-$(KERNEL_VERSION) ]; then \
 		mkdir -p $(PACKAGE_DIR)/usr/lib/linux-image-$(KERNEL_VERSION); \
