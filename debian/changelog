@@ -841,6 +841,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - Don't trust Secure Boot key any longer.
   * Use abi name 0 for everything before unstable.
   * Store build time signing key encrypted.
+  * Sign modules and support lockdown always.
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
