@@ -1,6 +1,10 @@
 linux-6.1 (6.1.170-1~deb11u1) UNRELEASED; urgency=high
 
+  [ Ben Hutchings ]
   * Rebuild for bullseye
+
+  [ Bastian Blank ]
+  * Remove architectures not existing in Debian
 
  -- Ben Hutchings <benh@debian.org>  Thu, 30 Apr 2026 21:25:55 +0200
 
