@@ -1,3 +1,10 @@
+linux (5.10.251-3) bullseye-security; urgency=high
+
+  [ Bastian Blank ]
+  * Remove architectures not existing in Debian
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 30 Apr 2026 21:59:04 +0200
+
 linux (5.10.251-2) bullseye-security; urgency=high
 
   * crypto: af-alg - fix NULL pointer dereference in scatterwalk
