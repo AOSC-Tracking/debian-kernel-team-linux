@@ -267,15 +267,22 @@ class CheckImage(object):
 
 
 class Main(object):
-    def __init__(self, dir, arch, featureset, flavour):
+
+    checks = {
+        'setup': [],
+        'build': [CheckAbi, CheckImage],
+    }
+
+    def __init__(self, dir, arch, featureset, flavour, phase):
         self.args = dir, arch, featureset, flavour
+        self.phase = phase
 
         self.config = ConfigCoreDump(open("debian/config.defines.dump", "rb"))
 
     def __call__(self):
         fail = 0
 
-        for c in CheckAbi, CheckImage:
+        for c in self.checks[self.phase]:
             fail |= c(self.config, *self.args)(sys.stdout)
 
         return fail
