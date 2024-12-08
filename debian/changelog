@@ -23,6 +23,7 @@ linux (6.13~rc1-1~exp1) UNRELEASED; urgency=medium
   * debian/salsa-ci.yml: Reference .build-after-script from after_script
     section
   * [mips*] Increase RELOCATION_TABLE_SIZE to 0x00201000 (fixes FTBFS)
+  * [rt] Update to 6.13-rc1-rt1
 
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.
