@@ -1478,11 +1478,6 @@ CONFIG_EXT4_FS=y
 # CONFIG_QNX6FS_FS is not set
 
 ##
-## file: fs/reiserfs/Kconfig
-##
-# CONFIG_REISERFS_FS is not set
-
-##
 ## file: fs/ufs/Kconfig
 ##
 # CONFIG_UFS_FS is not set

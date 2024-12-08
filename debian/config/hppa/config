@@ -211,12 +211,6 @@ CONFIG_TULIP_MMIO=y
 CONFIG_PCMCIA_XIRCOM=m
 
 ##
-## file: drivers/net/ethernet/dlink/Kconfig
-##
-CONFIG_SUNDANCE=m
-# CONFIG_SUNDANCE_MMIO is not set
-
-##
 ## file: drivers/net/ethernet/fujitsu/Kconfig
 ##
 CONFIG_PCMCIA_FMVJ18X=m
