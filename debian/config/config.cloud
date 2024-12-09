@@ -1352,7 +1352,6 @@ CONFIG_FB_HYPERV=m
 # CONFIG_PC87413_WDT is not set
 # CONFIG_NV_TCO is not set
 # CONFIG_60XX_WDT is not set
-# CONFIG_CPU5_WDT is not set
 # CONFIG_SMSC_SCH311X_WDT is not set
 # CONFIG_SMSC37B787_WDT is not set
 # CONFIG_VIA_WDT is not set
