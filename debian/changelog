@@ -822,6 +822,7 @@ linux (6.1.120-1) UNRELEASED; urgency=medium
     --static-pie linking for qemu-user-static binaries. It was disabled by
     mistake in qemu versions in Debian. Details in #1087822 and #1053101.
   * Bump ABI to 29
+  * [rt] Update to 6.1.120-rt47
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Dec 2024 15:35:09 +0100
 

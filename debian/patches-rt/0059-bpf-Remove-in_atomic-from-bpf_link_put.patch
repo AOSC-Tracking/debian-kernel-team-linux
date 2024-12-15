@@ -1,8 +1,8 @@
-From bc4fb061a305be8ef31acec821e1178b0ebd0af3 Mon Sep 17 00:00:00 2001
+From 83d94747841f0cd828c0ed9ebf1dc58aef744655 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Jun 2023 10:34:30 +0200
-Subject: [PATCH 59/63] bpf: Remove in_atomic() from bpf_link_put().
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.1/older/patches-6.1.111-rt42.tar.xz
+Subject: [PATCH 59/69] bpf: Remove in_atomic() from bpf_link_put().
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.1/older/patches-6.1.120-rt47.tar.xz
 
 bpf_free_inode() is invoked as a RCU callback. Usually RCU callbacks are
 invoked within softirq context. By setting rcutree.use_softirq=0 boot
@@ -35,7 +35,7 @@ Signed-off-by: Clark Williams <clark.williams@gmail.com>
  1 file changed, 16 insertions(+), 13 deletions(-)
 
 diff --git a/kernel/bpf/syscall.c b/kernel/bpf/syscall.c
-index 8b9fe8a2a6bf..2d1ada6c9d02 100644
+index 2c2085643566..0f746392edab 100644
 --- a/kernel/bpf/syscall.c
 +++ b/kernel/bpf/syscall.c
 @@ -2775,28 +2775,31 @@ static void bpf_link_put_deferred(struct work_struct *work)
@@ -116,5 +116,5 @@ index 8b9fe8a2a6bf..2d1ada6c9d02 100644
  	return err;
  }
 -- 
-2.46.0
+2.47.1
 
