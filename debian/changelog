@@ -5,6 +5,11 @@ linux (6.1.119-2) UNRELEASED; urgency=medium
     pipeline.
   * debian/salsa-ci.yml: Reference .build-after-script from after_script
     section
+  * Revert "[x86] Revert "x86: Increase brk randomness entropy for 64-bit
+    systems""
+    The root cause for the segfaults were actually in qemu, which re-enables
+    --static-pie linking for qemu-user-static binaries. It was disabled by
+    mistake in qemu versions in Debian. Details in #1087822 and #1053101.
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Dec 2024 15:35:09 +0100
 
