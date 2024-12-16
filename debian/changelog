@@ -8,6 +8,7 @@ linux (6.12.3-2) UNRELEASED; urgency=medium
   * drivers/block/zram: Enable lz4, lz4hc and zstd compression support
     - Enable ZRAM_BACKEND_LZ4, ZRAM_BACKEND_LZ4HC and ZRAM_BACKEND_ZSTD
     (Closes: #1086172)
+  * drivers/block/zram: Enable ZRAM_BACKEND_DEFLATE
 
  -- Bastian Blank <waldi@debian.org>  Sun, 08 Dec 2024 11:10:22 +0100
 
