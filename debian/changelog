@@ -1,3 +1,9 @@
+linux (6.1.119-2) UNRELEASED; urgency=medium
+
+  * d/salsa-ci.yml: Suppress aliased-location lintian errors
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Dec 2024 15:35:09 +0100
+
 linux (6.1.119-1) bookworm-security; urgency=high
 
   * New upstream stable update:
