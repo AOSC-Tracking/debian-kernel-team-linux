@@ -426,6 +426,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - netfilter: nft_counter: Use u64_stats_t for statistic.
     - rt: fix build issue in at_hdmac
     - rt: fix build issue in be2net
+  * d/salsa-ci.yml: Run lintian from the target release, not always unstable
 
   [ Salvatore Bonaccorso ]
   * d/b/genpatch-rt: Drop now unused 'io' module.
