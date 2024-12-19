@@ -74,8 +74,6 @@ features/x86/x86-make-x32-syscall-support-conditional.patch
 bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/documentation-use-relative-source-paths-in-abi-documentation.patch
-bugfix/all/Revert-mmc-dw_mmc-Fix-IDMAC-operation-with-pages-big.patch
-bugfix/all/netfilter-xtables-fix-typo-causing-some-targets-not-.patch
 
 # Miscellaneous features
 
