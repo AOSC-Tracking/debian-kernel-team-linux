@@ -13,6 +13,7 @@ linux (6.12.3-2) UNRELEASED; urgency=medium
   * debian/salsa-ci.yml: Include run of .build-after-script from common
     pipeline.
   * drivers/nvme/host: Enable NVME_HOST_AUTH
+  * drivers/nvme/target: Enable NVME_TARGET_AUTH
 
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.
