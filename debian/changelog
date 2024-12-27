@@ -1,4 +1,4 @@
-linux (6.1.121-1) UNRELEASED; urgency=medium
+linux (6.1.122-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.120
@@ -900,6 +900,91 @@ linux (6.1.121-1) UNRELEASED; urgency=medium
     - [x86] xen: remove hypercall page (CVE-2024-53241)
     - ALSA: usb-audio: Fix a DMA to stack memory bug
     - [x86] static-call: fix 32-bit build
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.122
+    - net: sched: fix ordering of qlen adjustment (CVE-2024-53164)
+    - PCI/AER: Disable AER service on suspend
+    - PCI: Use preserve_config in place of pci_flags
+    - PCI: vmd: Create domain symlink before pci_bus_add_devices()
+    - usb: cdns3: Add quirk flag to enable suspend residency
+    - [x86] ASoC: Intel: sof_sdw: fix jack detection on ADL-N variant RVP
+    - [x86] ASoC: Intel: sof_sdw: add quirk for Dell SKU 0B8C
+    - PCI: Add ACS quirk for Broadcom BCM5760X NIC
+    - [arm64,armhf] usb: dwc2: gadget: Don't write invalid mapped sg entries
+      into dma_desc with iommu enabled
+    - PCI: Introduce pci_resource_n()
+    - [x86] platform/x86: p2sb: Make p2sb_get_devfn() return void
+    - [x86] p2sb: Factor out p2sb_read_from_cache()
+    - [x86] p2sb: Introduce the global flag p2sb_hidden_by_bios
+    - [x86] p2sb: Move P2SB hide and unhide code to p2sb_scan_and_cache()
+    - [x86] p2sb: Do not scan and remove the P2SB device when it is unhidden
+    - i2c: pnx: Fix timeout in wait functions
+    - cxl/region: Fix region creation for greater than x2 switches
+    - net/smc: protect link down work from execute after lgr freed
+      (CVE-2024-56718)
+    - net/smc: check sndbuf_space again after NOSPACE flag is set in smc_poll
+    - net/smc: check iparea_offset and ipv6_prefixes_cnt when receiving proposal
+      msg
+    - net/smc: check smcd_v2_ext_offset when receiving proposal msg
+    - net/smc: check return value of sock_recvmsg when draining clc data
+    - [arm64] net: mscc: ocelot: fix incorrect IFH SRC_PORT field in
+      ocelot_ifh_set_basic()
+    - ionic: Fix netdev notifier unregister on failure (CVE-2024-56715)
+    - ionic: use ee->offset when returning sprom data
+    - net: hinic: Fix cleanup in create_rxqs/txqs()
+    - net: ethernet: bgmac-platform: fix an OF node reference leak
+    - netfilter: ipset: Fix for recursive locking warning
+    - net: mdiobus: fix an OF node reference leak
+    - [arm64,armhf] mmc: sdhci-tegra: Remove
+      SDHCI_QUIRK_BROKEN_ADMA_ZEROLEN_DESC quirk
+    - [x86] KVM: x86: Cache CPUID.0xD XSTATE offsets+sizes during module init
+    - i2c: riic: Always round-up when calculating bus period
+    - efivarfs: Fix error on non-existent file
+    - USB: serial: option: add TCL IK512 MBIM & ECM
+    - USB: serial: option: add MeiG Smart SLM770A
+    - USB: serial: option: add Netprisma LCUK54 modules for WWAN Ready
+    - USB: serial: option: add MediaTek T7XX compositions
+    - USB: serial: option: add Telit FE910C04 rmnet compositions
+    - [x86] thunderbolt: Improve redrive mode handling
+    - drm/modes: Avoid divide by zero harder in drm_mode_vrefresh()
+    - drm/panel: novatek-nt35950: fix return value check in nt35950_probe()
+    - [x86] i915/guc: Reset engine utilization buffer before registration
+    - [x86] i915/guc: Ensure busyness counter increases motonically
+    - [x86] i915/guc: Accumulate active runtime on gt reset
+    - drm/amdgpu: don't access invalid sched
+    - hwmon: (tmp513) Don't use "proxy" headers
+    - hwmon: (tmp513) Simplify with dev_err_probe()
+    - hwmon: (tmp513) Use SI constants from units.h
+    - hwmon: (tmp513) Fix interpretation of values of Shunt Voltage and Limit
+      Registers
+    - hwmon: (tmp513) Fix Current Register value interpretation
+    - hwmon: (tmp513) Fix interpretation of values of Temperature Result and
+      Limit Registers
+    - zram: refuse to use zero sized block device as backing device
+    - zram: fix uninitialized ZRAM not releasing backing device
+    - btrfs: tree-checker: reject inline extent items with 0 ref count
+    - Drivers: hv: util: Avoid accessing a ringbuffer not initialized yet
+    - [x86] KVM: x86: Play nice with protected guests in
+      complete_hypercall_exit()
+    - tracing: Fix test_event_printk() to process entire print argument
+    - tracing: Add missing helper functions in event pointer dereference check
+    - tracing: Add "%s" check in test_event_printk()
+    - io_uring: Fix registered ring file refcount leak
+    - io_uring: check if iowq is killed before queuing (CVE-2024-56709)
+    - NFS/pnfs: Fix a live lock between recalled layouts and layoutget
+    - of/irq: Fix interrupt-map cell length check in of_irq_parse_imap_parent()
+    - of/irq: Fix using uninitialized variable @addr_len in API
+      of_irq_parse_one()
+    - nilfs2: fix buffer head leaks in calls to truncate_inode_pages()
+    - nilfs2: prevent use of deleted inode
+    - of: Fix error path in of_parse_phandle_with_args_map()
+    - of: Fix refcount leakage for OF node returned by __of_get_dma_parent()
+    - ceph: validate snapdirname option length when mounting
+    - udf: Fix directory iteration for longer tail extents (Closes: #1089698)
+    - epoll: Add synchronous wakeup support for ep_poll_callback
+    - io_uring/rw: split io_read() into a helper
+    - io_uring/rw: treat -EOPNOTSUPP for IOCB_NOWAIT like -EAGAIN
+    - io_uring/rw: avoid punting to io-wq directly
+    - drm/amdgpu: Handle NULL bo->tbo.resource (again) in amdgpu_vm_bo_update
 
   [ Salvatore Bonaccorso ]
   * d/salsa-ci.yml: Suppress aliased-location lintian errors
