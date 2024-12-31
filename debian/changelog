@@ -12,6 +12,7 @@ linux (6.12.3-2) UNRELEASED; urgency=medium
   * drivers/hwmon: Enable SENSORS_SPD5118 as module (Closes: #1090071)
   * debian/salsa-ci.yml: Include run of .build-after-script from common
     pipeline.
+  * nfsd: fix legacy client tracking initialization (Closes: #1087900)
 
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.
