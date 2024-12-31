@@ -18,6 +18,8 @@ linux (6.12.3-2) UNRELEASED; urgency=medium
   * drivers/nvme/target: Enable NVME_TARGET_AUTH
   * drivers/nvme/host: Enable NVME_TCP_TLS
   * drivers/nvme/target: Enable NVME_TARGET_TCP_TLS
+  * debian/salsa-ci.yml: Reference .build-after-script from after_script
+    section
 
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.
