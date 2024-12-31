@@ -3,6 +3,8 @@ linux (6.1.119-2) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Suppress aliased-location lintian errors
   * debian/salsa-ci.yml: Include run of .build-after-script from common
     pipeline.
+  * debian/salsa-ci.yml: Reference .build-after-script from after_script
+    section
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Dec 2024 15:35:09 +0100
 
