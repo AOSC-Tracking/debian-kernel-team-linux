@@ -356,7 +356,7 @@ linux (6.1.122-1) UNRELEASED; urgency=medium
       dcn20_set_output_transfer_func (CVE-2024-49911)
     - drm/amd/display: Check phantom_stream before it is used (CVE-2024-49897)
     - rcu-tasks: Fix access non-existent percpu rtpcp variable in
-      rcu_tasks_need_gpcb() (CVE-2024-49926)
+      rcu_tasks_need_gpcb()
     - btrfs: qgroup: fix qgroup prealloc rsv leak in subvolume operations
       (CVE-2024-35956)
     - [x86] perf/x86/intel: Hide Topdown metrics events if the feature is not
