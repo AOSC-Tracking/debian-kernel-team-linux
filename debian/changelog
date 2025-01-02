@@ -1,4 +1,4 @@
-linux (6.1.122-1) UNRELEASED; urgency=medium
+linux (6.1.123-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.120
@@ -985,6 +985,68 @@ linux (6.1.122-1) UNRELEASED; urgency=medium
     - io_uring/rw: treat -EOPNOTSUPP for IOCB_NOWAIT like -EAGAIN
     - io_uring/rw: avoid punting to io-wq directly
     - drm/amdgpu: Handle NULL bo->tbo.resource (again) in amdgpu_vm_bo_update
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.123
+    - media: dvb-frontends: dib3000mb: fix uninit-value in dib3000_write_reg
+    - mm/vmstat: fix a W=1 clang compiler warning
+    - tcp_bpf: Charge receive socket buffer in bpf_tcp_ingress()
+    - tcp_bpf: Add sk_rmem_alloc related logic for tcp_bpf ingress redirection
+    - bpf: Check negative offsets in __bpf_skb_min_len()
+    - nfsd: restore callback functionality for NFSv4.0
+    - mtd: diskonchip: Cast an operand to prevent potential overflow
+    - [arm64] phy: qcom-qmp: Fix register name in RX Lane config of SC8280XP
+    - phy: core: Fix an OF node refcount leakage in _of_phy_get()
+    - phy: core: Fix an OF node refcount leakage in of_phy_provider_lookup()
+    - phy: core: Fix that API devm_phy_put() fails to release the phy
+    - phy: core: Fix that API devm_of_phy_provider_unregister() fails to
+      unregister the phy provider
+    - phy: core: Fix that API devm_phy_destroy() fails to destroy the phy
+    - phy: usb: Toggle the PHY power during init
+    - [arm64] phy: rockchip: naneng-combphy: fix phy reset
+    - [arm*] dmaengine: mv_xor: fix child node refcount handling in early exit
+    - [x86] dmaengine: dw: Select only supported masters for ACPI devices
+    - [powerpc*] pseries/vas: Add close() callback in vas_vm_ops struct
+    - stddef: make __struct_group() UAPI C++-friendly
+    - tracing/kprobe: Make trace_kprobe's module callback called after
+      jump_label update
+    - watchdog: it87_wdt: add PWRGD enable quirk for Qotom QCML04
+    - scsi: qla1280: Fix hw revision numbering for ISP1020/1040
+    - scsi: megaraid_sas: Fix for a potential deadlock
+    - ALSA: hda/conexant: fix Z60MR100 startup pop issue
+    - smb: server: Fix building with GCC 15
+    - regmap: Use correct format specifier for logging range errors
+    - [x86] platform/x86: asus-nb-wmi: Ignore unknown event 0xCF
+    - scsi: mpt3sas: Diag-Reset when Doorbell-In-Use bit is set during driver
+      load time
+    - scsi: storvsc: Do not flag MAINTENANCE_IN return of
+      SRB_STATUS_DATA_OVERRUN as an error
+    - drm/dp_mst: Ensure mst_primary pointer is valid in
+      drm_dp_mst_handle_up_req()
+    - virtio-blk: don't keep queue frozen during system suspend
+    - blk-mq: register cpuhp callback after hctx is added to xarray table
+    - vmalloc: fix accounting with i915
+    - [mips*] mipsregs: Set proper ISA level for virt extensions
+    - net/mlx5e: Don't call cleanup on profile rollback failure (CVE-2024-50146)
+    - bpf: Check validity of link->type in bpf_link_show_fdinfo()
+      (CVE-2024-53099)
+    - ALSA: hda/realtek: fix mute/micmute LEDs don't work for EliteBook X G1i
+    - ALSA: hda/realtek: fix micmute LEDs don't work on HP Laptops
+    - pmdomain: core: Add missing put_device()
+    - sched/core: Report correct state for TASK_IDLE | TASK_FREEZABLE
+    - freezer, sched: Report frozen tasks as 'D' instead of 'R'
+    - tracing: Constify string literal data member in struct trace_event_call
+    - tracing: Prevent bad count for tracing_cpumask_write
+    - io_uring/sqpoll: fix sqpoll error handling races
+    - i2c: microchip-core: actually use repeated sends
+    - i2c: imx: add imx7d compatible string for applying erratum ERR007805
+    - i2c: microchip-core: fix "ghost" detections
+    - power: supply: gpio-charger: Fix set charge current limits
+    - btrfs: avoid monopolizing a core when activating a swap file
+    - btrfs: sysfs: fix direct super block member reads
+    - nfsd: cancel nfsd_shrinker_work using sync mode in nfs4_state_shutdown_net
+      (CVE-2024-50121)
+    - Revert "rcu-tasks: Fix access non-existent percpu rtpcp variable in
+      rcu_tasks_need_gpcb()"
+    - ALSA: hda/realtek: Fix spelling mistake "Firelfy" -> "Firefly"
 
   [ Salvatore Bonaccorso ]
   * d/salsa-ci.yml: Suppress aliased-location lintian errors
