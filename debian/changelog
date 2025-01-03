@@ -2,6 +2,9 @@ linux (6.13~rc6-1~exp2) UNRELEASED; urgency=medium
 
   * Search for module.lds in correct location.
 
+  [ Jochen Sprickerhof ]
+  * [arm64] Enable modules for Google Pixel 6 (Exynos)
+
  -- Bastian Blank <waldi@debian.org>  Sun, 12 Jan 2025 18:22:24 +0100
 
 linux (6.13~rc6-1~exp1) experimental; urgency=medium
