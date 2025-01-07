@@ -24,6 +24,8 @@ linux (6.12.3-2) UNRELEASED; urgency=medium
 
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.
+  * [arm64,amd64] Enable PCI_P2PDMA and HSA_AMD_SVM. Both are useful for
+    computing on AMD graphics cards (Closes: 1015871)
 
  -- Bastian Blank <waldi@debian.org>  Sun, 08 Dec 2024 11:10:22 +0100
 
