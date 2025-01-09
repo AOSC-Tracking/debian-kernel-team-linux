@@ -1352,7 +1352,6 @@ CONFIG_FB_HYPERV=m
 # CONFIG_PC87413_WDT is not set
 # CONFIG_NV_TCO is not set
 # CONFIG_60XX_WDT is not set
-# CONFIG_CPU5_WDT is not set
 # CONFIG_SMSC_SCH311X_WDT is not set
 # CONFIG_SMSC37B787_WDT is not set
 # CONFIG_VIA_WDT is not set
@@ -1476,11 +1475,6 @@ CONFIG_EXT4_FS=y
 ## file: fs/qnx6/Kconfig
 ##
 # CONFIG_QNX6FS_FS is not set
-
-##
-## file: fs/reiserfs/Kconfig
-##
-# CONFIG_REISERFS_FS is not set
 
 ##
 ## file: fs/ufs/Kconfig

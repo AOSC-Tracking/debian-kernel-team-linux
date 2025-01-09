@@ -13,11 +13,6 @@ CONFIG_CBE_RAS=y
 CONFIG_CBE_THERM=m
 
 ##
-## file: arch/powerpc/platforms/maple/Kconfig
-##
-CONFIG_PPC_MAPLE=y
-
-##
 ## file: arch/powerpc/platforms/pasemi/Kconfig
 ##
 CONFIG_PPC_PASEMI=y

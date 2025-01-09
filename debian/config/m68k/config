@@ -13,6 +13,9 @@ CONFIG_ATARI_ROM_ISA=y
 ##
 ## file: arch/m68k/Kconfig.cpu
 ##
+## choice: CPU/machine family support
+# CONFIG_SUN3 is not set
+## end choice
 CONFIG_M68020=y
 CONFIG_M68030=y
 CONFIG_M68040=y
@@ -54,7 +57,6 @@ CONFIG_BVME6000=y
 # CONFIG_HP300 is not set
 # CONFIG_SUN3X is not set
 CONFIG_Q40=y
-# CONFIG_SUN3 is not set
 
 ##
 ## file: block/Kconfig
@@ -670,11 +672,6 @@ CONFIG_BINFMT_MISC=m
 ## file: fs/qnx4/Kconfig
 ##
 # CONFIG_QNX4FS_FS is not set
-
-##
-## file: fs/reiserfs/Kconfig
-##
-# CONFIG_REISERFS_FS_SECURITY is not set
 
 ##
 ## file: fs/ubifs/Kconfig

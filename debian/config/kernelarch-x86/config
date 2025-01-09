@@ -524,8 +524,6 @@ CONFIG_EDAC_I7300=m
 CONFIG_EDAC_SKX=m
 CONFIG_EDAC_I10NM=m
 CONFIG_EDAC_PND2=m
-CONFIG_EDAC_AMD8131=m
-CONFIG_EDAC_AMD8111=m
 
 ##
 ## file: drivers/extcon/Kconfig
@@ -762,7 +760,6 @@ CONFIG_I2C_ALI1535=m
 CONFIG_I2C_ALI1563=m
 CONFIG_I2C_ALI15X3=m
 CONFIG_I2C_AMD756=m
-CONFIG_I2C_AMD756_S4882=m
 CONFIG_I2C_AMD8111=m
 CONFIG_I2C_AMD_MP2=m
 CONFIG_I2C_I801=m
@@ -1251,8 +1248,6 @@ CONFIG_PCMCIA_XIRCOM=m
 ## file: drivers/net/ethernet/dlink/Kconfig
 ##
 CONFIG_NET_VENDOR_DLINK=y
-CONFIG_SUNDANCE=m
-# CONFIG_SUNDANCE_MMIO is not set
 
 ##
 ## file: drivers/net/ethernet/fujitsu/Kconfig
@@ -1754,29 +1749,6 @@ CONFIG_STAGING_MEDIA=y
 CONFIG_VIDEO_IPU3_IMGU=m
 
 ##
-## file: drivers/staging/rtl8192e/Kconfig
-##
-CONFIG_RTLLIB=m
-CONFIG_RTLLIB_CRYPTO_CCMP=m
-CONFIG_RTLLIB_CRYPTO_TKIP=m
-CONFIG_RTLLIB_CRYPTO_WEP=m
-
-##
-## file: drivers/staging/rtl8192e/rtl8192e/Kconfig
-##
-CONFIG_RTL8192E=m
-
-##
-## file: drivers/staging/rts5208/Kconfig
-##
-CONFIG_RTS5208=m
-
-##
-## file: drivers/staging/vt6656/Kconfig
-##
-CONFIG_VT6656=m
-
-##
 ## file: drivers/thermal/Kconfig
 ##
 CONFIG_THERMAL=y
@@ -2007,7 +1979,6 @@ CONFIG_KEMPLD_WDT=m
 CONFIG_SC1200_WDT=m
 CONFIG_NV_TCO=m
 CONFIG_60XX_WDT=m
-CONFIG_CPU5_WDT=m
 CONFIG_VIA_WDT=m
 CONFIG_W83627HF_WDT=m
 CONFIG_W83877F_WDT=m

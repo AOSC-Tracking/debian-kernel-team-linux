@@ -855,11 +855,6 @@ CONFIG_MFD_STM32_LPTIMER=m
 CONFIG_MFD_STPMIC1=m
 
 ##
-## file: drivers/misc/ti-st/Kconfig
-##
-CONFIG_TI_ST=m
-
-##
 ## file: drivers/mmc/Kconfig
 ##
 CONFIG_MMC=y
@@ -1000,8 +995,6 @@ CONFIG_DM9102=m
 ## file: drivers/net/ethernet/dlink/Kconfig
 ##
 CONFIG_NET_VENDOR_DLINK=y
-CONFIG_SUNDANCE=m
-# CONFIG_SUNDANCE_MMIO is not set
 
 ##
 ## file: drivers/net/ethernet/faraday/Kconfig

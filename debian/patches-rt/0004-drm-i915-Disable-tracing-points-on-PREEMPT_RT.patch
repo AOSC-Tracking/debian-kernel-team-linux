@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 6 Dec 2018 09:52:20 +0100
 Subject: [PATCH 4/8] drm/i915: Disable tracing points on PREEMPT_RT
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12-rc4-rt6.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.13/older/patches-6.13-rc1-rt1.tar.xz
 
 Luca Abeni reported this:
 | BUG: scheduling while atomic: kworker/u8:2/15203/0x00000003
@@ -42,9 +42,9 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 +#define NOTRACE
 +#endif
 +
+ #include <linux/string.h>
  #include <linux/string_helpers.h>
  #include <linux/types.h>
- #include <linux/tracepoint.h>
 --- a/drivers/gpu/drm/i915/i915_trace.h
 +++ b/drivers/gpu/drm/i915/i915_trace.h
 @@ -6,6 +6,10 @@

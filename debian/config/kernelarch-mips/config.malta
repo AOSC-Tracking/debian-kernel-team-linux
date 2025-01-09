@@ -191,11 +191,6 @@ CONFIG_TULIP=m
 CONFIG_DM9102=m
 
 ##
-## file: drivers/net/ethernet/dlink/Kconfig
-##
-CONFIG_SUNDANCE=m
-
-##
 ## file: drivers/net/ethernet/intel/Kconfig
 ##
 CONFIG_E100=m

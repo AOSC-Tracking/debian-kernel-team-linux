@@ -330,6 +330,7 @@ binary_headers: $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
 
 	cp -a $(SOURCE_DIR)/scripts/module.lds $(DIR)/arch/$(KERNEL_ARCH)
 
+	@echo 'KBUILD_OUTPUT=$(BASE_DIR)' >> $(DIR)/Makefile
 	@echo 'include $(BASE_DIR_COMMON)/Makefile' >> $(DIR)/Makefile
 
 	dh_link /usr/lib/$(PACKAGE_NAME_KBUILD)/scripts $(BASE_DIR)/scripts
