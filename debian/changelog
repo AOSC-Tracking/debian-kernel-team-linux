@@ -27,6 +27,7 @@ linux (6.13~rc6-1~exp1) UNRELEASED; urgency=medium
   * Update "kbuild: Make the toolchain variables easily overwritable" to include
     .kernelvariables from $(objtree)
   * debian/rules.real: Make sure kernel module build finds it's tree
+  * [amd64/cloud] drivers/idle: Enable INTEL_IDLE (Closes: #1078005)
 
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.

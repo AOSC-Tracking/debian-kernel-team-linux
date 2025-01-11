@@ -32,6 +32,11 @@ CONFIG_GOOGLE_FRAMEBUFFER_COREBOOT=m
 # CONFIG_I8K is not set
 
 ##
+## file: drivers/idle/Kconfig
+##
+CONFIG_INTEL_IDLE=y
+
+##
 ## file: drivers/infiniband/hw/usnic/Kconfig
 ##
 # CONFIG_INFINIBAND_USNIC is not set
