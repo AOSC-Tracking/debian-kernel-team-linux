@@ -79,6 +79,9 @@ linux (6.1.124-1) UNRELEASED; urgency=medium
     - mptcp: don't always assume copied data in mptcp_cleanup_rbuf()
     - zram: check comp is non-NULL before calling comp_destroy
 
+  [ Salvatore Bonaccorso ]
+  * Bump ABI to 30
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 11 Jan 2025 11:52:53 +0100
 
 linux (6.1.123-1) bookworm; urgency=medium
