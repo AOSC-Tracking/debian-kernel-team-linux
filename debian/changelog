@@ -1,3 +1,86 @@
+linux (6.1.124-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.124
+    - [x86] hyperv: Fix hv tsc page based sched_clock for hibernation
+    - selinux: ignore unknown extended permissions
+    - btrfs: fix use-after-free in btrfs_encoded_read_endio() (CVE-2024-56582)
+    - tracing: Have process_string() also allow arrays
+    - [x86] thunderbolt: Add support for Intel Lunar Lake
+    - [x86] thunderbolt: Add support for Intel Panther Lake-M/P
+    - [x86] thunderbolt: Don't display nvm_version unless upgrade supported
+    - xhci: retry Stop Endpoint on buggy NEC controllers
+    - usb: xhci: Limit Stop Endpoint retries
+    - xhci: Turn NEC specific quirk for handling Stop Endpoint errors generic
+    - net: mctp: handle skb cleanup on sock_queue failures
+    - RDMA/mlx5: Enforce same type port association for multiport RoCE
+    - [arm64] drm/bridge: adv7511_audio: Update Audio InfoFrame properly
+    - [arm64] RDMA/hns: Refactor mtr find
+    - [arm64] RDMA/hns: Remove unused parameters and variables
+    - [arm64] RDMA/hns: Fix mapping error of zero-hop WQE buffer
+    - [arm64] RDMA/hns: Fix warning storm caused by invalid input in IO path
+    - [arm64] RDMA/hns: Fix missing flush CQE for DWQE
+    - net: stmmac: platform: provide devm_stmmac_probe_config_dt()
+    - net: stmmac: don't create a MDIO bus if unnecessary
+    - net: stmmac: restructure the error path of stmmac_probe_config_dt()
+    - net: fix memory leak in tcp_conn_request()
+    - ipip,ip_tunnel,sit: Add FOU support for externally controlled ipip devices
+    - ip_tunnel: annotate data-races around t->parms.link
+    - ipv4: ip_tunnel: Unmask upper DSCP bits in ip_tunnel_bind_dev()
+    - ipv4: ip_tunnel: Unmask upper DSCP bits in ip_md_tunnel_xmit()
+    - ipv4: ip_tunnel: Unmask upper DSCP bits in ip_tunnel_xmit()
+    - net: Fix netns for ip_tunnel_init_flow()
+    - netrom: check buffer length before accessing it
+    - [x86] drm/i915/dg1: Fix power gate sequence.
+    - netfilter: nft_set_hash: unaligned atomic read on struct nft_set_ext
+      (Closes: #1092772)
+    - net: llc: reset skb->transport_header
+    - ALSA: usb-audio: US16x08: Initialize array before use
+    - [armel,armhf] net: mv643xx_eth: fix an OF node reference leak
+    - net: wwan: t7xx: Fix FSM command timeout issue
+    - net: reenable NETIF_F_IPV6_CSUM offload for BIG TCP packets
+    - net: restrict SO_REUSEPORT to inet sockets
+    - net: wwan: iosm: Properly check for valid exec stage in ipc_mmio_init()
+    - af_packet: fix vlan_get_tci() vs MSG_PEEK
+    - af_packet: fix vlan_get_protocol_dgram() vs MSG_PEEK
+    - ila: serialize calls to nf_register_net_hooks()
+    - btrfs: rename and export __btrfs_cow_block()
+    - btrfs: fix use-after-free when COWing tree bock and tracing is enabled
+      (CVE-2024-56759)
+    - wifi: mac80211: wake the queues in case of failure in resume
+    - btrfs: flush delalloc workers queue before stopping cleaner kthread during
+      unmount
+    - ALSA: hda/realtek: Add new alc2xx-fixup-headset-mic model
+    - sound: usb: enable DSD output for ddHiFi TC44C
+    - sound: usb: format: don't warn that raw DSD is unsupported
+    - bpf: fix potential error return
+    - ksmbd: retry iterate_dir in smb2_query_dir
+    - net: usb: qmi_wwan: add Telit FE910C04 compositions
+    - Bluetooth: hci_core: Fix sleeping function called from invalid context
+    - irqchip/gic: Correct declaration of *percpu_base pointer in union gic_base
+    - usb: xhci: Avoid queuing redundant Stop Endpoint commands
+    - modpost: fix input MODULE_DEVICE_TABLE() built for 64-bit on 32-bit host
+    - modpost: fix the missed iteration for the max bit in do_input()
+    - ALSA hda/realtek: Add quirk for Framework F111:000C
+    - ALSA: seq: oss: Fix races at processing SysEx messages
+    - kcov: mark in_softirq_really() as __always_inline
+    - RDMA/uverbs: Prevent integer overflow issue
+    - [armhf] pinctrl: mcp23s08: Fix sleeping in atomic context due to regmap
+      locking
+    - sky2: Add device ID 11ab:4373 for Marvell 88E8075
+    - net/sctp: Prevent autoclose integer overflow in sctp_association_init()
+    - [arm64] drm: adv7511: Drop dsi single lane support
+    - dt-bindings: display: adi,adv7533: Drop single lane support
+    - mm/readahead: fix large folio support in async readahead
+    - mm: vmscan: account for free pages to prevent infinite Loop in
+      throttle_direct_reclaim()
+    - mptcp: fix TCP options overflow.
+    - mptcp: fix recvbuffer adjust on sleeping rcvmsg
+    - mptcp: don't always assume copied data in mptcp_cleanup_rbuf()
+    - zram: check comp is non-NULL before calling comp_destroy
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 11 Jan 2025 11:52:53 +0100
+
 linux (6.1.123-1) bookworm; urgency=medium
 
   * New upstream stable update:
