@@ -1,4 +1,6 @@
-linux (6.13~rc6-1~exp1) UNRELEASED; urgency=medium
+linux (6.13~rc6-1~exp1) experimental; urgency=medium
+
+  * NOTE: This release is unable to build external modules!
 
   * New upstream release candidate
 
@@ -32,7 +34,7 @@ linux (6.13~rc6-1~exp1) UNRELEASED; urgency=medium
   [ Uwe Kleine-König ]
   * [arm64] Enable rx8025 driver as module.
 
- -- Bastian Blank <waldi@debian.org>  Sun, 08 Dec 2024 11:10:22 +0100
+ -- Bastian Blank <waldi@debian.org>  Sun, 12 Jan 2025 11:40:45 +0100
 
 linux (6.12.3-1) unstable; urgency=medium
 
