@@ -1,3 +1,9 @@
+linux (6.13~rc6-1~exp2) UNRELEASED; urgency=medium
+
+  * Search for module.lds in correct location.
+
+ -- Bastian Blank <waldi@debian.org>  Sun, 12 Jan 2025 18:22:24 +0100
+
 linux (6.13~rc6-1~exp1) experimental; urgency=medium
 
   * NOTE: This release is unable to build external modules!
