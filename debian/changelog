@@ -6961,7 +6961,7 @@ linux (6.7-1~exp1) experimental; urgency=medium
   * Fix some remaining cross build problems.
 
   [ Christian Göttsche ]
-  * Enable MODULE_DECOMPRESS 
+  * Enable MODULE_DECOMPRESS
 
   [ Timothy Pearson ]
   * [ppc64] Build PowerNV PCIe hotplug driver as a module
