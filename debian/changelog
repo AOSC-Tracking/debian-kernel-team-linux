@@ -3,7 +3,7 @@ linux (6.13~rc7-1~exp1) UNRELEASED; urgency=medium
   * New upstream release candidate
 
   [ Bastian Blank ]
-  * Search for module.lds in correct location.
+  * Search for module.lds in correct location. (Closes: #1092969)
 
   [ Jochen Sprickerhof ]
   * [arm64] Enable modules for Google Pixel 6 (Exynos)
