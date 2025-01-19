@@ -3,6 +3,11 @@ linux (6.13~rc7-1~exp2) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * drivers/bluetooth: Enable BT_INTEL_PCIE as module (Closes: #1092465)
 
+  [ наб ]
+  * d/p/debian/cdc_ncm-cdc_mbim-use-ncm-by-default.patch: drop
+    (Modern userland supports MBIM, disabling breaks connections by default,
+     Ubuntu ships kernels without this patch and it's reliable there.)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 17 Jan 2025 22:34:53 +0100
 
 linux (6.13~rc7-1~exp1) experimental; urgency=medium

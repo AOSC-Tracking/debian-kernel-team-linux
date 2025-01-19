@@ -49,7 +49,6 @@ features/x86/intel-iommu-add-option-to-exclude-integrated-gpu-only.patch
 features/x86/intel-iommu-add-kconfig-option-to-exclude-igpu-by-default.patch
 
 # Disable autoloading/probing of various drivers by default
-debian/cdc_ncm-cdc_mbim-use-ncm-by-default.patch
 debian/snd-pcsp-disable-autoload.patch
 bugfix/x86/viafb-autoload-on-olpc-xo1.5-only.patch
 debian/fjes-disable-autoload.patch
