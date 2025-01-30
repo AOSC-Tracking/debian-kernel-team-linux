@@ -609,6 +609,9 @@ linux (6.12.13-1) UNRELEASED; urgency=medium
   [ Sebastian Siewior ]
   * Enable RCU_LAZY to not wake up the CPU for RCU callbacks
 
+  [ Uwe Kleine-König ]
+  * Stick to default value for RCU_FANOUT
+
  -- Emanuele Rocca <ema@debian.org>  Wed, 05 Feb 2025 08:53:35 +0000
 
 linux (6.12.12-1) unstable; urgency=medium
