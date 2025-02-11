@@ -1,5 +1,6 @@
 linux (6.12.13-1) UNRELEASED; urgency=medium
 
+  [ Emanuele Rocca ]
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.13
     - coredump: Do not lock during 'comm' reporting
@@ -600,6 +601,10 @@ linux (6.12.13-1) UNRELEASED; urgency=medium
   [ Emanuele Rocca]
   * [amd64, arm64] Add pmem modules to amd64 and arm64 kernel-image udeb
     to support UEFI HTTP boot (or u-boot) in debian-installer
+
+  [ Alper Nebi Yasak ]
+  * [arm64] Enable I2C_HID_OF_ELAN as module
+  * udeb: Move i2c-hid-of-elan module to fb-modules
 
  -- Emanuele Rocca <ema@debian.org>  Wed, 05 Feb 2025 08:53:35 +0000
 
