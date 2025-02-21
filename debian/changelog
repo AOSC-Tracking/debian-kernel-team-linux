@@ -6,6 +6,7 @@ linux (6.1.147-2) UNRELEASED; urgency=medium
     - Set MODULE_SIG_ALL to sign all modules.
     - Not longer request Secure Boot signing for modules.
     - Don't trust Secure Boot key any longer.
+  * Store build time signing key encrypted.
 
   [ Ben Hutchings ]
   * d/b/buildcheck.py, d/rules.real: Run buildcheck.py in setup as well
