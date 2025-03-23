@@ -2,6 +2,9 @@ linux-6.1 (6.1.133-1~deb11u1) UNRELEASED; urgency=high
 
   * Rebuild for bullseye:
     - Set ABI to 0.deb11.33
+    - linux-signed-*: lintian:
+      + Adjust override of version-substvar-for-external-package
+      + Add override of copyright-excludes-files-in-native-package
 
  -- Ben Hutchings <benh@debian.org>  Wed, 16 Apr 2025 18:45:42 +0200
 
