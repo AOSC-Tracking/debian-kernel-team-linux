@@ -427,6 +427,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - rt: fix build issue in at_hdmac
     - rt: fix build issue in be2net
   * d/salsa-ci.yml: Run lintian from the target release, not always unstable
+  * Revert "d/salsa-ci.yml: Suppress aliased-location lintian errors"
 
   [ Salvatore Bonaccorso ]
   * d/b/genpatch-rt: Drop now unused 'io' module.
