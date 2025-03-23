@@ -428,6 +428,9 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - rt: fix build issue in be2net
   * d/salsa-ci.yml: Run lintian from the target release, not always unstable
   * Revert "d/salsa-ci.yml: Suppress aliased-location lintian errors"
+  * linux-signed-*: lintian: Correct overrides for bullseye:
+    - Adjust override of version-substvar-for-external-package
+    - Add override for copyright-excludes-files-in-native-package
 
   [ Salvatore Bonaccorso ]
   * d/b/genpatch-rt: Drop now unused 'io' module.
