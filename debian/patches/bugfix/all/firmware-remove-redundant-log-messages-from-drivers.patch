@@ -126,7 +126,7 @@ upstream submission.
  
 --- a/drivers/bluetooth/btmrvl_sdio.c
 +++ b/drivers/bluetooth/btmrvl_sdio.c
-@@ -483,8 +483,6 @@ static int btmrvl_sdio_download_helper(s
+@@ -482,8 +482,6 @@ static int btmrvl_sdio_download_helper(s
  	ret = request_firmware(&fw_helper, card->helper,
  						&card->func->dev);
  	if ((ret < 0) || !fw_helper) {
@@ -135,7 +135,7 @@ upstream submission.
  		ret = -ENOENT;
  		goto done;
  	}
-@@ -583,8 +581,6 @@ static int btmrvl_sdio_download_fw_w_hel
+@@ -582,8 +580,6 @@ static int btmrvl_sdio_download_fw_w_hel
  	ret = request_firmware(&fw_firmware, card->firmware,
  							&card->func->dev);
  	if ((ret < 0) || !fw_firmware) {
@@ -232,7 +232,7 @@ upstream submission.
  		release_firmware(rdev->me_fw);
 --- a/drivers/gpu/drm/radeon/r100.c
 +++ b/drivers/gpu/drm/radeon/r100.c
-@@ -1047,9 +1047,7 @@ static int r100_cp_init_microcode(struct
+@@ -1067,9 +1067,7 @@ static int r100_cp_init_microcode(struct
  	}
  
  	err = request_firmware(&rdev->me_fw, fw_name, rdev->dev);
@@ -494,7 +494,7 @@ upstream submission.
  		release_firmware(fw);
 --- a/drivers/media/dvb-frontends/tda10048.c
 +++ b/drivers/media/dvb-frontends/tda10048.c
-@@ -483,8 +483,6 @@ static int tda10048_firmware_upload(stru
+@@ -486,8 +486,6 @@ static int tda10048_firmware_upload(stru
  	ret = request_firmware(&fw, TDA10048_DEFAULT_FIRMWARE,
  		state->i2c->dev.parent);
  	if (ret) {
@@ -779,7 +779,7 @@ upstream submission.
  	packet_num = ptr[0];
 --- a/drivers/media/radio/wl128x/fmdrv_common.c
 +++ b/drivers/media/radio/wl128x/fmdrv_common.c
-@@ -1240,10 +1240,8 @@ static int fm_download_firmware(struct f
+@@ -1241,10 +1241,8 @@ static int fm_download_firmware(struct f
  
  	ret = request_firmware(&fw_entry, fw_name,
  				&fmdev->radio_dev->dev);
@@ -847,7 +847,7 @@ upstream submission.
  	stk9090m_config.microcode_B_fe_size = state->frontend_firmware->size;
  	stk9090m_config.microcode_B_fe_buffer = state->frontend_firmware->data;
  
-@@ -2478,12 +2475,9 @@ static int nim9090md_frontend_attach(str
+@@ -2483,12 +2480,9 @@ static int nim9090md_frontend_attach(str
  	msleep(20);
  	dib0700_set_gpio(adap->dev, GPIO0, GPIO_OUT, 1);
  
@@ -1196,7 +1196,7 @@ upstream submission.
  	if (bp->mips_firmware->size < sizeof(*mips_fw) ||
 --- a/drivers/net/ethernet/broadcom/tg3.c
 +++ b/drivers/net/ethernet/broadcom/tg3.c
-@@ -11432,11 +11432,8 @@ static int tg3_request_firmware(struct t
+@@ -11433,11 +11433,8 @@ static int tg3_request_firmware(struct t
  {
  	const struct tg3_firmware_hdr *fw_hdr;
  
@@ -1372,7 +1372,7 @@ upstream submission.
  	} else
 --- a/drivers/net/wireless/ath/ath9k/hif_usb.c
 +++ b/drivers/net/wireless/ath/ath9k/hif_usb.c
-@@ -1252,9 +1252,6 @@ static void ath9k_hif_usb_firmware_cb(co
+@@ -1250,9 +1250,6 @@ static void ath9k_hif_usb_firmware_cb(co
  		if (!ret)
  			return;
  
@@ -1730,7 +1730,7 @@ upstream submission.
  	}
 --- a/drivers/net/wireless/realtek/rtlwifi/rtl8192se/sw.c
 +++ b/drivers/net/wireless/realtek/rtlwifi/rtl8192se/sw.c
-@@ -63,13 +63,11 @@ static void rtl92se_fw_cb(const struct f
+@@ -63,12 +63,10 @@ static void rtl92se_fw_cb(const struct f
  	struct ieee80211_hw *hw = context;
  	struct rtl_priv *rtlpriv = rtl_priv(hw);
  	struct rt_firmware *pfirmware = NULL;
@@ -1738,11 +1738,10 @@ upstream submission.
  
  	rtl_dbg(rtlpriv, COMP_ERR, DBG_LOUD,
  		"Firmware callback routine entered!\n");
- 	complete(&rtlpriv->firmware_loading_complete);
  	if (!firmware) {
 -		pr_err("Firmware %s not available\n", fw_name);
  		rtlpriv->max_fw_size = 0;
- 		return;
+ 		goto exit;
  	}
 --- a/drivers/net/wireless/ti/wl1251/main.c
 +++ b/drivers/net/wireless/ti/wl1251/main.c
@@ -1881,7 +1880,7 @@ upstream submission.
  	if (err) {
 --- a/drivers/scsi/bfa/bfad.c
 +++ b/drivers/scsi/bfa/bfad.c
-@@ -1749,7 +1749,6 @@ bfad_read_firmware(struct pci_dev *pdev,
+@@ -1748,7 +1748,6 @@ bfad_read_firmware(struct pci_dev *pdev,
  	const struct firmware *fw;
  
  	if (request_firmware(&fw, fw_name, &pdev->dev)) {
@@ -1928,7 +1927,7 @@ upstream submission.
  	}
 --- a/drivers/scsi/qla2xxx/qla_init.c
 +++ b/drivers/scsi/qla2xxx/qla_init.c
-@@ -8052,10 +8052,6 @@ qla2x00_load_risc(scsi_qla_host_t *vha,
+@@ -8099,10 +8099,6 @@ qla2x00_load_risc(scsi_qla_host_t *vha,
  	/* Load firmware blob. */
  	blob = qla2x00_request_firmware(vha);
  	if (!blob) {
@@ -1939,7 +1938,7 @@ upstream submission.
  		return QLA_FUNCTION_FAILED;
  	}
  
-@@ -8158,9 +8154,6 @@ qla24xx_load_risc_blob(scsi_qla_host_t *
+@@ -8205,9 +8201,6 @@ qla24xx_load_risc_blob(scsi_qla_host_t *
  
  	blob = qla2x00_request_firmware(vha);
  	if (!blob) {
@@ -1966,7 +1965,7 @@ upstream submission.
  	if (qla82xx_validate_firmware_blob(vha,
 --- a/drivers/scsi/qla2xxx/qla_os.c
 +++ b/drivers/scsi/qla2xxx/qla_os.c
-@@ -7344,8 +7344,6 @@ qla2x00_request_firmware(scsi_qla_host_t
+@@ -7340,8 +7340,6 @@ qla2x00_request_firmware(scsi_qla_host_t
  		goto out;
  
  	if (request_firmware(&blob->fw, blob->name, &ha->pdev->dev)) {
@@ -2508,7 +2507,7 @@ upstream submission.
  	if (err) {
 --- a/sound/pci/rme9652/hdsp.c
 +++ b/sound/pci/rme9652/hdsp.c
-@@ -5111,11 +5111,8 @@ static int hdsp_request_fw_loader(struct
+@@ -5113,11 +5113,8 @@ static int hdsp_request_fw_loader(struct
  		return -EINVAL;
  	}
  
