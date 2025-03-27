@@ -1,6 +1,6 @@
 From: Bogdan Purcareata <bogdan.purcareata@freescale.com>
 Date: Fri, 24 Apr 2015 15:53:13 +0000
-Subject: [PATCH 277/323] powerpc/kvm: Disable in-kernel MPIC emulation for
+Subject: [PATCH 277/326] powerpc/kvm: Disable in-kernel MPIC emulation for
  PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=247b857f1f062f4f28a1cdfaaff48c5471001c3b
 

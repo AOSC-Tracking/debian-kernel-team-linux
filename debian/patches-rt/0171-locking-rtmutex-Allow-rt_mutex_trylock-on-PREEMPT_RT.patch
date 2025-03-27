@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 2 Dec 2015 11:34:07 +0100
-Subject: [PATCH 171/323] locking/rtmutex: Allow rt_mutex_trylock() on
+Subject: [PATCH 171/326] locking/rtmutex: Allow rt_mutex_trylock() on
  PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4127d64563a8692601aa788db030fa84108ee5a
 

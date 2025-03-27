@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 7 Jul 2020 12:25:11 +0200
-Subject: [PATCH 254/323] drm/i915/gt: Only disable interrupts for the timeline
+Subject: [PATCH 254/326] drm/i915/gt: Only disable interrupts for the timeline
  lock on !force-threaded
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0a6254db43945700fe7d2eaf2a69b62bb388b5eb
 

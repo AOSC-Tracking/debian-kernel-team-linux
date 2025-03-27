@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:38 +0100
-Subject: [PATCH 049/323] io-mapping: Provide iomap_local variant
+Subject: [PATCH 049/326] io-mapping: Provide iomap_local variant
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5c586a880159cf93c77513b939feb0c7bbd9ee29
 
 Similar to kmap local provide a iomap local variant which only disables

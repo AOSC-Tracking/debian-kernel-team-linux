@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:02 +0200
-Subject: [PATCH 005/323] sched/core: Wait for tasks being pushed away on
+Subject: [PATCH 005/326] sched/core: Wait for tasks being pushed away on
  hotplug
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e2832a39ae13cef84b29bfd791f5726ce9eb0e92
 

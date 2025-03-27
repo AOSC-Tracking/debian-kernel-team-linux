@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 14 Aug 2020 17:08:41 +0200
-Subject: [PATCH 166/323] locking: split out the rbtree definition
+Subject: [PATCH 166/326] locking: split out the rbtree definition
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0f7e226a58f2e6e71a8f7362b551b11053c2c7e2
 
 rtmutex.h needs the definition for rb_root_cached. By including kernel.h

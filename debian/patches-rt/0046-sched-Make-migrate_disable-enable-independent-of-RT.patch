@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:35 +0100
-Subject: [PATCH 046/323] sched: Make migrate_disable/enable() independent of
+Subject: [PATCH 046/326] sched: Make migrate_disable/enable() independent of
  RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0ae1283eb63c006c925700b883a13e220ccf18e4
 

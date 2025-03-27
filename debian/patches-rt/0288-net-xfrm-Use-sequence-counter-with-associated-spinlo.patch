@@ -1,6 +1,6 @@
 From: "Ahmed S. Darwish" <a.darwish@linutronix.de>
 Date: Tue, 16 Mar 2021 11:56:30 +0100
-Subject: [PATCH 288/323] net: xfrm: Use sequence counter with associated
+Subject: [PATCH 288/326] net: xfrm: Use sequence counter with associated
  spinlock
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6b01c263b63790186569f6d4a7b34f71a3930e21
 

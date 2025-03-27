@@ -416,6 +416,10 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
   [ Ben Hutchings ]
   * Bump ABI to 35
   * d/b/genpatch-rt: Fix subprocess cleanup with Python 3.13
+  * [rt] Update to 5.10.234-rt127:
+    - u64_stats: Introduce u64_stats_set()
+    - netfilter: nft_counter: Use u64_stats_t for statistic.
+    - rt: fix build issue in at_hdmac
 
  -- Ben Hutchings <benh@debian.org>  Thu, 27 Mar 2025 17:04:38 +0100
 

@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:41:58 +0106
-Subject: [PATCH 087/323] printk: use seqcount_latch for clear_seq
+Subject: [PATCH 087/326] printk: use seqcount_latch for clear_seq
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9b1d06918743a63e9cb70c1b971b33b482355856
 
 kmsg_dump_rewind_nolock() locklessly reads @clear_seq. However,

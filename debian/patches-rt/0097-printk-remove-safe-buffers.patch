@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:00 +0106
-Subject: [PATCH 097/323] printk: remove safe buffers
+Subject: [PATCH 097/326] printk: remove safe buffers
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=061a466274ec5efb6b72a55e3c88e571cbd3f46d
 
 With @logbuf_lock removed, the high level printk functions for

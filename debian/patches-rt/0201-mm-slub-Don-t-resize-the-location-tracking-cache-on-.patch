@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Feb 2021 17:26:04 +0100
-Subject: [PATCH 201/323] mm: slub: Don't resize the location tracking cache on
+Subject: [PATCH 201/326] mm: slub: Don't resize the location tracking cache on
  PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ad530e44b1d51b4a76324940eeb73c467c24ca9f
 

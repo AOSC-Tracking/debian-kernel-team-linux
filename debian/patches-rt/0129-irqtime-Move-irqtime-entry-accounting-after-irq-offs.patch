@@ -1,6 +1,6 @@
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:31 +0100
-Subject: [PATCH 129/323] irqtime: Move irqtime entry accounting after irq
+Subject: [PATCH 129/326] irqtime: Move irqtime entry accounting after irq
  offset incrementation
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e3d1196da573bffaacf16fd2443a57c0b99b598f
 

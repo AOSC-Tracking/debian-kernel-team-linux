@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Sep 2016 14:35:49 +0200
-Subject: [PATCH 184/323] fs/dcache: use swait_queue instead of waitqueue
+Subject: [PATCH 184/326] fs/dcache: use swait_queue instead of waitqueue
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=60a844a3f3c40a0b3b89ba98987006fbe5557516
 
 __d_lookup_done() invokes wake_up_all() while holding a hlist_bl_lock()

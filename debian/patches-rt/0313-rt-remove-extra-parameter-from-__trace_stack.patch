@@ -1,6 +1,6 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Thu, 12 May 2022 23:25:33 -0300
-Subject: [PATCH 313/323] rt: remove extra parameter from __trace_stack()
+Subject: [PATCH 313/326] rt: remove extra parameter from __trace_stack()
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit

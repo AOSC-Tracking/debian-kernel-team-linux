@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 15 Dec 2020 15:16:48 +0100
-Subject: [PATCH 074/323] doc: Update RCU's requirements page about the
+Subject: [PATCH 074/326] doc: Update RCU's requirements page about the
  PREEMPT_RT wiki.
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=aea213d7d252b486508e836f2e42a3c903131786
 

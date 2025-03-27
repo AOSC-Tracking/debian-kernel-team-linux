@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:01 +0106
-Subject: [PATCH 099/323] console: add write_atomic interface
+Subject: [PATCH 099/326] console: add write_atomic interface
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=904a599f5b16a2abe67b52354ca8bc50fc5cf917
 
 Add a write_atomic() callback to the console. This is an optional

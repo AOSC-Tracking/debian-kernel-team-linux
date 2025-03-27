@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:14 +0200
-Subject: [PATCH 017/323] sched/proc: Print accurate cpumask vs
+Subject: [PATCH 017/326] sched/proc: Print accurate cpumask vs
  migrate_disable()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b718d16b7a622c1cc71084f1cf95419751826aa8
 

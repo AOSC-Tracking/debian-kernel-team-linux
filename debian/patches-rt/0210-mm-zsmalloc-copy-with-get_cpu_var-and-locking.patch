@@ -1,6 +1,6 @@
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Tue, 22 Mar 2016 11:16:09 +0100
-Subject: [PATCH 210/323] mm/zsmalloc: copy with get_cpu_var() and locking
+Subject: [PATCH 210/326] mm/zsmalloc: copy with get_cpu_var() and locking
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f73b5e7b84e460bcd20b75f1ff23349ec2685f4f
 
 get_cpu_var() disables preemption and triggers a might_sleep() splat later.

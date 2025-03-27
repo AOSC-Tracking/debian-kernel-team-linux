@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:55 +0100
-Subject: [PATCH 148/323] softirq: Move various protections into inline helpers
+Subject: [PATCH 148/326] softirq: Move various protections into inline helpers
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=61f72daa228af3dc927135ae5e601f25471c9f81
 
 To allow reuse of the bulk of softirq processing code for RT and to avoid

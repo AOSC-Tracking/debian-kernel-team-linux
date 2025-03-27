@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 24 Aug 2021 22:47:37 +0200
-Subject: [PATCH 300/323] sched: Switch wait_task_inactive to
+Subject: [PATCH 300/326] sched: Switch wait_task_inactive to
  HRTIMER_MODE_REL_HARD
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=14ba3959455a6f688afd6841a01f061d066942a5
 

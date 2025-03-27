@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 6 Dec 2018 09:52:20 +0100
-Subject: [PATCH 252/323] drm/i915: disable tracing on -RT
+Subject: [PATCH 252/326] drm/i915: disable tracing on -RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8b479ed14d7b92723ba32769f338a42be7743a2b
 
 Luca Abeni reported this:

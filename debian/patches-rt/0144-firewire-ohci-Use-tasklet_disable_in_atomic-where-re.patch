@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:16 +0100
-Subject: [PATCH 144/323] firewire: ohci: Use tasklet_disable_in_atomic() where
+Subject: [PATCH 144/326] firewire: ohci: Use tasklet_disable_in_atomic() where
  required
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dbe7534fb1043517825c83b3a3cf7919791e9202
 

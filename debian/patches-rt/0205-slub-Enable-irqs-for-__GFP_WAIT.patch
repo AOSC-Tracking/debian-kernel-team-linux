@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 9 Jan 2013 12:08:15 +0100
-Subject: [PATCH 205/323] slub: Enable irqs for __GFP_WAIT
+Subject: [PATCH 205/326] slub: Enable irqs for __GFP_WAIT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dd040a0177c20edeb3550aae29700d3c2d8c4cc6
 
 SYSTEM_RUNNING might be too late for enabling interrupts. Allocations

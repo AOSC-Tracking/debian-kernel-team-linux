@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 29 Sep 2020 15:21:17 +0200
-Subject: [PATCH 156/323] locking/rtmutex: Remove cruft
+Subject: [PATCH 156/326] locking/rtmutex: Remove cruft
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=33a8c9ba9093cbe462cfbd8071ffb4e7137e2458
 
 Most of this is around since the very beginning. I'm not sure if this

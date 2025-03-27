@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 14 Aug 2020 18:53:34 +0200
-Subject: [PATCH 112/323] shmem: Use raw_spinlock_t for ->stat_lock
+Subject: [PATCH 112/326] shmem: Use raw_spinlock_t for ->stat_lock
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=53869be8f894e385df93d6ee0ee6fc1c4e36d89e
 
 Each CPU has SHMEM_INO_BATCH inodes available in `->ino_batch' which is

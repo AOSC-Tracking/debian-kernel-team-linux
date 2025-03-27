@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:09 +0106
-Subject: [PATCH 107/323] printk: add console handover
+Subject: [PATCH 107/326] printk: add console handover
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d0f6ffe1d1b8cb2ea8c1b095cb923ec722a2f36e
 
 If earlyprintk is used, a boot console will print directly to the

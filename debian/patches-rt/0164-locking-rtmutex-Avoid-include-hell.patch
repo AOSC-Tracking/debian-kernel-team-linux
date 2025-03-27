@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 29 Jun 2011 20:06:39 +0200
-Subject: [PATCH 164/323] locking/rtmutex: Avoid include hell
+Subject: [PATCH 164/326] locking/rtmutex: Avoid include hell
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fc412f23b8a6f88a1fffa283848b2d3766719aca
 
 Include only the required raw types. This avoids pulling in the

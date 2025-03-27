@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 24 Nov 2021 17:12:20 +0100
-Subject: [PATCH 308/323] irq_work: Handle some irq_work in a per-CPU thread on
+Subject: [PATCH 308/326] irq_work: Handle some irq_work in a per-CPU thread on
  PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e37077094ce762454079096a7b528cdd59889cb4
 

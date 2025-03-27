@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
-Date: Wed, 19 Feb 2025 19:01:41 -0300
-Subject: [PATCH 323/323] Linux 5.10.234-rt126 REBASE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=93649261a6376f74525152e2e49e4d809f37e586
+Date: Wed, 5 Mar 2025 14:13:41 -0300
+Subject: [PATCH 326/326] Linux 5.10.234-rt127 REBASE
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8bfc5353db5b6b776ecb0bc56984306dffbba588
 
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
 ---
@@ -9,9 +9,9 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/localversion-rt b/localversion-rt
-index 21988f9ad53f..a44fd6cdf249 100644
+index 21988f9ad53f..c85940d40a67 100644
 --- a/localversion-rt
 +++ b/localversion-rt
 @@ -1 +1 @@
 --rt34
-+-rt126
++-rt127

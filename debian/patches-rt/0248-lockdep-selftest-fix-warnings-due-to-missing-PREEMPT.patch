@@ -1,6 +1,6 @@
 From: Josh Cartwright <josh.cartwright@ni.com>
 Date: Wed, 28 Jan 2015 13:08:45 -0600
-Subject: [PATCH 248/323] lockdep: selftest: fix warnings due to missing
+Subject: [PATCH 248/326] lockdep: selftest: fix warnings due to missing
  PREEMPT_RT conditionals
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9071657b1f399b6a7d6ca9d6776ff55faaaff786
 

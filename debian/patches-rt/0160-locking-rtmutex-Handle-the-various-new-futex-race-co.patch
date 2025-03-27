@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 10 Jun 2011 11:04:15 +0200
-Subject: [PATCH 160/323] locking/rtmutex: Handle the various new futex race
+Subject: [PATCH 160/326] locking/rtmutex: Handle the various new futex race
  conditions
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4940e28d9702f3fb26822922ba023c535c0ebf5a
 

@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 15:33:40 +0106
-Subject: [PATCH 088/323] printk: use atomic64_t for devkmsg_user.seq
+Subject: [PATCH 088/326] printk: use atomic64_t for devkmsg_user.seq
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ad9f59585bf9f8f0e5a3a4e04d77210a7b264507
 
 @user->seq is indirectly protected by @logbuf_lock. Once @logbuf_lock

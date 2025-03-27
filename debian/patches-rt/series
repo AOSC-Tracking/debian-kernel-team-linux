@@ -320,4 +320,7 @@
 0320-Revert-printk-declare-printk_deferred_-enter-safe-in.patch
 0321-arm64-signal-Use-ARCH_RT_DELAYS_SIGNAL_SEND.patch
 0322-rt-mm-page_alloc-backport-missing-bits-from-__build_.patch
-0323-Linux-5.10.234-rt126-REBASE.patch
+0323-u64_stats-Introduce-u64_stats_set.patch
+0324-netfilter-nft_counter-Use-u64_stats_t-for-statistic.patch
+0325-rt-fix-build-issue-in-at_hdmac.patch
+0326-Linux-5.10.234-rt127-REBASE.patch

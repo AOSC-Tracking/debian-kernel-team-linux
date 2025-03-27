@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:17:03 +0200
-Subject: [PATCH 172/323] locking/rtmutex: add mutex implementation based on
+Subject: [PATCH 172/326] locking/rtmutex: add mutex implementation based on
  rtmutex
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=724eb6fc45dfa0185f8075e5a476db85fe62a285
 

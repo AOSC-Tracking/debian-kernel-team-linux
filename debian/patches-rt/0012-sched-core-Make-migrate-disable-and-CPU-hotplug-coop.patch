@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:09 +0200
-Subject: [PATCH 012/323] sched/core: Make migrate disable and CPU hotplug
+Subject: [PATCH 012/326] sched/core: Make migrate disable and CPU hotplug
  cooperative
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a947cf58db3a9190825a2cd64df4ee557fd0e56b
 

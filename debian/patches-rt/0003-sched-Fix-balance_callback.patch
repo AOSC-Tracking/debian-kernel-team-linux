@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:00 +0200
-Subject: [PATCH 003/323] sched: Fix balance_callback()
+Subject: [PATCH 003/326] sched: Fix balance_callback()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=48bbf4087aa7642b18e1901b192a6d16007f35aa
 
 The intent of balance_callback() has always been to delay executing

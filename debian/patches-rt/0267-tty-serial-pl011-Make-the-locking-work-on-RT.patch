@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 8 Jan 2013 21:36:51 +0100
-Subject: [PATCH 267/323] tty/serial/pl011: Make the locking work on RT
+Subject: [PATCH 267/326] tty/serial/pl011: Make the locking work on RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8053350a753d1beeebd5e3c7085d9dca03996afe
 
 The lock is a sleeping lock and local_irq_save() is not the optimsation
