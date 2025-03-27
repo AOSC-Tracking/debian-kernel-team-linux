@@ -415,6 +415,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
 
   [ Ben Hutchings ]
   * Bump ABI to 35
+  * d/b/genpatch-rt: Fix subprocess cleanup with Python 3.13
 
  -- Ben Hutchings <benh@debian.org>  Thu, 27 Mar 2025 17:04:38 +0100
 
