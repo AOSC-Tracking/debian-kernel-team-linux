@@ -302,7 +302,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - flow_dissector: Fix handling of mixed port and port-range keys
     - flow_dissector: Fix port range key handling in BPF conversion
     - bpf: skip non exist keys in generic_map_lookup_batch
-    - [arm64] tee: optee: Fix supplicant wait loop
+    - [arm64] tee: optee: Fix supplicant wait loop (CVE-2025-21871)
     - nfp: bpf: Add check for nfp_app_ctrl_msg_alloc() (CVE-2025-21848)
     - [x86] ALSA: hda/conexant: Add quirk for HP ProBook 450 G4 mute LED
     - acct: block access to kernel internal filesystems
@@ -329,12 +329,16 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - [i386] CPU: Fix warm boot hang regression on AMD SC1100 SoC systems
     - ftrace: Avoid potential division by zero in function_stat_show()
     - perf/core: Fix low freq setting via IOC_PERIOD
-    - usbnet: gl620a: fix endpoint checking in genelink_bind()
+    - [armhf] i2c: npcm: disable interrupt enable bit before devm_request_irq
+      (CVE-2025-21878)
+    - usbnet: gl620a: fix endpoint checking in genelink_bind() (CVE-2025-21877)
     - [armhf] phy: exynos5-usbdrd: fix MPLL_MULTIPLIER and SSC_REFCLKSEL masks
       in refclk
     - mptcp: always handle address removal under msk socket lock
+      (CVE-2025-21875)
     - vmlinux.lds: Ensure that const vars with relocations are mapped R/O
     - sched/core: Prevent rescheduling when interrupts are disabled
+      (CVE-2024-58090)
     - [x86] intel_idle: Handle older CPUs, which stop the TSC in deeper C
       states, correctly
     - pfifo_tail_enqueue: Drop new packet when sch->limit == 0 (CVE-2025-21702)
@@ -347,6 +351,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
       large bar
     - drm/amdgpu: disable BAR resize on Dell G5 SE
     - efi: Don't map the entire mokvar table to determine its size
+      (CVE-2025-21872)
     - HID: appleir: Fix potential NULL dereference at raw event handle
     - [x86] ALSA: hda: intel: Add Dell ALC3271 to power_save denylist
     - ALSA: hda/realtek: update ALC222 depop optimize
