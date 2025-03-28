@@ -413,6 +413,9 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - udf: Fix use of check_add_overflow() with mixed type arguments
     - net: ipv6: fix dst refleaks in rpl, seg6 and ioam6 lwtunnels
 
+  [ Ben Hutchings ]
+  * Bump ABI to 35
+
  -- Ben Hutchings <benh@debian.org>  Thu, 27 Mar 2025 17:04:38 +0100
 
 linux (5.10.234-1) bullseye-security; urgency=high
