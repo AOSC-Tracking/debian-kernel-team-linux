@@ -324,3 +324,4 @@
 0324-netfilter-nft_counter-Use-u64_stats_t-for-statistic.patch
 0325-rt-fix-build-issue-in-at_hdmac.patch
 0326-Linux-5.10.234-rt127-REBASE.patch
+rt-fix-buid-issue-in-be2net.patch
