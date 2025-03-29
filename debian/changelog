@@ -427,6 +427,9 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - rt: fix build issue in at_hdmac
     - rt: fix build issue in be2net
 
+  [ Salvatore Bonaccorso ]
+  * d/b/genpatch-rt: Drop now unused 'io' module.
+
  -- Ben Hutchings <benh@debian.org>  Thu, 27 Mar 2025 17:04:38 +0100
 
 linux (5.10.234-1) bullseye-security; urgency=high
