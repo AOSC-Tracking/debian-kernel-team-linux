@@ -1,7 +1,7 @@
 From: Valentin Schneider <valentin.schneider@arm.com>
 Date: Tue, 8 Jun 2021 00:37:36 -0400
-Subject: [PATCH 295/326] sched: Don't defer CPU pick to migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=374e12f5b779f1cca0dcb5e857faf06a59caa142
+Subject: [PATCH 295/327] sched: Don't defer CPU pick to migration_cpu_stop()
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c0ade83dd5c22e19ba061f482e413fd1e48037aa
 
 commit 475ea6c60279e9f2ddf7e4cf2648cd8ae0608361 upstream.
 
@@ -36,10 +36,10 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 12 insertions(+), 8 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 73fd26e4ad75..4c061864c93d 100644
+index a7d53a61471b..4dc29896b092 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1955,7 +1955,6 @@ static int migration_cpu_stop(void *data)
+@@ -1957,7 +1957,6 @@ static int migration_cpu_stop(void *data)
  	struct migration_arg *arg = data;
  	struct set_affinity_pending *pending = arg->pending;
  	struct task_struct *p = arg->task;
@@ -47,7 +47,7 @@ index 73fd26e4ad75..4c061864c93d 100644
  	struct rq *rq = this_rq();
  	bool complete = false;
  	struct rq_flags rf;
-@@ -1988,19 +1987,15 @@ static int migration_cpu_stop(void *data)
+@@ -1990,19 +1989,15 @@ static int migration_cpu_stop(void *data)
  			if (p->migration_pending == pending)
  				p->migration_pending = NULL;
  			complete = true;
@@ -69,7 +69,7 @@ index 73fd26e4ad75..4c061864c93d 100644
  
  		/*
  		 * XXX __migrate_task() can fail, at which point we might end
-@@ -2279,7 +2274,7 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
+@@ -2281,7 +2276,7 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
  			init_completion(&my_pending.done);
  			my_pending.arg = (struct migration_arg) {
  				.task = p,
@@ -78,7 +78,7 @@ index 73fd26e4ad75..4c061864c93d 100644
  				.pending = &my_pending,
  			};
  
-@@ -2287,6 +2282,15 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
+@@ -2289,6 +2284,15 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
  		} else {
  			pending = p->migration_pending;
  			refcount_inc(&pending->refs);

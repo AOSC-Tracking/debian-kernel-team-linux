@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 29 Aug 2013 18:21:04 +0200
-Subject: [PATCH 223/326] ptrace: fix ptrace vs tasklist_lock race
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=38f60ad197e26518db950e17d750a0192ac649f4
+Subject: [PATCH 223/327] ptrace: fix ptrace vs tasklist_lock race
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8309d19b7ed2643e5449acabfd3994632dbd0122
 
 As explained by Alexander Fyodorov <halcy@yandex.ru>:
 
@@ -119,10 +119,10 @@ index aab480e24bd6..71acb6341e63 100644
  	}
  	spin_unlock_irq(&task->sighand->siglock);
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 801c5da3b45e..1635b661f0c0 100644
+index e75d26026b75..283d1c330045 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -2584,6 +2584,18 @@ int migrate_swap(struct task_struct *cur, struct task_struct *p,
+@@ -2586,6 +2586,18 @@ int migrate_swap(struct task_struct *cur, struct task_struct *p,
  }
  #endif /* CONFIG_NUMA_BALANCING */
  
@@ -141,7 +141,7 @@ index 801c5da3b45e..1635b661f0c0 100644
  /*
   * wait_task_inactive - wait for a thread to unschedule.
   *
-@@ -2628,7 +2640,7 @@ unsigned long wait_task_inactive(struct task_struct *p, long match_state)
+@@ -2630,7 +2642,7 @@ unsigned long wait_task_inactive(struct task_struct *p, long match_state)
  		 * is actually now running somewhere else!
  		 */
  		while (task_running(rq, p)) {
@@ -150,7 +150,7 @@ index 801c5da3b45e..1635b661f0c0 100644
  				return 0;
  			cpu_relax();
  		}
-@@ -2643,7 +2655,8 @@ unsigned long wait_task_inactive(struct task_struct *p, long match_state)
+@@ -2645,7 +2657,8 @@ unsigned long wait_task_inactive(struct task_struct *p, long match_state)
  		running = task_running(rq, p);
  		queued = task_on_rq_queued(p);
  		ncsw = 0;

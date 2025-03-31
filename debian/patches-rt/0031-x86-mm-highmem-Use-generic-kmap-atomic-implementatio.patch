@@ -1,8 +1,8 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:20 +0100
-Subject: [PATCH 031/326] x86/mm/highmem: Use generic kmap atomic
+Subject: [PATCH 031/327] x86/mm/highmem: Use generic kmap atomic
  implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=aaa7e0a364e6a843b5121698a56843adb7f5853a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=25fbf4dc4f0c7eeb734a6a5f27dad5f9afc57721
 
 Convert X86 to the generic kmap atomic implementation and make the
 iomap_atomic() naming convention consistent while at it.
@@ -27,7 +27,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  delete mode 100644 arch/x86/include/asm/kmap_types.h
 
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 0c802ade8040..b0c20c0233aa 100644
+index 00ae2e2adcad..d77a8ef81e81 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
 @@ -15,6 +15,7 @@ config X86_32

@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 17 Nov 2020 12:14:51 +0100
-Subject: [PATCH 022/326] sched: Fix migration_cpu_stop() WARN
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1ccb0aaf116a96e882bbf348eebd0cbeb2edef5e
+Subject: [PATCH 022/327] sched: Fix migration_cpu_stop() WARN
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7938cd4e83d2c3dfa9792f0d1132664119780866
 
 Oleksandr reported hitting the WARN in the 'task_rq(p) != rq' branch
 of migration_cpu_stop(). Valentin noted that using cpu_of(rq) in that
@@ -20,10 +20,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 2938cfe90db4..007742141b71 100644
+index e9ecd36539b4..0c374eea1dd9 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1926,7 +1926,7 @@ static int migration_cpu_stop(void *data)
+@@ -1928,7 +1928,7 @@ static int migration_cpu_stop(void *data)
  			 * and we should be valid again. Nothing to do.
  			 */
  			if (!pending) {
@@ -32,7 +32,7 @@ index 2938cfe90db4..007742141b71 100644
  				goto out;
  			}
  
-@@ -1954,7 +1954,7 @@ static int migration_cpu_stop(void *data)
+@@ -1956,7 +1956,7 @@ static int migration_cpu_stop(void *data)
  		 * valid again. Nothing to do.
  		 */
  		if (!pending) {

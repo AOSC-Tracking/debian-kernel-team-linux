@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:28 +0100
-Subject: [PATCH 039/326] sparc/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d17816cbd684b23374afa7cb3eacded249d297ce
+Subject: [PATCH 039/327] sparc/mm/highmem: Switch to generic kmap atomic
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=66518dd97ee35ae31e300228ba0a5877861311b2
 
 No reason having the same code in every architecture
 

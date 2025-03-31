@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:05 +0200
-Subject: [PATCH 008/326] sched: Fix hotplug vs CPU bandwidth control
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fee4f13ce5065bee88b4415db70336d90bfd5a7d
+Subject: [PATCH 008/327] sched: Fix hotplug vs CPU bandwidth control
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bd9d6645bcbe0790530c88864c7fa8b42ba1f428
 
 Since we now migrate tasks away before DYING, we should also move
 bandwidth unthrottle, otherwise we can gain tasks from unthrottle
@@ -24,10 +24,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  3 files changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 5072d8156f12..46e83c7ce4b6 100644
+index d620b0f11e46..0ac844b47762 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -6976,6 +6976,8 @@ int sched_cpu_activate(unsigned int cpu)
+@@ -6978,6 +6978,8 @@ int sched_cpu_activate(unsigned int cpu)
  
  int sched_cpu_deactivate(unsigned int cpu)
  {
@@ -36,7 +36,7 @@ index 5072d8156f12..46e83c7ce4b6 100644
  	int ret;
  
  	set_cpu_active(cpu, false);
-@@ -6990,6 +6992,14 @@ int sched_cpu_deactivate(unsigned int cpu)
+@@ -6992,6 +6994,14 @@ int sched_cpu_deactivate(unsigned int cpu)
  
  	balance_push_set(cpu, true);
  
@@ -51,7 +51,7 @@ index 5072d8156f12..46e83c7ce4b6 100644
  #ifdef CONFIG_SCHED_SMT
  	/*
  	 * When going down, decrement the number of cores with SMT present.
-@@ -7071,10 +7081,6 @@ int sched_cpu_dying(unsigned int cpu)
+@@ -7073,10 +7083,6 @@ int sched_cpu_dying(unsigned int cpu)
  	sched_tick_stop(cpu);
  
  	rq_lock_irqsave(rq, &rf);

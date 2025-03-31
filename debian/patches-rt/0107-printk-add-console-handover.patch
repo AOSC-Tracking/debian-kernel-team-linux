@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:09 +0106
-Subject: [PATCH 107/326] printk: add console handover
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d0f6ffe1d1b8cb2ea8c1b095cb923ec722a2f36e
+Subject: [PATCH 107/327] printk: add console handover
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=991568420572aebdf5046bcccbcd3108c7f111fa
 
 If earlyprintk is used, a boot console will print directly to the
 console immediately. The boot console will unregister itself as soon
@@ -37,7 +37,7 @@ index 3e99359e0660..027278792eea 100644
  struct console {
  	char	name[16];
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index d7b3cd47339a..0cc452e7b1a1 100644
+index 50c2ab118a3b..10ff4380d83d 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -1729,6 +1729,8 @@ static bool console_can_sync(struct console *con)

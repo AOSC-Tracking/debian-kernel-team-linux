@@ -1,0 +1,40 @@
+From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
+Date: Thu, 20 Mar 2025 21:09:06 -0300
+Subject: [PATCH 326/327] rt: fix build issue in be2net
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6de9085c33e7cf3bc4c743673ed412f41b81f8e8
+
+While working on v5.10.235-rt128-rc1 I noticed a build problem with
+CONFIG_BE2NET enabled. Upon inspection I noticed commit 7cfae8627511
+("be2net: fix sleeping while atomic bugs in be_ndo_bridge_getlink"),
+from v5.10.235, which contains the following statement:
+
+	return spin_unlock_bh(&adapter->mcc_lock);
+
+The compiler complains when trying to expand the macro spin_unlock_bh()
+in that context, requiring a fix similar to commit 386242acb15e ("rt: fix
+build issue in at_hdmac"). This problem is specific to v5.10-rt.
+
+Fixes: 7cfae8627511 ("be2net: fix sleeping while atomic bugs in be_ndo_bridge_getlink")
+Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
+---
+ drivers/net/ethernet/emulex/benet/be_cmds.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/net/ethernet/emulex/benet/be_cmds.c b/drivers/net/ethernet/emulex/benet/be_cmds.c
+index 9812a9a5d033..3068ccd37034 100644
+--- a/drivers/net/ethernet/emulex/benet/be_cmds.c
++++ b/drivers/net/ethernet/emulex/benet/be_cmds.c
+@@ -875,9 +875,10 @@ static int be_cmd_lock(struct be_adapter *adapter)
+ /* Must be used only in process context */
+ static void be_cmd_unlock(struct be_adapter *adapter)
+ {
+-	if (use_mcc(adapter))
+-		return spin_unlock_bh(&adapter->mcc_lock);
+-	else
++	if (use_mcc(adapter)) {
++		spin_unlock_bh(&adapter->mcc_lock);
++		return;
++	} else
+ 		return mutex_unlock(&adapter->mbox_lock);
+ }
+ 

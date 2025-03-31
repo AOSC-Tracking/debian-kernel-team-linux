@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 16:58:02 +0106
-Subject: [PATCH 089/326] printk: add syslog_lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3727bf135694317730be40bef21f12110ed45487
+Subject: [PATCH 089/327] printk: add syslog_lock
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=af2378622f813b33c0e58f0ba80c0bb8d6b3960a
 
 The global variables @syslog_seq, @syslog_partial, @syslog_time
 and write access to @clear_seq are protected by @logbuf_lock.
@@ -20,7 +20,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 37 insertions(+), 4 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 818e99d359da..fb33db0b143b 100644
+index d240d5b5a91c..4ea5c7f8f98a 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -392,8 +392,12 @@ DEFINE_RAW_SPINLOCK(logbuf_lock);

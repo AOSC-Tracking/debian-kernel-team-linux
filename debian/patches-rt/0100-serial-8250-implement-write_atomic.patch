@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:02 +0106
-Subject: [PATCH 100/326] serial: 8250: implement write_atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=95e6ff06d0518c690ad7c4d9e0507ea9be1fe1d1
+Subject: [PATCH 100/327] serial: 8250: implement write_atomic
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=49d14b657c99ca6ac70595c8b8b56d2f3f9a16c0
 
 Implement a non-sleeping NMI-safe write_atomic() console function in
 order to support emergency console printing.
@@ -26,7 +26,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  7 files changed, 162 insertions(+), 44 deletions(-)
 
 diff --git a/drivers/tty/serial/8250/8250.h b/drivers/tty/serial/8250/8250.h
-index 61b11490ae5b..32c534b87397 100644
+index 5f3368bb6a03..83b4459a2735 100644
 --- a/drivers/tty/serial/8250/8250.h
 +++ b/drivers/tty/serial/8250/8250.h
 @@ -152,12 +152,55 @@ static inline void serial_dl_write(struct uart_8250_port *up, int value)
@@ -238,7 +238,7 @@ index de48a58460f4..d246f2755fed 100644
  
  static void mtk8250_set_flow_ctrl(struct uart_8250_port *up, int mode)
 diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 6098e87a3404..8eee07321a56 100644
+index 0042ac7e713b..16eb83f05ec5 100644
 --- a/drivers/tty/serial/8250/8250_port.c
 +++ b/drivers/tty/serial/8250/8250_port.c
 @@ -730,7 +730,7 @@ static void serial8250_set_sleep(struct uart_8250_port *p, int sleep)
@@ -320,7 +320,7 @@ index 6098e87a3404..8eee07321a56 100644
  	spin_unlock_irqrestore(&port->lock, flags);
  
  	synchronize_irq(port->irq);
-@@ -2800,7 +2793,7 @@ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
+@@ -2808,7 +2801,7 @@ serial8250_do_set_termios(struct uart_port *port, struct ktermios *termios,
  	if (up->capabilities & UART_CAP_RTOIE)
  		up->ier |= UART_IER_RTOIE;
  
@@ -329,7 +329,7 @@ index 6098e87a3404..8eee07321a56 100644
  
  	if (up->capabilities & UART_CAP_EFR) {
  		unsigned char efr = 0;
-@@ -3265,7 +3258,7 @@ EXPORT_SYMBOL_GPL(serial8250_set_defaults);
+@@ -3274,7 +3267,7 @@ EXPORT_SYMBOL_GPL(serial8250_set_defaults);
  
  #ifdef CONFIG_SERIAL_8250_CONSOLE
  
@@ -338,7 +338,7 @@ index 6098e87a3404..8eee07321a56 100644
  {
  	struct uart_8250_port *up = up_to_u8250p(port);
  
-@@ -3273,6 +3266,18 @@ static void serial8250_console_putchar(struct uart_port *port, int ch)
+@@ -3282,6 +3275,18 @@ static void serial8250_console_putchar(struct uart_port *port, int ch)
  	serial_port_out(port, UART_TX, ch);
  }
  
@@ -357,7 +357,7 @@ index 6098e87a3404..8eee07321a56 100644
  /*
   *	Restore serial console when h/w power-off detected
   */
-@@ -3299,6 +3304,32 @@ static void serial8250_console_restore(struct uart_8250_port *up)
+@@ -3308,6 +3313,32 @@ static void serial8250_console_restore(struct uart_8250_port *up)
  	serial8250_out_MCR(up, up->mcr | UART_MCR_DTR | UART_MCR_RTS);
  }
  
@@ -390,7 +390,7 @@ index 6098e87a3404..8eee07321a56 100644
  /*
   *	Print a string to the serial port trying not to disturb
   *	any possible real use of the port...
-@@ -3315,24 +3346,12 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
+@@ -3324,24 +3355,12 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
  	struct uart_port *port = &up->port;
  	unsigned long flags;
  	unsigned int ier;
@@ -417,7 +417,7 @@ index 6098e87a3404..8eee07321a56 100644
  
  	/* check scratch reg to see if port powered off during system sleep */
  	if (up->canary && (up->canary != serial_port_in(port, UART_SCR))) {
-@@ -3346,7 +3365,9 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
+@@ -3355,7 +3374,9 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
  		mdelay(port->rs485.delay_rts_before_send);
  	}
  
@@ -427,7 +427,7 @@ index 6098e87a3404..8eee07321a56 100644
  
  	/*
  	 *	Finally, wait for transmitter to become empty
-@@ -3359,8 +3380,7 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
+@@ -3368,8 +3389,7 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
  		if (em485->tx_stopped)
  			up->rs485_stop_tx(up);
  	}
@@ -437,7 +437,7 @@ index 6098e87a3404..8eee07321a56 100644
  
  	/*
  	 *	The receive handling will happen properly because the
-@@ -3372,8 +3392,7 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
+@@ -3381,8 +3401,7 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
  	if (up->msr_saved_flags)
  		serial8250_modem_status(up);
  
@@ -447,7 +447,7 @@ index 6098e87a3404..8eee07321a56 100644
  }
  
  static unsigned int probe_baud(struct uart_port *port)
-@@ -3393,6 +3412,7 @@ static unsigned int probe_baud(struct uart_port *port)
+@@ -3402,6 +3421,7 @@ static unsigned int probe_baud(struct uart_port *port)
  
  int serial8250_console_setup(struct uart_port *port, char *options, bool probe)
  {
@@ -455,7 +455,7 @@ index 6098e87a3404..8eee07321a56 100644
  	int baud = 9600;
  	int bits = 8;
  	int parity = 'n';
-@@ -3402,6 +3422,8 @@ int serial8250_console_setup(struct uart_port *port, char *options, bool probe)
+@@ -3411,6 +3431,8 @@ int serial8250_console_setup(struct uart_port *port, char *options, bool probe)
  	if (!port->iobase && !port->membase)
  		return -ENODEV;
  

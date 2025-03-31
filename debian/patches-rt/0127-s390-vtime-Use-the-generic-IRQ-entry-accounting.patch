@@ -1,7 +1,7 @@
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:29 +0100
-Subject: [PATCH 127/326] s390/vtime: Use the generic IRQ entry accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f54d594eb274d9a2d97dce1d893b7264cb5f8056
+Subject: [PATCH 127/327] s390/vtime: Use the generic IRQ entry accounting
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=50ceb56bc0d47d4d32b152e4267f7ee69daa2003
 
 s390 has its own version of IRQ entry accounting because it doesn't
 account the idle time the same way the other architectures do. Only

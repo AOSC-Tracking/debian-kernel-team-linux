@@ -1,8 +1,8 @@
 From: Yang Shi <yang.shi@windriver.com>
 Date: Wed, 30 Oct 2013 11:48:33 -0700
-Subject: [PATCH 208/326] mm/memcontrol: Don't call schedule_work_on in
+Subject: [PATCH 208/327] mm/memcontrol: Don't call schedule_work_on in
  preemption disabled context
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6cfcac72c678f8d17caee839f23f40ff11c46d1f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4cd35d21a6621583f0948169d4c8c6df785d697
 
 The following trace is triggered when running ltp oom test cases:
 
@@ -47,10 +47,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/mm/memcontrol.c b/mm/memcontrol.c
-index a1b6cf4637b7..8099a72c072b 100644
+index 44dc256b25a8..f0ccddd7afe0 100644
 --- a/mm/memcontrol.c
 +++ b/mm/memcontrol.c
-@@ -2349,7 +2349,7 @@ static void drain_all_stock(struct mem_cgroup *root_memcg)
+@@ -2354,7 +2354,7 @@ static void drain_all_stock(struct mem_cgroup *root_memcg)
  	 * as well as workers from this path always operate on the local
  	 * per-cpu data. CPU up doesn't touch memcg_stock at all.
  	 */
@@ -59,7 +59,7 @@ index a1b6cf4637b7..8099a72c072b 100644
  	for_each_online_cpu(cpu) {
  		struct memcg_stock_pcp *stock = &per_cpu(memcg_stock, cpu);
  		struct mem_cgroup *memcg;
-@@ -2372,7 +2372,7 @@ static void drain_all_stock(struct mem_cgroup *root_memcg)
+@@ -2377,7 +2377,7 @@ static void drain_all_stock(struct mem_cgroup *root_memcg)
  				schedule_work_on(cpu, &stock->work);
  		}
  	}

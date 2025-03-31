@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 14 Jul 2015 14:26:34 +0200
-Subject: [PATCH 230/326] block/mq: do not invoke preempt_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4e5a3edf7308cb3051713604a424ef3cbbba3fc
+Subject: [PATCH 230/327] block/mq: do not invoke preempt_disable()
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=22901a94300c56de5ee26ee54aa3ece2e07e528a
 
 preempt_disable() and get_cpu() don't play well together with the sleeping
 locks it tries to allocate later.

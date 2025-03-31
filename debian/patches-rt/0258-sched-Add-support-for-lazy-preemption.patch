@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
-Subject: [PATCH 258/326] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b8a230e0cb2a5678e93f6295fbf98a1df94c825e
+Subject: [PATCH 258/327] sched: Add support for lazy preemption
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5559d7833ef30c4414f13e25f761ccdb202962b3
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -295,10 +295,10 @@ index cbe3aa495519..b5cd1e278eb5 100644
  	prompt "Preemption Model"
  	default PREEMPT_NONE
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 1635b661f0c0..da67575c2729 100644
+index 283d1c330045..1f706131d07b 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -656,6 +656,48 @@ void resched_curr(struct rq *rq)
+@@ -658,6 +658,48 @@ void resched_curr(struct rq *rq)
  		trace_sched_wake_idle_without_ipi(cpu);
  }
  
@@ -347,7 +347,7 @@ index 1635b661f0c0..da67575c2729 100644
  void resched_cpu(int cpu)
  {
  	struct rq *rq = cpu_rq(cpu);
-@@ -1769,6 +1811,7 @@ void migrate_disable(void)
+@@ -1771,6 +1813,7 @@ void migrate_disable(void)
  	preempt_disable();
  	this_rq()->nr_pinned++;
  	p->migration_disabled = 1;
@@ -355,7 +355,7 @@ index 1635b661f0c0..da67575c2729 100644
  	preempt_enable();
  }
  EXPORT_SYMBOL_GPL(migrate_disable);
-@@ -1797,6 +1840,7 @@ void migrate_enable(void)
+@@ -1799,6 +1842,7 @@ void migrate_enable(void)
  	barrier();
  	p->migration_disabled = 0;
  	this_rq()->nr_pinned--;
@@ -363,7 +363,7 @@ index 1635b661f0c0..da67575c2729 100644
  	preempt_enable();
  
  	trace_sched_migrate_enable_tp(p);
-@@ -3819,6 +3863,9 @@ int sched_fork(unsigned long clone_flags, struct task_struct *p)
+@@ -3821,6 +3865,9 @@ int sched_fork(unsigned long clone_flags, struct task_struct *p)
  	p->on_cpu = 0;
  #endif
  	init_task_preempt_count(p);
@@ -373,7 +373,7 @@ index 1635b661f0c0..da67575c2729 100644
  #ifdef CONFIG_SMP
  	plist_node_init(&p->pushable_tasks, MAX_PRIO);
  	RB_CLEAR_NODE(&p->pushable_dl_tasks);
-@@ -5098,6 +5145,7 @@ static void __sched notrace __schedule(bool preempt, bool spinning_lock)
+@@ -5100,6 +5147,7 @@ static void __sched notrace __schedule(bool preempt, bool spinning_lock)
  
  	next = pick_next_task(rq, prev, &rf);
  	clear_tsk_need_resched(prev);
@@ -381,7 +381,7 @@ index 1635b661f0c0..da67575c2729 100644
  	clear_preempt_need_resched();
  
  	if (likely(prev != next)) {
-@@ -5297,6 +5345,30 @@ static void __sched notrace preempt_schedule_common(void)
+@@ -5299,6 +5347,30 @@ static void __sched notrace preempt_schedule_common(void)
  	} while (need_resched());
  }
  
@@ -412,7 +412,7 @@ index 1635b661f0c0..da67575c2729 100644
  #ifdef CONFIG_PREEMPTION
  /*
   * This is the entry point to schedule() from in-kernel preemption
-@@ -5310,7 +5382,8 @@ asmlinkage __visible void __sched notrace preempt_schedule(void)
+@@ -5312,7 +5384,8 @@ asmlinkage __visible void __sched notrace preempt_schedule(void)
  	 */
  	if (likely(!preemptible()))
  		return;
@@ -422,7 +422,7 @@ index 1635b661f0c0..da67575c2729 100644
  	preempt_schedule_common();
  }
  NOKPROBE_SYMBOL(preempt_schedule);
-@@ -5350,6 +5423,9 @@ asmlinkage __visible void __sched notrace preempt_schedule_notrace(void)
+@@ -5352,6 +5425,9 @@ asmlinkage __visible void __sched notrace preempt_schedule_notrace(void)
  	if (likely(!preemptible()))
  		return;
  
@@ -432,7 +432,7 @@ index 1635b661f0c0..da67575c2729 100644
  	do {
  		/*
  		 * Because the function tracer can trace preempt_count_sub()
-@@ -7172,7 +7248,9 @@ void __init init_idle(struct task_struct *idle, int cpu)
+@@ -7174,7 +7250,9 @@ void __init init_idle(struct task_struct *idle, int cpu)
  
  	/* Set the preempt count _outside_ the spinlocks! */
  	init_idle_preempt_count(idle, cpu);

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 6 Jun 2011 12:20:33 +0200
-Subject: [PATCH 215/326] sched: Move mmdrop to RCU on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a3d82265bd2883715b3f9bf6383592ac78dc4355
+Subject: [PATCH 215/327] sched: Move mmdrop to RCU on RT
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=43666f389e91bbb7d09189231d6e07b51c82beee
 
 Takes sleeping locks and calls into the memory allocator, so nothing
 we want to do in task switch and oder atomic contexts.
@@ -83,10 +83,10 @@ index 459842c72126..40ef369d4914 100644
  {
  	struct mm_struct *mm;
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index d3884c675914..20046c63ddc1 100644
+index 919b5b131b79..98c78cc0a935 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -4266,9 +4266,13 @@ static struct rq *finish_task_switch(struct task_struct *prev)
+@@ -4268,9 +4268,13 @@ static struct rq *finish_task_switch(struct task_struct *prev)
  	 *   provided by mmdrop(),
  	 * - a sync_core for SYNC_CORE.
  	 */
@@ -101,7 +101,7 @@ index d3884c675914..20046c63ddc1 100644
  	}
  	if (unlikely(prev_state == TASK_DEAD)) {
  		if (prev->sched_class->task_dead)
-@@ -7261,6 +7265,7 @@ void sched_setnuma(struct task_struct *p, int nid)
+@@ -7263,6 +7267,7 @@ void sched_setnuma(struct task_struct *p, int nid)
  #endif /* CONFIG_NUMA_BALANCING */
  
  #ifdef CONFIG_HOTPLUG_CPU

@@ -1,8 +1,8 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 12:48:01 +0106
-Subject: [PATCH 086/326] printk: introduce CONSOLE_LOG_MAX for improved
+Subject: [PATCH 086/327] printk: introduce CONSOLE_LOG_MAX for improved
  multi-line support
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=87b10e90d0fc94deac507fb21ad4f14d7e1c7da6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b98ea8d1a799a86d581e321bee418e38cd097ae8
 
 Instead of using "LOG_LINE_MAX + PREFIX_MAX" for temporary buffer
 sizes, introduce CONSOLE_LOG_MAX. This represents the maximum size
@@ -21,7 +21,7 @@ Signed-off-by: John Ogness <john.ogness@linutronix.de>
  1 file changed, 11 insertions(+), 7 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 254d4cb73c7a..6db3c574e4aa 100644
+index b20ca15205ba..6268e1c04771 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -412,8 +412,13 @@ static u64 clear_seq;

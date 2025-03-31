@@ -1,8 +1,8 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 24 Nov 2021 17:12:21 +0100
-Subject: [PATCH 309/326] irq_work: Also rcuwait for !IRQ_WORK_HARD_IRQ on
+Subject: [PATCH 309/327] irq_work: Also rcuwait for !IRQ_WORK_HARD_IRQ on
  PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0d53ff597673653d7786e0ceb8920ae4ab04c875
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6757dc5f07ffe4a160148b6eff1a28a27f85ca98
 
 On PREEMPT_RT most items are processed as LAZY via softirq context.
 Avoid to spin-wait for them because irq_work_sync() could have higher

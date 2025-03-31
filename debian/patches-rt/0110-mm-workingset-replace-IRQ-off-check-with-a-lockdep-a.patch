@@ -1,8 +1,8 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 11 Feb 2019 10:40:46 +0100
-Subject: [PATCH 110/326] mm: workingset: replace IRQ-off check with a lockdep
+Subject: [PATCH 110/327] mm: workingset: replace IRQ-off check with a lockdep
  assert.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e4aba5c80e5186885f28ccf0a484c5835bba0f19
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a4e19c29cb0ef21835e74ade714ce0d1d4d0d6cf
 
 Commit
 

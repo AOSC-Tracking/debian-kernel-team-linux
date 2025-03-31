@@ -1,8 +1,8 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:04 +0200
-Subject: [PATCH 007/326] sched/hotplug: Consolidate task migration on CPU
+Subject: [PATCH 007/327] sched/hotplug: Consolidate task migration on CPU
  unplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4ac29b83ac0cf7d3de65732c3f1c194c02cabdb2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b6f865044eb6a823ba1795077a3ec0447e50d602
 
 With the new mechanism which kicks tasks off the outgoing CPU at the end of
 schedule() the situation on an outgoing CPU right before the stopper thread
@@ -92,10 +92,10 @@ index 7eab6e3e771f..0ffe96a042d4 100644
  	[CPUHP_AP_SMPBOOT_THREADS] = {
  		.name			= "smpboot/threads:online",
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index bb47af6835cd..5072d8156f12 100644
+index f094517a886a..d620b0f11e46 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -6738,120 +6738,6 @@ void idle_task_exit(void)
+@@ -6740,120 +6740,6 @@ void idle_task_exit(void)
  	/* finish_cpu(), as ran on the BP, will clean up the active_mm state */
  }
  
@@ -216,7 +216,7 @@ index bb47af6835cd..5072d8156f12 100644
  static int __balance_push_cpu_stop(void *arg)
  {
  	struct task_struct *p = arg;
-@@ -7122,10 +7008,6 @@ int sched_cpu_deactivate(unsigned int cpu)
+@@ -7124,10 +7010,6 @@ int sched_cpu_deactivate(unsigned int cpu)
  		return ret;
  	}
  	sched_domains_numa_masks_clear(cpu);
@@ -227,7 +227,7 @@ index bb47af6835cd..5072d8156f12 100644
  	return 0;
  }
  
-@@ -7145,6 +7027,41 @@ int sched_cpu_starting(unsigned int cpu)
+@@ -7147,6 +7029,41 @@ int sched_cpu_starting(unsigned int cpu)
  }
  
  #ifdef CONFIG_HOTPLUG_CPU
@@ -269,7 +269,7 @@ index bb47af6835cd..5072d8156f12 100644
  int sched_cpu_dying(unsigned int cpu)
  {
  	struct rq *rq = cpu_rq(cpu);
-@@ -7158,7 +7075,6 @@ int sched_cpu_dying(unsigned int cpu)
+@@ -7160,7 +7077,6 @@ int sched_cpu_dying(unsigned int cpu)
  		BUG_ON(!cpumask_test_cpu(cpu, rq->rd->span));
  		set_rq_offline(rq);
  	}

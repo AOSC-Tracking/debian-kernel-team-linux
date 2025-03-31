@@ -1,8 +1,8 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 9 Dec 2020 01:50:52 +0106
-Subject: [PATCH 080/326] printk: inline log_output(),log_store() in
+Subject: [PATCH 080/327] printk: inline log_output(),log_store() in
  vprintk_store()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e0421b2411547df55054fa117314f6c06d985ddc
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d2e16e2e3a5f897a05abf0b5a1b406ae4c336f9e
 
 In preparation for removing logbuf_lock, inline log_output()
 and log_store() into vprintk_store(). This will simplify dealing
@@ -19,7 +19,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 67 insertions(+), 78 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index a8af93cbc293..5af0b0e0259c 100644
+index 3a7fd61c0e7b..0a052815093d 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -493,52 +493,6 @@ static void truncate_msg(u16 *text_len, u16 *trunc_msg_len)

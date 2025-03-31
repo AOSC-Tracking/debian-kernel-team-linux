@@ -1,8 +1,8 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 3 Feb 2021 11:05:26 -0500
-Subject: [PATCH 079/326] tracing: Remove NULL check from current in
+Subject: [PATCH 079/327] tracing: Remove NULL check from current in
  tracing_generic_entry_update().
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c9facba7bf5f2bc9ede8a858e2f9925d9398e067
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=65c599d1198fa0adfb4eb48dbe4f5543cc957f37
 
 I can't imagine when or why `current' would return a NULL pointer. This
 check was added in commit

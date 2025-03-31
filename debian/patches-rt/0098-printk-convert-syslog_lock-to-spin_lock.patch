@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 18 Feb 2021 17:37:41 +0100
-Subject: [PATCH 098/326] printk: convert @syslog_lock to spin_lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f29c7e7a7d9363516365964ded73ca97402fff2d
+Subject: [PATCH 098/327] printk: convert @syslog_lock to spin_lock
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c17a3e77878244e5a47c54e74a37e04f4774b4ac
 
 Signed-off-by: John Ogness <john.ogness@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -10,7 +10,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 15 insertions(+), 15 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 150b0b90ceb4..613345a5cec8 100644
+index 493d488b42fb..e7257fb4f446 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -358,7 +358,7 @@ enum log_flags {

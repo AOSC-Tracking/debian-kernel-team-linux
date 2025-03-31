@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:01 +0106
-Subject: [PATCH 099/326] console: add write_atomic interface
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=904a599f5b16a2abe67b52354ca8bc50fc5cf917
+Subject: [PATCH 099/327] console: add write_atomic interface
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=99f90e55308a835589018a30a37d29e60a64a1f7
 
 Add a write_atomic() callback to the console. This is an optional
 function for console drivers. The function must be atomic (including
@@ -50,7 +50,7 @@ index bc2a749e6f0d..613df76903f5 100644
 +
  #endif /* _LINUX_CONSOLE_H */
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 613345a5cec8..c32af4f00609 100644
+index e7257fb4f446..3b41f2988579 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -3580,3 +3580,103 @@ void kmsg_dump_rewind(struct kmsg_dumper_iter *iter)

@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:06 +0106
-Subject: [PATCH 104/326] printk: introduce kernel sync mode
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=84feacba56361429dfc1847a126ea59c212c16be
+Subject: [PATCH 104/327] printk: introduce kernel sync mode
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cb4215571bd4130964938406084c418ee933696f
 
 When the kernel performs an OOPS, enter into "sync mode":
 
@@ -60,7 +60,7 @@ index c6bb48f0134c..3738374e2b3b 100644
  #define MESSAGE_LOGLEVEL_DEFAULT CONFIG_MESSAGE_LOGLEVEL_DEFAULT
  
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 818c17b26bde..1ce593876dca 100644
+index 9cd71f8e0620..9eb87c5610c2 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -44,6 +44,7 @@

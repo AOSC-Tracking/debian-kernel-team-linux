@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 21 Dec 2020 10:27:58 +0106
-Subject: [PATCH 093/326] printk: kmsg_dump: remove _nolock() variants
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3ed28e9d40d07e0f782c4d45c4582ff7ea76e870
+Subject: [PATCH 093/327] printk: kmsg_dump: remove _nolock() variants
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4074eb9a21825c1aac987232029a4a975df0beb9
 
 kmsg_dump_rewind() and kmsg_dump_get_line() are lockless, so there is
 no need for _nolock() variants. Remove these functions and switch all
@@ -110,7 +110,7 @@ index aa424a1d65d0..b97d05072ca4 100644
  			skip--;
  			continue;
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 9fde03f1e29b..e18f1f09ab72 100644
+index a135f27d21ef..98f0fc8e3a8b 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -3416,7 +3416,7 @@ void kmsg_dump(enum kmsg_dump_reason reason)

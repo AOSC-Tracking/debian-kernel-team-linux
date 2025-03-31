@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 16:14:22 +0200
-Subject: [PATCH 167/326] locking/rtmutex: Provide rt_mutex_slowlock_locked()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=15b6b2f101435b62bb509d2ac8d1a9327d112096
+Subject: [PATCH 167/327] locking/rtmutex: Provide rt_mutex_slowlock_locked()
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4c122b6be5f3a871812ea006a8ce8c6cacf54f3d
 
 This is the inner-part of rt_mutex_slowlock(), required for rwsem-rt.
 

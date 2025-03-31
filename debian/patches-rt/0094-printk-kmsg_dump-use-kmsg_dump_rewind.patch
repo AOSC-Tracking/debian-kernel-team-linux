@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 17 Feb 2021 18:23:16 +0100
-Subject: [PATCH 094/326] printk: kmsg_dump: use kmsg_dump_rewind
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5a053d3c6f4df07c9ae23911230854840e63cff8
+Subject: [PATCH 094/327] printk: kmsg_dump: use kmsg_dump_rewind
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5c3388e3edb0ee5f4fa81ced3e8bee6c2d9d43f0
 
 kmsg_dump() is open coding the kmsg_dump_rewind(). Call
 kmsg_dump_rewind() instead.
@@ -13,7 +13,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 1 insertion(+), 5 deletions(-)
 
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index e18f1f09ab72..0d233c0573a5 100644
+index 98f0fc8e3a8b..9016c6eaac38 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -3385,7 +3385,6 @@ void kmsg_dump(enum kmsg_dump_reason reason)

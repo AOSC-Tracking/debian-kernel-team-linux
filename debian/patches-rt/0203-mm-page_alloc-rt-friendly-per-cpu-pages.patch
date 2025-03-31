@@ -1,7 +1,7 @@
 From: Ingo Molnar <mingo@elte.hu>
 Date: Fri, 3 Jul 2009 08:29:37 -0500
-Subject: [PATCH 203/326] mm: page_alloc: rt-friendly per-cpu pages
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b78dcd66041f839fe1465ea6365a0c8f88ba3b32
+Subject: [PATCH 203/327] mm: page_alloc: rt-friendly per-cpu pages
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=47a67e249d66e0c7d1bcc8bce337b24a35576971
 
 rt-friendly per-cpu pages: convert the irqs-off per-cpu locking
 method into a preemptible, explicit-per-cpu-locks method.
@@ -17,7 +17,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 28 insertions(+), 19 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 9831b1fcda36..16200cbddaf1 100644
+index 5c8fea420334..60f773311e02 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -61,6 +61,7 @@
@@ -173,7 +173,7 @@ index 9831b1fcda36..16200cbddaf1 100644
  	return NULL;
  }
  
-@@ -8894,7 +8903,7 @@ void zone_pcp_reset(struct zone *zone)
+@@ -8895,7 +8904,7 @@ void zone_pcp_reset(struct zone *zone)
  	struct per_cpu_pageset *pset;
  
  	/* avoid races with drain_pages()  */
@@ -182,7 +182,7 @@ index 9831b1fcda36..16200cbddaf1 100644
  	if (zone->pageset != &boot_pageset) {
  		for_each_online_cpu(cpu) {
  			pset = per_cpu_ptr(zone->pageset, cpu);
-@@ -8903,7 +8912,7 @@ void zone_pcp_reset(struct zone *zone)
+@@ -8904,7 +8913,7 @@ void zone_pcp_reset(struct zone *zone)
  		free_percpu(zone->pageset);
  		zone->pageset = &boot_pageset;
  	}

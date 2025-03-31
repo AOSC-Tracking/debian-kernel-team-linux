@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:23 +0100
-Subject: [PATCH 034/326] csky/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cae7733ffd375fdb116b746a59f5e3333ec2faa9
+Subject: [PATCH 034/327] csky/mm/highmem: Switch to generic kmap atomic
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e1db5e2d44d106975f8ea7262f04862231429790
 
 No reason having the same code in every architecture.
 

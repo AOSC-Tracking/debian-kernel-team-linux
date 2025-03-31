@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:11:19 +0200
-Subject: [PATCH 170/326] locking/rtmutex: add sleeping lock implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1d1b80c0abb2407049879e9d84b89e91ceb6d8be
+Subject: [PATCH 170/327] locking/rtmutex: add sleeping lock implementation
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fb12f036020310997a2be0d0a336f9e83518d232
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -1127,10 +1127,10 @@ index 9d1e974ca9c3..c1a280167e3c 100644
  #ifdef CONFIG_DEBUG_RT_MUTEXES
  # include "rtmutex-debug.h"
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 947e1871a4b4..c06b2ceb1318 100644
+index a41bece8a4ff..c341298226b2 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -511,9 +511,15 @@ static bool set_nr_if_polling(struct task_struct *p)
+@@ -513,9 +513,15 @@ static bool set_nr_if_polling(struct task_struct *p)
  #endif
  #endif
  
@@ -1148,7 +1148,7 @@ index 947e1871a4b4..c06b2ceb1318 100644
  
  	/*
  	 * Atomically grab the task, if ->wake_q is !nil already it means
-@@ -549,7 +555,13 @@ static bool __wake_q_add(struct wake_q_head *head, struct task_struct *task)
+@@ -551,7 +557,13 @@ static bool __wake_q_add(struct wake_q_head *head, struct task_struct *task)
   */
  void wake_q_add(struct wake_q_head *head, struct task_struct *task)
  {
@@ -1163,7 +1163,7 @@ index 947e1871a4b4..c06b2ceb1318 100644
  		get_task_struct(task);
  }
  
-@@ -572,28 +584,39 @@ void wake_q_add(struct wake_q_head *head, struct task_struct *task)
+@@ -574,28 +586,39 @@ void wake_q_add(struct wake_q_head *head, struct task_struct *task)
   */
  void wake_q_add_safe(struct wake_q_head *head, struct task_struct *task)
  {

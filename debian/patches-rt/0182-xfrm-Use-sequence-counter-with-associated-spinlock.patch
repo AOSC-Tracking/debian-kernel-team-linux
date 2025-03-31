@@ -1,7 +1,7 @@
 From: "Ahmed S. Darwish" <a.darwish@linutronix.de>
 Date: Wed, 10 Jun 2020 12:53:22 +0200
-Subject: [PATCH 182/326] xfrm: Use sequence counter with associated spinlock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dbaee700d0f7d30e718643cbc2abd146858017c1
+Subject: [PATCH 182/327] xfrm: Use sequence counter with associated spinlock
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=25df8723baac48be543caf543c92741bbabc93c7
 
 A sequence counter write side critical section must be protected by some
 form of locking to serialize writers. A plain seqcount_t does not

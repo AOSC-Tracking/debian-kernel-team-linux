@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:10 +0106
-Subject: [PATCH 108/326] printk: add pr_flush()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=861e7ca8238ac91fb6994a98fc9bc90941c2d61b
+Subject: [PATCH 108/327] printk: add pr_flush()
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f11e399d7495df2af3f386e14647a2bb78e93662
 
 Provide a function to allow waiting for console printers to catch
 up to the latest logged message.
@@ -102,7 +102,7 @@ index 7fc35d3675e1..0681472a2041 100644
  
  /*
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index 0cc452e7b1a1..3fdd06c05f4e 100644
+index 10ff4380d83d..4accaf1c9e5e 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -3256,6 +3256,12 @@ void kmsg_dump(enum kmsg_dump_reason reason)

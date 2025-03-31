@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 7 Nov 2019 17:49:20 +0100
-Subject: [PATCH 272/326] x86: Enable RT also on 32bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=721dd5ac9b6227013308ba4bc4edab5c60ef5b8b
+Subject: [PATCH 272/327] x86: Enable RT also on 32bit
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f1853aedd491c6c3da4174b7069739007386b724
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index 1af3f76862c7..32adbd47a4da 100644
+index 8a4c20a89f4d..758b62bbb730 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
 @@ -27,7 +27,6 @@ config X86_64

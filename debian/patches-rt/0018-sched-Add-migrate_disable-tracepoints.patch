@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:15 +0200
-Subject: [PATCH 018/326] sched: Add migrate_disable() tracepoints
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2e616fb0410705b90635adba4c175f1471306fb1
+Subject: [PATCH 018/327] sched: Add migrate_disable() tracepoints
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e40349e6d4fb55ec028600ee1fa54f72b1b85474
 
 XXX write a tracer:
 
@@ -45,10 +45,10 @@ index 5039af667645..a5d81cec7f0a 100644
  
  /* This part must be outside protection */
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 108c547a57f4..f5996eb2a1b1 100644
+index 7889b6037e61..e731c752ee48 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1739,6 +1739,8 @@ void migrate_disable(void)
+@@ -1741,6 +1741,8 @@ void migrate_disable(void)
  		return;
  	}
  
@@ -57,7 +57,7 @@ index 108c547a57f4..f5996eb2a1b1 100644
  	preempt_disable();
  	this_rq()->nr_pinned++;
  	p->migration_disabled = 1;
-@@ -1771,6 +1773,8 @@ void migrate_enable(void)
+@@ -1773,6 +1775,8 @@ void migrate_enable(void)
  	p->migration_disabled = 0;
  	this_rq()->nr_pinned--;
  	preempt_enable();

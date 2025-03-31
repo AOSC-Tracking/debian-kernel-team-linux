@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:33 -0400
-Subject: [PATCH 292/326] sched: Optimize migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=56bd7235c2195dcb3ada50c56af0cb733626256e
+Subject: [PATCH 292/327] sched: Optimize migration_cpu_stop()
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=355eeb6920d5aa3836dc3a6e47bdbaa6a24c8473
 
 commit 3f1bc119cd7fc987c8ed25ffb717f99403bb308c upstream.
 
@@ -22,10 +22,10 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 87e606d494ac..cb0c11d79134 100644
+index bc73bb75b836..db09715444b4 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1985,14 +1985,25 @@ static int migration_cpu_stop(void *data)
+@@ -1987,14 +1987,25 @@ static int migration_cpu_stop(void *data)
  			complete = true;
  		}
  

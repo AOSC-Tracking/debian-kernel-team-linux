@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 18 Dec 2020 11:40:08 +0000
-Subject: [PATCH 090/326] printk: introduce a kmsg_dump iterator
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e00045c4d7612426d40a288cc279c833d3c14877
+Subject: [PATCH 090/327] printk: introduce a kmsg_dump iterator
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a05f1aeb6ab4fb5c33ff9fd12589a381cadea4cc
 
 Rather than store the iterator information into the registered
 kmsg_dump structure, create a separate iterator structure. The
@@ -337,7 +337,7 @@ index c27b3dfa1921..aa424a1d65d0 100644
  			skip--;
  			continue;
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index fb33db0b143b..cc5f7e0fb157 100644
+index 4ea5c7f8f98a..6e7e8137427e 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -3423,6 +3423,7 @@ EXPORT_SYMBOL_GPL(kmsg_dump_reason_str);

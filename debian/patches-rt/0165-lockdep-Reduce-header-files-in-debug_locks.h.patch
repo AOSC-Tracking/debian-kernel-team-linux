@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 14 Aug 2020 16:55:25 +0200
-Subject: [PATCH 165/326] lockdep: Reduce header files in debug_locks.h
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=470db6588b83d02f2f6d4f9e86172a2bf97b8f47
+Subject: [PATCH 165/327] lockdep: Reduce header files in debug_locks.h
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d4927f7ced5afd998ad6f8213f39bc0c615404c2
 
 The inclusion of printk.h leads to circular dependency if spinlock_t is
 based on rt_mutex.

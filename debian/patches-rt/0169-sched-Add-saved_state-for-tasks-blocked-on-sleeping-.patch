@@ -1,8 +1,8 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 25 Jun 2011 09:21:04 +0200
-Subject: [PATCH 169/326] sched: Add saved_state for tasks blocked on sleeping
+Subject: [PATCH 169/327] sched: Add saved_state for tasks blocked on sleeping
  locks
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dc26422296bf50af4d98cbbec17456d6c1f2bd36
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d649a438da2b3118d78f10a8abac323070670714
 
 Spinlocks are state preserving in !RT. RT changes the state when a
 task gets blocked on a lock. So we need to remember the state before
@@ -39,10 +39,10 @@ index b827f5345db2..874a68e8fb54 100644
  
  #ifdef CONFIG_SMP
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 0a1a1033ee6a..947e1871a4b4 100644
+index ba618dd8f043..a41bece8a4ff 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -3302,7 +3302,7 @@ try_to_wake_up(struct task_struct *p, unsigned int state, int wake_flags)
+@@ -3304,7 +3304,7 @@ try_to_wake_up(struct task_struct *p, unsigned int state, int wake_flags)
  	int cpu, success = 0;
  
  	preempt_disable();
@@ -51,7 +51,7 @@ index 0a1a1033ee6a..947e1871a4b4 100644
  		/*
  		 * We're waking current, this means 'p->on_rq' and 'task_cpu(p)
  		 * == smp_processor_id()'. Together this means we can special
-@@ -3332,8 +3332,26 @@ try_to_wake_up(struct task_struct *p, unsigned int state, int wake_flags)
+@@ -3334,8 +3334,26 @@ try_to_wake_up(struct task_struct *p, unsigned int state, int wake_flags)
  	 */
  	raw_spin_lock_irqsave(&p->pi_lock, flags);
  	smp_mb__after_spinlock();
@@ -79,7 +79,7 @@ index 0a1a1033ee6a..947e1871a4b4 100644
  
  	trace_sched_waking(p);
  
-@@ -3522,6 +3540,18 @@ int wake_up_process(struct task_struct *p)
+@@ -3524,6 +3542,18 @@ int wake_up_process(struct task_struct *p)
  }
  EXPORT_SYMBOL(wake_up_process);
  

@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Jan 2021 17:43:19 +0106
-Subject: [PATCH 092/326] printk: remove logbuf_lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=38abe995c7a17cf3aa565ed6244e4c482bf98121
+Subject: [PATCH 092/327] printk: remove logbuf_lock
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9862ca760ba2f8ca76996ed2cece62e1f068ad12
 
 Since the ringbuffer is lockless, there is no need for it to be
 protected by @logbuf_lock. Remove @logbuf_lock.
@@ -43,7 +43,7 @@ index 3a8fd491758c..e7acc2888c8e 100644
   * printk-safe must preserve the existing local IRQ guarantees.
   */
 diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
-index cc5f7e0fb157..9fde03f1e29b 100644
+index 6e7e8137427e..a135f27d21ef 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
 @@ -357,41 +357,6 @@ enum log_flags {

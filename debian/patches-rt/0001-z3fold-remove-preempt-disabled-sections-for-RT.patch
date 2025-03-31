@@ -1,7 +1,7 @@
 From: Vitaly Wool <vitaly.wool@konsulko.com>
 Date: Mon, 14 Dec 2020 19:12:36 -0800
-Subject: [PATCH 001/326] z3fold: remove preempt disabled sections for RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3c253d5962e832ed95516bfc9e1b1eb487a22e8b
+Subject: [PATCH 001/327] z3fold: remove preempt disabled sections for RT
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=72c65163a42a9aa5422fc28fc71a9638ddb7aeb4
 
 Replace get_cpu_ptr() with migrate_disable()+this_cpu_ptr() so RT can take
 spinlocks that become sleeping locks.
