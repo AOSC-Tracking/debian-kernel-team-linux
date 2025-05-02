@@ -328,6 +328,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - net: ipv6: fix dst ref loop on input in rpl lwt
     - [i386] CPU: Fix warm boot hang regression on AMD SC1100 SoC systems
     - ftrace: Avoid potential division by zero in function_stat_show()
+      (CVE-2025-21898)
     - perf/core: Fix low freq setting via IOC_PERIOD
     - [armhf] i2c: npcm: disable interrupt enable bit before devm_request_irq
       (CVE-2025-21878)
@@ -353,6 +354,9 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - efi: Don't map the entire mokvar table to determine its size
       (CVE-2025-21872)
     - HID: appleir: Fix potential NULL dereference at raw event handle
+      (CVE-2025-21948)
+    - gpio: aggregator: protect driver attr handlers against module unload
+      (CVE-2025-21943)
     - [x86] ALSA: hda: intel: Add Dell ALC3271 to power_save denylist
     - ALSA: hda/realtek: update ALC222 depop optimize
     - drm/radeon: Fix rs400_gpu_init for ATI mobility radeon Xpress 200M
@@ -361,29 +365,37 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - [x86] cpu: Validate CPUID leaf 0x2 EDX output
     - [x86] cpu: Properly parse CPUID leaf 0x2 TLB descriptor 0x63
     - wifi: cfg80211: regulatory: improve invalid hints checking
+      (CVE-2025-21910)
     - wifi: nl80211: reject cooked mode if it is set along with other flags
+      (CVE-2025-21909)
+    - rapidio: add check for rio_add_net() in rio_scan_alloc_net()
+      (CVE-2025-21935)
+    - rapidio: fix an API misues when rio_add_net() fails (CVE-2025-21934)
     - block: fix conversion of GPT partition name to 7-bit
     - mm/page_alloc: fix uninitialized variable
-    - wifi: iwlwifi: limit printed string from FW file
+    - wifi: iwlwifi: limit printed string from FW file (CVE-2025-21905)
     - [amd64] HID: intel-ish-hid: Fix use-after-free issue in
-      ishtp_hid_remove()
+      ishtp_hid_remove() (CVE-2025-21928)
     - nvmet-tcp: Fix a possible sporadic response drops in weakly ordered arch
-    - net: gso: fix ownership in __udp_gso_segment
+    - net: gso: fix ownership in __udp_gso_segment (CVE-2025-21926)
+    - caif_virtio: fix wrong pointer check in cfv_probe() (CVE-2025-21904)
     - [armhf] hwmon: (pmbus) Initialise page count in pmbus_identify()
     - hwmon: (ntc_thermistor) Fix the ncpXXxh103 sensor table
     - [x86] ALSA: usx2y: validate nrpacks module parameter on probe
-    - llc: do not use skb_get() before dev_queue_xmit()
+    - llc: do not use skb_get() before dev_queue_xmit() (CVE-2025-21925)
     - [arm64] hwmon: fix a NULL vs IS_ERR_OR_NULL() check in
       xgene_hwmon_probe()
     - be2net: fix sleeping while atomic bugs in be_ndo_bridge_getlink
-    - ppp: Fix KMSAN uninit-value warning with bpf
-    - vlan: enforce underlying device type
+    - ppp: Fix KMSAN uninit-value warning with bpf (CVE-2025-21922)
+    - vlan: enforce underlying device type (CVE-2025-21920)
     - net-timestamp: support TCP GSO case for a few missing flags
     - net: ipv6: fix dst ref loop in ila lwtunnel
     - net: ipv6: fix missing dst ref drop in ila lwtunnel
     - usb: quirks: Add DELAY_INIT and NO_LPM for Prolific Mass Storage Card
       Reader
+    - usb: renesas_usbhs: Flush the notify_hotplug_work (CVE-2025-21917)
     - [x86] usb: atm: cxacru: fix a flaw in existing endpoint checks
+      (CVE-2025-21916)
     - usb: typec: ucsi: increase timeout for PPM reset operations
     - usb: gadget: Set self-powered based on MaxPower and bmAttributes
     - usb: gadget: Fix setting self-powered state on suspend
@@ -396,6 +408,7 @@ linux (5.10.235-1) UNRELEASED; urgency=medium
     - [x86] intel_th: pci: Add Panther Lake-H support
     - [x86] intel_th: pci: Add Panther Lake-P/U support
     - slimbus: messaging: Free transaction ID in delayed interrupt scenario
+      (CVE-2025-21914)
     - nilfs2: move page release outside of nilfs_delete_entry and
       nilfs_set_link
     - nilfs2: eliminate staggered calls to kunmap in nilfs_rename
