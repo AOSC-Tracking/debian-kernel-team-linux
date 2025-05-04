@@ -137,6 +137,9 @@ linux (6.1.136-1) UNRELEASED; urgency=medium
     - PCI: Fix use-after-free in pci_bus_release_domain_nr()
     - objtool: Silence more KCOV warnings, part 2
 
+  [ Salvatore Bonaccorso ]
+  * Bump ABI to 35
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 04 May 2025 14:38:16 +0200
 
 linux (6.1.135-1) bookworm-security; urgency=high
