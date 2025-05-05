@@ -1,4 +1,4 @@
-linux (6.1.136-1) UNRELEASED; urgency=medium
+linux (6.1.137-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.136
@@ -136,6 +136,7 @@ linux (6.1.136-1) UNRELEASED; urgency=medium
     - tracing: Remove pointer (asterisk) and brackets from cpumask_t field
     - PCI: Fix use-after-free in pci_bus_release_domain_nr()
     - objtool: Silence more KCOV warnings, part 2
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.137
 
   [ Salvatore Bonaccorso ]
   * Bump ABI to 35
