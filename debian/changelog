@@ -1,3 +1,148 @@
+linux (6.1.137-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.136
+    - module: sign with sha512 instead of sha1 by default
+    - tracing: Add __cpumask to denote a trace event field that is a cpumask_t
+    - tracing: Fix cpumask() example typo
+    - tracing: Add __string_len() example
+    - tracing: Add __print_dynamic_array() helper
+    - tracing: Verify event formats that have "%*p.."
+    - [arm64,armhf] net: dsa: mv88e6xxx: don't dispose of Global2 IRQ mappings
+      from mdiobus code
+    - [arm64,armhf] net: dsa: add support for mac_prepare() and mac_finish()
+      calls
+    - [arm64,armhf] net: dsa: mv88e6xxx: move link forcing to
+      mac_prepare/mac_finish
+    - [arm64,armhf] net: dsa: mv88e6xxx: pass directly chip structure to
+      mv88e6xxx_phy_is_internal
+    - [arm64,armhf] net: dsa: mv88e6xxx: add field to specify internal phys
+      layout
+    - [arm64,armhf] net: dsa: mv88e6xxx: fix internal PHYs for 6320 family
+    - [arm64,armhf] net: dsa: mv88e6xxx: fix VTU methods for 6320 family
+    - iio: adc: ad7768-1: Move setting of val a bit later to avoid unnecessary
+      return value check
+    - iio: adc: ad7768-1: Fix conversion result sign
+    - [arm64] backlight: led_bl: Convert to platform remove callback returning
+      void
+    - [arm64] backlight: led_bl: Hold led_access lock when calling
+      led_sysfs_disable() (CVE-2025-23144)
+    - of: resolver: Simplify of_resolve_phandles() using __free()
+    - of: resolver: Fix device node refcount leakage in of_resolve_phandles()
+    - PCI: Assign PCI domain IDs by ida_alloc()
+    - PCI: Fix reference leak in pci_register_host_bridge()
+    - ASoC: qcom: q6dsp: add support to more display ports
+    - ASoC: qcom: Fix sc7280 lpass potential buffer overflow
+    - dma/contiguous: avoid warning about unused size_bytes
+    - [arm64] cpufreq: scpi: Fix null-ptr-deref in scpi_cpufreq_get_rate()
+    - [arm64] cpufreq: cppc: Fix invalid return value in .get() callback
+    - btrfs: avoid page_lockend underflow in btrfs_punch_hole_lock_range()
+    - scsi: core: Clear flags for scsi_cmnd that did not complete
+    - net: lwtunnel: disable BHs when required
+    - net: phy: leds: fix memory leak
+    - tipc: fix NULL pointer dereference in tipc_mon_reinit_self()
+    - net_sched: hfsc: Fix a UAF vulnerability in class handling
+      (CVE-2025-37797)
+    - net_sched: hfsc: Fix a potential UAF in hfsc_dequeue() too
+    - [amd64] iommu/amd: Return an error if vCPU affinity is set for non-vCPU
+      IRTE
+    - [x86] perf/x86: Fix non-sampling (counting) events on certain x86
+      platforms
+    - wifi: mac80211: export ieee80211_purge_tx_queue() for drivers
+    - wifi: rtw88: use ieee80211_purge_tx_queue() to purge TX skb
+    - virtio_console: fix missing byte order handling for cols and rows
+    - xen-netfront: handle NULL returned by xdp_convert_buff_to_frame()
+    - drm/amd/display: Fix gpu reset in multidisplay config
+    - drm/amd/display: Force full update in gpu reset
+    - [x86] KVM: SVM: Allocate IR data using atomic allocation
+    - USB: storage: quirk for ADATA Portable HDD CH94
+    - mei: me: add panther lake H DID
+    - [x86] KVM: x86: Explicitly treat routing entry type changes as changes
+    - [x86] KVM: x86: Reset IRTE to host control if *new* route isn't postable
+    - [arm64] serial: msm: Configure correct working mode before starting
+      earlycon
+    - USB: serial: ftdi_sio: add support for Abacus Electrics Optical Probe
+    - USB: serial: option: add Sierra Wireless EM9291
+    - USB: serial: simple: add OWON HDS200 series oscilloscope support
+    - [arm64,armhf] usb: chipidea: ci_hdrc_imx: fix usbmisc handling
+    - [arm64,armhf] usb: chipidea: ci_hdrc_imx: fix call balance of regulator
+      routines
+    - [arm64,armhf] usb: chipidea: ci_hdrc_imx: implement usb_phy_init() error
+      handling
+    - USB: OHCI: Add quirk for LS7A OHCI controller (rev 0x02)
+    - [arm64,armhf] usb: dwc3: gadget: check that event count does not exceed
+      event buffer length
+    - [arm64,armhf] usb: dwc3: xilinx: Prevent spike in reset signal
+    - usb: quirks: add DELAY_INIT quirk for Silicon Motion Flash Drive
+    - usb: quirks: Add delay init quirk for SanDisk 3.2Gen1 Flash Drive
+    - USB: VLI disk crashes if LPM is used
+    - USB: wdm: handle IO errors in wdm_wwan_port_start
+    - USB: wdm: close race between wdm_open and wdm_wwan_port_stop
+    - USB: wdm: wdm_wwan_port_tx_complete mutex in atomic context
+    - USB: wdm: add annotation
+    - [mips*] cm: Detect CM quirks from device tree
+    - crypto: null - Use spin lock instead of mutex
+    - bpf: Fix deadlock between rcu_tasks_trace and event_mutex.
+    - clk: check for disabled clock-provider in of_clk_get_hw_from_clkspec()
+    - [s390x] sclp: Add check for get_zeroed_page()
+    - [s390x] tty: Fix a potential memory leak bug
+    - [arm64,armhf] usb: dwc3: gadget: Refactor loop to avoid NULL endpoints
+    - [arm64,armhf] usb: dwc3: gadget: Avoid using reserved endpoints on Intel
+      Merrifield
+    - sound/virtio: Fix cancel_sync warnings on uninitialized work_structs
+    - usb: xhci: Avoid Stop Endpoint retry loop if the endpoint seems Running
+    - [armhf] usb: gadget: aspeed: Add NULL pointer check in ast_vhub_init_dev()
+    - [arm64,armhf] usb: host: xhci-plat: mvebu: use ->quirks instead of
+      ->init_quirk() func
+    - [x86] thunderbolt: Scan retimers after device router has been enumerated
+    - objtool: Silence more KCOV warnings
+    - objtool, ASoC: codecs: wcd934x: Remove potential undefined behavior in
+      wcd934x_slim_irq_handler()
+    - objtool, lkdtm: Obfuscate the do_nothing() pointer
+    - [amd64] qibfs: fix _another_ leak
+    - 9p/net: fix improper handling of bogus negative read/write replies
+    - [arm64] rtc: pcf85063: do a SW reset if POR failed
+    - [s390x] KVM: s390: Don't use %pK through tracepoints
+    - udmabuf: fix a buf size overflow issue during udmabuf creation
+    - xen: Change xen-acpi-processor dom0 dependency
+    - nvme: requeue namespace scan on missed AENs
+    - ACPI: EC: Set ec_no_wakeup for Lenovo Go S
+    - ACPI PPTT: Fix coding mistakes in a couple of sizeof() calls
+    - nvme: re-read ANA log page after ns scan completes
+    - objtool: Stop UNRET validation on UD2
+    - [x86] bugs: Use SBPB in write_ibpb() if applicable
+    - [x86] bugs: Don't fill RSB on VMEXIT with eIBRS+retpoline
+    - [x86] bugs: Don't fill RSB on context switch with eIBRS
+    - ext4: make block validity check resistent to sb bh corruption
+    - [arm64] scsi: hisi_sas: Fix I/O errors caused by hardware port ID changes
+    - scsi: pm80xx: Set phy_attached to zero when device is gone
+    - [x86] i8253: Call clockevent_i8253_disable() with interrupts disabled
+    - loop: aio inherit the ioprio of original request
+    - md/raid1: Add check for missing source disk in process_checks()
+    - [arm64,armhf] spi: spi-imx: Add check for spi_imx_setupxfer()
+    - of: module: add buffer overflow check in of_modalias() (CVE-2024-38541)
+      (Closes: #1103277)
+    - jfs: define xtree root and page independently
+    - [x86] comedi: jr3_pci: Fix synchronous deletion of timer
+    - net/sched: act_mirred: don't override retval if we already lost the skb
+      (CVE-2024-26739)
+    - [arm64,armhf] net: dsa: mv88e6xxx: fix atu_move_port_mask for 6341 family
+    - [arm64,armhf] net: dsa: mv88e6xxx: enable PVT for 6321 switch
+    - [arm64,armhf] net: dsa: mv88e6xxx: enable .port_set_policy() for 6320
+      family
+    - [arm64,armhf] net: dsa: mv88e6xxx: enable STU methods for 6320 family
+    - xdp: Reset bpf_redirect_info before running a xdp's BPF prog.
+    - nvme: fixup scan failure for non-ANA multipath controllers
+    - tracing: Remove pointer (asterisk) and brackets from cpumask_t field
+    - PCI: Fix use-after-free in pci_bus_release_domain_nr()
+    - objtool: Silence more KCOV warnings, part 2
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.137
+
+  [ Salvatore Bonaccorso ]
+  * Bump ABI to 35
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 04 May 2025 14:38:16 +0200
+
 linux (6.1.135-1) bookworm-security; urgency=high
 
   * New upstream stable update:
