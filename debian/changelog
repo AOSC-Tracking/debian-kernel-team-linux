@@ -142,6 +142,10 @@ linux (6.1.137-1) UNRELEASED; urgency=medium
   * Bump ABI to 35
   * md: move initialization and destruction of 'io_acct_set' to md.c
     (Closes: #1104460)
+  * Revert "rndis_host: Flag RNDIS modems as WWAN devices" (Closes: #1104511)
+
+  [ Raphaël Hertzog ]
+  * udeb: add dm-thin-pool md-modules (Closes: #956226)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 04 May 2025 14:38:16 +0200
 
