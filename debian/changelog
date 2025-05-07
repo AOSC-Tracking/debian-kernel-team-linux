@@ -143,6 +143,9 @@ linux (6.1.137-1) UNRELEASED; urgency=medium
   * md: move initialization and destruction of 'io_acct_set' to md.c
     (Closes: #1104460)
 
+  [ Raphaël Hertzog ]
+  * udeb: add dm-thin-pool md-modules (Closes: #956226)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 04 May 2025 14:38:16 +0200
 
 linux (6.1.135-1) bookworm-security; urgency=high
