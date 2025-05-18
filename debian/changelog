@@ -1,4 +1,4 @@
-linux (6.1.138-1) UNRELEASED; urgency=medium
+linux (6.1.139-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.138
@@ -95,6 +95,96 @@ linux (6.1.138-1) UNRELEASED; urgency=medium
     - ASoC: Use of_property_read_bool()
     - ASoC: soc-core: Stop using of_property_read_bool() for non-boolean
       properties
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.139
+    - dm: add missing unlock on in dm_keyslot_evict()
+    - [arm64] dts: imx8mm-verdin: Link reg_usdhc2_vqmmc to usdhc2
+    - [arm64] can: mcan: m_can_class_unregister(): fix order of unregistration
+      calls
+    - can: mcp251xfd: mcp251xfd_remove(): fix order of unregistration calls
+    - ksmbd: prevent out-of-bounds stream writes by validating *pos
+    - openvswitch: Fix unsafe attribute parsing in output_userspace()
+    - ksmbd: fix memory leak in parse_lease_state()
+    - sch_htb: make htb_deactivate() idempotent
+    - gre: Fix again IPv6 link-local address generation.
+    - can: mcp251xfd: fix TDC setting for low data bit rates
+    - rcu/kvfree: Add kvfree_rcu_mightsleep() and kfree_rcu_mightsleep()
+    - can: gw: fix RCU/BH usage in cgw_create_job()
+    - ipv4: Drop tos parameter from flowi4_update_output()
+    - ipvs: fix uninit-value for saddr in do_output_route4
+    - netfilter: ipset: fix region locking in hash types
+    - bpf: Scrub packet on bpf_redirect_peer
+    - [armhf] net: dsa: b53: allow leaky reserved multicast
+    - [armhf] net: dsa: b53: fix clearing PVID of a port
+    - [armhf] net: dsa: b53: fix flushing old pvid VLAN on pvid change
+    - [armhf] net: dsa: b53: fix VLAN ID for untagged vlan on bridge leave
+    - [armhf] net: dsa: b53: always rejoin default untagged VLAN on bridge leave
+    - [armhf] net: dsa: b53: fix learning on VLAN unaware bridges
+    - Input: synaptics - enable InterTouch on Dynabook Portege X30-D
+    - Input: synaptics - enable InterTouch on Dynabook Portege X30L-G
+    - Input: synaptics - enable InterTouch on Dell Precision M3800
+    - Input: synaptics - enable SMBus for HP Elitebook 850 G1
+    - Input: synaptics - enable InterTouch on TUXEDO InfinityBook Pro 14 v5
+    - [x86] mm: Eliminate window where TLB flushes may be inadvertently skipped
+    - drm/amd/display: Shift DMUB AUX reply command if necessary
+    - iio: adc: ad7606: fix serial register access
+    - iio: adis16201: Correct inclinometer channel resolution
+    - iio: imu: st_lsm6dsx: fix possible lockup in st_lsm6dsx_read_fifo
+    - iio: imu: st_lsm6dsx: fix possible lockup in st_lsm6dsx_read_tagged_fifo
+    - [arm64] drm/v3d: Add job to pending list if the reset was skipped
+    - drm/amd/display: Fix the checking condition in dmub aux handling
+    - drm/amd/display: Remove incorrect checking in dmub aux handler
+    - drm/amd/display: Fix wrong handling for AUX_DEFER case
+    - drm/amd/display: Copy AUX read reply data whenever length > 0
+    - drm/amdgpu/hdp5.2: use memcfg register to post the write for HDP flush
+    - usb: uhci-platform: Make the clock really optional
+    - xenbus: Use kref to track req lifetime
+    - module: ensure that kobject_put() is safe for module type kobjects
+    - ocfs2: switch osb->disable_recovery to enum
+    - ocfs2: implement handshaking with ocfs2 recovery thread
+    - ocfs2: stop quota recovery before disabling quotas
+    - [arm64,armhf] usb: host: tegra: Prevent host controller crash when OTG
+      port is used
+    - usb: typec: tcpm: delay SNK_TRY_WAIT_DEBOUNCE to SRC_TRYWAIT transition
+    - usb: typec: ucsi: displayport: Fix NULL pointer access
+    - USB: usbtmc: use interruptible sleep in usbtmc_read
+    - usb: usbtmc: Fix erroneous get_stb ioctl error returns
+    - usb: usbtmc: Fix erroneous wait_srq ioctl return
+    - usb: usbtmc: Fix erroneous generic_read ioctl return
+    - iio: temp: maxim-thermocouple: Fix potential lack of DMA safe buffer.
+    - types: Complement the aligned types with signed 64-bit one
+    - [mips*] Fix MAX_REG_OFFSET
+    - drm/panel: simple: Update timings for AUO G101EVN010
+    - nvme: unblock ctrl state transition for firmware update
+    - do_umount(): add missing barrier before refcount checks in sync case
+    - io_uring: always arm linked timeouts prior to issue
+    - io_uring: ensure deferred completions are posted for multishot
+    - Revert "net: phy: microchip: force IRQ polling mode for lan88xx"
+    - [arm64] insn: Add support for encoding DSB
+    - [arm64] proton-pack: Expose whether the platform is mitigated by firmware
+    - [arm64] proton-pack: Expose whether the branchy loop k value
+    - [arm64] bpf: Add BHB mitigation to the epilogue for cBPF programs
+    - [arm64] bpf: Only mitigate cBPF programs loaded by unprivileged users
+    - [arm64] proton-pack: Add new CPUs 'k' values for branch mitigation
+    - [x86] bpf: Call branch history clearing sequence on exit
+    - [x86] bpf: Add IBHF call at end of classic BPF
+    - [x86] bhi: Do not set BHI_DIS_S in 32-bit mode
+    - [x86] speculation: Simplify and make CALL_NOSPEC consistent
+    - [x86] speculation: Add a conditional CS prefix to CALL_NOSPEC
+    - [x86] speculation: Remove the extra #ifdef around CALL_NOSPEC
+    - [amd64] Mitigations Indirect Target Selection (ITS) (CVE-2024-28956)
+      + Documentation: x86/bugs/its: Add ITS documentation
+      + x86/its: Enumerate Indirect Target Selection (ITS) bug
+      + x86/its: Add support for ITS-safe indirect thunk
+      + x86/its: Add support for ITS-safe return thunk
+      + x86/its: Enable Indirect Target Selection mitigation
+      + x86/its: Add "vmexit" option to skip mitigation on some CPUs
+      + x86/its: Align RETs in BHB clear sequence to avoid thunking
+      + x86/ibt: Keep IBT disabled during alternative patching
+      + x86/its: Use dynamic thunks for indirect branches
+      + x86/its: Fix build errors when CONFIG_MODULES=n
+      + x86/alternative: Optimize returns patching
+      + x86/alternatives: Remove faulty optimization
+      + x86/its: FineIBT-paranoid vs ITS
 
   [ Uwe Kleine-König ]
   * d/b/test-patches: Handle kernel release strings without ABI number.
