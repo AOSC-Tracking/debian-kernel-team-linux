@@ -5,7 +5,7 @@ Subject: [PATCH 268/327] ARM: enable irq in translation/section permission
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=79fe9552e0de3d8cbb5506991d777fb4caaa3392
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=17f20e350b56633e03089dfefd98a7f4914a6827
 
 Probably happens on all ARM, with
 CONFIG_PREEMPT_RT
@@ -66,10 +66,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 6 insertions(+)
 
 diff --git a/arch/arm/mm/fault.c b/arch/arm/mm/fault.c
-index af5177801fb1..1de016008e2e 100644
+index bf1577216ffa..89d6a8a0099a 100644
 --- a/arch/arm/mm/fault.c
 +++ b/arch/arm/mm/fault.c
-@@ -400,6 +400,9 @@ do_translation_fault(unsigned long addr, unsigned int fsr,
+@@ -407,6 +407,9 @@ do_translation_fault(unsigned long addr, unsigned int fsr,
  	if (addr < TASK_SIZE)
  		return do_page_fault(addr, fsr, regs);
  
@@ -79,7 +79,7 @@ index af5177801fb1..1de016008e2e 100644
  	if (user_mode(regs))
  		goto bad_area;
  
-@@ -470,6 +473,9 @@ do_translation_fault(unsigned long addr, unsigned int fsr,
+@@ -477,6 +480,9 @@ do_translation_fault(unsigned long addr, unsigned int fsr,
  static int
  do_sect_fault(unsigned long addr, unsigned int fsr, struct pt_regs *regs)
  {

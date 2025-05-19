@@ -1,7 +1,7 @@
 From: Steven Rostedt <rostedt@goodmis.org>
 Date: Tue, 14 Jul 2015 14:26:34 +0200
 Subject: [PATCH 161/327] futex: Fix bug on when a requeued RT task times out
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2cda93c49d48d045b434d47a936d1535d6ff08b1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d5a0d40619c9b6777e4b6b04300ffdd95a56cc44
 
 Requeue with timeout causes a bug with PREEMPT_RT.
 

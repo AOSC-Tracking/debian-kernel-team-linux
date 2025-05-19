@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:05 +0106
 Subject: [PATCH 103/327] printk: change @console_seq to atomic64_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=313ca137d9b389e4dda56726f5bd3bae9ee63d7a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=837a3fbd58a6ac072b04f44b221c573e988f1757
 
 In preparation for atomic printing, change @console_seq to atomic
 so that it can be accessed without requiring @console_sem.

@@ -2,7 +2,7 @@ From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 9 Dec 2020 01:50:52 +0106
 Subject: [PATCH 080/327] printk: inline log_output(),log_store() in
  vprintk_store()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d2e16e2e3a5f897a05abf0b5a1b406ae4c336f9e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4ec2cf2e44a7710f6a85a24be536c97afea7c723
 
 In preparation for removing logbuf_lock, inline log_output()
 and log_store() into vprintk_store(). This will simplify dealing

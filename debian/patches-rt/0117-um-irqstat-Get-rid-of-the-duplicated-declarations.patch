@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:11 +0100
 Subject: [PATCH 117/327] um/irqstat: Get rid of the duplicated declarations
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a6be00e15870cf302027111163e1ef1bfeb9160f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e6388a767b9d74fe066aa0b6312cd303d636b69b
 
 irq_cpustat_t and ack_bad_irq() are exactly the same as the asm-generic
 ones.

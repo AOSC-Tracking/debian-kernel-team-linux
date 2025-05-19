@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:37 +0100
 Subject: [PATCH 048/327] mm/highmem: Provide kmap_local*
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e1aeb9109aa4358a0157d72e1cbe2cbed6aebd81
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6ebcbe48ef17be0b8133141f0aa77160050ba950
 
 Now that the kmap atomic index is stored in task struct provide a
 preemptible variant. On context switch the maps of an outgoing task are

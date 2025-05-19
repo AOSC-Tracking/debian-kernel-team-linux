@@ -2,7 +2,7 @@ From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:01 +0200
 Subject: [PATCH 004/327] sched/hotplug: Ensure only per-cpu kthreads run
  during hotplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f791463121cd2524270287546febb6771f7c7610
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ecff0df61b980aa1cba0aa529df7e60cb2a08e74
 
 In preparation for migrate_disable(), make sure only per-cpu kthreads
 are allowed to run on !active CPUs.

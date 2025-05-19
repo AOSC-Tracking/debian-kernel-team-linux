@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 18 Aug 2020 10:30:00 +0200
 Subject: [PATCH 207/327] mm: memcontrol: Provide a local_lock for per-CPU
  memcg_stock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f41d07005c926b22307d44e1097690d5de1c046b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5dcb9ba9ed5f84705c4b211eef3f8950ff4ad095
 
 The interrupts are disabled to ensure CPU-local access to the per-CPU
 variable `memcg_stock'.

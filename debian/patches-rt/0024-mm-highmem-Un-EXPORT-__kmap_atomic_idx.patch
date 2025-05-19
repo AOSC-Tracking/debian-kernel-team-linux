@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:13 +0100
 Subject: [PATCH 024/327] mm/highmem: Un-EXPORT __kmap_atomic_idx()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7bdecc647c5c3846710306b2761b05af20c8c222
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=655d7107fe0517ba7c63bbbbc81e4d32a81a5396
 
 Nothing in modules can use that.
 

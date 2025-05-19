@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:35 +0100
 Subject: [PATCH 046/327] sched: Make migrate_disable/enable() independent of
  RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c626e3b73ddd2157362e6e347789c7608fa8691e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1039068c7c156b11f0ea27d8c2e3c235ac6b9e49
 
 Now that the scheduler can deal with migrate disable properly, there is no
 real compelling reason to make it only available for RT.

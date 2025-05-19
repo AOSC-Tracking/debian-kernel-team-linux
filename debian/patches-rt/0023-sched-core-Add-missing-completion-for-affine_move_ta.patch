@@ -2,7 +2,7 @@ From: Valentin Schneider <valentin.schneider@arm.com>
 Date: Fri, 13 Nov 2020 11:24:14 +0000
 Subject: [PATCH 023/327] sched/core: Add missing completion for
  affine_move_task() waiters
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4dacf13fa8208f0f5c1518e81dd4a567362156a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f986a487275d0f51a0ae5b11e63e28264b2c62e1
 
 Qian reported that some fuzzer issuing sched_setaffinity() ends up stuck on
 a wait_for_completion(). The problematic pattern seems to be:

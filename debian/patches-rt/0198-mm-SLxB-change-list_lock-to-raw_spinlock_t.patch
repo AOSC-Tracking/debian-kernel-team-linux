@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 28 May 2018 15:24:22 +0200
 Subject: [PATCH 198/327] mm/SLxB: change list_lock to raw_spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d9d3f27128e3d88a117b291fbea504fbf7c4b154
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dcf9bb1be4d86ed906a92ebb049d9c3a4d9b5a29
 
 The list_lock is used with used with IRQs off on RT. Make it a raw_spinlock_t
 otherwise the interrupts won't be disabled on -RT.  The locking rules remain

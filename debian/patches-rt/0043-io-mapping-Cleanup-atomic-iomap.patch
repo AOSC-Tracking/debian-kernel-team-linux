@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:32 +0100
 Subject: [PATCH 043/327] io-mapping: Cleanup atomic iomap
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=853ce01b40361f86767dfdbd1e90da443e2fd36d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=99b92f100009d2ef3e0abf13625b6690edb55d8b
 
 Switch the atomic iomap implementation over to kmap_local and stick the
 preempt/pagefault mechanics into the generic code similar to the

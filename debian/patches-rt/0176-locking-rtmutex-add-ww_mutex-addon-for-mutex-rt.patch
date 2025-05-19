@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 12 Oct 2017 17:34:38 +0200
 Subject: [PATCH 176/327] locking/rtmutex: add ww_mutex addon for mutex-rt
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3dc0cc639f2e8abfed0f456c4bae6addede37555
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e44cc6c32cf2be97ea6d7dde777bd76c4bd24814
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>

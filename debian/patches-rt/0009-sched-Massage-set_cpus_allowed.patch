@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:06 +0200
 Subject: [PATCH 009/327] sched: Massage set_cpus_allowed()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d374529771bcbbe281f16c0be38e75bdda9a74d5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=87a13390d2f99c17f21b04a53bfe0c2190e22acb
 
 Thread a u32 flags word through the *set_cpus_allowed*() callchain.
 This will allow adding behavioural tweaks for future users.
@@ -122,7 +122,7 @@ index 0ac844b47762..c5760baad6da 100644
  	/*
  	 * We're having a chicken and egg problem, even though we are
 diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index af8569dbdc9c..5566f157640b 100644
+index 668254bdf854..a7a830c90535 100644
 --- a/kernel/sched/deadline.c
 +++ b/kernel/sched/deadline.c
 @@ -2311,7 +2311,8 @@ static void task_woken_dl(struct rq *rq, struct task_struct *p)

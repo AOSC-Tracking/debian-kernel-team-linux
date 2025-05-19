@@ -1,7 +1,7 @@
 From: Scott Wood <swood@redhat.com>
 Date: Tue, 15 Dec 2020 15:16:46 +0100
 Subject: [PATCH 072/327] rcu: Unconditionally use rcuc threads on PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a3610de77e507f14e7c857cbce8500930c932848
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2cc26f19e6c1c1ce2ecdd1408ace7168bb9337ca
 
 PREEMPT_RT systems have long used the rcutree.use_softirq kernel
 boot parameter to avoid use of RCU_SOFTIRQ handlers, which can disrupt

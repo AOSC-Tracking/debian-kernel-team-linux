@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:55 +0100
 Subject: [PATCH 148/327] softirq: Move various protections into inline helpers
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b08afbfc5f9e7f5a937cbd00471a4f23061d48b3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1fa484b853fd3cb5f1ad339e3c88ac3d15dff34b
 
 To allow reuse of the bulk of softirq processing code for RT and to avoid
 #ifdeffery all over the place, split protections for various code sections

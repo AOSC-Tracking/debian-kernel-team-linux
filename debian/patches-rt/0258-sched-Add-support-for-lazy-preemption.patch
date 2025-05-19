@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
 Subject: [PATCH 258/327] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5559d7833ef30c4414f13e25f761ccdb202962b3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ab3fd42d46d6344ad47ae429e31e9f4809c2127c
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -629,7 +629,7 @@ index 5a82d9c809bc..b7f28907bbad 100644
  
  void
 diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index 636fb7df3714..245b8289ecdf 100644
+index bf51d3fb90d8..74d86e0c20d9 100644
 --- a/kernel/trace/trace_events.c
 +++ b/kernel/trace/trace_events.c
 @@ -185,6 +185,7 @@ static int trace_define_common_fields(void)

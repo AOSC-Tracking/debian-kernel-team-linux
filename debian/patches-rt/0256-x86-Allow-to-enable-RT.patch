@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 7 Aug 2019 18:15:38 +0200
 Subject: [PATCH 256/327] x86: Allow to enable RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4d36b09c4222b1bf8524e659f77c0b55e4bf2398
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=81a9162b6c4d0c22470f41cce032623e4dd069b6
 
 Allow to select RT.
 
@@ -11,7 +11,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 1 insertion(+)
 
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index d77a8ef81e81..fbafb8d7ee25 100644
+index 8a4091117237..79d66575b5f2 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
 @@ -27,6 +27,7 @@ config X86_64

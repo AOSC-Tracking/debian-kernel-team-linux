@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:58 +0100
 Subject: [PATCH 151/327] rcu: Prevent false positive softirq warning on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3598ffea04d45127aa6fcb211f684b7694f0a495
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fe4080fc1654e159aaa3a486b657f647cf654756
 
 Soft interrupt disabled sections can legitimately be preempted or schedule
 out when blocking on a lock on RT enabled kernels so the RCU preempt check

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 29 Jun 2011 20:06:39 +0200
 Subject: [PATCH 164/327] locking/rtmutex: Avoid include hell
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=55e87a424832f78dfe53953e465dedf1bc4d808a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d90b1f9bb40d24c406ea6292f08e45f7befb9d6e
 
 Include only the required raw types. This avoids pulling in the
 complete spinlock header which in turn requires rtmutex.h at some point.

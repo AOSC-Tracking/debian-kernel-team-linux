@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:10 +0200
 Subject: [PATCH 013/327] sched,rt: Use cpumask_any*_distribute()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e009d0942bd913a8abfae585c4902db4c6223331
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d492a57047438a9a82308225ccccf3132437b094
 
 Replace a bunch of cpumask_any*() instances with
 cpumask_any*_distribute(), by injecting this little bit of random in
@@ -42,7 +42,7 @@ index bb29102ec966..47780abfd68f 100644
  /**
   * for_each_cpu - iterate over every cpu in a mask
 diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index 5566f157640b..e64d378e4e87 100644
+index a7a830c90535..8980f4c6fbb9 100644
 --- a/kernel/sched/deadline.c
 +++ b/kernel/sched/deadline.c
 @@ -2012,8 +2012,8 @@ static int find_later_rq(struct task_struct *task)

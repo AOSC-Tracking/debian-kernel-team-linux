@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:15 +0200
 Subject: [PATCH 018/327] sched: Add migrate_disable() tracepoints
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e40349e6d4fb55ec028600ee1fa54f72b1b85474
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d4023ffffcf24a20980181961b2599be008bb960
 
 XXX write a tracer:
 
@@ -67,7 +67,7 @@ index 7889b6037e61..e731c752ee48 100644
  EXPORT_SYMBOL_GPL(migrate_enable);
  
 diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index 7cf3248894a9..fcf546cd2eac 100644
+index a146e670444d..44aa5f849fdd 100644
 --- a/kernel/sched/deadline.c
 +++ b/kernel/sched/deadline.c
 @@ -2282,6 +2282,7 @@ static void pull_dl_task(struct rq *this_rq)

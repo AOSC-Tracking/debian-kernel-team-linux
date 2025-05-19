@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:13 +0200
 Subject: [PATCH 016/327] sched: Fix migrate_disable() vs rt/dl balancing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a003d542c31ec5878f05ad70e40f4a88a8fc8262
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7d3075c09a06f89e7e68e30f420eb665d67b20df
 
 In order to minimize the interference of migrate_disable() on lower
 priority tasks, which can be deprived of runtime due to being stuck
@@ -213,7 +213,7 @@ index ffa0ff0d256b..7889b6037e61 100644
  {
  	return false;
 diff --git a/kernel/sched/deadline.c b/kernel/sched/deadline.c
-index 94977a6ced8b..7cf3248894a9 100644
+index 41e3f8301700..a146e670444d 100644
 --- a/kernel/sched/deadline.c
 +++ b/kernel/sched/deadline.c
 @@ -2139,6 +2139,9 @@ static int push_dl_task(struct rq *rq)

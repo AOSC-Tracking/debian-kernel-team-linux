@@ -2,7 +2,7 @@ From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Thu, 8 Jun 2023 19:47:25 -0300
 Subject: [PATCH 319/327] Revert "mm/page_alloc: fix potential deadlock on
  zonelist_update_seqseqlock"
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=110e65ba9d9d320ed21a55717616a01820da21e7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=564709c418ea46c9dc5b16716748b87c309690a6
 
 This reverts commit a992c387b41186ab968fd176ca26b432b05c53ec.
 

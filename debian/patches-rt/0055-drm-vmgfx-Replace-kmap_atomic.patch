@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:44 +0100
 Subject: [PATCH 055/327] drm/vmgfx: Replace kmap_atomic()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e9e1b92aefefa3e9cfd580c928e163c117eea05b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f38470c1797b34735bd5ea1d6cddf4daeb879a74
 
 There is no reason to disable pagefaults and preemption as a side effect of
 kmap_atomic_prot().

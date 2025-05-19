@@ -2,7 +2,7 @@ From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Sat, 27 Feb 2016 08:09:11 +0100
 Subject: [PATCH 250/327] drm,radeon,i915: Use preempt_disable/enable_rt()
  where recommended
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fce3c6d27034a66fe1b7a0dc0b6702f0d47cac0b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7fd591e04a81124061f18e1f731f1b5bdb441e79
 
 DRM folks identified the spots, so use them.
 

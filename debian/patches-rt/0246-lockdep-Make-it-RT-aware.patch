@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 17 Jul 2011 18:51:23 +0200
 Subject: [PATCH 246/327] lockdep: Make it RT aware
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ca1a14398cceeb62d6813e6e2d12329b937249f4
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1551d1183f9dba0df15271bb15d97abef81a8978
 
 teach lockdep that we don't really do softirqs on -RT.
 
@@ -53,7 +53,7 @@ index a53adf4316a5..d0ab13b53b08 100644
  	defined(CONFIG_PREEMPT_TRACER)
   extern void stop_critical_timings(void);
 diff --git a/kernel/locking/lockdep.c b/kernel/locking/lockdep.c
-index b576dd00516b..838039740571 100644
+index 47d939a0373d..217096fbb5e6 100644
 --- a/kernel/locking/lockdep.c
 +++ b/kernel/locking/lockdep.c
 @@ -5414,6 +5414,7 @@ static noinstr void check_flags(unsigned long flags)

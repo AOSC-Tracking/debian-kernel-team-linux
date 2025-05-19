@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:53 +0100
 Subject: [PATCH 146/327] softirq: Add RT specific softirq accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=41c27bd3ab76fe73487b5cf57483b527671b790d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=68cf11cb353d678c646ded9bb80f09995e25a794
 
 RT requires the softirq processing and local bottomhalf disabled regions to
 be preemptible. Using the normal preempt count based serialization is

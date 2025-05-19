@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:04 +0106
 Subject: [PATCH 102/327] printk: combine boot_delay_msec() into printk_delay()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d76875eb24cc4a285b469733d0a09be66453969e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d80e6cb1ab30db6568d72c9435d0d95a262ba696
 
 boot_delay_msec() is always called immediately before printk_delay()
 so just combine the two.

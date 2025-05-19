@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 21 Feb 2014 17:24:04 +0100
 Subject: [PATCH 241/327] crypto: Reduce preempt disabled regions, more algos
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=37be8fcec08c13ceb10a9f57569e5646f3194baf
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fca0ec4b1330a91552e0e5c8f31315f4169a50fd
 
 Don Estabrook reported
 | kernel: WARNING: CPU: 2 PID: 858 at kernel/sched/core.c:2428 migrate_disable+0xed/0x100()

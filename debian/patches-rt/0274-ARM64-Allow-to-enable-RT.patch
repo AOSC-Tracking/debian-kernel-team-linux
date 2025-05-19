@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:35 +0200
 Subject: [PATCH 274/327] ARM64: Allow to enable RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=65af6bfecbfbdfc1117c77200bc022c69713ce75
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b45fe85fa984cccc573aa1702591690279d2e02f
 
 Allow to select RT.
 

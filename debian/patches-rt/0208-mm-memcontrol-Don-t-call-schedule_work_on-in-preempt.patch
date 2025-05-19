@@ -2,7 +2,7 @@ From: Yang Shi <yang.shi@windriver.com>
 Date: Wed, 30 Oct 2013 11:48:33 -0700
 Subject: [PATCH 208/327] mm/memcontrol: Don't call schedule_work_on in
  preemption disabled context
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4cd35d21a6621583f0948169d4c8c6df785d697
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e1b0e21966fff73d594e65f18843074b771b1513
 
 The following trace is triggered when running ltp oom test cases:
 

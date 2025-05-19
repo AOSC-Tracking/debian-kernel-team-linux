@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:46 +0100
 Subject: [PATCH 057/327] drm/qxl: Replace io_mapping_map_atomic_wc()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9d924a492cbc476101b1be29dc60e804fa6ca8d3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8013e95a891a7ff72b394bd13000e5746e53ee40
 
 None of these mapping requires the side effect of disabling pagefaults and
 preemption.

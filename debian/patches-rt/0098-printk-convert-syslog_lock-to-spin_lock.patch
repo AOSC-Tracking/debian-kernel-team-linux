@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 18 Feb 2021 17:37:41 +0100
 Subject: [PATCH 098/327] printk: convert @syslog_lock to spin_lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c17a3e77878244e5a47c54e74a37e04f4774b4ac
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=13d00188e0e0cf86a8dcf62ca76589472805c122
 
 Signed-off-by: John Ogness <john.ogness@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>

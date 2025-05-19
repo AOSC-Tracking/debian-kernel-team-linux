@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 20 Oct 2017 11:29:53 +0200
 Subject: [PATCH 185/327] fs/dcache: disable preemption on i_dir_seq's write
  side
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b4db5297d4f68801d811450ae280c772d87bbf7b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b64006aa950384429fce43f98c7736438ab7b8f1
 
 i_dir_seq is an opencoded seqcounter. Based on the code it looks like we
 could have two writers in parallel despite the fact that the d_lock is
@@ -81,7 +81,7 @@ index 320b70ce79a7..4a178a5b9abc 100644
  	inode->dirtied_when = 0;
  
 diff --git a/include/linux/fs.h b/include/linux/fs.h
-index 4e475ded5cf5..c91166ec21e2 100644
+index 9463dddce6bf..5dcf8557cdb4 100644
 --- a/include/linux/fs.h
 +++ b/include/linux/fs.h
 @@ -701,7 +701,7 @@ struct inode {

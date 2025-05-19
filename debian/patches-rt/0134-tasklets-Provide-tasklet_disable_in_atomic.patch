@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:06 +0100
 Subject: [PATCH 134/327] tasklets: Provide tasklet_disable_in_atomic()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=42ca7174b84671aa11f8dae47cea2daee1c31e6a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4396f6c248fdd2f81f94dde17a9ea7f660664087
 
 Replacing the spin wait loops in tasklet_unlock_wait() with
 wait_var_event() is not possible as a handful of tasklet_disable()
@@ -19,7 +19,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 22 insertions(+)
 
 diff --git a/include/linux/interrupt.h b/include/linux/interrupt.h
-index 75c4380afe9b..abba3eff4f86 100644
+index 5f8a924e8721..31964c5d862f 100644
 --- a/include/linux/interrupt.h
 +++ b/include/linux/interrupt.h
 @@ -675,10 +675,21 @@ static inline void tasklet_unlock_wait(struct tasklet_struct *t)
