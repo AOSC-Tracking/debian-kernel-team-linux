@@ -1,3 +1,119 @@
+linux (6.1.140-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.140
+    - binfmt: Fix whitespace issues
+    - binfmt_elf: Support segments with 0 filesz and misaligned starts
+    - binfmt_elf: elf_bss no longer used by load_elf_binary()
+    - binfmt_elf: Leave a gap between .bss and brk
+    - binfmt_elf: Calculate total_size earlier
+    - binfmt_elf: Honor PT_LOAD alignment for static PIE
+    - binfmt_elf: Move brk for static PIE even if ASLR disabled
+    - [x86] platform/x86: asus-wmi: Fix wlan_ctrl_by_user detection
+    - tracing: probes: Fix a possible race in trace_probe_log APIs
+    - tpm: tis: Double the timeout B to 4s
+    - iio: adc: ad7266: Fix potential timestamp alignment issue.
+    - drm/amd: Stop evicting resources on APUs in suspend
+    - drm/amdgpu: Fix the runtime resume failure issue
+    - drm/amdgpu: trigger flr_work if reading pf2vf data failed
+    - drm/amd: Add Suspend/Hibernate notification callback support
+    - Revert "drm/amd: Stop evicting resources on APUs in suspend"
+    - iio: adc: ad7768-1: Fix insufficient alignment of timestamp.
+    - clocksource/i8253: Use raw_spinlock_irqsave() in
+      clockevent_i8253_disable()
+    - RDMA/rxe: Fix slab-use-after-free Read in rxe_queue_cleanup bug
+    - HID: thrustmaster: fix memory leak in thrustmaster_interrupts()
+    - HID: uclogic: Add NULL check in uclogic_input_configured()
+    - nfs: handle failure of nfs_get_lock_context in unlock path
+    - net_sched: Flush gso_skb list too during ->change()
+    - net: mctp: Ensure keys maintain only one ref to corresponding dev
+    - [arm64] net: cadence: macb: Fix a possible deadlock in macb_halt_tx.
+    - nvme-pci: make nvme_pci_npages_prp() __always_inline
+    - nvme-pci: acquire cq_poll_lock in nvme_poll_irqdisable
+    - ALSA: sh: SND_AICA should depend on SH_DMA_API
+    - net/mlx5e: Disable MACsec offload for uplink representor profile
+    - qlcnic: fix memory leak in qlcnic_sriov_channel_cfg_cmd()
+    - net/tls: fix kernel panic when alloc_page failed
+    - NFSv4/pnfs: Reset the layout state after a layoutreturn
+    - dmaengine: Revert "dmaengine: dmatest: Fix dmatest waiting less when
+      interrupted"
+    - btrfs: fix discard worker infinite loop after disabling discard
+    - drm/amd/display: Correct the reply value when AUX write incomplete
+    - drm/amd/display: Avoid flooding unnecessary info messages
+    - ACPI: PPTT: Fix processor subtable walk
+    - ALSA: es1968: Add error handling for snd_pcm_hw_constraint_pow2()
+    - ALSA: usb-audio: Add sample rate quirk for Audioengine D1
+    - ALSA: usb-audio: Add sample rate quirk for Microdia JP001 USB Camera
+    - dma-buf: insert memory barrier before updating num_fences
+    - hv_netvsc: Use vmbus_sendpacket_mpb_desc() to send VMBus messages
+    - hv_netvsc: Preserve contiguous PFN grouping in the page buffer array
+    - hv_netvsc: Remove rmsg_pgcnt
+    - Drivers: hv: Allow vmbus_sendpacket_mpb_desc() to create multiple ranges
+    - Drivers: hv: vmbus: Remove vmbus_sendpacket_pagebuffer()
+    - ftrace: Fix preemption accounting for stacktrace trigger command
+    - ftrace: Fix preemption accounting for stacktrace filter command
+    - tracing: samples: Initialize trace_array_printk() with the correct
+      function
+    - [arm64,armhf] phy: Fix error handling in tegra_xusb_port_init
+    - [arm64] phy: renesas: rcar-gen3-usb2: Fix role detection on unbind/bind
+    - [arm64] phy: renesas: rcar-gen3-usb2: Set timing registers only once
+    - scsi: sd_zbc: block: Respect bio vector limits for REPORT ZONES buffer
+    - smb: client: fix memory leak during error handling for POSIX mkdir
+    - wifi: mt76: disable napi on driver removal
+    - net: qede: Initialize qede_ll_ops with designated initializer
+    - [arm64] dmaengine: ti: k3-udma: Add missing locking
+    - [arm64] dmaengine: ti: k3-udma: Use cap_mask directly from dma_device
+      structure instead of a local copy
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_setup_wqs
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_setup_engines
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_setup_groups
+    - [amd64] dmaengine: idxd: Add missing cleanup for early error out in
+      idxd_setup_internals
+    - [amd64] dmaengine: idxd: Add missing cleanups in cleanup internals
+    - [amd64] dmaengine: idxd: Add missing idxd cleanup to fix memory leak in
+      remove call
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_alloc
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_pci_probe
+    - usb: typec: ucsi: displayport: Fix deadlock (CVE-2025-37967)
+    - usb: typec: altmodes/displayport: create sysfs nodes as driver's default
+      device attribute group (CVE-2024-35790)
+    - usb: typec: fix potential array underflow in ucsi_ccg_sync_control()
+      (CVE-2024-53203)
+    - usb: typec: fix pm usage counter imbalance in ucsi_ccg_sync_control()
+    - mm/vmscan: fix a bug calling wakeup_kswapd() with a wrong zone index
+    - [arm64] bpf, arm64: Fix trampoline for BPF_TRAMP_F_CALL_ORIG
+      (CVE-2024-43840)
+    - [arm64] bpf, arm64: Fix address emission with tag-based KASAN enabled
+    - hwpoison, memory_hotplug: lock folio before unmap hwpoisoned folio
+      (CVE-2025-21931)
+    - sctp: add mutual exclusion in proc_sctp_do_udp_port() (CVE-2025-22062)
+    - btrfs: don't BUG_ON() when 0 reference count at btrfs_lookup_extent_info()
+    - netfilter: nf_tables: pass nft_chain to destroy function, not nft_ctx
+    - netfilter: nf_tables: wait for rcu grace period on net_device removal
+    - netfilter: nf_tables: do not defer rule destruction via call_rcu
+    - [arm64] sme: Always exit sme_alloc() early with existing storage
+    - [x86] platform/x86/amd/pmc: Only disable IRQ1 wakeup where i8042 actually
+      enabled it (CVE-2025-21645)
+    - bnxt_en: Fix receive ring space parameters when XDP is active
+      (CVE-2024-53209)
+    - ipv6: Fix potential uninit-value access in __ip6_make_skb()
+      (CVE-2024-36903)
+    - ipv4: Fix uninit-value access in __ip_make_skb() (CVE-2024-36927)
+    - spi: cadence-qspi: fix pointer reference in runtime PM hooks
+      (CVE-2024-26807)
+    - drm/amdgpu: fix pm notifier handling
+    - [x86] modules: Set VM_FLUSH_RESET_PERMS in module_alloc()
+
+  [ Salvatore Bonaccorso ]
+  * Bump ABI to 37
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 22 May 2025 17:13:15 +0200
+
 linux (6.1.139-1) bookworm-security; urgency=high
 
   * New upstream stable update:
