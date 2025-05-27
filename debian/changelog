@@ -1439,6 +1439,9 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
   * Store build time signing key encrypted.
   * Sign modules and support lockdown always.
 
+  [ Santiago Ruano Rincón ]
+  * d/salsa-ci.yml: Merge the extract-source job into the build's job script
+
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
 linux (5.10.237-1) bullseye-security; urgency=high
