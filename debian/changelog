@@ -320,6 +320,9 @@ linux (6.1.141-1) UNRELEASED; urgency=medium
   * Disable CONFIG_CDROM_PKTCDVD for all archs as this driver is
     orphaned, buggy and not needed. (Closes: #1107479)
 
+  [ Salvatore Bonaccorso ]
+  * [amd64] drivers/acpi: Make ACPI_HED built-in
+
  -- Uwe Kleine-König <ukleinek@debian.org>  Thu, 03 Jul 2025 09:21:53 +0200
 
 linux (6.1.140-1) bookworm-security; urgency=high
