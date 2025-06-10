@@ -369,3 +369,12 @@ Description: optional dasd DIAG support
  This package contains the module for dasd DIAG support. The udeb is
  not loaded by default as the installer does not actually support this.
  It can however be useful to have available in rescue situations.
+
+Package: usbgadget-modules
+Depends: kernel-image, usb-modules
+Priority: optional
+Description: USB gadget support
+ This package contains the modules required to create various devices
+ on a USB peripheral (or on-the-Go) device. Typically this is used
+ to talk ethernet or serial over USB. Note there is no integration
+ in the installer and these drivers need manual setup to be usable.
