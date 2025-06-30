@@ -1,3 +1,324 @@
+linux-6.1 (6.1.140-1~deb11u1) bullseye-security; urgency=high
+
+  * Rebuild for bullseye:
+    - Set ABI to 0.deb11.37
+
+ -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:32:36 +0200
+
+linux (6.1.140-1) bookworm-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.140
+    - binfmt: Fix whitespace issues
+    - binfmt_elf: Support segments with 0 filesz and misaligned starts
+    - binfmt_elf: elf_bss no longer used by load_elf_binary()
+    - binfmt_elf: Leave a gap between .bss and brk
+    - binfmt_elf: Calculate total_size earlier
+    - binfmt_elf: Honor PT_LOAD alignment for static PIE
+    - binfmt_elf: Move brk for static PIE even if ASLR disabled
+    - [x86] platform/x86: asus-wmi: Fix wlan_ctrl_by_user detection
+    - tracing: probes: Fix a possible race in trace_probe_log APIs
+    - tpm: tis: Double the timeout B to 4s
+    - iio: adc: ad7266: Fix potential timestamp alignment issue.
+    - drm/amd: Stop evicting resources on APUs in suspend
+    - drm/amdgpu: Fix the runtime resume failure issue
+    - drm/amdgpu: trigger flr_work if reading pf2vf data failed
+    - drm/amd: Add Suspend/Hibernate notification callback support
+    - Revert "drm/amd: Stop evicting resources on APUs in suspend"
+    - iio: adc: ad7768-1: Fix insufficient alignment of timestamp.
+    - clocksource/i8253: Use raw_spinlock_irqsave() in
+      clockevent_i8253_disable()
+    - RDMA/rxe: Fix slab-use-after-free Read in rxe_queue_cleanup bug
+    - HID: thrustmaster: fix memory leak in thrustmaster_interrupts()
+    - HID: uclogic: Add NULL check in uclogic_input_configured()
+    - nfs: handle failure of nfs_get_lock_context in unlock path
+    - net_sched: Flush gso_skb list too during ->change()
+    - net: mctp: Ensure keys maintain only one ref to corresponding dev
+    - [arm64] net: cadence: macb: Fix a possible deadlock in macb_halt_tx.
+    - nvme-pci: make nvme_pci_npages_prp() __always_inline
+    - nvme-pci: acquire cq_poll_lock in nvme_poll_irqdisable
+    - ALSA: sh: SND_AICA should depend on SH_DMA_API
+    - net/mlx5e: Disable MACsec offload for uplink representor profile
+    - qlcnic: fix memory leak in qlcnic_sriov_channel_cfg_cmd()
+    - net/tls: fix kernel panic when alloc_page failed
+    - NFSv4/pnfs: Reset the layout state after a layoutreturn
+    - dmaengine: Revert "dmaengine: dmatest: Fix dmatest waiting less when
+      interrupted"
+    - btrfs: fix discard worker infinite loop after disabling discard
+    - drm/amd/display: Correct the reply value when AUX write incomplete
+    - drm/amd/display: Avoid flooding unnecessary info messages
+    - ACPI: PPTT: Fix processor subtable walk
+    - ALSA: es1968: Add error handling for snd_pcm_hw_constraint_pow2()
+    - ALSA: usb-audio: Add sample rate quirk for Audioengine D1
+    - ALSA: usb-audio: Add sample rate quirk for Microdia JP001 USB Camera
+    - dma-buf: insert memory barrier before updating num_fences
+    - hv_netvsc: Use vmbus_sendpacket_mpb_desc() to send VMBus messages
+    - hv_netvsc: Preserve contiguous PFN grouping in the page buffer array
+    - hv_netvsc: Remove rmsg_pgcnt
+    - Drivers: hv: Allow vmbus_sendpacket_mpb_desc() to create multiple ranges
+    - Drivers: hv: vmbus: Remove vmbus_sendpacket_pagebuffer()
+    - ftrace: Fix preemption accounting for stacktrace trigger command
+    - ftrace: Fix preemption accounting for stacktrace filter command
+    - tracing: samples: Initialize trace_array_printk() with the correct
+      function
+    - [arm64,armhf] phy: Fix error handling in tegra_xusb_port_init
+    - [arm64] phy: renesas: rcar-gen3-usb2: Fix role detection on unbind/bind
+    - [arm64] phy: renesas: rcar-gen3-usb2: Set timing registers only once
+    - scsi: sd_zbc: block: Respect bio vector limits for REPORT ZONES buffer
+    - smb: client: fix memory leak during error handling for POSIX mkdir
+    - wifi: mt76: disable napi on driver removal
+    - net: qede: Initialize qede_ll_ops with designated initializer
+    - [arm64] dmaengine: ti: k3-udma: Add missing locking
+    - [arm64] dmaengine: ti: k3-udma: Use cap_mask directly from dma_device
+      structure instead of a local copy
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_setup_wqs
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_setup_engines
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_setup_groups
+    - [amd64] dmaengine: idxd: Add missing cleanup for early error out in
+      idxd_setup_internals
+    - [amd64] dmaengine: idxd: Add missing cleanups in cleanup internals
+    - [amd64] dmaengine: idxd: Add missing idxd cleanup to fix memory leak in
+      remove call
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_alloc
+    - [amd64] dmaengine: idxd: fix memory leak in error handling path of
+      idxd_pci_probe
+    - usb: typec: ucsi: displayport: Fix deadlock (CVE-2025-37967)
+    - usb: typec: altmodes/displayport: create sysfs nodes as driver's default
+      device attribute group (CVE-2024-35790)
+    - usb: typec: fix potential array underflow in ucsi_ccg_sync_control()
+      (CVE-2024-53203)
+    - usb: typec: fix pm usage counter imbalance in ucsi_ccg_sync_control()
+    - mm/vmscan: fix a bug calling wakeup_kswapd() with a wrong zone index
+    - [arm64] bpf, arm64: Fix trampoline for BPF_TRAMP_F_CALL_ORIG
+      (CVE-2024-43840)
+    - [arm64] bpf, arm64: Fix address emission with tag-based KASAN enabled
+    - hwpoison, memory_hotplug: lock folio before unmap hwpoisoned folio
+      (CVE-2025-21931)
+    - sctp: add mutual exclusion in proc_sctp_do_udp_port() (CVE-2025-22062)
+    - btrfs: don't BUG_ON() when 0 reference count at btrfs_lookup_extent_info()
+    - netfilter: nf_tables: pass nft_chain to destroy function, not nft_ctx
+    - netfilter: nf_tables: wait for rcu grace period on net_device removal
+    - netfilter: nf_tables: do not defer rule destruction via call_rcu
+    - [arm64] sme: Always exit sme_alloc() early with existing storage
+    - [x86] platform/x86/amd/pmc: Only disable IRQ1 wakeup where i8042 actually
+      enabled it (CVE-2025-21645)
+    - bnxt_en: Fix receive ring space parameters when XDP is active
+      (CVE-2024-53209)
+    - ipv6: Fix potential uninit-value access in __ip6_make_skb()
+      (CVE-2024-36903)
+    - ipv4: Fix uninit-value access in __ip_make_skb() (CVE-2024-36927)
+    - spi: cadence-qspi: fix pointer reference in runtime PM hooks
+      (CVE-2024-26807)
+    - drm/amdgpu: fix pm notifier handling
+    - [x86] modules: Set VM_FLUSH_RESET_PERMS in module_alloc()
+
+  [ Salvatore Bonaccorso ]
+  * Bump ABI to 37
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 22 May 2025 20:32:07 +0200
+
+linux (6.1.139-1) bookworm-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.138
+    - ALSA: usb-audio: Add second USB ID for Jabra Evolve 65 headset
+    - drm/nouveau: Fix WARN_ON in nouveau_fence_context_kill()
+    - [arm64] i2c: imx-lpi2c: Fix clock count when probe defers
+    - [arm64] errata: Add missing sentinels to Spectre-BHB MIDR arrays
+    - [x86] perf/x86/intel: KVM: Mask PEBS_ENABLE loaded for guest with vCPU's
+      value.
+    - amd-xgbe: Fix to ensure dependent features are toggled with RX checksum
+      offload
+    - [arm64] mmc: renesas_sdhi: Fix error handling in renesas_sdhi_probe
+    - wifi: brcm80211: fmac: Add error handling for brcmf_usb_dl_writeimage()
+    - dm-integrity: fix a warning on invalid table line
+    - dm: always update the array size in realloc_argv on success
+    - [amd64] iommu/amd: Fix potential buffer overflow in parse_ivrs_acpihid
+    - [amd64] iommu/vt-d: Apply quirk_iommu_igfx for 8086:0044 (QM57/QS57)
+    - [x86] platform/x86/intel-uncore-freq: Fix missing uncore sysfs during CPU
+      hotplug
+    - ksmbd: fix use-after-free in kerberos authentication
+    - cpufreq: Avoid using inconsistent policy->min and policy->max
+    - cpufreq: Fix setting policy limits when frequency tables are used
+    - tracing: Fix oob write in trace_seq_to_buffer()
+    - xfs: fix error returns from xfs_bmapi_write
+    - xfs: fix xfs_bmap_add_extent_delay_real for partial conversions
+    - xfs: remove a racy if_bytes check in xfs_reflink_end_cow_extent
+    - xfs: require XFS_SB_FEAT_INCOMPAT_LOG_XATTRS for attr log intent item
+      recovery
+    - xfs: check opcode and iovec count match in xlog_recover_attri_commit_pass2
+    - xfs: validate recovered name buffers when recovering xattr items
+    - xfs: revert commit 44af6c7e59b12
+    - xfs: match lock mode in xfs_buffered_write_iomap_begin()
+    - xfs: make the seq argument to xfs_bmapi_convert_delalloc() optional
+    - xfs: make xfs_bmapi_convert_delalloc() to allocate the target offset
+    - xfs: convert delayed extents to unwritten when zeroing post eof blocks
+    - xfs: allow symlinks with short remote targets
+    - xfs: make sure sb_fdblocks is non-negative
+    - xfs: fix freeing speculative preallocations for preallocated files
+    - xfs: allow unlinked symlinks and dirs with zero size
+    - xfs: restrict when we try to align cow fork delalloc to cowextsz hints
+    - [x86] KVM: x86: Load DR6 with guest value only before entering .vcpu_run()
+      loop (CVE-2025-21839)
+    - dm-bufio: don't schedule in atomic context
+    - ASoC: soc-pcm: Fix hw_params() and DAPM widget sequence
+    - wifi: plfxlc: Remove erroneous assert in plfxlc_mac_release
+    - vxlan: vnifilter: Fix unlocked deletion of default FDB entry
+    - net/mlx5: E-Switch, Initialize MAC Address for Default GID
+    - net/mlx5: E-switch, Fix error handling for enabling roce
+    - [arm64] net: mscc: ocelot: treat 802.1ad tagged traffic as 802.1Q-untagged
+    - [arm64] net: mscc: ocelot: delete PVID VLAN when readding it as non-PVID
+    - net_sched: drr: Fix double list add in class with netem as child qdisc
+    - net_sched: hfsc: Fix a UAF vulnerability in class with netem as child
+      qdisc
+    - net_sched: ets: Fix double list add in class with netem as child qdisc
+    - net_sched: qfq: Fix double list add in class with netem as child qdisc
+    - ice: Check VF VSI Pointer Value in ice_vc_add_fdir_fltr()
+    - net: dlink: Correct endianness handling of led_mode
+    - [arm64] net: dsa: felix: fix broken taprio gate states after clock jump
+    - net: ipv6: fix UDPv6 GSO segmentation with NAT
+    - bnxt_en: Fix coredump logic to free allocated buffer
+    - bnxt_en: Fix out-of-bound memcpy() during ethtool -w
+    - bnxt_en: Fix ethtool -d byte order for 32-bit values
+    - nvme-tcp: fix premature queue removal and I/O failover
+    - net: lan743x: Fix memleak issue when GSO enabled
+    - net: fec: ERR007885 Workaround for conventional TX
+    - [arm64] net: hns3: store rx VLAN tag offload state for VF
+    - [arm64] net: hns3: fix an interrupt residual problem
+    - [arm64] net: hns3: fixed debugfs tm_qset size
+    - [arm64] net: hns3: defer calling ptp_clock_register()
+    - PCI: imx6: Skip controller_id generation logic for i.MX7D
+    - sch_htb: make htb_qlen_notify() idempotent
+    - sch_drr: make drr_qlen_notify() idempotent
+    - sch_hfsc: make hfsc_qlen_notify() idempotent
+    - sch_qfq: make qfq_qlen_notify() idempotent
+    - sch_ets: make est_qlen_notify() idempotent
+    - [x86] Revert "x86/kexec: Allocate PGD for x86_64 transition page tables
+      separately"
+    - [arm64] firmware: arm_scmi: Balance device refcount when destroying
+      devices
+    - net: phy: microchip: force IRQ polling mode for lan88xx
+    - Revert "drm/meson: vclk: fix calculation of 59.94 fractional rates"
+    - [arm64,armhf] irqchip/gic-v2m: Mark a few functions __init
+    - [arm64,armhf] irqchip/gic-v2m: Prevent use after free of
+      gicv2m_get_fwnode() (CVE-2025-37819)
+    - dm: fix copying after src array boundaries
+    - [arm64] iommu/arm-smmu-v3: Use the new rb tree helpers
+    - [arm64] iommu/arm-smmu-v3: Fix iommu_device_probe bug due to duplicated
+      stream ids
+    - drm/amd/display: phase2 enable mst hdcp multiple displays
+    - drm/amd/display: Clean up style problems in amdgpu_dm_hdcp.c
+    - drm/amd/display: Change HDCP update sequence for DM
+    - drm/amd/display: Add scoped mutexes for amdgpu_dm_dhcp
+    - drm/amd/display: Fix slab-use-after-free in hdcp
+    - ASoC: Use of_property_read_bool()
+    - ASoC: soc-core: Stop using of_property_read_bool() for non-boolean
+      properties
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.139
+    - dm: add missing unlock on in dm_keyslot_evict()
+    - [arm64] dts: imx8mm-verdin: Link reg_usdhc2_vqmmc to usdhc2
+    - [arm64] can: mcan: m_can_class_unregister(): fix order of unregistration
+      calls
+    - can: mcp251xfd: mcp251xfd_remove(): fix order of unregistration calls
+    - ksmbd: prevent out-of-bounds stream writes by validating *pos
+    - openvswitch: Fix unsafe attribute parsing in output_userspace()
+    - ksmbd: fix memory leak in parse_lease_state()
+    - sch_htb: make htb_deactivate() idempotent
+    - gre: Fix again IPv6 link-local address generation.
+    - can: mcp251xfd: fix TDC setting for low data bit rates
+    - rcu/kvfree: Add kvfree_rcu_mightsleep() and kfree_rcu_mightsleep()
+    - can: gw: fix RCU/BH usage in cgw_create_job()
+    - ipv4: Drop tos parameter from flowi4_update_output()
+    - ipvs: fix uninit-value for saddr in do_output_route4
+    - netfilter: ipset: fix region locking in hash types
+    - bpf: Scrub packet on bpf_redirect_peer
+    - [armhf] net: dsa: b53: allow leaky reserved multicast
+    - [armhf] net: dsa: b53: fix clearing PVID of a port
+    - [armhf] net: dsa: b53: fix flushing old pvid VLAN on pvid change
+    - [armhf] net: dsa: b53: fix VLAN ID for untagged vlan on bridge leave
+    - [armhf] net: dsa: b53: always rejoin default untagged VLAN on bridge leave
+    - [armhf] net: dsa: b53: fix learning on VLAN unaware bridges
+    - Input: synaptics - enable InterTouch on Dynabook Portege X30-D
+    - Input: synaptics - enable InterTouch on Dynabook Portege X30L-G
+    - Input: synaptics - enable InterTouch on Dell Precision M3800
+    - Input: synaptics - enable SMBus for HP Elitebook 850 G1
+    - Input: synaptics - enable InterTouch on TUXEDO InfinityBook Pro 14 v5
+    - [x86] mm: Eliminate window where TLB flushes may be inadvertently skipped
+    - drm/amd/display: Shift DMUB AUX reply command if necessary
+    - iio: adc: ad7606: fix serial register access
+    - iio: adis16201: Correct inclinometer channel resolution
+    - iio: imu: st_lsm6dsx: fix possible lockup in st_lsm6dsx_read_fifo
+    - iio: imu: st_lsm6dsx: fix possible lockup in st_lsm6dsx_read_tagged_fifo
+    - [arm64] drm/v3d: Add job to pending list if the reset was skipped
+    - drm/amd/display: Fix the checking condition in dmub aux handling
+    - drm/amd/display: Remove incorrect checking in dmub aux handler
+    - drm/amd/display: Fix wrong handling for AUX_DEFER case
+    - drm/amd/display: Copy AUX read reply data whenever length > 0
+    - drm/amdgpu/hdp5.2: use memcfg register to post the write for HDP flush
+    - usb: uhci-platform: Make the clock really optional
+    - xenbus: Use kref to track req lifetime
+    - module: ensure that kobject_put() is safe for module type kobjects
+    - ocfs2: switch osb->disable_recovery to enum
+    - ocfs2: implement handshaking with ocfs2 recovery thread
+    - ocfs2: stop quota recovery before disabling quotas
+    - [arm64,armhf] usb: host: tegra: Prevent host controller crash when OTG
+      port is used
+    - usb: typec: tcpm: delay SNK_TRY_WAIT_DEBOUNCE to SRC_TRYWAIT transition
+    - usb: typec: ucsi: displayport: Fix NULL pointer access
+    - USB: usbtmc: use interruptible sleep in usbtmc_read
+    - usb: usbtmc: Fix erroneous get_stb ioctl error returns
+    - usb: usbtmc: Fix erroneous wait_srq ioctl return
+    - usb: usbtmc: Fix erroneous generic_read ioctl return
+    - iio: temp: maxim-thermocouple: Fix potential lack of DMA safe buffer.
+    - types: Complement the aligned types with signed 64-bit one
+    - [mips*] Fix MAX_REG_OFFSET
+    - drm/panel: simple: Update timings for AUO G101EVN010
+    - nvme: unblock ctrl state transition for firmware update
+    - do_umount(): add missing barrier before refcount checks in sync case
+    - io_uring: always arm linked timeouts prior to issue
+    - io_uring: ensure deferred completions are posted for multishot
+    - Revert "net: phy: microchip: force IRQ polling mode for lan88xx"
+    - [arm64] insn: Add support for encoding DSB
+    - [arm64] proton-pack: Expose whether the platform is mitigated by firmware
+    - [arm64] proton-pack: Expose whether the branchy loop k value
+    - [arm64] bpf: Add BHB mitigation to the epilogue for cBPF programs
+    - [arm64] bpf: Only mitigate cBPF programs loaded by unprivileged users
+    - [arm64] proton-pack: Add new CPUs 'k' values for branch mitigation
+    - [x86] bpf: Call branch history clearing sequence on exit
+    - [x86] bpf: Add IBHF call at end of classic BPF
+    - [x86] bhi: Do not set BHI_DIS_S in 32-bit mode
+    - [x86] speculation: Simplify and make CALL_NOSPEC consistent
+    - [x86] speculation: Add a conditional CS prefix to CALL_NOSPEC
+    - [x86] speculation: Remove the extra #ifdef around CALL_NOSPEC
+    - [amd64] Mitigations Indirect Target Selection (ITS) (CVE-2024-28956)
+      + Documentation: x86/bugs/its: Add ITS documentation
+      + x86/its: Enumerate Indirect Target Selection (ITS) bug
+      + x86/its: Add support for ITS-safe indirect thunk
+      + x86/its: Add support for ITS-safe return thunk
+      + x86/its: Enable Indirect Target Selection mitigation
+      + x86/its: Add "vmexit" option to skip mitigation on some CPUs
+      + x86/its: Align RETs in BHB clear sequence to avoid thunking
+      + x86/ibt: Keep IBT disabled during alternative patching
+      + x86/its: Use dynamic thunks for indirect branches
+      + x86/its: Fix build errors when CONFIG_MODULES=n
+      + x86/alternative: Optimize returns patching
+      + x86/alternatives: Remove faulty optimization
+      + x86/its: FineIBT-paranoid vs ITS
+
+  [ Uwe Kleine-König ]
+  * d/b/test-patches: Handle kernel release strings without ABI number.
+    This is a backport from 6.10.1-1_exp1 to enable building bookworm kernels
+    on trixie and newer.
+
+  [ Salvatore Bonaccorso ]
+  * Bump ABI to 36
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 18 May 2025 14:01:11 +0200
+
 linux-6.1 (6.1.137-1~deb11u1) bullseye-security; urgency=high
 
   * Rebuild for bullseye:
