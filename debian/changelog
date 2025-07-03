@@ -589,6 +589,7 @@ linux (5.10.239-1) UNRELEASED; urgency=medium
   [ Ben Hutchings ]
   * Drop "Revert "xen/swiotlb: add alignment check for dma buffers"" which
     should not be needed after "xen/swiotlb: relax alignment requirements"
+  * [x86] ACPI: Make ACPI_HED built-in since it can no longer be modular
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
