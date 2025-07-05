@@ -789,6 +789,7 @@ linux (6.1.142-1) UNRELEASED; urgency=medium
   * Bump ABI to 38
   * Revert "mmc: sdhci: Disable SD card clock before changing parameters"
     (Closes: #1108065)
+  * [rt] Update to 6.1.141-rt52
 
  -- Uwe Kleine-König <ukleinek@debian.org>  Thu, 03 Jul 2025 09:21:53 +0200
 
