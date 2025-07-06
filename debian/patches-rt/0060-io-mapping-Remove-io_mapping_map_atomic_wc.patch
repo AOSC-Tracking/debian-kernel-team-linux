@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:49 +0100
 Subject: [PATCH 060/327] io-mapping: Remove io_mapping_map_atomic_wc()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d04e223139295b6c903c62eea2ae99bba8eeddf6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=03d755b7b61f187b18fcbcb780acec6cf89231e6
 
 No more users. Get rid of it and remove the traces in documentation.
 

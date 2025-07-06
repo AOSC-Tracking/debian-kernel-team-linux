@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 17 Jul 2011 21:56:42 +0200
 Subject: [PATCH 226/327] trace: Add migrate-disabled counter to tracing output
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d2248292a03903212c9eb307cc8d785a1b551f02
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=28e9b9ef397a375bafdf9e8c2fdd6e944f4b1ed1
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
@@ -32,7 +32,7 @@ index ce370f32a576..e55ee1a7229a 100644
  	entry->type			= type;
  	entry->flags =			trace_ctx >> 16;
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 27d9c2a134cb..5a82d9c809bc 100644
+index aa5d0ebe5447..23b3e5248747 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
 @@ -2601,6 +2601,15 @@ enum print_line_t trace_handle_return(struct trace_seq *s)

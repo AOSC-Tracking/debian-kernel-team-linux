@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
 Subject: [PATCH 258/327] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ab3fd42d46d6344ad47ae429e31e9f4809c2127c
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a983357fd2acaa5e5eb2abec3e41c7a3f7049a89
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -554,7 +554,7 @@ index 34db470c843a..f0fc599cf79c 100644
  extern void init_rt_bandwidth(struct rt_bandwidth *rt_b, u64 period, u64 runtime);
  
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 5a82d9c809bc..b7f28907bbad 100644
+index 23b3e5248747..e1a2db7b3342 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
 @@ -2628,8 +2628,16 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)

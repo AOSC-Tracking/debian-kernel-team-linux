@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 18 Jul 2011 17:03:52 +0200
 Subject: [PATCH 190/327] sched: Disable CONFIG_RT_GROUP_SCHED on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=76f9849d2e868fd54e1edd2f97b6e6c8c226bf66
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ac7092f67000b4a79e7448e41456b2225607621a
 
 Carsten reported problems when running:
 
@@ -18,7 +18,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 1 insertion(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index b25a3b840330..f5fc706d630d 100644
+index 58bd904dbec4..431494edee20 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -985,6 +985,7 @@ config CFS_BANDWIDTH

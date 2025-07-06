@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 3 Jul 2009 08:44:56 -0500
 Subject: [PATCH 283/327] signals: Allow rt tasks to cache one sigqueue struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e5de1e114d2d36304868912cfde40acac1d8b22b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d1cf8fde478fcecfa5bb39462829a044959f35cd
 
 To avoid allocation allow rt tasks to cache one sigqueue struct in
 task struct.
@@ -40,7 +40,7 @@ index b256f9c65661..ebf6c515a7b2 100644
  /* Test if 'sig' is valid signal. Use this instead of testing _NSIG directly */
  static inline int valid_signal(unsigned long sig)
 diff --git a/kernel/exit.c b/kernel/exit.c
-index af9c8e794e4d..8ae0586d035f 100644
+index cfdf2d275bba..1a16368a3d8d 100644
 --- a/kernel/exit.c
 +++ b/kernel/exit.c
 @@ -199,7 +199,7 @@ static void __exit_signal(struct task_struct *tsk)
@@ -53,10 +53,10 @@ index af9c8e794e4d..8ae0586d035f 100644
  	spin_unlock(&sighand->siglock);
  
 diff --git a/kernel/fork.c b/kernel/fork.c
-index fbe8ae617780..152b81f24099 100644
+index f0ee9e19f68e..468365e70336 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
-@@ -2046,6 +2046,7 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -2131,6 +2131,7 @@ static __latent_entropy struct task_struct *copy_process(
  	spin_lock_init(&p->alloc_lock);
  
  	init_sigpending(&p->pending);

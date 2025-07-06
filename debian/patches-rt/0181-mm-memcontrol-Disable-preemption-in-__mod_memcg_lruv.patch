@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 28 Oct 2020 18:15:32 +0100
 Subject: [PATCH 181/327] mm/memcontrol: Disable preemption in
  __mod_memcg_lruvec_state()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9bae3bbfd6729be75b36c45b480770dd0fcc5994
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=202ab010f881760842b6eec73862acb82049b893
 
 The callers expect disabled preemption/interrupts while invoking
 __mod_memcg_lruvec_state(). This works mainline because a lock of
@@ -19,7 +19,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+)
 
 diff --git a/mm/memcontrol.c b/mm/memcontrol.c
-index 14f26b3b0204..57e38a225f85 100644
+index 142b4d5e08fe..4dc2754f8e71 100644
 --- a/mm/memcontrol.c
 +++ b/mm/memcontrol.c
 @@ -816,6 +816,7 @@ void __mod_memcg_lruvec_state(struct lruvec *lruvec, enum node_stat_item idx,

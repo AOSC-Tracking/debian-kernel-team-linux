@@ -4,7 +4,7 @@ Subject: [PATCH 076/327] tracing: Merge irqflags + preempt counter.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3a67416897cf4297f61455381e37fbf09e7cf6ae
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ea0f75930659ec56175ace6754417d21a91aec25
 
 The state of the interrupts (irqflags) and the preemption counter are
 both passed down to tracing_generic_entry_update(). Only one bit of
@@ -194,7 +194,7 @@ index ab912cc60760..a95a2027eefd 100644
  		}
  	}
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index ca39a647f2ef..42181841ef89 100644
+index 42c38a26c801..eda3091b4b6f 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
 @@ -177,7 +177,7 @@ static union trace_eval_map_item *trace_eval_maps;
@@ -713,7 +713,7 @@ index ca39a647f2ef..42181841ef89 100644
  	}
  
  out:
-@@ -6854,7 +6874,6 @@ tracing_mark_write(struct file *filp, const char __user *ubuf,
+@@ -6855,7 +6875,6 @@ tracing_mark_write(struct file *filp, const char __user *ubuf,
  	enum event_trigger_type tt = ETT_NONE;
  	struct trace_buffer *buffer;
  	struct print_entry *entry;
@@ -721,7 +721,7 @@ index ca39a647f2ef..42181841ef89 100644
  	ssize_t written;
  	int size;
  	int len;
-@@ -6874,7 +6893,6 @@ tracing_mark_write(struct file *filp, const char __user *ubuf,
+@@ -6875,7 +6894,6 @@ tracing_mark_write(struct file *filp, const char __user *ubuf,
  
  	BUILD_BUG_ON(TRACE_BUF_SIZE >= PAGE_SIZE);
  
@@ -729,7 +729,7 @@ index ca39a647f2ef..42181841ef89 100644
  	size = sizeof(*entry) + cnt + 2; /* add '\0' and possible '\n' */
  
  	/* If less than "<faulted>", then make sure we can still add that */
-@@ -6883,7 +6901,7 @@ tracing_mark_write(struct file *filp, const char __user *ubuf,
+@@ -6884,7 +6902,7 @@ tracing_mark_write(struct file *filp, const char __user *ubuf,
  
  	buffer = tr->array_buffer.buffer;
  	event = __trace_buffer_lock_reserve(buffer, TRACE_PRINT, size,
@@ -738,7 +738,7 @@ index ca39a647f2ef..42181841ef89 100644
  	if (unlikely(!event))
  		/* Ring buffer disabled, return as if not open for write */
  		return -EBADF;
-@@ -6935,7 +6953,6 @@ tracing_mark_raw_write(struct file *filp, const char __user *ubuf,
+@@ -6936,7 +6954,6 @@ tracing_mark_raw_write(struct file *filp, const char __user *ubuf,
  	struct ring_buffer_event *event;
  	struct trace_buffer *buffer;
  	struct raw_data_entry *entry;
@@ -746,7 +746,7 @@ index ca39a647f2ef..42181841ef89 100644
  	ssize_t written;
  	int size;
  	int len;
-@@ -6957,14 +6974,13 @@ tracing_mark_raw_write(struct file *filp, const char __user *ubuf,
+@@ -6958,14 +6975,13 @@ tracing_mark_raw_write(struct file *filp, const char __user *ubuf,
  
  	BUILD_BUG_ON(TRACE_BUF_SIZE >= PAGE_SIZE);
  

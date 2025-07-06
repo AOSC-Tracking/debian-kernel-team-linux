@@ -1,7 +1,7 @@
 From: Andrew Halaney <ahalaney@redhat.com>
 Date: Tue, 6 Apr 2021 17:19:52 -0500
 Subject: [PATCH 297/327] locking/rwsem-rt: Remove might_sleep() in __up_read()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ff43e522f7564a755b3521364f35725db8becab3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=befd872367a9798eb60ceecd3bcbdb0412cbceca
 
 There's no chance of sleeping here, the reader is giving up the
 lock and possibly waking up the writer who is waiting on it.

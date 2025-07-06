@@ -2,7 +2,7 @@ From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Thu, 8 Jun 2023 19:47:25 -0300
 Subject: [PATCH 319/327] Revert "mm/page_alloc: fix potential deadlock on
  zonelist_update_seqseqlock"
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=564709c418ea46c9dc5b16716748b87c309690a6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=114dfb57d911c1e30f9cba9ddec4f5aeca1d8ce9
 
 This reverts commit a992c387b41186ab968fd176ca26b432b05c53ec.
 
@@ -23,10 +23,10 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 16 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 60f773311e02..45541ed5996d 100644
+index dbec38635ec0..b5d2e5b84afb 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -6046,21 +6046,7 @@ static void __build_all_zonelists(void *data)
+@@ -6054,21 +6054,7 @@ static void __build_all_zonelists(void *data)
  	int nid;
  	int __maybe_unused cpu;
  	pg_data_t *self = data;
@@ -48,7 +48,7 @@ index 60f773311e02..45541ed5996d 100644
  	write_seqlock(&zonelist_update_seq);
  
  #ifdef CONFIG_NUMA
-@@ -6095,8 +6081,6 @@ static void __build_all_zonelists(void *data)
+@@ -6103,8 +6089,6 @@ static void __build_all_zonelists(void *data)
  	}
  
  	write_sequnlock(&zonelist_update_seq);

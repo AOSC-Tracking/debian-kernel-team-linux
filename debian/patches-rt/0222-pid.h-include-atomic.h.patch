@@ -1,7 +1,7 @@
 From: Grygorii Strashko <Grygorii.Strashko@linaro.org>
 Date: Tue, 21 Jul 2015 19:43:56 +0300
 Subject: [PATCH 222/327] pid.h: include atomic.h
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3d73112fe57ef9b00eb645d566388fbfbf2f1cc1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=001b4caaaea6e1c412761e2876687237f014eed4
 
 This patch fixes build error:
   CC      kernel/pid_namespace.o
@@ -26,7 +26,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 1 insertion(+)
 
 diff --git a/include/linux/pid.h b/include/linux/pid.h
-index af308e15f174..33c14785c46b 100644
+index f47868537209..2c2df46a13d3 100644
 --- a/include/linux/pid.h
 +++ b/include/linux/pid.h
 @@ -3,6 +3,7 @@
