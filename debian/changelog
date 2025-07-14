@@ -1,4 +1,4 @@
-linux (6.1.143-1) UNRELEASED; urgency=medium
+linux (6.1.144-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.141
@@ -901,6 +901,89 @@ linux (6.1.143-1) UNRELEASED; urgency=medium
       fastchannel
     - [arm64] Restrict pagetable teardown to avoid false warning
     - [arm*] 9354/1: ptrace: Use bitfield helpers
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.144
+    - rtc: cmos: use spin_lock_irqsave in cmos_interrupt
+    - [s390x] pci: Do not try re-enabling load/store if device is disabled
+    - vsock/vmci: Clear the vmci transport packet properly when initializing it
+    - mmc: sdhci: Add a helper function for dump register in dynamic debug mode
+    - Revert "mmc: sdhci: Disable SD card clock before changing parameters"
+      (Closes: #1108065)
+    - Bluetooth: hci_sync: revert some mesh modifications
+    - Bluetooth: MGMT: set_mesh: update LE scan interval and window
+    - Bluetooth: MGMT: mesh_send: check instances prior disabling advertising
+    - [arm64,armhf] regulator: gpio: Fix the out-of-bounds access to
+      drvdata::gpiods
+    - usb: typec: altmodes/displayport: do not index invalid pin_assignments
+    - [arm64] dts: apple: t8103: Fix PCIe BCM4377 nodename
+    - RDMA/mlx5: Initialize obj_event->obj_sub_list before xa_insert
+    - nfs: Clean up /proc/net/rpc/nfs when nfs_fs_proc_net_init() fails.
+    - NFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN
+    - scsi: qla2xxx: Fix DMA mapping test in qla24xx_get_port_database()
+    - scsi: qla4xxx: Fix missing DMA mapping error in qla4xxx_alloc_pdu()
+    - scsi: ufs: core: Fix spelling of a sysfs attribute name
+    - RDMA/mlx5: Fix CC counters query for MPV
+    - Bluetooth: Prevent unintended pause by checking if advertising is active
+    - btrfs: fix missing error handling when searching for inode refs during log
+      replay
+    - btrfs: fix iteration of extrefs during log replay
+    - ethernet: atl1: Add missing DMA mapping error checks and count errors
+    - [armhf] drm/exynos: fimd: Guard display clock control with runtime PM
+      calls
+    - [arm64] spi: spi-fsl-dspi: Clear completion counter before initiating
+      transfer
+    - [x86] platform/x86: dell-wmi-sysman: Fix WMI data block retrieval in sysfs
+      callbacks
+    - [x86] drm/i915/gt: Fix timeline left held on VMA alloc error
+    - [x86] drm/i915/gsc: mei interrupt top half should be in irq disabled
+      context
+    - igc: disable L1.2 PCI-E link substate to avoid performance issue
+    - [amd64,arm64] amd-xgbe: align CL37 AN sequence as per databook
+    - enic: fix incorrect MTU comparison in enic_change_mtu()
+    - rose: fix dangling neighbour pointers in rose_rt_device_down()
+    - nui: Fix dma_mapping_error() check
+    - net/sched: Always pass notifications when child class becomes empty
+    - smb: client: fix race condition in negotiate timeout by using more precise
+      timing
+    - [arm64] drm/msm: Fix a fence leak in submit error path
+    - [arm64] drm/msm: Fix another leak in the submit error path
+    - ALSA: sb: Don't allow changing the DMA mode during operations
+    - ALSA: sb: Force to disable DMAs once when DMA mode is changed
+    - ata: libata-acpi: Do not assume 40 wire cable if no devices are enabled
+    - ata: pata_cs5536: fix build on 32-bit UML
+    - [powerpc*] Fix struct termio related ioctl macros
+    - [x86] ASoC: amd: yc: update quirk data for HP Victus
+    - scsi: target: Fix NULL pointer dereference in
+      core_scsi3_decode_spec_i_port()
+    - aoe: defer rexmit timer downdev work to workqueue
+    - wifi: mac80211: drop invalid source address OCB frames
+    - wifi: ath6kl: remove WARN on bad firmware input
+    - ACPICA: Refuse to evaluate a method if arguments are missing
+    - mtd: spinand: fix memory leak of ECC engine conf
+    - rcu: Return early if callback is not specified
+    - virtio-net: ensure the received length does not exceed allocated size
+    - [arm64] drm/v3d: Disable interrupts before resetting the GPU
+    - NFSv4/flexfiles: Fix handling of NFS level errors in I/O
+    - btrfs: use btrfs_record_snapshot_destroy() during rmdir
+    - [arm64] dpaa2-eth: fix xdp_rxq_info leak
+    - [x86] platform/x86: think-lmi: Fix class device unregistration
+    - [x86] platform/x86: dell-wmi-sysman: Fix class device unregistration
+    - net: usb: lan78xx: fix WARN in __netif_napi_del_locked on disconnect
+    - xhci: dbctty: disable ECHO flag by default
+    - xhci: dbc: Flush queued requests before stopping dbc
+    - xhci: Disable stream for xHC controller with XHCI_BROKEN_STREAMS
+    - usb: cdnsp: do not disable slot for disabled slot
+    - dma-buf: fix timeout handling in dma_resv_wait_timeout v2
+    - i2c/designware: Fix an initialization issue
+    - Logitech C-270 even more broken
+    - [x86] platform/x86: think-lmi: Create ksets consecutively
+    - [x86] platform/x86: think-lmi: Fix kobject cleanup
+    - usb: typec: displayport: Fix potential deadlock
+    - [amd64] Mitigations Transitive Scheduler Attacks (TSA) (CVE-2024-36350,
+      CVE-2024-36357)
+      + x86/bugs: Rename MDS machinery to something more generic
+      + x86/bugs: Add a Transient Scheduler Attacks mitigation
+      + KVM: SVM: Advertise TSA CPUID bits to guests
+      + x86/process: Move the buffer clearing before MONITOR
 
   [ Uwe Kleine-König ]
   * Disable CONFIG_CDROM_PKTCDVD for all archs as this driver is
@@ -909,8 +992,6 @@ linux (6.1.143-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * [amd64] drivers/acpi: Make ACPI_HED built-in
   * Bump ABI to 38
-  * Revert "mmc: sdhci: Disable SD card clock before changing parameters"
-    (Closes: #1108065)
   * [rt] Update to 6.1.141-rt52
 
  -- Uwe Kleine-König <ukleinek@debian.org>  Thu, 03 Jul 2025 09:21:53 +0200
