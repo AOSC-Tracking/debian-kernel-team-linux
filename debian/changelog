@@ -1,4 +1,4 @@
-linux (6.1.144-1) UNRELEASED; urgency=medium
+linux (6.1.145-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.141
@@ -984,6 +984,8 @@ linux (6.1.144-1) UNRELEASED; urgency=medium
       + x86/bugs: Add a Transient Scheduler Attacks mitigation
       + KVM: SVM: Advertise TSA CPUID bits to guests
       + x86/process: Move the buffer clearing before MONITOR
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.145
+    - [amd64] x86/CPU/AMD: Properly check the TSA microcode
 
   [ Uwe Kleine-König ]
   * Disable CONFIG_CDROM_PKTCDVD for all archs as this driver is
