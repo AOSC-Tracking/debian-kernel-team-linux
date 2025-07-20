@@ -1,4 +1,4 @@
-linux (6.1.145-1) UNRELEASED; urgency=medium
+linux (6.1.146-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.141
@@ -986,6 +986,94 @@ linux (6.1.145-1) UNRELEASED; urgency=medium
       + x86/process: Move the buffer clearing before MONITOR
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.145
     - [amd64] x86/CPU/AMD: Properly check the TSA microcode
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.146
+    - [x86] platform/x86: ideapad-laptop: use usleep_range() for EC polling
+    - perf: Revert to requiring CAP_SYS_ADMIN for uprobes
+    - Bluetooth: hci_sync: Fix not disabling advertising instance
+    - fix proc_sys_compare() handling of in-lookup dentries
+    - netlink: Fix wraparounds of sk->sk_rmem_alloc.
+    - tipc: Fix use-after-free in tipc_conn_close().
+    - vsock: Fix transport_{g2h,h2g} TOCTOU
+    - vsock: Fix transport_* TOCTOU
+    - vsock: Fix IOCTL_VM_SOCKETS_GET_LOCAL_CID to check also `transport_local`
+    - net: phy: smsc: Fix Auto-MDIX configuration when disabled by strap
+    - net: phy: smsc: Fix link failure in forced mode with Auto-MDIX
+    - atm: clip: Fix potential null-ptr-deref in to_atmarpd().
+    - atm: clip: Fix memory leak of struct clip_vcc.
+    - atm: clip: Fix infinite recursive call of clip_push().
+    - atm: clip: Fix NULL pointer dereference in vcc_sendmsg()
+    - net/sched: Abort __tc_modify_qdisc if parent class does not exist
+    - maple_tree: fix MA_STATE_PREALLOC flag in mas_preallocate()
+    - rxrpc: Fix oops due to non-existence of prealloc backlog struct
+    - [x86] boot: Compile boot code with -std=gnu11 too
+    - ipmi:msghandler: Fix potential memory corruption in ipmi_create_user()
+    - [x86] mce/amd: Fix threshold limit reset
+    - [x86] mce: Don't remove sysfs if thresholding sysfs init fails
+    - [x86] mce: Make sure CMCI banks are cleared during shutdown on Intel
+    - [x86] KVM: x86/xen: Allow 'out of range' event channel ports in IRQ
+      routing table.
+    - [x86] KVM: SVM: Reject SEV{-ES} intra host migration if vCPU creation is
+      in-flight
+    - gre: Fix IPv6 multicast route creation. (Closes: #1108430)
+    - md/md-bitmap: fix GPF in bitmap_get_stats() (Closes: #1109734)
+    - [arm64] pinctrl: qcom: msm: mark certain pins as invalid for interrupts
+    - wifi: prevent A-MSDU attacks in mesh networks (CVE-2025-27558)
+    - drm/sched: Increment job count before swapping tail spsc queue
+    - drm/ttm: fix error handling in ttm_buffer_object_transfer
+    - drm/gem: Fix race in drm_gem_handle_create_tail()
+    - usb: gadget: u_serial: Fix race condition in TTY wakeup
+    - Revert "ACPI: battery: negate current when discharging"
+    - kallsyms: fix build without execinfo
+    - maple_tree: fix mt_destroy_walk() on root leaf node
+    - pwm: mediatek: Ensure to disable clocks in error path
+    - smb: server: make use of rdma_destroy_qp()
+    - ksmbd: fix a mount write count leak in ksmbd_vfs_kern_path_locked()
+    - netlink: Fix rmem check in netlink_broadcast_deliver().
+    - netlink: make sure we allow at least one dump skb
+    - fs: export anon_inode_make_secure_inode() and fix secretmem LSM bypass
+    - btrfs: propagate last_unlink_trans earlier when doing a rmdir
+    - xhci: Allow RPM on the USB controller (1022:43f7) by default
+    - usb: xhci: quirk for data loss in ISOC transfers
+    - Input: xpad - support Acer NGR 200 Controller
+    - [arm64,armhf] usb: dwc3: Abort suspend on soft disconnect failure
+    - wifi: zd1211rw: Fix potential NULL pointer dereference in
+      zd_mac_tx_to_dev()
+    - [arm64,armhf] drm/tegra: nvdec: Fix dma_alloc_coherent error check
+    - md/raid1: Fix stack memory use after return in raid1_reshape
+    - raid10: cleanup memleak at raid10_make_request
+    - nbd: fix uaf in nbd_genl_connect() error path
+    - erofs: remove the member readahead from struct z_erofs_decompress_frontend
+    - erofs: clean up z_erofs_pcluster_readmore()
+    - erofs: allocate extra bvec pages directly instead of retrying
+    - erofs: avoid on-stack pagepool directly passed by arguments
+    - erofs: adapt folios for z_erofs_read_folio()
+    - erofs: fix to add missing tracepoint in erofs_read_folio()
+    - netfilter: flowtable: account for Ethernet header in nf_flow_pppoe_proto()
+    - net: appletalk: Fix device refcount leak in atrtr_create()
+    - ibmvnic: Fix hardcoded NUM_RX_STATS/NUM_TX_STATS with dynamic sizeof
+    - net: phy: microchip: limit 100M workaround to link-down events on LAN88xx
+    - can: m_can: m_can_handle_lost_msg(): downgrade msg lost in rx message to
+      debug level
+    - net: ll_temac: Fix missing tx_pending check in ethtools_set_ringparam()
+    - bnxt_en: Fix DCB ETS validation
+    - bnxt_en: Set DMA unmap len correctly for XDP_REDIRECT
+    - atm: idt77252: Add missing `dma_map_error()`
+    - [x86] ASoC: amd: yc: add quirk for Acer Nitro ANV15-41 internal mic
+    - ALSA: hda/realtek - Enable mute LED on HP Pavilion Laptop 15-eg100
+    - net: usb: qmi_wwan: add SIMCom 8230C composition
+    - HID: lenovo: Add support for ThinkPad X1 Tablet Thin Keyboard Gen2
+    - btrfs: fix assertion when building free space tree
+    - vt: add missing notification when switching back to text mode
+    - HID: Add IGNORE quirk for SMARTLINKTECHNOLOGY
+    - HID: quirks: Add quirk for 2 Chicony Electronics HP 5MP Cameras
+    - Input: atkbd - do not skip atkbd_deactivate() when skipping
+      ATKBD_CMD_GETID
+    - vhost-scsi: protect vq->log_used with vq->mutex (CVE-2025-38074)
+    - [x86] mm: Disable hugetlb page table sharing on 32-bit
+    - [x86] Fix X86_FEATURE_VERW_CLEAR definition
+    - ksmbd: fix potential use-after-free in oplock/lease break ack
+    - rseq: Fix segfault on registration when rseq_cs is non-zero
+      (CVE-2025-38067)
 
   [ Uwe Kleine-König ]
   * Disable CONFIG_CDROM_PKTCDVD for all archs as this driver is
