@@ -1,4 +1,4 @@
-linux (5.10.239-1) UNRELEASED; urgency=medium
+linux (5.10.240-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.238
@@ -147,8 +147,6 @@ linux (5.10.239-1) UNRELEASED; urgency=medium
     - posix-timers: Add cond_resched() to posix_timer_add() search loop
     - netfilter: conntrack: Bound nf_conntrack sysctl writes
     - [arm64] mm: Check PUD_TYPE_TABLE in pud_bad()
-    - mmc: sdhci: Disable SD card clock before changing parameters
-    - ipv6: save dontfrag in cork
     - [arm64] tegra: p2597: Fix gpio for vdd-1v8-dis regulator
     - tcp: bring back NUMA dispersion in inet_ehash_locks_alloc()
     - [arm*] rtc: ds1307: stop disabling alarms on probe
@@ -461,7 +459,6 @@ linux (5.10.239-1) UNRELEASED; urgency=medium
     - power: supply: bq27xxx: Retrieve again when busy
     - ACPICA: utilities: Fix overflow check in vsnprintf()
     - PM: runtime: fix denying of auto suspend in pm_suspend_timer_fn()
-    - ACPI: battery: negate current when discharging
     - drm/amdgpu/gfx6: fix CSIB handling
     - sunrpc: update nextcheck time when adding new cache entries
     - [arm*] drm/bridge: analogix_dp: Add irq flag IRQF_NO_AUTOEN instead of
@@ -611,6 +608,194 @@ linux (5.10.239-1) UNRELEASED; urgency=medium
       regs_get_kernel_stack_nth() (CVE-2025-38320)
     - bpf: fix precision backtracking instruction iteration
     - scsi: qedf: Use designated initializer for struct qed_fcoe_cb_ops
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.240
+    - cifs: Fix cifs_query_path_info() for Windows NT servers
+    - NFSv4.2: fix listxattr to return selinux security label
+    - mailbox: Not protect module_put with spin_lock_irqsave
+    - md/md-bitmap: fix dm-raid max_write_behind setting
+    - bcache: fix NULL pointer in cache_set_flush() (CVE-2025-38263)
+    - iio: pressure: zpa2326: Use aligned_s64 for the timestamp
+    - [arm*] usb: common: usb-conn-gpio: use a unique name for usb connector
+      device
+    - usb: Add checks for snprintf() calls in usb_alloc_dev()
+    - usb: cdc-wdm: avoid setting WDM_READ for ZLP-s
+    - usb: typec: displayport: Receive DP Status Update NAK request exit dp
+      altmode
+    - ALSA: hda: Ignore unsol events for cards being shut down
+    - ALSA: hda: Add new pci id for AMD GPU display HD audio controller
+    - ceph: fix possible integer overflow in ceph_zero_objects()
+    - ovl: Check for NULL d_inode() in ovl_dentry_upper()
+    - [x86] VMCI: check context->notify_page after call to
+      get_user_pages_fast() to avoid GPF
+    - [x86] VMCI: fix race between vmci_host_setup_notify and
+      vmci_ctx_unset_notify (CVE-2025-38102)
+    - fs/jfs: consolidate sanity checking in dbMount
+    - jfs: validate AG parameters in dbMount() to prevent crashes
+      (CVE-2025-38230)
+    - [armhf] media: omap3isp: use sgtable-based scatterlist wrappers
+    - f2fs: don't over-report free space or inodes in statvfs
+    - RDMA/core: Use refcount_t instead of atomic_t on refcount of
+      iwcm_id_private
+    - RDMA/iwcm: Fix use-after-free of work objects after cm_id destruction
+      (CVE-2025-38211)
+    - [x86] uio: uio_hv_generic: use devm_kzalloc() for private data alloc
+    - [x86] Drivers: hv: vmbus: Fix duplicate CPU assignments within a device
+    - [x86] Drivers: hv: Rename 'alloced' to 'allocated'
+    - [x86] Drivers: hv: vmbus: Add utility function for querying ring size
+    - [x86] uio_hv_generic: Query the ringbuffer size for device
+    - [x86] uio_hv_generic: Align ring size to system page
+    - net_sched: sch_sfq: reject invalid perturb period (CVE-2025-38193)
+    - i2c: tiny-usb: disable zero-length read messages
+    - i2c: robotfuzz-osif: disable zero-length read messages
+    - atm: clip: prevent NULL deref in clip_push() (CVE-2025-38251)
+    - ALSA: usb-audio: Fix out-of-bounds read in snd_usb_get_audioformat_uac3()
+      (CVE-2025-38249)
+    - attach_recursive_mnt(): do not lock the covering tree when sliding
+      something under it
+    - libbpf: Fix null pointer dereference in btf_dump__free on allocation
+      failure
+    - wifi: mac80211: fix beacon interval calculation overflow
+    - vsock/uapi: fix linux/vm_sockets.h userspace compilation errors
+    - atm: Release atm_dev_mutex after removing procfs in atm_dev_deregister().
+      (CVE-2025-38245)
+    - Bluetooth: L2CAP: Fix L2CAP MTU negotiation
+    - dm-raid: fix variable in journal device check
+    - btrfs: update superblock's device bytes_used when dropping chunk
+    - HID: wacom: fix memory leak on kobject creation failure
+    - HID: wacom: fix memory leak on sysfs attribute creation failure
+    - HID: wacom: fix kobject reference count leak
+    - [arm*] drm/tegra: Assign plane type before registration
+    - [arm*] drm/tegra: Fix a possible null pointer dereference
+    - drm/udl: Unregister device before cleaning up on disconnect
+    - [amd64] drm/amdkfd: Fix race in GWS queue scheduling
+    - [amd64] PCI: hv: Do not set PCI_COMMAND_MEMORY to reduce VM boot time
+    - [arm64] Restrict pagetable teardown to avoid false warning
+    - rtc: cmos: use spin_lock_irqsave in cmos_interrupt
+    - [x86] vsock/vmci: Clear the vmci transport packet properly when
+      initializing it
+    - mmc: sdhci: Add a helper function for dump register in dynamic debug mode
+    - usb: typec: altmodes/displayport: do not index invalid pin_assignments
+    - RDMA/mlx5: Initialize obj_event->obj_sub_list before xa_insert
+    - nfs: Clean up /proc/net/rpc/nfs when nfs_fs_proc_net_init() fails.
+    - NFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN
+    - scsi: qla2xxx: Fix DMA mapping test in qla24xx_get_port_database()
+    - scsi: qla4xxx: Fix missing DMA mapping error in qla4xxx_alloc_pdu()
+    - scsi: ufs: core: Fix spelling of a sysfs attribute name
+    - RDMA/mlx5: Fix CC counters query for MPV
+    - btrfs: fix missing error handling when searching for inode refs during
+      log replay
+    - [armhf] drm/exynos: fimd: Guard display clock control with runtime PM
+      calls
+    - [arm64] spi: spi-fsl-dspi: Clear completion counter before initiating
+      transfer
+    - [x86] drm/i915/gt: Fix timeline left held on VMA alloc error
+    - amd-xgbe: align CL37 AN sequence as per databook
+    - enic: fix incorrect MTU comparison in enic_change_mtu()
+    - rose: fix dangling neighbour pointers in rose_rt_device_down()
+    - nui: Fix dma_mapping_error() check
+    - net/sched: Always pass notifications when child class becomes empty
+      (CVE-2025-38350)
+    - [i386] ALSA: sb: Force to disable DMAs once when DMA mode is changed
+    - scsi: target: Fix NULL pointer dereference in
+      core_scsi3_decode_spec_i_port()
+    - wifi: mac80211: drop invalid source address OCB frames
+    - wifi: ath6kl: remove WARN on bad firmware input
+    - ACPICA: Refuse to evaluate a method if arguments are missing
+    - rcu: Return early if callback is not specified
+    - [arm*] regulator: gpio: Fix the out-of-bounds access to drvdata::gpiods
+    - RDMA/mlx5: Fix vport loopback for MPV device
+    - flexfiles/pNFS: update stats on NFS4ERR_DELAY for v4.1 DSes
+    - NFSv4/flexfiles: Fix handling of NFS level errors in I/O
+    - btrfs: propagate last_unlink_trans earlier when doing a rmdir
+    - btrfs: use btrfs_record_snapshot_destroy() during rmdir
+    - [arm64] dpaa2-eth: rename dpaa2_eth_xdp_release_buf into
+      dpaa2_eth_recycle_buf
+    - [arm64] dpaa2-eth: Update dpni_get_single_step_cfg command
+    - [arm64] dpaa2-eth: Update SINGLE_STEP register access
+    - [arm64] net: dpaa2-eth: rearrange variable in dpaa2_eth_get_ethtool_stats
+    - [arm64] dpaa2-eth: fix xdp_rxq_info leak
+    - Logitech C-270 even more broken
+    - usb: typec: displayport: Fix potential deadlock
+    - [x86] ACPI: PAD: fix crash in exit_round_robin() (CVE-2024-49935)
+    - media: uvcvideo: Return the number of processed controls
+    - media: uvcvideo: Send control events for partial succeeds
+    - media: uvcvideo: Rollback non processed entities on error
+    - staging: rtl8723bs: Avoid memset() in aes_cipher() and aes_decipher()
+    - perf: Revert to requiring CAP_SYS_ADMIN for uprobes
+    - fix proc_sys_compare() handling of in-lookup dentries
+    - netlink: Fix wraparounds of sk->sk_rmem_alloc.
+    - tipc: Fix use-after-free in tipc_conn_close().
+    - vsock: Fix transport_{g2h,h2g} TOCTOU
+    - vm_sockets: Add flags field in the vsock address data structure
+    - vm_sockets: Add VMADDR_FLAG_TO_HOST vsock flag
+    - af_vsock: Set VMADDR_FLAG_TO_HOST flag on the receive path
+    - af_vsock: Assign the vsock transport considering the vsock address flags
+    - vsock: Fix transport_* TOCTOU
+    - vsock: Fix IOCTL_VM_SOCKETS_GET_LOCAL_CID to check also `transport_local`
+    - net: phy: smsc: Fix Auto-MDIX configuration when disabled by strap
+    - net: phy: smsc: Fix link failure in forced mode with Auto-MDIX
+    - atm: clip: Fix potential null-ptr-deref in to_atmarpd().
+    - atm: clip: Fix memory leak of struct clip_vcc.
+    - atm: clip: Fix infinite recursive call of clip_push().
+    - atm: clip: Fix NULL pointer dereference in vcc_sendmsg()
+    - net/sched: Abort __tc_modify_qdisc if parent class does not exist
+    - fs/proc: do_task_stat: use __for_each_thread()
+    - rxrpc: Fix oops due to non-existence of prealloc backlog struct
+    - [amd64] Mitigate Indirect Target Selection (CVE-2024-28956):
+      + Documentation: x86/bugs/its: Add ITS documentation
+      + x86/bhi: Define SPEC_CTRL_BHI_DIS_S
+      + x86/its: Enumerate Indirect Target Selection (ITS) bug
+      + x86/alternatives: Introduce int3_emulate_jcc()
+      + x86/alternatives: Teach text_poke_bp() to patch Jcc.d32 instructions
+      + x86/its: Add support for ITS-safe indirect thunk
+      + x86/alternative: Optimize returns patching
+      + x86/alternatives: Remove faulty optimization
+      + x86/its: Add support for ITS-safe return thunk
+      + x86/its: Fix undefined reference to cpu_wants_rethunk_at()
+      + x86/its: Enable Indirect Target Selection mitigation
+      + x86/its: Add "vmexit" option to skip mitigation on some CPUs
+      + x86/modules: Set VM_FLUSH_RESET_PERMS in module_alloc()
+      + x86/its: Use dynamic thunks for indirect branches
+      + x86/its: Fix build errors when CONFIG_MODULES=n
+      + x86/its: FineIBT-paranoid vs ITS
+    - [x86] mce/amd: Fix threshold limit reset
+    - [x86] mce: Don't remove sysfs if thresholding sysfs init fails
+    - [x86] mce: Make sure CMCI banks are cleared during shutdown on Intel
+    - [arm64] pinctrl: qcom: msm: mark certain pins as invalid for interrupts
+    - drm/sched: Increment job count before swapping tail spsc queue
+    - usb: gadget: u_serial: Fix race condition in TTY wakeup
+    - ethernet: atl1: Add missing DMA mapping error checks and count errors
+    - netlink: Fix rmem check in netlink_broadcast_deliver().
+    - netlink: make sure we allow at least one dump skb
+    - [x86] Input: xpad - add support for Amazon Game Controller
+    - [x86] Input: xpad - add VID for Turtle Beach controllers
+    - [x86] Input: xpad - support Acer NGR 200 Controller
+    - dma-buf: fix timeout handling in dma_resv_wait_timeout v2
+    - wifi: zd1211rw: Fix potential NULL pointer dereference in
+      zd_mac_tx_to_dev()
+    - md/raid1: Fix stack memory use after return in raid1_reshape
+    - net: appletalk: Fix device refcount leak in atrtr_create()
+    - net: phy: microchip: limit 100M workaround to link-down events on LAN88xx
+    - bnxt_en: Fix DCB ETS validation
+    - bnxt_en: Set DMA unmap len correctly for XDP_REDIRECT
+    - [x86] atm: idt77252: Add missing `dma_map_error()`
+    - net: usb: qmi_wwan: add SIMCom 8230C composition
+    - vt: add missing notification when switching back to text mode
+    - HID: Add IGNORE quirk for SMARTLINKTECHNOLOGY
+    - HID: quirks: Add quirk for 2 Chicony Electronics HP 5MP Cameras
+    - Input: atkbd - do not skip atkbd_deactivate() when skipping
+      ATKBD_CMD_GETID
+    - vhost-scsi: protect vq->log_used with vq->mutex (CVE-2025-38074)
+    - [i386] mm: Disable hugetlb page table sharing on 32-bit
+    - [x86] Mitigate Transient Scheduler Attacks (CVE-2024-36350,
+      CVE-2024-36357):
+      - x86/bugs: Rename MDS machinery to something more generic
+      - x86/bugs: Add a Transient Scheduler Attacks mitigation
+      - KVM: x86: add support for CPUID leaf 0x80000021
+      - KVM: SVM: Advertise TSA CPUID bits to guests
+      - x86/process: Move the buffer clearing before MONITOR
+    - rseq: Fix segfault on registration when rseq_cs is non-zero
+      (CVE-2025-38067)
 
   [ Ben Hutchings ]
   * Drop "Revert "xen/swiotlb: add alignment check for dma buffers"" which
