@@ -1,4 +1,4 @@
-linux (6.1.146-1) UNRELEASED; urgency=medium
+linux (6.1.147-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.141
@@ -1074,6 +1074,91 @@ linux (6.1.146-1) UNRELEASED; urgency=medium
     - ksmbd: fix potential use-after-free in oplock/lease break ack
     - rseq: Fix segfault on registration when rseq_cs is non-zero
       (CVE-2025-38067)
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.147
+    - USB: serial: option: add Telit Cinterion FE910C04 (ECM) composition
+    - USB: serial: option: add Foxconn T99W640
+    - USB: serial: ftdi_sio: add support for NDI EMGUIDE GEMINI
+    - usb: gadget: configfs: Fix OOB read on empty string write
+    - [armhf] i2c: stm32: fix the device used for the DMA map
+    - [x86] thunderbolt: Fix bit masking in tb_dp_port_set_hops()
+    - Input: xpad - set correct controller type for Acer NGR200
+    - pch_uart: Fix dma_sync_sg_for_device() nents value
+    - HID: core: ensure the allocated report buffer can contain the reserved
+      report ID
+    - HID: core: ensure __hid_request reserves the report ID as the first byte
+    - HID: core: do not bypass hid_hw_raw_request
+    - tracing: Add down_write(trace_event_sem) when adding trace event
+    - io_uring/poll: fix POLLERR handling
+    - phonet/pep: Move call to pn_skb_get_dst_sockaddr() earlier in
+      pep_sock_accept()
+    - net/mlx5: Update the list of the PCI supported devices
+    - af_packet: fix the SO_SNDTIMEO constraint not effective on tpacked_snd()
+    - af_packet: fix soft lockup issue caused by tpacket_snd()
+    - isofs: Verify inode mode when loading from disk
+    - memstick: core: Zero initialize id_reg in h_memstick_read_dev_id()
+    - [arm64,armhf] mmc: bcm2835: Fix dma_unmap_sg() nents value
+    - mmc: sdhci-pci: Quirk for broken command queuing on Intel GLK-based
+      Positivo models
+    - [arm64] mmc: sdhci_am654: Workaround for Errata i2312
+    - pmdomain: governor: Consider CPU latency tolerance from pm_domain_cpu_gov
+    - smb: client: fix use-after-free in crypt_message when using async crypto
+    - [armhf] soc: aspeed: lpc-snoop: Cleanup resources in stack-order
+    - [armhf] soc: aspeed: lpc-snoop: Don't disable channels that aren't enabled
+    - iio: accel: fxls8962af: Fix use after free in fxls8962af_fifo_flush
+    - iio: adc: max1363: Fix MAX1363_4X_CHANS/MAX1363_8X_CHANS[]
+    - iio: adc: max1363: Reorder mode_list[] entries
+    - iio: adc: stm32-adc: Fix race in installing chained IRQ handler
+    - [i386] comedi: pcl812: Fix bit shift out of bounds
+    - [i386] comedi: aio_iiro_16: Fix bit shift out of bounds
+    - [i386] comedi: das16m1: Fix bit shift out of bounds
+    - [i386] comedi: das6402: Fix bit shift out of bounds
+    - [i386] comedi: Fail COMEDI_INSNLIST ioctl if n_insns is too large
+    - [i386] comedi: Fix some signed shift left operations
+    - [i386] comedi: Fix use of uninitialized data in insn_rw_emulate_bits()
+    - [i386] comedi: Fix initialization of data for instructions that write to
+      subdevice
+    - bpf: Reject %p% format string in bprintf-like helpers
+    - cachefiles: Fix the incorrect return value in __cachefiles_write()
+    - net/sched: sch_qfq: Fix race condition on qfq_aggregate
+    - rpl: Fix use-after-free in rpl_do_srh_inline().
+    - smb: client: fix use-after-free in cifs_oplock_break
+    - nvme: fix misaccounting of nvme-mpath inflight I/O
+    - [x86] hwmon: (corsair-cpro) Validate the size of the received input buffer
+    - usb: net: sierra: check for no status endpoint
+    - Bluetooth: Fix null-ptr-deref in l2cap_sock_resume_cb()
+    - Bluetooth: hci_sync: fix connectable extended advertising when using
+      static random address
+    - Bluetooth: SMP: If an unallowed command is received consider it a failure
+    - Bluetooth: SMP: Fix using HCI_ERROR_REMOTE_USER_TERM on timeout
+    - Bluetooth: btusb: QCA: Fix downloading wrong NVM for WCN6855 GF variant
+      without board ID
+    - net/mlx5: Correctly set gso_size when LRO is used
+    - ipv6: mcast: Delay put pmc->idev in mld_del_delrec()
+    - netfilter: nf_conntrack: fix crash due to removal of uninitialised entry
+    - Bluetooth: L2CAP: Fix attempting to adjust outgoing MTU
+    - tls: always refresh the queue when reading sock
+    - net: vlan: fix VLAN 0 refcount imbalance of toggling filtering during
+      runtime
+    - net: bridge: Do not offload IGMP/MLD messages
+    - net/sched: Return NULL when htb_lookup_leaf encounters an empty rbtree
+    - Revert "cgroup_freezer: cgroup_freezing: Check if not frozen"
+    - sched: Change nr_uninterruptible type to unsigned long
+    - HID: mcp2221: Set driver data before I2C adapter add
+    - clone_private_mnt(): make sure that caller has CAP_SYS_ADMIN in the right
+      userns
+    - usb: hub: fix detection of high tier USB3 devices behind suspended hubs
+    - usb: hub: Fix flushing and scheduling of delayed work that tunes runtime
+      pm
+    - usb: hub: Fix flushing of delayed work used for post resume purposes
+    - usb: hub: Don't try to recover devices lost during warm reset.
+    - usb: musb: Add and use inline functions musb_{get,set}_state
+    - usb: musb: fix gadget state on disconnect
+    - [arm64] usb: dwc3: qcom: Don't leave BCR asserted
+    - [arm64] ASoC: fsl_sai: Force a software reset when starting in consumer
+      mode
+    - Bluetooth: HCI: Set extended advertising data synchronously
+    - mm/vmalloc: leave lazy MMU mode on PTE mapping error
+    - nvmem: layouts: u-boot-env: remove crc32 endianness conversion
 
   [ Uwe Kleine-König ]
   * Disable CONFIG_CDROM_PKTCDVD for all archs as this driver is
