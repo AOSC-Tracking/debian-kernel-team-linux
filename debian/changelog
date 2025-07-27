@@ -803,6 +803,8 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * [x86] ACPI: Make ACPI_HED built-in since it can no longer be modular
   * Bump ABI to 36
   * [rt] Update to 5.10.239-rt133
+  * [amd64] x86/bugs: Fix use of possibly uninit value in
+    amd_check_tsa_microcode()
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
