@@ -1169,6 +1169,9 @@ linux (6.1.147-1) UNRELEASED; urgency=medium
   * Bump ABI to 38
   * [rt] Update to 6.1.141-rt52
 
+  [ Kevin P. Fleming ]
+  * test-patches: Add defaults for DEBEMAIL and DEBFULLNAME
+
  -- Uwe Kleine-König <ukleinek@debian.org>  Thu, 03 Jul 2025 09:21:53 +0200
 
 linux (6.1.140-1) bookworm-security; urgency=high
