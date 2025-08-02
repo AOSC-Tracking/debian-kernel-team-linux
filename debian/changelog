@@ -1168,6 +1168,10 @@ linux (6.1.147-1) UNRELEASED; urgency=medium
   * [amd64] drivers/acpi: Make ACPI_HED built-in
   * Bump ABI to 38
   * [rt] Update to 6.1.141-rt52
+  * net/sched: sch_qfq: Avoid triggering might_sleep in atomic context in
+    qfq_delete_class
+  * [amd64] x86/bugs: Fix use of possibly uninit value in
+    amd_check_tsa_microcode()
 
   [ Kevin P. Fleming ]
   * test-patches: Add defaults for DEBEMAIL and DEBFULLNAME
