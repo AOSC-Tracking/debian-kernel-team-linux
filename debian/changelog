@@ -809,6 +809,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * d/b/buildcheck.py: Check config of kernel to be signed
   * d/rules: Include target suite as an input to gencontrol.py
   * Generate kernel ABI name suffix automatically if not configured
+  * d/c/defines: Delete ABI name suffix
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
