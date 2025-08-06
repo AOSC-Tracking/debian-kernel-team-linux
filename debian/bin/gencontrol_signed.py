@@ -117,9 +117,7 @@ class Gencontrol(Base):
     def do_arch_setup(self, vars, makeflags, arch, extra):
         super(Gencontrol, self).do_main_setup(vars, makeflags, extra)
 
-        abiname_part = '-%s' % self.config.merge('abi', arch)['abiname']
-        makeflags['ABINAME'] = vars['abiname'] = \
-            self.config['version', ]['abiname_base'] + abiname_part
+        makeflags['ABINAME'] = vars['abiname']
 
     def do_arch_packages(self, packages, makefile, arch, vars, makeflags,
                          extra):
