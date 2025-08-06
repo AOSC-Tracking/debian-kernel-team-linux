@@ -1,5 +1,4 @@
 [abi]
-abiname: 38
 ignore-changes:
  __cpuhp_*
  __udp_gso_segment

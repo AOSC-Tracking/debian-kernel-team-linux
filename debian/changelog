@@ -12,6 +12,7 @@ linux (6.1.147-2) UNRELEASED; urgency=medium
   * d/b/buildcheck.py: Check config of kernel to be signed
   * d/rules: Include target suite as an input to gencontrol.py
   * Generate kernel ABI name suffix automatically if not configured
+  * Delete ABI name suffix and ABI reference
 
  -- Ben Hutchings <benh@debian.org>  Wed, 06 Aug 2025 22:07:54 +0200
 
