@@ -806,6 +806,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * [amd64] x86/bugs: Fix use of possibly uninit value in
     amd_check_tsa_microcode()
   * d/b/buildcheck.py, d/rules.real: Run buildcheck.py in setup as well
+  * d/b/buildcheck.py: Check config of kernel to be signed
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)

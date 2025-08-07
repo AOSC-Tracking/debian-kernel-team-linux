@@ -3,11 +3,13 @@
 import sys
 import glob
 import os
+import pathlib
 import re
 
 from debian_linux.abi import Symbols
 from debian_linux.config import ConfigCoreDump
 from debian_linux.debian import Changelog, VersionLinux
+from debian_linux.kconfig import KconfigFile
 
 
 class CheckAbi(object):
@@ -266,10 +268,40 @@ class CheckImage(object):
         return 0
 
 
+class CheckSecureBootConfig:
+    def __init__(self, config, dir, arch, *_):
+        self.config = config
+        self.dir = pathlib.Path(dir)
+        self.arch = arch
+
+    def __call__(self, out):
+        fail = 0
+
+        if self.config.merge('build', self.arch) \
+                      .get('signed-code', False) \
+           and not os.getenv('DEBIAN_KERNEL_DISABLE_SIGNED'):
+            kconfig = KconfigFile()
+            with (self.dir / '.config').open() as fh:
+                kconfig.read(fh)
+
+            for name, value in [('EFI_STUB', True),
+                                ('LOCK_DOWN_IN_EFI_SECURE_BOOT', True),
+                                ('SYSTEM_TRUSTED_KEYS', '""')]:
+                if name not in kconfig:
+                    out.write(f'Secure Boot: CONFIG_{name} is not defined\n')
+                    fail = 1
+                elif kconfig[name].value != value:
+                    out.write(f'Secure Boot: CONFIG_{name} has wrong value:'
+                              f' {kconfig[name].value}\n')
+                    fail = 1
+
+        return fail
+
+
 class Main(object):
 
     checks = {
-        'setup': [],
+        'setup': [CheckSecureBootConfig],
         'build': [CheckAbi, CheckImage],
     }
 
