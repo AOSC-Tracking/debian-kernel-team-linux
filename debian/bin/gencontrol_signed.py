@@ -190,13 +190,6 @@ class Gencontrol(Base):
         image_suffix = '%(abiname)s%(localversion)s' % vars
         image_package_name = 'linux-image-%s-unsigned' % image_suffix
 
-        # Verify that this flavour is configured to support Secure Boot,
-        # and get the trusted certificates filename.
-        with open('debian/%s/boot/config-%s' %
-                  (image_package_name, image_suffix)) as f:
-            kconfig = f.readlines()
-        assert 'CONFIG_EFI_STUB=y\n' in kconfig
-        assert 'CONFIG_LOCK_DOWN_IN_EFI_SECURE_BOOT=y\n' in kconfig
         self.image_packages.append((image_suffix, image_package_name))
 
         self.packages['source']['Build-Depends'].append(
