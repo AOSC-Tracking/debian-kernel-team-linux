@@ -14,6 +14,7 @@ linux (6.1.147-2) UNRELEASED; urgency=medium
   * Generate kernel ABI name suffix automatically if not configured
   * Delete ABI name suffix and ABI reference
   * d/salsa-ci.yml: Ignore pycodestyle error E241
+  * d/rules.real: Move module installation to the image build rule
 
  -- Ben Hutchings <benh@debian.org>  Wed, 06 Aug 2025 22:07:54 +0200
 
