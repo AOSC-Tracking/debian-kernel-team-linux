@@ -211,11 +211,26 @@ endif
 	@$(stamp)
 
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): DIR=$(BUILD_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
+$(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): OUTPUT_DIR=$(DIR)/output/image
+$(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): OUTPUT_DIR_DBG=$(DIR)/output/image-dbg
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR): $(STAMPS_DIR)/setup_$(ARCH)_$(FEATURESET)_$(FLAVOUR)
-
 $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR):
+	rm -rf '$(DIR)/output'
+
 	+$(MAKE_CLEAN) -C '$(DIR)'
 	debian/bin/buildcheck.py $(DIR) $(ARCH) $(FEATURESET) $(FLAVOUR) build
+
+	+$(MAKE_CLEAN) -C $(DIR) modules_install \
+		DEPMOD='$(CURDIR)/debian/bin/no-depmod' \
+		INSTALL_MOD_PATH='$(CURDIR)/$(OUTPUT_DIR)' \
+		INSTALL_MOD_STRIP=1
+
+# mod_sign_cmd=true: Don't sign modules
+	+$(MAKE_CLEAN) -C $(DIR) modules_install \
+		mod_sign_cmd=true \
+		DEPMOD='$(CURDIR)/debian/bin/no-depmod' \
+		INSTALL_MOD_PATH='$(CURDIR)/$(OUTPUT_DIR_DBG)/usr/lib/debug'
+
 	@$(stamp)
 
 $(STAMPS_DIR)/build-doc: DIR=$(BUILD_DIR)/build-doc
@@ -433,7 +448,9 @@ endif
 	+$(MAKE_SELF) \
 	  install-image_$(ARCH)_$(FEATURESET)_$(FLAVOUR)_dt \
 	  DIR='$(DIR)' PACKAGE_DIR='$(PACKAGE_DIR)' REAL_VERSION='$(REAL_VERSION)'
-	+$(MAKE_CLEAN) -C $(DIR) modules_install DEPMOD='$(CURDIR)/debian/bin/no-depmod' INSTALL_MOD_PATH='$(CURDIR)'/$(PACKAGE_DIR) INSTALL_MOD_STRIP=1
+
+	dh_install --sourcedir=$(DIR)/output/image lib
+
 	cp $(DIR)/.config $(PACKAGE_DIR)/boot/config-$(REAL_VERSION)
 	echo "ffffffffffffffff B The real System.map is in the linux-image-<version>-dbg package" \
 		> $(PACKAGE_DIR)/boot/System.map-$(REAL_VERSION)
@@ -500,11 +517,7 @@ install-image-dbg_$(ARCH)_$(FEATURESET)_$(FLAVOUR): $(STAMPS_DIR)/build_$(ARCH)_
 	install -m644 $(DIR)/vmlinux $(DEBUG_DIR)/boot/vmlinux-$(REAL_VERSION)
 	install -m644 $(DIR)/System.map $(DEBUG_DIR)/boot/System.map-$(REAL_VERSION)
 
-# mod_sign_cmd=true: Don't sign modules
-	+$(MAKE_CLEAN) -C $(DIR) modules_install \
-		mod_sign_cmd=true \
-		DEPMOD='$(CURDIR)/debian/bin/no-depmod' \
-		INSTALL_MOD_PATH='$(CURDIR)'/$(DEBUG_DIR)
+	dh_install --sourcedir=$(DIR)/output/image-dbg usr/lib/debug
 
 # Verify we don't have any signed modules installed
 	@if find $(DEBUG_DIR)/lib/modules/$(REAL_VERSION) -name '*.ko' | xargs grep -q '~Module signature appended~'; then \

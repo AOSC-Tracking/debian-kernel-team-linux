@@ -811,6 +811,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * Generate kernel ABI name suffix automatically if not configured
   * d/c/defines: Delete ABI name suffix
   * d/salsa-ci.yml: Ignore pycodestyle error E241
+  * d/rules.real: Move module installation to the image build rule
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
