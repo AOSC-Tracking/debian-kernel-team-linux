@@ -812,6 +812,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * d/c/defines: Delete ABI name suffix
   * d/salsa-ci.yml: Ignore pycodestyle error E241
   * d/rules.real: Move module installation to the image build rule
+  * certs: check-in the default x509 config file
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
