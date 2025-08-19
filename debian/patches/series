@@ -94,6 +94,14 @@ bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 debian/makefile-do-not-check-for-libelf-when-building-oot-module.patch
 bugfix/all/partially-revert-net-socket-implement-64-bit-timestamps.patch
 bugfix/all/wireguard-ignore-config_android.patch
+bugfix/all/bluetooth-l2cap-fix-attempting-to-adjust-outgoing-mt.patch
+bugfix/all/asoc-soc-dai-tidyup-return-value-of-snd_soc_xlate_td.patch
+bugfix/all/asoc-ops-dynamically-allocate-struct-snd_ctl_elem_va.patch
+bugfix/all/nfsv4.2-another-fix-for-listxattr.patch
+bugfix/all/benet-fix-bug-when-creating-vfs.patch
+bugfix/all/netlink-avoid-infinite-retry-looping-in-netlink_unicast.patch
+bugfix/all/cpuidle-governors-menu-avoid-using-invalid-recent-in.patch
+bugfix/all/smb-client-fix-use-after-free-in-crypt_message-when-using-async-crypto.patch
 
 # Miscellaneous features
 features/all/certs-check-in-the-default-x509-config-file.patch

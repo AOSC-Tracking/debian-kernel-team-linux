@@ -813,6 +813,20 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Ignore pycodestyle error E241
   * d/rules.real: Move module installation to the image build rule
   * certs: check-in the default x509 config file
+  * Bluetooth: L2CAP: Fix attempting to adjust outgoing MTU (regression in
+    5.10.240)
+  * ASoC: soc-dai: tidyup return value of snd_soc_xlate_tdm_slot_mask()
+    (regression in 5.10.238)
+  * ASoC: ops: dynamically allocate struct snd_ctl_elem_value (regression in
+    5.10.238)
+  * NFSv4.2: another fix for listxattr (regression in 5.10.240)
+  * benet: fix BUG when creating VFs (regression in 5.10.235)
+  * netlink: avoid infinite retry looping in netlink_unicast() (regression in
+    5.10.240)
+  * cpuidle: governors: menu: Avoid using invalid recent intervals data
+    (regression in 5.10.238)
+  * smb: client: fix use-after-free in crypt_message when using async crypto
+    (regression in 5.10.237)
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
