@@ -435,7 +435,6 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - fbdev: Fix fb_set_var to prevent null-ptr-deref in fb_videomode_to_var
       (CVE-2025-38214)
     - [x86] vgacon: Add check for vc_origin address range in vgacon_scroll()
-      (CVE-2025-38213)
     - [arm64] clk: meson-g12a: add missing fclk_div2 to spicc
     - ipc: fix to protect IPCS lookups using RCU (CVE-2025-38212)
     - mm: fix ratelimit_pages update error in dirty_ratio_handler()
@@ -735,12 +734,13 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - net: phy: smsc: Fix Auto-MDIX configuration when disabled by strap
     - net: phy: smsc: Fix link failure in forced mode with Auto-MDIX
     - atm: clip: Fix potential null-ptr-deref in to_atmarpd().
-    - atm: clip: Fix memory leak of struct clip_vcc.
+    - atm: clip: Fix memory leak of struct clip_vcc. (CVE-2025-38546)
     - atm: clip: Fix infinite recursive call of clip_push().
     - atm: clip: Fix NULL pointer dereference in vcc_sendmsg()
     - net/sched: Abort __tc_modify_qdisc if parent class does not exist
     - fs/proc: do_task_stat: use __for_each_thread()
     - rxrpc: Fix oops due to non-existence of prealloc backlog struct
+      (CVE-2025-38514)
     - [amd64] Mitigate Indirect Target Selection (CVE-2024-28956):
       + Documentation: x86/bugs/its: Add ITS documentation
       + x86/bhi: Define SPEC_CTRL_BHI_DIS_S
@@ -762,7 +762,9 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - [x86] mce: Don't remove sysfs if thresholding sysfs init fails
     - [x86] mce: Make sure CMCI banks are cleared during shutdown on Intel
     - [arm64] pinctrl: qcom: msm: mark certain pins as invalid for interrupts
+      (CVE-2025-38516)
     - drm/sched: Increment job count before swapping tail spsc queue
+      (CVE-2025-38515)
     - usb: gadget: u_serial: Fix race condition in TTY wakeup
     - ethernet: atl1: Add missing DMA mapping error checks and count errors
     - netlink: Fix rmem check in netlink_broadcast_deliver().
@@ -772,9 +774,10 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - [x86] Input: xpad - support Acer NGR 200 Controller
     - dma-buf: fix timeout handling in dma_resv_wait_timeout v2
     - wifi: zd1211rw: Fix potential NULL pointer dereference in
-      zd_mac_tx_to_dev()
+      zd_mac_tx_to_dev() (CVE-2025-38513)
     - md/raid1: Fix stack memory use after return in raid1_reshape
     - net: appletalk: Fix device refcount leak in atrtr_create()
+      (CVE-2025-38542)
     - net: phy: microchip: limit 100M workaround to link-down events on LAN88xx
     - bnxt_en: Fix DCB ETS validation
     - bnxt_en: Set DMA unmap len correctly for XDP_REDIRECT
@@ -783,6 +786,7 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
     - vt: add missing notification when switching back to text mode
     - HID: Add IGNORE quirk for SMARTLINKTECHNOLOGY
     - HID: quirks: Add quirk for 2 Chicony Electronics HP 5MP Cameras
+      (CVE-2025-38540)
     - Input: atkbd - do not skip atkbd_deactivate() when skipping
       ATKBD_CMD_GETID
     - vhost-scsi: protect vq->log_used with vq->mutex (CVE-2025-38074)
