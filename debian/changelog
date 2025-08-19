@@ -805,9 +805,24 @@ linux (5.10.240-1) UNRELEASED; urgency=medium
   * [rt] Update to 5.10.239-rt133
   * [amd64] x86/bugs: Fix use of possibly uninit value in
     amd_check_tsa_microcode()
+  * d/b/buildcheck.py, d/rules.real: Run buildcheck.py in setup as well
+  * d/b/buildcheck.py: Check config of kernel to be signed
+  * d/rules: Include target suite as an input to gencontrol.py
+  * Generate kernel ABI name suffix automatically if not configured
+  * d/c/defines: Delete ABI name suffix
+  * d/salsa-ci.yml: Ignore pycodestyle error E241
+  * d/rules.real: Move module installation to the image build rule
+  * certs: check-in the default x509 config file
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
+  * Drop not needed extra step to add debug links
+  * Sign modules using an ephemeral key: (closes: #1040901)
+    - Set MODULE_SIG_ALL to sign all modules.
+    - Not longer request Secure Boot signing for modules.
+    - Don't trust Secure Boot key any longer.
+  * Use abi name 0 for everything before unstable.
+  * Store build time signing key encrypted.
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 

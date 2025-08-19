@@ -96,6 +96,7 @@ bugfix/all/partially-revert-net-socket-implement-64-bit-timestamps.patch
 bugfix/all/wireguard-ignore-config_android.patch
 
 # Miscellaneous features
+features/all/certs-check-in-the-default-x509-config-file.patch
 
 # Lockdown missing pieces
 features/all/lockdown/efi-add-an-efi_secure_boot-flag-to-indicate-secure-b.patch

@@ -1,12 +1,10 @@
 #!/usr/bin/python3
 
 import codecs
-import hashlib
 import io
 import json
 import os.path
 import re
-import ssl
 import subprocess
 import sys
 
@@ -119,12 +117,7 @@ class Gencontrol(Base):
     def do_arch_setup(self, vars, makeflags, arch, extra):
         super(Gencontrol, self).do_main_setup(vars, makeflags, extra)
 
-        if self.version.linux_modifier is None:
-            abiname_part = '-%s' % self.config.merge('abi', arch)['abiname']
-        else:
-            abiname_part = ''
-        makeflags['ABINAME'] = vars['abiname'] = \
-            self.config['version', ]['abiname_base'] + abiname_part
+        makeflags['ABINAME'] = vars['abiname']
 
     def do_arch_packages(self, packages, makefile, arch, vars, makeflags,
                          extra):
@@ -191,28 +184,7 @@ class Gencontrol(Base):
         image_suffix = '%(abiname)s%(localversion)s' % vars
         image_package_name = 'linux-image-%s-unsigned' % image_suffix
 
-        # Verify that this flavour is configured to support Secure Boot,
-        # and get the trusted certificates filename.
-        with open('debian/%s/boot/config-%s' %
-                  (image_package_name, image_suffix)) as f:
-            kconfig = f.readlines()
-        assert 'CONFIG_EFI_STUB=y\n' in kconfig
-        assert 'CONFIG_LOCK_DOWN_IN_EFI_SECURE_BOOT=y\n' in kconfig
-        cert_re = re.compile(r'CONFIG_SYSTEM_TRUSTED_KEYS="(.*)"$')
-        cert_file_name = None
-        for line in kconfig:
-            match = cert_re.match(line)
-            if match:
-                cert_file_name = match.group(1)
-                break
-        assert cert_file_name
-        if featureset != "none":
-            cert_file_name = os.path.join('debian/build/source_%s' %
-                                          featureset,
-                                          cert_file_name)
-
-        self.image_packages.append((image_suffix, image_package_name,
-                                    cert_file_name))
+        self.image_packages.append((image_suffix, image_package_name))
 
         packages['source']['Build-Depends'].append(
             image_package_name
@@ -311,63 +283,14 @@ linux-signed-@arch@ (@signedsourceversion@) @distribution@; urgency=@urgency@
                     f.write(d)
 
     def write_files_json(self):
-        # Can't raise from a lambda function :-(
-        def raise_func(e):
-            raise e
-
-        # Some functions in openssl work with multiple concatenated
-        # PEM-format certificates, but others do not.
-        def get_certs(file_name):
-            certs = []
-            BEGIN, MIDDLE = 0, 1
-            state = BEGIN
-            with open(file_name) as f:
-                for line in f:
-                    if line == '-----BEGIN CERTIFICATE-----\n':
-                        assert state == BEGIN
-                        certs.append([])
-                        state = MIDDLE
-                    elif line == '-----END CERTIFICATE-----\n':
-                        assert state == MIDDLE
-                        state = BEGIN
-                    else:
-                        assert line[0] != '-'
-                        assert state == MIDDLE
-                    certs[-1].append(line)
-            assert state == BEGIN
-            return [''.join(cert_lines) for cert_lines in certs]
-
-        def get_cert_fingerprint(cert, algo):
-            hasher = hashlib.new(algo)
-            hasher.update(ssl.PEM_cert_to_DER_cert(cert))
-            return hasher.hexdigest()
-
         all_files = {'packages': {}}
 
-        for image_suffix, image_package_name, cert_file_name in \
-                self.image_packages:
-            package_dir = 'debian/%s' % image_package_name
+        for image_suffix, image_package_name in self.image_packages:
             package_files = []
-            package_modules = []
             package_files.append({'sig_type': 'efi',
                                   'file': 'boot/vmlinuz-%s' % image_suffix})
-            for root, dirs, files in os.walk('%s/lib/modules' % package_dir,
-                                             onerror=raise_func):
-                for name in files:
-                    if name.endswith('.ko'):
-                        package_modules.append(
-                            '%s/%s' %
-                            (root[(len(package_dir) + 1):], name))
-            package_modules.sort()
-            for module in package_modules:
-                package_files.append(
-                    {'sig_type': 'linux-module',
-                     'file': module})
-            package_certs = [get_cert_fingerprint(cert, 'sha256')
-                             for cert in get_certs(cert_file_name)]
-            assert len(package_certs) >= 1
             all_files['packages'][image_package_name] = {
-                'trusted_certs': package_certs,
+                'trusted_certs': [],
                 'files': package_files
             }
 
