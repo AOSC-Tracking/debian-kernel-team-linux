@@ -252,6 +252,9 @@ linux (6.1.148-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Ignore pycodestyle error E241
   * d/rules.real: Move module installation to the image build rule
 
+  [ Salvatore Bonaccorso ]
+  * [amd64] udeb: kernel-image: Include SPI drivers
+
  -- Ben Hutchings <benh@debian.org>  Wed, 06 Aug 2025 22:07:54 +0200
 
 linux (6.1.147-1) bookworm-security; urgency=high
