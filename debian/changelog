@@ -254,6 +254,8 @@ linux (6.1.148-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * [amd64] udeb: kernel-image: Include SPI drivers
+  * netlink: avoid infinite retry looping in netlink_unicast()
+    (Closes: #1111017)
 
  -- Ben Hutchings <benh@debian.org>  Wed, 06 Aug 2025 22:07:54 +0200
 
