@@ -256,6 +256,8 @@ linux (6.1.148-1) UNRELEASED; urgency=medium
   * [amd64] udeb: kernel-image: Include SPI drivers
   * netlink: avoid infinite retry looping in netlink_unicast()
     (Closes: #1111017)
+  * ext4: don't try to clear the orphan_present feature block device is r/o
+    (Closes: #1108271)
 
  -- Ben Hutchings <benh@debian.org>  Wed, 06 Aug 2025 22:07:54 +0200
 

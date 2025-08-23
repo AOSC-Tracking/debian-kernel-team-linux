@@ -103,6 +103,7 @@ features/arm64/quartz64/arm64-dts-rockchip-Add-SOQuartz-Model-A-baseboard.patch
 bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/netlink-avoid-infinite-retry-looping-in-netlink_unic.patch
+bugfix/all/ext4-don-t-try-to-clear-the-orphan_present-feature-b.patch
 
 # Miscellaneous features
 
