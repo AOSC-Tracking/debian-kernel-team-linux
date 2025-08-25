@@ -252,6 +252,7 @@ linux (6.1.148-1) UNRELEASED; urgency=medium
   * Delete ABI name suffix and ABI reference
   * d/salsa-ci.yml: Ignore pycodestyle error E241
   * d/rules.real: Move module installation to the image build rule
+  * proc: fix missing pde_set_flags() for net proc files
 
   [ Salvatore Bonaccorso ]
   * [amd64] udeb: kernel-image: Include SPI drivers

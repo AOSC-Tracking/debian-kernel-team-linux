@@ -104,6 +104,7 @@ bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/netlink-avoid-infinite-retry-looping-in-netlink_unic.patch
 bugfix/all/ext4-don-t-try-to-clear-the-orphan_present-feature-b.patch
+bugfix/all/proc-fix-missing-pde_set_flags-for-net-proc-files.patch
 
 # Miscellaneous features
 
