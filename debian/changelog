@@ -242,6 +242,7 @@ linux (6.1.148-1) UNRELEASED; urgency=medium
     - Not longer request Secure Boot signing for modules.
     - Don't trust Secure Boot key any longer.
   * Store build time signing key encrypted.
+  * Sign modules and support lockdown always.
 
   [ Ben Hutchings ]
   * d/b/buildcheck.py, d/rules.real: Run buildcheck.py in setup as well
