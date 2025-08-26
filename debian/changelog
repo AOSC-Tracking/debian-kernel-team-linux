@@ -1,4 +1,4 @@
-linux (6.1.148-1) UNRELEASED; urgency=medium
+linux (6.1.148-1) bookworm; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.148
@@ -261,7 +261,7 @@ linux (6.1.148-1) UNRELEASED; urgency=medium
   * ext4: don't try to clear the orphan_present feature block device is r/o
     (Closes: #1108271)
 
- -- Ben Hutchings <benh@debian.org>  Wed, 06 Aug 2025 22:07:54 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 26 Aug 2025 22:35:21 +0200
 
 linux (6.1.147-1) bookworm-security; urgency=high
 
