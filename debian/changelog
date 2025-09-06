@@ -1,4 +1,4 @@
-linux (6.1.149-1) UNRELEASED; urgency=medium
+linux (6.1.150-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.149
@@ -469,6 +469,54 @@ linux (6.1.149-1) UNRELEASED; urgency=medium
     - [s390x] hypfs: Enable limited access during lockdown
     - netfilter: nf_reject: don't leak dst refcount for loopback packets
     - alloc_fdtable(): change calling conventions.
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.150
+    - ftrace: Fix potential warning in trace_printk_seq during ftrace_dump
+    - scsi: core: sysfs: Correct sysfs attributes access rights
+    - smb: client: fix race with concurrent opens in unlink(2)
+    - smb: client: fix race with concurrent opens in rename(2)
+    - ACPI: EC: Add device to acpi_ec_no_wakeup[] qurik list
+    - nfs: fold nfs_page_group_lock_subrequests into nfs_lock_and_join_requests
+    - NFS: Fix a race when updating an existing write
+    - vhost/net: Protect ubufs with rcu read lock in vhost_net_ubuf_put()
+    - net: ipv4: fix regression in local-broadcast routes
+    - [arm64] drm/msm: Defer fd_install in SUBMIT ioctl
+    - [powerpc*] kvm: Fix ifdef to remove build warning
+    - HID: input: rename hidinput_set_battery_charge_status()
+    - HID: input: report battery status changes immediately
+    - Bluetooth: hci_event: Treat UNKNOWN_CONN_ID on disconnect as success
+    - Bluetooth: hci_event: Mark connection as closed during suspend disconnect
+    - Bluetooth: hci_event: Detect if HCI_EV_NUM_COMP_PKTS is unbalanced
+    - Bluetooth: hci_sync: fix set_local_name race condition
+    - atm: atmtcp: Prevent arbitrary write in atmtcp_recv_control().
+    - net: dlink: fix multicast stats being counted incorrectly
+    - phy: mscc: Fix when PTP clock is register and unregister
+    - net/mlx5: Reload auxiliary drivers on fw_activate
+    - net/mlx5e: Update and set Xon/Xoff upon MTU set
+    - net/mlx5e: Update and set Xon/Xoff upon port speed set
+    - net/mlx5e: Set local Xoff after FW update
+    - net: stmmac: xgmac: Do not enable RX FIFO Overflow interrupts
+    - net: rose: split remove and free operations in rose_remove_neigh()
+    - net: rose: convert 'use' field to refcount_t
+    - net: rose: include node references in rose_neigh refcount
+    - sctp: initialize more fields in sctp_v6_from_sk()
+    - efivarfs: Fix slab-out-of-bounds in efivarfs_d_compare
+    - [x86] KVM: x86: use array_index_nospec with indices that come from guest
+    - HID: asus: fix UAF via HID_CLAIMED_INPUT validation
+    - HID: multitouch: fix slab out-of-bounds access in mt_report_fixup()
+    - HID: wacom: Add a new Art Pen 2
+    - HID: hid-ntrig: fix unable to handle page fault in ntrig_report_version()
+    - Revert "drm/amdgpu: fix incorrect vm flags to map bo"
+    - dma/pool: Ensure DMA_DIRECT_REMAP allocations are decrypted
+    - fs/smb: Fix inconsistent refcnt update
+    - net: usb: qmi_wwan: add Telit Cinterion LE910C4-WWX new compositions
+    - smb3 client: fix return code mapping of remap_file_range
+    - drm/nouveau/disp: Always accept linear modifier
+    - net: rose: fix a typo in rose_clear_routes()
+    - HID: mcp2221: Don't set bus speed on every transfer
+    - HID: mcp2221: Handle reads greater than 60 bytes
+    - Revert "drm/dp: Change AUX DPCD probe address from DPCD_REV to
+      LANE0_1_STATUS"
+    - xfs: do not propagate ENODATA disk errors into xattr code
 
   [ Ben Hutchings ]
   * Revert to using RSA for module signatures (Closes: #1114773)
