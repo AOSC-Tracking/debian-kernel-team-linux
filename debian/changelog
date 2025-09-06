@@ -1,6 +1,7 @@
 linux (6.19.6-2~bpo13+1) UNRELEASED; urgency=medium
 
-  * Rebuild for trixie-backports
+  * Rebuild for trixie-backports:
+    - d/salsa-ci.yml: Set RELEASE to trixie-backports
 
  -- Ben Hutchings <benh@debian.org>  Fri, 13 Mar 2026 00:42:15 +0100
 
