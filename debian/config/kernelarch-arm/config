@@ -86,6 +86,12 @@ CONFIG_MTD_PHYSMAP=y
 # CONFIG_PCI_IOV is not set
 
 ##
+## file: drivers/reset/Kconfig
+##
+# CONFIG_RESET_BRCMSTB is not set
+# CONFIG_RESET_BRCMSTB_RESCAL is not set
+
+##
 ## file: drivers/scsi/Kconfig
 ##
 # CONFIG_BLK_DEV_3W_XXXX_RAID is not set

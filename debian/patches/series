@@ -70,7 +70,6 @@ debian/btrfs-warn-about-raid5-6-being-experimental-at-mount.patch
 bugfix/arm/arm-dts-kirkwood-fix-sata-pinmux-ing-for-ts419.patch
 bugfix/arm64/dts-rockchip-correct-voltage-selector-firefly-RK3399.patch
 bugfix/x86/perf-tools-fix-unwind-build-on-i386.patch
-bugfix/sh/sh-boot-do-not-use-hyphen-in-exported-variable-name.patch
 bugfix/arm/arm-mm-export-__sync_icache_dcache-for-xen-privcmd.patch
 bugfix/powerpc/powerpc-boot-fix-missing-crc32poly.h-when-building-with-kernel_xz.patch
 bugfix/arm64/arm64-acpi-Add-fixup-for-HPE-m400-quirks.patch
@@ -94,14 +93,6 @@ bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 debian/makefile-do-not-check-for-libelf-when-building-oot-module.patch
 bugfix/all/partially-revert-net-socket-implement-64-bit-timestamps.patch
 bugfix/all/wireguard-ignore-config_android.patch
-bugfix/all/bluetooth-l2cap-fix-attempting-to-adjust-outgoing-mt.patch
-bugfix/all/asoc-soc-dai-tidyup-return-value-of-snd_soc_xlate_td.patch
-bugfix/all/asoc-ops-dynamically-allocate-struct-snd_ctl_elem_va.patch
-bugfix/all/nfsv4.2-another-fix-for-listxattr.patch
-bugfix/all/benet-fix-bug-when-creating-vfs.patch
-bugfix/all/netlink-avoid-infinite-retry-looping-in-netlink_unicast.patch
-bugfix/all/cpuidle-governors-menu-avoid-using-invalid-recent-in.patch
-bugfix/all/smb-client-fix-use-after-free-in-crypt_message-when-using-async-crypto.patch
 
 # Miscellaneous features
 features/all/certs-check-in-the-default-x509-config-file.patch
@@ -124,7 +115,6 @@ debian/i386-686-pae-pci-set-pci-nobios-by-default.patch
 debian/ntfs-mark-it-as-broken.patch
 bugfix/all/vfs-move-cap_convert_nscap-call-into-vfs_setxattr.patch
 bugfix/all/ovl-fail-on-invalid-uid-gid-mapping-at-copy-up.patch
-bugfix/x86/x86-bugs-fix-use-of-possibly-uninit-value-in-amd_check_tsa_microcode.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch

@@ -1151,6 +1151,8 @@ CONFIG_QCOM_Q6V5_MSS=m
 ## file: drivers/reset/Kconfig
 ##
 CONFIG_RESET_CONTROLLER=y
+# CONFIG_RESET_BRCMSTB is not set
+# CONFIG_RESET_BRCMSTB_RESCAL is not set
 
 ##
 ## file: drivers/rpmsg/Kconfig
