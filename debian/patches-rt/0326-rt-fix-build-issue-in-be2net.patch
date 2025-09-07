@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Thu, 20 Mar 2025 21:09:06 -0300
 Subject: [PATCH 326/327] rt: fix build issue in be2net
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0b1d1ab063c561485ebfb12dbdece5fd866894b5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d3e8c8f5df19ba8173db37f940fbecbbb98977b7
 
 While working on v5.10.235-rt128-rc1 I noticed a build problem with
 CONFIG_BE2NET enabled. Upon inspection I noticed commit 7cfae8627511
@@ -21,7 +21,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 4 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/ethernet/emulex/benet/be_cmds.c b/drivers/net/ethernet/emulex/benet/be_cmds.c
-index d9bceb26f4e5..59374a8a4ca3 100644
+index d6984c179bae..8bd7cf6221eb 100644
 --- a/drivers/net/ethernet/emulex/benet/be_cmds.c
 +++ b/drivers/net/ethernet/emulex/benet/be_cmds.c
 @@ -875,9 +875,10 @@ static int be_cmd_lock(struct be_adapter *adapter)

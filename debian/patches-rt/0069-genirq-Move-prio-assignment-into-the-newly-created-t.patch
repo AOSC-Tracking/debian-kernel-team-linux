@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 9 Nov 2020 23:32:39 +0100
 Subject: [PATCH 069/327] genirq: Move prio assignment into the newly created
  thread
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=64b65ccb844433a1cf14b7221e1374ec52dff6b0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2f0c650c2c2a2c999810cc867f9cbfb2d58818ec
 
 With enabled threaded interrupts the nouveau driver reported the
 following:

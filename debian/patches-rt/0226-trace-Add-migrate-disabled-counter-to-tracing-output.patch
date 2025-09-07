@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 17 Jul 2011 21:56:42 +0200
 Subject: [PATCH 226/327] trace: Add migrate-disabled counter to tracing output
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=28e9b9ef397a375bafdf9e8c2fdd6e944f4b1ed1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6c3a54005e37d2d2874d500a954ec72332abc20b
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
@@ -32,10 +32,10 @@ index ce370f32a576..e55ee1a7229a 100644
  	entry->type			= type;
  	entry->flags =			trace_ctx >> 16;
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index aa5d0ebe5447..23b3e5248747 100644
+index e8cfbd66c236..b54956399a29 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
-@@ -2601,6 +2601,15 @@ enum print_line_t trace_handle_return(struct trace_seq *s)
+@@ -2600,6 +2600,15 @@ enum print_line_t trace_handle_return(struct trace_seq *s)
  }
  EXPORT_SYMBOL_GPL(trace_handle_return);
  
@@ -51,7 +51,7 @@ index aa5d0ebe5447..23b3e5248747 100644
  unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
  {
  	unsigned int trace_flags = irqs_status;
-@@ -2619,7 +2628,8 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
+@@ -2618,7 +2627,8 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
  		trace_flags |= TRACE_FLAG_NEED_RESCHED;
  	if (test_preempt_need_resched())
  		trace_flags |= TRACE_FLAG_PREEMPT_RESCHED;
@@ -61,7 +61,7 @@ index aa5d0ebe5447..23b3e5248747 100644
  }
  
  struct ring_buffer_event *
-@@ -3884,9 +3894,10 @@ static void print_lat_help_header(struct seq_file *m)
+@@ -3883,9 +3893,10 @@ static void print_lat_help_header(struct seq_file *m)
  		    "#                  | / _----=> need-resched    \n"
  		    "#                  || / _---=> hardirq/softirq \n"
  		    "#                  ||| / _--=> preempt-depth   \n"
@@ -75,7 +75,7 @@ index aa5d0ebe5447..23b3e5248747 100644
  }
  
  static void print_event_info(struct array_buffer *buf, struct seq_file *m)
-@@ -3924,9 +3935,10 @@ static void print_func_help_header_irq(struct array_buffer *buf, struct seq_file
+@@ -3923,9 +3934,10 @@ static void print_func_help_header_irq(struct array_buffer *buf, struct seq_file
  	seq_printf(m, "#                            %.*s / _----=> need-resched\n", prec, space);
  	seq_printf(m, "#                            %.*s| / _---=> hardirq/softirq\n", prec, space);
  	seq_printf(m, "#                            %.*s|| / _--=> preempt-depth\n", prec, space);
@@ -90,7 +90,7 @@ index aa5d0ebe5447..23b3e5248747 100644
  
  void
 diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index 0650f5cfac58..bf51d3fb90d8 100644
+index d6d2d2aee881..747cf3f6d462 100644
 --- a/kernel/trace/trace_events.c
 +++ b/kernel/trace/trace_events.c
 @@ -184,6 +184,7 @@ static int trace_define_common_fields(void)

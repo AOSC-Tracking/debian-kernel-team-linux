@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 28 May 2018 15:24:22 +0200
 Subject: [PATCH 198/327] mm/SLxB: change list_lock to raw_spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6b0e70116fad5f5c44465c0022e541b7fc48144b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1e8087b93dd9d16c4f4486fee298e50b491e4581
 
 The list_lock is used with used with IRQs off on RT. Make it a raw_spinlock_t
 otherwise the interrupts won't be disabled on -RT.  The locking rules remain
@@ -369,10 +369,10 @@ index b2cc2cf7d8a3..677c0651ef66 100644
  	num_objs = total_slabs * cachep->num;
  	active_slabs = total_slabs - free_slabs;
 diff --git a/mm/slab.h b/mm/slab.h
-index 6952e10cf33b..ed5dd6e9e0cc 100644
+index 4b70cf4493e6..89ad4fd46da4 100644
 --- a/mm/slab.h
 +++ b/mm/slab.h
-@@ -543,7 +543,7 @@ static inline void slab_post_alloc_hook(struct kmem_cache *s,
+@@ -540,7 +540,7 @@ static inline void slab_post_alloc_hook(struct kmem_cache *s,
   * The slab lists for all objects.
   */
  struct kmem_cache_node {

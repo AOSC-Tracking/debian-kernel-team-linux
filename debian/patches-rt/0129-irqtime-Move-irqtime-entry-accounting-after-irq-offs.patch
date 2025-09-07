@@ -2,7 +2,7 @@ From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:31 +0100
 Subject: [PATCH 129/327] irqtime: Move irqtime entry accounting after irq
  offset incrementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7b47eba640a2df0cd60afd6ade8087518f860b9d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=54a533f840809684a1171b3c851b3d437f2a2a90
 
 IRQ time entry is currently accounted before HARDIRQ_OFFSET or
 SOFTIRQ_OFFSET are incremented. This is convenient to decide to which

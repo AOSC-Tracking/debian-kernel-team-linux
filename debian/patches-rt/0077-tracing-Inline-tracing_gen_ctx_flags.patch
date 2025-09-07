@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 3 Feb 2021 11:05:24 -0500
 Subject: [PATCH 077/327] tracing: Inline tracing_gen_ctx_flags()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e51300797ef1f2ac2e6be1cb4b3b6dceeecd1289
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1b7e53933379a4546397ddff441b0796fc6a1c61
 
 Inline tracing_gen_ctx_flags(). This allows to have one ifdef
 CONFIG_TRACE_IRQFLAGS_SUPPORT.
@@ -88,10 +88,10 @@ index 3e056c7f4cb1..bc707ca498e6 100644
  struct trace_event_file;
  
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index eda3091b4b6f..26237c7878ca 100644
+index 2c968324ed72..befe2eef4dd6 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
-@@ -2601,20 +2601,13 @@ enum print_line_t trace_handle_return(struct trace_seq *s)
+@@ -2600,20 +2600,13 @@ enum print_line_t trace_handle_return(struct trace_seq *s)
  }
  EXPORT_SYMBOL_GPL(trace_handle_return);
  
@@ -114,7 +114,7 @@ index eda3091b4b6f..26237c7878ca 100644
  	if (pc & NMI_MASK)
  		trace_flags |= TRACE_FLAG_NMI;
  	if (pc & HARDIRQ_MASK)
-@@ -2630,33 +2623,6 @@ unsigned int tracing_gen_ctx_flags(unsigned long irqflags)
+@@ -2629,33 +2622,6 @@ unsigned int tracing_gen_ctx_flags(unsigned long irqflags)
  	return (trace_flags << 16) | (pc & 0xff);
  }
  
@@ -149,7 +149,7 @@ index eda3091b4b6f..26237c7878ca 100644
  trace_buffer_lock_reserve(struct trace_buffer *buffer,
  			  int type,
 diff --git a/kernel/trace/trace.h b/kernel/trace/trace.h
-index 5f0cc6b9068c..ce33dcbc3501 100644
+index 152123d0a55f..665eede073ee 100644
 --- a/kernel/trace/trace.h
 +++ b/kernel/trace/trace.h
 @@ -140,25 +140,6 @@ struct kretprobe_trace_entry_head {

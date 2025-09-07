@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:54 +0100
 Subject: [PATCH 147/327] irqtime: Make accounting correct on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3547dee974d37f1a0901d98b89d4e4dfe4ebf3e7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d3953e870366d67e4df560dd7b3579dfa27c08ec
 
 vtime_account_irq and irqtime_account_irq() base checks on preempt_count()
 which fails on RT because preempt_count() does not contain the softirq

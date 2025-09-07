@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 30 Oct 2020 13:59:06 +0100
 Subject: [PATCH 062/327] highmem: Don't disable preemption on RT in
  kmap_atomic()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a855f95296e4a3d467d0bae60f58901cc0109b6f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=101f3a9e2fcdb61f9a354e08145dc82f454e1a6f
 
 Disabling preemption makes it impossible to acquire sleeping locks within
 kmap_atomic() section.

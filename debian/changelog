@@ -1322,7 +1322,6 @@ linux (5.10.241-1) UNRELEASED; urgency=medium
     should not be needed after "xen/swiotlb: relax alignment requirements"
   * [x86] ACPI: Make ACPI_HED built-in since it can no longer be modular
   * Bump ABI to 36
-  * [rt] Update to 5.10.239-rt133
   * d/b/buildcheck.py, d/rules.real: Run buildcheck.py in setup as well
   * d/b/buildcheck.py: Check config of kernel to be signed
   * d/rules: Include target suite as an input to gencontrol.py
@@ -1331,7 +1330,7 @@ linux (5.10.241-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Ignore pycodestyle error E241
   * d/rules.real: Move module installation to the image build rule
   * certs: check-in the default x509 config file
-  * [rt] Refresh "cpuset: Convert callback_lock to raw_spinlock_t"
+  * [rt] Update to 5.10.241-rt135
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)

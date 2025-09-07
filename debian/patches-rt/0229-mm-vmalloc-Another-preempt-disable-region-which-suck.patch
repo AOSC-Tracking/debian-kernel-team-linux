@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 12 Jul 2011 11:39:36 +0200
 Subject: [PATCH 229/327] mm/vmalloc: Another preempt disable region which
  sucks
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=47e2180f645ff3848b06b66a1221374c0a9340dc
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=14881ed083c5fd93bca789e26f4d25e8a2cc6bdc
 
 Avoid the preempt disable version of get_cpu_var(). The inner-lock should
 provide enough serialisation.
@@ -13,10 +13,10 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/mm/vmalloc.c b/mm/vmalloc.c
-index fd1c8f51aa53..2898459630d1 100644
+index 66c24ed6e201..55429a827c37 100644
 --- a/mm/vmalloc.c
 +++ b/mm/vmalloc.c
-@@ -1542,7 +1542,7 @@ static void *new_vmap_block(unsigned int order, gfp_t gfp_mask)
+@@ -1548,7 +1548,7 @@ static void *new_vmap_block(unsigned int order, gfp_t gfp_mask)
  	struct vmap_block *vb;
  	struct vmap_area *va;
  	unsigned long vb_idx;
@@ -25,7 +25,7 @@ index fd1c8f51aa53..2898459630d1 100644
  	void *vaddr;
  
  	node = numa_node_id();
-@@ -1579,11 +1579,12 @@ static void *new_vmap_block(unsigned int order, gfp_t gfp_mask)
+@@ -1585,11 +1585,12 @@ static void *new_vmap_block(unsigned int order, gfp_t gfp_mask)
  		return ERR_PTR(err);
  	}
  
@@ -40,7 +40,7 @@ index fd1c8f51aa53..2898459630d1 100644
  
  	return vaddr;
  }
-@@ -1648,6 +1649,7 @@ static void *vb_alloc(unsigned long size, gfp_t gfp_mask)
+@@ -1654,6 +1655,7 @@ static void *vb_alloc(unsigned long size, gfp_t gfp_mask)
  	struct vmap_block *vb;
  	void *vaddr = NULL;
  	unsigned int order;
@@ -48,7 +48,7 @@ index fd1c8f51aa53..2898459630d1 100644
  
  	BUG_ON(offset_in_page(size));
  	BUG_ON(size > PAGE_SIZE*VMAP_MAX_ALLOC);
-@@ -1662,7 +1664,8 @@ static void *vb_alloc(unsigned long size, gfp_t gfp_mask)
+@@ -1668,7 +1670,8 @@ static void *vb_alloc(unsigned long size, gfp_t gfp_mask)
  	order = get_order(size);
  
  	rcu_read_lock();
@@ -58,7 +58,7 @@ index fd1c8f51aa53..2898459630d1 100644
  	list_for_each_entry_rcu(vb, &vbq->free, free_list) {
  		unsigned long pages_off;
  
-@@ -1685,7 +1688,7 @@ static void *vb_alloc(unsigned long size, gfp_t gfp_mask)
+@@ -1691,7 +1694,7 @@ static void *vb_alloc(unsigned long size, gfp_t gfp_mask)
  		break;
  	}
  

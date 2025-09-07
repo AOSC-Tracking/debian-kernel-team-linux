@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 6 Nov 2011 12:26:18 +0100
 Subject: [PATCH 212/327] x86: kvm Require const tsc for RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=07805dc6f04e360249e9955da8868dd2d27fc189
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8a6072aa7c7aeec7b5b583e81190d431d000205e
 
 Non constant TSC is a nightmare on bare metal already, but with
 virtualization it becomes a complete disaster because the workarounds
@@ -14,10 +14,10 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 8 insertions(+)
 
 diff --git a/arch/x86/kvm/x86.c b/arch/x86/kvm/x86.c
-index bc295439360e..c18d2fc94fa4 100644
+index b61f697479a3..9f40b2c3f021 100644
 --- a/arch/x86/kvm/x86.c
 +++ b/arch/x86/kvm/x86.c
-@@ -8170,6 +8170,14 @@ int kvm_arch_init(void *opaque)
+@@ -8172,6 +8172,14 @@ int kvm_arch_init(void *opaque)
  		goto out;
  	}
  

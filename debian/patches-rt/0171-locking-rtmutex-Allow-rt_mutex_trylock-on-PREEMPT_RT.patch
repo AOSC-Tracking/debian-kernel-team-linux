@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 2 Dec 2015 11:34:07 +0100
 Subject: [PATCH 171/327] locking/rtmutex: Allow rt_mutex_trylock() on
  PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=61624cebf8b6242d309691ef488bf65a51003e1f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a0228d989d8a00271c4f36e962868803d2af3c80
 
 Non PREEMPT_RT kernel can deadlock on rt_mutex_trylock() in softirq
 context.

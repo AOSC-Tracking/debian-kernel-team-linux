@@ -2,7 +2,7 @@ From: "Ahmed S. Darwish" <a.darwish@linutronix.de>
 Date: Tue, 16 Mar 2021 11:56:30 +0100
 Subject: [PATCH 288/327] net: xfrm: Use sequence counter with associated
  spinlock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=94d1ed1315cfc36a5a1219150d7f2918d211a748
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=33d450ec4a407f0c07219683a970cdd5a1eca3d8
 
 A sequence counter write section must be serialized or its internal
 state can get corrupted. A plain seqcount_t does not contain the

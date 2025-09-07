@@ -1,7 +1,7 @@
 From: Mike Galbraith <efault@gmx.de>
 Date: Sun, 8 Jan 2017 09:32:25 +0100
 Subject: [PATCH 255/327] cpuset: Convert callback_lock to raw_spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ad46dd580d9280c3b298d653970014608e7239b9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9d17a140cc76e30706ed358d8ae5c9285bfc42da
 
 The two commits below add up to a cpuset might_sleep() splat for RT:
 
@@ -50,6 +50,8 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  kernel/cgroup/cpuset.c | 82 +++++++++++++++++++++---------------------
  1 file changed, 41 insertions(+), 41 deletions(-)
 
+diff --git a/kernel/cgroup/cpuset.c b/kernel/cgroup/cpuset.c
+index efe9785c6c13..e9372633d69f 100644
 --- a/kernel/cgroup/cpuset.c
 +++ b/kernel/cgroup/cpuset.c
 @@ -376,7 +376,7 @@ void cpuset_unlock(void)
@@ -61,7 +63,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  static struct workqueue_struct *cpuset_migrate_mm_wq;
  
-@@ -1335,7 +1335,7 @@ static int update_parent_subparts_cpumas
+@@ -1335,7 +1335,7 @@ static int update_parent_subparts_cpumask(struct cpuset *cpuset, int cmd,
  	 * Newly added CPUs will be removed from effective_cpus and
  	 * newly deleted ones will be added back to effective_cpus.
  	 */
@@ -70,7 +72,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  	if (adding) {
  		cpumask_or(parent->subparts_cpus,
  			   parent->subparts_cpus, tmp->addmask);
-@@ -1357,7 +1357,7 @@ static int update_parent_subparts_cpumas
+@@ -1357,7 +1357,7 @@ static int update_parent_subparts_cpumask(struct cpuset *cpuset, int cmd,
  
  	if (cpuset->partition_root_state != new_prs)
  		cpuset->partition_root_state = new_prs;
@@ -79,7 +81,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	return cmd == partcmd_update;
  }
-@@ -1460,7 +1460,7 @@ static void update_cpumasks_hier(struct
+@@ -1460,7 +1460,7 @@ static void update_cpumasks_hier(struct cpuset *cs, struct tmpmasks *tmp)
  			continue;
  		rcu_read_unlock();
  
@@ -88,7 +90,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  		cpumask_copy(cp->effective_cpus, tmp->new_cpus);
  		if (cp->nr_subparts_cpus && (new_prs != PRS_ENABLED)) {
-@@ -1494,7 +1494,7 @@ static void update_cpumasks_hier(struct
+@@ -1494,7 +1494,7 @@ static void update_cpumasks_hier(struct cpuset *cs, struct tmpmasks *tmp)
  		if (new_prs != cp->partition_root_state)
  			cp->partition_root_state = new_prs;
  
@@ -97,7 +99,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  		WARN_ON(!is_in_v2_mode() &&
  			!cpumask_equal(cp->cpus_allowed, cp->effective_cpus));
-@@ -1622,7 +1622,7 @@ static int update_cpumask(struct cpuset
+@@ -1622,7 +1622,7 @@ static int update_cpumask(struct cpuset *cs, struct cpuset *trialcs,
  			return -EINVAL;
  	}
  
@@ -106,7 +108,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  	cpumask_copy(cs->cpus_allowed, trialcs->cpus_allowed);
  
  	/*
-@@ -1632,7 +1632,7 @@ static int update_cpumask(struct cpuset
+@@ -1632,7 +1632,7 @@ static int update_cpumask(struct cpuset *cs, struct cpuset *trialcs,
  		cpumask_and(cs->subparts_cpus, cs->subparts_cpus, cs->cpus_allowed);
  		cs->nr_subparts_cpus = cpumask_weight(cs->subparts_cpus);
  	}
@@ -115,7 +117,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	update_cpumasks_hier(cs, &tmp);
  
-@@ -1826,9 +1826,9 @@ static void update_nodemasks_hier(struct
+@@ -1826,9 +1826,9 @@ static void update_nodemasks_hier(struct cpuset *cs, nodemask_t *new_mems)
  			continue;
  		rcu_read_unlock();
  
@@ -127,7 +129,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  		WARN_ON(!is_in_v2_mode() &&
  			!nodes_equal(cp->mems_allowed, cp->effective_mems));
-@@ -1898,9 +1898,9 @@ static int update_nodemask(struct cpuset
+@@ -1898,9 +1898,9 @@ static int update_nodemask(struct cpuset *cs, struct cpuset *trialcs,
  
  	check_insane_mems_config(&trialcs->mems_allowed);
  
@@ -139,7 +141,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	/* use trialcs->mems_allowed as a temp variable */
  	update_nodemasks_hier(cs, &trialcs->mems_allowed);
-@@ -1991,9 +1991,9 @@ static int update_flag(cpuset_flagbits_t
+@@ -1991,9 +1991,9 @@ static int update_flag(cpuset_flagbits_t bit, struct cpuset *cs,
  	spread_flag_changed = ((is_spread_slab(cs) != is_spread_slab(trialcs))
  			|| (is_spread_page(cs) != is_spread_page(trialcs)));
  
@@ -151,7 +153,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	if (!cpumask_empty(trialcs->cpus_allowed) && balance_flag_changed)
  		rebuild_sched_domains_locked();
-@@ -2079,9 +2079,9 @@ static int update_prstate(struct cpuset
+@@ -2079,9 +2079,9 @@ static int update_prstate(struct cpuset *cs, int new_prs)
  	rebuild_sched_domains_locked();
  out:
  	if (!err) {
@@ -163,7 +165,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  	}
  
  	free_cpumasks(NULL, &tmpmask);
-@@ -2548,7 +2548,7 @@ static int cpuset_common_seq_show(struct
+@@ -2548,7 +2548,7 @@ static int cpuset_common_seq_show(struct seq_file *sf, void *v)
  	cpuset_filetype_t type = seq_cft(sf)->private;
  	int ret = 0;
  
@@ -172,7 +174,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	switch (type) {
  	case FILE_CPULIST:
-@@ -2570,7 +2570,7 @@ static int cpuset_common_seq_show(struct
+@@ -2570,7 +2570,7 @@ static int cpuset_common_seq_show(struct seq_file *sf, void *v)
  		ret = -EINVAL;
  	}
  
@@ -181,7 +183,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  	return ret;
  }
  
-@@ -2883,14 +2883,14 @@ static int cpuset_css_online(struct cgro
+@@ -2883,14 +2883,14 @@ static int cpuset_css_online(struct cgroup_subsys_state *css)
  
  	cpuset_inc();
  
@@ -198,7 +200,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	if (!test_bit(CGRP_CPUSET_CLONE_CHILDREN, &css->cgroup->flags))
  		goto out_unlock;
-@@ -2917,12 +2917,12 @@ static int cpuset_css_online(struct cgro
+@@ -2917,12 +2917,12 @@ static int cpuset_css_online(struct cgroup_subsys_state *css)
  	}
  	rcu_read_unlock();
  
@@ -213,7 +215,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  out_unlock:
  	mutex_unlock(&cpuset_mutex);
  	put_online_cpus();
-@@ -2978,7 +2978,7 @@ static void cpuset_css_free(struct cgrou
+@@ -2978,7 +2978,7 @@ static void cpuset_css_free(struct cgroup_subsys_state *css)
  static void cpuset_bind(struct cgroup_subsys_state *root_css)
  {
  	mutex_lock(&cpuset_mutex);
@@ -222,7 +224,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	if (is_in_v2_mode()) {
  		cpumask_copy(top_cpuset.cpus_allowed, cpu_possible_mask);
-@@ -2989,7 +2989,7 @@ static void cpuset_bind(struct cgroup_su
+@@ -2989,7 +2989,7 @@ static void cpuset_bind(struct cgroup_subsys_state *root_css)
  		top_cpuset.mems_allowed = top_cpuset.effective_mems;
  	}
  
@@ -231,7 +233,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  	mutex_unlock(&cpuset_mutex);
  }
  
-@@ -3084,12 +3084,12 @@ hotplug_update_tasks_legacy(struct cpuse
+@@ -3084,12 +3084,12 @@ hotplug_update_tasks_legacy(struct cpuset *cs,
  {
  	bool is_empty;
  
@@ -259,7 +261,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	if (cpus_updated)
  		update_tasks_cpumask(cs);
-@@ -3196,10 +3196,10 @@ retry:
+@@ -3196,10 +3196,10 @@ static void cpuset_hotplug_update_tasks(struct cpuset *cs, struct tmpmasks *tmp)
  	if (is_partition_root(cs) && (cpumask_empty(&new_cpus) ||
  	   (parent->partition_root_state == PRS_ERROR))) {
  		if (cs->nr_subparts_cpus) {
@@ -272,7 +274,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  			compute_effective_cpumask(&new_cpus, cs, parent);
  		}
  
-@@ -3213,9 +3213,9 @@ retry:
+@@ -3213,9 +3213,9 @@ static void cpuset_hotplug_update_tasks(struct cpuset *cs, struct tmpmasks *tmp)
  		     cpumask_empty(&new_cpus)) {
  			update_parent_subparts_cpumask(cs, partcmd_disable,
  						       NULL, tmp);
@@ -284,7 +286,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  		}
  		cpuset_force_rebuild();
  	}
-@@ -3298,7 +3298,7 @@ static void cpuset_hotplug_workfn(struct
+@@ -3298,7 +3298,7 @@ static void cpuset_hotplug_workfn(struct work_struct *work)
  
  	/* synchronize cpus_allowed to cpu_active_mask */
  	if (cpus_updated) {
@@ -293,7 +295,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  		if (!on_dfl)
  			cpumask_copy(top_cpuset.cpus_allowed, &new_cpus);
  		/*
-@@ -3318,17 +3318,17 @@ static void cpuset_hotplug_workfn(struct
+@@ -3318,17 +3318,17 @@ static void cpuset_hotplug_workfn(struct work_struct *work)
  			}
  		}
  		cpumask_copy(top_cpuset.effective_cpus, &new_cpus);
@@ -314,7 +316,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  		update_tasks_nodemask(&top_cpuset);
  	}
  
-@@ -3432,11 +3432,11 @@ void cpuset_cpus_allowed(struct task_str
+@@ -3432,11 +3432,11 @@ void cpuset_cpus_allowed(struct task_struct *tsk, struct cpumask *pmask)
  {
  	unsigned long flags;
  
@@ -328,7 +330,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  }
  
  /**
-@@ -3497,11 +3497,11 @@ nodemask_t cpuset_mems_allowed(struct ta
+@@ -3497,11 +3497,11 @@ nodemask_t cpuset_mems_allowed(struct task_struct *tsk)
  	nodemask_t mask;
  	unsigned long flags;
  
@@ -342,7 +344,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  
  	return mask;
  }
-@@ -3593,14 +3593,14 @@ bool __cpuset_node_allowed(int node, gfp
+@@ -3593,14 +3593,14 @@ bool __cpuset_node_allowed(int node, gfp_t gfp_mask)
  		return true;
  
  	/* Not hardwall and node outside mems_allowed: scan up cpusets */

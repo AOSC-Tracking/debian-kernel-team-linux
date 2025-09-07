@@ -2,7 +2,7 @@ From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:14 +0200
 Subject: [PATCH 017/327] sched/proc: Print accurate cpumask vs
  migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e4d4712d9785b3d6b07d69810b5cacaf2ea589ef
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a51074ebba9409d308290b116d4349a9ff4e8ba9
 
 Ensure /proc/*/status doesn't print 'random' cpumasks due to
 migrate_disable().
@@ -14,7 +14,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/fs/proc/array.c b/fs/proc/array.c
-index 8fba6d39e776..a169141b3366 100644
+index 77b94c04e4af..f70f911e3dd7 100644
 --- a/fs/proc/array.c
 +++ b/fs/proc/array.c
 @@ -384,9 +384,9 @@ static inline void task_context_switch_counts(struct seq_file *m,

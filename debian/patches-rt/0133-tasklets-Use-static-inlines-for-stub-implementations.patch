@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:05 +0100
 Subject: [PATCH 133/327] tasklets: Use static inlines for stub implementations
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=00e83a6ab948d3852cd58968dbc0b7b071fa349f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6f70c4415bb1b973228c0985901ee3e12e8e6f3f
 
 Inlines exist for a reason.
 

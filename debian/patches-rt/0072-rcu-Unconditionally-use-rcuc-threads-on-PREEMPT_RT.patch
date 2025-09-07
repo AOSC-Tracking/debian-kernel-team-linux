@@ -1,7 +1,7 @@
 From: Scott Wood <swood@redhat.com>
 Date: Tue, 15 Dec 2020 15:16:46 +0100
 Subject: [PATCH 072/327] rcu: Unconditionally use rcuc threads on PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f90d5d67189a9d3be22cf2e9cd0503e54829234e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e8d5248719d3cd78e60b2b247b637f068043f188
 
 PREEMPT_RT systems have long used the rcutree.use_softirq kernel
 boot parameter to avoid use of RCU_SOFTIRQ handlers, which can disrupt
@@ -30,10 +30,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 7 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 1eff15169983..c1f6d749a352 100644
+index bbe6c23a5778..7ac5531c383e 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4237,6 +4237,10 @@
+@@ -4252,6 +4252,10 @@
  			value, meaning that RCU_SOFTIRQ is used by default.
  			Specify rcutree.use_softirq=0 to use rcuc kthreads.
  
@@ -45,7 +45,7 @@ index 1eff15169983..c1f6d749a352 100644
  			Disable autobalancing of the rcu_node combining
  			tree.  This is used by rcutorture, and might
 diff --git a/kernel/rcu/tree.c b/kernel/rcu/tree.c
-index 06bfe61d3cd3..39b3b56ad92d 100644
+index c4eb06d37ae9..78d9acaa6bed 100644
 --- a/kernel/rcu/tree.c
 +++ b/kernel/rcu/tree.c
 @@ -101,8 +101,10 @@ static struct rcu_state rcu_state = {

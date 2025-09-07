@@ -5,7 +5,7 @@ Subject: [PATCH 125/327] sh/irq: Add missing closing parentheses in
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9403db3e57a5cac5188e37ed25214e52fab27ba0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=02a782236b39e8b7aad7b4f729fa3e16da53954d
 
     arch/sh/kernel/irq.c: In function ‘arch_show_interrupts’:
     arch/sh/kernel/irq.c:47:58: error: expected ‘)’ before ‘;’ token

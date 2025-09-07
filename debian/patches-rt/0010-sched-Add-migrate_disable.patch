@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:07 +0200
 Subject: [PATCH 010/327] sched: Add migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=293e1f7ebad2408bc045cea88a9050a226c6b7fd
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=31af1555a5c56c6432930d99ffb9412d759cbd3d
 
 Add the base migrate_disable() support (under protest).
 

@@ -2,7 +2,7 @@ From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 9 Dec 2020 01:50:53 +0106
 Subject: [PATCH 081/327] printk: remove logbuf_lock writer-protection of
  ringbuffer
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8940fdf6ea0b8e9fdacdab2303166647cf5e5616
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=48eec3a92bae755310bc21c101ba206dc6fdc213
 
 Since the ringbuffer is lockless, there is no need for it to be
 protected by @logbuf_lock. Remove @logbuf_lock writer-protection of

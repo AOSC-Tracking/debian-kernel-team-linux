@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:00 +0106
 Subject: [PATCH 097/327] printk: remove safe buffers
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0ada118fdf27cec81b816a60920e9ae060902a2f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=adffba0d21a08e27eeac1206526621aceeddbeb5
 
 With @logbuf_lock removed, the high level printk functions for
 storing messages are lockless. Messages can be stored from any

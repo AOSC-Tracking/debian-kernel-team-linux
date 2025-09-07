@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:22 +0100
 Subject: [PATCH 033/327] ARM: highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=51e5cb4e32d38ee185d14093bc2525a8112a72d3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f029b521c893c7e1a0f4529a33643eba94611916
 
 No reason having the same code in every architecture.
 

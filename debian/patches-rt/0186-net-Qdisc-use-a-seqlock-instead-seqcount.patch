@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Sep 2016 17:36:35 +0200
 Subject: [PATCH 186/327] net/Qdisc: use a seqlock instead seqcount
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ead9902bc880b96c66875e12ffcb11fef0a29976
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=37d8a6180c87807942fc550a640d4853610e7306
 
 The seqcount disables preemption on -RT while it is held which can't
 remove. Also we don't want the reader to spin for ages if the writer is
@@ -249,10 +249,10 @@ index e491b083b348..ef432cea2e10 100644
  			 struct gnet_stats_basic_cpu __percpu *cpu,
  			 struct gnet_stats_basic_packed *b)
 diff --git a/net/sched/sch_api.c b/net/sched/sch_api.c
-index b8fb94bfa960..825aa2b46301 100644
+index a325036f3ae0..6e0d0ad72cd6 100644
 --- a/net/sched/sch_api.c
 +++ b/net/sched/sch_api.c
-@@ -1280,7 +1280,7 @@ static struct Qdisc *qdisc_create(struct net_device *dev,
+@@ -1276,7 +1276,7 @@ static struct Qdisc *qdisc_create(struct net_device *dev,
  		rcu_assign_pointer(sch->stab, stab);
  	}
  	if (tca[TCA_RATE]) {

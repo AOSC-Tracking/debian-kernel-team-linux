@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:11 +0100
 Subject: [PATCH 139/327] net: jme: Replace link-change tasklet with work
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=985e41f5d6492f8529cf7b30e9e601aba921c401
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9e27e9dac47c849998bac969ea61435b3b41543b
 
 The link change tasklet disables the tasklets for tx/rx processing while
 upating hw parameters and then enables the tasklets again.

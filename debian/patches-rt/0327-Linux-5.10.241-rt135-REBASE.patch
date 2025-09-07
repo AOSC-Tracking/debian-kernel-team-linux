@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
-Date: Fri, 4 Jul 2025 13:07:49 -0300
-Subject: [PATCH 327/327] Linux 5.10.239-rt133 REBASE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7456aa8b60b38ad060cf41a80bad5e577f225868
+Date: Thu, 4 Sep 2025 14:41:19 -0300
+Subject: [PATCH 327/327] Linux 5.10.241-rt135 REBASE
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=918b731a58ac56bd73ea58f9d2d32ea63c7d1a54
 
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
 ---
@@ -9,9 +9,9 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/localversion-rt b/localversion-rt
-index 21988f9ad53f..c2c7e0fb6685 100644
+index 21988f9ad53f..e3026053f01e 100644
 --- a/localversion-rt
 +++ b/localversion-rt
 @@ -1 +1 @@
 --rt34
-+-rt133
++-rt135

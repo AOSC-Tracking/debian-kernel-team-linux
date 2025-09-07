@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 15 Dec 2020 15:16:49 +0100
 Subject: [PATCH 075/327] doc: Use CONFIG_PREEMPTION
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8526876614517bb52a4feb335af465385e1a107b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a51c03c75f955747086daa863a6d3c522e65242a
 
 CONFIG_PREEMPTION is selected by CONFIG_PREEMPT and by CONFIG_PREEMPT_RT.
 Both PREEMPT and PREEMPT_RT require the same functionality which today

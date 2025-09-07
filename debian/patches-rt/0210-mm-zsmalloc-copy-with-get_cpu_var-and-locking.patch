@@ -1,7 +1,7 @@
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Tue, 22 Mar 2016 11:16:09 +0100
 Subject: [PATCH 210/327] mm/zsmalloc: copy with get_cpu_var() and locking
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b4175eb710bc7793cb64354e7e607395be8cfa18
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c90f7616d1afc38c3aa2de3fc1c12f50a27e6512
 
 get_cpu_var() disables preemption and triggers a might_sleep() splat later.
 This is replaced with get_locked_var().
@@ -17,7 +17,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 79 insertions(+), 6 deletions(-)
 
 diff --git a/mm/zsmalloc.c b/mm/zsmalloc.c
-index c18dc8e61d35..7dad2ff3e778 100644
+index f5f80981ac98..8a3439b7bc4f 100644
 --- a/mm/zsmalloc.c
 +++ b/mm/zsmalloc.c
 @@ -57,6 +57,7 @@
@@ -187,7 +187,7 @@ index c18dc8e61d35..7dad2ff3e778 100644
  }
  
  static void reset_page(struct page *page)
-@@ -1278,7 +1350,8 @@ void *zs_map_object(struct zs_pool *pool, unsigned long handle,
+@@ -1280,7 +1352,8 @@ void *zs_map_object(struct zs_pool *pool, unsigned long handle,
  	class = pool->size_class[class_idx];
  	off = (class->size * obj_idx) & ~PAGE_MASK;
  
@@ -197,7 +197,7 @@ index c18dc8e61d35..7dad2ff3e778 100644
  	area->vm_mm = mm;
  	if (off + class->size <= PAGE_SIZE) {
  		/* this object is contained entirely within a page */
-@@ -1332,7 +1405,7 @@ void zs_unmap_object(struct zs_pool *pool, unsigned long handle)
+@@ -1334,7 +1407,7 @@ void zs_unmap_object(struct zs_pool *pool, unsigned long handle)
  
  		__zs_unmap_object(area, pages, off, class->size);
  	}

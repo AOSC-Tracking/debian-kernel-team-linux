@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 24 Jul 2011 12:11:43 +0200
 Subject: [PATCH 188/327] kconfig: Disable config options which are not RT
  compatible
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=db8f6230ab69fa94e0b8f0b2cf7e1581790e1cef
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e7db6d0db76c6a05c56bd8670f45c0dfbe088013
 
 Disable stuff which is known to have issues on RT
 

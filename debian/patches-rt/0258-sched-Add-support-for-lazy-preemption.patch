@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
 Subject: [PATCH 258/327] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a983357fd2acaa5e5eb2abec3e41c7a3f7049a89
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f7fe05a421403cd34441a0c07ee79b347b3a1738
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -554,10 +554,10 @@ index 34db470c843a..f0fc599cf79c 100644
  extern void init_rt_bandwidth(struct rt_bandwidth *rt_b, u64 period, u64 runtime);
  
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 23b3e5248747..e1a2db7b3342 100644
+index b54956399a29..d4ec5a0d5c4f 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
-@@ -2628,8 +2628,16 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
+@@ -2627,8 +2627,16 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
  		trace_flags |= TRACE_FLAG_NEED_RESCHED;
  	if (test_preempt_need_resched())
  		trace_flags |= TRACE_FLAG_PREEMPT_RESCHED;
@@ -576,7 +576,7 @@ index 23b3e5248747..e1a2db7b3342 100644
  }
  
  struct ring_buffer_event *
-@@ -3889,15 +3897,17 @@ unsigned long trace_total_entries(struct trace_array *tr)
+@@ -3888,15 +3896,17 @@ unsigned long trace_total_entries(struct trace_array *tr)
  
  static void print_lat_help_header(struct seq_file *m)
  {
@@ -603,7 +603,7 @@ index 23b3e5248747..e1a2db7b3342 100644
  }
  
  static void print_event_info(struct array_buffer *buf, struct seq_file *m)
-@@ -3931,14 +3941,16 @@ static void print_func_help_header_irq(struct array_buffer *buf, struct seq_file
+@@ -3930,14 +3940,16 @@ static void print_func_help_header_irq(struct array_buffer *buf, struct seq_file
  
  	print_event_info(buf, m);
  
@@ -629,7 +629,7 @@ index 23b3e5248747..e1a2db7b3342 100644
  
  void
 diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index bf51d3fb90d8..74d86e0c20d9 100644
+index 747cf3f6d462..f428393bdb97 100644
 --- a/kernel/trace/trace_events.c
 +++ b/kernel/trace/trace_events.c
 @@ -185,6 +185,7 @@ static int trace_define_common_fields(void)
