@@ -231,13 +231,6 @@ class Gencontrol(Base):
 
     def do_arch_packages(self, arch, vars, makeflags,
                          extra):
-        try:
-            abiname_part = '-%s' % self.config['abi', arch]['abiname']
-        except KeyError:
-            abiname_part = self.abiname_part
-        makeflags['ABINAME'] = vars['abiname'] = \
-            self.abiname_version + abiname_part
-
         if not self.disable_signed:
             build_signed = self.config.merge('build', arch) \
                                       .get('signed-code', False)
@@ -585,14 +578,9 @@ class Gencontrol(Base):
                                     arch, featureset, flavour))
         makeflags['KCONFIG'] = ' '.join(kconfig)
         makeflags['KCONFIG_OPTIONS'] = ''
-        if build_signed:
-            makeflags['KCONFIG_OPTIONS'] += ' -o SECURITY_LOCKDOWN_LSM=y -o MODULE_SIG=y'
         # Add "salt" to fix #872263
         makeflags['KCONFIG_OPTIONS'] += \
             ' -o "BUILD_SALT=\\"%(abiname)s%(localversion)s\\""' % vars
-        if config_entry_build.get('trusted-certs'):
-            makeflags['KCONFIG_OPTIONS'] += \
-                f' -o "SYSTEM_TRUSTED_KEYS=\\"${{CURDIR}}/{config_entry_build["trusted-certs"]}\\""'
 
         merged_config = ('debian/build/config.%s_%s_%s' %
                          (arch, featureset, flavour))
@@ -600,9 +588,50 @@ class Gencontrol(Base):
                                ["$(MAKE) -f debian/rules.real %s %s" %
                                 (merged_config, makeflags)])
 
+    # Generate a unique kernel ABI name suffix following the old
+    # (pre-trixie) format
+    def _generate_abiname_part(self):
+        # Start with 38 for 6.1.147-1 (the last manually set ABI
+        # version) and add 1 for every non-backport changelog entry
+        # after that.  Also count backport entries since the last
+        # non-backport, in case we need further disambiguation.
+        abiname_major = 0
+        backport_count = 0
+        for entry in self.changelog:
+            if '~' in entry.version.revision:
+                if abiname_major == 0:
+                    backport_count += 1
+            elif str(entry.version) == '6.1.147-1':
+                abiname_major += 38
+                break
+            else:
+                abiname_major += 1
+
+        # Select an appropriate prefix for the target release
+        for release_name, release_prefix in [
+                ('UNRELEASED', ''),
+                ('bookworm',   ''),
+                ('bullseye',   '0.deb11.'),
+                ('buster',     '0.deb10.'),
+                ('stretch',    '0.deb9.'),
+        ]:
+            if self.changelog[0].distribution.startswith(release_name):
+                break
+        else:
+            assert False, f'cannot generate ABI name for {self.changelog[0].distribution}'
+
+        # Paste that all together
+        result = f'-{release_prefix}{abiname_major}'
+        if backport_count > 1:
+            result += f'.{backport_count - 1}'
+        return result
+
     def process_changelog(self):
         version = self.version = self.changelog[0].version
-        self.abiname_part = '-%s' % self.config['abi', ]['abiname']
+        try:
+            self.abiname_part = '-%s' % self.config['abi', ]['abiname']
+        except KeyError:
+            self.abiname_part = self._generate_abiname_part()
         # We need to keep at least three version components to avoid
         # userland breakage (e.g. #742226, #745984).
         self.abiname_version = re.sub(r'^(\d+\.\d+)(?=-|$)', r'\1.0',

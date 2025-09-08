@@ -1,5 +1,4 @@
 [abi]
-abiname: 0.deb11.38
 ignore-changes:
  __cpuhp_*
  __udp_gso_segment
@@ -150,7 +149,6 @@ featuresets:
 [build]
 # Disable code signing by default; this can be overridden per-architecture
 signed-code: false
-trusted-certs: debian/certs/debian-uefi-certs.pem
 
 [featureset-rt_base]
 enabled: true
