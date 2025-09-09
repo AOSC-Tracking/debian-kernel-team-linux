@@ -318,7 +318,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - f2fs: use d_inode(dentry) cleanup dentry->d_inode
     - f2fs: fix to correct check conditions in f2fs_cross_rename
     - [arm64] dts: imx8mm-beacon: Fix RTC capacitive load
-    - Squashfs: check return result of sb_min_blocksize
+    - Squashfs: check return result of sb_min_blocksize (CVE-2025-38415)
     - nilfs2: add pointer check for nilfs_direct_propagate()
     - nilfs2: do not propagate ENOENT error from nilfs_btree_propagate()
     - [arm64] bus: fsl-mc: fix double-free on mc_dev (CVE-2025-38313)
@@ -356,6 +356,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - [x86] vmxnet3: correctly report gso type for UDP tunnels
     - PM: sleep: Fix power.is_suspended cleanup for direct-complete devices
     - do_change_type(): refuse to operate on unmounted/not ours mounts
+      (CVE-2025-38498)
     - pmdomain: core: Fix error checking in genpd_dev_pm_attach_by_id()
     - Input: synaptics-rmi4 - convert to use sysfs_emit() APIs
     - Input: synaptics-rmi - fix crash with unsupported versions of F34
@@ -404,6 +405,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - wifi: p54: prevent buffer-overflow in p54_rx_eeprom_readback()
       (CVE-2025-38348)
     - nfsd: nfsd4_spo_must_allow() must check this is a v4 compound request
+      (CVE-2025-38430)
     - nfsd: Initialize ssc before laundromat_work to prevent NULL dereference
       (CVE-2025-38231)
     - jbd2: fix data-race and null-ptr-deref in jbd2_journal_dirty_metadata()
@@ -429,9 +431,12 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - ext4: fix calculation of credits for extent tree modification
     - ext4: factor out ext4_get_maxbytes()
     - ext4: ensure i_size is smaller than maxbytes
+    - Input: ims-pcu - check record size in ims_pcu_flash_firmware()
+      (CVE-2025-38428)
     - f2fs: prevent kernel warning due to negative i_nlink from corrupted image
       (CVE-2025-38219)
     - f2fs: fix to do sanity check on sit_bitmap_size (CVE-2025-38218)
+    - NFC: nci: uart: Set tty->disc_data only in success path (CVE-2025-38416)
     - fbdev: Fix fb_set_var to prevent null-ptr-deref in fb_videomode_to_var
       (CVE-2025-38214)
     - [arm64] clk: meson-g12a: add missing fclk_div2 to spicc
@@ -552,6 +557,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - aoe: clean device rq_list in aoedev_downdev() (CVE-2025-38326)
     - net: ice: Perform accurate aRFS flow match
     - wifi: carl9170: do not ping device which has failed to load firmware
+      (CVE-2025-38420)
     - mpls: Use rcu_dereference_rtnl() in mpls_route_input_rcu().
       (CVE-2025-38324)
     - atm: atmtcp: Free invalid length skb in atmtcp_c_send(). (CVE-2025-38185)
@@ -601,7 +607,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - mm/huge_memory: fix dereferencing invalid pmd migration entry
       (CVE-2025-37958)
     - [armhf] hwmon: (occ) Fix P10 VRM temp sensors
-    - perf: Fix sample vs do_exit()
+    - perf: Fix sample vs do_exit() (CVE-2025-38424)
     - [arm64] ptrace: Fix stack-out-of-bounds read in
       regs_get_kernel_stack_nth() (CVE-2025-38320)
     - bpf: fix precision backtracking instruction iteration
@@ -664,18 +670,22 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - HID: wacom: fix kobject reference count leak
     - [arm*] drm/tegra: Assign plane type before registration
     - [arm*] drm/tegra: Fix a possible null pointer dereference
+      (CVE-2025-38363)
     - drm/udl: Unregister device before cleaning up on disconnect
     - [amd64] drm/amdkfd: Fix race in GWS queue scheduling
     - [amd64] PCI: hv: Do not set PCI_COMMAND_MEMORY to reduce VM boot time
     - [arm64] Restrict pagetable teardown to avoid false warning
     - rtc: cmos: use spin_lock_irqsave in cmos_interrupt
     - [x86] vsock/vmci: Clear the vmci transport packet properly when
-      initializing it
+      initializing it (CVE-2025-38403)
     - mmc: sdhci: Add a helper function for dump register in dynamic debug mode
     - usb: typec: altmodes/displayport: do not index invalid pin_assignments
+      (CVE-2025-38391)
     - RDMA/mlx5: Initialize obj_event->obj_sub_list before xa_insert
+      (CVE-2025-38387)
     - nfs: Clean up /proc/net/rpc/nfs when nfs_fs_proc_net_init() fails.
-    - NFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN
+      (CVE-2025-38400)
+    - NFSv4/pNFS: Fix a race to wake on NFS_LAYOUT_DRAIN (CVE-2025-38393)
     - scsi: qla2xxx: Fix DMA mapping test in qla24xx_get_port_database()
     - scsi: qla4xxx: Fix missing DMA mapping error in qla4xxx_alloc_pdu()
     - scsi: ufs: core: Fix spelling of a sysfs attribute name
@@ -687,20 +697,27 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - [arm64] spi: spi-fsl-dspi: Clear completion counter before initiating
       transfer
     - [x86] drm/i915/gt: Fix timeline left held on VMA alloc error
+      (CVE-2025-38389)
     - amd-xgbe: align CL37 AN sequence as per databook
     - enic: fix incorrect MTU comparison in enic_change_mtu()
     - rose: fix dangling neighbour pointers in rose_rt_device_down()
+      (CVE-2025-38377)
     - nui: Fix dma_mapping_error() check
     - net/sched: Always pass notifications when child class becomes empty
       (CVE-2025-38350)
     - [i386] ALSA: sb: Force to disable DMAs once when DMA mode is changed
     - scsi: target: Fix NULL pointer dereference in
-      core_scsi3_decode_spec_i_port()
+      core_scsi3_decode_spec_i_port() (CVE-2025-38399)
     - wifi: mac80211: drop invalid source address OCB frames
-    - wifi: ath6kl: remove WARN on bad firmware input
+    - wifi: ath6kl: remove WARN on bad firmware input (CVE-2025-38406)
     - ACPICA: Refuse to evaluate a method if arguments are missing
+      (CVE-2025-38386)
     - rcu: Return early if callback is not specified
-    - [arm*] regulator: gpio: Fix the out-of-bounds access to drvdata::gpiods
+    - regulator: gpio: Fix the out-of-bounds access to drvdata::gpiods
+      (CVE-2025-38395)
+    - mtk-sd: Prevent memory corruption from DMA map failure (CVE-2025-38401)
+    - [armhf] drm/v3d: Disable interrupts before resetting the GPU
+      (CVE-2025-38371)
     - RDMA/mlx5: Fix vport loopback for MPV device
     - flexfiles/pNFS: update stats on NFS4ERR_DELAY for v4.1 DSes
     - NFSv4/flexfiles: Fix handling of NFS level errors in I/O
@@ -713,30 +730,33 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - [arm64] net: dpaa2-eth: rearrange variable in dpaa2_eth_get_ethtool_stats
     - [arm64] dpaa2-eth: fix xdp_rxq_info leak
     - Logitech C-270 even more broken
-    - usb: typec: displayport: Fix potential deadlock
+    - usb: typec: displayport: Fix potential deadlock (CVE-2025-38404)
     - [x86] ACPI: PAD: fix crash in exit_round_robin() (CVE-2024-49935)
     - media: uvcvideo: Return the number of processed controls
     - media: uvcvideo: Send control events for partial succeeds
     - media: uvcvideo: Rollback non processed entities on error
     - staging: rtl8723bs: Avoid memset() in aes_cipher() and aes_decipher()
-    - perf: Revert to requiring CAP_SYS_ADMIN for uprobes
+    - [arm*] drm/exynos: exynos7_drm_decon: add vblank check in IRQ handling
+      (CVE-2025-38467)
+    - perf: Revert to requiring CAP_SYS_ADMIN for uprobes (CVE-2025-38466)
     - fix proc_sys_compare() handling of in-lookup dentries
-    - netlink: Fix wraparounds of sk->sk_rmem_alloc.
-    - tipc: Fix use-after-free in tipc_conn_close().
-    - vsock: Fix transport_{g2h,h2g} TOCTOU
+    - netlink: Fix wraparounds of sk->sk_rmem_alloc. (CVE-2025-38465)
+    - tipc: Fix use-after-free in tipc_conn_close(). (CVE-2025-38464)
+    - vsock: Fix transport_{g2h,h2g} TOCTOU (CVE-2025-38462)
     - vm_sockets: Add flags field in the vsock address data structure
     - vm_sockets: Add VMADDR_FLAG_TO_HOST vsock flag
     - af_vsock: Set VMADDR_FLAG_TO_HOST flag on the receive path
     - af_vsock: Assign the vsock transport considering the vsock address flags
-    - vsock: Fix transport_* TOCTOU
+    - vsock: Fix transport_* TOCTOU (CVE-2025-38461)
     - vsock: Fix IOCTL_VM_SOCKETS_GET_LOCAL_CID to check also `transport_local`
     - net: phy: smsc: Fix Auto-MDIX configuration when disabled by strap
     - net: phy: smsc: Fix link failure in forced mode with Auto-MDIX
-    - atm: clip: Fix potential null-ptr-deref in to_atmarpd().
+    - atm: clip: Fix potential null-ptr-deref in to_atmarpd(). (CVE-2025-38460)
     - atm: clip: Fix memory leak of struct clip_vcc. (CVE-2025-38546)
-    - atm: clip: Fix infinite recursive call of clip_push().
-    - atm: clip: Fix NULL pointer dereference in vcc_sendmsg()
+    - atm: clip: Fix infinite recursive call of clip_push(). (CVE-2025-38459)
+    - atm: clip: Fix NULL pointer dereference in vcc_sendmsg() (CVE-2025-38458)
     - net/sched: Abort __tc_modify_qdisc if parent class does not exist
+      (CVE-2025-38457)
     - fs/proc: do_task_stat: use __for_each_thread()
     - rxrpc: Fix oops due to non-existence of prealloc backlog struct
       (CVE-2025-38514)
@@ -764,7 +784,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
       (CVE-2025-38516)
     - drm/sched: Increment job count before swapping tail spsc queue
       (CVE-2025-38515)
-    - usb: gadget: u_serial: Fix race condition in TTY wakeup
+    - usb: gadget: u_serial: Fix race condition in TTY wakeup (CVE-2025-38448)
     - ethernet: atl1: Add missing DMA mapping error checks and count errors
     - netlink: Fix rmem check in netlink_broadcast_deliver().
     - netlink: make sure we allow at least one dump skb
@@ -775,11 +795,12 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - wifi: zd1211rw: Fix potential NULL pointer dereference in
       zd_mac_tx_to_dev() (CVE-2025-38513)
     - md/raid1: Fix stack memory use after return in raid1_reshape
+      (CVE-2025-38445)
     - net: appletalk: Fix device refcount leak in atrtr_create()
       (CVE-2025-38542)
     - net: phy: microchip: limit 100M workaround to link-down events on LAN88xx
     - bnxt_en: Fix DCB ETS validation
-    - bnxt_en: Set DMA unmap len correctly for XDP_REDIRECT
+    - bnxt_en: Set DMA unmap len correctly for XDP_REDIRECT (CVE-2025-38439)
     - [x86] atm: idt77252: Add missing `dma_map_error()`
     - net: usb: qmi_wwan: add SIMCom 8230C composition
     - vt: add missing notification when switching back to text mode
