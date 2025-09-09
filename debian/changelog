@@ -1,4 +1,4 @@
-linux (5.10.241-1) UNRELEASED; urgency=medium
+linux (5.10.243-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.238
@@ -1275,7 +1275,6 @@ linux (5.10.241-1) UNRELEASED; urgency=medium
     - [arm*} media: venus: protect against spurious interrupts during probe
       (CVE-2025-39709)
     - drm/amd/display: Don't overclock DCE 6 by 15%
-    - drm/dp: Change AUX DPCD probe address from DPCD_REV to LANE0_1_STATUS
     - f2fs: fix to avoid out-of-boundary access in dnode page (CVE-2025-38677)
     - [arm*] media: venus: vdec: Clamp param smaller than 1fps and bigger than
       240.
@@ -1316,6 +1315,82 @@ linux (5.10.241-1) UNRELEASED; urgency=medium
     - netfilter: nf_reject: don't leak dst refcount for loopback packets
       (CVE-2025-38732)
     - alloc_fdtable(): change calling conventions.
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.242
+    - ftrace: Fix potential warning in trace_printk_seq during ftrace_dump
+    - scsi: core: sysfs: Correct sysfs attributes access rights
+    - [x86] cpu/hygon: Add missing resctrl_cpu_detect() in bsp_init helper
+      (CVE-2025-39681)
+    - nfs: fold nfs_page_group_lock_subrequests into nfs_lock_and_join_requests
+    - NFS: Fix a race when updating an existing write (CVE-2025-39697)
+    - vhost/net: Protect ubufs with rcu read lock in vhost_net_ubuf_put()
+    - net: ipv4: fix regression in local-broadcast routes
+    - Bluetooth: hci_event: Detect if HCI_EV_NUM_COMP_PKTS is unbalanced
+    - atm: atmtcp: Prevent arbitrary write in atmtcp_recv_control().
+    - [x86] net: dlink: fix multicast stats being counted incorrectly
+    - net/mlx5e: Update and set Xon/Xoff upon MTU set
+    - net/mlx5e: Update and set Xon/Xoff upon port speed set
+    - net/mlx5e: Set local Xoff after FW update
+    - net: stmmac: xgmac: Do not enable RX FIFO Overflow interrupts
+    - sctp: initialize more fields in sctp_v6_from_sk()
+    - efivarfs: Fix slab-out-of-bounds in efivarfs_d_compare
+    - [x86] KVM: x86: use array_index_nospec with indices that come from guest
+    - HID: asus: fix UAF via HID_CLAIMED_INPUT validation
+    - HID: wacom: Add a new Art Pen 2
+    - HID: hid-ntrig: fix unable to handle page fault in ntrig_report_version()
+    - Revert "drm/amdgpu: fix incorrect vm flags to map bo"
+    - dma/pool: Ensure DMA_DIRECT_REMAP allocations are decrypted
+    - net: usb: qmi_wwan: add Telit Cinterion LE910C4-WWX new compositions
+    - drm/nouveau/disp: Always accept linear modifier
+    - [x86] ASoC: Intel: bxt_da7219_max98357a: shrink platform_id below 20
+      characters
+    - [x86] ASoC: Intel: sof_rt5682: shrink platform_id names below 20
+      characters
+    - [x86] ASoC: Intel: glk_rt5682_max98357a: shrink platform_id below 20
+      characters
+    - [x86] ASoC: Intel: sof_da7219_max98373: shrink platform_id below 20
+      characters
+    - xfs: do not propagate ENODATA disk errors into xattr code
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.243
+    - drm/amd/display: Don't warn when missing DCE encoder caps
+    - tee: fix NULL pointer dereference in tee_shm_put
+    - [arm64] dts: rockchip: Add vcc-supply to SPI flash on rk3399-pinebook-pro
+    - wifi: cfg80211: fix use-after-free in cmp_bss()
+    - netfilter: conntrack: helper: Replace -EEXIST by -EBUSY
+    - Bluetooth: Fix use-after-free in l2cap_sock_cleanup_listen()
+    - [x86] xirc2ps_cs: fix register access when enabling FullDuplex
+    - [x86] mISDN: Fix memory leak in dsp_hwec_enable()
+    - icmp: fix icmp_ndo_send address translation for reply direction
+    - i40e: Fix potential invalid access when MAC list is empty
+    - wifi: libertas: cap SSID len in lbs_associate()
+    - [arm64] net: thunder_bgx: add a missing of_node_put
+    - [arm64] net: thunder_bgx: decrement cleanup index before use
+    - ipv4: Fix NULL vs error pointer check in inet_blackhole_dev_init()
+    - ax25: properly unshare skbs in ax25_kiss_rcv()
+    - net: atm: fix memory leak in atm_register_sysfs when device_register fail
+    - ppp: fix memory leak in pad_compress_skb
+    - ALSA: usb-audio: Add mute TLV for playback volumes on some devices
+    - wifi: mwifiex: Initialize the chan_stats array to zero
+    - drm/amdgpu: drop hw access in non-DC audio fini
+    - scsi: lpfc: Fix buffer free/clear order in deferred receive path
+    - batman-adv: fix OOB read/write in network-coding decode
+    - e1000e: fix heap overflow in e1000_set_eeprom
+    - mm/khugepaged: fix ->anon_vma race (CVE-2023-52935)
+    - mm/slub: avoid accessing metadata when pointer is invalid in object_err()
+    - cpufreq/sched: Explicitly synchronize limits_changed flag handling
+    - [x86] KVM: x86: Take irqfds.lock when adding/deleting IRQ bypass producer
+    - iio: light: opt3001: fix deadlock due to concurrent flag access
+      (CVE-2025-37968)
+    - [arm*] gpio: pca953x: fix IRQ storm on system wake up
+    - [x86] ALSA: hda/realtek - Add new HP ZBook laptop with micmute led fixup
+    - [x86] vmxnet3: update MTU after device quiesce
+    - [arm64] dts: marvell: uDPU: define pinctrl state for alarm LEDs
+    - net: phy: microchip: implement generic .handle_interrupt() callback
+    - net: phy: microchip: remove the use of .ack_interrupt()
+    - net: phy: microchip: force IRQ polling mode for lan88xx
+    - [x86] ALSA: hda/hdmi: Add pin fix for another HP EliteDesk 800 G4 model
+    - [x86] pcmcia: Add error handling for add_interval() in do_validate_mem()
+    - [arm64] clk: qcom: gdsc: Set retain_ff before moving to HW CTRL
+    - cifs: fix integer overflow in match_server()
 
   [ Ben Hutchings ]
   * Drop "Revert "xen/swiotlb: add alignment check for dma buffers"" which
