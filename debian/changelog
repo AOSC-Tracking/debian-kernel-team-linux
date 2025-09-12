@@ -1,4 +1,4 @@
-linux (6.12.46-1) UNRELEASED; urgency=medium
+linux (6.12.47-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.44
@@ -586,6 +586,15 @@ linux (6.12.46-1) UNRELEASED; urgency=medium
     - [riscv64] bpf: use lw when reading int cpu in BPF_MOV64_PERCPU_REG
     - [riscv64] bpf: use lw when reading int cpu in bpf_get_smp_processor_id
     - md/raid1: fix data lost for writemostly rdev
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.47
+    - [amd64] Add mitigations for VMSCAPE (CVE-2025-40300):
+      - Documentation/hw-vuln: Add VMSCAPE documentation
+      - x86/vmscape: Enumerate VMSCAPE bug
+      - x86/vmscape: Add conditional IBPB mitigation
+      - x86/vmscape: Enable the mitigation
+      - x86/bugs: Move cpu_bugs_smt_update() down
+      - x86/vmscape: Warn when STIBP is disabled with SMT
+      - x86/vmscape: Add old Intel CPUs to affected list
 
   [ Santiago Ruano Rincón ]
   * d/salsa-ci.yml: Merge the extract-source job into the build's job script
