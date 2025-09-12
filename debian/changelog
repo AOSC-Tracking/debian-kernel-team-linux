@@ -1,4 +1,4 @@
-linux (6.1.151-1) UNRELEASED; urgency=medium
+linux (6.1.152-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.149
@@ -611,6 +611,15 @@ linux (6.1.151-1) UNRELEASED; urgency=medium
       store_no_turbo()
     - [x86] cpufreq: intel_pstate: Read global.no_turbo under READ_ONCE()
     - [x86] cpufreq: intel_pstate: Check turbo_is_disabled() in store_no_turbo()
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.152
+    - [amd64] Add mitigations for VMSCAPE (CVE-2025-40300):
+      - Documentation/hw-vuln: Add VMSCAPE documentation
+      - x86/vmscape: Enumerate VMSCAPE bug
+      - x86/vmscape: Add conditional IBPB mitigation
+      - x86/vmscape: Enable the mitigation
+      - x86/bugs: Move cpu_bugs_smt_update() down
+      - x86/vmscape: Warn when STIBP is disabled with SMT
+      - x86/vmscape: Add old Intel CPUs to affected list
 
   [ Ben Hutchings ]
   * Revert to using RSA for module signatures (Closes: #1114773)
