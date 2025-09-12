@@ -1,4 +1,4 @@
-linux (6.1.150-1) UNRELEASED; urgency=medium
+linux (6.1.151-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.149
@@ -517,6 +517,100 @@ linux (6.1.150-1) UNRELEASED; urgency=medium
     - Revert "drm/dp: Change AUX DPCD probe address from DPCD_REV to
       LANE0_1_STATUS"
     - xfs: do not propagate ENODATA disk errors into xattr code
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.151
+    - bpf: Add cookie object to bpf maps
+    - bpf: Move cgroup iterator helpers to bpf.h
+    - bpf: Move bpf map owner out of common struct
+    - bpf: Fix oob access in cgroup local storage (CVE-2025-38502)
+    - btrfs: fix race between logging inode and checking if it was logged before
+    - btrfs: fix race between setting last_dir_index_offset and inode logging
+    - btrfs: avoid load/store tearing races when checking if an inode was logged
+    - cdc_ncm: Flag Intel OEM version of Fibocom L850-GL as WWAN
+    - drm/amd/display: Don't warn when missing DCE encoder caps
+    - Bluetooth: hci_sync: Avoid adding default advertising on startup
+    - fs: writeback: fix use-after-free in __mark_inode_dirty()
+    - [arm64] tee: fix NULL pointer dereference in tee_shm_put
+    - [arm64] dts: rockchip: Add vcc-supply to SPI flash on rk3399-pinebook-pro
+    - [arm64] tee: optee: ffa: fix a typo of "optee_ffa_api_is_compatible"
+    - wifi: cfg80211: fix use-after-free in cmp_bss()
+    - netfilter: br_netfilter: do not check confirmed bit in br_nf_local_in()
+      after confirm
+    - netfilter: conntrack: helper: Replace -EEXIST by -EBUSY
+    - Bluetooth: Fix use-after-free in l2cap_sock_cleanup_listen()
+    - [x86] xirc2ps_cs: fix register access when enabling FullDuplex
+    - mISDN: Fix memory leak in dsp_hwec_enable()
+    - icmp: fix icmp_ndo_send address translation for reply direction
+    - [arm64] net: macb: Fix tx_ptr_lock locking
+    - net/smc: fix one NULL pointer dereference in smc_ib_is_sg_need_sync()
+    - i40e: Fix potential invalid access when MAC list is empty
+    - net: ethernet: mtk_eth_soc: fix tx vlan tag for llc packets
+    - wifi: cw1200: cap SSID length in cw1200_do_join()
+    - wifi: libertas: cap SSID len in lbs_associate()
+    - wifi: cfg80211: sme: cap SSID length in __cfg80211_connect_result()
+    - [arm64] net: thunder_bgx: add a missing of_node_put
+    - [arm64] net: thunder_bgx: decrement cleanup index before use
+    - ipv4: Fix NULL vs error pointer check in inet_blackhole_dev_init()
+    - net/smc: Remove validation of reserved bits in CLC Decline message
+    - mctp: return -ENOPROTOOPT for unknown getsockopt options
+    - ax25: properly unshare skbs in ax25_kiss_rcv()
+    - net: atm: fix memory leak in atm_register_sysfs when device_register fail
+    - ppp: fix memory leak in pad_compress_skb
+    - phy: mscc: Stop taking ts_lock for tx_queue and use its own lock
+    - ALSA: usb-audio: Add mute TLV for playback volumes on some devices
+    - ACPI/IORT: Fix memory leak in iort_rmr_alloc_sids()
+    - pcmcia: Fix a NULL pointer dereference in __iodyn_find_io_region()
+    - [amd64] x86/mm/64: define ARCH_PAGE_TABLE_SYNC_MASK and
+      arch_sync_kernel_mappings()
+    - mm: move page table sync declarations to linux/pgtable.h
+    - ocfs2: prevent release journal inode after journal shutdown
+    - wifi: mwifiex: Initialize the chan_stats array to zero
+    - drm/amdgpu: drop hw access in non-DC audio fini
+    - scsi: lpfc: Fix buffer free/clear order in deferred receive path
+    - batman-adv: fix OOB read/write in network-coding decode
+    - cifs: prevent NULL pointer dereference in UTF16 conversion
+    - e1000e: fix heap overflow in e1000_set_eeprom
+    - mm/slub: avoid accessing metadata when pointer is invalid in object_err()
+    - PCI/MSI: Add an option to write MSIX ENTRY_DATA before any reads
+    - cpufreq/sched: Explicitly synchronize limits_changed flag handling
+    - btrfs: adjust subpage bit start based on sectorsize (CVE-2025-37931)
+    - iio: light: opt3001: fix deadlock due to concurrent flag access
+      (CVE-2025-37968)
+    - [x86] i2c: designware: Fix an error handling path in i2c_dw_pci_probe()
+    - ALSA: hda/realtek - Add new HP ZBook laptop with micmute led fixup
+    - vmxnet3: update MTU after device quiesce
+    - [arm64,armhf] spi: tegra114: Remove unnecessary NULL-pointer checks
+    - [arm64,armhf] spi: tegra114: Don't fail set_cs_timing when delays are zero
+    - [x86] cpufreq: intel_pstate: Revise global turbo disable check
+    - [x86] cpufreq: intel_pstate: Fold intel_pstate_max_within_limits() into
+      caller
+    - [x86] cpufreq: intel_pstate: Do not update global.turbo_disabled after
+      initialization
+    - [x86] cpufreq: intel_pstate: Unchecked MSR aceess in legacy mode
+    - ALSA: hda/realtek: Add support for HP Agusta using CS35L41 HDA
+    - fs: relax assertions on failure to encode file handles (CVE-2024-57924)
+    - drm/amd/display: Check link_res->hpo_dp_link_enc before using it
+      (CVE-2024-47704)
+    - ALSA: hda/hdmi: Add pin fix for another HP EliteDesk 800 G4 model
+    - ALSA: hda/realtek: Fix headset mic for TongFang X6[AF]R5xxY
+    - Revert "drm/amdgpu: Avoid extra evict-restore process."
+    - pcmcia: omap: Add missing check for platform_get_resource
+    - pcmcia: Add error handling for add_interval() in do_validate_mem()
+    - [arm64] drm/bridge: ti-sn65dsi86: fix REFCLK setting
+    - drm/amdgpu: Optimize RAS TA initialization and TA unload funcs
+    - drm/amdgpu: remove the check of init status in psp_ras_initialize
+    - drm/amd/amdgpu: Fix style problems in amdgpu_psp.c
+    - drm/amdgpu: Skip TMR allocation if not required
+    - drm/amd: Make flashing messages quieter
+    - drm/amdgpu: Replace DRM_* with dev_* in amdgpu_psp.c
+    - drm/amd/amdgpu: Fix missing error return on kzalloc failure
+    - mm, slub: refactor free debug processing
+    - slub: Reflow ___slab_alloc()
+    - mm: slub: avoid wake up kswapd in set_track_prepare
+    - [arm64,armhf] spi: tegra114: Use value to check for invalid delays
+    - [x86] cpufreq: intel_pstate: Rearrange show_no_turbo() and
+      store_no_turbo()
+    - [x86] cpufreq: intel_pstate: Read global.no_turbo under READ_ONCE()
+    - [x86] cpufreq: intel_pstate: Check turbo_is_disabled() in store_no_turbo()
 
   [ Ben Hutchings ]
   * Revert to using RSA for module signatures (Closes: #1114773)
