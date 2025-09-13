@@ -63,7 +63,7 @@ CONFIG_EFI_PARTITION=y
 ## file: certs/Kconfig
 ##
 ## choice: Type of module signing key to be generated
-CONFIG_MODULE_SIG_KEY_TYPE_ECDSA=y
+CONFIG_MODULE_SIG_KEY_TYPE_RSA=y
 ## end choice
 #. Add secondary keyring with keys from UEFI db and MOK.
 CONFIG_SECONDARY_TRUSTED_KEYRING=y

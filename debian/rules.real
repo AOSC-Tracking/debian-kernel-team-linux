@@ -177,7 +177,7 @@ $(STAMPS_DIR)/build_$(ARCH)_$(FEATURESET)_$(FLAVOUR):
 		-passout env:KBUILD_SIGN_PIN \
 		-outform PEM -out $(DIR)/output/signing_key.pem \
 		-keyout $(DIR)/output/signing_key.pem \
-		-newkey ec -pkeyopt ec_paramgen_curve:secp384r1 2>&1
+		-newkey rsa 2>&1
 
 	+$(MAKE_CLEAN) -C '$(DIR)'
 	debian/bin/buildcheck.py $(DIR) $(ARCH) $(FEATURESET) $(FLAVOUR) build
