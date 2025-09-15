@@ -1427,6 +1427,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
   * d/rules.real: Move module installation to the image build rule
   * certs: check-in the default x509 config file
   * [rt] Update to 5.10.241-rt135
+  * d/b/gencontrol.py: Extend the effect of $DEBIAN_KERNEL_DISABLE_INSTALLER
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
