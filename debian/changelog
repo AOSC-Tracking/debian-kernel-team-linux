@@ -1442,6 +1442,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
 
   [ Santiago Ruano Rincón ]
   * d/salsa-ci.yml: Merge the extract-source job into the build's job script
+  * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
