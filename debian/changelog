@@ -600,6 +600,7 @@ linux (6.12.47-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Merge the extract-source job into the build's job script
   * d/salsa-ci.yml: Suppress unreleased changes and mismatching distribution
     lintian tags.
+  * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
 
   [ Salvatore Bonaccorso ]
   * [rt] Add new signing key for Daniel Wagner
