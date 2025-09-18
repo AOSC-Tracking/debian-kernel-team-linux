@@ -629,6 +629,7 @@ linux (6.1.152-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Merge the extract-source job into the build's job script
   * d/salsa-ci.yml: Suppress unreleased changes and mismatching distribution
     lintian tags.
+  * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
 
  -- Ben Hutchings <benh@debian.org>  Tue, 09 Sep 2025 22:36:33 +0200
 
