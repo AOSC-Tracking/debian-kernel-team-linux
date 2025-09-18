@@ -631,6 +631,11 @@ linux (6.1.152-1) UNRELEASED; urgency=medium
     lintian tags.
   * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
 
+  [ Salvatore Bonaccorso ]
+  * NFSv4: Don't clear capabilities that won't be reset
+  * NFSv4: Clear the NFS_CAP_FS_LOCATIONS flag if it is not set
+  * NFSv4: Clear the NFS_CAP_XATTR flag if not supported by the server
+
  -- Ben Hutchings <benh@debian.org>  Tue, 09 Sep 2025 22:36:33 +0200
 
 linux (6.1.148-1) bookworm; urgency=medium
