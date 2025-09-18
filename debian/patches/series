@@ -102,6 +102,9 @@ features/arm64/quartz64/arm64-dts-rockchip-Add-SOQuartz-Model-A-baseboard.patch
 # Miscellaneous bug fixes
 bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
+bugfix/all/NFSv4-Don-t-clear-capabilities-that-won-t-be-reset.patch
+bugfix/all/NFSv4-Clear-the-NFS_CAP_FS_LOCATIONS-flag-if-it-is-n.patch
+bugfix/all/NFSv4-Clear-the-NFS_CAP_XATTR-flag-if-not-supported-.patch
 
 # Miscellaneous features
 
