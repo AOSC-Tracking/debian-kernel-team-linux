@@ -747,6 +747,7 @@ linux (6.12.48-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * [rt] Add new signing key for Daniel Wagner
+  * [rt] Update to 6.12.43-rt12
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 15 Sep 2025 14:56:41 +0200
 
