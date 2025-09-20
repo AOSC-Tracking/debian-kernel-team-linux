@@ -750,6 +750,8 @@ linux (6.12.48-1) UNRELEASED; urgency=medium
   * [rt] Update to 6.12.43-rt12
   * [amd64] x86/bugs: Add SRSO_USER_KERNEL_NO support
   * [amd64] x86/bugs: KVM: Add support for SRSO_MSR_FIX
+  * [amd64] KVM: SVM: Set/clear SRSO's BP_SPEC_REDUCE on 0 <=> 1 VM count
+    transitions
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 15 Sep 2025 14:56:41 +0200
 
