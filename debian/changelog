@@ -1,4 +1,4 @@
-linux (6.1.152-1) UNRELEASED; urgency=medium
+linux (6.1.153-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.149
@@ -620,6 +620,88 @@ linux (6.1.152-1) UNRELEASED; urgency=medium
       - x86/bugs: Move cpu_bugs_smt_update() down
       - x86/vmscape: Warn when STIBP is disabled with SMT
       - x86/vmscape: Add old Intel CPUs to affected list
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.153
+    - mm: introduce and use {pgd,p4d}_populate_kernel()
+    - media: mediatek: vcodec: Fix a resource leak related to the scp device in
+      FW initialization (CVE-2025-23160)
+    - net: Fix null-ptr-deref by sock_lock_init_class_and_name() and rmmod.
+      (CVE-2025-23143)
+    - tracing: Do not add length to print format in synthetic events
+    - flexfiles/pNFS: fix NULL checks on result of ff_layout_choose_ds_for_read
+    - NFSv4: Don't clear capabilities that won't be reset
+    - NFSv4: Clear the NFS_CAP_FS_LOCATIONS flag if it is not set
+    - NFSv4: Clear the NFS_CAP_XATTR flag if not supported by the server
+    - tracing: Fix tracing_marker may trigger page fault during preempt_disable
+    - ftrace/samples: Fix function size computation
+    - NFSv4/flexfiles: Fix layout merge mirror check.
+    - tracing: Silence warning when chunk allocation fails in trace_pid_write
+    - tcp_bpf: Call sk_msg_free() when tcp_bpf_send_verdict() fails to allocate
+      psock->cork.
+    - proc: fix type confusion in pde_set_flags()
+    - [x86] KVM: x86: Move open-coded CPUID leaf 0x80000021 EAX bit propagation
+      code
+    - [x86] KVM: SVM: Return TSA_SQ_NO and TSA_L1_NO bits in __do_cpuid_func()
+    - [x86] KVM: SVM: Set synthesized TSA CPUID flags
+    - Revert "SUNRPC: Don't allow waiting for exiting tasks"
+    - mptcp: sockopt: make sync_socket_options propagate SOCK_KEEPOPEN
+    - ocfs2: fix recursive semaphore deadlock in fiemap call
+    - net: usb: asix: ax88772: drop phylink use in PM to avoid MDIO runtime PM
+      wakeups
+    - [armhf] mtd: rawnand: stm32_fmc2: avoid overlapping mappings on ECC buffer
+    - [armhf] mtd: rawnand: stm32_fmc2: fix ECC overwrite
+    - fuse: check if copy_file_range() returns larger than requested size
+    - fuse: prevent overflow in copy_file_range return value
+    - libceph: fix invalid accesses to ceph_connection_v1_info
+    - mm/damon/sysfs: fix use-after-free in state_show()
+    - mm/damon/reclaim: avoid divide-by-zero in damon_reclaim_apply_parameters()
+    - mm/damon/lru_sort: avoid divide-by-zero in
+      damon_lru_sort_apply_parameters()
+    - mm/khugepaged: convert hpage_collapse_scan_pmd() to use folios
+    - mm/khugepaged: fix the address passed to notifier on testing young
+    - kernfs: Fix UAF in polling when open file is released
+    - mm/memory-failure: fix VM_BUG_ON_PAGE(PagePoisoned(page)) when unpoison
+      memory
+    - Input: i8042 - add TUXEDO InfinityBook Pro Gen10 AMD to i8042 quirk table
+    - Revert "net: usb: asix: ax88772: drop phylink use in PM to avoid MDIO
+      runtime PM wakeups"
+    - tty: hvc_console: Call hvc_kick in hvc_write unconditionally
+    - dt-bindings: serial: brcm,bcm7271-uart: Constrain clocks
+    - USB: serial: option: add Telit Cinterion FN990A w/audio compositions
+    - USB: serial: option: add Telit Cinterion LE910C4-WWX new compositions
+    - [arm64,armhf] net: fec: Fix possible NPD in
+      fec_enet_phy_reset_after_clk_enable()
+    - tunnels: reset the GSO metadata before reusing the skb
+    - docs: networking: can: change bcm_msg_head frames member to support
+      flexible array
+    - igb: fix link test skipping when interface is admin down
+    - i40e: fix IRQ freeing in i40e_vsi_request_irq_msix error path
+    - can: j1939: j1939_sk_bind(): call j1939_priv_put() immediately when
+      j1939_local_ecu_get() failed
+    - can: j1939: j1939_local_ecu_get(): undo increment when
+      j1939_local_ecu_get() fails
+    - net: hsr: Disable promiscuous mode in offload mode
+    - net: hsr: Add support for MC filtering at the slave device
+    - net: hsr: Add VLAN CTAG filter support
+    - hsr: use rtnl lock when iterating over ports
+    - hsr: use hsr_for_each_port_rtnl in hsr_port_get_hsr
+    - [amd64] dmaengine: idxd: Fix double free in idxd_setup_wqs()
+    - [armhf] dmaengine: ti: edma: Fix memory allocation size for
+      queue_priority_map
+    - hrtimer: Remove unused function
+    - hrtimer: Rename __hrtimer_hres_active() to hrtimer_hres_active()
+    - hrtimers: Unconditionally update target CPU base after offline timer
+      migration
+    - USB: gadget: dummy-hcd: Fix locking bug in RT-enabled kernels
+    - [arm64] dmaengine: qcom: bam_dma: Fix DT error handling for
+      num-channels/ees
+    - [arm64] phy: tegra: xusb: fix device and OF node leak at probe
+    - [armhf] phy: ti-pipe3: fix device leak at unbind
+    - drm/amdgpu: fix a memory leak in fence cleanup when unloading
+    - [x86] drm/i915/power: fix size for for_each_set_bit() in abox iteration
+    - [arm64] soc: qcom: mdt_loader: Fix error return values in
+      mdt_header_valid()
+    - [arm64] soc: qcom: mdt_loader: Deal with zero e_shentsize
+    - net: hsr: hsr_slave: Fix the promiscuous mode in offload mode
 
   [ Ben Hutchings ]
   * Revert to using RSA for module signatures (Closes: #1114773)
@@ -630,11 +712,6 @@ linux (6.1.152-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Suppress unreleased changes and mismatching distribution
     lintian tags.
   * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
-
-  [ Salvatore Bonaccorso ]
-  * NFSv4: Don't clear capabilities that won't be reset
-  * NFSv4: Clear the NFS_CAP_FS_LOCATIONS flag if it is not set
-  * NFSv4: Clear the NFS_CAP_XATTR flag if not supported by the server
 
  -- Ben Hutchings <benh@debian.org>  Tue, 09 Sep 2025 22:36:33 +0200
 
