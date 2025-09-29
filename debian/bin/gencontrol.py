@@ -82,6 +82,13 @@ class Gencontrol(Base):
                     raise RuntimeError(
                         f'Unable to disable {desc} in release build ({env} set)')
 
+        # In case installer packages are disabled through
+        # $DEBIAN_KERNEL_DISABLE_INSTALLER, update the config (that
+        # gets written to config.defines.dump) so that they will
+        # also be disabled in gencontrol_signed.py.
+        if self.disable_installer:
+            self.config.setdefault(('packages',), {})['installer'] = False
+
     def _setup_makeflags(self, names, makeflags, data):
         for src, dst, optional in names:
             if src in data or not optional:
