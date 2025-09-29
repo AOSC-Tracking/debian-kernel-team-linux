@@ -1,6 +1,7 @@
 linux-6.1 (6.1.153-1~deb11u1) UNRELEASED; urgency=high
 
-  * Rebuild for bullseye
+  * Rebuild for bullseye:
+    - d/salsa-ci.yml: Fix source package name in $BUILD_COMMAND
 
  -- Ben Hutchings <benh@debian.org>  Mon, 29 Sep 2025 13:36:08 +0200
 

@@ -110,7 +110,7 @@ build:
     - !reference [.build-script-setup-build-command]
 
     - cd ${WORKING_DIR}
-    - export BUILD_COMMAND="${BUILD_COMMAND} linux_${version}.dsc"
+    - export BUILD_COMMAND="${BUILD_COMMAND} ${source}_${version}.dsc"
 
     - !reference [.build-script-run-build-command]
   after_script:
@@ -271,7 +271,7 @@ build-signed:
 
     - !reference [.build-script-setup-build-command]
 
-    - export BUILD_COMMAND="${BUILD_COMMAND} ${WORKING_DIR}/linux-signed-${BUILD_ARCH}_*.dsc"
+    - export BUILD_COMMAND="${BUILD_COMMAND} ${WORKING_DIR}/linux-signed*-${BUILD_ARCH}_*.dsc"
 
     - !reference [.build-script-run-build-command]
   after_script:
