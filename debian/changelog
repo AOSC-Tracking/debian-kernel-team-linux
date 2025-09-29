@@ -1,4 +1,4 @@
-linux (5.10.244-1) UNRELEASED; urgency=medium
+linux (5.10.244-1) bullseye-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.238
@@ -1480,7 +1480,7 @@ linux (5.10.244-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Merge the extract-source job into the build's job script
   * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
 
- -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
+ -- Ben Hutchings <benh@debian.org>  Mon, 29 Sep 2025 13:28:35 +0200
 
 linux (5.10.237-1) bullseye-security; urgency=high
 
