@@ -1,4 +1,4 @@
-linux (5.10.243-1) UNRELEASED; urgency=medium
+linux (5.10.244-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.238
@@ -1439,6 +1439,15 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - [x86] pcmcia: Add error handling for add_interval() in do_validate_mem()
     - [arm64] clk: qcom: gdsc: Set retain_ff before moving to HW CTRL
     - cifs: fix integer overflow in match_server()
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.244
+    - [x86] Mitigate VMScape vulnerability (CVE-2025-40300):
+      + Documentation/hw-vuln: Add VMSCAPE documentation
+      + x86/vmscape: Enumerate VMSCAPE bug
+      + x86/vmscape: Add conditional IBPB mitigation
+      + x86/vmscape: Enable the mitigation
+      + x86/bugs: Move cpu_bugs_smt_update() down
+      + x86/vmscape: Warn when STIBP is disabled with SMT
+      + x86/vmscape: Add old Intel CPUs to affected list
 
   [ Ben Hutchings ]
   * Drop "Revert "xen/swiotlb: add alignment check for dma buffers"" which
