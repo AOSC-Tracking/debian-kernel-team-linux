@@ -630,7 +630,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - ceph: fix possible integer overflow in ceph_zero_objects()
     - ovl: Check for NULL d_inode() in ovl_dentry_upper()
     - [x86] VMCI: check context->notify_page after call to
-      get_user_pages_fast() to avoid GPF
+      get_user_pages_fast() to avoid GPF (CVE-2023-53259)
     - [x86] VMCI: fix race between vmci_host_setup_notify and
       vmci_ctx_unset_notify (CVE-2025-38102)
     - fs/jfs: consolidate sanity checking in dbMount
@@ -1015,12 +1015,14 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - ALSA: usb-audio: Validate UAC3 power domain descriptors, too
       (CVE-2025-38729)
     - ALSA: usb-audio: Validate UAC3 cluster segment descriptors
+      (CVE-2025-39757)
     - netlink: avoid infinite retry looping in netlink_unicast()
       (CVE-2025-38727)
     - nfsd: handle get_client_locked() failure in nfsd4_setclientid_confirm()
       (CVE-2025-38724)
     - NFSD: detect mismatch of file handle and delegation stateid in OPEN op
     - fs: Prevent file descriptor table allocations exceeding INT_MAX
+      (CVE-2025-39756)
     - ACPI: processor: perflib: Fix initial _PPC limit application
     - ACPI: processor: perflib: Move problematic pr->performance check
     - udp: also consider secpath when evaluating ipsec use for checksumming
@@ -1047,9 +1049,10 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - usb: xhci: Avoid showing errors during surprise removal
     - cpufreq: Exit governor when failed to start old governor
     - [armhf] rockchip: fix kernel hang during smp initialization
+      (CVE-2025-39752)
     - ASoC: soc-dapm: set bias_level if snd_soc_dapm_set_bias_level() was
       successed
-    - [armhf] tegra: Use I/O memcpy to write to IRAM
+    - [armhf] tegra: Use I/O memcpy to write to IRAM (CVE-2025-39794)
     - PM: runtime: Clear power.needs_force_resume in pm_runtime_reinit()
     - thermal: sysfs: Return ENODATA instead of EAGAIN for reads
     - PM: sleep: console: Fix the black screen issue
@@ -1066,6 +1069,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
       mperf_stop()
     - [arm64] platform/chrome: cros_ec_typec: Defer probe on missing EC parent
     - ALSA: hda/ca0132: Fix buffer overflow in add_tuning_control
+      (CVE-2025-39751)
     - ALSA: pcm: Rewrite recalculate_boundary() to avoid costly loop
     - ALSA: usb-audio: Avoid precedence issues in mixer_quirks macros
     - iio: adc: ad7768-1: Ensure SYNC_IN pulse minimum timing requirement
@@ -1074,7 +1078,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - wifi: cfg80211: reject HTC bit for management frames
     - be2net: Use correct byte order and format string for TCP seq and ack_seq
     - et131x: Add missing check after DMA map
-    - rcu: Protect ->defer_qs_iw_pending from data race
+    - rcu: Protect ->defer_qs_iw_pending from data race (CVE-2025-39749)
     - wifi: cfg80211: Fix interface type validation
     - net: ipv4: fix incorrect MTU in broadcast routes
     - [arm64] net: thunderx: Fix format-truncation warning in
@@ -1109,10 +1113,11 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - fs/orangefs: use snprintf() instead of sprintf()
     - [arm*] watchdog: dw_wdt: Fix default timeout
     - scsi: bfa: Double-free fix (CVE-2025-38699)
-    - jfs: truncate good inode pages when hard link is 0
+    - jfs: truncate good inode pages when hard link is 0 (CVE-2025-39743)
     - jfs: Regular file corruption check (CVE-2025-38698)
     - jfs: upper bound check of tree index in dbAllocAG (CVE-2025-38697)
     - [amd64] RDMA: hfi1: fix possible divide-by-zero in find_hw_thread_mask()
+      (CVE-2025-39742)
     - RDMA/core: reduce stack using in nldev_stat_get_doit()
     - scsi: lpfc: Check for hdwq null ptr when cleaning up lpfc_vport structure
       (CVE-2025-38695)
@@ -1135,7 +1140,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - ipmi: Fix strcpy source and destination the same
     - net: phy: smsc: add proper reset flags for LAN8710A
     - block: avoid possible overflow for chunk_sectors check in
-      blk_stack_limits()
+      blk_stack_limits() (CVE-2025-39795)
     - pNFS: Fix stripe mapping in block/scsi layout
     - pNFS: Fix disk addr range check in block/scsi layout
     - pNFS: Handle RPC size limit for layoutcommits
@@ -1146,11 +1151,16 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - [arm64] ASoC: fsl_sai: replace regmap_write with regmap_update_bits
     - drm/amdgpu: fix incorrect vm flags to map bo
     - usb: core: config: Prevent OOB read in SS endpoint companion parsing
+      (CVE-2025-39760)
     - misc: rtsx: usb: Ensure mmc child device is active when card is present
     - usb: typec: ucsi: Update power_supply on power role change
     - comedi: fix race between polling and detaching (CVE-2025-38687)
     - [x86] thunderbolt: Fix copy+paste error in match_service_id()
     - btrfs: fix log tree replay failure due to file with 0 links and extents
+    - mm/kmemleak: avoid soft lockup in __kmemleak_do_cleanup()
+      (CVE-2025-39737)
+    - mm/kmemleak: avoid deadlock by moving pr_warn() outside kmemleak_lock
+      (CVE-2025-39736)
     - media: uvcvideo: Fix 1-byte out-of-bounds read in uvc_parse_format()
       (CVE-2025-38680)
     - media: uvcvideo: Do not mark valid metadata as invalid
@@ -1168,7 +1178,8 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - wifi: brcmsmac: Remove const from tbl_ptr parameter in
       wlc_lcnphy_common_read_table()
     - wifi: ath11k: fix source ring-buffer corruption
-    - jbd2: prevent softlockup in jbd2_log_do_checkpoint()
+    - PCI: endpoint: Fix configfs group list head handling (CVE-2025-39783)
+    - jbd2: prevent softlockup in jbd2_log_do_checkpoint() (CVE-2025-39782)
     - [arm*] soc/tegra: pmc: Ensure power-domains are in a known state
     - media: gspca: Add bounds checking to firmware parser
     - [armhf] media: imx: fix a potential memory leak in
@@ -1265,6 +1276,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - NFSv4: Fix nfs4_bitmap_copy_adjust()
     - NFS: Create an nfs4_server_set_init_caps() function
     - NFS: Fix the setting of capabilities when automounting a new filesystem
+      (CVE-2025-39798)
     - net/sched: sch_ets: properly init all active DRR list handles
     - net_sched: sch_ets: implement lockless ets_dump()
     - net/sched: ets: use old 'nbands' while purging unused classes
@@ -1272,11 +1284,15 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - mm/ptdump: take the memory hotplug lock inside ptdump_walk_pgd()
       (CVE-2025-38681)
     - ata: Fix SATA_MOBILE_LPM_POLICY description in Kconfig
+    - [arm*] scsi: ufs: exynos: Fix programming of HCI_UTRL_NEXUS_TYPE
+      (CVE-2025-39788)
     - iio: adc: ad_sigma_delta: change to buffer predisable
     - [arm64] soc: qcom: mdt_loader: Ensure we don't read past the ELF header
+      (CVE-2025-39787)
     - [armhf] usb: musb: omap2430: fix device leak at unbind
     - btrfs: populate otime when logging an inode item
     - ACPI: processor: idle: Check acpi_fetch_acpi_dev() return value
+      (CVE-2022-50327)
     - minmax: add umin(a, b) and umax(a, b)
     - ext4: fix hole length calculation overflow in non-extent inodes
     - [arm*] platform/chrome: cros_ec: Make cros_ec_unregister() return void
@@ -1328,6 +1344,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - ipv6: sr: validate HMAC algorithm ID in seg6_hmac_info_add
     - ixgbe: xsk: resolve the negative overflow of budget in ixgbe_xmit_zc
     - net/sched: Make cake_enqueue return NET_XMIT_CN when past buffer_limit
+      (CVE-2025-39766)
     - net/sched: Remove unnecessary WARNING condition for empty child qdisc in
       htb_activate
     - ALSA: usb-audio: Use correct sub-type for UAC3 feature unit validation
@@ -1338,6 +1355,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - alloc_fdtable(): change calling conventions.
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.242
     - ftrace: Fix potential warning in trace_printk_seq during ftrace_dump
+      (CVE-2025-39813)
     - scsi: core: sysfs: Correct sysfs attributes access rights
     - [x86] cpu/hygon: Add missing resctrl_cpu_detect() in bsp_init helper
       (CVE-2025-39681)
@@ -1347,17 +1365,20 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - net: ipv4: fix regression in local-broadcast routes
     - Bluetooth: hci_event: Detect if HCI_EV_NUM_COMP_PKTS is unbalanced
     - atm: atmtcp: Prevent arbitrary write in atmtcp_recv_control().
+      (CVE-2025-39828)
     - [x86] net: dlink: fix multicast stats being counted incorrectly
     - net/mlx5e: Update and set Xon/Xoff upon MTU set
     - net/mlx5e: Update and set Xon/Xoff upon port speed set
     - net/mlx5e: Set local Xoff after FW update
     - net: stmmac: xgmac: Do not enable RX FIFO Overflow interrupts
-    - sctp: initialize more fields in sctp_v6_from_sk()
-    - efivarfs: Fix slab-out-of-bounds in efivarfs_d_compare
+    - sctp: initialize more fields in sctp_v6_from_sk() (CVE-2025-39812)
+    - efivarfs: Fix slab-out-of-bounds in efivarfs_d_compare (CVE-2025-39817)
     - [x86] KVM: x86: use array_index_nospec with indices that come from guest
-    - HID: asus: fix UAF via HID_CLAIMED_INPUT validation
+      (CVE-2025-39823)
+    - HID: asus: fix UAF via HID_CLAIMED_INPUT validation (CVE-2025-39824)
     - HID: wacom: Add a new Art Pen 2
     - HID: hid-ntrig: fix unable to handle page fault in ntrig_report_version()
+      (CVE-2025-39808)
     - Revert "drm/amdgpu: fix incorrect vm flags to map bo"
     - dma/pool: Ensure DMA_DIRECT_REMAP allocations are decrypted
     - net: usb: qmi_wwan: add Telit Cinterion LE910C4-WWX new compositions
@@ -1371,29 +1392,35 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
     - [x86] ASoC: Intel: sof_da7219_max98373: shrink platform_id below 20
       characters
     - xfs: do not propagate ENODATA disk errors into xattr code
+      (CVE-2025-39835)
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.243
     - drm/amd/display: Don't warn when missing DCE encoder caps
-    - tee: fix NULL pointer dereference in tee_shm_put
+    - tee: fix NULL pointer dereference in tee_shm_put (CVE-2025-39865)
     - [arm64] dts: rockchip: Add vcc-supply to SPI flash on rk3399-pinebook-pro
-    - wifi: cfg80211: fix use-after-free in cmp_bss()
+    - wifi: cfg80211: fix use-after-free in cmp_bss() (CVE-2025-39864)
     - netfilter: conntrack: helper: Replace -EEXIST by -EBUSY
     - Bluetooth: Fix use-after-free in l2cap_sock_cleanup_listen()
+      (CVE-2025-39860)
     - [x86] xirc2ps_cs: fix register access when enabling FullDuplex
     - [x86] mISDN: Fix memory leak in dsp_hwec_enable()
     - icmp: fix icmp_ndo_send address translation for reply direction
     - i40e: Fix potential invalid access when MAC list is empty
+      (CVE-2025-39853)
     - wifi: libertas: cap SSID len in lbs_associate()
     - [arm64] net: thunder_bgx: add a missing of_node_put
     - [arm64] net: thunder_bgx: decrement cleanup index before use
     - ipv4: Fix NULL vs error pointer check in inet_blackhole_dev_init()
-    - ax25: properly unshare skbs in ax25_kiss_rcv()
+    - ax25: properly unshare skbs in ax25_kiss_rcv() (CVE-2025-39848)
     - net: atm: fix memory leak in atm_register_sysfs when device_register fail
-    - ppp: fix memory leak in pad_compress_skb
+    - ppp: fix memory leak in pad_compress_skb (CVE-2025-39847)
     - ALSA: usb-audio: Add mute TLV for playback volumes on some devices
+    - pcmcia: Fix a NULL pointer dereference in __iodyn_find_io_region()
+      (CVE-2025-39846)
     - wifi: mwifiex: Initialize the chan_stats array to zero
     - drm/amdgpu: drop hw access in non-DC audio fini
     - scsi: lpfc: Fix buffer free/clear order in deferred receive path
-    - batman-adv: fix OOB read/write in network-coding decode
+      (CVE-2025-39841)
+    - batman-adv: fix OOB read/write in network-coding decode (CVE-2025-39839)
     - e1000e: fix heap overflow in e1000_set_eeprom
     - mm/khugepaged: fix ->anon_vma race (CVE-2023-52935)
     - mm/slub: avoid accessing metadata when pointer is invalid in object_err()
