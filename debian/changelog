@@ -1427,6 +1427,7 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
   * d/rules.real: Move module installation to the image build rule
   * certs: check-in the default x509 config file
   * [rt] Update to 5.10.241-rt135
+  * d/b/gencontrol.py: Extend the effect of $DEBIAN_KERNEL_DISABLE_INSTALLER
 
   [ Bastian Blank ]
   * [arm64] Enable hyperv-daemons package. (Closes: #1109891)
@@ -1438,6 +1439,10 @@ linux (5.10.243-1) UNRELEASED; urgency=medium
   * Use abi name 0 for everything before unstable.
   * Store build time signing key encrypted.
   * Sign modules and support lockdown always.
+
+  [ Santiago Ruano Rincón ]
+  * d/salsa-ci.yml: Merge the extract-source job into the build's job script
+  * d/salsa-ci.yml: Early move orig tarballs back where they can be cached
 
  -- Ben Hutchings <benh@debian.org>  Mon, 30 Jun 2025 15:58:01 +0200
 
