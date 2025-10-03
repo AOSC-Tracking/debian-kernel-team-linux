@@ -1,4 +1,4 @@
-linux (6.1.154-1) UNRELEASED; urgency=medium
+linux (6.1.155-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.154
@@ -50,6 +50,69 @@ linux (6.1.154-1) UNRELEASED; urgency=medium
     - net: rfkill: gpio: Fix crash due to dereferencering uninitialized pointer
     - crypto: af_alg: Convert af_alg_sendpage() to use MSG_SPLICE_PAGES
     - crypto: af_alg - Disallow concurrent writes in af_alg_sendmsg
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.155
+    - ALSA: usb-audio: Fix block comments in mixer_quirks
+    - ALSA: usb-audio: Drop unnecessary parentheses in mixer_quirks
+    - ALSA: usb-audio: Avoid multiple assignments in mixer_quirks
+    - ALSA: usb-audio: Simplify NULL comparison in mixer_quirks
+    - ALSA: usb-audio: Remove unneeded wmb() in mixer_quirks
+    - ALSA: usb-audio: Add mixer quirk for Sony DualSense PS5
+    - ALSA: usb-audio: Convert comma to semicolon
+    - ALSA: usb-audio: Fix build with CONFIG_INPUT=n
+    - usb: core: Add 0x prefix to quirks debug output
+    - ALSA: usb-audio: Add DSD support for Comtrue USB Audio device
+    - ALSA: usb-audio: move mixer_quirks' min_mute into common quirk
+    - ALSA: usb-audio: Add mute TLV for playback volumes on more devices
+    - IB/mlx5: Fix obj_type mismatch for SRQ event subscriptions
+    - mm/gup: revert "mm: gup: fix infinite loop within __get_longterm_locked"
+    - mm: add folio_expected_ref_count() for reference count calculation
+    - mm/gup: check ref_count instead of lru before migration
+    - mm/gup: local lru_add_drain() to avoid lru_add_drain_all()
+    - mm: folio_may_be_lru_cached() unless folio_test_large()
+    - cpufreq: Initialize cpufreq-based invariance before subsys
+    - smb: server: don't use delayed_work for post_recv_credits_work
+    - bpf: Reject bpf_timer for PREEMPT_RT
+    - can: hi311x: populate ndo_change_mtu() to prevent buffer overflow
+    - [armhf] can: sun4i_can: populate ndo_change_mtu() to prevent buffer
+      overflow
+    - can: mcba_usb: populate ndo_change_mtu() to prevent buffer overflow
+    - can: peak_usb: fix shift-out-of-bounds issue
+    - Bluetooth: hci_sync: Fix hci_resume_advertising_sync
+    - Bluetooth: hci_event: Fix UAF in hci_acl_create_conn_sync
+    - bnxt_en: correct offset handling for IPv6 destination address
+    - nexthop: Forbid FDB status change while nexthop is in a group
+    - [x86] drm/gma500: Fix null dereference in hdmi teardown
+    - futex: Prevent use-after-free during requeue-PI
+    - i40e: fix idx validation in i40e_validate_queue_map
+    - i40e: fix input validation logic for action_meta
+    - i40e: add max boundary check for VF filters
+    - i40e: add mask to apply valid bits for itr_idx
+    - i40e: improve VF MAC filters accounting
+    - crypto: af_alg - Fix incorrect boolean values in af_alg_ctx
+    - tracing: dynevent: Add a missing lockdown check on dynevent
+    - afs: Fix potential null pointer dereference in afs_put_server
+    - mm/hugetlb: fix folio is still mapped when deleted
+    - fbcon: fix integer overflow in fbcon_do_set_font
+    - fbcon: Fix OOB access in font allocation
+    - [s390x] cpum_cf: Fix uninitialized warning after backport of ce971233242b
+    - mm: migrate_device: use more folio in migrate_device_finalize()
+    - mm/migrate_device: don't add folio to be freed to LRU in
+      migrate_device_finalize() (CVE-2025-21861)
+    - minmax: add in_range() macro
+    - minmax: Introduce {min,max}_array()
+    - minmax: deduplicate __unconst_integer_typeof()
+    - minmax: fix indentation of __cmp_once() and __clamp_once()
+    - minmax: avoid overly complicated constant expressions in VM code
+    - drm/ast: Use msleep instead of mdelay for edid read
+    - i40e: fix validation of VF state in get resources
+    - i40e: fix idx validation in config queues msg
+    - i40e: increase max descriptors for XL710
+    - i40e: add validation for ring_len param
+    - minmax: make generic MIN() and MAX() macros available everywhere
+    - minmax: add a few more MIN_T/MAX_T users
+    - minmax: simplify and clarify min_t()/max_t() implementation
+    - [x86] drm/i915/backlight: Return immediately when scale() finds invalid
+      parameters
 
   [ Ben Hutchings ]
   * d/b/genorig.py, d/rules, d/salsa-ci.yml: Put orig tarballs directly in ..
