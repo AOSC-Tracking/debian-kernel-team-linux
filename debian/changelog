@@ -1,4 +1,4 @@
-linux (6.12.49-1) UNRELEASED; urgency=medium
+linux (6.12.50-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -97,6 +97,85 @@ linux (6.12.49-1) UNRELEASED; urgency=medium
     - minmax.h: move all the clamp() definitions after the min/max() ones
     - minmax.h: simplify the variants of clamp()
     - minmax.h: remove some #defines that are only expanded once
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.50
+    - scsi: ufs: mcq: Fix memory allocation checks for SQE and CQE
+    - firewire: core: fix overlooked update of subsystem ABI version
+    - ALSA: usb-audio: Fix code alignment in mixer_quirks
+    - ALSA: usb-audio: Fix block comments in mixer_quirks
+    - ALSA: usb-audio: Drop unnecessary parentheses in mixer_quirks
+    - ALSA: usb-audio: Avoid multiple assignments in mixer_quirks
+    - ALSA: usb-audio: Simplify NULL comparison in mixer_quirks
+    - ALSA: usb-audio: Remove unneeded wmb() in mixer_quirks
+    - ALSA: usb-audio: Add mixer quirk for Sony DualSense PS5
+    - ALSA: usb-audio: Convert comma to semicolon
+    - ALSA: hda/realtek: Add support for ASUS NUC using CS35L41 HDA
+    - ALSA: usb-audio: Fix build with CONFIG_INPUT=n
+    - usb: core: Add 0x prefix to quirks debug output
+    - [arm64,armhf] net: fec: rename struct fec_devinfo fec_imx6x_info ->
+      fec_imx6sx_info
+    - net: sfp: add quirk for Potron SFP+ XGSPON ONU Stick
+    - [riscv64] mmc: sdhci-cadence: add Mobileye eyeQ support
+    - i2c: designware: Add quirk for Intel Xe
+    - ALSA: usb-audio: Add DSD support for Comtrue USB Audio device
+    - ALSA: usb-audio: move mixer_quirks' min_mute into common quirk
+    - ALSA: usb-audio: Add mute TLV for playback volumes on more devices
+    - net: sfp: add quirk for FLYPRO copper SFP+ module
+    - IB/mlx5: Fix obj_type mismatch for SRQ event subscriptions
+    - [amd64] HID: amd_sfh: Add sync across amd sfh work functions
+    - cpufreq: Initialize cpufreq-based invariance before subsys
+    - smb: server: don't use delayed_work for post_recv_credits_work
+    - smb: server: use disable_work_sync in transport_rdma.c
+    - bpf: Check the helper function is valid in get_helper_proto
+    - btrfs: don't allow adding block device of less than 1 MB
+    - wifi: virt_wifi: Fix page fault on connect
+    - bpf: Reject bpf_timer for PREEMPT_RT
+    - xfrm: xfrm_alloc_spi shouldn't use 0 as SPI
+    - can: hi311x: populate ndo_change_mtu() to prevent buffer overflow
+    - [armhf] can: sun4i_can: populate ndo_change_mtu() to prevent buffer
+      overflow
+    - can: mcba_usb: populate ndo_change_mtu() to prevent buffer overflow
+    - can: peak_usb: fix shift-out-of-bounds issue
+    - net: tun: Update napi->skb after XDP process
+    - net/smc: fix warning in smc_rx_splice() when calling get_page()
+    - [arm64] ethernet: rvu-af: Remove slash from the driver name
+    - Bluetooth: hci_sync: Fix hci_resume_advertising_sync
+    - Bluetooth: hci_event: Fix UAF in hci_acl_create_conn_sync
+    - vhost: Take a reference on the task in struct vhost_task.
+    - bnxt_en: correct offset handling for IPv6 destination address
+    - net: allow alloc_skb_with_frags() to use MAX_SKB_FRAGS
+    - nexthop: Forbid FDB status change while nexthop is in a group
+    - mm/gup: local lru_add_drain() to avoid lru_add_drain_all()
+    - mm: revert "mm/gup: clear the LRU flag of a page before adding to LRU
+      batch"
+    - mm: folio_may_be_lru_cached() unless folio_test_large()
+    - [amd64] drm/gma500: Fix null dereference in hdmi teardown
+    - futex: Prevent use-after-free during requeue-PI
+    - [arm64] drm/panthor: Defer scheduler entitiy destruction to queue release
+    - [amd64] platform/x86: lg-laptop: Fix WMAB call in fan_mode_store()
+    - smb: client: fix wrong index reference in smb2_compound_op()
+    - HID: asus: add support for missing PX series fn keys
+    - i40e: add validation for ring_len param
+    - i40e: fix idx validation in i40e_validate_queue_map
+    - i40e: fix idx validation in config queues msg
+    - i40e: fix input validation logic for action_meta
+    - i40e: fix validation of VF state in get resources
+    - i40e: add max boundary check for VF filters
+    - i40e: add mask to apply valid bits for itr_idx
+    - i40e: improve VF MAC filters accounting
+    - crypto: af_alg - Fix incorrect boolean values in af_alg_ctx
+    - tracing: dynevent: Add a missing lockdown check on dynevent
+    - [armhf] dts: socfpga: sodia: Fix mdio bus probe and PHY address
+    - drm/ast: Use msleep instead of mdelay for edid read
+    - afs: Fix potential null pointer dereference in afs_put_server
+    - fs/proc/task_mmu: check p->vec_buf for NULL
+    - gpiolib: Extend software-node support to support secondary software-nodes
+    - mm/hugetlb: fix folio is still mapped when deleted
+    - fbcon: fix integer overflow in fbcon_do_set_font
+    - fbcon: Fix OOB access in font allocation
+    - iommufd: Fix race during abort for file descriptors
+    - Revert "usb: xhci: remove option to change a default ring's TRB cycle bit"
+    - [amd64] drm/i915/backlight: Return immediately when scale() finds invalid
+      parameters
 
   [ Salvatore Bonaccorso ]
   * drivers/infiniband/hw/bnxt_re: Enable INFINIBAND_BNXT_RE as module
