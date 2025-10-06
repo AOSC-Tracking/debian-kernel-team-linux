@@ -1,4 +1,4 @@
-linux (6.12.50-1) UNRELEASED; urgency=medium
+linux (6.12.51-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -176,6 +176,18 @@ linux (6.12.50-1) UNRELEASED; urgency=medium
     - Revert "usb: xhci: remove option to change a default ring's TRB cycle bit"
     - [amd64] drm/i915/backlight: Return immediately when scale() finds invalid
       parameters
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.51
+    - crypto: sha256 - fix crash at kexec
+    - scsi: target: target_core_configfs: Add length check to avoid buffer
+      overflow
+    - media: b2c2: Fix use-after-free causing by irq_check_work in
+      flexcop_pci_remove
+    - media: tuner: xc5000: Fix use-after-free in xc5000_release
+    - media: rc: fix races with imon_disconnect()
+    - media: uvcvideo: Mark invalid entities with id UVC_INVALID_ENTITY_ID
+    - mm: swap: check for stable address space before operating on the VMA
+    - wifi: ath11k: fix NULL dereference in ath11k_qmi_m3_load()
+    - [arm64] ASoC: qcom: audioreach: fix potential null pointer dereference
 
   [ Salvatore Bonaccorso ]
   * drivers/infiniband/hw/bnxt_re: Enable INFINIBAND_BNXT_RE as module
