@@ -1,4 +1,4 @@
-linux (6.12.51-1) UNRELEASED; urgency=medium
+linux (6.12.52-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -188,6 +188,37 @@ linux (6.12.51-1) UNRELEASED; urgency=medium
     - mm: swap: check for stable address space before operating on the VMA
     - wifi: ath11k: fix NULL dereference in ath11k_qmi_m3_load()
     - [arm64] ASoC: qcom: audioreach: fix potential null pointer dereference
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.52
+    - wifi: rtw89: fix use-after-free in rtw89_core_tx_kick_off_and_wait()
+    - USB: serial: option: add SIMCom 8230C compositions
+    - Bluetooth: btusb: Add USB ID 2001:332a for D-Link AX9U rev. A1
+    - wifi: rtlwifi: rtl8192cu: Don't claim USB ID 07b8:8188
+    - wifi: rtl8xxxu: Don't claim USB ID 07b8:8188
+    - dm-integrity: limit MAX_TAG_SIZE to 255
+    - [amd64] platform/x86/amd/pmc: Add MECHREVO Yilong15Pro to spurious_8042
+      list
+    - [amd64] platform/x86/amd/pmf: Support new ACPI ID AMDI0108
+    - [amd64,arm64] ASoC: rt5682s: Adjust SAR ADC button mode to fix noise issue
+    - btrfs: ref-verify: handle damaged extent root tree
+    - netfs: Prevent duplicate unlocking
+    - can: hi311x: fix null pointer dereference when resuming from sleep before
+      interface was enabled
+    - [amd64] platform/x86/amd/pmc: Add Stellaris Slim Gen6 AMD to spurious 8042
+      quirks list
+    - drm/amd : Update MES API header file for v11 & v12
+    - drm/amd/include : MES v11 and v12 API header update
+    - drm/amd/include : Update MES v12 API for fence update
+    - drm/amdgpu: Enable MES lr_compute_wa by default (Closes: #1118658)
+    - ALSA: usb-audio: Kill timer properly at removal (CVE-2025-38105)
+    - ALSA: usb-audio: fix race condition to UAF in snd_usbmidi_free
+    - hid: fix I2C read buffer overflow in raw_event() for mcp2221
+    - nvmem: layouts: fix automatic module loading
+    - binder: fix double-free in dbitmap
+    - driver core/PM: Set power.no_callbacks along with power.no_pm
+    - crypto: rng - Ensure set_ent is always present
+    - net/9p: fix double req put in p9_fd_cancelled
+    - [amd64] KVM: x86: Don't (re)check L1 intercepts when completing userspace
+      I/O
 
   [ Salvatore Bonaccorso ]
   * drivers/infiniband/hw/bnxt_re: Enable INFINIBAND_BNXT_RE as module
