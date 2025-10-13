@@ -48,11 +48,6 @@ CONFIG_IBM_PARTITION=y
 CONFIG_BSD_DISKLABEL=y
 
 ##
-## file: drivers/block/Kconfig
-##
-# CONFIG_CDROM_PKTCDVD is not set
-
-##
 ## file: drivers/crypto/Kconfig
 ##
 CONFIG_ZCRYPT=m
