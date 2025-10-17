@@ -1,4 +1,4 @@
-linux (6.1.155-1) UNRELEASED; urgency=medium
+linux (6.1.156-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.154
@@ -113,6 +113,160 @@ linux (6.1.155-1) UNRELEASED; urgency=medium
     - minmax: simplify and clarify min_t()/max_t() implementation
     - [x86] drm/i915/backlight: Return immediately when scale() finds invalid
       parameters
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.156
+    - crypto: sha256 - fix crash at kexec
+    - scsi: target: target_core_configfs: Add length check to avoid buffer
+      overflow (CVE-2025-39998)
+    - media: b2c2: Fix use-after-free causing by irq_check_work in
+      flexcop_pci_remove (CVE-2025-39996)
+    - media: rc: fix races with imon_disconnect() (CVE-2025-39993)
+    - [arm64] KVM: arm64: Fix softirq masking in FPSIMD register saving sequence
+    - media: tunner: xc5000: Refactor firmware load
+    - media: tuner: xc5000: Fix use-after-free in xc5000_release
+      (CVE-2025-39994)
+    - media: i2c: tc358743: Fix use-after-free bugs caused by orphan timer in
+      probe (CVE-2025-39995)
+    - minmax: don't use max() in situations that want a C constant expression
+    - minmax: simplify min()/max()/clamp() implementation
+    - minmax: improve macro expansion and type checking
+    - minmax: fix up min3() and max3() too
+    - minmax.h: add whitespace around operators and after commas
+    - minmax.h: update some comments
+    - minmax.h: reduce the #define expansion of min(), max() and clamp()
+    - minmax.h: use BUILD_BUG_ON_MSG() for the lo < hi test in clamp()
+    - minmax.h: move all the clamp() definitions after the min/max() ones
+    - minmax.h: simplify the variants of clamp()
+    - minmax.h: remove some #defines that are only expanded once
+    - USB: serial: option: add SIMCom 8230C compositions
+    - wifi: rtlwifi: rtl8192cu: Don't claim USB ID 07b8:8188
+    - dm-integrity: limit MAX_TAG_SIZE to 255
+    - perf subcmd: avoid crash in exclude_cmds when excludes is empty
+    - [x86] ASoC: rt5682s: Adjust SAR ADC button mode to fix noise issue
+    - btrfs: ref-verify: handle damaged extent root tree
+    - can: hi311x: fix null pointer dereference when resuming from sleep before
+      interface was enabled
+    - hid: fix I2C read buffer overflow in raw_event() for mcp2221
+    - driver core/PM: Set power.no_callbacks along with power.no_pm
+    - crypto: rng - Ensure set_ent is always present
+    - net/9p: fix double req put in p9_fd_cancelled
+    - filelock: add FL_RECLAIM to show_fl_flags() macro
+    - init: INITRAMFS_PRESERVE_MTIME should depend on BLK_DEV_INITRD
+    - seccomp: Fix a race with WAIT_KILLABLE_RECV if the tracer replies too fast
+    - [arm64] coresight: trbe: Prevent overflow in PERF_IDX2OFF()
+    - [arm64] perf: arm_spe: Prevent overflow in PERF_IDX2OFF()
+    - smb: server: fix IRD/ORD negotiation with the client
+    - [x86] vdso: Fix output operand size of RDPID
+    - regmap: Remove superfluous check for !config in __regmap_init()
+    - bpf: Remove migrate_disable in kprobe_multi_link_prog_run
+    - libbpf: Fix reuse of DEVMAP
+    - ACPI: processor: idle: Fix memory leak when register cpuidle device failed
+    - [arm64] soc: qcom: rpmh-rsc: Unconditionally clear _TRIGGER bit for TCS
+    - [arm64] pinctrl: meson-gxl: add missing i2c_d pinmux
+    - blk-mq: check kobject state_in_sysfs before deleting in
+      blk_mq_unregister_hctx
+    - block: use int to store blk_stack_limits() return value
+    - PM: sleep: core: Clear power.must_resume in noirq suspend error path
+    - [arm64] power: supply: cw2015: Fix a alignment coding style issue
+    - [arm64] pinctrl: renesas: Use int type to store negative error codes
+    - null_blk: Fix the description of the cache_size module argument
+    - nbd: restrict sockets to TCP and UDP
+    - [armhf] pwm: tiehrpwm: Fix corner case in clock divisor calculation
+    - nvmet-fc: move lsop put work to nvmet_fc_ls_req_op
+    - i3c: master: svc: Use manual response for IBI events
+    - i3c: master: svc: Recycle unused IBI slot
+    - bpf: Explicitly check accesses to bpf_sock_addr
+    - smp: Fix up and expand the smp_call_function_many() kerneldoc
+    - tools/nolibc: make time_t robust if __kernel_old_time_t is missing in host
+      headers
+    - i2c: designware: Add disabling clocks when probe fails
+    - bpf: Enforce expected_attach_type for tailcall compatibility
+    - drm/radeon/r600_cs: clean up of dead code in r600_cs
+    - drm/amd/display: Remove redundant semicolons
+    - scsi: pm80xx: Fix array-index-out-of-of-bounds on rmmod
+    - scsi: myrs: Fix dma_alloc_coherent() error check
+    - ALSA: lx_core: use int type to store negative error codes
+    - media: st-delta: avoid excessive stack usage
+    - drm/amdgpu: Power up UVD 3 for FW validation (v2)
+    - drm/amd/pm: Disable ULV even if unsupported (v3)
+    - drm/amd/pm: Fix si_upload_smc_data (v3)
+    - drm/amd/pm: Adjust si_upload_smc_data register programming (v3)
+    - drm/amd/pm: Treat zero vblank time as too short in si_dpm (v3)
+    - drm/amd/pm: Disable MCLK switching with non-DC at 120 Hz+ (v2)
+    - drm/amd/pm: Disable SCLK switching on Oland with high pixel clocks (v3)
+    - wifi: mwifiex: send world regulatory domain to driver
+    - [arm64,armhf] PCI: tegra: Fix devm_kcalloc() argument order for port->phys
+      allocation
+    - tcp: fix __tcp_close() to only send RST when required
+    - drm/amdkfd: Fix error code sign for EINVAL in svm_ioctl()
+    - [armhf] usb: phy: twl6030: Fix incorrect type for ret
+    - usb: gadget: configfs: Correctly set use_os_string at bind
+    - misc: genwqe: Fix incorrect cmd field being reported in error
+    - pps: fix warning in pps_register_cdev when register device fail
+    - [x86] ASoC: Intel: bytcht_es8316: Fix invalid quirk input mapping
+    - [x86] ASoC: Intel: bytcr_rt5640: Fix invalid quirk input mapping
+    - [x86] ASoC: Intel: bytcr_rt5651: Fix invalid quirk input mapping
+    - [arm64] drm/msm/dpu: fix incorrect type for ret
+    - iio: consumers: Fix offset handling in iio_convert_raw_to_processed()
+    - netfilter: ipset: Remove unused htable_bits in macro ahash_region
+    - watchdog: mpc8xxx_wdt: Reload the watchdog timer when enabling the
+      watchdog
+    - drivers/base/node: handle error properly in register_one_node()
+    - RDMA/cm: Rate limit destroy CM ID timeout error message
+    - wifi: mt76: fix potential memory leak in mt76_wmac_probe()
+    - ACPI: NFIT: Fix incorrect ndr_desc being reportedin dev_err message
+    - scsi: qla2xxx: edif: Fix incorrect sign of error code
+    - scsi: qla2xxx: Fix incorrect sign of error code in START_SP_W_RETRIES()
+    - f2fs: fix zero-sized extent for precache extents
+    - Revert "usb: xhci: Avoid Stop Endpoint retry loop if the endpoint seems
+      Running"
+    - RDMA/core: Resolve MAC of next-hop device without ARP support
+    - IB/sa: Fix sa_local_svc_timeout_ms read race
+    - Documentation: trace: historgram-design: Separate sched_waking histogram
+      section heading and the following diagram
+    - wifi: ath10k: avoid unnecessary wait for service ready message
+    - wifi: mac80211: fix Rx packet handling when pubsta information is not
+      available
+    - wifi: rtw89: avoid circular locking dependency in ser_state_run()
+    - [arm64] coresight-etm4x: Conditionally access register TRCEXTINSELR
+    - [arm64] coresight: trbe: Return NULL pointer for allocation failures
+    - NFSv4.1: fix backchannel max_resp_sz verification check
+    - ipvs: Defer ip_vs_ftp unregister during netns cleanup
+    - scsi: mpt3sas: Fix crash in transport port remove by using ioc_info()
+    - usb: vhci-hcd: Prevent suspending virtually attached devices
+    - RDMA/siw: Always report immediate post SQ errors
+    - net: usb: Remove disruptive netif_wake_queue in rtl8150_set_multicast
+    - Bluetooth: MGMT: Fix not exposing debug UUID on
+      MGMT_OP_READ_EXP_FEATURES_INFO
+    - Bluetooth: ISO: Fix possible UAF on iso_conn_free
+    - Bluetooth: ISO: don't leak skb in ISO_CONT RX
+    - Bluetooth: hci_sync: Fix using random address for BIG/PA advertisements
+    - ocfs2: fix double free in user_cluster_connect()
+    - drivers/base/node: fix double free in register_one_node()
+    - nfp: fix RSS hash key size when RSS is not supported
+    - net: ena: return 0 in ena_get_rxfh_key_size() when RSS hash key is not
+      configurable
+    - net: dlink: handle copy_thresh allocation failure
+    - net/mlx5: Stop polling for command response if interface goes down
+    - net/mlx5: pagealloc: Fix reclaim race during command interface teardown
+    - net/mlx5: fw reset, add reset timeout work
+    - Revert "net/mlx5e: Update and set Xon/Xoff upon MTU set"
+    - Squashfs: fix uninit-value in squashfs_get_parent
+    - uio_hv_generic: Let userspace take care of interrupt mask
+    - fs: udf: fix OOB read in lengthAllocDescs handling
+    - net: nfc: nci: Add parameter validation for packet data
+    - [arm64,armhf] mfd: vexpress-sysreg: Check the return value of
+      devm_gpiochip_add_data()
+    - dm: fix queue start/stop imbalance under suspend/load/resume races
+    - dm: fix NULL pointer dereference in __dm_suspend()
+    - ksmbd: fix error code overwriting in smb2_get_info_filesystem()
+    - ext4: fix checks for orphan inodes
+    - mm: hugetlb: avoid soft lockup when mprotect to large memory area
+    - Input: atmel_mxt_ts - allow reset GPIO to sleep
+    - Input: uinput - zero-initialize uinput_ff_upload_compat to avoid info leak
+    - pinctrl: check the return value of pinmux_ops::get_function_name()
+    - [arm64] bus: fsl-mc: Check return value of platform_get_resource()
+    - net: usb: asix: hold PM usage ref to avoid PM/MDIO + RTNL deadlock
+    - [x86] usb: typec: tipd: Clear interrupts first
 
   [ Ben Hutchings ]
   * d/b/genorig.py, d/rules, d/salsa-ci.yml: Put orig tarballs directly in ..
