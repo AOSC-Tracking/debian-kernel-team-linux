@@ -1,4 +1,4 @@
-linux (6.1.156-1) UNRELEASED; urgency=medium
+linux (6.1.157-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.154
@@ -267,6 +267,130 @@ linux (6.1.156-1) UNRELEASED; urgency=medium
     - [arm64] bus: fsl-mc: Check return value of platform_get_resource()
     - net: usb: asix: hold PM usage ref to avoid PM/MDIO + RTNL deadlock
     - [x86] usb: typec: tipd: Clear interrupts first
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.157
+    - fs: always return zero on success from replace_fd()
+    - fscontext: do not consume log entries when returning -EMSGSIZE
+    - iio: frequency: adf4350: Fix ADF4350_REG3_12BIT_CLKDIV_MODE
+    - media: v4l2-subdev: Fix alloc failure check in
+      v4l2_subdev_call_state_try()
+    - perf evsel: Avoid container_of on a NULL leader
+    - libperf event: Ensure tracing data is multiple of 8 sized
+    - perf util: Fix compression checks returning -1 as bool
+    - [mips*] rtc: x1205: Fix Xicor X1205 vendor prefix
+        - perf session: Fix handling when buffer exceeds 2 GiB
+    - scsi: libsas: Add sas_task_find_rq()
+    - scsi: mvsas: Delete mvs_tag_init()
+    - scsi: mvsas: Use sas_task_find_rq() for tagging
+    - scsi: mvsas: Fix use-after-free bugs in mvs_work_queue (CVE-2025-40001)
+    - net/mlx4: prevent potential use after free in mlx4_en_do_uc_filter()
+    - drm/vmwgfx: Fix Use-after-free in validation
+    - drm/vmwgfx: Fix copy-paste typo in validation
+    - net/sctp: fix a null dereference in sctp_disposition sctp_sf_do_5_1D_ce()
+    - tcp: Don't call reqsk_fastopen_remove() in tcp_conn_request().
+    - [arm64] mailbox: zynqmp-ipi: Remove redundant mbox_controller_unregister()
+      call
+    - [arm64] mailbox: zynqmp-ipi: Remove dev.parent check in
+      zynqmp_ipi_free_mboxes
+    - bpf: Fix metadata_dst leak __bpf_redirect_neigh_v{4,6}
+    - drm/amdgpu: Add additional DCE6 SCL registers
+    - drm/amd/display: Add missing DCE6 SCL_HORZ_FILTER_INIT* SRIs
+    - drm/amd/display: Properly clear SCL_*_FILTER_CONTROL on DCE6
+    - drm/amd/display: Properly disable scaling on DCE6
+    - bridge: br_vlan_fill_forward_path_pvid: use br_vlan_group_rcu()
+    - crypto: essiv - Check ssize for decryption and in-place encryption
+    - tpm_tis: Fix incorrect arguments in tpm_tis_probe_irq_single
+    - bpf: Avoid RCU context warning when unpinning htab with internal structs
+    - ACPI: property: Fix buffer properties extraction for subnodes
+    - ACPI: TAD: Add missing sysfs_remove_group() for ACPI_TAD_RT
+    - ACPI: debug: fix signedness issues in read/write helpers
+    - [armhf] OMAP2+: pm33xx-core: ix device node reference leaks in
+      amx3_idle_init
+    - cpuidle: governors: menu: Avoid using invalid recent intervals data
+    - dt-bindings: phy: rockchip-inno-csi-dphy: make power-domains non-required
+    - xen/events: Cleanup find_virq() return codes
+    - xen/manage: Fix suspend error path
+    - [arm64] firmware: meson_sm: fix device leak at probe
+    - drm/nouveau: fix bad ret code in nouveau_bo_move_prep
+    - blk-crypto: fix missing blktrace bio split events
+    - btrfs: avoid potential out-of-bounds in btrfs_encode_fh()
+    - bus: mhi: host: Do not use uninitialized 'dev' pointer in
+      mhi_init_irq_setup()
+    - copy_sighand: Handle architectures where sizeof(unsigned long) <
+      sizeof(u64)
+    - [x86] cpufreq: intel_pstate: Fix object lifecycle issue in
+      update_qos_request()
+    - init: handle bootloader identifier in kernel parameters
+    - [x86] iommu/vt-d: PRS isn't usable if PDS isn't supported
+    - kernel/sys.c: fix the racy usage of task_lock(tsk->group_leader) in
+      sys_prlimit64() paths
+    - KEYS: trusted_tpm1: Compare HMAC values in constant time
+    - lib/genalloc: fix device leak in of_gen_pool_get()
+    - openat2: don't trigger automounts with RESOLVE_NO_XDEV
+    - nvme-pci: Add TUXEDO IBS Gen8 to Samsung sleep quirk
+    - [powerpc*] powernv/pci: Fix underflow and leak issue
+    - [powerpc*] pseries/msi: Fix potential underflow and leak issue
+    - pwm: berlin: Fix wrong register in suspend/resume
+    - sched/deadline: Fix race in push_dl_task()
+    - scsi: hpsa: Fix potential memory leak in hpsa_big_passthru_ioctl()
+    - sctp: Fix MAC comparison to be constant-time
+    - mmc: core: SPI mode remove cmd7
+    - [armhf] memory: samsung: exynos-srom: Fix of_iomap leak in
+      exynos_srom_probe
+    - [arm64,armhf] PCI: tegra: Convert struct tegra_msi mask_lock into raw
+      spinlock
+    - PCI/sysfs: Ensure devices are powered for config reads
+    - PCI/IOV: Add PCI rescan-remove locking when enabling/disabling SR-IOV
+    - PCI/ERR: Fix uevent on failure to recover
+    - PCI/AER: Fix missing uevent on recovery when a reset is requested
+    - PCI/AER: Support errors introduced by PCIe r6.0
+    - spi: cadence-quadspi: Flush posted register writes before INDAC access
+    - spi: cadence-quadspi: Flush posted register writes before DAC access
+    - [x86] umip: Check that the instruction opcode is at least two bytes
+    - [x86] umip: Fix decoding of register forms of 0F 01 (SGDT and SIDT
+      aliases)
+    - wifi: ath11k: HAL SRNG: don't deinitialize and re-initialize again
+    - mm/page_alloc: only set ALLOC_HIGHATOMIC for __GPF_HIGH allocations
+    - mm/hugetlb: early exit from hugetlb_pages_alloc_boot() when
+      max_huge_pages=0
+    - NFSD: Fix destination buffer size in nfsd4_ssc_setup_dul()
+    - nfsd: nfserr_jukebox in nlm_fopen should lead to a retry
+    - ext4: verify orphan file size is not too big
+    - ext4: increase i_disksize to offset + len in
+      ext4_update_disksize_before_punch()
+    - ext4: correctly handle queries for metadata mappings
+    - ext4: guard against EA inode refcount underflow in xattr update
+    - ACPICA: Allow to skip Global Lock initialization
+    - ext4: free orphan info with kvfree
+    - [x86] KVM: x86: Don't (re)check L1 intercepts when completing userspace
+      I/O
+    - Squashfs: add additional inode sanity checking
+    - Squashfs: reject negative file sizes in squashfs_read_inode()
+    - tracing: Fix race condition in kprobe initialization causing NULL pointer
+      dereference
+    - ksmbd: add max ip connections parameter
+    - [x86] mfd: intel_soc_pmic_chtdc_ti: Fix invalid regmap-config max_register
+      value
+    - [x86] mfd: intel_soc_pmic_chtdc_ti: Drop unneeded assignment for
+      cache_type
+    - [x86] mfd: intel_soc_pmic_chtdc_ti: Set use_single_read regmap_config flag
+    - btrfs: fix the incorrect max_bytes value for find_lock_delalloc_range()
+    - rseq: Protect event mask against membarrier IPI
+    - ipmi: Rework user message limit handling
+    - ipmi: Fix handling of messages with provided receive message pointer
+    - ACPI: property: Disregard references in data-only subnode lists
+    - ACPI: property: Add code comments explaining what is going on
+    - ACPI: property: Do not pass NULL handles to acpi_attach_data()
+    - asm-generic/io: Add _RET_IP_ to MMIO trace for more accurate debug info
+    - asm-generic/io.h: suppress endianness warnings for relaxed accessors
+    - asm-generic/io.h: Skip trace helpers if rwmmio events are disabled
+    - mptcp: pm: in-kernel: usable client side with C-flag
+    - minixfs: Verify inode mode when loading from disk
+    - pid: Add a judgment for ns null in pid_nr_ns
+    - fs: Add 'initramfs_options' to set initramfs mount options
+    - cramfs: Verify inode mode when loading from disk
+    - writeback: Avoid softlockup when switching many inodes
+    - writeback: Avoid excessively long inode switching times
+    - xen/events: Update virq_to_irq on migration
 
   [ Ben Hutchings ]
   * d/b/genorig.py, d/rules, d/salsa-ci.yml: Put orig tarballs directly in ..
