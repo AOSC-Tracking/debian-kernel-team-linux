@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:06 +0100
 Subject: [PATCH 134/327] tasklets: Provide tasklet_disable_in_atomic()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=04f8c062afc8d52c3df52ae4ce75fc2987293687
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=33a841fca562f35e4f4a9ec5a40a2bb1be65ed07
 
 Replacing the spin wait loops in tasklet_unlock_wait() with
 wait_var_event() is not possible as a handful of tasklet_disable()
@@ -19,10 +19,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 22 insertions(+)
 
 diff --git a/include/linux/interrupt.h b/include/linux/interrupt.h
-index 5f8a924e8721..31964c5d862f 100644
+index fb9d7fcfb093..dd0db52f192a 100644
 --- a/include/linux/interrupt.h
 +++ b/include/linux/interrupt.h
-@@ -675,10 +675,21 @@ static inline void tasklet_unlock_wait(struct tasklet_struct *t)
+@@ -703,10 +703,21 @@ static inline void tasklet_unlock_wait(struct tasklet_struct *t)
  	while (test_bit(TASKLET_STATE_RUN, &t->state))
  		cpu_relax();
  }
@@ -44,7 +44,7 @@ index 5f8a924e8721..31964c5d862f 100644
  #endif
  
  extern void __tasklet_schedule(struct tasklet_struct *t);
-@@ -703,6 +714,17 @@ static inline void tasklet_disable_nosync(struct tasklet_struct *t)
+@@ -731,6 +742,17 @@ static inline void tasklet_disable_nosync(struct tasklet_struct *t)
  	smp_mb__after_atomic();
  }
  

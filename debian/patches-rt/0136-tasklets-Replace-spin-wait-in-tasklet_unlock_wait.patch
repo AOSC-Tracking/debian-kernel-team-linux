@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 9 Mar 2021 09:42:08 +0100
 Subject: [PATCH 136/327] tasklets: Replace spin wait in tasklet_unlock_wait()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=33f7ef843f5ed2edb8f464e8b138345905984556
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=44d18ee32f3014ed4a671d6640bcafcb96d640cc
 
 tasklet_unlock_wait() spin waits for TASKLET_STATE_RUN to be cleared. This
 is wasting CPU cycles in a tight loop which is especially painful in a
@@ -25,10 +25,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 20 insertions(+), 11 deletions(-)
 
 diff --git a/include/linux/interrupt.h b/include/linux/interrupt.h
-index 86a2295bb4e3..c7c132ed1f41 100644
+index 96299f508d9b..19fb60d65a9e 100644
 --- a/include/linux/interrupt.h
 +++ b/include/linux/interrupt.h
-@@ -664,17 +664,8 @@ static inline int tasklet_trylock(struct tasklet_struct *t)
+@@ -692,17 +692,8 @@ static inline int tasklet_trylock(struct tasklet_struct *t)
  	return !test_and_set_bit(TASKLET_STATE_RUN, &(t)->state);
  }
  

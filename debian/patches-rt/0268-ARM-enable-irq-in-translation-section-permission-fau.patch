@@ -5,7 +5,7 @@ Subject: [PATCH 268/327] ARM: enable irq in translation/section permission
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=676adb790a77526a75c80b6dbb7954f9553f8f9c
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=74aba72614e3fb63dbe63e212827bcc904a92c95
 
 Probably happens on all ARM, with
 CONFIG_PREEMPT_RT

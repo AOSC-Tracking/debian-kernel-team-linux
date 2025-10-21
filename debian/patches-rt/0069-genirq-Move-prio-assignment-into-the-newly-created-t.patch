@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 9 Nov 2020 23:32:39 +0100
 Subject: [PATCH 069/327] genirq: Move prio assignment into the newly created
  thread
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2f0c650c2c2a2c999810cc867f9cbfb2d58818ec
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e7d4c6c1499ccd4efc5087befd2b8976fabc95c1
 
 With enabled threaded interrupts the nouveau driver reported the
 following:
@@ -36,10 +36,10 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
-index c7f4f948f17e..c37240bf6df4 100644
+index 4998e8a56156..5c86c2385c21 100644
 --- a/kernel/irq/manage.c
 +++ b/kernel/irq/manage.c
-@@ -1201,6 +1201,8 @@ static int irq_thread(void *data)
+@@ -1302,6 +1302,8 @@ static int irq_thread(void *data)
  
  	irq_thread_set_ready(desc, action);
  
@@ -48,7 +48,7 @@ index c7f4f948f17e..c37240bf6df4 100644
  	if (force_irqthreads && test_bit(IRQTF_FORCED_THREAD,
  					&action->thread_flags))
  		handler_fn = irq_forced_thread_fn;
-@@ -1366,8 +1368,6 @@ setup_irq_thread(struct irqaction *new, unsigned int irq, bool secondary)
+@@ -1467,8 +1469,6 @@ setup_irq_thread(struct irqaction *new, unsigned int irq, bool secondary)
  	if (IS_ERR(t))
  		return PTR_ERR(t);
  

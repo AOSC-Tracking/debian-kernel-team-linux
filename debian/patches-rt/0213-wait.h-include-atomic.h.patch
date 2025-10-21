@@ -4,7 +4,7 @@ Subject: [PATCH 213/327] wait.h: include atomic.h
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b04f01db0f5a8589a555200303d11c356e6e658f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8c0fb002238cd0fe132426d89c8a7924514960b8
 
 |  CC      init/main.o
 |In file included from include/linux/mmzone.h:9:0,

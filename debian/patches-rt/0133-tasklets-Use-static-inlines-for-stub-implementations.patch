@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:05 +0100
 Subject: [PATCH 133/327] tasklets: Use static inlines for stub implementations
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6f70c4415bb1b973228c0985901ee3e12e8e6f3f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ff90fdfa742c451ef80f56eac0f872e72aaecd50
 
 Inlines exist for a reason.
 
@@ -13,10 +13,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/include/linux/interrupt.h b/include/linux/interrupt.h
-index cd5a9a3a0729..5f8a924e8721 100644
+index 8314036bc1ee..fb9d7fcfb093 100644
 --- a/include/linux/interrupt.h
 +++ b/include/linux/interrupt.h
-@@ -676,9 +676,9 @@ static inline void tasklet_unlock_wait(struct tasklet_struct *t)
+@@ -704,9 +704,9 @@ static inline void tasklet_unlock_wait(struct tasklet_struct *t)
  		cpu_relax();
  }
  #else

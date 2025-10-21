@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 1 Nov 2012 11:03:47 +0100
 Subject: [PATCH 260/327] x86: Support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=39d625826c683e1eca02c336a121ee2fc810d91a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2294a1a3db23aa69cb801b8e855138bff5a2e44c
 
 Implement the x86 pieces for lazy preempt.
 
@@ -16,7 +16,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  5 files changed, 48 insertions(+), 5 deletions(-)
 
 diff --git a/arch/x86/Kconfig b/arch/x86/Kconfig
-index ac41289ffc01..cdf7998aa59c 100644
+index 53abaddefa33..6857e6c0b347 100644
 --- a/arch/x86/Kconfig
 +++ b/arch/x86/Kconfig
 @@ -214,6 +214,7 @@ config X86

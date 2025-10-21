@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 6 Sep 2021 18:19:16 +0200
 Subject: [PATCH 305/327] locking: Drop might_resched() from
  might_sleep_no_state_check()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8ea9791f35ea81f8e940d9e096984eb3aa4c77cb
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f90bd9e1683a945226a8106229e3eea63ad2c6ff
 
 might_sleep_no_state_check() serves the same purpose as might_sleep()
 except it is used before sleeping locks are acquired and therefore does

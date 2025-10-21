@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 28 May 2018 15:24:22 +0200
 Subject: [PATCH 198/327] mm/SLxB: change list_lock to raw_spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1e8087b93dd9d16c4f4486fee298e50b491e4581
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=35d2a65c17045758fb24d4f72dacc6647f8dd202
 
 The list_lock is used with used with IRQs off on RT. Make it a raw_spinlock_t
 otherwise the interrupts won't be disabled on -RT.  The locking rules remain
@@ -382,10 +382,10 @@ index 4b70cf4493e6..89ad4fd46da4 100644
  #ifdef CONFIG_SLAB
  	struct list_head slabs_partial;	/* partial list first, better asm code */
 diff --git a/mm/slub.c b/mm/slub.c
-index b0f637519ac9..863554db3323 100644
+index 30daba09da35..d25927821d1e 100644
 --- a/mm/slub.c
 +++ b/mm/slub.c
-@@ -1214,7 +1214,7 @@ static noinline int free_debug_processing(
+@@ -1219,7 +1219,7 @@ static noinline int free_debug_processing(
  	unsigned long flags;
  	int ret = 0;
  
@@ -394,7 +394,7 @@ index b0f637519ac9..863554db3323 100644
  	slab_lock(page);
  
  	if (s->flags & SLAB_CONSISTENCY_CHECKS) {
-@@ -1249,7 +1249,7 @@ static noinline int free_debug_processing(
+@@ -1254,7 +1254,7 @@ static noinline int free_debug_processing(
  			 bulk_cnt, cnt);
  
  	slab_unlock(page);
@@ -403,7 +403,7 @@ index b0f637519ac9..863554db3323 100644
  	if (!ret)
  		slab_fix(s, "Object at 0x%p not freed", object);
  	return ret;
-@@ -1967,7 +1967,7 @@ static void *get_partial_node(struct kmem_cache *s, struct kmem_cache_node *n,
+@@ -1972,7 +1972,7 @@ static void *get_partial_node(struct kmem_cache *s, struct kmem_cache_node *n,
  	if (!n || !n->nr_partial)
  		return NULL;
  
@@ -412,7 +412,7 @@ index b0f637519ac9..863554db3323 100644
  	list_for_each_entry_safe(page, page2, &n->partial, slab_list) {
  		void *t;
  
-@@ -1992,7 +1992,7 @@ static void *get_partial_node(struct kmem_cache *s, struct kmem_cache_node *n,
+@@ -1997,7 +1997,7 @@ static void *get_partial_node(struct kmem_cache *s, struct kmem_cache_node *n,
  			break;
  
  	}
@@ -421,7 +421,7 @@ index b0f637519ac9..863554db3323 100644
  	return object;
  }
  
-@@ -2246,7 +2246,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
+@@ -2251,7 +2251,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
  			 * that acquire_slab() will see a slab page that
  			 * is frozen
  			 */
@@ -430,7 +430,7 @@ index b0f637519ac9..863554db3323 100644
  		}
  	} else {
  		m = M_FULL;
-@@ -2258,7 +2258,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
+@@ -2263,7 +2263,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
  			 * slabs from diagnostic functions will not see
  			 * any frozen slabs.
  			 */
@@ -439,7 +439,7 @@ index b0f637519ac9..863554db3323 100644
  		}
  #endif
  	}
-@@ -2283,7 +2283,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
+@@ -2288,7 +2288,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
  		goto redo;
  
  	if (lock)
@@ -448,7 +448,7 @@ index b0f637519ac9..863554db3323 100644
  
  	if (m == M_PARTIAL)
  		stat(s, tail);
-@@ -2323,10 +2323,10 @@ static void unfreeze_partials(struct kmem_cache *s,
+@@ -2328,10 +2328,10 @@ static void unfreeze_partials(struct kmem_cache *s,
  		n2 = get_node(s, page_to_nid(page));
  		if (n != n2) {
  			if (n)
@@ -461,7 +461,7 @@ index b0f637519ac9..863554db3323 100644
  		}
  
  		do {
-@@ -2355,7 +2355,7 @@ static void unfreeze_partials(struct kmem_cache *s,
+@@ -2360,7 +2360,7 @@ static void unfreeze_partials(struct kmem_cache *s,
  	}
  
  	if (n)
@@ -470,7 +470,7 @@ index b0f637519ac9..863554db3323 100644
  
  	while (discard_page) {
  		page = discard_page;
-@@ -2520,10 +2520,10 @@ static unsigned long count_partial(struct kmem_cache_node *n,
+@@ -2525,10 +2525,10 @@ static unsigned long count_partial(struct kmem_cache_node *n,
  	unsigned long x = 0;
  	struct page *page;
  
@@ -483,7 +483,7 @@ index b0f637519ac9..863554db3323 100644
  	return x;
  }
  #endif /* CONFIG_SLUB_DEBUG || CONFIG_SYSFS */
-@@ -2983,7 +2983,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
+@@ -2988,7 +2988,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
  
  	do {
  		if (unlikely(n)) {
@@ -492,7 +492,7 @@ index b0f637519ac9..863554db3323 100644
  			n = NULL;
  		}
  		prior = page->freelist;
-@@ -3015,7 +3015,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
+@@ -3020,7 +3020,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
  				 * Otherwise the list_lock will synchronize with
  				 * other processors updating the list of slabs.
  				 */
@@ -501,7 +501,7 @@ index b0f637519ac9..863554db3323 100644
  
  			}
  		}
-@@ -3057,7 +3057,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
+@@ -3062,7 +3062,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
  		add_partial(n, page, DEACTIVATE_TO_TAIL);
  		stat(s, FREE_ADD_PARTIAL);
  	}
@@ -510,7 +510,7 @@ index b0f637519ac9..863554db3323 100644
  	return;
  
  slab_empty:
-@@ -3072,7 +3072,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
+@@ -3077,7 +3077,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
  		remove_full(s, n, page);
  	}
  
@@ -519,7 +519,7 @@ index b0f637519ac9..863554db3323 100644
  	stat(s, FREE_SLAB);
  	discard_slab(s, page);
  }
-@@ -3479,7 +3479,7 @@ static void
+@@ -3484,7 +3484,7 @@ static void
  init_kmem_cache_node(struct kmem_cache_node *n)
  {
  	n->nr_partial = 0;
@@ -528,7 +528,7 @@ index b0f637519ac9..863554db3323 100644
  	INIT_LIST_HEAD(&n->partial);
  #ifdef CONFIG_SLUB_DEBUG
  	atomic_long_set(&n->nr_slabs, 0);
-@@ -3874,7 +3874,7 @@ static void free_partial(struct kmem_cache *s, struct kmem_cache_node *n)
+@@ -3879,7 +3879,7 @@ static void free_partial(struct kmem_cache *s, struct kmem_cache_node *n)
  	struct page *page, *h;
  
  	BUG_ON(irqs_disabled());
@@ -537,7 +537,7 @@ index b0f637519ac9..863554db3323 100644
  	list_for_each_entry_safe(page, h, &n->partial, slab_list) {
  		if (!page->inuse) {
  			remove_partial(n, page);
-@@ -3884,7 +3884,7 @@ static void free_partial(struct kmem_cache *s, struct kmem_cache_node *n)
+@@ -3889,7 +3889,7 @@ static void free_partial(struct kmem_cache *s, struct kmem_cache_node *n)
  			  "Objects remaining in %s on __kmem_cache_shutdown()");
  		}
  	}
@@ -546,7 +546,7 @@ index b0f637519ac9..863554db3323 100644
  
  	list_for_each_entry_safe(page, h, &discard, slab_list)
  		discard_slab(s, page);
-@@ -4155,7 +4155,7 @@ int __kmem_cache_shrink(struct kmem_cache *s)
+@@ -4160,7 +4160,7 @@ int __kmem_cache_shrink(struct kmem_cache *s)
  		for (i = 0; i < SHRINK_PROMOTE_MAX; i++)
  			INIT_LIST_HEAD(promote + i);
  
@@ -555,7 +555,7 @@ index b0f637519ac9..863554db3323 100644
  
  		/*
  		 * Build lists of slabs to discard or promote.
-@@ -4186,7 +4186,7 @@ int __kmem_cache_shrink(struct kmem_cache *s)
+@@ -4191,7 +4191,7 @@ int __kmem_cache_shrink(struct kmem_cache *s)
  		for (i = SHRINK_PROMOTE_MAX - 1; i >= 0; i--)
  			list_splice(promote + i, &n->partial);
  
@@ -564,7 +564,7 @@ index b0f637519ac9..863554db3323 100644
  
  		/* Release empty slabs */
  		list_for_each_entry_safe(page, t, &discard, slab_list)
-@@ -4548,7 +4548,7 @@ static int validate_slab_node(struct kmem_cache *s,
+@@ -4553,7 +4553,7 @@ static int validate_slab_node(struct kmem_cache *s,
  	struct page *page;
  	unsigned long flags;
  
@@ -573,7 +573,7 @@ index b0f637519ac9..863554db3323 100644
  
  	list_for_each_entry(page, &n->partial, slab_list) {
  		validate_slab(s, page);
-@@ -4570,7 +4570,7 @@ static int validate_slab_node(struct kmem_cache *s,
+@@ -4575,7 +4575,7 @@ static int validate_slab_node(struct kmem_cache *s,
  		       s->name, count, atomic_long_read(&n->nr_slabs));
  
  out:
@@ -582,7 +582,7 @@ index b0f637519ac9..863554db3323 100644
  	return count;
  }
  
-@@ -4749,12 +4749,12 @@ static int list_locations(struct kmem_cache *s, char *buf,
+@@ -4754,12 +4754,12 @@ static int list_locations(struct kmem_cache *s, char *buf,
  		if (!atomic_long_read(&n->nr_slabs))
  			continue;
  
