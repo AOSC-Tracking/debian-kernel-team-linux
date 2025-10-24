@@ -1,4 +1,4 @@
-linux (6.12.54-1) UNRELEASED; urgency=medium
+linux (6.12.55-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -698,6 +698,130 @@ linux (6.12.54-1) UNRELEASED; urgency=medium
     - [amd64] ASoC: SOF: ipc4-pcm: fix start offset calculation for chain DMA
     - mount: handle NULL values in mnt_ns_release()
     - nfsd: decouple the xprtsec policy check from check_nfsd_access()
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.55
+    - drm/xe/guc: Check GuC running state before deregistering exec queue
+    - smb: client: Fix refcount leak for cifs_sb_tlink
+    - slab: reset slab->obj_ext when freeing and it is OBJEXTS_ALLOC_FAIL
+    - r8152: add error handling in rtl8152_driver_init
+    - f2fs: fix wrong block mapping for multi-devices
+    - jbd2: ensure that all ongoing I/O complete before freeing blocks
+    - ext4: wait for ongoing I/O to complete before freeing blocks
+    - ext4: detect invalid INLINE_DATA + EXTENTS flag combination
+    - btrfs: fix clearing of BTRFS_FS_RELOC_RUNNING if relocation already
+      running
+    - btrfs: fix memory leak on duplicated memory in the qgroup assign ioctl
+    - btrfs: fix incorrect readahead expansion length
+    - btrfs: fix memory leaks when rejecting a non SINGLE data profile without
+      an RST
+    - btrfs: do not assert we found block group item when creating free space
+      tree
+    - can: gs_usb: gs_make_candev(): populate net_device->dev_port
+    - can: gs_usb: increase max interface to U8_MAX
+    - cifs: parse_dfs_referrals: prevent oob on malformed input
+    - drm/sched: Fix potential double free in
+      drm_sched_job_add_resv_dependencies
+    - drm/amdgpu: use atomic functions with memory barriers for vm fault info
+    - drm/amdgpu: fix gfx12 mes packet status return check
+    - perf/core: Fix address filter match with backing files
+    - perf/core: Fix MMAP event path names with backing files
+    - perf/core: Fix MMAP2 event device with backing files
+    - drm/amd: Check whether secure display TA loaded successfully
+    - irqdomain: cdx: Switch to of_fwnode_handle()
+    - [arm64] drm/msm/a6xx: Fix PDC sleep sequence
+    - usb: gadget: Store endpoint pointer in usb_request
+    - usb: gadget: Introduce free_usb_request helper
+    - usb: gadget: f_ncm: Refactor bind path to use __free()
+    - usb: gadget: f_acm: Refactor bind path to use __free()
+    - usb: gadget: f_ecm: Refactor bind path to use __free()
+    - usb: gadget: f_rndis: Refactor bind path to use __free()
+    - cpufreq: CPPC: Avoid using CPUFREQ_ETERNAL as transition delay
+    - Revert "io_uring/rw: drop -EOPNOTSUPP check in __io_complete_rw_common()"
+      (Closes: #1116358)
+    - HID: multitouch: fix sticky fingers
+    - dax: skip read lock assertion for read-only filesystems
+    - can: m_can: m_can_plat_remove(): add missing pm_runtime_disable()
+    - can: m_can: m_can_handle_state_errors(): fix CAN state transition to Error
+      Active
+    - can: m_can: m_can_chip_config(): bring up interface in correct state
+    - can: m_can: add deinit callback
+    - can: m_can: call deinit/init callback when going into suspend/resume
+    - can: m_can: fix CAN state in system PM
+    - net: dlink: handle dma_map_single() failure properly
+    - doc: fix seg6_flowlabel path
+    - r8169: fix packet truncation after S4 resume on RTL8168H/RTL8111H
+    - net/ip6_tunnel: Prevent perpetual tunnel growth
+    - [amd64,arm64] amd-xgbe: Avoid spurious link down messages during interface
+      toggle
+    - tcp: fix tcp_tso_should_defer() vs large RTT
+    - ksmbd: fix recursive locking in RPC handle list access
+    - tg3: prevent use of uninitialized remote_adv and local_adv variables
+    - tls: trim encrypted message to match the plaintext on short splice
+    - tls: wait for async encrypt in case of error during latter iterations of
+      sendmsg
+    - tls: always set record_type in tls_process_cmsg
+    - tls: wait for pending async decryptions if tls_strp_msg_hold fails
+    - tls: don't rely on tx_work during send()
+    - net: usb: lan78xx: Add error handling to lan78xx_init_mac_address
+    - net: usb: lan78xx: fix use of improperly initialized dev->chipid in
+      lan78xx_reset
+    - [arm64] drm/panthor: Ensure MCU is disabled on suspend
+    - nvme-multipath: Skip nr_active increments in RETRY disposition
+    - [riscv64] kprobes: Fix probe address validation
+    - [amd64] ASoC: nau8821: Cancel jdet_work before handling jack ejection
+    - [amd64] ASoC: nau8821: Generalize helper to clear IRQ status
+    - [amd64] ASoC: nau8821: Add DMI quirk to bypass jack debounce circuit
+    - [amd64] drm/i915/guc: Skip communication warning on reset in progress
+    - drm/amdgpu: add ip offset support for cyan skillfish
+    - drm/amdgpu: add support for cyan skillfish without IP discovery
+    - drm/amdgpu: fix handling of harvesting for ip_discovery firmware
+    - drm/amd/powerplay: Fix CIK shutdown temperature
+    - [arm64] drm/rockchip: vop2: use correct destination rectangle height check
+    - sched/fair: Fix pelt lost idle time detection
+    - ALSA: firewire: amdtp-stream: fix enum kernel-doc warnings
+    - ALSA: usb-audio: Fix NULL pointer deference in try_to_register_card
+    - HID: hid-input: only ignore 0 battery events for digitizers
+    - HID: multitouch: fix name of Stylus input devices
+    - nvme/tcp: handle tls partially sent records in write_space()
+    - hfsplus: fix slab-out-of-bounds read in hfsplus_strcasecmp()
+    - xfs: rename the old_crc variable in xlog_recover_process
+    - xfs: fix log CRC mismatches between i386 and other architectures
+    - PM: runtime: Add new devm functions
+    - iio: imu: inv_icm42600: Simplify pm_runtime setup
+    - iio: imu: inv_icm42600: Avoid configuring if already pm_runtime suspended
+    - nfsd: Use correct error code when decoding extents
+    - nfsd: Drop dprintk in blocklayout xdr functions
+    - NFSD: Rework encoding and decoding of nfsd4_deviceid
+    - NFSD: Minor cleanup in layoutcommit processing
+    - NFSD: Implement large extent array support in pNFS
+    - NFSD: Fix last write offset handling in layoutcommit
+    - wifi: rtw89: avoid possible TX wait initialization race
+    - xfs: use deferred intent items for reaping crosslinked blocks
+    - padata: Reset next CPU when reorder sequence wraps around
+    - md/raid0: Handle bio_split() errors
+    - md/raid1: Handle bio_split() errors
+    - md/raid10: Handle bio_split() errors
+    - md: fix mssing blktrace bio split events
+    - [amd64] x86/resctrl: Refactor resctrl_arch_rmid_read()
+    - [amd64] x86/resctrl: Fix miscount of bandwidth event when reactivating
+      previously unavailable RMID
+    - d_alloc_parallel(): set DCACHE_PAR_LOOKUP earlier
+    - vfs: Don't leak disconnected dentries on umount
+    - PCI: Add PCI_VDEVICE_SUB helper macro
+    - ixgbevf: Add support for Intel(R) E610 device
+    - ixgbevf: fix getting link speed data for E610 devices
+    - ixgbevf: fix mailbox API compatibility by negotiating supported features
+    - tcp: convert to dev_net_rcu()
+    - tcp: cache RTAX_QUICKACK metric in a hot cache line
+    - net: dst: add four helpers to annotate data-races around dst->dev
+    - ipv4: adopt dst_dev, skb_dst_dev and skb_dst_dev_net[_rcu]
+    - net: Add locking to protect skb->dev access in ip_output
+    - mptcp: Call dst_release() in mptcp_active_enable().
+    - mptcp: Use __sk_dst_get() and dst_dev_rcu() in mptcp_active_enable().
+    - mptcp: reset blackhole on success with non-loopback ifaces
+    - NFSD: Define a proc_layoutcommit for the FlexFiles layout type
+    - [arm64] cputype: Add Neoverse-V3AE definitions
+    - [arm64] errata: Apply workarounds for Neoverse-V3AE
+    - [amd64] dmaengine: Add missing cleanup on module unload
 
   [ Salvatore Bonaccorso ]
   * drivers/infiniband/hw/bnxt_re: Enable INFINIBAND_BNXT_RE as module
