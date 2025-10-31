@@ -99,7 +99,7 @@ linux (5.10.245-1) UNRELEASED; urgency=medium
       overflow (CVE-2025-39986)
     - can: mcba_usb: populate ndo_change_mtu() to prevent buffer overflow
       (CVE-2025-39985)
-    - can: peak_usb: fix shift-out-of-bounds issue
+    - can: peak_usb: fix shift-out-of-bounds issue (CVE-2025-40020)
     - bnxt_en: correct offset handling for IPv6 destination address
     - nexthop: Pass extack to nexthop notifier
     - rtnetlink: Add RTNH_F_TRAP flag
@@ -109,11 +109,13 @@ linux (5.10.245-1) UNRELEASED; urgency=medium
       (CVE-2025-39980)
     - [x86] drm/gma500: Fix null dereference in hdmi teardown (CVE-2025-40011)
     - crypto: af_alg - Fix incorrect boolean values in af_alg_ctx
+      (CVE-2025-40022)
     - i40e: fix idx validation in i40e_validate_queue_map (CVE-2025-39972)
     - i40e: fix input validation logic for action_meta (CVE-2025-39970)
     - i40e: add max boundary check for VF filters (CVE-2025-39968)
     - i40e: add mask to apply valid bits for itr_idx
     - tracing: dynevent: Add a missing lockdown check on dynevent
+      (CVE-2025-40021)
     - fbcon: fix integer overflow in fbcon_do_set_font (CVE-2025-39967)
     - fbcon: Fix OOB access in font allocation
     - mm/migrate_device: don't add folio to be freed to LRU in
