@@ -1,4 +1,4 @@
-linux (6.1.157-1) UNRELEASED; urgency=medium
+linux (6.1.158-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.154
@@ -391,6 +391,159 @@ linux (6.1.157-1) UNRELEASED; urgency=medium
     - writeback: Avoid softlockup when switching many inodes
     - writeback: Avoid excessively long inode switching times
     - xen/events: Update virq_to_irq on migration
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.158
+    - smb: client: Fix refcount leak for cifs_sb_tlink (CVE-2025-40103)
+    - r8152: add error handling in rtl8152_driver_init
+    - jbd2: ensure that all ongoing I/O complete before freeing blocks
+    - ext4: wait for ongoing I/O to complete before freeing blocks
+    - ext4: detect invalid INLINE_DATA + EXTENTS flag combination
+    - btrfs: fix clearing of BTRFS_FS_RELOC_RUNNING if relocation already
+      running
+    - btrfs: do not assert we found block group item when creating free space
+      tree (CVE-2025-40100)
+    - cifs: parse_dfs_referrals: prevent oob on malformed input (CVE-2025-40099)
+    - drm/amdgpu: use atomic functions with memory barriers for vm fault info
+    - drm/amd: Check whether secure display TA loaded successfully
+    - [arm64,armhf] crypto: rockchip - Fix dma_unmap_sg() nents value
+    - cpufreq: CPPC: Avoid using CPUFREQ_ETERNAL as transition delay
+    - usb: gadget: Store endpoint pointer in usb_request
+    - usb: gadget: Introduce free_usb_request helper
+    - usb: gadget: f_rndis: Refactor bind path to use __free() (CVE-2025-40095)
+    - usb: gadget: f_ecm: Refactor bind path to use __free() (CVE-2025-40093)
+    - usb: gadget: f_acm: Refactor bind path to use __free() (CVE-2025-40094)
+    - usb: gadget: f_ncm: Refactor bind path to use __free() (CVE-2025-40092)
+    - Documentation: Remove bogus claim about del_timer_sync()
+    - [arm64,armhf] clocksource/drivers/arm_arch_timer: Do not use timer
+      namespace for timer_shutdown() function
+    - [arm64,armhf] clocksource/drivers/sp804: Do not use timer namespace for
+      timer_shutdown() function
+    - timers: Replace BUG_ON()s
+    - Documentation: Replace del_timer/del_timer_sync()
+    - timers: Silently ignore timers with a NULL function
+    - timers: Split [try_to_]del_timer[_sync]() to prepare for shutdown mode
+    - timers: Add shutdown mechanism to the internal functions
+    - timers: Provide timer_shutdown[_sync]()
+    - timers: Update the documentation to reflect on the new timer_shutdown()
+      API
+    - Bluetooth: hci_qca: Fix the teardown problem for real
+    - HID: multitouch: fix sticky fingers
+    - dax: skip read lock assertion for read-only filesystems
+    - [arm64] can: m_can: m_can_plat_remove(): add missing pm_runtime_disable()
+    - net: dlink: handle dma_map_single() failure properly
+    - doc: fix seg6_flowlabel path
+    - r8169: fix packet truncation after S4 resume on RTL8168H/RTL8111H
+    - net/ip6_tunnel: Prevent perpetual tunnel growth
+    - [amd64,arm64] amd-xgbe: Avoid spurious link down messages during interface
+      toggle
+    - tcp: fix tcp_tso_should_defer() vs large RTT
+    - tg3: prevent use of uninitialized remote_adv and local_adv variables
+    - net: tls: wait for async completion on last message
+    - tls: wait for async encrypt in case of error during latter iterations of
+      sendmsg
+    - tls: always set record_type in tls_process_cmsg
+    - tls: wait for pending async decryptions if tls_strp_msg_hold fails
+    - tls: don't rely on tx_work during send()
+    - net: usb: lan78xx: Add error handling to lan78xx_init_mac_address
+    - net: usb: lan78xx: fix use of improperly initialized dev->chipid in
+      lan78xx_reset
+    - [x86] ASoC: nau8821: Cancel jdet_work before handling jack ejection
+    - [x86] ASoC: nau8821: Generalize helper to clear IRQ status
+    - [x86] ASoC: nau8821: Add DMI quirk to bypass jack debounce circuit
+    - drm/amd/powerplay: Fix CIK shutdown temperature
+    - [arm64] drm/rockchip: vop2: use correct destination rectangle height check
+    - sched/balancing: Rename newidle_balance() => sched_balance_newidle()
+    - sched/fair: Fix pelt lost idle time detection
+    - ALSA: firewire: amdtp-stream: fix enum kernel-doc warnings
+    - ALSA: usb-audio: Fix NULL pointer deference in try_to_register_card
+      (CVE-2025-40085)
+    - HID: hid-input: only ignore 0 battery events for digitizers
+    - HID: multitouch: fix name of Stylus input devices
+    - hfsplus: fix slab-out-of-bounds read in hfsplus_strcasecmp()
+      (CVE-2025-40088)
+    - PCI/sysfs: Ensure devices are powered for config reads (part 2)
+    - exec: Fix incorrect type for ret
+    - hfs: clear offset and space out of valid records in b-tree node
+    - hfs: make proper initalization of struct hfs_find_data
+    - hfsplus: fix KMSAN uninit-value issue in __hfsplus_ext_cache_extent()
+    - hfs: validate record offset in hfsplus_bmap_alloc
+    - hfsplus: fix KMSAN uninit-value issue in hfsplus_delete_cat()
+    - dlm: check for defined force value in dlm_lockspace_release
+    - hfs: fix KMSAN uninit-value issue in hfs_find_set_zero_bits()
+    - hfsplus: return EIO when type of hidden directory mismatch in
+      hfsplus_fill_super()
+    - smb: server: let smb_direct_flush_send_list() invalidate a remote key
+      first
+    - net/mlx5e: Return 1 instead of 0 in invalid case in
+      mlx5e_mpwrq_umr_entry_size()
+    - rtnetlink: Allow deleting FDB entries in user namespace
+    - [arm64] dpaa2-eth: fix the pointer passed to PTR_ALIGN on Tx path
+    - [arm64] mm: avoid always making PTE dirty in pte_mkwrite()
+    - sctp: avoid NULL dereference when chunk data buffer is missing
+    - net: bonding: fix possible peer notify event loss or dup issue
+    - Revert "cpuidle: menu: Avoid discarding useful information"
+    - ACPICA: Work around bogus -Wstringop-overread warning since GCC 11
+    - can: netlink: can_changelink(): allow disabling of automatic restart
+    - [mips64el,mipsel] Malta: Fix keyboard resource preventing i8042 driver
+      from registering
+    - ocfs2: clear extent cache after moving/defragmenting extents
+    - vsock: fix lock inversion in vsock_assign_transport()
+    - [arm64,armhf] net: stmmac: dwmac-rk: Fix disabling set_clock_selection
+    - net: usb: rtl8150: Fix frame padding
+    - io_uring: correct __must_hold annotation in io_install_fixed_file
+    - USB: serial: option: add UNISOC UIS7720
+    - USB: serial: option: add Quectel RG255C
+    - USB: serial: option: add Telit FN920C04 ECM compositions
+    - usb/core/quirks: Add Huawei ME906S to wakeup quirk
+    - usb: raw-gadget: do not limit transfer length
+    - xhci: dbc: enable back DbC in resume if it was enabled before suspend
+    - [arm*] binder: remove "invalid inc weak" check
+    - [x86] comedi: fix divide-by-zero in comedi_buf_munge() (CVE-2025-40106)
+    - [x86] mei: me: add wildcat lake P DID
+    - serial: 8250_dw: handle reset control deassert error
+    - serial: 8250_exar: add support for Advantech 2 port card with Device ID
+      0x0018
+    - xfs: rename the old_crc variable in xlog_recover_process
+    - xfs: fix log CRC mismatches between i386 and other architectures
+    - PM: runtime: Add new devm functions
+    - iio: imu: inv_icm42600: Simplify pm_runtime setup
+    - iio: imu: inv_icm42600: use = { } instead of memset()
+    - iio: imu: inv_icm42600: Avoid configuring if already pm_runtime suspended
+    - padata: Reset next CPU when reorder sequence wraps around
+    - fuse: allocate ff->release_args only if release is needed
+    - fuse: fix livelock in synchronous file put from fuseblk workers
+    - [arm64] mte: Do not flag the zero page as PG_mte_tagged
+    - [arm64] PCI: j721e: Enable ACSPCIE Refclk if
+      "ti,syscon-acspcie-proxy-ctrl" exists
+    - [arm64] PCI: j721e: Fix programming sequence of "strap" settings
+    - NFSD: Rework encoding and decoding of nfsd4_deviceid
+    - NFSD: Minor cleanup in layoutcommit processing
+    - NFSD: Fix last write offset handling in layoutcommit
+    - vfs: Don't leak disconnected dentries on umount (CVE-2025-40105)
+    - NFSD: Define a proc_layoutcommit for the FlexFiles layout type
+      (CVE-2025-40087)
+    - ext4: avoid potential buffer over-read in parse_apply_sb_mount_options()
+    - drm/sched: Fix potential double free in
+      drm_sched_job_add_resv_dependencies (CVE-2025-40096)
+    - f2fs: add a f2fs_get_block_locked helper
+    - f2fs: remove the create argument to f2fs_map_blocks
+    - f2fs: factor a f2fs_map_blocks_cached helper
+    - f2fs: fix wrong block mapping for multi-devices
+    - PCI: Add PCI_VDEVICE_SUB helper macro
+    - ixgbevf: Add support for Intel(R) E610 device
+    - ixgbevf: fix getting link speed data for E610 devices
+    - ixgbevf: fix mailbox API compatibility by negotiating supported features
+      (CVE-2025-40104)
+    - arch_topology: Fix incorrect error check in topology_parse_cpu_capacity()
+    - xfs: always warn about deprecated mount options
+    - devcoredump: Fix circular locking dependency with devcd->mutex.
+    - [x86] resctrl: Fix miscount of bandwidth event when reactivating
+      previously unavailable RMID
+    - ksmbd: browse interfaces list on FSCTL_QUERY_INTERFACE_INFO IOCTL
+    - [s390x] cio: Update purge function to unregister the unused subchannels
+    - [arm64] cputype: Add Neoverse-V3AE definitions
+    - [arm64] errata: Apply workarounds for Neoverse-V3AE
+    - ksmbd: transport_ipc: validate payload size before reading handle
+      (CVE-2025-40084)
 
   [ Ben Hutchings ]
   * d/b/genorig.py, d/rules, d/salsa-ci.yml: Put orig tarballs directly in ..
