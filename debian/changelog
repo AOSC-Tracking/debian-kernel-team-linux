@@ -1,4 +1,4 @@
-linux (6.12.55-1) UNRELEASED; urgency=medium
+linux (6.12.56-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -822,6 +822,114 @@ linux (6.12.55-1) UNRELEASED; urgency=medium
     - [arm64] cputype: Add Neoverse-V3AE definitions
     - [arm64] errata: Apply workarounds for Neoverse-V3AE
     - [amd64] dmaengine: Add missing cleanup on module unload
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.56
+    - exec: Fix incorrect type for ret
+    - hfs: clear offset and space out of valid records in b-tree node
+    - hfs: make proper initalization of struct hfs_find_data
+    - hfsplus: fix KMSAN uninit-value issue in __hfsplus_ext_cache_extent()
+    - hfs: validate record offset in hfsplus_bmap_alloc
+    - hfsplus: fix KMSAN uninit-value issue in hfsplus_delete_cat()
+    - dlm: check for defined force value in dlm_lockspace_release
+    - hfs: fix KMSAN uninit-value issue in hfs_find_set_zero_bits()
+    - hfsplus: return EIO when type of hidden directory mismatch in
+      hfsplus_fill_super()
+    - PCI: Test for bit underflow in pcie_set_readrq()
+    - [arm64] sysreg: Correct sign definitions for EIESB and DoubleLock
+    - drivers/perf: hisi: Relax the event ID check in the framework
+    - [s390x] mm: Use __GFP_ACCOUNT for user page table allocations
+    - smb: server: let smb_direct_flush_send_list() invalidate a remote key
+      first
+    - PM: EM: Drop unused parameter from em_adjust_new_capacity()
+    - PM: EM: Slightly reduce em_check_capacity_update() overhead
+    - PM: EM: Move CPU capacity check to em_adjust_new_capacity()
+    - PM: EM: Fix late boot with holes in CPU topology
+    - net/mlx5e: Return 1 instead of 0 in invalid case in
+      mlx5e_mpwrq_umr_entry_size()
+    - rtnetlink: Allow deleting FDB entries in user namespace
+    - [arm64] net: enetc: fix the deadlock of enetc_mdio_lock
+    - [arm64] net: enetc: correct the value of ENETC_RXB_TRUESIZE
+    - [arm64] dpaa2-eth: fix the pointer passed to PTR_ALIGN on Tx path
+    - net/mlx5e: Reuse per-RQ XDP buffer to avoid stack zeroing overhead
+    - net/mlx5e: RX, Fix generating skb from non-linear xdp_buff for legacy RQ
+    - net/mlx5e: RX, Fix generating skb from non-linear xdp_buff for striding RQ
+    - net/smc: fix general protection fault in __smc_diag_dump
+    - [arm64] net: ethernet: ti: am65-cpts: fix timestamp loss due to race
+      conditions
+    - [arm64] mm: avoid always making PTE dirty in pte_mkwrite()
+    - ptp: ocp: Fix typo using index 1 instead of i in SMA initialization loop
+    - sctp: avoid NULL dereference when chunk data buffer is missing
+    - net: phy: micrel: always set shared->phydev for LAN8814
+    - net/mlx5: Fix IPsec cleanup over MPV device
+    - fs/notify: call exportfs_encode_fid with s_umount
+    - net: bonding: fix possible peer notify event loss or dup issue
+    - dma-debug: don't report false positives with DMA_BOUNCE_UNALIGNED_KMALLOC
+    - arch_topology: Fix incorrect error check in topology_parse_cpu_capacity()
+    - btrfs: directly free partially initialized fs_info in
+      btrfs_check_leaked_roots()
+    - gpio: pci-idio-16: Define maximum valid register address offset
+    - gpio: 104-idio-16: Define maximum valid register address offset
+    - xfs: fix locking in xchk_nlinks_collect_dir
+    - Revert "cpuidle: menu: Avoid discarding useful information"
+    - slab: Avoid race on slab->obj_exts in alloc_slab_obj_exts
+    - slab: Fix obj_ext mistakenly considered NULL due to race condition
+    - ACPICA: Work around bogus -Wstringop-overread warning since GCC 11
+    - can: netlink: can_changelink(): allow disabling of automatic restart
+    - cifs: Fix TCP_Server_Info::credits to be signed
+    - ocfs2: clear extent cache after moving/defragmenting extents
+    - vsock: fix lock inversion in vsock_assign_transport()
+    - [arm64,armhf] net: stmmac: dwmac-rk: Fix disabling set_clock_selection
+    - net: usb: rtl8150: Fix frame padding
+    - mm: prevent poison consumption when splitting THP
+    - drm/amd/display: increase max link count and fix link->enc NULL pointer
+      access
+    - [arm64] spi: spi-nxp-fspi: add extra delay after dll locked
+    - [arm64] dts: broadcom: bcm2712: Add default GIC address cells
+    - [arm64] dts: broadcom: bcm2712: Define VGIC interrupt
+    - [arm64] firmware: arm_scmi: Account for failed debug initialization
+    - [arm64] firmware: arm_scmi: Fix premature SCMI_XFER_FLAG_IS_RAW clearing
+      in raw mode
+    - [arm64] drm/panthor: Fix kernel panic on partial unmap of a GPU VA region
+    - [riscv64] Define pgprot_dmacoherent() for non-coherent devices
+    - [riscv64] Don't print details of CPUs disabled in DT
+    - [riscv64] hwprobe: avoid uninitialized variable use in hwprobe_arch_id()
+    - hwmon: (sht3x) Fix error handling
+    - nbd: override creds to kernel when calling sock_{send,recv}msg()
+    - drm/panic: Fix drawing the logo on a small narrow screen
+    - drm/panic: Fix qr_code, ensure vmargin is positive
+    - [amd64] gpio: ljca: Fix duplicated IRQ mapping
+    - io_uring: correct __must_hold annotation in io_install_fixed_file
+    - sched: Remove never used code in mm_cid_get()
+    - io_uring/sqpoll: switch away from getrusage() for CPU accounting
+    - io_uring/sqpoll: be smarter on when to update the stime usage
+    - Bluetooth: btintel: Add DSBR support for BlazarIW, BlazarU and GaP
+      (Closes: #1118660)
+    - platform/x86/amd/hsmp: Ensure sock->metric_tbl_addr is non-NULL
+      (CVE-2025-39678)
+    - USB: serial: option: add UNISOC UIS7720
+    - USB: serial: option: add Quectel RG255C
+    - USB: serial: option: add Telit FN920C04 ECM compositions
+    - usb/core/quirks: Add Huawei ME906S to wakeup quirk
+    - usb: raw-gadget: do not limit transfer length
+    - xhci: dbc: enable back DbC in resume if it was enabled before suspend
+    - xhci: dbc: fix bogus 1024 byte prefix if ttyDBC read races with stall
+      event
+    - [amd64] x86/microcode: Fix Entrysign revision check for Zen1/Naples
+    - [arm*] binder: remove "invalid inc weak" check
+    - [amd64] comedi: fix divide-by-zero in comedi_buf_munge() (CVE-2025-40106)
+    - [amd64] mei: me: add wildcat lake P DID
+    - [arm64] misc: fastrpc: Fix dma_buf object leak in fastrpc_map_lookup
+    - [amd64,arm64] tcpm: switch check for role_sw device with fw_node
+    - dt-bindings: usb: dwc3-imx8mp: dma-range is required only for imx8mp
+    - serial: 8250_dw: handle reset control deassert error
+    - serial: 8250_exar: add support for Advantech 2 port card with Device ID
+      0x0018
+    - [arm64] serial: 8250_mtk: Enable baud clock and manage in runtime PM
+    - serial: sc16is7xx: remove useless enable of enhanced features
+    - devcoredump: Fix circular locking dependency with devcd->mutex.
+    - [arm64] mte: Do not warn if the page is already tagged in copy_highpage()
+    - xfs: always warn about deprecated mount options
+    - ksmbd: transport_ipc: validate payload size before reading handle
+      (CVE-2025-40084)
 
   [ Salvatore Bonaccorso ]
   * drivers/infiniband/hw/bnxt_re: Enable INFINIBAND_BNXT_RE as module
