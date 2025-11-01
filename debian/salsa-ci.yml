@@ -45,10 +45,13 @@ build:
     # Do the same as the common .build-definition script
     - !reference [.build-before-script]
     - !reference [.build-script-setup-environment]
-    # Move cache to where genorig.py and orig target want it
-    - mkdir -p orig
-    - rm -rf ../orig
-    - mv orig ../orig
+
+    # Move orig tarball cache
+    - |
+      if [ -d orig ]; then
+          mv orig/* ..
+          rmdir orig
+      fi
 
     # Install dependencies of gencontrol.py, genorig.py, and debian/rules orig
     - apt-get update
@@ -72,9 +75,7 @@ build:
     # tarball fom the archive if available or run uscan if not, but
     # uscan is currently excessively slow for us (bug #1003251).
     - |
-      if [ -f ../orig/linux_${upstream_version}.orig.tar.xz ]; then
-          ln -s orig/linux_${upstream_version}.orig.tar.xz ..
-      else
+      if ! [ -f ../linux_${upstream_version}.orig.tar.xz ]; then
           debian/bin/genorig.py https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git
       fi
     - debian/rules orig
@@ -97,7 +98,7 @@ build:
     # Put packed source in artifacts
     - dpkg-buildpackage -uc -us -S -sa -d
     - mkdir -p ${WORKING_DIR}
-    - cp ../orig/linux_${upstream_version}.orig.tar.xz ${WORKING_DIR}
+    - cp ../linux_${upstream_version}.orig.tar.xz ${WORKING_DIR}
     - mv ../linux_${version}.dsc ../linux_${version}.debian.tar.xz ${WORKING_DIR}
 
     # Move orig tarballs back to where GitLab wants them
