@@ -419,6 +419,9 @@ linux (5.10.246-1) UNRELEASED; urgency=medium
     - Refresh "locking/rtmutex: wire up RT's locking"
   * d/b/genorig.py, d/rules, d/salsa-ci.yml: Put orig tarballs directly in ..
   * d/salsa-ci.yml: Adjust filenames to allow source package name suffix
+  * d/salsa-ci.yml: Fix cache configuration for build job
+  * d/salsa-ci.yml: Move orig tarball generation to a separate job again
+  * d/salsa-ci.yml: Restore lintian checking of source package
 
  -- Ben Hutchings <benh@debian.org>  Mon, 13 Oct 2025 15:13:43 +0200
 
