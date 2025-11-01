@@ -417,6 +417,7 @@ linux (5.10.246-1) UNRELEASED; urgency=medium
     - Refresh "sched: Add migrate_disable()"
     - Refresh "sched: Make migrate_disable/enable() independent of RT"
     - Refresh "locking/rtmutex: wire up RT's locking"
+  * d/b/genorig.py, d/rules, d/salsa-ci.yml: Put orig tarballs directly in ..
 
  -- Ben Hutchings <benh@debian.org>  Mon, 13 Oct 2025 15:13:43 +0200
 
