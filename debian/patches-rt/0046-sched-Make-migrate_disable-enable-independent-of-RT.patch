@@ -36,8 +36,6 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  lib/smp_processor_id.c  |  2 +-
  6 files changed, 56 insertions(+), 56 deletions(-)
 
-diff --git a/include/linux/kernel.h b/include/linux/kernel.h
-index cdd6ed5bbcf2..55d48d5627c7 100644
 --- a/include/linux/kernel.h
 +++ b/include/linux/kernel.h
 @@ -207,6 +207,7 @@ extern int _cond_resched(void);
@@ -48,7 +46,7 @@ index cdd6ed5bbcf2..55d48d5627c7 100644
  
  /**
   * might_sleep - annotation for functions that can sleep
-@@ -230,6 +231,18 @@ extern void __cant_sleep(const char *file, int line, int preempt_offset);
+@@ -230,6 +231,18 @@ extern void __cant_sleep(const char *fil
  # define cant_sleep() \
  	do { __cant_sleep(__FILE__, __LINE__, 0); } while (0)
  # define sched_annotate_sleep()	(current->task_state_change = 0)
@@ -67,7 +65,7 @@ index cdd6ed5bbcf2..55d48d5627c7 100644
  /**
   * non_block_start - annotate the start of section where sleeping is prohibited
   *
-@@ -254,6 +267,7 @@ extern void __cant_sleep(const char *file, int line, int preempt_offset);
+@@ -254,6 +267,7 @@ extern void __cant_sleep(const char *fil
  				   int preempt_offset) { }
  # define might_sleep() do { might_resched(); } while (0)
  # define cant_sleep() do { } while (0)
@@ -75,7 +73,7 @@ index cdd6ed5bbcf2..55d48d5627c7 100644
  # define sched_annotate_sleep() do { } while (0)
  # define non_block_start() do { } while (0)
  # define non_block_end() do { } while (0)
-@@ -261,13 +275,6 @@ extern void __cant_sleep(const char *file, int line, int preempt_offset);
+@@ -261,13 +275,6 @@ extern void __cant_sleep(const char *fil
  
  #define might_sleep_if(cond) do { if (cond) might_sleep(); } while (0)
  
@@ -89,11 +87,9 @@ index cdd6ed5bbcf2..55d48d5627c7 100644
  /**
   * abs - return absolute value of an argument
   * @x: the value.  If it is unsigned type, it is converted to signed type first.
-diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index 8b43922e65df..6df63cbe8bb0 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -322,7 +322,7 @@ static inline void preempt_notifier_init(struct preempt_notifier *notifier,
+@@ -323,7 +323,7 @@ static inline void preempt_notifier_init
  
  #endif
  
@@ -102,7 +98,7 @@ index 8b43922e65df..6df63cbe8bb0 100644
  
  /*
   * Migrate-Disable and why it is undesired.
-@@ -382,43 +382,11 @@ static inline void preempt_notifier_init(struct preempt_notifier *notifier,
+@@ -383,44 +383,12 @@ static inline void preempt_notifier_init
  extern void migrate_disable(void);
  extern void migrate_enable(void);
  
@@ -147,9 +143,8 @@ index 8b43922e65df..6df63cbe8bb0 100644
 -#endif /* CONFIG_SMP && CONFIG_PREEMPT_RT */
 +#endif /* CONFIG_SMP */
  
- #endif /* __LINUX_PREEMPT_H */
-diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 995428e3becc..c26f6e01abe0 100644
+ DEFINE_LOCK_GUARD_0(preempt, preempt_disable(), preempt_enable())
+ DEFINE_LOCK_GUARD_0(preempt_notrace, preempt_disable_notrace(), preempt_enable_notrace())
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -726,7 +726,7 @@ struct task_struct {
@@ -161,11 +156,9 @@ index 995428e3becc..c26f6e01abe0 100644
  	unsigned short			migration_disabled;
  #endif
  	unsigned short			migration_flags;
-diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index ded432ae842d..8d679e4b1b6f 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1709,8 +1709,6 @@ void check_preempt_curr(struct rq *rq, struct task_struct *p, int flags)
+@@ -1709,8 +1709,6 @@ void check_preempt_curr(struct rq *rq, s
  
  #ifdef CONFIG_SMP
  
@@ -174,7 +167,7 @@ index ded432ae842d..8d679e4b1b6f 100644
  static void
  __do_set_cpus_allowed(struct task_struct *p, const struct cpumask *new_mask, u32 flags);
  
-@@ -1785,8 +1783,6 @@ static inline bool rq_has_pinned_tasks(struct rq *rq)
+@@ -1785,8 +1783,6 @@ static inline bool rq_has_pinned_tasks(s
  	return rq->nr_pinned;
  }
  
@@ -183,7 +176,7 @@ index ded432ae842d..8d679e4b1b6f 100644
  /*
   * Per-CPU kthreads are allowed to run on !active && online CPUs, see
   * __set_cpus_allowed_ptr() and select_fallback_rq().
-@@ -2867,7 +2863,7 @@ void sched_set_stop_task(int cpu, struct task_struct *stop)
+@@ -2867,7 +2863,7 @@ void sched_set_stop_task(int cpu, struct
  	}
  }
  
@@ -192,7 +185,7 @@ index ded432ae842d..8d679e4b1b6f 100644
  
  static inline int __set_cpus_allowed_ptr(struct task_struct *p,
  					 const struct cpumask *new_mask,
-@@ -2876,10 +2872,6 @@ static inline int __set_cpus_allowed_ptr(struct task_struct *p,
+@@ -2876,10 +2872,6 @@ static inline int __set_cpus_allowed_ptr
  	return set_cpus_allowed_ptr(p, new_mask);
  }
  
@@ -203,7 +196,7 @@ index ded432ae842d..8d679e4b1b6f 100644
  static inline void migrate_disable_switch(struct rq *rq, struct task_struct *p) { }
  
  static inline bool rq_has_pinned_tasks(struct rq *rq)
-@@ -2887,7 +2879,7 @@ static inline bool rq_has_pinned_tasks(struct rq *rq)
+@@ -2887,7 +2879,7 @@ static inline bool rq_has_pinned_tasks(s
  	return false;
  }
  
@@ -212,7 +205,7 @@ index ded432ae842d..8d679e4b1b6f 100644
  
  static void
  ttwu_stat(struct task_struct *p, int cpu, int wake_flags)
-@@ -7901,6 +7893,39 @@ void __cant_sleep(const char *file, int line, int preempt_offset)
+@@ -7902,6 +7894,39 @@ void __cant_sleep(const char *file, int
  	add_taint(TAINT_WARN, LOCKDEP_STILL_OK);
  }
  EXPORT_SYMBOL_GPL(__cant_sleep);
@@ -252,8 +245,6 @@ index ded432ae842d..8d679e4b1b6f 100644
  #endif
  
  #ifdef CONFIG_MAGIC_SYSRQ
-diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index 2c5cecc29121..86844efb1804 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -1058,7 +1058,7 @@ struct rq {
@@ -274,11 +265,9 @@ index 2c5cecc29121..86844efb1804 100644
  	return p->migration_disabled;
  #else
  	return false;
-diff --git a/lib/smp_processor_id.c b/lib/smp_processor_id.c
-index dbb96ebf661f..0c0c42b14370 100644
 --- a/lib/smp_processor_id.c
 +++ b/lib/smp_processor_id.c
-@@ -26,7 +26,7 @@ unsigned int check_preemption_disabled(const char *what1, const char *what2)
+@@ -26,7 +26,7 @@ unsigned int check_preemption_disabled(c
  	if (current->nr_cpus_allowed == 1)
  		goto out;
  
