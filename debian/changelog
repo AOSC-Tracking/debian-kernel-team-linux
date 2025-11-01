@@ -6,6 +6,8 @@ linux (6.12.48-2) UNRELEASED; urgency=medium
 
   [ Ben Hutchings ]
   * d/salsa-ci.yml: Adjust filenames to allow source package name suffix
+  * tools/hv: Make the sample hv_get_dhcp_info script more useful
+  * hyperv-daemons: Install the sample network info scripts (Closes: #919350)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 01 Nov 2025 20:16:33 +0100
 
