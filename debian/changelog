@@ -1,4 +1,4 @@
-linux (6.12.56-1) UNRELEASED; urgency=medium
+linux (6.12.57-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -930,6 +930,57 @@ linux (6.12.56-1) UNRELEASED; urgency=medium
     - xfs: always warn about deprecated mount options
     - ksmbd: transport_ipc: validate payload size before reading handle
       (CVE-2025-40084)
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.57
+    - net/sched: sch_qfq: Fix null-deref in agg_dequeue (CVE-2025-40083)
+    - audit: record fanotify event regardless of presence of rules
+    - [amd64] perf/x86/intel: Add ICL_FIXED_0_ADAPTIVE bit into
+      INTEL_FIXED_BITS_MASK
+    - perf: Use current->flags & PF_KTHREAD|PF_USER_WORKER instead of
+      current->mm == NULL
+    - perf: Have get_perf_callchain() return NULL if crosstask and user are set
+    - perf: Skip user unwind if the task is a kernel thread
+    - seccomp: passthrough uprobe systemcall without filtering
+    - [amd64] x86/bugs: Report correct retbleed mitigation status
+    - [amd64] x86/bugs: Fix reporting of LFENCE retpoline
+    - [amd64,arm64] EDAC/mc_sysfs: Increase legacy channel support to 16
+    - cpuset: Use new excpus for nocpu error check when enabling root partition
+    - btrfs: abort transaction on specific error places when walking log tree
+    - btrfs: abort transaction in the process_one_buffer() log tree walk
+      callback
+    - btrfs: zoned: return error from btrfs_zone_finish_endio()
+    - btrfs: zoned: refine extent allocator hint selection
+    - btrfs: scrub: replace max_t()/min_t() with clamp() in
+      scrub_throttle_dev_io()
+    - btrfs: always drop log root tree reference in btrfs_replay_log()
+    - btrfs: use level argument in log tree walk callback replay_one_buffer()
+    - btrfs: abort transaction if we fail to update inode in log replay dir
+      fixup
+    - btrfs: tree-checker: add inode extref checks
+    - btrfs: use smp_mb__after_atomic() when forcing COW in
+      create_pending_snapshot()
+    - sched_ext: Make qmap dump operation non-destructive
+    - arch: Add the macro COMPILE_OFFSETS to all the asm-offsets.c
+    - docs: kdoc: handle the obsolescensce of docutils.ErrorString()
+    - mptcp: pm: in-kernel: C-flag: handle late ADD_ADDR
+    - f2fs: fix to avoid panic once fallocation fails for pinfile
+      (CVE-2025-23130)
+    - wifi: cfg80211: Add missing lock in cfg80211_check_and_end_cac()
+      (CVE-2025-38643)
+    - bonding: return detailed error when loading native XDP fails
+    - bonding: check xdp prog when set bond mode (CVE-2025-22105)
+    - bits: add comments and newlines to #if, #else and #endif directives
+    - bits: introduce fixed-type GENMASK_U*()
+    - gpio: regmap: Allow to allocate regmap-irq device
+    - gpio: regmap: add the .fixed_direction_output configuration parameter
+    - gpio: idio-16: Define fixed direction of the GPIO lines
+    - [amd64] iommu/vt-d: Avoid use of NULL after WARN_ON_ONCE (CVE-2025-21833)
+    - wifi: ath12k: fix read pointer after free in
+      ath12k_mac_assign_vif_to_vdev() (CVE-2024-57995)
+    - [amd64,arm64] udmabuf: fix a buf size overflow issue during udmabuf
+      creation (CVE-2025-37803)
+    - sfc: fix NULL dereferences in ef100_process_design_param()
+      (CVE-2025-37860)
+    - btrfs: tree-checker: fix bounds check in check_inode_extref()
 
   [ Salvatore Bonaccorso ]
   * drivers/infiniband/hw/bnxt_re: Enable INFINIBAND_BNXT_RE as module
