@@ -1,4 +1,4 @@
-linux (6.12.57-1) UNRELEASED; urgency=medium
+linux (6.12.57-1) trixie; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.49
@@ -994,7 +994,7 @@ linux (6.12.57-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Move orig tarball generation to a separate job again
   * d/salsa-ci.yml: Restore lintian checking of source package
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 01 Nov 2025 20:16:33 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 05 Nov 2025 15:56:27 +0100
 
 linux (6.12.48-1) trixie-security; urgency=high
 
