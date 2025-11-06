@@ -1,8 +1,9 @@
+From c0708fcd7814bee172d8f718844ee88de71b3e3d Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 23 Oct 2024 13:02:37 +0200
-Subject: [PATCH v2 2/3] timers: Use __raise_softirq_irqoff() to raise the
+Subject: [PATCH 02/43] timers: Use __raise_softirq_irqoff() to raise the
  softirq.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.8-rt8.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
 
 As an optimisation use __raise_softirq_irqoff() to raise the softirq.
 This is always called from an interrupt handler, interrupts are already
@@ -13,9 +14,11 @@ Use __raise_softirq_irqoff() to raise the softirq.
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 ---
- kernel/time/timer.c |    2 +-
+ kernel/time/timer.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/kernel/time/timer.c b/kernel/time/timer.c
+index 7835f9b376e7..c26a0ebc5909 100644
 --- a/kernel/time/timer.c
 +++ b/kernel/time/timer.c
 @@ -2500,7 +2500,7 @@ static void run_local_timers(void)
@@ -27,3 +30,6 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  			return;
  		}
  	}
+-- 
+2.50.1
+
