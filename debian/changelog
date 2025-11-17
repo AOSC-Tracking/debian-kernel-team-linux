@@ -2,6 +2,9 @@ linux (6.16.12-1~bpo13+1) UNRELEASED; urgency=medium
 
   * Rebuild for trixie-backports
   * d/salsa-ci.yml: Adjust filenames to allow source package name suffix
+  * d/salsa-ci.yml: Fix cache configuration for build job
+  * d/salsa-ci.yml: Move orig tarball generation to a separate job again
+  * d/salsa-ci.yml: Restore lintian checking of source package
 
  -- Ben Hutchings <benh@debian.org>  Mon, 17 Nov 2025 19:44:43 +0100
 
