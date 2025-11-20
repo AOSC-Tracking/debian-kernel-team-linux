@@ -1,8 +1,8 @@
-linux-6.1 (6.1.153-2~deb11u1) UNRELEASED; urgency=high
+linux-6.1 (6.1.158-1~deb11u1) bullseye-security; urgency=high
 
   * Rebuild for bullseye
 
- -- Ben Hutchings <benh@debian.org>  Fri, 07 Nov 2025 00:42:57 +0100
+ -- Ben Hutchings <benh@debian.org>  Thu, 20 Nov 2025 23:37:28 +0100
 
 linux (6.1.158-1) bookworm-security; urgency=high
 
