@@ -1,4 +1,4 @@
-linux (6.12.59-1) UNRELEASED; urgency=medium
+linux (6.12.60-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.58
@@ -674,6 +674,104 @@ linux (6.12.59-1) UNRELEASED; urgency=medium
     - proc: proc_maps_open allow proc_mem_open to return NULL
     - Bluetooth: MGMT: fix crash in set_mesh_sync and set_mesh_complete
       (CVE-2025-40213)
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.60
+    - [arm64] KVM: arm64: Check the untrusted offset in FF-A memory share
+    - timers: Fix NULL function pointer race in timer_shutdown_sync()
+    - HID: amd_sfh: Stop sensor before starting
+    - HID: quirks: work around VID/PID conflict for 0x4c4a/0x4155
+      (Closes: #1114557)
+    - [arm64] dts: rockchip: fix PCIe 3.3V regulator voltage on orangepi-5
+    - mtdchar: fix integer overflow in read/write ioctls
+    - isofs: check the return value of sb_min_blocksize() in isofs_fill_super
+    - shmem: fix tmpfs reconfiguration (remount) when noswap is set
+    - exfat: check return value of sb_min_blocksize in exfat_read_boot_sector
+    - mptcp: Disallow MPTCP subflows from sockmap
+    - mptcp: Fix proto fallback detection with BPF
+    - ata: libata-scsi: Fix system suspend for a security locked drive
+    - smb: client: introduce close_cached_dir_locked()
+    - ata: libata-scsi: Add missing scsi_device_put() in ata_scsi_dev_rescan()
+    - be2net: pass wrb_params in case of OS2BMC
+    - [armhf] net: dsa: microchip: lan937x: Fix RGMII delay tuning
+    - [arm64,armhf] Revert "drm/tegra: dsi: Clear enable register if powered by
+      bootloader"
+    - Input: cros_ec_keyb - fix an invalid memory access
+    - Input: goodix - add support for ACPI ID GDIX1003
+    - Input: pegasus-notetaker - fix potential out-of-bounds access
+    - mm/mempool: fix poisoning order>0 pages with HIGHMEM
+    - nouveau/firmware: Add missing kfree() of nvkm_falcon_fw::boot
+    - nvme: nvme-fc: move tagset removal to nvme_fc_delete_ctrl()
+    - nvme: nvme-fc: Ensure ->ioerr_work is cancelled in nvme_fc_delete_ctrl()
+    - scsi: sg: Do not sleep in atomic context
+    - scsi: target: tcm_loop: Fix segfault in tcm_loop_tpg_address_show()
+    - dt-bindings: pinctrl: toshiba,visconti: Fix number of items in groups
+    - mptcp: fix race condition in mptcp_schedule_work()
+    - mptcp: fix ack generation for fallback msk
+    - mptcp: fix duplicate reset on fastclose
+    - mptcp: fix premature close in case of fallback
+    - mptcp: avoid unneeded subflow-level drops
+    - mptcp: decouple mptcp fastclose from tcp close
+    - mptcp: do not fallback when OoO is present
+    - [arm64,armhf] drm/tegra: dc: Fix reference leak in tegra_dc_couple()
+    - drm/radeon: delete radeon_fence_process in is_signaled, no deadlock
+    - drm/amd: Skip power ungate during suspend for VPE
+    - drm/amdgpu: Skip emit de meta data on gfx11 with rs64 enabled
+    - drm/amd/display: Increase DPCD read retries
+    - drm/amd/display: Move sleep into each retry for retrieve_link_cap()
+    - drm/amd/display: Fix pbn to kbps Conversion
+    - drm/amd/display: Clear the CUR_ENABLE register on DCN20 on DPP5
+    - xfrm: drop SA reference in xfrm_state_update if dir doesn't match
+    - xfrm: set err and extack on failure to create pcpu SA
+    - xfrm: Determine inner GSO type from packet inner protocol
+    - xfrm: Prevent locally generated packets from direct output in tunnel mode
+    - [amd64] pinctrl: cirrus: Fix fwnode leak in cs42l43_pin_probe()
+    - mlxsw: spectrum: Fix memory leak in mlxsw_sp_flower_stats()
+    - [arm64,armhf] drm/tegra: Add call to put_pid()
+    - net: mlxsw: linecards: fix missing error check in
+      mlxsw_linecard_devlink_info_get()
+    - net: openvswitch: remove never-working support for setting nsh fields
+    - nvme-multipath: fix lockdep WARN due to partition scan work
+    - [s390x] ctcm: Fix double-kfree
+    - [amd64] platform/x86/intel/speed_select_if: Convert PCIBIOS_* return codes
+      to errnos
+    - net: qlogic/qede: fix potential out-of-bounds read in qede_tpa_cont() and
+      qede_tpa_end()
+    - [amd64,arm64] idpf: fix possible vport_config NULL pointer deref in remove
+    - ice: fix PTP cleanup on driver removal in error path
+    - devlink: rate: Unset parent pointer in devl_rate_nodes_destroy
+    - net/mlx5: Clean up only new IRQ glue on request_irq() failure
+    - af_unix: Cache state->msg in unix_stream_read_generic().
+    - af_unix: Read sk_peek_offset() again after sleeping in
+      unix_stream_read_generic().
+    - cifs: fix memory leak in smb3_fs_context_parse_param error path
+    - vsock: Ignore signal/timeout on connect() if already established
+    - bcma: don't register devices disabled in OF
+    - cifs: fix typo in enable_gcm_256 module parameter
+    - scsi: core: Fix a regression triggered by scsi_host_busy()
+    - [amd64] x86/microcode/AMD: Limit Entrysign signature checking to known
+      generations
+    - net: tls: Change async resync helpers argument
+    - blk-crypto: use BLK_STS_INVAL for alignment errors
+    - net: tls: Cancel RX async resync request on rcd_delta overflow
+    - ALSA: usb-audio: Fix missing unlock at error path of maxpacksize check
+    - [arm64] KVM: arm64: Make all 32bit ID registers fully writable
+    - drm/xe: Prevent BIT() overflow when handling invalid prefetch region
+    - [s390x] mm: Fix __ptep_rdp() inline assembly
+    - ALSA: usb-audio: fix uac2 clock source at terminal parser
+    - tracing/tools: Fix incorrcet short option in usage text for --threads
+    - drm/amdgpu: fix gpu page fault after hibernation on PF passthrough
+    - smb: client: fix incomplete backport in cfids_invalidation_worker()
+    - tty/vt: fix up incorrect backport to stable releases
+    - maple_tree: fix tracepoint string pointers
+    - [amd64] drm/i915/dp_mst: Disable Panel Replay
+    - mptcp: fix a race in mptcp_pm_del_add_timer()
+    - xfs: Replace strncpy with memcpy
+    - xfs: fix out of bounds memory read error in symlink repair
+    - drm/amd/display: avoid reset DTBCLK at clock init
+    - drm/amd/display: disable DPP RCG before DPP CLK enable
+    - drm/amd/display: Insert dccg log for easy debug
+    - drm/amd/display: Prevent Gating DTBCLK before It Is Properly Latched
+    - Revert "gpio: swnode: don't use the swnode's name as the key for GPIO
+      lookup"
 
   [ Uwe Kleine-König ]
   * [armhf] Enable LEDS_TURRIS_OMNIA as a module for Turris Omnia LED
