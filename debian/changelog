@@ -1,4 +1,4 @@
-linux (6.12.60-1) UNRELEASED; urgency=medium
+linux (6.12.61-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.58
@@ -772,6 +772,131 @@ linux (6.12.60-1) UNRELEASED; urgency=medium
     - drm/amd/display: Prevent Gating DTBCLK before It Is Properly Latched
     - Revert "gpio: swnode: don't use the swnode's name as the key for GPIO
       lookup"
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.61
+    - can: kvaser_usb: leaf: Fix potential infinite loop in command parsers
+    - can: gs_usb: gs_usb_xmit_callback(): fix handling of failed transmitted
+      URBs
+    - can: gs_usb: gs_usb_receive_bulk_callback(): check actual_length before
+      accessing header
+    - can: gs_usb: gs_usb_receive_bulk_callback(): check actual_length before
+      accessing data
+    - Bluetooth: btusb: mediatek: Fix kernel crash when releasing mtk iso
+      interface
+    - Bluetooth: hci_core: Fix triggering cmd_timer for HCI_OP_NOP
+    - Bluetooth: hci_sock: Prevent race in socket write iter and sock bind
+    - Bluetooth: SMP: Fix not generating mackey and ltk when repairing
+    - net: sched: generalize check for no-queue qdisc on TX queue
+    - veth: apply qdisc backpressure on full ptr_ring to reduce TX drops
+    - veth: prevent NULL pointer dereference in veth_xdp_rcv
+    - veth: more robust handing of race to avoid txq getting stuck
+    - veth: reduce XDP no_direct return section to fix race
+    - [amd64] platform/x86: intel: punit_ipc: fix memory corruption
+    - net: aquantia: Add missing descriptor cache invalidation on ATL2
+    - net: lan966x: Fix the initialization of taprio
+    - drm/xe: Fix conversion from clock ticks to milliseconds
+    - net/mlx5e: Fix validation logic in rate limiting
+    - team: Move team device type change at the end of team_port_add
+    - drm/amdgpu: fix cyan_skillfish2 gpu info fw handling
+    - net: wwan: mhi: Keep modem name match with Foxconn T99W640
+    - net: atlantic: fix fragment overflow handling in RX path
+    - [arm64,armhf] net: fec: cancel perout_timer when PEROUT is disabled
+    - [arm64,armhf] net: fec: do not update PEROUT if it is enabled
+    - [arm64,armhf] net: fec: do not allow enabling PPS and PEROUT
+      simultaneously
+    - [arm64,armhf] net: fec: do not register PPS event for PEROUT
+    - iio: st_lsm6dsx: Fixed calibrated timestamp calculation
+    - [arm64] mailbox: mtk-cmdq: Refine DMA address handling for the command
+      buffer
+    - mailbox: pcc: Refactor error handling in irq handler into separate
+      function
+    - mailbox: pcc: don't zero error register
+    - fs/namespace: fix reference leak in grab_requested_mnt_ns
+    - spi: spi-mem: Allow specifying the byte order in Octal DTR mode
+    - spi: spi-mem: Extend spi-mem operations with a per-operation maximum
+      frequency
+    - spi: spi-mem: Add a new controller capability
+    - [arm64] spi: nxp-fspi: Support per spi-mem operation frequency switches
+    - [arm64] spi: spi-nxp-fspi: remove the goto in probe
+    - [arm64] spi: spi-nxp-fspi: Add OCT-DTR mode support
+    - [arm64] spi: nxp-fspi: Propagate fwnode in ACPI case as well
+    - Revert "drm/amd/display: Move setup_stream_attribute"
+    - [amd64] Revert "perf/x86: Always store regs->ip in
+      perf_callchain_kernel()"
+    - iio: buffer-dma: support getting the DMA channel
+    - iio: buffer-dmaengine: enable .get_dma_dev()
+    - iio: buffer: support getting dma channel from the buffer
+    - iio: accel: bmc150: Fix irq assumption regression (Closes: #1106411)
+    - tracing: Fix WARN_ON in tracing_buffers_mmap_close for split VMAs
+    - ALSA: usb-audio: Add DSD quirk for LEAK Stereo 230
+    - [arm64] dts: imx8qm-mek: fix mux-controller select/enable-gpios polarity
+    - Bluetooth: btusb: mediatek: Avoid btusb_mtk_claim_iso_intf() NULL deref
+    - can: sja1000: fix max irq loop handling
+    - can: sun4i_can: sun4i_can_interrupt(): fix max irq loop handling
+    - ceph: fix crash in process_v2_sparse_read() for encrypted directories
+    - dm-verity: fix unreliable memory allocation
+    - drivers/usb/dwc3: fix PCI parent check
+    - smb: client: fix memory leak in cifs_construct_tcon()
+    - [amd64] thunderbolt: Add support for Intel Wildcat Lake
+    - [arm64] slimbus: ngd: Fix reference count leak in
+      qcom_slim_ngd_notify_slaves
+    - nvmem: layouts: fix nvmem_layout_bus_uevent
+    - firmware: stratix10-svc: fix bug in saving controller data
+    - mm/memfd: fix information leak in hugetlb folios
+    - mmc: sdhci-of-dwcmshc: Promote the th1520 reset handling to ip level
+    - mptcp: clear scheduled subflows on retransmit
+    - mptcp: Initialise rcv_mss before calling tcp_send_active_reset() in
+      mptcp_do_fastclose().
+    - [arm*] serial: amba-pl011: prefer dma_mapping_error() over explicit
+      address checking
+    - usb: cdns3: Fix double resource release in cdns3_pci_probe
+    - usb: gadget: f_eem: Fix memory leak in eem_unwrap
+    - usb: storage: Fix memory leak in USB bulk transport
+    - USB: storage: Remove subclass and protocol overrides from Novatek quirk
+    - usb: storage: sddr55: Reject out-of-bound new_pba
+    - usb: uas: fix urb unmapping issue when the uas device is remove during
+      ongoing data transfer
+    - [amd64,arm64] usb: dwc3: pci: add support for the Intel Nova Lake -S
+    - [amd64,arm64] usb: dwc3: pci: Sort out the Intel device IDs
+    - [amd64,arm64] usb: dwc3: Fix race condition between concurrent
+      dwc3_remove_requests() call paths
+    - xhci: fix stale flag preventig URBs after link state error is cleared
+    - xhci: dbgtty: Fix data corruption when transmitting data form DbC to host
+    - xhci: dbgtty: fix device unregister
+    - USB: serial: ftdi_sio: add support for u-blox EVK-M101
+    - USB: serial: option: add support for Rolling RW101R-GL
+    - drm: sti: fix device leaks at component probe
+    - drm/amd/amdgpu: reserve vm invalidation engine for uni_mes
+    - drm/amd/display: Check NULL before accessing
+    - drm/amd/display: Don't change brightness for disabled connectors
+    - [armhf] net: dsa: microchip: common: Fix checks on irq_find_mapping()
+    - [armhf] net: dsa: microchip: ptp: Fix checks on irq_find_mapping()
+    - [armhf] net: dsa: microchip: Don't free uninitialized ksz_irq
+    - libceph: fix potential use-after-free in have_mon_and_osd_map()
+    - libceph: prevent potential out-of-bounds writes in
+      handle_auth_session_key()
+    - libceph: replace BUG_ON with bounds check for map->max_osd
+    - staging: rtl8712: Remove driver using deprecated API wext
+    - nfsd: Replace clamp_t in nfsd4_get_drc_mem()
+    - usb: typec: ucsi: psy: Set max current to zero when disconnected
+    - usb: udc: Add trace event for usb_gadget_set_state
+    - usb: gadget: udc: fix use-after-free in usb_gadget_state_work
+    - mm/huge_memory: fix NULL pointer deference when splitting folio
+    - [amd64] KVM: SVM: Introduce svm_recalc_lbr_msr_intercepts()
+    - [amd64] KVM: nSVM: Always recalculate LBR MSR intercepts in
+      svm_update_lbrv()
+    - [amd64] KVM: nSVM: Fix and simplify LBR virtualization handling with
+      nested
+    - [amd64] KVM: SVM: Fix redundant updates of LBR MSR intercepts
+    - drm, fbcon, vga_switcheroo: Avoid race condition in fbcon setup
+    - [armhf] net: dsa: microchip: Do not execute PTP driver code for
+      unsupported switches
+    - [armhf] net: dsa: microchip: Free previously initialized ports on init
+      failures
+    - wifi: ath12k: correctly handle mcast packets for clients
+    - Revert "ACPI: Suppress misleading SPCR console message when SPCR table is
+      absent"
+    - [amd64] drm/i915/dp: Initialize the source OUI write timestamp always
+    - [arm64] spi: spi-nxp-fspi: Check return value of devm_mutex_init()
 
   [ Uwe Kleine-König ]
   * [armhf] Enable LEDS_TURRIS_OMNIA as a module for Turris Omnia LED
