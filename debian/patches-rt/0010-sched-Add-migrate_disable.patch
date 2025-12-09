@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:07 +0200
 Subject: [PATCH 010/327] sched: Add migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4e5b04cebcc5511008877e790b0834f6ec93380f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=25f02bd8bb2ddaac3e6d4cc34f62a53a3ddee2c5
 
 Add the base migrate_disable() support (under protest).
 
@@ -14,6 +14,7 @@ ease of review.
 
 Signed-off-by: Peter Zijlstra (Intel) <peterz@infradead.org>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
 ---
  include/linux/preempt.h |  65 +++++++++++++++++++++++
  include/linux/sched.h   |   3 ++
@@ -22,9 +23,11 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  lib/smp_processor_id.c  |   5 ++
  5 files changed, 183 insertions(+), 8 deletions(-)
 
+diff --git a/include/linux/preempt.h b/include/linux/preempt.h
+index 9a70e1e315d3..fe9b6650e84f 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -323,6 +323,69 @@ static inline void preempt_notifier_init
+@@ -323,6 +323,69 @@ static inline void preempt_notifier_init(struct preempt_notifier *notifier,
  
  #endif
  
@@ -94,7 +97,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  /**
   * migrate_disable - Prevent migration of the current task
   *
-@@ -353,6 +416,8 @@ static __always_inline void migrate_enab
+@@ -353,6 +416,8 @@ static __always_inline void migrate_enable(void)
  	preempt_enable();
  }
  
@@ -103,6 +106,8 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  DEFINE_LOCK_GUARD_0(preempt, preempt_disable(), preempt_enable())
  DEFINE_LOCK_GUARD_0(preempt_notrace, preempt_disable_notrace(), preempt_enable_notrace())
  DEFINE_LOCK_GUARD_0(migrate, migrate_disable(), migrate_enable())
+diff --git a/include/linux/sched.h b/include/linux/sched.h
+index 3613c3f43b83..6eb6584bf6be 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -725,6 +725,9 @@ struct task_struct {
@@ -115,9 +120,11 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  
  #ifdef CONFIG_PREEMPT_RCU
  	int				rcu_read_lock_nesting;
+diff --git a/kernel/sched/core.c b/kernel/sched/core.c
+index c5760baad6da..2482b974123c 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1709,6 +1709,61 @@ void check_preempt_curr(struct rq *rq, s
+@@ -1709,6 +1709,61 @@ void check_preempt_curr(struct rq *rq, struct task_struct *p, int flags)
  
  #ifdef CONFIG_SMP
  
@@ -179,7 +186,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  /*
   * Per-CPU kthreads are allowed to run on !active && online CPUs, see
   * __set_cpus_allowed_ptr() and select_fallback_rq().
-@@ -1718,7 +1773,7 @@ static inline bool is_cpu_allowed(struct
+@@ -1718,7 +1773,7 @@ static inline bool is_cpu_allowed(struct task_struct *p, int cpu)
  	if (!cpumask_test_cpu(cpu, p->cpus_ptr))
  		return false;
  
@@ -188,7 +195,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  		return cpu_online(cpu);
  
  	return cpu_active(cpu);
-@@ -1839,6 +1894,11 @@ static int migration_cpu_stop(void *data
+@@ -1839,6 +1894,11 @@ static int migration_cpu_stop(void *data)
   */
  void set_cpus_allowed_common(struct task_struct *p, const struct cpumask *new_mask, u32 flags)
  {
@@ -200,7 +207,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  	cpumask_copy(&p->cpus_mask, new_mask);
  	p->nr_cpus_allowed = cpumask_weight(new_mask);
  }
-@@ -1849,7 +1909,22 @@ __do_set_cpus_allowed(struct task_struct
+@@ -1849,7 +1909,22 @@ __do_set_cpus_allowed(struct task_struct *p, const struct cpumask *new_mask, u32
  	struct rq *rq = task_rq(p);
  	bool queued, running;
  
@@ -224,7 +231,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  
  	queued = task_on_rq_queued(p);
  	running = task_current(rq, p);
-@@ -1900,9 +1975,14 @@ static int __set_cpus_allowed_ptr(struct
+@@ -1900,9 +1975,14 @@ static int __set_cpus_allowed_ptr(struct task_struct *p,
  	rq = task_rq_lock(p, &rf);
  	update_rq_clock(rq);
  
@@ -241,7 +248,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  		 */
  		cpu_valid_mask = cpu_online_mask;
  	}
-@@ -1916,7 +1996,7 @@ static int __set_cpus_allowed_ptr(struct
+@@ -1916,7 +1996,7 @@ static int __set_cpus_allowed_ptr(struct task_struct *p,
  		goto out;
  	}
  
@@ -250,7 +257,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  		goto out;
  
  	/*
-@@ -2008,6 +2088,8 @@ void set_task_cpu(struct task_struct *p,
+@@ -2008,6 +2088,8 @@ void set_task_cpu(struct task_struct *p, unsigned int new_cpu)
  	 * Clearly, migrating tasks to offline CPUs is a fairly daft thing.
  	 */
  	WARN_ON_ONCE(!cpu_online(new_cpu));
@@ -259,7 +266,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  #endif
  
  	trace_sched_migrate_task(p, new_cpu);
-@@ -2338,6 +2420,12 @@ static int select_fallback_rq(int cpu, s
+@@ -2338,6 +2420,12 @@ static int select_fallback_rq(int cpu, struct task_struct *p)
  			}
  			fallthrough;
  		case possible:
@@ -272,7 +279,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  			do_set_cpus_allowed(p, cpu_possible_mask);
  			state = fail;
  			break;
-@@ -2372,7 +2460,7 @@ int select_task_rq(struct task_struct *p
+@@ -2372,7 +2460,7 @@ int select_task_rq(struct task_struct *p, int cpu, int sd_flags, int wake_flags)
  {
  	lockdep_assert_held(&p->pi_lock);
  
@@ -281,7 +288,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  		cpu = p->sched_class->select_task_rq(p, cpu, sd_flags, wake_flags);
  	else
  		cpu = cpumask_any(p->cpus_ptr);
-@@ -2434,6 +2522,17 @@ static inline int __set_cpus_allowed_ptr
+@@ -2434,6 +2522,17 @@ static inline int __set_cpus_allowed_ptr(struct task_struct *p,
  
  #endif /* CONFIG_SMP */
  
@@ -299,7 +306,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  static void
  ttwu_stat(struct task_struct *p, int cpu, int wake_flags)
  {
-@@ -4594,6 +4693,7 @@ static void __sched notrace __schedule(b
+@@ -4594,6 +4693,7 @@ static void __sched notrace __schedule(bool preempt)
  		 */
  		++*switch_count;
  
@@ -307,9 +314,11 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  		psi_sched_switch(prev, next, !task_on_rq_queued(prev));
  
  		trace_sched_switch(preempt, prev, next);
+diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
+index 8ce1dc2e680e..493b8600d9e4 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
-@@ -1906,14 +1906,16 @@ static inline bool sched_fair_runnable(s
+@@ -1906,14 +1906,16 @@ static inline bool sched_fair_runnable(struct rq *rq)
  extern struct task_struct *pick_next_task_fair(struct rq *rq, struct task_struct *prev, struct rq_flags *rf);
  extern struct task_struct *pick_next_task_idle(struct rq *rq);
  
@@ -328,9 +337,11 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  extern void set_cpus_allowed_common(struct task_struct *p, const struct cpumask *new_mask, u32 flags);
  
  #endif
+diff --git a/lib/smp_processor_id.c b/lib/smp_processor_id.c
+index 2916606a9333..dbb96ebf661f 100644
 --- a/lib/smp_processor_id.c
 +++ b/lib/smp_processor_id.c
-@@ -26,6 +26,11 @@ unsigned int check_preemption_disabled(c
+@@ -26,6 +26,11 @@ unsigned int check_preemption_disabled(const char *what1, const char *what2)
  	if (current->nr_cpus_allowed == 1)
  		goto out;
  

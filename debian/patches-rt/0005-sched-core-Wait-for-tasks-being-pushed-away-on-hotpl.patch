@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:02 +0200
 Subject: [PATCH 005/327] sched/core: Wait for tasks being pushed away on
  hotplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8d9e13380886bf0315c5ac511032388e5a139891
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=abba830b28047fc2b0f3493fc00ca2815be6f2d5
 
 RT kernels need to ensure that all tasks which are not per CPU kthreads
 have left the outgoing CPU to guarantee that no tasks are force migrated

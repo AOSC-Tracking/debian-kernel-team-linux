@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 7 Jun 2011 09:19:06 +0200
 Subject: [PATCH 217/327] sched: Do not account rcu_preempt_depth on RT in
  might_sleep()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4a330b3c60ea223c4ca0c94be52aa029ed550655
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ea16c55adb7fa95af0f402dedd421a076f51e3f4
 
 RT changes the rcu_preempt_depth semantics, so we cannot check for it
 in might_sleep().
@@ -14,10 +14,10 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/include/linux/rcupdate.h b/include/linux/rcupdate.h
-index 3930e43d2db7..c8da50f5dbdd 100644
+index 402bd9bcb9b6..fe5301fb9fbd 100644
 --- a/include/linux/rcupdate.h
 +++ b/include/linux/rcupdate.h
-@@ -54,6 +54,11 @@ void __rcu_read_unlock(void);
+@@ -55,6 +55,11 @@ void __rcu_read_unlock(void);
   * types of kernel builds, the rcu_read_lock() nesting depth is unknowable.
   */
  #define rcu_preempt_depth() (current->rcu_read_lock_nesting)
@@ -29,7 +29,7 @@ index 3930e43d2db7..c8da50f5dbdd 100644
  
  #else /* #ifdef CONFIG_PREEMPT_RCU */
  
-@@ -79,6 +84,8 @@ static inline int rcu_preempt_depth(void)
+@@ -80,6 +85,8 @@ static inline int rcu_preempt_depth(void)
  	return 0;
  }
  

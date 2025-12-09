@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 29 Aug 2013 18:21:04 +0200
 Subject: [PATCH 223/327] ptrace: fix ptrace vs tasklist_lock race
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ea543b421fef23595706e533b38c79e4ade2f16d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=376cadeed31ab7c2669092896c7588607324adc1
 
 As explained by Alexander Fyodorov <halcy@yandex.ru>:
 

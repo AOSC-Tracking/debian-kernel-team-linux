@@ -2,7 +2,7 @@ From: Steffen Dirkwinkel <s.dirkwinkel@beckhoff.com>
 Date: Mon, 20 Mar 2023 09:03:47 +0100
 Subject: [PATCH 318/327] kernel: fork: set wake_q_sleeper.next=NULL again in
  dup_task_struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=220aac4f285a32f07ff1827e1bbbc202e6d3b4fd
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8e9170c532487e014e4d0f4982e960c589fc9da9
 
 Without this we get system hangs within a couple of days.
 It's also reproducible in minutes with "stress-ng --exec 20".
@@ -44,7 +44,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/kernel/fork.c b/kernel/fork.c
-index d6c39b4dd0f9..19e6ab569e75 100644
+index 95488dd90145..4feb63bb5830 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -960,6 +960,7 @@ static struct task_struct *dup_task_struct(struct task_struct *orig, int node)

@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 17 Feb 2021 18:23:16 +0100
 Subject: [PATCH 094/327] printk: kmsg_dump: use kmsg_dump_rewind
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c79760a2b65e93ce9b2199dade1b5bb23d9e3648
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5e88e4d1fb1b1c9b0b2be64712d41185d8249ac2
 
 kmsg_dump() is open coding the kmsg_dump_rewind(). Call
 kmsg_dump_rewind() instead.

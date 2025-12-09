@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:17 +0100
 Subject: [PATCH 123/327] preempt: Cleanup the macro maze a bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=414ec5b170bd714caf4d2019db44b17742a3962b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d418738f3bdc44f8b1fd01c9eb861d18aef10c40
 
 Make the macro maze consistent and prepare it for adding the RT variant for
 BH accounting.
@@ -21,10 +21,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 16 insertions(+), 14 deletions(-)
 
 diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index 6df63cbe8bb0..69cc8b64aa3a 100644
+index 7756d78ef1b7..329eed62d0d1 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -77,31 +77,33 @@
+@@ -78,31 +78,33 @@
  /* preempt_count() and related functions, depends on PREEMPT_NEED_RESCHED */
  #include <asm/preempt.h>
  

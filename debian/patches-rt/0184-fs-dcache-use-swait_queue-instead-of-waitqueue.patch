@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Sep 2016 14:35:49 +0200
 Subject: [PATCH 184/327] fs/dcache: use swait_queue instead of waitqueue
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7d376142a78cb81e874ebeec1e870ac8a88f4c8a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=afcf8f9d7afd057c14b95a86ce72c621bf8eb673
 
 __d_lookup_done() invokes wake_up_all() while holding a hlist_bl_lock()
 which disables preemption. As a workaround convert it to swait.
@@ -49,10 +49,10 @@ index 9e62d75f2465..431fc4a99e91 100644
  	cifs_dbg(FYI, "%s: for %s\n", __func__, name->name);
  
 diff --git a/fs/dcache.c b/fs/dcache.c
-index 5febd219fdeb..e2647fb62713 100644
+index 85fffa3d7ac5..e064a4039cc9 100644
 --- a/fs/dcache.c
 +++ b/fs/dcache.c
-@@ -2525,21 +2525,24 @@ static inline void end_dir_add(struct inode *dir, unsigned n)
+@@ -2527,21 +2527,24 @@ static inline void end_dir_add(struct inode *dir, unsigned n)
  
  static void d_wait_lookup(struct dentry *dentry)
  {
@@ -88,7 +88,7 @@ index 5febd219fdeb..e2647fb62713 100644
  {
  	unsigned int hash = name->hash;
  	struct hlist_bl_head *b = in_lookup_hash(parent, hash);
-@@ -2654,7 +2657,7 @@ void __d_lookup_done(struct dentry *dentry)
+@@ -2656,7 +2659,7 @@ void __d_lookup_done(struct dentry *dentry)
  	hlist_bl_lock(b);
  	dentry->d_flags &= ~DCACHE_PAR_LOOKUP;
  	__hlist_bl_del(&dentry->d_u.d_in_lookup_hash);
@@ -111,10 +111,10 @@ index 14e99ffa57af..eb899feaf82d 100644
  	if (!o->nodeid) {
  		/*
 diff --git a/fs/namei.c b/fs/namei.c
-index 3eb0130f0c3f..a377445f2398 100644
+index debebcbe702f..3f75ff5a1734 100644
 --- a/fs/namei.c
 +++ b/fs/namei.c
-@@ -1532,7 +1532,7 @@ static struct dentry *__lookup_slow(const struct qstr *name,
+@@ -1540,7 +1540,7 @@ static struct dentry *__lookup_slow(const struct qstr *name,
  {
  	struct dentry *dentry, *old;
  	struct inode *inode = dir->d_inode;
@@ -123,7 +123,7 @@ index 3eb0130f0c3f..a377445f2398 100644
  
  	/* Don't go there if it's already dead */
  	if (unlikely(IS_DEADDIR(inode)))
-@@ -3079,7 +3079,7 @@ static struct dentry *lookup_open(struct nameidata *nd, struct file *file,
+@@ -3087,7 +3087,7 @@ static struct dentry *lookup_open(struct nameidata *nd, struct file *file,
  	struct dentry *dentry;
  	int error, create_error = 0;
  	umode_t mode = op->mode;

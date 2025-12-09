@@ -2,7 +2,7 @@ From: Julia Cartwright <julia@ni.com>
 Date: Tue, 15 Dec 2020 15:16:47 +0100
 Subject: [PATCH 073/327] rcu: Enable rcu_normal_after_boot unconditionally for
  RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9bd6b424c06194bcad9703d448ca8fab4085e35a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2035cec8e355e2938fb23c48299c6b1185c5d3ab
 
 Expedited RCU grace periods send IPIs to all non-idle CPUs, and thus can
 disrupt time-critical code in real-time applications.  However, there
@@ -33,7 +33,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 10 insertions(+), 1 deletion(-)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index af42e563a103..a2e8be719168 100644
+index 5096f2f042b7..0f40edc1150f 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
 @@ -4635,6 +4635,13 @@

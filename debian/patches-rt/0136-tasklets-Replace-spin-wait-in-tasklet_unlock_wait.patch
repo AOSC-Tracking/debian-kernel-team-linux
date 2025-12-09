@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 9 Mar 2021 09:42:08 +0100
 Subject: [PATCH 136/327] tasklets: Replace spin wait in tasklet_unlock_wait()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=44d18ee32f3014ed4a671d6640bcafcb96d640cc
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cde272bcf07c133db4d1a89e41c10e46d22e7607
 
 tasklet_unlock_wait() spin waits for TASKLET_STATE_RUN to be cleared. This
 is wasting CPU cycles in a tight loop which is especially painful in a

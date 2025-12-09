@@ -1,7 +1,7 @@
 From: Ingo Molnar <mingo@elte.hu>
 Date: Fri, 3 Jul 2009 08:29:37 -0500
 Subject: [PATCH 203/327] mm: page_alloc: rt-friendly per-cpu pages
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=eee1788d9e3af6f2a8d14735c4b0395984339a02
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2e77cabe0320cbda228e8b56c75bc6311514713b
 
 rt-friendly per-cpu pages: convert the irqs-off per-cpu locking
 method into a preemptible, explicit-per-cpu-locks method.

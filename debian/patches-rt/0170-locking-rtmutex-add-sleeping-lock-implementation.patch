@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:11:19 +0200
 Subject: [PATCH 170/327] locking/rtmutex: add sleeping lock implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a9ac80ea5277c8da17521fc071606a3655febb37
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8a930a0851499bbcdd776e985be4b0c883b254af
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -46,10 +46,10 @@ index 55d48d5627c7..7b4fdd5b2f7b 100644
  # define cant_migrate()		do { } while (0)
  # define sched_annotate_sleep() do { } while (0)
 diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index 9881eac0698f..4d244e295e85 100644
+index 4a0cd3ae9fda..73948e1aa140 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -121,7 +121,11 @@
+@@ -122,7 +122,11 @@
  /*
   * The preempt_count offset after spin_lock()
   */

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:53 +0100
 Subject: [PATCH 146/327] softirq: Add RT specific softirq accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4188f3d093c7cf1894e5fb6488a2ada65a4f51c0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=34f032a378dd75408d77e5868a1d53a94d057d1e
 
 RT requires the softirq processing and local bottomhalf disabled regions to
 be preemptible. Using the normal preempt count based serialization is
@@ -39,10 +39,10 @@ index 0926e9ca4d85..76878b357ffa 100644
  #include <asm/hardirq.h>
  
 diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index 69cc8b64aa3a..9881eac0698f 100644
+index 329eed62d0d1..4a0cd3ae9fda 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -79,7 +79,11 @@
+@@ -80,7 +80,11 @@
  
  #define nmi_count()	(preempt_count() & NMI_MASK)
  #define hardirq_count()	(preempt_count() & HARDIRQ_MASK)

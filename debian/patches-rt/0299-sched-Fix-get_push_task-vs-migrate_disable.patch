@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 26 Aug 2021 15:37:38 +0200
 Subject: [PATCH 299/327] sched: Fix get_push_task() vs migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a5c4644d7313736bb62aa090834f8c1e62147574
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=84e3dd361252e2084769c42173d47c277921714b
 
 push_rt_task() attempts to move the currently running task away if the
 next runnable task has migration disabled and therefore is pinned on the

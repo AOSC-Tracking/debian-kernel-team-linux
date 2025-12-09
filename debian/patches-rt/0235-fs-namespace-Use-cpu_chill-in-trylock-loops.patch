@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 7 Mar 2012 21:00:34 +0100
 Subject: [PATCH 235/327] fs: namespace: Use cpu_chill() in trylock loops
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=20e7ae169cbdfdd7d99a8f4a876acceb812609b2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=540d13ae61d20bb08e747b8894e4de53a433c50a
 
 Retry loops on RT might loop forever when the modifying side was
 preempted. Use cpu_chill() instead of cpu_relax() to let the system
@@ -13,7 +13,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 6 insertions(+), 2 deletions(-)
 
 diff --git a/fs/namespace.c b/fs/namespace.c
-index d1751f9b6f1c..b96aeb09c938 100644
+index e9b8d516f191..6b28e54d012c 100644
 --- a/fs/namespace.c
 +++ b/fs/namespace.c
 @@ -14,6 +14,7 @@
@@ -24,7 +24,7 @@ index d1751f9b6f1c..b96aeb09c938 100644
  #include <linux/security.h>
  #include <linux/cred.h>
  #include <linux/idr.h>
-@@ -321,8 +322,11 @@ int __mnt_want_write(struct vfsmount *m)
+@@ -330,8 +331,11 @@ int __mnt_want_write(struct vfsmount *m)
  	 * incremented count after it has set MNT_WRITE_HOLD.
  	 */
  	smp_mb();

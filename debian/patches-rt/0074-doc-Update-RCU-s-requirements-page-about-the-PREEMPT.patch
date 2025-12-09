@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 15 Dec 2020 15:16:48 +0100
 Subject: [PATCH 074/327] doc: Update RCU's requirements page about the
  PREEMPT_RT wiki.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=47cfa423981aa7504e11ad0c038dcac2e977574d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a110d9f76222b17361d2179ac7f7985e8d892c98
 
 The PREEMPT_RT wiki moved from kernel.org to the Linux Foundation wiki.
 The kernel.org wiki is read only.

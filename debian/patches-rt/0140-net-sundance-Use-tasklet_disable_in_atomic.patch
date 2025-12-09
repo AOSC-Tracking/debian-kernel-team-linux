@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:12 +0100
 Subject: [PATCH 140/327] net: sundance: Use tasklet_disable_in_atomic().
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f19e9dc195b6a8a60148cbdc4736474ce102c7a7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cdebc264176fa28c64f2c8aaac934832de27b4ee
 
 tasklet_disable() is used in the timer callback. This might be distangled,
 but without access to the hardware that's a bit risky.

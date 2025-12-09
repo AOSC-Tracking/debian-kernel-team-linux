@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:34 +0100
 Subject: [PATCH 045/327] highmem: High implementation details and document API
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1cde161f3e5c1cbbf027fa01a7b3365fdfa05f61
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6c1ca9ea0feac7b9b90819209ba7c43be22240f8
 
 Move the gory details of kmap & al into a private header and only document
 the interfaces which are usable by drivers.

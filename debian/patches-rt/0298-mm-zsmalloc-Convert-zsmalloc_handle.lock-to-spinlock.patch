@@ -2,7 +2,7 @@ From: Mike Galbraith <efault@gmx.de>
 Date: Tue, 24 Aug 2021 13:08:14 +0200
 Subject: [PATCH 298/327] mm, zsmalloc: Convert zsmalloc_handle.lock to
  spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9215d411003f605ff3e7e824cd3ccfb2acd909d2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=251dc771fc616d4a9e067849d4868fb68f7e08e2
 
 local_lock_t becoming a synonym of spinlock_t had consequences for the RT
 mods to zsmalloc, which were taking a mutex while holding a local_lock,
@@ -19,7 +19,7 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/mm/zsmalloc.c b/mm/zsmalloc.c
-index 8a3439b7bc4f..27d7cfa3e87c 100644
+index d542ed63fcc2..71ddd1bcb152 100644
 --- a/mm/zsmalloc.c
 +++ b/mm/zsmalloc.c
 @@ -82,7 +82,7 @@
@@ -31,7 +31,7 @@ index 8a3439b7bc4f..27d7cfa3e87c 100644
  };
  
  #define ZS_HANDLE_ALLOC_SIZE (sizeof(struct zsmalloc_handle))
-@@ -370,7 +370,7 @@ static unsigned long cache_alloc_handle(struct zs_pool *pool, gfp_t gfp)
+@@ -369,7 +369,7 @@ static unsigned long cache_alloc_handle(struct zs_pool *pool, gfp_t gfp)
  	if (p) {
  		struct zsmalloc_handle *zh = p;
  
@@ -40,7 +40,7 @@ index 8a3439b7bc4f..27d7cfa3e87c 100644
  	}
  #endif
  	return (unsigned long)p;
-@@ -930,7 +930,7 @@ static inline int testpin_tag(unsigned long handle)
+@@ -929,7 +929,7 @@ static inline int testpin_tag(unsigned long handle)
  #ifdef CONFIG_PREEMPT_RT
  	struct zsmalloc_handle *zh = zs_get_pure_handle(handle);
  
@@ -49,7 +49,7 @@ index 8a3439b7bc4f..27d7cfa3e87c 100644
  #else
  	return bit_spin_is_locked(HANDLE_PIN_BIT, (unsigned long *)handle);
  #endif
-@@ -941,7 +941,7 @@ static inline int trypin_tag(unsigned long handle)
+@@ -940,7 +940,7 @@ static inline int trypin_tag(unsigned long handle)
  #ifdef CONFIG_PREEMPT_RT
  	struct zsmalloc_handle *zh = zs_get_pure_handle(handle);
  
@@ -58,7 +58,7 @@ index 8a3439b7bc4f..27d7cfa3e87c 100644
  #else
  	return bit_spin_trylock(HANDLE_PIN_BIT, (unsigned long *)handle);
  #endif
-@@ -952,7 +952,7 @@ static void pin_tag(unsigned long handle) __acquires(bitlock)
+@@ -951,7 +951,7 @@ static void pin_tag(unsigned long handle) __acquires(bitlock)
  #ifdef CONFIG_PREEMPT_RT
  	struct zsmalloc_handle *zh = zs_get_pure_handle(handle);
  
@@ -67,7 +67,7 @@ index 8a3439b7bc4f..27d7cfa3e87c 100644
  #else
  	bit_spin_lock(HANDLE_PIN_BIT, (unsigned long *)handle);
  #endif
-@@ -963,7 +963,7 @@ static void unpin_tag(unsigned long handle) __releases(bitlock)
+@@ -962,7 +962,7 @@ static void unpin_tag(unsigned long handle) __releases(bitlock)
  #ifdef CONFIG_PREEMPT_RT
  	struct zsmalloc_handle *zh = zs_get_pure_handle(handle);
  

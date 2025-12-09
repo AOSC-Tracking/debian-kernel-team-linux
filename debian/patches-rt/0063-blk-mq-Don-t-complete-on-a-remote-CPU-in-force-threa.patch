@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 4 Dec 2020 20:13:54 +0100
 Subject: [PATCH 063/327] blk-mq: Don't complete on a remote CPU in force
  threaded mode
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=11be178a4fa0fc63ae0266ffd0589e3bd74372a5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=52808e557392b1f1105d627f2b2521ee6833f532
 
 With force threaded interrupts enabled, raising softirq from an SMP
 function call will always result in waking the ksoftirqd thread. This is

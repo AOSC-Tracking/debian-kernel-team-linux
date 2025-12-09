@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:09 +0106
 Subject: [PATCH 107/327] printk: add console handover
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6d2b83a20357d50c1f0131bc55c4153c63a148f3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b39fe16e705727276ec65d3670070007b0ed3813
 
 If earlyprintk is used, a boot console will print directly to the
 console immediately. The boot console will unregister itself as soon

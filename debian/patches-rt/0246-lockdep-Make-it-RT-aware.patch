@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 17 Jul 2011 18:51:23 +0200
 Subject: [PATCH 246/327] lockdep: Make it RT aware
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3c5787311a699a24e1e330c6b3d8b79cfd99cf5e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=035e1e7eaaa09139207b6ec76a333e8a96011ab0
 
 teach lockdep that we don't really do softirqs on -RT.
 
@@ -12,10 +12,10 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  2 files changed, 17 insertions(+), 8 deletions(-)
 
 diff --git a/include/linux/irqflags.h b/include/linux/irqflags.h
-index a53adf4316a5..d0ab13b53b08 100644
+index 9beebc188fd4..61cf49ae669b 100644
 --- a/include/linux/irqflags.h
 +++ b/include/linux/irqflags.h
-@@ -71,14 +71,6 @@ do {						\
+@@ -72,14 +72,6 @@ do {						\
  do {						\
  	__this_cpu_dec(hardirq_context);	\
  } while (0)
@@ -30,7 +30,7 @@ index a53adf4316a5..d0ab13b53b08 100644
  
  # define lockdep_hrtimer_enter(__hrtimer)		\
  ({							\
-@@ -140,6 +132,21 @@ do {						\
+@@ -141,6 +133,21 @@ do {						\
  # define lockdep_irq_work_exit(__work)		do { } while (0)
  #endif
  

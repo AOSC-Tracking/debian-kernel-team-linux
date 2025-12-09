@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 7 Oct 2020 12:11:33 +0200
 Subject: [PATCH 159/327] locking/rtmutex: Remove rt_mutex_timed_lock()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0b7daba7e48086bb654bd6662ad8b5ee8ad32ac4
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9f122c3feda1ae7ade8c0ca9e5d5e423a8ec707d
 
 rt_mutex_timed_lock() has no callers since commit
    c051b21f71d1f ("rtmutex: Confine deadlock logic to futex")

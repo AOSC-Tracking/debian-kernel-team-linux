@@ -2,7 +2,7 @@ From: Kevin Hao <haokexin@gmail.com>
 Date: Mon, 4 May 2020 11:34:07 +0800
 Subject: [PATCH 200/327] mm: slub: Always flush the delayed empty slubs in
  flush_all()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f17bed955a962156c5d343a98072178b7b639105
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=97379cfe4f4fdf55f9738fada08525e9965fce10
 
 After commit f0b231101c94 ("mm/SLUB: delay giving back empty slubs to
 IRQ enabled regions"), when the free_slab() is invoked with the IRQ

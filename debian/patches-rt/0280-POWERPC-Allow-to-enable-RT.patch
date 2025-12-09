@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:41 +0200
 Subject: [PATCH 280/327] POWERPC: Allow to enable RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c2d4b9fe82721544d728f6532dd28f9a680d8f75
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=78e5c7bea6b55d285f2ebd2c96be6efda99f89f8
 
 Allow to select RT.
 

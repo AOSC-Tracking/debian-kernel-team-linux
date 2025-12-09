@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Sat, 27 May 2017 19:02:06 +0200
 Subject: [PATCH 191/327] net/core: disable NET_RX_BUSY_POLL on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d91bec2637d04acdf948a98232165c30f78e4c6a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=21d458b8834f6c4bab8211b4eb8cd8ce49ccd009
 
 napi_busy_loop() disables preemption and performs a NAPI poll. We can't acquire
 sleeping locks with disabled preemption so we would have to work around this

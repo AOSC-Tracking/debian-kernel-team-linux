@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:42 +0100
 Subject: [PATCH 053/327] highmem: Remove kmap_atomic_pfn()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1514460752df5d71a671a01fce1b00700757d0a6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a16f66ff26b3a06cd91942df52927590d53abddf
 
 No more users.
 

@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:13 +0200
 Subject: [PATCH 016/327] sched: Fix migrate_disable() vs rt/dl balancing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d037ee63d333944928fde7238cb4ec5ccdae0613
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d2509ca2012341d8e91a65a6a41a19f8f2215391
 
 In order to minimize the interference of migrate_disable() on lower
 priority tasks, which can be deprived of runtime due to being stuck
@@ -34,10 +34,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  6 files changed, 186 insertions(+), 48 deletions(-)
 
 diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index 97ba7c920653..8b43922e65df 100644
+index fe9b6650e84f..95f19081cded 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -325,24 +325,28 @@ static inline void preempt_notifier_init(struct preempt_notifier *notifier,
+@@ -326,24 +326,28 @@ static inline void preempt_notifier_init(struct preempt_notifier *notifier,
  #if defined(CONFIG_SMP) && defined(CONFIG_PREEMPT_RT)
  
  /*

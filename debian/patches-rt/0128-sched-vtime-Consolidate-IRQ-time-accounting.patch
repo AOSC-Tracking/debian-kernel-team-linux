@@ -1,7 +1,7 @@
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:30 +0100
 Subject: [PATCH 128/327] sched/vtime: Consolidate IRQ time accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=74cd963729d24add71e76c903ccd8df60ea13ae5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fc1914085af84e59c284e443bfa2da5496a1546b
 
 The 3 architectures implementing CONFIG_VIRT_CPU_ACCOUNTING_NATIVE
 all have their own version of irq time accounting that dispatch the

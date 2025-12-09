@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 24 Aug 2021 22:47:37 +0200
 Subject: [PATCH 300/327] sched: Switch wait_task_inactive to
  HRTIMER_MODE_REL_HARD
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=722e21ce851dfe1919ec9ade829ec5d3b4ec97af
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5adfdb95f118f835b28a93af355129492c66e7e4
 
 With PREEMPT_RT enabled all hrtimers callbacks will be invoked in
 softirq mode unless they are explicitly marked as HRTIMER_MODE_HARD.

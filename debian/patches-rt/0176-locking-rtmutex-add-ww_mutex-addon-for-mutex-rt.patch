@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 12 Oct 2017 17:34:38 +0200
 Subject: [PATCH 176/327] locking/rtmutex: add ww_mutex addon for mutex-rt
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f2b9c38b98a492656eccb08e79c2703bbaec2425
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=641d616745f5638cab34560665429ac12b4c3419
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
@@ -14,10 +14,10 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  5 files changed, 262 insertions(+), 20 deletions(-)
 
 diff --git a/include/linux/mutex.h b/include/linux/mutex.h
-index e45774a337d2..90923d3008fc 100644
+index 7220db8b4a5d..2f378b9fd50f 100644
 --- a/include/linux/mutex.h
 +++ b/include/linux/mutex.h
-@@ -82,14 +82,6 @@ struct mutex {
+@@ -83,14 +83,6 @@ struct mutex {
  struct ww_class;
  struct ww_acquire_ctx;
  

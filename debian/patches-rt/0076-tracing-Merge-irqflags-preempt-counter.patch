@@ -4,7 +4,7 @@ Subject: [PATCH 076/327] tracing: Merge irqflags + preempt counter.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f194e2d4d70cf80439601e1cfbbe51ec51f018a5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=682d3b4e7e03f993a32932f7aea4fc30de344bf9
 
 The state of the interrupts (irqflags) and the preemption counter are
 both passed down to tracing_generic_entry_update(). Only one bit of
@@ -78,7 +78,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  17 files changed, 286 insertions(+), 307 deletions(-)
 
 diff --git a/include/linux/trace_events.h b/include/linux/trace_events.h
-index 5af2acb9fb7d..3e056c7f4cb1 100644
+index 0c8c3cf36f96..6437bd546ee2 100644
 --- a/include/linux/trace_events.h
 +++ b/include/linux/trace_events.h
 @@ -152,17 +152,29 @@ enum print_line_t {
@@ -1466,7 +1466,7 @@ index 10d1719c3d4d..1dded26115b3 100644
  
  static int preemptoff_tracer_init(struct trace_array *tr)
 diff --git a/kernel/trace/trace_kprobe.c b/kernel/trace/trace_kprobe.c
-index 646109d389e9..d06d3eaae3f3 100644
+index 044df6073211..ab0ec57d8da5 100644
 --- a/kernel/trace/trace_kprobe.c
 +++ b/kernel/trace/trace_kprobe.c
 @@ -1451,8 +1451,7 @@ __kprobe_trace_func(struct trace_kprobe *tk, struct pt_regs *regs,
@@ -1873,7 +1873,7 @@ index d85a2f0f316b..8bfcd3b09422 100644
  
  static int reg_event_syscall_enter(struct trace_event_file *file,
 diff --git a/kernel/trace/trace_uprobe.c b/kernel/trace/trace_uprobe.c
-index 60ff36f5d7f9..0b07bb07127d 100644
+index fd4001881355..6a648d2186f8 100644
 --- a/kernel/trace/trace_uprobe.c
 +++ b/kernel/trace/trace_uprobe.c
 @@ -966,7 +966,7 @@ static void __uprobe_trace_func(struct trace_uprobe *tu,

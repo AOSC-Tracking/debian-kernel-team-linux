@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:01 +0106
 Subject: [PATCH 099/327] console: add write_atomic interface
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=65605f3b4fe16e93149ccf2669fe596bc767ae27
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7e8b46db2076afc8433417c0eee096c7eca1e4d8
 
 Add a write_atomic() callback to the console. This is an optional
 function for console drivers. The function must be atomic (including

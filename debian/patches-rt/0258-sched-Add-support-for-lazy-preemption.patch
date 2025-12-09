@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
 Subject: [PATCH 258/327] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bfd9eded691482e2681426c90d27a7ba32fbf23f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ef12905f38dfa43f8bba4b8ceb96634f570459ea
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -68,10 +68,10 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  12 files changed, 254 insertions(+), 36 deletions(-)
 
 diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index fb140e00f74d..af39859f02ee 100644
+index e4f93d3a25c1..b21128758331 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -174,6 +174,20 @@ extern void preempt_count_sub(int val);
+@@ -175,6 +175,20 @@ extern void preempt_count_sub(int val);
  #define preempt_count_inc() preempt_count_add(1)
  #define preempt_count_dec() preempt_count_sub(1)
  
@@ -92,7 +92,7 @@ index fb140e00f74d..af39859f02ee 100644
  #ifdef CONFIG_PREEMPT_COUNT
  
  #define preempt_disable() \
-@@ -182,6 +196,12 @@ do { \
+@@ -183,6 +197,12 @@ do { \
  	barrier(); \
  } while (0)
  
@@ -105,7 +105,7 @@ index fb140e00f74d..af39859f02ee 100644
  #define sched_preempt_enable_no_resched() \
  do { \
  	barrier(); \
-@@ -219,6 +239,18 @@ do { \
+@@ -220,6 +240,18 @@ do { \
  		__preempt_schedule(); \
  } while (0)
  
@@ -124,7 +124,7 @@ index fb140e00f74d..af39859f02ee 100644
  #else /* !CONFIG_PREEMPTION */
  #define preempt_enable() \
  do { \
-@@ -226,6 +258,12 @@ do { \
+@@ -227,6 +259,12 @@ do { \
  	preempt_count_dec(); \
  } while (0)
  
@@ -137,7 +137,7 @@ index fb140e00f74d..af39859f02ee 100644
  #define preempt_enable_notrace() \
  do { \
  	barrier(); \
-@@ -267,6 +305,9 @@ do { \
+@@ -268,6 +306,9 @@ do { \
  #define preempt_check_resched_rt()		barrier()
  #define preemptible()				0
  
@@ -147,7 +147,7 @@ index fb140e00f74d..af39859f02ee 100644
  #endif /* CONFIG_PREEMPT_COUNT */
  
  #ifdef MODULE
-@@ -285,7 +326,7 @@ do { \
+@@ -286,7 +327,7 @@ do { \
  } while (0)
  #define preempt_fold_need_resched() \
  do { \
@@ -156,7 +156,7 @@ index fb140e00f74d..af39859f02ee 100644
  		set_preempt_need_resched(); \
  } while (0)
  
-@@ -413,8 +454,15 @@ extern void migrate_enable(void);
+@@ -414,8 +455,15 @@ extern void migrate_enable(void);
  
  #else
  
@@ -247,7 +247,7 @@ index f3040b0b4b23..3cb02ced141b 100644
  #ifndef CONFIG_HAVE_ARCH_WITHIN_STACK_FRAMES
  static inline int arch_within_stack_frames(const void * const stack,
 diff --git a/include/linux/trace_events.h b/include/linux/trace_events.h
-index e55ee1a7229a..7563332111af 100644
+index 06ec928467d3..b4fa137021d9 100644
 --- a/include/linux/trace_events.h
 +++ b/include/linux/trace_events.h
 @@ -70,6 +70,7 @@ struct trace_entry {
@@ -444,7 +444,7 @@ index 283d1c330045..1f706131d07b 100644
  	 * The idle tasks have their own, simple scheduling class:
  	 */
 diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index 9f8cb265589b..02196f4fba6d 100644
+index c11d59bea0ea..defdb6e26c47 100644
 --- a/kernel/sched/fair.c
 +++ b/kernel/sched/fair.c
 @@ -4569,7 +4569,7 @@ check_preempt_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr)

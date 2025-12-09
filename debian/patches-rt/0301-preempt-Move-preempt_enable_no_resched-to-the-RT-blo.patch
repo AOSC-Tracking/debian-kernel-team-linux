@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 22 Sep 2021 19:34:40 +0200
 Subject: [PATCH 301/327] preempt: Move preempt_enable_no_resched() to the RT
  block
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=124c0a5e5675ce216e3c1a6240fa500774689ac5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ccb38c1214d908751c645853b048be2fbb92a6c1
 
 preempt_enable_no_resched() should point to preempt_enable() on
 PREEMPT_RT so nobody is playing any preempt tricks and enables
@@ -20,10 +20,10 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/include/linux/preempt.h b/include/linux/preempt.h
-index af39859f02ee..7b5b2ed55531 100644
+index b21128758331..d5f978905ff3 100644
 --- a/include/linux/preempt.h
 +++ b/include/linux/preempt.h
-@@ -208,12 +208,12 @@ do { \
+@@ -209,12 +209,12 @@ do { \
  	preempt_count_dec(); \
  } while (0)
  

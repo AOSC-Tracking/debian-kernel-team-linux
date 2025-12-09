@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:10 +0100
 Subject: [PATCH 116/327] irqstat: Get rid of nmi_count() and __IRQ_STAT()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9d5fad3b07810f9f879043266f1f45de57de6cdf
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e5b94a2d46437a390b8b14d80f171bf1b817bbfa
 
 Nothing uses this anymore.
 

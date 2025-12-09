@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 3 Feb 2021 11:05:26 -0500
 Subject: [PATCH 079/327] tracing: Remove NULL check from current in
  tracing_generic_entry_update().
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=634a02150237a3507d43ffb0e215de0c179d5f5c
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bc9a3c3eb1adfaa6261f65e9fab6134b790a0d87
 
 I can't imagine when or why `current' would return a NULL pointer. This
 check was added in commit
@@ -22,7 +22,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 1 insertion(+), 3 deletions(-)
 
 diff --git a/include/linux/trace_events.h b/include/linux/trace_events.h
-index bc707ca498e6..ce370f32a576 100644
+index cae5647e74b8..62464ce5ee60 100644
 --- a/include/linux/trace_events.h
 +++ b/include/linux/trace_events.h
 @@ -156,10 +156,8 @@ static inline void tracing_generic_entry_update(struct trace_entry *entry,

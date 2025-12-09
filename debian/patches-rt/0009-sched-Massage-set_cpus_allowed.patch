@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:06 +0200
 Subject: [PATCH 009/327] sched: Massage set_cpus_allowed()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c2e5424573fa20351a64cb8a70766118ff075cff
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=14f55204a029fba2bff3f845abee0a2428a2fb6d
 
 Thread a u32 flags word through the *set_cpus_allowed*() callchain.
 This will allow adding behavioural tweaks for future users.
