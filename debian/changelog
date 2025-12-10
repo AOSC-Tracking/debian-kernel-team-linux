@@ -682,6 +682,7 @@ linux (5.10.247-1) UNRELEASED; urgency=medium
   * d/salsa-ci.yml: Move orig tarball generation to a separate job again
   * d/salsa-ci.yml: Restore lintian checking of source package
   * [rt] Update to 5.10.246-rt140
+  * [rt] net/sched: act_ife: convert comma to semicolon
 
  -- Ben Hutchings <benh@debian.org>  Mon, 13 Oct 2025 15:13:43 +0200
 
