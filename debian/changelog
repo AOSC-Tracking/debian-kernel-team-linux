@@ -1,4 +1,4 @@
-linux (6.12.61-1) UNRELEASED; urgency=medium
+linux (6.12.62-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.58
@@ -897,6 +897,53 @@ linux (6.12.61-1) UNRELEASED; urgency=medium
       absent"
     - [amd64] drm/i915/dp: Initialize the source OUI write timestamp always
     - [arm64] spi: spi-nxp-fspi: Check return value of devm_mutex_init()
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.62
+    - xfrm: delete x->tunnel as we delete x
+    - Revert "xfrm: destroy xfrm_state synchronously on net exit path"
+    - xfrm: also call xfrm_state_delete_tunnel at destroy time for states that
+      were never added
+    - xfrm: flush all states in xfrm_state_fini
+    - Documentation: process: Also mention Sasha Levin as stable tree maintainer
+    - jbd2: avoid bug_on in jbd2_journal_get_create_access() when file system
+      corrupted
+    - ext4: refresh inline data size before write operations
+    - ksmbd: ipc: fix use-after-free in ipc_msg_send_request
+    - ext4: add i_data_sem protection in ext4_destroy_inline_data_nolock()
+    - [amd64] KVM: SVM: Don't skip unrelated instruction if INT3/INTO is
+      replaced
+    - USB: serial: option: add Foxconn T99W760
+    - USB: serial: option: add Telit Cinterion FE910C04 new compositions
+    - USB: serial: option: move Telit 0x10c7 composition in the right place
+    - USB: serial: ftdi_sio: match on interface number for jtag
+    - serial: add support of CPCI cards
+    - USB: serial: belkin_sa: fix TIOCMBIS and TIOCMBIC
+    - USB: serial: kobil_sct: fix TIOCMBIS and TIOCMBIC
+    - ftrace: bpf: Fix IPMODIFY + DIRECT in modify_ftrace_direct()
+    - [arm64,armhf] ipi: imx: keep dma request disabled before dma transfer
+      setup
+    - drm/vmwgfx: Use kref in vmw_bo_dirty
+    - Bluetooth: btrtl: Avoid loading the config file on security chips
+    - smb: fix invalid username check in smb3_fs_context_parse_param()
+    - drm/amdkfd: Fix GPU mappings for APU after prefetch
+    - ALSA: usb-audio: Add native DSD quirks for PureAudio DAC series
+    - bfs: Reconstruct file type when loading from disk
+    - HID: hid-input: Extend Elan ignore battery quirk to USB
+    - nvme: fix admin request_queue lifetime
+    - [arm64] pinctrl: qcom: msm: Fix deadlock in pinmux configuration
+    - [amd64] platform/x86: acer-wmi: Ignore backlight event
+    - HID: apple: Add SONiX AK870 PRO to non_apple_keyboards quirk list
+    - [amd64] platform/x86: huawei-wmi: add keys for HONOR models
+    - [amd64] platform/x86/amd: pmc: Add Lenovo Legion Go 2 to pmc quirk list
+    - [amd64] platform/x86/amd/pmc: Add spurious_8042 to Xbox Ally
+    - HID: elecom: Add support for ELECOM M-XT3URBK (018F)
+    - wifi: rtl8xxxu: Add USB ID 2001:3328 for D-Link AN3U rev. A1
+    - wifi: rtw88: Add USB ID 2001:3329 for D-Link AC13U rev. A1
+    - [amd64] comedi: check device's attached status in compat ioctls
+    - staging: rtl8723bs: fix out-of-bounds read in rtw_get_ie() parser
+    - staging: rtl8723bs: fix stack buffer overflow in OnAssocReq IE parsing
+    - staging: rtl8723bs: fix out-of-bounds read in OnBeacon ESR IE parsing
+    - bus: mhi: host: pci_generic: Add Telit FN920C04 modem support
+    - bus: mhi: host: pci_generic: Add Telit FN990B40 modem support
 
   [ Uwe Kleine-König ]
   * [armhf] Enable LEDS_TURRIS_OMNIA as a module for Turris Omnia LED
