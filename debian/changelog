@@ -1,3 +1,70 @@
+linux (6.17.12-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.17.12
+    - Documentation: process: Also mention Sasha Levin as stable tree maintainer
+    - jbd2: avoid bug_on in jbd2_journal_get_create_access() when file system
+      corrupted
+    - ext4: refresh inline data size before write operations
+    - ksmbd: ipc: fix use-after-free in ipc_msg_send_request
+    - crypto: zstd - fix double-free in per-CPU stream cleanup
+    - ext4: add i_data_sem protection in ext4_destroy_inline_data_nolock()
+    - [amd64] KVM: SVM: Don't skip unrelated instruction if INT3/INTO is
+      replaced
+    - USB: serial: option: add Foxconn T99W760
+    - USB: serial: option: add Telit Cinterion FE910C04 new compositions
+    - USB: serial: option: move Telit 0x10c7 composition in the right place
+    - USB: serial: ftdi_sio: match on interface number for jtag
+    - serial: add support of CPCI cards
+    - dt-bindings: serial: rsci: Drop "uart-has-rtscts: false"
+    - serial: sh-sci: Fix deadlock during RSCI FIFO overrun error
+    - USB: serial: belkin_sa: fix TIOCMBIS and TIOCMBIC
+    - USB: serial: kobil_sct: fix TIOCMBIS and TIOCMBIC
+    - ftrace: bpf: Fix IPMODIFY + DIRECT in modify_ftrace_direct()
+    - [arm64,armhf] spi: imx: keep dma request disabled before dma transfer
+      setup
+    - [amd64] ACPI: MRRM: Fix memory leaks and improve error handling
+    - drm/vmwgfx: Use kref in vmw_bo_dirty
+    - [arm64] Reject modules with internal alternative callbacks
+    - ALSA: hda/tas2781: Add new quirk for HP new projects
+    - Bluetooth: btrtl: Avoid loading the config file on security chips
+    - [amd64] ASoC: SDCA: bug fix while parsing mipi-sdca-control-cn-list
+    - smb: fix invalid username check in smb3_fs_context_parse_param()
+    - drm/amdkfd: Fix GPU mappings for APU after prefetch
+    - ALSA: usb-audio: Add native DSD quirks for PureAudio DAC series
+    - HID: lenovo: fixup Lenovo Yoga Slim 7x Keyboard rdesc
+    - bfs: Reconstruct file type when loading from disk
+    - HID: hid-input: Extend Elan ignore battery quirk to USB
+    - [amd64] platform/x86/amd/pmc: Add support for Van Gogh SoC
+    - [amd64] platform/x86: hp-wmi: mark Victus 16-r0 and 16-s0 for victus_s fan
+      and thermal profile support
+    - nvme: fix admin request_queue lifetime
+    - [arm64] pinctrl: qcom: msm: Fix deadlock in pinmux configuration
+    - [amd64] platform/x86: acer-wmi: Ignore backlight event
+    - HID: apple: Add SONiX AK870 PRO to non_apple_keyboards quirk list
+    - [amd64] platform/x86: huawei-wmi: add keys for HONOR models
+    - [amd64] platform/x86: intel-uncore-freq: Add additional client processors
+    - [amd64] platform/x86/amd: pmc: Add Lenovo Legion Go 2 to pmc quirk list
+    - [amd64] platform/x86/amd/pmc: Add spurious_8042 to Xbox Ally
+    - sched_ext: Fix possible deadlock in the deferred_irq_workfn()
+    - [amd64] platform/x86/intel/hid: Add Nova Lake support
+    - HID: elecom: Add support for ELECOM M-XT3URBK (018F)
+    - sched_ext: Use IRQ_WORK_INIT_HARD() to initialize
+      rq->scx.kick_cpus_irq_work
+    - samples: work around glibc redefining some of our defines wrong
+    - [amd64] platform/x86: hp-wmi: Add Omen 16-wf1xxx fan support
+    - [amd64] platform/x86: hp-wmi: Add Omen MAX 16-ah0xx fan support and
+      thermal profile
+    - wifi: rtl8xxxu: Add USB ID 2001:3328 for D-Link AN3U rev. A1
+    - wifi: rtw88: Add USB ID 2001:3329 for D-Link AC13U rev. A1
+    - iio: adc: ad4080: fix chip identification
+    - [amd64] comedi: check device's attached status in compat ioctls
+    - staging: rtl8723bs: fix out-of-bounds read in rtw_get_ie() parser
+    - staging: rtl8723bs: fix stack buffer overflow in OnAssocReq IE parsing
+    - staging: rtl8723bs: fix out-of-bounds read in OnBeacon ESR IE parsing
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 12 Dec 2025 21:19:00 +0100
+
 linux (6.17.11-1) unstable; urgency=medium
 
   * New upstream stable update:
