@@ -1,4 +1,4 @@
-linux (6.17.12-1) UNRELEASED; urgency=medium
+linux (6.17.12-1) unstable; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.17.12
@@ -63,7 +63,7 @@ linux (6.17.12-1) UNRELEASED; urgency=medium
     - staging: rtl8723bs: fix stack buffer overflow in OnAssocReq IE parsing
     - staging: rtl8723bs: fix out-of-bounds read in OnBeacon ESR IE parsing
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 12 Dec 2025 21:19:00 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 14 Dec 2025 08:26:51 +0100
 
 linux (6.17.11-1) unstable; urgency=medium
 
