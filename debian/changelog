@@ -527,6 +527,10 @@ linux (6.1.159-1) UNRELEASED; urgency=medium
       macros
     - HID: core: Harden s32ton() against conversion to 0 bits
 
+  [ Ben Hutchings ]
+  * tools/hv: Make the sample hv_get_dhcp_info script more useful
+  * hyperv-daemons: Install the sample network info scripts (Closes: #919350)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 07 Dec 2025 16:20:07 +0100
 
 linux (6.1.158-1) bookworm-security; urgency=high
