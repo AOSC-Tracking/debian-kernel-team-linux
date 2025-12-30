@@ -1,4 +1,4 @@
-linux (6.12.63-1) UNRELEASED; urgency=medium
+linux (6.12.63-1) trixie; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.58
@@ -1288,7 +1288,7 @@ linux (6.12.63-1) UNRELEASED; urgency=medium
   [ Maxwell Pevner ]
   * drivers/hid: Enable HID_UNIVERSAL_PIDFF as module (Closes: #1122144)
 
- -- Uwe Kleine-König <ukleinek@debian.org>  Tue, 11 Nov 2025 08:30:18 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 30 Dec 2025 20:37:47 +0100
 
 linux (6.12.57-1) trixie; urgency=medium
 
