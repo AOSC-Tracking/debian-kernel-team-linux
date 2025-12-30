@@ -1,4 +1,4 @@
-linux (6.1.159-1) UNRELEASED; urgency=medium
+linux (6.1.159-1) bookworm; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.159
@@ -531,7 +531,7 @@ linux (6.1.159-1) UNRELEASED; urgency=medium
   * tools/hv: Make the sample hv_get_dhcp_info script more useful
   * hyperv-daemons: Install the sample network info scripts (Closes: #919350)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 07 Dec 2025 16:20:07 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 30 Dec 2025 23:20:29 +0100
 
 linux (6.1.158-1) bookworm-security; urgency=high
 
