@@ -135,6 +135,7 @@ bugfix/all/cpupower-fix-checks-for-cpu-existence.patch
 bugfix/all/tools-perf-pmu-events-fix-reproducibility.patch
 bugfix/all/libapi-define-_fortify_source-as-2-not-empty.patch
 bugfix/all/tools-perf-fix-missing-ldflags-for-some-programs.patch
+bugfix/all/tools-hv-Make-the-sample-hv_get_dhcp_info-script-mor.patch
 
 # Backport of Microsoft Azure Network Adapter from 6.12
 # From https://salsa.debian.org/waldi/linux-stable/ branch linux-6.1.129-ethernet-microsoft-6.12
