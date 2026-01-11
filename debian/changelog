@@ -1,4 +1,4 @@
-linux (6.12.64-1) UNRELEASED; urgency=medium
+linux (6.12.65-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.64
@@ -554,6 +554,25 @@ linux (6.12.64-1) UNRELEASED; urgency=medium
     - vfio/pci: Disable qword access to the PCI ROM bar
     - iomap: allocate s_dio_done_wq for async reads as well (CVE-2025-68357)
     - block: fix NULL pointer dereference in blk_zone_reset_all_bio_endio()
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.65
+    - mptcp: fallback earlier on simult connection
+    - mm/page_alloc: change all pageblocks migrate type on coalescing
+    - mm: simplify folio_expected_ref_count()
+    - mm: consider non-anon swap cache folios in folio_expected_ref_count()
+    - mptcp: ensure context reset on disconnect()
+    - wifi: mac80211: Discard Beacon frames to non-broadcast address
+    - [arm64] net: phy: mediatek: fix nvmem cell reference leak in
+      mt798x_phy_calibration
+    - drm/amdgpu: Forward VMID reservation errors
+    - [amd64] cpufreq: intel_pstate: Check IDA only before MSR_IA32_PERF_CTL
+      writes
+    - net: Remove RTNL dance for SIOCBRADDIF and SIOCBRDELIF.
+    - sched/fair: Small cleanup to sched_balance_newidle()
+    - sched/fair: Small cleanup to update_newidle_cost()
+    - sched/fair: Proportional newidle balance
+    - virtio_console: fix order of fields cols and rows
+    - [armhf] pwm: stm32: Always program polarity
+    - [amd64] Revert "iommu/amd: Skip enabling command/event buffers for kdump"
 
   [ Macpaul Lin ]
   * udeb: Add USB TYPE-C and Mux modules in usb-modules (Closes: #1109090)
