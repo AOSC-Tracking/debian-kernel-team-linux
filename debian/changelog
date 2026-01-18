@@ -1,4 +1,4 @@
-linux (6.1.160-1) UNRELEASED; urgency=medium
+linux (6.1.161-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.160
@@ -668,6 +668,70 @@ linux (6.1.160-1) UNRELEASED; urgency=medium
     - net: stmmac: fix ethtool per-queue statistics
     - wifi: nl80211: fix puncturing bitmap policy
     - wifi: mac80211: fix switch count in EMA beacons
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.161
+    - mm: page_poison: always declare __kernel_map_pages() function
+    - atm: Fix dma_free_coherent() size
+    - net: 3com: 3c59x: fix possible null dereference in vortex_probe1()
+    - btrfs: always detect conflicting inodes when logging inode refs
+    - [x86] mei: me: add nova lake point S DID
+    - lib/crypto: aes: Fix missing MMU protection for AES S-box
+    - [arm64,armhf] gpio: rockchip: mark the GPIO controller as sleeping
+    - wifi: avoid kernel-infoleak from struct iw_point
+    - libceph: prevent potential out-of-bounds reads in handle_auth_done()
+    - libceph: replace overzealous BUG_ON in osdmap_apply_incremental()
+    - libceph: make free_choose_arg_map() resilient to partial allocation
+    - libceph: return the handler error from mon_handle_auth_done()
+    - libceph: make calc_target() set t->paused, not just clear it
+    - ext4: introduce ITAIL helper
+    - ext4: fix out-of-bound read in ext4_xattr_inode_dec_ref_all()
+    - net: Add locking to protect skb->dev access in ip_output
+    - tls: Use __sk_dst_get() and dst_dev_rcu() in get_netdev_for_sock().
+    - NFSv4: ensure the open stateid seqid doesn't go backwards
+    - NFS: Fix up the automount fs_context to use the correct cred
+    - smb/client: fix NT_STATUS_UNABLE_TO_FREE_VM value
+    - smb/client: fix NT_STATUS_DEVICE_DOOR_OPEN value
+    - smb/client: fix NT_STATUS_NO_DATA_DETECTED value
+    - scsi: ipr: Enable/disable IRQD_NO_BALANCING during reset
+    - scsi: ufs: core: Fix EH failure after W-LUN resume error
+    - scsi: Revert "scsi: libsas: Fix exp-attached device scan after probe
+      failure scanned in again after probe failed"
+    - [arm64] dts: add off-on-delay-us for usdhc2 regulator
+    - netfilter: nft_synproxy: avoid possible data-race on update operation
+    - netfilter: nf_tables: fix memory leak in nf_tables_newrule()
+    - netfilter: nf_conncount: update last_gc only when GC has been performed
+    - bridge: fix C-VLAN preservation in 802.1ad vlan_tunnel egress
+    - [arm64] net: mscc: ocelot: Fix crash when adding interface under a lag
+    - inet: ping: Fix icmp out counting
+    - net: sock: fix hardened usercopy panic in sock_recv_errqueue
+    - netdev: preserve NETIF_F_ALL_FOR_ALL across TSO updates
+    - net/mlx5e: Don't print error message due to invalid module
+    - net: wwan: iosm: Fix memory leak in ipc_mux_deinit()
+    - eth: bnxt: move and rename reset helpers
+    - bnxt_en: Fix potential data corruption with HW GRO/LRO
+    - net: fix memory leak in skb_segment_list for GRO packets
+    - HID: quirks: work around VID/PID conflict for appledisplay
+    - net/sched: sch_qfq: Fix NULL deref when deactivating inactive aggregate in
+      qfq_reset
+    - arp: do not assume dev_hard_header() does not change skb->head
+    - mm/pagewalk: add walk_page_range_vma()
+    - ksm: use range-walk function to jump over holes in scan_get_next_rmap_item
+    - ALSA: ac97bus: Use guard() for mutex locks
+    - ALSA: ac97: fix a double free in snd_ac97_controller_register()
+    - nfsd: provide locking for v4_end_grace
+    - NFS: trace: show TIMEDOUT instead of 0x6e
+    - nfs_common: factor out nfs_errtbl and nfs_stat_to_errno
+    - NFSD: Remove NFSERR_EAGAIN
+    - bpf: Fix an issue in bpf_prog_test_run_xdp when page size greater than 4K
+    - bpf: Make variables in bpf_prog_test_run_xdp less confusing
+    - bpf: Support specifying linear xdp packet data size for BPF_PROG_TEST_RUN
+    - bpf: Fix reference count leak in bpf_prog_test_run_xdp()
+    - powercap: fix race condition in register_control_type()
+    - powercap: fix sscanf() error return value handling
+    - can: j1939: make j1939_session_activate() fail if device is no longer
+      registered
+    - [x86] ASoC: amd: yc: Add quirk for Honor MagicBook X16 2025
+    - [arm64] ASoC: fsl_sai: Add missing registers to cache default
+    - scsi: sg: Fix occasional bogus elapsed time that exceeds timeout
 
   [ Noah Meyerhans ]
   * net: mana: Support holes in device list reply msg
