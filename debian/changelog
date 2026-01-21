@@ -415,13 +415,14 @@ linux (5.10.248-1) UNRELEASED; urgency=medium
     - bridge: fix C-VLAN preservation in 802.1ad vlan_tunnel egress
     - inet: ping: Fix icmp out counting
     - net: sock: fix hardened usercopy panic in sock_recv_errqueue
+      (CVE-2026-22977)
     - netdev: preserve NETIF_F_ALL_FOR_ALL across TSO updates
     - net/mlx5e: Don't print error message due to invalid module
     - eth: bnxt: move and rename reset helpers
     - bnxt_en: Fix potential data corruption with HW GRO/LRO
     - HID: quirks: work around VID/PID conflict for appledisplay
     - net/sched: sch_qfq: Fix NULL deref when deactivating inactive aggregate
-      in qfq_reset
+      in qfq_reset (CVE-2026-22976)
     - net: usb: pegasus: fix memory leak in update_eth_regs_async()
     - arp: do not assume dev_hard_header() does not change skb->head
     - blk-throttle: Set BIO_THROTTLED when bio has been throttled
