@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 17 Feb 2023 09:53:44 +0106
 Subject: [PATCH 317/327] printk: ignore consoles without write() callback
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4fad425961504181160579c471c0a651dc0fa0f0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ac9c5b516abcba0fd1c6bb138049b55b6fe7a9fc
 
 The ttynull driver does not provide an implementation for the write()
 callback. This leads to a NULL pointer dereference in the related

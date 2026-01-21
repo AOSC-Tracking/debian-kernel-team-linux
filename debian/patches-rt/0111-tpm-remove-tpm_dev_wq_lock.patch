@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 11 Feb 2019 11:33:11 +0100
 Subject: [PATCH 111/327] tpm: remove tpm_dev_wq_lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b63cc27e95fcf5c751141257375bd79a40008ea4
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=28ebe18f35fada110ea673d03904c66089fbe5f8
 
 Added in commit
 

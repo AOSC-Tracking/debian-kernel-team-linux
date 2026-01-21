@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Tue, 25 Feb 2025 18:04:53 -0300
 Subject: [PATCH 325/327] rt: fix build issue in at_hdmac
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b9763a5219defb7f80dc7cb991866eb136647c85
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9a3de6b517400324e1e9cd3f7f38b53eb38625ec
 
 The problem described here is specific to v5.10-rt.
 

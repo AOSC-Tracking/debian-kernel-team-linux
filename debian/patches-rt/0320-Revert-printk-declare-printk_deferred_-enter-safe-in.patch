@@ -2,7 +2,7 @@ From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Thu, 8 Jun 2023 19:47:25 -0300
 Subject: [PATCH 320/327] Revert "printk: declare
  printk_deferred_{enter,safe}() in include/linux/printk.h"
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=caba71a76e26d19f31208660e2575ff3b7cf7fc2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7e8fdf8a7666ed579ec3b8be756dadbe8ab8913e
 
 This reverts commit 32232bcd4e5300e678718d5c29da4dfa07ade01e.
 

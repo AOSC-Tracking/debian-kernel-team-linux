@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:25 +0100
 Subject: [PATCH 036/327] mips/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a3c803c4bdbae03f48a51496f745f2677295bdb9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7381287800e0453eedd735676ee0f38d2f661bb4
 
 No reason having the same code in every architecture
 

@@ -2,7 +2,7 @@ From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Wed, 20 Dec 2023 10:20:48 -0300
 Subject: [PATCH 322/327] rt: mm/page_alloc: backport missing bits from
  __build_all_zonelists() fix
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=96d6725347bc64e7b6f6b0c15a82474a3de4810c
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b3754af2063f1fb9859b75268458a34232cbc98a
 
 A while ago upstream landed commit a2ebb51575828 ("mm/page_alloc: use
 write_seqlock_irqsave() instead write_seqlock() + local_irq_save().")
@@ -20,7 +20,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 006f3607e8fb..a7df7f92fac1 100644
+index bb0c51302076..907410739496 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -6067,8 +6067,9 @@ static void __build_all_zonelists(void *data)

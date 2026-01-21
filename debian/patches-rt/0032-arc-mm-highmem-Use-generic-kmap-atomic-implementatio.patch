@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:21 +0100
 Subject: [PATCH 032/327] arc/mm/highmem: Use generic kmap atomic
  implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6cc861eb391ecf09d12d299c10842a4c98c82281
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d3445d08e1acb26b6831815c8603b707f57e5bf2
 
 Adopt the map ordering to match the other architectures and the generic
 code. Also make the maximum entries limited and not dependend on the number

@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 25 Jul 2018 14:02:38 +0200
 Subject: [PATCH 271/327] arm64: fpsimd: Delay freeing memory in
  fpsimd_flush_thread()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fe02694bc9374799efb7d895e7d1822582db2330
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3624321d128b4e2ec15a75db2fd97d8b465076bb
 
 fpsimd_flush_thread() invokes kfree() via sve_free() within a preempt disabled
 section which is not working on -RT.

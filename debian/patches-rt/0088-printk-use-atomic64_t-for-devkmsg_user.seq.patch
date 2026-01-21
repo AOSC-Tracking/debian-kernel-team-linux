@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 15:33:40 +0106
 Subject: [PATCH 088/327] printk: use atomic64_t for devkmsg_user.seq
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7f11da320a53096109ba7758f40ab0147eab517f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=92427bf612a7e8da7032a172122fb8ac6604f779
 
 @user->seq is indirectly protected by @logbuf_lock. Once @logbuf_lock
 is removed, @user->seq will be no longer safe from an atomicity point

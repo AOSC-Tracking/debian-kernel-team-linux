@@ -437,6 +437,9 @@ linux (5.10.248-1) UNRELEASED; urgency=medium
     - NFS: unlink/rmdir shouldn't call d_delete() twice on ENOENT
     - NFS: add barriers when testing for NFS_FSDATA_BLOCKED
 
+  [ Ben Hutchings ]
+  * [rt] Update to 5.10.247-rt141
+
  -- Ben Hutchings <benh@debian.org>  Tue, 20 Jan 2026 12:55:56 +0100
 
 linux (5.10.247-1) bullseye-security; urgency=high

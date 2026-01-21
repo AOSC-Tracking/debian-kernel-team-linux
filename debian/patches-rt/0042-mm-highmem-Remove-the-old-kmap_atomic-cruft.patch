@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:31 +0100
 Subject: [PATCH 042/327] mm/highmem: Remove the old kmap_atomic cruft
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c734ffbecaf603db9af4f1b37d35b895a34f8646
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=53b7420c8a7754204202a391801a3d24102cd38f
 
 All users gone.
 

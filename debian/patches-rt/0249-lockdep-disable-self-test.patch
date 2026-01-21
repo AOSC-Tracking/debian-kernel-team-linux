@@ -4,7 +4,7 @@ Subject: [PATCH 249/327] lockdep: disable self-test
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=53ca04566e829429eb8349017b7a47b61f4696f1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f9c5237cee34456c4b4bc663d6b5b741e76f6cb8
 
 The self-test wasn't always 100% accurate for RT. We disabled a few
 tests which failed because they had a different semantic for RT. Some

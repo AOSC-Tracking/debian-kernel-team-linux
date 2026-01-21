@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 3 Feb 2021 11:05:25 -0500
 Subject: [PATCH 078/327] tracing: Use in_serving_softirq() to deduct softirq
  status.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a21fbe87efc8688b4fba9b61a590d6efbb7d2549
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2b7c8c8c72cb953a1ee659a3c3a459a6104379e3
 
 PREEMPT_RT does not report "serving softirq" because the tracing core
 looks at the preemption counter while PREEMPT_RT does not update it

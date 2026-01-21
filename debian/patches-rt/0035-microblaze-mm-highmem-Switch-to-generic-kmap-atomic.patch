@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:24 +0100
 Subject: [PATCH 035/327] microblaze/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c2c327c5627365a82e37bc875b5dc904620da0ad
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=585a637422c569897ccc6567c6c9da50f60d7abf
 
 No reason having the same code in every architecture.
 

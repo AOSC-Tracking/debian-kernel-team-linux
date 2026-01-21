@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:08 +0106
 Subject: [PATCH 106/327] printk: remove deferred printing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fd95f7dbf5988abbe2828a9f9da7d6573a9e5eea
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9703411c301f8b53a384f34f2b019e931a21420a
 
 Since printing occurs either atomically or from the printing
 kthread, there is no need for any deferring or tracking possible

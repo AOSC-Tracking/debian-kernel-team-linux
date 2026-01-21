@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Sep 2016 17:36:35 +0200
 Subject: [PATCH 186/327] net/Qdisc: use a seqlock instead seqcount
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0e0bb649e1d4bc49ce6fd9a152ee548c478af892
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c8a8674d23bda47da73fb29b08a0be113e46e34b
 
 The seqcount disables preemption on -RT while it is held which can't
 remove. Also we don't want the reader to spin for ages if the writer is
@@ -249,10 +249,10 @@ index e491b083b348..ef432cea2e10 100644
  			 struct gnet_stats_basic_cpu __percpu *cpu,
  			 struct gnet_stats_basic_packed *b)
 diff --git a/net/sched/sch_api.c b/net/sched/sch_api.c
-index a325036f3ae0..6e0d0ad72cd6 100644
+index 932c98b5b347..6d16382ae2b6 100644
 --- a/net/sched/sch_api.c
 +++ b/net/sched/sch_api.c
-@@ -1276,7 +1276,7 @@ static struct Qdisc *qdisc_create(struct net_device *dev,
+@@ -1266,7 +1266,7 @@ static struct Qdisc *qdisc_create(struct net_device *dev,
  		rcu_assign_pointer(sch->stab, stab);
  	}
  	if (tca[TCA_RATE]) {
@@ -262,10 +262,10 @@ index a325036f3ae0..6e0d0ad72cd6 100644
  		err = -EOPNOTSUPP;
  		if (sch->flags & TCQ_F_MQROOT) {
 diff --git a/net/sched/sch_generic.c b/net/sched/sch_generic.c
-index ecdd9e83f2f4..73b5aa797645 100644
+index 243a1d6b349c..43e0b21b8a7b 100644
 --- a/net/sched/sch_generic.c
 +++ b/net/sched/sch_generic.c
-@@ -578,7 +578,11 @@ struct Qdisc noop_qdisc = {
+@@ -581,7 +581,11 @@ struct Qdisc noop_qdisc = {
  	.ops		=	&noop_qdisc_ops,
  	.q.lock		=	__SPIN_LOCK_UNLOCKED(noop_qdisc.q.lock),
  	.dev_queue	=	&noop_netdev_queue,
@@ -277,7 +277,7 @@ index ecdd9e83f2f4..73b5aa797645 100644
  	.busylock	=	__SPIN_LOCK_UNLOCKED(noop_qdisc.busylock),
  	.gso_skb = {
  		.next = (struct sk_buff *)&noop_qdisc.gso_skb,
-@@ -889,9 +893,15 @@ struct Qdisc *qdisc_alloc(struct netdev_queue *dev_queue,
+@@ -892,9 +896,15 @@ struct Qdisc *qdisc_alloc(struct netdev_queue *dev_queue,
  	lockdep_set_class(&sch->seqlock,
  			  dev->qdisc_tx_busylock ?: &qdisc_tx_busylock);
  

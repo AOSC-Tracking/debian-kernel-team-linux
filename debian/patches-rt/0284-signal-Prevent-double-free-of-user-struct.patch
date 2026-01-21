@@ -1,7 +1,7 @@
 From: Matt Fleming <matt@codeblueprint.co.uk>
 Date: Tue, 7 Apr 2020 10:54:13 +0100
 Subject: [PATCH 284/327] signal: Prevent double-free of user struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b921b926231910ec3d56630e52a8e43ac5f9d6d2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3ff0169e32144cf90bbbeb9e746fad6339b1adfa
 
 The way user struct reference counting works changed significantly with,
 

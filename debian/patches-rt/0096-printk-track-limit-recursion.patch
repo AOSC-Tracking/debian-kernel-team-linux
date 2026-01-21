@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 11 Dec 2020 00:55:25 +0106
 Subject: [PATCH 096/327] printk: track/limit recursion
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=210f2b77e3c406302a7c09201a1261ce214d6590
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=090de4e1fefaed44f88b498c8bf52d516a42ee68
 
 Limit printk() recursion to 1 level. This is enough to print a
 stacktrace for the printk call, should a WARN or BUG occur.

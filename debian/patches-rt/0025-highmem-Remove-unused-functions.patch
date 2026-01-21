@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:14 +0100
 Subject: [PATCH 025/327] highmem: Remove unused functions
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6af0b2ff5e8973921f8b6ccda3eea85de09e7a7d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3d301cbf0b44497c8e5608c0dcf9d9352215d37e
 
 Nothing uses totalhigh_pages_dec() and totalhigh_pages_set().
 

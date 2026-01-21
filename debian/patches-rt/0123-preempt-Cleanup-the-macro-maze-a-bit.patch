@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:17 +0100
 Subject: [PATCH 123/327] preempt: Cleanup the macro maze a bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d418738f3bdc44f8b1fd01c9eb861d18aef10c40
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3498c6520ee60ebfcffd4b8ffe67dfee4481d5e0
 
 Make the macro maze consistent and prepare it for adding the RT variant for
 BH accounting.

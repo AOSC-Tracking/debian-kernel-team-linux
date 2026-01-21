@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:02 +0106
 Subject: [PATCH 100/327] serial: 8250: implement write_atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b75a12060ecfffee90ca2c9b86676c96df885da6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d289188e2f65962b81d0c58950c62956ad273621
 
 Implement a non-sleeping NMI-safe write_atomic() console function in
 order to support emergency console printing.
