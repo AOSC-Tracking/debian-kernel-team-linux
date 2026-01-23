@@ -1,4 +1,4 @@
-linux (6.12.66-1) UNRELEASED; urgency=medium
+linux (6.12.67-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.64
@@ -686,6 +686,130 @@ linux (6.12.66-1) UNRELEASED; urgency=medium
     - spi: cadence-quadspi: Prevent lost complete() call during indirect read
     - tpm2-sessions: Fix out of range indexing in name_size (CVE-2025-68792)
     - ALSA: hda: intel-dsp-config: Prefer legacy driver as fallback
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.67
+    - efi/cper: Fix cper_bits_to_str buffer handling and return value
+    - Revert "gfs2: Fix use of bio_chain"
+    - [amd64] x86/fpu: Clear XSTATE_BV[i] in guest XSAVE state whenever XFD[i]=1
+    - xfrm: Fix inner mode lookup in tunnel mode GSO segmentation
+    - xfrm: set ipv4 no_pmtu_disc flag only on output sa when direction is set
+    - pNFS: Fix a deadlock when returning a delegation during open()
+    - NFS: Fix a deadlock involving nfs_release_folio()
+    - pnfs/flexfiles: Fix memory leak in nfs4_ff_alloc_deviceid_node()
+    - pnfs/blocklayout: Fix memory leak in bl_parse_scsi()
+    - drm/vmwgfx: Merge vmw_bo_release and vmw_bo_free functions
+    - PM: EM: Fix incorrect description of the cost field in struct
+      em_perf_state
+    - nvme-tcp: fix NULL pointer dereferences in nvmet_tcp_build_pdu_iovec
+    - btrfs: send: check for inline extents in range_is_hole_in_parent()
+    - net: bridge: annotate data-races around fdb->{updated,used}
+    - ip6_tunnel: use skb_vlan_inet_prepare() in __ip6_tnl_rcv()
+    - net: update netdev_lock_{type,name}
+    - macvlan: fix possible UAF in macvlan_forward_source()
+    - ipv4: ip_gre: make ipgre_header() robust
+    - net/mlx5e: Fix crash on profile change rollback failure
+    - net/mlx5e: Don't store mlx5e_priv in mlx5e_dev devlink priv
+    - net/mlx5e: Pass netdev to mlx5e_destroy_netdev instead of priv
+    - net/mlx5e: Restore destroying state bit after profile cleanup
+    - btrfs: factor out init_space_info() from create_space_info()
+    - btrfs: factor out check_removing_space_info() from
+      btrfs_free_block_groups()
+    - btrfs: introduce btrfs_space_info sub-group
+    - btrfs: fix memory leaks in create_space_info() error paths
+    - ALSA: hda/cirrus_scodec_test: Fix incorrect setup of gpiochip
+    - net: hv_netvsc: reject RSS hash key programming without RX indirection
+      table
+    - ipv6: Fix use-after-free in inet6_addr_del().
+    - net/sched: sch_qfq: do not free existing class in qfq_change_class()
+    - [amd64] ASoC: sdw_utils: cs42l43: Enable Headphone pin for LINEOUT jack
+      type
+    - drm/amd/pm: fix smu overdrive data type wrong issue on smu 14.0.2
+    - mm: describe @flags parameter in memalloc_flags_save()
+    - textsearch: describe @list member in ts_ops search
+    - mm, kfence: describe @slab parameter in __kfence_obj_info()
+    - [arm64] dmaengine: tegra-adma: Fix use-after-free
+    - [arm64] phy: fsl-imx8mq-usb: Clear the PCS_TX_SWING_FULL field before
+      using it
+    - [arm64] phy: phy-snps-eusb2: refactor constructs names
+    - phy: drop probe registration printks
+    - [arm64] phy: qcom-qusb2: Fix NULL pointer dereference on early suspend
+    - [armhf] phy: stm32-usphyc: Fix off by one in probe()
+    - [armhf] dmaengine: omap-dma: fix dma_pool resource leak in error paths
+    - [arm64] i2c: qcom-geni: make sure I2C hub controllers can't use SE DMA
+    - HID: usbhid: paper over wrong bNumDescriptor field (Closes: #1122193)
+    - bridge: mcast: Fix use-after-free during router port configuration
+      (CVE-2025-38248)
+    - [arm64] ASoC: codecs: wsa883x: fix unnecessary initialisation
+    - drm/amd/display: mark static functions noinline_for_stack
+    - io_uring: move local task_work in exit cancel loop
+    - scsi: core: Fix error handler encryption support
+    - ALSA: pcm: Improve the fix for race of buffer access at PCM OSS layer
+    - null_blk: fix kmemleak by releasing references to fault configfs items
+    - can: gs_usb: gs_usb_receive_bulk_callback(): fix URB memory leak
+    - can: ctucanfd: fix SSP_SRC in cases when bit-rate is higher than 1 MBit.
+    - net: can: j1939: j1939_xtp_rx_rts_session_active(): deactivate session
+      upon receiving the second rts
+    - xfs: Fix the return value of xfs_rtcopy_summary()
+    - lib/buildid: use __kernel_read() for sleepable context
+    - [arm64] phy: rockchip: inno-usb2: fix communication disruption in gadget
+      mode
+    - [arm64,armhf] phy: ti: gmii-sel: fix regmap leak on probe failure
+    - [arm64] phy: freescale: imx8m-pcie: assert phy reset during power on
+    - [arm64] phy: rockchip: inno-usb2: fix disconnection in gadget mode
+    - usb: dwc3: Check for USB4 IP_NAME
+    - usb: core: add USB_QUIRK_NO_BOS for devices that hang on BOS descriptor
+    - USB: OHCI/UHCI: Add soft dependencies on ehci_platform
+    - USB: serial: option: add Telit LE910 MBIM composition
+    - USB: serial: ftdi_sio: add support for PICAXE AXE027 cable
+    - nvme-pci: disable secondary temp for Wodposit WPBSNM8
+    - [arm64] ASoC: codecs: wsa881x: fix unnecessary initialisation
+    - ext4: fix iloc.bh leak in ext4_xattr_inode_update_ref
+    - hrtimer: Fix softirq base check in update_needs_ipi()
+    - [amd64] EDAC/x38: Fix a resource leak in x38_probe1()
+    - [amd64] EDAC/i3200: Fix a resource leak in i3200_probe1()
+    - tcpm: allow looking for role_sw device in the main node
+    - i2c: riic: Move suspend handling to NOIRQ phase
+    - [amd64] x86/resctrl: Add missing resctrl initialization for Hygon
+    - [amd64] x86/resctrl: Fix memory bandwidth counter width for Hygon
+    - nvme: fix PCIe subsystem reset controller state transition
+    - mm/zswap: fix error pointer free in zswap_cpu_comp_prepare()
+    - mm/page_alloc: make percpu_pagelist_high_fraction reads lock-free
+    - mm/damon/sysfs: cleanup attrs subdirs on context dir setup failure
+    - drm/amd/display: Bump the HDMI clock to 340MHz
+    - drm/amd: Clean up kfd node on surprise disconnect
+    - drm/amdkfd: fix a memory leak in device_queue_manager_init()
+    - drm/nouveau/disp/nv50-: Set lock_core in curs507a_prepare
+    - [arm64,armhf] drm/panel-simple: fix connector type for DataImage
+      SCF0700C48GGU18 panel
+    - drm/vmwgfx: Fix an error return check in vmw_compat_shader_add()
+    - [arm64] dmaengine: qcom: gpi: Fix memory leak in gpi_peripheral_config()
+    - [armhf] dmaengine: stm32: dmamux: fix device leak on route allocation
+    - [armhf] dmaengine: stm32: dmamux: fix OF node leak on route allocation
+      failure
+    - [armhf] dmaengine: ti: dma-crossbar: fix device leak on dra7x route
+      allocation
+    - [armhf] dmaengine: ti: dma-crossbar: fix device leak on am335x route
+      allocation
+    - [amd64] HID: intel-ish-hid: Use dedicated unbound workqueues to prevent
+      resume blocking
+    - [amd64] HID: intel-ish-hid: Fix -Wcast-function-type-strict in
+      devm_ishtp_alloc_workqueue()
+    - btrfs: fix deadlock in wait_current_trans() due to ignored transaction
+      type
+    - xfs: set max_agbno to allow sparse alloc of last full inode chunk
+    - mm/damon/sysfs-scheme: cleanup quotas subdirs on scheme dir setup failure
+    - mm/damon/sysfs-scheme: cleanup access_pattern subdirs on scheme dir setup
+      failure
+    - bpf: Reject narrower access to pointer ctx fields (CVE-2025-38591)
+    - mm/fake-numa: allow later numa node hotplug
+    - mm: numa,memblock: include <asm/numa.h> for 'numa_nodes_parsed'
+    - [arm64] phy: phy-rockchip-inno-usb2: Use dev_err_probe() in the probe path
+    - [arm64] phy: rockchip: inno-usb2: Fix a double free bug in
+      rockchip_usb2phy_probe()
+    - [arm64] dmaengine: fsl-edma: Fix clk leak on alloc_chan_resources failure
+    - mm/page_alloc/vmstat: simplify refresh_cpu_vm_stats change detection
+    - mm/page_alloc: batch page freeing in decay_pcp_high
+    - mm/page_alloc: prevent pcp corruption with SMP=n
+    - mm/fake-numa: handle cases with no SRAT info
 
   [ Macpaul Lin ]
   * udeb: Add USB TYPE-C and Mux modules in usb-modules (Closes: #1109090)
