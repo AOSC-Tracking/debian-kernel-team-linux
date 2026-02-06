@@ -279,6 +279,7 @@ linux (5.10.248-1) UNRELEASED; urgency=medium
     - team: fix check for port enabled in
       team_queue_override_port_prio_changed() (CVE-2025-71091)
     - net: usb: rtl8150: fix memory leak on usb_submit_urb() failure
+      (CVE-2025-71154)
     - firewire: nosy: switch from 'pci_' to 'dma_' API
     - firewire: nosy: Fix dma_free_coherent() size
     - [armhf] net: dsa: b53: skip multicast entries for fdb_dump()
@@ -393,12 +394,16 @@ linux (5.10.248-1) UNRELEASED; urgency=medium
     - net: ethtool: fix the error condition in ethtool_get_phy_stats_ethtool()
     - [x86] atm: Fix dma_free_coherent() size
     - net: 3com: 3c59x: fix possible null dereference in vortex_probe1()
+      (CVE-2026-23020)
     - [x86] mei: me: add nova lake point S DID
     - lib/crypto: aes: Fix missing MMU protection for AES S-box
-    - wifi: avoid kernel-infoleak from struct iw_point
+    - wifi: avoid kernel-infoleak from struct iw_point (CVE-2026-22978)
     - libceph: replace overzealous BUG_ON in osdmap_apply_incremental()
+      (CVE-2026-22990)
     - libceph: make free_choose_arg_map() resilient to partial allocation
+      (CVE-2026-22991)
     - libceph: make calc_target() set t->paused, not just clear it
+      (CVE-2026-23047)
     - ext4: introduce ITAIL helper
     - ext4: fix out-of-bound read in ext4_xattr_inode_dec_ref_all()
       (CVE-2025-22121)
@@ -424,14 +429,15 @@ linux (5.10.248-1) UNRELEASED; urgency=medium
     - net/sched: sch_qfq: Fix NULL deref when deactivating inactive aggregate
       in qfq_reset (CVE-2026-22976)
     - net: usb: pegasus: fix memory leak in update_eth_regs_async()
+      (CVE-2026-23021)
     - arp: do not assume dev_hard_header() does not change skb->head
     - blk-throttle: Set BIO_THROTTLED when bio has been throttled
       (CVE-2022-49465)
-    - nfsd: provide locking for v4_end_grace
+    - nfsd: provide locking for v4_end_grace (CVE-2026-22980)
     - [x86] powercap: fix race condition in register_control_type()
     - [x86] powercap: fix sscanf() error return value handling
     - can: j1939: make j1939_session_activate() fail if device is no longer
-      registered
+      registered (CVE-2025-71182)
     - [arm64] ASoC: fsl_sai: Add missing registers to cache default
     - scsi: sg: Fix occasional bogus elapsed time that exceeds timeout
     - efi/cper: Fix cper_bits_to_str buffer handling and return value
