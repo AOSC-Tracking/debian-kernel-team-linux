@@ -1022,6 +1022,9 @@ linux (6.1.162-1) UNRELEASED; urgency=medium
   [ Noah Meyerhans ]
   * net: mana: Support holes in device list reply msg
 
+  [ Salvatore Bonaccorso ]
+  * [rt] Update to 6.1.158-rt58
+
  -- Noah Meyerhans <noahm@debian.org>  Fri, 23 Jan 2026 13:31:17 -0500
 
 linux (6.1.159-1) bookworm; urgency=medium
