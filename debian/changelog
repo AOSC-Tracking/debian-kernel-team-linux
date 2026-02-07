@@ -1,4 +1,4 @@
-linux (6.12.68-1) UNRELEASED; urgency=medium
+linux (6.12.69-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.64
@@ -978,6 +978,83 @@ linux (6.12.68-1) UNRELEASED; urgency=medium
     - vsock/virtio: Allocate nonlinear SKBs for handling large transmit buffers
     - net: Introduce skb_copy_datagram_from_iter_full()
     - vsock/virtio: Fix message iterator handling on transmit path
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.69
+    - Bluetooth: hci_uart: fix null-ptr-deref in hci_uart_write_work
+    - Bluetooth: MGMT: Fix memory leak in set_ssp_complete
+    - net/mlx5: Fix memory leak in esw_acl_ingress_lgcy_setup()
+    - can: gs_usb: gs_usb_receive_bulk_callback(): fix error message
+    - bonding: annotate data-races around slave->last_rx
+    - [arm64,armhf] net: mvpp2: cls: Fix memory leak in
+      mvpp2_ethtool_cls_rule_ins()
+    - ipv6: use the right ifindex when replying to icmpv6 from localhost
+    - net: wwan: t7xx: fix potential skb->frags overflow in RX path
+    - nfc: llcp: Fix memleak in nfc_llcp_send_ui_frame().
+    - ice: Fix NULL pointer dereference in ice_vsi_set_napi_queues
+    - ice: stop counting UDP csum mismatch as rx_errors
+    - net/mlx5e: TC, delete flows only for existing peers
+    - nfc: nci: Fix race between rfkill and nci_unregister_device().
+    - net: bridge: fix static key check
+    - net: phy: micrel: fix clk warning when removing the driver
+    - net/mlx5: fs, Fix inverted cap check in tx flow table root disconnect
+    - net/mlx5: Initialize events outside devlink lock
+    - net/mlx5: Fix vhca_id access call trace use before alloc
+    - net/mlx5e: Skip ESN replay window setup for IPsec crypto offload
+    - scsi: firewire: sbp-target: Fix overflow in sbp_make_tpg()
+    - [amd64] ASoC: Intel: sof_es8336: fix headphone GPIO logic inversion
+    - gpiolib: acpi: use BIT_ULL() for u64 mask in address space handler
+    - gpio: virtuser: fix UAF in configfs release path
+    - bcache: fix improper use of bi_end_io
+    - bcache: use bio cloning for detached device requests
+    - bcache: fix I/O accounting leak in detached_dev_do_request
+    - dma/pool: distinguish between missing and exhausted atomic pools
+    - sched/deadline: Document dl_server
+    - sched/deadline: Fix 'stuck' dl_server
+    - [arm64,armhf] pinctrl: meson: mark the GPIO controller as sleeping
+    - [riscv64] compat: fix COMPAT_UTS_MACHINE definition
+    - scsi: be2iscsi: Fix a memory leak in beiscsi_boot_get_sinfo()
+    - [amd64] ASoC: amd: yc: Add DMI quirk for Acer TravelMate P216-41-TCO
+    - [arm64,armhf] gpio: pca953x: mask interrupts in irq shutdown
+    - scsi: qla2xxx: edif: Fix dma_free_coherent() size
+    - efivarfs: fix error propagation in efivar_entry_get()
+    - nvmet: fix race in nvmet_bio_done() leading to NULL pointer dereference
+      (Closes: #1122521)
+    - gpio: rockchip: Stop calling pinctrl for set_direction
+    - mptcp: only reset subflow errors when propagated
+    - flex_proportions: make fprop_new_period() hardirq safe
+    - mm/memory-failure: fix missing ->mf_stats count in hugetlb poison
+    - mm/memory-failure: teach kill_accessing_process to accept hugetlb tail
+      page pfn
+    - mm/shmem, swap: fix race of truncate and swap entry split
+    - net: fix segmentation of forwarding fraglist GRO
+    - [arm64] drm/msm/a6xx: fix bogus hwcg register updates
+    - drm/amdgpu/soc21: fix xclk for APUs
+    - drm/amdgpu/gfx10: fix wptr reset in KGQ init
+    - drm/amdgpu/gfx11: fix wptr reset in KGQ init
+    - drm/amdgpu/gfx12: fix wptr reset in KGQ init
+    - drm/amdgpu: fix NULL pointer dereference in
+      amdgpu_gmc_filter_faults_remove
+    - drm/amdgpu: Fix cond_exec handling in amdgpu_ib_schedule()
+    - gpiolib: acpi: Fix potential out-of-boundary left shift
+    - cgroup: Fix kernfs_node UAF in css_free_rwork_fn
+    - rxrpc: Fix data-race warning and potential load/store tearing
+    - ksmbd: smbd: fix dma_unmap_sg() nents (CVE-2026-23093)
+    - mm/kfence: randomize the freelist on initialization
+    - wifi: ath11k: add srng->lock for ath11k_hal_srng_* in monitor mode
+      (CVE-2024-58096)
+    - Revert "drm/nouveau/disp: Set drm_mode_config_funcs.atomic_(check|commit)"
+    - btrfs: prevent use-after-free on folio private data in
+      btrfs_subpage_clear_uptodate()
+    - net/sched: act_ife: convert comma to semicolon
+    - [arm64] pinctrl: qcom: sm8350-lpass-lpi: Merge with SC7280 to fix I2S2 and
+      SWR TX pins
+    - mptcp: avoid dup SUB_CLOSED events after disconnect
+    - perf: Simplify get_perf_callchain() user logic
+    - perf: sched: Fix perf crash with new is_user_task() helper
+    - writeback: fix 100% CPU usage when dirtytime_expire_interval is 0
+    - drm/amdgpu/gfx11: adjust KGQ reset sequence
+    - [arm64] pinctrl: lpass-lpi: implement .get_direction() for the GPIO driver
+    - net: mana: Change the function signature of mana_get_primary_netdev_rcu
+    - RDMA/mana_ib: Handle net event for pointing to the current netdev
 
   [ Macpaul Lin ]
   * udeb: Add USB TYPE-C and Mux modules in usb-modules (Closes: #1109090)
