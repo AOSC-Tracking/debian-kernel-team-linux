@@ -1,8 +1,8 @@
-From 52cd1d4c100501c72e844e07f718b27ff3a65e67 Mon Sep 17 00:00:00 2001
+From 2dd7bd4fc45bb574e1e0fe66774f4bb0b607d10d Mon Sep 17 00:00:00 2001
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 13 Sep 2023 15:30:36 +0000
 Subject: [PATCH 04/43] serial: 8250: Switch to nbcon console
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Implement the necessary callbacks to switch the 8250 console driver
 to perform as an nbcon console.
@@ -95,7 +95,7 @@ index 68baf75bdadc..82f8aa0ffc06 100644
  	.data		= &serial8250_reg,
  };
 diff --git a/drivers/tty/serial/8250/8250_port.c b/drivers/tty/serial/8250/8250_port.c
-index 051967992965..76cc55c64ac0 100644
+index 03aca7eaca16..c5f9955a9a42 100644
 --- a/drivers/tty/serial/8250/8250_port.c
 +++ b/drivers/tty/serial/8250/8250_port.c
 @@ -546,6 +546,13 @@ static int serial8250_em485_init(struct uart_8250_port *p)
@@ -137,7 +137,7 @@ index 051967992965..76cc55c64ac0 100644
  #ifdef CONFIG_SERIAL_8250_RSA
  /*
   * Attempts to turn on the RSA FIFO.  Returns zero on failure.
-@@ -3279,6 +3295,11 @@ static void serial8250_console_putchar(struct uart_port *port, unsigned char ch)
+@@ -3278,6 +3294,11 @@ static void serial8250_console_putchar(struct uart_port *port, unsigned char ch)
  
  	wait_for_xmitr(up, UART_LSR_THRE);
  	serial_port_out(port, UART_TX, ch);
@@ -149,7 +149,7 @@ index 051967992965..76cc55c64ac0 100644
  }
  
  /*
-@@ -3307,6 +3328,7 @@ static void serial8250_console_restore(struct uart_8250_port *up)
+@@ -3306,6 +3327,7 @@ static void serial8250_console_restore(struct uart_8250_port *up)
  	serial8250_out_MCR(up, up->mcr | UART_MCR_DTR | UART_MCR_RTS);
  }
  
@@ -157,7 +157,7 @@ index 051967992965..76cc55c64ac0 100644
  static void fifo_wait_for_lsr(struct uart_8250_port *up, unsigned int count)
  {
  	unsigned int i;
-@@ -3384,7 +3406,7 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
+@@ -3383,7 +3405,7 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
  	 *	First save the IER then disable the interrupts
  	 */
  	ier = serial_port_in(port, UART_IER);
@@ -166,7 +166,7 @@ index 051967992965..76cc55c64ac0 100644
  
  	/* check scratch reg to see if port powered off during system sleep */
  	if (up->canary && (up->canary != serial_port_in(port, UART_SCR))) {
-@@ -3450,6 +3472,131 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
+@@ -3449,6 +3471,131 @@ void serial8250_console_write(struct uart_8250_port *up, const char *s,
  	if (locked)
  		uart_port_unlock_irqrestore(port, flags);
  }
@@ -298,7 +298,7 @@ index 051967992965..76cc55c64ac0 100644
  
  static unsigned int probe_baud(struct uart_port *port)
  {
-@@ -3468,6 +3615,7 @@ static unsigned int probe_baud(struct uart_port *port)
+@@ -3467,6 +3614,7 @@ static unsigned int probe_baud(struct uart_port *port)
  
  int serial8250_console_setup(struct uart_port *port, char *options, bool probe)
  {
@@ -306,7 +306,7 @@ index 051967992965..76cc55c64ac0 100644
  	int baud = 9600;
  	int bits = 8;
  	int parity = 'n';
-@@ -3477,6 +3625,8 @@ int serial8250_console_setup(struct uart_port *port, char *options, bool probe)
+@@ -3476,6 +3624,8 @@ int serial8250_console_setup(struct uart_port *port, char *options, bool probe)
  	if (!port->iobase && !port->membase)
  		return -ENODEV;
  
@@ -340,5 +340,5 @@ index e0717c8393d7..a968e6941237 100644
  int serial8250_console_exit(struct uart_port *port);
  
 -- 
-2.50.1
+2.52.0
 

@@ -1,8 +1,8 @@
-From 48d857c2f3bf129015aec975dcd4c14db22a69d9 Mon Sep 17 00:00:00 2001
+From 095d59307449ae3fde853e5c7c0b7b74ac3cfe75 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 25 Oct 2024 11:05:53 +0200
 Subject: [PATCH 22/43] sched: Fixup the IS_ENABLED check for PREEMPT_LAZY
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 The IS_ENABLED is missing the CONFIG_ and therefore always evaluates to
 false.
@@ -14,10 +14,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 7686509e6c75..5bbe6ddb1888 100644
+index 1aa17749f1e5..526f862e29f0 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1128,11 +1128,11 @@ static __always_inline bool dynamic_preempt_promote(void)
+@@ -1129,11 +1129,11 @@ static __always_inline bool dynamic_preempt_promote(void)
  #else
  static __always_inline bool dynamic_preempt_lazy(void)
  {
@@ -32,5 +32,5 @@ index 7686509e6c75..5bbe6ddb1888 100644
  #endif
  
 -- 
-2.50.1
+2.52.0
 

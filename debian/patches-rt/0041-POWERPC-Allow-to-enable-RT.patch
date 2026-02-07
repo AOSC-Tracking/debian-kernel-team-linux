@@ -1,8 +1,8 @@
-From 733e71f919a5417e59ddee061e4302bdeabd85dd Mon Sep 17 00:00:00 2001
+From b072c762e319ec679d9578430fa2924bd50807b7 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:41 +0200
 Subject: [PATCH 41/43] POWERPC: Allow to enable RT
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Allow to select RT.
 
@@ -33,5 +33,5 @@ index 1bd5a9ff8505..3d72545eac3e 100644
  	select HAVE_REGS_AND_STACK_ACCESS_API
  	select HAVE_RELIABLE_STACKTRACE
 -- 
-2.50.1
+2.52.0
 

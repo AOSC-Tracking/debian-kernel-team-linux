@@ -1,9 +1,9 @@
-From 23101b5b755f3291647adb4b743846ad8ffdd90f Mon Sep 17 00:00:00 2001
+From 0ea4850fd7934690b202a962fdc24dcaf6a0e46a Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 1 Jul 2024 12:56:56 +0200
 Subject: [PATCH 34/43] ARM: vfp: Move sending signals outside of
  vfp_state_hold()ed section.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 VFP_bounce() is invoked from within vfp_support_entry() and may send a
 signal. Sending a signal uses spinlock_t which becomes a sleeping lock
@@ -124,5 +124,5 @@ index 28dafae7758b..d44867fc0c5e 100644
  }
  
 -- 
-2.50.1
+2.52.0
 

@@ -1,8 +1,8 @@
-From c3abf6ef0c709e53350c6becd17e6f3c2e12ddbc Mon Sep 17 00:00:00 2001
+From 12574361ba82a8a6f676917a9d41ecb280e6da10 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 1 Jul 2024 12:56:55 +0200
 Subject: [PATCH 33/43] ARM: vfp: Use vfp_state_hold() in vfp_support_entry().
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 vfp_entry() is invoked from exception handler and is fully preemptible.
 It uses local_bh_disable() to remain uninterrupted while checking the
@@ -51,5 +51,5 @@ index 1726db050076..28dafae7758b 100644
  }
  
 -- 
-2.50.1
+2.52.0
 

@@ -1,9 +1,9 @@
-From 7bae086b1939f789c2128ae235ec2ca59ed73ec3 Mon Sep 17 00:00:00 2001
+From 902c580c5b63558b724973c4dd24b710b62993a4 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 12 Aug 2024 12:39:03 +0200
 Subject: [PATCH 06/43] locking/rt: Remove one __cond_lock() in RT's
  spin_trylock_irqsave()
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 spin_trylock_irqsave() has a __cond_lock() wrapper which points to
 __spin_trylock_irqsave(). The function then invokes spin_trylock() which
@@ -46,5 +46,5 @@ index 6175cd682ca0..f6499c37157d 100644
  
  static inline int spin_is_locked(spinlock_t *lock)
 -- 
-2.50.1
+2.52.0
 

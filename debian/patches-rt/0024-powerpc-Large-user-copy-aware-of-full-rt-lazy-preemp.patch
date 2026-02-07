@@ -1,9 +1,9 @@
-From cd0cefced86970b09dbb9f02a51af6081a18673a Mon Sep 17 00:00:00 2001
+From 0e9a2b827b30b446132d355d6ea1c9a0f9b2ee02 Mon Sep 17 00:00:00 2001
 From: Shrikanth Hegde <sshegde@linux.ibm.com>
 Date: Sun, 17 Nov 2024 00:53:06 +0530
 Subject: [PATCH 24/43] powerpc: Large user copy aware of full:rt:lazy
  preemption
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Large user copy_to/from (more than 16 bytes) uses vmx instructions to
 speed things up. Once the copy is done, it makes sense to try schedule
@@ -36,5 +36,5 @@ index d491da8d1838..58ed6bd613a6 100644
  	return 0;
  }
 -- 
-2.50.1
+2.52.0
 

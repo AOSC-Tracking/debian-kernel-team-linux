@@ -1,8 +1,8 @@
-From fa75cd8a039f0f6717358db75990110e7ef71c29 Mon Sep 17 00:00:00 2001
+From ce25ebc9bbe715f242f9c3e19503e07b82183fdd Mon Sep 17 00:00:00 2001
 From: Jisheng Zhang <jszhang@kernel.org>
 Date: Wed, 9 Oct 2024 11:35:19 +0200
 Subject: [PATCH 27/43] riscv: add PREEMPT_LAZY support
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 riscv has switched to GENERIC_ENTRY, so adding PREEMPT_LAZY is as simple
 as adding TIF_NEED_RESCHED_LAZY related definitions and enabling
@@ -23,7 +23,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 7 insertions(+), 4 deletions(-)
 
 diff --git a/arch/riscv/Kconfig b/arch/riscv/Kconfig
-index fa8f2da87a0a..a8ac50649030 100644
+index d160c3b83026..3f3e91fde491 100644
 --- a/arch/riscv/Kconfig
 +++ b/arch/riscv/Kconfig
 @@ -39,6 +39,7 @@ config RISCV
@@ -65,5 +65,5 @@ index 9c10fb180f43..f5916a70879a 100644
  #define _TIF_UPROBE		(1 << TIF_UPROBE)
  #define _TIF_RISCV_V_DEFER_RESTORE	(1 << TIF_RISCV_V_DEFER_RESTORE)
 -- 
-2.50.1
+2.52.0
 

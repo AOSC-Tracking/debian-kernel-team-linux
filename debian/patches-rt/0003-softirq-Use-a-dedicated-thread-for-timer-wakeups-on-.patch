@@ -1,9 +1,9 @@
-From a314f31d3aba6df9be08b1795c55dc616b5093e2 Mon Sep 17 00:00:00 2001
+From 1374116451033b38a3f919b7f716cbea1be81c50 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 1 Dec 2021 17:41:09 +0100
 Subject: [PATCH 03/43] softirq: Use a dedicated thread for timer wakeups on
  PREEMPT_RT.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 A timer/ hrtimer softirq is raised in-IRQ context. With threaded
 interrupts enabled or on PREEMPT_RT this leads to waking the ksoftirqd
@@ -220,7 +220,7 @@ index 00ff17635041..ae56b14bee64 100644
  }
  early_initcall(spawn_ksoftirqd);
 diff --git a/kernel/time/hrtimer.c b/kernel/time/hrtimer.c
-index 47e636c31cf2..cfa9a51890fc 100644
+index 30f883c374aa..7d6aef6b642f 100644
 --- a/kernel/time/hrtimer.c
 +++ b/kernel/time/hrtimer.c
 @@ -1869,7 +1869,7 @@ void hrtimer_interrupt(struct clock_event_device *dev)
@@ -255,10 +255,10 @@ index f203f000da1a..e0c47259e91a 100644
  
  /*
 diff --git a/kernel/time/timer.c b/kernel/time/timer.c
-index c26a0ebc5909..8dc35774bd6f 100644
+index 61a86530a113..87c29461e935 100644
 --- a/kernel/time/timer.c
 +++ b/kernel/time/timer.c
-@@ -2500,7 +2500,7 @@ static void run_local_timers(void)
+@@ -2501,7 +2501,7 @@ static void run_local_timers(void)
  		 */
  		if (time_after_eq(jiffies, READ_ONCE(base->next_expiry)) ||
  		    (i == BASE_DEF && tmigr_requires_handle_remote())) {
@@ -268,5 +268,5 @@ index c26a0ebc5909..8dc35774bd6f 100644
  		}
  	}
 -- 
-2.50.1
+2.52.0
 
