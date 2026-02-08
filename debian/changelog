@@ -1,4 +1,4 @@
-linux (6.1.162-1) UNRELEASED; urgency=medium
+linux (6.1.162-1) bookworm-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.160
@@ -1025,7 +1025,7 @@ linux (6.1.162-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * [rt] Update to 6.1.158-rt58
 
- -- Noah Meyerhans <noahm@debian.org>  Fri, 23 Jan 2026 13:31:17 -0500
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 08 Feb 2026 12:00:45 +0100
 
 linux (6.1.159-1) bookworm; urgency=medium
 
