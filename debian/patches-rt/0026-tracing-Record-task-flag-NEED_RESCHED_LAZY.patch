@@ -1,8 +1,8 @@
-From 986b8fa6b0957ac9b045df9395f98b5fd0092a4f Mon Sep 17 00:00:00 2001
+From 01005c63d1aa2e454830222b7cd2b3db55af8743 Mon Sep 17 00:00:00 2001
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 9 Oct 2024 08:48:44 +0200
 Subject: [PATCH 26/43] tracing: Record task flag NEED_RESCHED_LAZY.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 The scheduler added NEED_RESCHED_LAZY scheduling. Record this state as
 part of trace flags and expose it in the need_resched field.
@@ -53,10 +53,10 @@ index a4fe0a36f87b..46bf24111324 100644
  	TRACE_FLAG_HARDIRQ		= 0x08,
  	TRACE_FLAG_SOFTIRQ		= 0x10,
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 801def692f92..624f408cd1d5 100644
+index 2f68e6341703..accbca817c78 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
-@@ -2549,6 +2549,8 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
+@@ -2552,6 +2552,8 @@ unsigned int tracing_gen_ctx_irq_test(unsigned int irqs_status)
  		trace_flags |= TRACE_FLAG_NEED_RESCHED;
  	if (test_preempt_need_resched())
  		trace_flags |= TRACE_FLAG_PREEMPT_RESCHED;
@@ -101,5 +101,5 @@ index d0f420e7fe97..358bbebbab50 100644
  		need_resched = '.';
  		break;
 -- 
-2.50.1
+2.52.0
 

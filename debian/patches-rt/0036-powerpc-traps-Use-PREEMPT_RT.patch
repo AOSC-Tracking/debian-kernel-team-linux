@@ -1,8 +1,8 @@
-From fdde04e06101b791e1820f2579fa81d46a459a3c Mon Sep 17 00:00:00 2001
+From fd39ed32a626df9c39549111abdfff08e80b65af Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Jul 2019 11:30:49 +0200
 Subject: [PATCH 36/43] powerpc: traps: Use PREEMPT_RT
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Add PREEMPT_RT to the backtrace if enabled.
 
@@ -36,5 +36,5 @@ index edf5cabe5dfd..17c11db6f072 100644
  	       IS_ENABLED(CONFIG_SMP) ? (" NR_CPUS=" __stringify(NR_CPUS)) : "",
  	       debug_pagealloc_enabled() ? " DEBUG_PAGEALLOC" : "",
 -- 
-2.50.1
+2.52.0
 

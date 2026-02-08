@@ -1,8 +1,8 @@
-From a04dfb30ce24cf8a691bf961a8998177aff7be06 Mon Sep 17 00:00:00 2001
+From 873c144e890bdc8004210650f5f5e7837e594097 Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Mon, 7 Oct 2024 09:46:12 +0200
 Subject: [PATCH 19/43] sched: Enable PREEMPT_DYNAMIC for PREEMPT_RT
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 In order to enable PREEMPT_DYNAMIC for PREEMPT_RT, remove PREEMPT_RT
 from the 'Preemption Model' choice. Strictly speaking PREEMPT_RT is
@@ -87,10 +87,10 @@ index 09f06d8964cf..7c1b29a3a491 100644
  	select PREEMPT_BUILD
  	default y if HAVE_PREEMPT_DYNAMIC_CALL
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index ec7aadd2d92a..1c47fd6fced5 100644
+index 81d0316e3ae9..69db55143222 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -7461,11 +7461,13 @@ int preempt_dynamic_mode = preempt_dynamic_undefined;
+@@ -7462,11 +7462,13 @@ int preempt_dynamic_mode = preempt_dynamic_undefined;
  
  int sched_dynamic_mode(const char *str)
  {
@@ -105,7 +105,7 @@ index ec7aadd2d92a..1c47fd6fced5 100644
  	if (!strcmp(str, "full"))
  		return preempt_dynamic_full;
 diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index c6c967883e60..23a0d7117da7 100644
+index aa54188e34b8..9a9aae0d797a 100644
 --- a/kernel/sched/debug.c
 +++ b/kernel/sched/debug.c
 @@ -248,9 +248,9 @@ static int sched_dynamic_show(struct seq_file *m, void *v)
@@ -121,5 +121,5 @@ index c6c967883e60..23a0d7117da7 100644
  			seq_puts(m, "(");
  		seq_puts(m, preempt_modes[i]);
 -- 
-2.50.1
+2.52.0
 

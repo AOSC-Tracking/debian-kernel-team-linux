@@ -1,8 +1,8 @@
-From 192040ca86907ab54948a5891be46914eb938d80 Mon Sep 17 00:00:00 2001
+From 9e47190ce020a2d1da0dd2636c56f4ab820d9b0b Mon Sep 17 00:00:00 2001
 From: Shrikanth Hegde <sshegde@linux.ibm.com>
 Date: Sun, 17 Nov 2024 00:53:05 +0530
 Subject: [PATCH 23/43] powerpc: Add preempt lazy support
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Define preempt lazy bit for Powerpc. Use bit 9 which is free and within
 16 bit range of NEED_RESCHED, so compiler can issue single andi.
@@ -98,5 +98,5 @@ index af62ec974b97..8f4acc55407b 100644
  			if (unlikely(read_thread_flags() & _TIF_NEED_RESCHED)) {
  				if (preempt_count() == 0)
 -- 
-2.50.1
+2.52.0
 

@@ -1,8 +1,8 @@
-From 900850c0579fffd1a3eb08731e33bc6db3d0ee5e Mon Sep 17 00:00:00 2001
+From 53997098dc45668c218645f498ac302bc3b48afa Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 22 Oct 2024 12:34:56 +0200
 Subject: [PATCH 25/43] tracing: Remove TRACE_FLAG_IRQS_NOSUPPORT
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 It was possible to enable tracing with no IRQ tracing support. The
 tracing infrastructure would then record TRACE_FLAG_IRQS_NOSUPPORT as
@@ -91,5 +91,5 @@ index 1ecc28a3946a..d0f420e7fe97 100644
  
  	switch (entry->flags & (TRACE_FLAG_NEED_RESCHED |
 -- 
-2.50.1
+2.52.0
 

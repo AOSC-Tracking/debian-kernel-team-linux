@@ -1,8 +1,8 @@
-From 1e7f827c5599f33e639c0d1bb65209b6babe143f Mon Sep 17 00:00:00 2001
+From b7c92eef6e920bbb276c814f575f0b2d7ef6cfbf Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 1 Jul 2024 12:56:53 +0200
 Subject: [PATCH 31/43] ARM: vfp: Provide vfp_state_hold() for VFP locking.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 kernel_neon_begin() uses local_bh_disable() to ensure exclusive access
 to the VFP unit. This is broken on PREEMPT_RT because a BH disabled
@@ -78,5 +78,5 @@ index b68efe643a12..63de164c7fc7 100644
  EXPORT_SYMBOL(kernel_neon_end);
  
 -- 
-2.50.1
+2.52.0
 
