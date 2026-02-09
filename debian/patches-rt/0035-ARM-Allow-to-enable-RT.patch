@@ -1,8 +1,8 @@
-From 021d57161a1b9b6ab71d7d14e4d3eaf1547dfb2f Mon Sep 17 00:00:00 2001
+From b6b7dced2b5428f4c4e57ca99e1694f6f4255bfe Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:29 +0200
 Subject: [PATCH 35/43] ARM: Allow to enable RT
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Allow to select RT.
 
@@ -13,7 +13,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 2 insertions(+)
 
 diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index e8d9ee15d751..33c6aaa47d45 100644
+index 18de1861e3bd..3ef700892940 100644
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
 @@ -40,6 +40,7 @@ config ARM
@@ -33,5 +33,5 @@ index e8d9ee15d751..33c6aaa47d45 100644
  	select HAVE_REGS_AND_STACK_ACCESS_API
  	select HAVE_RSEQ
 -- 
-2.50.1
+2.52.0
 

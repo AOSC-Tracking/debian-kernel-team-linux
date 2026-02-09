@@ -1,8 +1,8 @@
-From a292dd46417996fb4fe62d2794db08bbb0165534 Mon Sep 17 00:00:00 2001
+From ce9e9a0a5c595dc57f32b24f2746b8e5145e5ddc Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 12 Aug 2024 12:39:04 +0200
 Subject: [PATCH 07/43] locking/rt: Add sparse annotation for RCU.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Every lock, that becomes a sleeping on PREEMPT_RT, starts a RCU read
 section. There is no sparse annotation for this and sparse complains
@@ -86,5 +86,5 @@ index 38e292454fcc..d1cf8b2b6dca 100644
  	rwlock_release(&rwlock->dep_map, _RET_IP_);
  	rcu_read_unlock();
 -- 
-2.50.1
+2.52.0
 

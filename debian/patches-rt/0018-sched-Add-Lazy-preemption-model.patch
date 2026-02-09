@@ -1,8 +1,8 @@
-From ea8f5fee8a102779f7c4125f7c5bcc94ffd76d5c Mon Sep 17 00:00:00 2001
+From d95b7dbe82243b3076de0c2879ffab3ad74c8d3e Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Mon, 7 Oct 2024 09:46:11 +0200
 Subject: [PATCH 18/43] sched: Add Lazy preemption model
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Change fair to use resched_curr_lazy(), which, when the lazy
 preemption model is selected, will set TIF_NEED_RESCHED_LAZY.
@@ -98,10 +98,10 @@ index fe782cd77388..09f06d8964cf 100644
  	bool "Fully Preemptible Kernel (Real-Time)"
  	depends on EXPERT && ARCH_SUPPORTS_RT
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 5e709676c5aa..ec7aadd2d92a 100644
+index 4c78eea97bb8..81d0316e3ae9 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1086,6 +1086,9 @@ static void __resched_curr(struct rq *rq, int tif)
+@@ -1087,6 +1087,9 @@ static void __resched_curr(struct rq *rq, int tif)
  
  	lockdep_assert_rq_held(rq);
  
@@ -111,7 +111,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  	if (cti->flags & ((1 << tif) | _TIF_NEED_RESCHED))
  		return;
  
-@@ -1111,6 +1114,32 @@ void resched_curr(struct rq *rq)
+@@ -1112,6 +1115,32 @@ void resched_curr(struct rq *rq)
  	__resched_curr(rq, TIF_NEED_RESCHED);
  }
  
@@ -144,7 +144,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  void resched_cpu(int cpu)
  {
  	struct rq *rq = cpu_rq(cpu);
-@@ -5626,6 +5655,10 @@ void sched_tick(void)
+@@ -5627,6 +5656,10 @@ void sched_tick(void)
  	update_rq_clock(rq);
  	hw_pressure = arch_scale_hw_pressure(cpu_of(rq));
  	update_hw_load_avg(rq_clock_task(rq), rq, hw_pressure);
@@ -155,7 +155,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  	curr->sched_class->task_tick(rq, curr, 0);
  	if (sched_feat(LATENCY_WARN))
  		resched_latency = cpu_resched_latency(rq);
-@@ -7389,6 +7422,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7390,6 +7423,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule           <- NOP
   *   preempt_schedule_notrace   <- NOP
   *   irqentry_exit_cond_resched <- NOP
@@ -163,7 +163,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
   *
   * VOLUNTARY:
   *   cond_resched               <- __cond_resched
-@@ -7396,6 +7430,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7397,6 +7431,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule           <- NOP
   *   preempt_schedule_notrace   <- NOP
   *   irqentry_exit_cond_resched <- NOP
@@ -171,7 +171,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
   *
   * FULL:
   *   cond_resched               <- RET0
-@@ -7403,6 +7438,15 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7404,6 +7439,15 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule           <- preempt_schedule
   *   preempt_schedule_notrace   <- preempt_schedule_notrace
   *   irqentry_exit_cond_resched <- irqentry_exit_cond_resched
@@ -187,7 +187,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
   */
  
  enum {
-@@ -7410,6 +7454,7 @@ enum {
+@@ -7411,6 +7455,7 @@ enum {
  	preempt_dynamic_none,
  	preempt_dynamic_voluntary,
  	preempt_dynamic_full,
@@ -195,7 +195,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  };
  
  int preempt_dynamic_mode = preempt_dynamic_undefined;
-@@ -7425,15 +7470,23 @@ int sched_dynamic_mode(const char *str)
+@@ -7426,15 +7471,23 @@ int sched_dynamic_mode(const char *str)
  	if (!strcmp(str, "full"))
  		return preempt_dynamic_full;
  
@@ -221,7 +221,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  #else
  #error "Unsupported PREEMPT_DYNAMIC mechanism"
  #endif
-@@ -7453,6 +7506,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7454,6 +7507,7 @@ static void __sched_dynamic_update(int mode)
  	preempt_dynamic_enable(preempt_schedule);
  	preempt_dynamic_enable(preempt_schedule_notrace);
  	preempt_dynamic_enable(irqentry_exit_cond_resched);
@@ -229,7 +229,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  
  	switch (mode) {
  	case preempt_dynamic_none:
-@@ -7462,6 +7516,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7463,6 +7517,7 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_disable(preempt_schedule);
  		preempt_dynamic_disable(preempt_schedule_notrace);
  		preempt_dynamic_disable(irqentry_exit_cond_resched);
@@ -237,7 +237,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  		if (mode != preempt_dynamic_mode)
  			pr_info("Dynamic Preempt: none\n");
  		break;
-@@ -7473,6 +7528,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7474,6 +7529,7 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_disable(preempt_schedule);
  		preempt_dynamic_disable(preempt_schedule_notrace);
  		preempt_dynamic_disable(irqentry_exit_cond_resched);
@@ -245,7 +245,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  		if (mode != preempt_dynamic_mode)
  			pr_info("Dynamic Preempt: voluntary\n");
  		break;
-@@ -7484,9 +7540,22 @@ static void __sched_dynamic_update(int mode)
+@@ -7485,9 +7541,22 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_enable(preempt_schedule);
  		preempt_dynamic_enable(preempt_schedule_notrace);
  		preempt_dynamic_enable(irqentry_exit_cond_resched);
@@ -268,7 +268,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  	}
  
  	preempt_dynamic_mode = mode;
-@@ -7549,6 +7618,8 @@ static void __init preempt_dynamic_init(void)
+@@ -7550,6 +7619,8 @@ static void __init preempt_dynamic_init(void)
  			sched_dynamic_update(preempt_dynamic_none);
  		} else if (IS_ENABLED(CONFIG_PREEMPT_VOLUNTARY)) {
  			sched_dynamic_update(preempt_dynamic_voluntary);
@@ -277,7 +277,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  		} else {
  			/* Default static call setting, nothing to do */
  			WARN_ON_ONCE(!IS_ENABLED(CONFIG_PREEMPT));
-@@ -7569,6 +7640,7 @@ static void __init preempt_dynamic_init(void)
+@@ -7570,6 +7641,7 @@ static void __init preempt_dynamic_init(void)
  PREEMPT_MODEL_ACCESSOR(none);
  PREEMPT_MODEL_ACCESSOR(voluntary);
  PREEMPT_MODEL_ACCESSOR(full);
@@ -286,7 +286,7 @@ index 5e709676c5aa..ec7aadd2d92a 100644
  #else /* !CONFIG_PREEMPT_DYNAMIC: */
  
 diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index 9815f9a0cd59..c6c967883e60 100644
+index 72958b31549f..aa54188e34b8 100644
 --- a/kernel/sched/debug.c
 +++ b/kernel/sched/debug.c
 @@ -245,11 +245,12 @@ static ssize_t sched_dynamic_write(struct file *filp, const char __user *ubuf,
@@ -305,10 +305,10 @@ index 9815f9a0cd59..c6c967883e60 100644
  			seq_puts(m, "(");
  		seq_puts(m, preempt_modes[i]);
 diff --git a/kernel/sched/fair.c b/kernel/sched/fair.c
-index af61769b1d50..5baacc7b3b29 100644
+index 1436d6bb86ec..ba53d99da8c4 100644
 --- a/kernel/sched/fair.c
 +++ b/kernel/sched/fair.c
-@@ -1270,7 +1270,7 @@ static void update_curr(struct cfs_rq *cfs_rq)
+@@ -1243,7 +1243,7 @@ static void update_curr(struct cfs_rq *cfs_rq)
  		return;
  
  	if (resched || did_preempt_short(cfs_rq, curr)) {
@@ -317,7 +317,7 @@ index af61769b1d50..5baacc7b3b29 100644
  		clear_buddies(cfs_rq, curr);
  	}
  }
-@@ -5748,7 +5748,7 @@ entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued)
+@@ -5706,7 +5706,7 @@ entity_tick(struct cfs_rq *cfs_rq, struct sched_entity *curr, int queued)
  	 * validating it and just reschedule.
  	 */
  	if (queued) {
@@ -326,7 +326,7 @@ index af61769b1d50..5baacc7b3b29 100644
  		return;
  	}
  	/*
-@@ -8961,7 +8961,7 @@ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int
+@@ -8922,7 +8922,7 @@ static void check_preempt_wakeup_fair(struct rq *rq, struct task_struct *p, int
  	return;
  
  preempt:
@@ -336,10 +336,10 @@ index af61769b1d50..5baacc7b3b29 100644
  
  static struct task_struct *pick_task_fair(struct rq *rq)
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index a441990fe808..91d5dfeeb1de 100644
+index 62f90dcb10a1..cfe1b4be6be2 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
-@@ -2678,6 +2678,7 @@ extern void init_sched_rt_class(void);
+@@ -2685,6 +2685,7 @@ extern void init_sched_rt_class(void);
  extern void init_sched_fair_class(void);
  
  extern void resched_curr(struct rq *rq);
@@ -348,5 +348,5 @@ index a441990fe808..91d5dfeeb1de 100644
  
  extern void init_rt_bandwidth(struct rt_bandwidth *rt_b, u64 period, u64 runtime);
 -- 
-2.50.1
+2.52.0
 

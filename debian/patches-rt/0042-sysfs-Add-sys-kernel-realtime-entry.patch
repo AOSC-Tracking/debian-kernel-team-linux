@@ -1,8 +1,8 @@
-From 6d921a5677f42ae5e5eabf67d48f1a825bc727cd Mon Sep 17 00:00:00 2001
+From 675d630effe96e4c80f70f525759ad3b9fabaa08 Mon Sep 17 00:00:00 2001
 From: Clark Williams <williams@redhat.com>
 Date: Sat, 30 Jul 2011 21:55:53 -0500
 Subject: [PATCH 42/43] sysfs: Add /sys/kernel/realtime entry
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Add a /sys/kernel entry to indicate that the kernel is a
 realtime kernel.
@@ -51,5 +51,5 @@ index 1bab21b4718f..8d3bee77cacc 100644
  	NULL
  };
 -- 
-2.50.1
+2.52.0
 

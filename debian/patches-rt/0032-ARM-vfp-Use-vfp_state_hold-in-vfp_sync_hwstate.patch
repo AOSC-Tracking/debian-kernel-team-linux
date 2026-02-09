@@ -1,8 +1,8 @@
-From 389fe9ce4a55c02bdd3d628b4dd5343c3a777cf6 Mon Sep 17 00:00:00 2001
+From f74d7746b33485a8932ed60d77c255b72736b0e3 Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 1 Jul 2024 12:56:54 +0200
 Subject: [PATCH 32/43] ARM: vfp: Use vfp_state_hold() in vfp_sync_hwstate().
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 vfp_sync_hwstate() uses preempt_disable() followed by local_bh_disable()
 to ensure that it won't get interrupted while checking the VFP state.
@@ -47,5 +47,5 @@ index 63de164c7fc7..1726db050076 100644
  
  /* Ensure that the thread reloads the hardware VFP state on the next use. */
 -- 
-2.50.1
+2.52.0
 

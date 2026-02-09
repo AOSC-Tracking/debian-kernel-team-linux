@@ -1,8 +1,8 @@
-From 0030cfa01dbb18f390276650847a7ea8effa0e74 Mon Sep 17 00:00:00 2001
+From e7eb76e30e73c4a94311c30d484d07cb3abb6f18 Mon Sep 17 00:00:00 2001
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Mon, 7 Oct 2024 09:46:14 +0200
 Subject: [PATCH 21/43] sched: Add laziest preempt model
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 Much like LAZY, except lazier still. It will not promote LAZY to full
 preempt on tick and compete with None for suckage.
@@ -78,10 +78,10 @@ index 7c1b29a3a491..8cf8a9a4d868 100644
  
  config PREEMPT_RT
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 1c47fd6fced5..7686509e6c75 100644
+index 69db55143222..1aa17749f1e5 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -1116,12 +1116,21 @@ void resched_curr(struct rq *rq)
+@@ -1117,12 +1117,21 @@ void resched_curr(struct rq *rq)
  
  #ifdef CONFIG_PREEMPT_DYNAMIC
  static DEFINE_STATIC_KEY_FALSE(sk_dynamic_preempt_lazy);
@@ -103,7 +103,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  {
  	return IS_ENABLED(PREEMPT_LAZY);
  }
-@@ -5656,7 +5665,7 @@ void sched_tick(void)
+@@ -5657,7 +5666,7 @@ void sched_tick(void)
  	hw_pressure = arch_scale_hw_pressure(cpu_of(rq));
  	update_hw_load_avg(rq_clock_task(rq), rq, hw_pressure);
  
@@ -112,7 +112,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  		resched_curr(rq);
  
  	curr->sched_class->task_tick(rq, curr, 0);
-@@ -7423,6 +7432,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7424,6 +7433,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule_notrace   <- NOP
   *   irqentry_exit_cond_resched <- NOP
   *   dynamic_preempt_lazy       <- false
@@ -120,7 +120,7 @@ index 1c47fd6fced5..7686509e6c75 100644
   *
   * VOLUNTARY:
   *   cond_resched               <- __cond_resched
-@@ -7431,6 +7441,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7432,6 +7442,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule_notrace   <- NOP
   *   irqentry_exit_cond_resched <- NOP
   *   dynamic_preempt_lazy       <- false
@@ -128,7 +128,7 @@ index 1c47fd6fced5..7686509e6c75 100644
   *
   * FULL:
   *   cond_resched               <- RET0
-@@ -7439,6 +7450,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7440,6 +7451,7 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule_notrace   <- preempt_schedule_notrace
   *   irqentry_exit_cond_resched <- irqentry_exit_cond_resched
   *   dynamic_preempt_lazy       <- false
@@ -136,7 +136,7 @@ index 1c47fd6fced5..7686509e6c75 100644
   *
   * LAZY:
   *   cond_resched               <- RET0
-@@ -7447,6 +7459,16 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
+@@ -7448,6 +7460,16 @@ EXPORT_SYMBOL(__cond_resched_rwlock_write);
   *   preempt_schedule_notrace   <- preempt_schedule_notrace
   *   irqentry_exit_cond_resched <- irqentry_exit_cond_resched
   *   dynamic_preempt_lazy       <- true
@@ -153,7 +153,7 @@ index 1c47fd6fced5..7686509e6c75 100644
   */
  
  enum {
-@@ -7455,6 +7477,7 @@ enum {
+@@ -7456,6 +7478,7 @@ enum {
  	preempt_dynamic_voluntary,
  	preempt_dynamic_full,
  	preempt_dynamic_lazy,
@@ -161,7 +161,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  };
  
  int preempt_dynamic_mode = preempt_dynamic_undefined;
-@@ -7475,6 +7498,9 @@ int sched_dynamic_mode(const char *str)
+@@ -7476,6 +7499,9 @@ int sched_dynamic_mode(const char *str)
  #ifdef CONFIG_ARCH_HAS_PREEMPT_LAZY
  	if (!strcmp(str, "lazy"))
  		return preempt_dynamic_lazy;
@@ -171,7 +171,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  #endif
  
  	return -EINVAL;
-@@ -7509,6 +7535,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7510,6 +7536,7 @@ static void __sched_dynamic_update(int mode)
  	preempt_dynamic_enable(preempt_schedule_notrace);
  	preempt_dynamic_enable(irqentry_exit_cond_resched);
  	preempt_dynamic_key_disable(preempt_lazy);
@@ -179,7 +179,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  
  	switch (mode) {
  	case preempt_dynamic_none:
-@@ -7519,6 +7546,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7520,6 +7547,7 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_disable(preempt_schedule_notrace);
  		preempt_dynamic_disable(irqentry_exit_cond_resched);
  		preempt_dynamic_key_disable(preempt_lazy);
@@ -187,7 +187,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  		if (mode != preempt_dynamic_mode)
  			pr_info("Dynamic Preempt: none\n");
  		break;
-@@ -7531,6 +7559,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7532,6 +7560,7 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_disable(preempt_schedule_notrace);
  		preempt_dynamic_disable(irqentry_exit_cond_resched);
  		preempt_dynamic_key_disable(preempt_lazy);
@@ -195,7 +195,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  		if (mode != preempt_dynamic_mode)
  			pr_info("Dynamic Preempt: voluntary\n");
  		break;
-@@ -7543,6 +7572,7 @@ static void __sched_dynamic_update(int mode)
+@@ -7544,6 +7573,7 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_enable(preempt_schedule_notrace);
  		preempt_dynamic_enable(irqentry_exit_cond_resched);
  		preempt_dynamic_key_disable(preempt_lazy);
@@ -203,7 +203,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  		if (mode != preempt_dynamic_mode)
  			pr_info("Dynamic Preempt: full\n");
  		break;
-@@ -7555,9 +7585,23 @@ static void __sched_dynamic_update(int mode)
+@@ -7556,9 +7586,23 @@ static void __sched_dynamic_update(int mode)
  		preempt_dynamic_enable(preempt_schedule_notrace);
  		preempt_dynamic_enable(irqentry_exit_cond_resched);
  		preempt_dynamic_key_enable(preempt_lazy);
@@ -227,7 +227,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  	}
  
  	preempt_dynamic_mode = mode;
-@@ -7622,6 +7666,8 @@ static void __init preempt_dynamic_init(void)
+@@ -7623,6 +7667,8 @@ static void __init preempt_dynamic_init(void)
  			sched_dynamic_update(preempt_dynamic_voluntary);
  		} else if (IS_ENABLED(CONFIG_PREEMPT_LAZY)) {
  			sched_dynamic_update(preempt_dynamic_lazy);
@@ -236,7 +236,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  		} else {
  			/* Default static call setting, nothing to do */
  			WARN_ON_ONCE(!IS_ENABLED(CONFIG_PREEMPT));
-@@ -7643,6 +7689,7 @@ PREEMPT_MODEL_ACCESSOR(none);
+@@ -7644,6 +7690,7 @@ PREEMPT_MODEL_ACCESSOR(none);
  PREEMPT_MODEL_ACCESSOR(voluntary);
  PREEMPT_MODEL_ACCESSOR(full);
  PREEMPT_MODEL_ACCESSOR(lazy);
@@ -245,7 +245,7 @@ index 1c47fd6fced5..7686509e6c75 100644
  #else /* !CONFIG_PREEMPT_DYNAMIC: */
  
 diff --git a/kernel/sched/debug.c b/kernel/sched/debug.c
-index 23a0d7117da7..e3cacaab175b 100644
+index 9a9aae0d797a..81e4134a82f1 100644
 --- a/kernel/sched/debug.c
 +++ b/kernel/sched/debug.c
 @@ -245,9 +245,9 @@ static ssize_t sched_dynamic_write(struct file *filp, const char __user *ubuf,
@@ -261,5 +261,5 @@ index 23a0d7117da7..e3cacaab175b 100644
  
  	for (; i < j; i++) {
 -- 
-2.50.1
+2.52.0
 

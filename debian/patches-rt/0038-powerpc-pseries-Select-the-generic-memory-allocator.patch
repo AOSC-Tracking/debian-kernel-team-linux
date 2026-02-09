@@ -1,8 +1,8 @@
-From a1343b52bc7718796286dcd7681604e991e7f6c5 Mon Sep 17 00:00:00 2001
+From 494b777836e74ff1b20294a89e9cccd8b1c6c32f Mon Sep 17 00:00:00 2001
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 9 Mar 2023 09:13:52 +0100
 Subject: [PATCH 38/43] powerpc/pseries: Select the generic memory allocator.
-Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.43-rt12.tar.xz
+Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.12/older/patches-6.12.66-rt15.tar.xz
 
 The RTAS work area allocator is using the generic memory allocator and
 as such it must select it.
@@ -29,5 +29,5 @@ index afc0f6a61337..dc3f63c2687d 100644
  	select MPIC
  	select OF_DYNAMIC
 -- 
-2.50.1
+2.52.0
 
