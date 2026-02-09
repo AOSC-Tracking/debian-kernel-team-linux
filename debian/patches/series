@@ -183,6 +183,7 @@ features/all/ethernet-microsoft/0041-net-mana-Fix-oversized-sge0-for-GSO-packets
 features/all/ethernet-microsoft/0042-net-mana-Avoid-open-coded-arithmetic.patch
 features/all/ethernet-microsoft/0043-net-mana-Add-flex-array-to-struct-mana_cfg_rx_steer_.patch
 features/all/ethernet-microsoft/0044-net-mana-Allow-variable-size-indirection-table.patch
+features/all/ethernet-microsoft/0045-net-mana-Support-holes-in-device-list-reply-msg.patch
 
 # ABI maintenance
 

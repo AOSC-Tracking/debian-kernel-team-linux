@@ -1,7 +1,7 @@
-From 07f7becbcebc768110642933486979d630d7d231 Mon Sep 17 00:00:00 2001
+From 31097f0a78c041826ac0c4076edf5bb7656bfc19 Mon Sep 17 00:00:00 2001
 From: Clark Williams <clrkwllms@kernel.org>
-Date: Tue, 17 Dec 2024 13:34:26 -0600
-Subject: [PATCH 64/67] Linux 6.1.120-rt46 REBASE
+Date: Mon, 10 Nov 2025 17:04:52 -0600
+Subject: [PATCH 67/67] Linux 6.1.158-rt58 REBASE
 Origin: https://www.kernel.org/pub/linux/kernel/projects/rt/6.1/older/patches-6.1.158-rt58.tar.xz
 
 Signed-off-by: Clark Williams <clrkwllms@kernel.org>
@@ -10,12 +10,12 @@ Signed-off-by: Clark Williams <clrkwllms@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/localversion-rt b/localversion-rt
-index ac4d836a809d..272158183778 100644
+index 75493460c41f..f9df2cf089cf 100644
 --- a/localversion-rt
 +++ b/localversion-rt
 @@ -1 +1 @@
---rt44
-+-rt46
+--rt51
++-rt58
 -- 
 2.51.1
 
