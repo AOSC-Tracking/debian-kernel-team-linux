@@ -1,4 +1,4 @@
-linux (6.12.70-1) UNRELEASED; urgency=medium
+linux (6.12.71-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.70
@@ -112,6 +112,10 @@ linux (6.12.70-1) UNRELEASED; urgency=medium
     - [arm64,armhf] spi: tegra114: Preserve SPI mode bits in def_command1_reg
     - ALSA: hda/realtek: Really fix headset mic for TongFang X6AR55xU.
     - gpiolib-acpi: Update file references in the Documentation and MAINTAINERS
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.71
+    - net: tunnel: make skb_vlan_inet_prepare() return drop reasons
+      (Closes: #1127597)
+    - io_uring/rw: recycle buffers manually for non-mshot reads
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 12 Feb 2026 21:14:53 +0100
 
