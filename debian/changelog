@@ -18,6 +18,9 @@ linux (6.19.2-1~exp2) UNRELEASED; urgency=medium
     - drivers/usb/typec/mux: Enable TYPEC_MUX_PS883X as module
     - sound/soc/codecs: Enable SND_SOC_WSA884X as module
 
+  [ Uwe Kleine-König ]
+  * Disable TRACEFS_AUTOMOUNT_DEPRECATED
+
  -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Tue, 03 Feb 2026 16:01:38 +0200
 
 linux (6.19.2-1~exp1) experimental; urgency=medium
