@@ -1,0 +1,35 @@
+From: Ben Hutchings <benh@debian.org>
+Date: Sat, 21 Feb 2026 23:08:54 +0100
+Subject: ip6_tunnel: Fix usage of skb_vlan_inet_prepare()
+Bug-Debian: https://bugs.debian.org/1127597
+Forwarded: https://lore.kernel.org/stable/aZyfxkHromvUPszw@decadent.org.uk/
+
+Backports of commit 81c734dae203 "ip6_tunnel: use
+skb_vlan_inet_prepare() in __ip6_tnl_rcv()" broke IPv6 tunnelling in
+stable branches 5.10-6.12 inclusive.  This is because the return value
+of skb_vlan_inet_prepare() had the opposite sense (0 for error rather
+than for success) before commit 9990ddf47d416 "net: tunnel: make
+skb_vlan_inet_prepare() return drop reasons".
+
+For branches including commit c504e5c2f964 "net: skb: introduce
+kfree_skb_reason()" etc. (i.e. 6.1 and newer) it was simple to
+backport commit 9990ddf47d416, but for 5.10 and 5.15 that doesn't seem
+to be practical.
+
+So just reverse the sense of the return value test here.
+
+Fixes: f9c5c5b791d3 ("ip6_tunnel: use skb_vlan_inet_prepare() in __ip6_tnl_rcv()")
+Fixes: 64c71d60a21a ("ip6_tunnel: use skb_vlan_inet_prepare() in __ip6_tnl_rcv()")
+Signed-off-by: Ben Hutchings <benh@debian.org>
+---
+--- a/net/ipv6/ip6_tunnel.c
++++ b/net/ipv6/ip6_tunnel.c
+@@ -876,7 +876,7 @@ static int __ip6_tnl_rcv(struct ip6_tnl
+ 
+ 	skb_reset_network_header(skb);
+ 
+-	if (skb_vlan_inet_prepare(skb, true)) {
++	if (!skb_vlan_inet_prepare(skb, true)) {
+ 		DEV_STATS_INC(tunnel->dev, rx_length_errors);
+ 		DEV_STATS_INC(tunnel->dev, rx_errors);
+ 		goto drop;
