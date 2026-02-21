@@ -1,3 +1,160 @@
+linux (6.12.73-1~bpo12+1) bookworm-backports; urgency=medium
+
+  * Rebuild for bookworm-backports
+
+ -- Ben Hutchings <benh@debian.org>  Sat, 21 Feb 2026 01:02:57 +0100
+
+linux (6.12.73-1) trixie-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.70
+    - nvmet-tcp: add bounds checks in nvmet_tcp_build_pdu_iovec
+    - [amd64] x86/vmware: Fix hypercall clobbers
+    - [amd64] x86/kfence: fix booting on 32bit non-PAE systems
+    - [amd64] platform/x86: intel_telemetry: Fix swapped arrays in PSS output
+    - ALSA: aloop: Fix racy access at PCM trigger
+    - [arm64] pmdomain: qcom: rpmpd: fix off-by-one error in clamping to the
+      highest state
+    - [arm64] pmdomain: imx8mp-blk-ctrl: Keep gpc power domain on for system
+      wakeup
+    - [arm64,armhf] pmdomain: imx: gpcv2: Fix the imx8mm gpu hang due to wrong
+      adb400 reset
+    - [arm64] pmdomain: imx8mp-blk-ctrl: Keep usb phy power domain on for system
+      wakeup
+    - [arm64] pmdomain: imx8m-blk-ctrl: fix out-of-range access of bc->domains
+    - mm/slab: Add alloc_tagging_slab_free_hook for memcg_alloc_abort_single
+    - ceph: fix NULL pointer dereference in ceph_mds_auth_match()
+      (Closes: #1125405)
+    - rbd: check for EOD after exclusive lock is ensured to be held
+    - ceph: fix oops due to invalid pointer for kfree() in parse_longname()
+    - gve: Fix stats report corruption on queue count change
+    - gve: Correct ethtool rx_dropped calculation
+    - mm, shmem: prevent infinite loop on truncate race
+    - Revert "drm/amd: Check if ASPM is enabled from PCIe subsystem"
+    - KVM: Don't clobber irqfd routing type when deassigning irqfd
+    - PCI/ERR: Ensure error recoverability at all times
+    - ublk: fix deadlock when reading partition table (CVE-2025-68823)
+    - hfsplus: fix slab-out-of-bounds read in hfsplus_uni2asc() (CVE-2025-40082)
+    - [arm*] binder: fix BR_FROZEN_REPLY error log
+    - binderfs: fix ida_alloc_max() upper bound
+    - procfs: avoid fetching build ID while holding VMA lock
+    - tracing: Fix ftrace event field alignments
+    - wifi: mac80211: ocb: skip rx_no_sta when interface is not joined
+    - wifi: wlcore: ensure skb headroom before skb_push
+    - net: usb: sr9700: support devices with virtual driver CD
+    - block,bfq: fix aux stat accumulation destination
+    - smb/server: call ksmbd_session_rpc_close() on error path in
+      create_smb2_pipe()
+    - md: suspend array while updating raid_disks via sysfs
+    - smb/server: fix refcount leak in smb2_open()
+    - smb/server: fix refcount leak in parse_durable_handle_context()
+    - [amd64] HID: intel-ish-hid: Update ishtp bus match to support device ID
+      table
+    - HID: multitouch: add MT_QUIRK_STICKY_FINGERS to MT_CLS_VTL
+    - btrfs: fix reservation leak in some error paths when inserting inline
+      extent
+    - [riscv64] Sanitize syscall table indexing under speculation
+    - [amd64] HID: intel-ish-hid: Reset enum_devices_done before enumeration
+    - HID: playstation: Center initial joystick axes to prevent spurious events
+    - ALSA: hda/realtek: Add quirk for Acer Nitro AN517-55
+    - ALSA: hda/realtek: add HP Laptop 15s-eq1xxx mute LED quirk
+    - [arm64] PCI: qcom: Remove ASPM L0s support for MSM8996 SoC
+    - netfilter: replace -EEXIST with -EBUSY
+    - HID: quirks: Add another Chicony HP 5MP Cameras to hid_ignore_list
+    - HID: i2c-hid: fix potential buffer overflow in i2c_hid_get_report()
+    - HID: Apply quirk HID_QUIRK_ALWAYS_POLL to Edifier QR30 (2d99:a101)
+    - drm/amd/pm: Disable MMIO access during SMU Mode 1 reset
+    - ring-buffer: Avoid softlockup in ring_buffer_resize() during memory free
+    - HID: logitech: add HID++ support for Logitech MX Anywhere 3S
+    - wifi: mac80211: collect station statistics earlier when disconnect
+    - ASoC: simple-card-utils: Check device node before overwrite direction
+    - nvme-fc: release admin tagset if init fails
+    - nvmet-tcp: fixup hang in nvmet_tcp_listen_data_ready()
+    - [amd64] ASoC: amd: yc: Fix microphone on ASUS M6500RE
+    - regmap: maple: free entry on mas_store_gfp() failure
+    - wifi: cfg80211: Fix bitrate calculation overflow for HE rates
+    - scsi: target: iscsi: Fix use-after-free in
+      iscsit_dec_session_usage_count()
+    - ALSA: hda/realtek: Fix headset mic for TongFang X6AR55xU
+    - scsi: target: iscsi: Fix use-after-free in iscsit_dec_conn_usage_count()
+    - wifi: mac80211: correctly check if CSA is active
+    - wifi: mac80211: don't increment crypto_tx_tailroom_needed_cnt twice
+    - btrfs: reject new transactions if the fs is fully read-only
+    - ALSA: hda/realtek: ALC269 fixup for Lenovo Yoga Book 9i 13IRU8 audio
+    - [amd64] platform/x86: toshiba_haps: Fix memory leaks in add/remove
+      routines
+    - [amd64] platform/x86: intel_telemetry: Fix PSS event register mask
+    - [amd64] platform/x86: hp-bioscfg: Skip empty attribute names
+    - [amd64] platform/x86/intel/tpmi/plr: Make the file domain<n>/status
+      writeable
+    - smb/client: fix memory leak in smb2_open_file()
+    - net: add skb_header_pointer_careful() helper
+    - net/sched: cls_u32: use skb_header_pointer_careful()
+    - net: liquidio: Initialize netdev pointer before queue setup
+    - net: liquidio: Fix off-by-one error in PF setup_nic_devices() cleanup
+    - net: liquidio: Fix off-by-one error in VF setup_nic_devices() cleanup
+    - net: phy: add phy_interface_weight()
+    - net: phy: add phy_interface_copy()
+    - net: sfp: pre-parse the module support
+    - net: sfp: convert sfp quirks to modify struct sfp_module_support
+    - net: sfp: Fix quirk for Ubiquiti U-Fiber Instant SFP module
+    - macvlan: fix error recovery in macvlan_common_newlink()
+    - net: usb: r8152: fix resume reset deadlock
+    - net: don't touch dev->stats in BPF redirect paths
+    - tipc: use kfree_sensitive() for session key material
+    - drm/amd/display: fix wrong color value mapping on MCM shaper LUT
+    - net: gro: fix outer network offset
+    - [amd64] drm/mgag200: fix mgag200_bmc_stop_scanout()
+    - drm/xe/query: Fix topology query pointer advance
+    - drm/xe/pm: Also avoid missing outer rpm warning on system suspend
+    - drm/xe/pm: Disable D3Cold for BMG only on specific platforms
+    - [armhf] hwmon: (occ) Mark occ_init_attribute() as __printf
+    - netfilter: nf_tables: fix inverted genmask check in
+      nft_map_catchall_activate()
+    - ipv6: Fix ECMP sibling count mismatch when clearing RTF_ADDRCONF
+    - ALSA: usb-audio: fix broken logic in snd_audigy2nx_led_update()
+    - [amd64] ASoC: amd: fix memory leak in acp3x pdm dma ops
+    - [arm64] ipi: tegra: Fix a memory leak in tegra_slink_probe()
+    - [arm64,armhf] spi: tegra114: Preserve SPI mode bits in def_command1_reg
+    - ALSA: hda/realtek: Really fix headset mic for TongFang X6AR55xU.
+    - gpiolib-acpi: Update file references in the Documentation and MAINTAINERS
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.71
+    - net: tunnel: make skb_vlan_inet_prepare() return drop reasons
+      (Closes: #1127597)
+    - io_uring/rw: recycle buffers manually for non-mshot reads
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.72
+    - smb: client: split cached_fid bitfields to avoid shared-byte RMW races
+    - ksmbd: fix infinite loop caused by next_smb2_rcv_hdr_off reset in error
+      paths
+    - smb: server: fix leak of active_num_conn in ksmbd_tcp_new_connection()
+    - driver core: enforce device_lock for driver_match_device()
+    - Bluetooth: btusb: Add USB ID 7392:e611 for Edimax EW-7611UXB
+    - [amd64] crypto: iaa - Fix out-of-bounds index in
+      find_empty_iaa_compression_mode
+    - [armhf] crypto: omap - Allocate OMAP_CRYPTO_FORCE_COPY scatterlists
+      correctly
+    - crypto: virtio - Add spinlock protection with virtqueue notification
+    - crypto: virtio - Remove duplicated virtqueue_kick in
+      virtio_crypto_skcipher_crypt_req
+    - nilfs2: Fix potential block overflow that cause system hang
+    - wifi: rtw88: Fix alignment fault in rtw_core_enable_beacon()
+    - scsi: qla2xxx: Validate sp before freeing associated memory
+    - scsi: qla2xxx: Allow recovery for tape devices
+    - scsi: qla2xxx: Delay module unload while fabric scan in progress
+    - scsi: qla2xxx: Free sp in error path to fix system crash
+    - scsi: qla2xxx: Query FW again before proceeding with login
+    - bus: mhi: host: pci_generic: Add Telit FE990B40 modem support
+    - mptcp: fix race in mptcp_pm_nl_flush_addrs_doit() (CVE-2026-23169)
+    - erofs: fix UAF issue for file-backed mounts w/ directio option
+    - xfs: fix UAF in xchk_btree_check_block_owner
+    - PCI: endpoint: Avoid creating sub-groups asynchronously
+    - wifi: rtl8xxxu: fix slab-out-of-bounds in rtl8xxxu_sta_add
+    - [armhf] gpio: omap: do not register driver in probe()
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.73
+    - Revert "driver core: enforce device_lock for driver_match_device()"
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 17 Feb 2026 06:47:26 +0100
+
 linux (6.12.69-1~bpo12+1) bookworm-backports; urgency=medium
 
   * Rebuild for bookworm-backports
@@ -4555,7 +4712,7 @@ linux (6.12.43-1) trixie; urgency=medium
     - hfs: fix general protection fault in hfs_find_init()
     - hfs: fix slab-out-of-bounds in hfs_bnode_read()
     - hfsplus: fix slab-out-of-bounds in hfsplus_bnode_read()
-    - hfsplus: fix slab-out-of-bounds read in hfsplus_uni2asc()
+    - hfsplus: fix slab-out-of-bounds read in hfsplus_uni2asc() (CVE-2025-40082)
     - hfsplus: don't use BUG_ON() in hfsplus_create_attributes_file()
     - [arm64] Handle KCOV __init vs inline mismatches
     - smb/server: avoid deadlock when linking with ReplaceIfExists
