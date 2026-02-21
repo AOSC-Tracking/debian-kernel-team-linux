@@ -1,0 +1,23 @@
+From: Ben Hutchings <benh@debian.org>
+Date: Sat, 21 Feb 2026 22:08:08 +0100
+Subject: Revert "ARM: 9468/1: fix memset64() on big-endian"
+
+Revert commit 0f65bf75469b72b03f0f9c88b45a4d793299cb99.  This checks
+for a config symbol that doesn't exist in 5.10, with the result that
+memset64() broke on little-endian.
+
+---
+--- a/arch/arm/include/asm/string.h
++++ b/arch/arm/include/asm/string.h
+@@ -36,10 +36,7 @@ static inline void *memset32(uint32_t *p
+ extern void *__memset64(uint64_t *, uint32_t low, __kernel_size_t, uint32_t hi);
+ static inline void *memset64(uint64_t *p, uint64_t v, __kernel_size_t n)
+ {
+-	if (IS_ENABLED(CONFIG_CPU_LITTLE_ENDIAN))
+-		return __memset64(p, v, n * 8, v >> 32);
+-	else
+-		return __memset64(p, v >> 32, n * 8, v);
++	return __memset64(p, v, n * 8, v >> 32);
+ }
+ 
+ #endif

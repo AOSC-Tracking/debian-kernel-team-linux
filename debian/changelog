@@ -3,7 +3,6 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.250
     - rbd: check for EOD after exclusive lock is ensured to be held
-    - [armhf] 9468/1: fix memset64() on big-endian
     - KVM: Don't clobber irqfd routing type when deassigning irqfd
       (CVE-2026-23198)
     - netfilter: nft_set_pipapo: clamp maximum map bucket size to INT_MAX
@@ -77,6 +76,7 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
 
   [ Ben Hutchings ]
   * [rt] Update to 5.10.250-rt145
+  * [armhf] Revert "ARM: 9468/1: fix memset64() on big-endian"
 
  -- Ben Hutchings <benh@debian.org>  Sat, 21 Feb 2026 20:03:27 +0100
 
