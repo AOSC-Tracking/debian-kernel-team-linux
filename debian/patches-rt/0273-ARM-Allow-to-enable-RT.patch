@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:29 +0200
 Subject: [PATCH 273/327] ARM: Allow to enable RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6dfaf4e0bc7539afff2b4d68effbd52a2bc37c8f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0f190033ffb699f51076675698c7f21c247c147c
 
 Allow to select RT.
 
@@ -11,7 +11,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 2 insertions(+)
 
 diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 73c55cb2f296..adf9347724ed 100644
+index d468d87b484c..565be31d5c59 100644
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
 @@ -32,6 +32,7 @@ config ARM

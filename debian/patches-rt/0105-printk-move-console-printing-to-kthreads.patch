@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:07 +0106
 Subject: [PATCH 105/327] printk: move console printing to kthreads
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2b185cee942d317f95785a30ea9870511a37d313
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b546a7858f6303850bcebd3d7f4c59bfa3eb29fd
 
 Create a kthread for each console to perform console printing. Now
 all console printing is fully asynchronous except for the boot
@@ -20,10 +20,10 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  2 files changed, 186 insertions(+), 447 deletions(-)
 
 diff --git a/include/linux/console.h b/include/linux/console.h
-index fcc98354f733..3e99359e0660 100644
+index b4d6a8ce4217..bb3d4a637fe9 100644
 --- a/include/linux/console.h
 +++ b/include/linux/console.h
-@@ -155,6 +155,8 @@ struct console {
+@@ -154,6 +154,8 @@ struct console {
  #ifdef CONFIG_PRINTK
  	char	sync_buf[CONSOLE_LOG_MAX];
  #endif

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:33 +0100
 Subject: [PATCH 044/327] Documentation/io-mapping: Remove outdated blurb
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dfa6a6ba87572bc69a3238aa2dd4263e27fd998b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c5fd005b81ef732e87c0a4a84ba80109ea3f198d
 
 The implementation details in the documentation are outdated and not really
 helpful. Remove them.

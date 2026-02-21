@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:01 +0106
 Subject: [PATCH 099/327] console: add write_atomic interface
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6a4d31611f9051863d2afe5fcc6a19b66e2635f2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b7c183dd8ab76cbdfd9e91adae9afd15478e1c2e
 
 Add a write_atomic() callback to the console. This is an optional
 function for console drivers. The function must be atomic (including
@@ -30,10 +30,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 104 insertions(+)
 
 diff --git a/include/linux/console.h b/include/linux/console.h
-index bc2a749e6f0d..613df76903f5 100644
+index a97f277cfdfa..7aea795367ee 100644
 --- a/include/linux/console.h
 +++ b/include/linux/console.h
-@@ -141,6 +141,7 @@ static inline int con_debug_leave(void)
+@@ -140,6 +140,7 @@ static inline int con_debug_leave(void)
  struct console {
  	char	name[16];
  	void	(*write)(struct console *, const char *, unsigned);
@@ -41,7 +41,7 @@ index bc2a749e6f0d..613df76903f5 100644
  	int	(*read)(struct console *, char *, unsigned);
  	struct tty_driver *(*device)(struct console *, int *);
  	void	(*unblank)(void);
-@@ -232,4 +233,7 @@ extern void console_init(void);
+@@ -231,4 +232,7 @@ extern void console_init(void);
  void dummycon_register_output_notifier(struct notifier_block *nb);
  void dummycon_unregister_output_notifier(struct notifier_block *nb);
  

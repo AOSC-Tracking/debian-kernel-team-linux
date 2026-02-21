@@ -2,7 +2,7 @@ From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 12:48:01 +0106
 Subject: [PATCH 086/327] printk: introduce CONSOLE_LOG_MAX for improved
  multi-line support
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=49497c6193fbb276e1c791c5776bdce1ec43d3c5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9f7dfb6ab5b04ab18ccbd38b381f30e28a0c8aa3
 
 Instead of using "LOG_LINE_MAX + PREFIX_MAX" for temporary buffer
 sizes, introduce CONSOLE_LOG_MAX. This represents the maximum size

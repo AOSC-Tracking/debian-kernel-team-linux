@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 3 Jul 2009 08:44:34 -0500
 Subject: [PATCH 257/327] mm/scatterlist: Do not disable irqs on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c441fe2d8b025d654de2a7c360a09c319fe0070b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6c7a0752c4d5dd013eb54e63edddf83785c0750d
 
 For -RT it is enough to keep pagefault disabled (which is currently handled by
 kmap_atomic()).

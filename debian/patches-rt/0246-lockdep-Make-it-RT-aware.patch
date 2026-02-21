@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 17 Jul 2011 18:51:23 +0200
 Subject: [PATCH 246/327] lockdep: Make it RT aware
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9c72fcdb5d245834d482037d7463fcc6ac9a1137
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cfd91bc2e18ebb27e6a0c762d5816a8c49ca5a3d
 
 teach lockdep that we don't really do softirqs on -RT.
 

@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Sat, 23 Jan 2021 21:10:27 +0100
 Subject: [PATCH 065/327] blk-mq: Use llist_head for blk_cpu_done
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bc86bcd21d4b099601a6e716d8e1af6a34764705
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b55089a73fff0e14ea6737a4f8c73ef8399d6d45
 
 With llist_head it is possible to avoid the locking (the irq-off region)
 when items are added. This makes it possible to add items on a remote
@@ -26,10 +26,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 44 insertions(+), 59 deletions(-)
 
 diff --git a/block/blk-mq.c b/block/blk-mq.c
-index 99817c0ae9b8..bca67e4dfa9b 100644
+index e99374e10995..b8009a5bc93e 100644
 --- a/block/blk-mq.c
 +++ b/block/blk-mq.c
-@@ -41,7 +41,7 @@
+@@ -42,7 +42,7 @@
  #include "blk-mq-sched.h"
  #include "blk-rq-qos.h"
  
@@ -38,7 +38,7 @@ index 99817c0ae9b8..bca67e4dfa9b 100644
  
  static void blk_mq_poll_stats_start(struct request_queue *q);
  static void blk_mq_poll_stats_fn(struct blk_stat_callback *cb);
-@@ -569,68 +569,29 @@ void blk_mq_end_request(struct request *rq, blk_status_t error)
+@@ -570,68 +570,29 @@ void blk_mq_end_request(struct request *rq, blk_status_t error)
  }
  EXPORT_SYMBOL(blk_mq_end_request);
  
@@ -115,7 +115,7 @@ index 99817c0ae9b8..bca67e4dfa9b 100644
  }
  
  static inline bool blk_mq_complete_need_ipi(struct request *rq)
-@@ -659,6 +620,32 @@ static inline bool blk_mq_complete_need_ipi(struct request *rq)
+@@ -660,6 +621,32 @@ static inline bool blk_mq_complete_need_ipi(struct request *rq)
  	return cpu_online(rq->mq_ctx->cpu);
  }
  
@@ -148,7 +148,7 @@ index 99817c0ae9b8..bca67e4dfa9b 100644
  bool blk_mq_complete_request_remote(struct request *rq)
  {
  	WRITE_ONCE(rq->state, MQ_RQ_COMPLETE);
-@@ -671,17 +658,15 @@ bool blk_mq_complete_request_remote(struct request *rq)
+@@ -672,17 +659,15 @@ bool blk_mq_complete_request_remote(struct request *rq)
  		return false;
  
  	if (blk_mq_complete_need_ipi(rq)) {
@@ -173,7 +173,7 @@ index 99817c0ae9b8..bca67e4dfa9b 100644
  }
  EXPORT_SYMBOL_GPL(blk_mq_complete_request_remote);
  
-@@ -4002,7 +3987,7 @@ static int __init blk_mq_init(void)
+@@ -4016,7 +4001,7 @@ static int __init blk_mq_init(void)
  	int i;
  
  	for_each_possible_cpu(i)

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 8 Sep 2020 07:32:20 +0200
 Subject: [PATCH 113/327] net: Move lockdep where it belongs
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e3fa62c96064cb8817cc64598f449bdbe259ea78
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=af53269e97f16deca566eb62c13cbcd455a70df4
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  1 file changed, 2 insertions(+), 4 deletions(-)
 
 diff --git a/net/core/sock.c b/net/core/sock.c
-index 6c93381cf0bd..192aea9e112f 100644
+index 963ea323362a..13a355dcd05d 100644
 --- a/net/core/sock.c
 +++ b/net/core/sock.c
 @@ -3103,12 +3103,11 @@ void lock_sock_nested(struct sock *sk, int subclass)

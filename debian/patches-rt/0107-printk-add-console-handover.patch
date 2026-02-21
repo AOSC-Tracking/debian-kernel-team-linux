@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:09 +0106
 Subject: [PATCH 107/327] printk: add console handover
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6c56e37fe6c2b245a52aa285d51f4a446a1fe830
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b4e696f4e90e6fe0e457616b4f74c35a42ed3d13
 
 If earlyprintk is used, a boot console will print directly to the
 console immediately. The boot console will unregister itself as soon
@@ -25,10 +25,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 8 insertions(+), 1 deletion(-)
 
 diff --git a/include/linux/console.h b/include/linux/console.h
-index 3e99359e0660..027278792eea 100644
+index bb3d4a637fe9..83af9c866267 100644
 --- a/include/linux/console.h
 +++ b/include/linux/console.h
-@@ -138,6 +138,7 @@ static inline int con_debug_leave(void)
+@@ -137,6 +137,7 @@ static inline int con_debug_leave(void)
  #define CON_ANYTIME	(16) /* Safe to call when cpu is offline */
  #define CON_BRL		(32) /* Used for a braille device */
  #define CON_EXTENDED	(64) /* Use the extended output format a la /dev/kmsg */

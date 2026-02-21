@@ -2,7 +2,7 @@ From: Valentin Schneider <valentin.schneider@arm.com>
 Date: Fri, 23 Oct 2020 12:12:16 +0200
 Subject: [PATCH 019/327] sched: Deny self-issued __set_cpus_allowed_ptr() when
  migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ccb484c2d17b9613d9d9edde75623fe6dc307698
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c3315ac9d474e812ed7a7f09183496b6091704ff
 
   migrate_disable();
   set_cpus_allowed_ptr(current, {something excluding task_cpu(current)});

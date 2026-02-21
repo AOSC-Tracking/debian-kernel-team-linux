@@ -4,7 +4,7 @@ Subject: [PATCH 076/327] tracing: Merge irqflags + preempt counter.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2034023150b536d25080a3d54767b5e4bc472f3d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c868d140e63467411ffd3436b4e8e0b901e1a9b2
 
 The state of the interrupts (irqflags) and the preemption counter are
 both passed down to tracing_generic_entry_update(). Only one bit of
@@ -763,10 +763,10 @@ index 8f4d6c974372..4963028768fa 100644
  		/* Ring buffer disabled, return as if not open for write */
  		return -EBADF;
 diff --git a/kernel/trace/trace.h b/kernel/trace/trace.h
-index 2f5558a097e9..152123d0a55f 100644
+index 8dce0e205c8e..e6145aaa2480 100644
 --- a/kernel/trace/trace.h
 +++ b/kernel/trace/trace.h
-@@ -754,8 +754,7 @@ struct ring_buffer_event *
+@@ -757,8 +757,7 @@ struct ring_buffer_event *
  trace_buffer_lock_reserve(struct trace_buffer *buffer,
  			  int type,
  			  unsigned long len,
@@ -776,7 +776,7 @@ index 2f5558a097e9..152123d0a55f 100644
  
  struct trace_entry *tracing_get_trace_entry(struct trace_array *tr,
  						struct trace_array_cpu *data);
-@@ -782,11 +781,11 @@ unsigned long trace_total_entries(struct trace_array *tr);
+@@ -785,11 +784,11 @@ unsigned long trace_total_entries(struct trace_array *tr);
  void trace_function(struct trace_array *tr,
  		    unsigned long ip,
  		    unsigned long parent_ip,
@@ -790,7 +790,7 @@ index 2f5558a097e9..152123d0a55f 100644
  void trace_latency_header(struct seq_file *m);
  void trace_default_header(struct seq_file *m);
  void print_trace_header(struct seq_file *m, struct trace_iterator *iter);
-@@ -854,11 +853,10 @@ static inline void latency_fsnotify(struct trace_array *tr) { }
+@@ -857,11 +856,10 @@ static inline void latency_fsnotify(struct trace_array *tr) { }
  #endif
  
  #ifdef CONFIG_STACKTRACE
@@ -805,7 +805,7 @@ index 2f5558a097e9..152123d0a55f 100644
  {
  }
  #endif /* CONFIG_STACKTRACE */
-@@ -998,10 +996,10 @@ extern void graph_trace_open(struct trace_iterator *iter);
+@@ -1001,10 +999,10 @@ extern void graph_trace_open(struct trace_iterator *iter);
  extern void graph_trace_close(struct trace_iterator *iter);
  extern int __trace_graph_entry(struct trace_array *tr,
  			       struct ftrace_graph_ent *trace,
@@ -818,7 +818,7 @@ index 2f5558a097e9..152123d0a55f 100644
  
  #ifdef CONFIG_DYNAMIC_FTRACE
  extern struct ftrace_hash __rcu *ftrace_graph_hash;
-@@ -1470,15 +1468,15 @@ extern int call_filter_check_discard(struct trace_event_call *call, void *rec,
+@@ -1473,15 +1471,15 @@ extern int call_filter_check_discard(struct trace_event_call *call, void *rec,
  void trace_buffer_unlock_commit_regs(struct trace_array *tr,
  				     struct trace_buffer *buffer,
  				     struct ring_buffer_event *event,
@@ -837,7 +837,7 @@ index 2f5558a097e9..152123d0a55f 100644
  }
  
  DECLARE_PER_CPU(struct ring_buffer_event *, trace_buffered_event);
-@@ -1551,8 +1549,7 @@ __event_trigger_test_discard(struct trace_event_file *file,
+@@ -1554,8 +1552,7 @@ __event_trigger_test_discard(struct trace_event_file *file,
   * @buffer: The ring buffer that the event is being written to
   * @event: The event meta data in the ring buffer
   * @entry: The event itself
@@ -847,7 +847,7 @@ index 2f5558a097e9..152123d0a55f 100644
   *
   * This is a helper function to handle triggers that require data
   * from the event itself. It also tests the event against filters and
-@@ -1562,12 +1559,12 @@ static inline void
+@@ -1565,12 +1562,12 @@ static inline void
  event_trigger_unlock_commit(struct trace_event_file *file,
  			    struct trace_buffer *buffer,
  			    struct ring_buffer_event *event,
@@ -862,7 +862,7 @@ index 2f5558a097e9..152123d0a55f 100644
  
  	if (tt)
  		event_triggers_post_call(file, tt);
-@@ -1579,8 +1576,7 @@ event_trigger_unlock_commit(struct trace_event_file *file,
+@@ -1582,8 +1579,7 @@ event_trigger_unlock_commit(struct trace_event_file *file,
   * @buffer: The ring buffer that the event is being written to
   * @event: The event meta data in the ring buffer
   * @entry: The event itself
@@ -872,7 +872,7 @@ index 2f5558a097e9..152123d0a55f 100644
   *
   * This is a helper function to handle triggers that require data
   * from the event itself. It also tests the event against filters and
-@@ -1593,14 +1589,14 @@ static inline void
+@@ -1596,14 +1592,14 @@ static inline void
  event_trigger_unlock_commit_regs(struct trace_event_file *file,
  				 struct trace_buffer *buffer,
  				 struct ring_buffer_event *event,
@@ -933,7 +933,7 @@ index b3a863c10c0a..028150029a77 100644
  NOKPROBE_SYMBOL(perf_trace_buf_update);
  
 diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index 9cd97b274e6c..d6d2d2aee881 100644
+index c9fc3c442681..8ba9ad262a4a 100644
 --- a/kernel/trace/trace_events.c
 +++ b/kernel/trace/trace_events.c
 @@ -259,22 +259,19 @@ void *trace_event_buffer_reserve(struct trace_event_buffer *fbuffer,
@@ -961,7 +961,7 @@ index 9cd97b274e6c..d6d2d2aee881 100644
  	if (!fbuffer->event)
  		return NULL;
  
-@@ -3716,12 +3713,11 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3718,12 +3715,11 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	struct trace_buffer *buffer;
  	struct ring_buffer_event *event;
  	struct ftrace_entry *entry;
@@ -976,7 +976,7 @@ index 9cd97b274e6c..d6d2d2aee881 100644
  	preempt_disable_notrace();
  	cpu = raw_smp_processor_id();
  	disabled = atomic_inc_return(&per_cpu(ftrace_test_event_disable, cpu));
-@@ -3729,11 +3725,9 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3731,11 +3727,9 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	if (disabled != 1)
  		goto out;
  
@@ -989,7 +989,7 @@ index 9cd97b274e6c..d6d2d2aee881 100644
  	if (!event)
  		goto out;
  	entry	= ring_buffer_event_data(event);
-@@ -3741,7 +3735,7 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3743,7 +3737,7 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	entry->parent_ip		= parent_ip;
  
  	event_trigger_unlock_commit(&event_trace_file, buffer, event,

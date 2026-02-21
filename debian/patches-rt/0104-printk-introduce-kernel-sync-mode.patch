@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:06 +0106
 Subject: [PATCH 104/327] printk: introduce kernel sync mode
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=93255ec728fe01dc66c84844dfd4b77639a4227a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=222dda168daf7aa9eed15b7942417fd7dda815f8
 
 When the kernel performs an OOPS, enter into "sync mode":
 
@@ -21,7 +21,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  3 files changed, 137 insertions(+), 6 deletions(-)
 
 diff --git a/include/linux/console.h b/include/linux/console.h
-index 613df76903f5..fcc98354f733 100644
+index 7aea795367ee..b4d6a8ce4217 100644
 --- a/include/linux/console.h
 +++ b/include/linux/console.h
 @@ -16,6 +16,7 @@
@@ -32,7 +32,7 @@ index 613df76903f5..fcc98354f733 100644
  
  struct vc_data;
  struct console_font_op;
-@@ -151,6 +152,9 @@ struct console {
+@@ -150,6 +151,9 @@ struct console {
  	short	flags;
  	short	index;
  	int	cflag;

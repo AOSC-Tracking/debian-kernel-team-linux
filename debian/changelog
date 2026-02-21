@@ -75,6 +75,9 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
     - f2fs: fix to avoid UAF in f2fs_write_end_io()
     - USB: serial: option: add Telit FN920C04 RNDIS compositions
 
+  [ Ben Hutchings ]
+  * [rt] Update to 5.10.250-rt145
+
  -- Ben Hutchings <benh@debian.org>  Sat, 21 Feb 2026 20:03:27 +0100
 
 linux (5.10.249-1) bullseye-security; urgency=high

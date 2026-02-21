@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Sep 2016 14:35:49 +0200
 Subject: [PATCH 184/327] fs/dcache: use swait_queue instead of waitqueue
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=198c4478b7f2e3ea140403823ad089e57a4533e9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=65caa2183d199f4419063543545da5fadba972cf
 
 __d_lookup_done() invokes wake_up_all() while holding a hlist_bl_lock()
 which disables preemption. As a workaround convert it to swait.
@@ -133,10 +133,10 @@ index debebcbe702f..3f75ff5a1734 100644
  	if (unlikely(IS_DEADDIR(dir_inode)))
  		return ERR_PTR(-ENOENT);
 diff --git a/fs/nfs/dir.c b/fs/nfs/dir.c
-index 935029632d5f..8597c3f60cca 100644
+index 75af965740a4..39543e8e91c5 100644
 --- a/fs/nfs/dir.c
 +++ b/fs/nfs/dir.c
-@@ -484,7 +484,7 @@ void nfs_prime_dcache(struct dentry *parent, struct nfs_entry *entry,
+@@ -485,7 +485,7 @@ void nfs_prime_dcache(struct dentry *parent, struct nfs_entry *entry,
  		unsigned long dir_verifier)
  {
  	struct qstr filename = QSTR_INIT(entry->name, entry->len);
@@ -145,7 +145,7 @@ index 935029632d5f..8597c3f60cca 100644
  	struct dentry *dentry;
  	struct dentry *alias;
  	struct inode *inode;
-@@ -1660,7 +1660,7 @@ int nfs_atomic_open(struct inode *dir, struct dentry *dentry,
+@@ -1690,7 +1690,7 @@ int nfs_atomic_open(struct inode *dir, struct dentry *dentry,
  		    struct file *file, unsigned open_flags,
  		    umode_t mode)
  {
@@ -155,7 +155,7 @@ index 935029632d5f..8597c3f60cca 100644
  	struct dentry *res;
  	struct iattr attr = { .ia_valid = ATTR_OPEN };
 diff --git a/fs/nfs/unlink.c b/fs/nfs/unlink.c
-index b27ebdccef70..f86c98a7ed04 100644
+index 5fa11e1aca4c..984f26eb888c 100644
 --- a/fs/nfs/unlink.c
 +++ b/fs/nfs/unlink.c
 @@ -13,7 +13,7 @@

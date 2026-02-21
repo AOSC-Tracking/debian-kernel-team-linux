@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:22 +0100
 Subject: [PATCH 033/327] ARM: highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7ab490d3a0ef98abff2df05c3b3a7c73c7973e45
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d7d932b85533158632eb62a162f00e67e128c0e8
 
 No reason having the same code in every architecture.
 
@@ -22,7 +22,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  delete mode 100644 arch/arm/mm/highmem.c
 
 diff --git a/arch/arm/Kconfig b/arch/arm/Kconfig
-index 335308aff6ce..c01251683018 100644
+index 05fc9c6ee8c5..0e95eb9c67e3 100644
 --- a/arch/arm/Kconfig
 +++ b/arch/arm/Kconfig
 @@ -1497,6 +1497,7 @@ config HAVE_ARCH_PFN_VALID

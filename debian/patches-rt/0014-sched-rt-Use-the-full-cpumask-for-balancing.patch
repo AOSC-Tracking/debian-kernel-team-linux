@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:11 +0200
 Subject: [PATCH 014/327] sched,rt: Use the full cpumask for balancing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1f9817fa0e02a052f7bb1e4206edafb7ed38e567
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7b6530f86a2c0481606fd5ff7b702f05217e3190
 
 We want migrate_disable() tasks to get PULLs in order for them to PUSH
 away the higher priority task.

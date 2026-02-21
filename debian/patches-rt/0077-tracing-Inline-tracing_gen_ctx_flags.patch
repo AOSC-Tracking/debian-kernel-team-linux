@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 3 Feb 2021 11:05:24 -0500
 Subject: [PATCH 077/327] tracing: Inline tracing_gen_ctx_flags()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d656eda68f197ec1915374695db4e2ae444daae1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=21fd2a6050a46ea3adb151416a8f42c3af1f3b68
 
 Inline tracing_gen_ctx_flags(). This allows to have one ifdef
 CONFIG_TRACE_IRQFLAGS_SUPPORT.
@@ -149,10 +149,10 @@ index 4963028768fa..94806d5e3a94 100644
  trace_buffer_lock_reserve(struct trace_buffer *buffer,
  			  int type,
 diff --git a/kernel/trace/trace.h b/kernel/trace/trace.h
-index 152123d0a55f..665eede073ee 100644
+index e6145aaa2480..fa3f5a3363c1 100644
 --- a/kernel/trace/trace.h
 +++ b/kernel/trace/trace.h
-@@ -140,25 +140,6 @@ struct kretprobe_trace_entry_head {
+@@ -143,25 +143,6 @@ struct kretprobe_trace_entry_head {
  	unsigned long		ret_ip;
  };
  
