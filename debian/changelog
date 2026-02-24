@@ -78,6 +78,7 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
   * [rt] Update to 5.10.250-rt145
   * [armhf] Revert "ARM: 9468/1: fix memset64() on big-endian"
   * ip6_tunnel: Fix usage of skv_vlan_inet_prepare() (Closes: #1127597)
+  * CI: Delete support for ccache, which was removed from common pipeline
 
  -- Ben Hutchings <benh@debian.org>  Sat, 21 Feb 2026 20:03:27 +0100
 
