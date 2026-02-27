@@ -51,6 +51,9 @@ linux (6.12.74-1) UNRELEASED; urgency=medium
   * CI: Delete support for ccache, which was removed from common pipeline
   * CI: Update build job to work after another common pipeline change
 
+  [ Salvatore Bonaccorso ]
+  * apparmor: validate DFA start states are in bounds in unpack_pdb
+
  -- Ben Hutchings <benh@debian.org>  Fri, 20 Feb 2026 17:50:56 +0100
 
 linux (6.12.73-1) trixie-security; urgency=high
