@@ -94,6 +94,7 @@ features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 bugfix/all/qsa-2026-apparmor/0001-apparmor-validate-DFA-start-states-are-in-bounds-in-.patch
 bugfix/all/qsa-2026-apparmor/0002-apparmor-fix-memory-leak-in-verify_header.patch
 bugfix/all/qsa-2026-apparmor/0003-apparmor-replace-recursive-profile-removal-with-iter.patch
+bugfix/all/qsa-2026-apparmor/0004-apparmor-fix-side-effect-bug-in-match_char-macro-usa.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch

@@ -55,6 +55,7 @@ linux (6.12.74-1) UNRELEASED; urgency=medium
   * apparmor: validate DFA start states are in bounds in unpack_pdb
   * apparmor: fix memory leak in verify_header
   * apparmor: replace recursive profile removal with iterative approach
+  * apparmor: fix side-effect bug in match_char() macro usage
 
  -- Ben Hutchings <benh@debian.org>  Fri, 20 Feb 2026 17:50:56 +0100
 
