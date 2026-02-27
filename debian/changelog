@@ -3,6 +3,8 @@ linux (6.19.6-2~bpo13+1) UNRELEASED; urgency=medium
   * Rebuild for trixie-backports:
     - d/salsa-ci.yml: Set RELEASE to trixie-backports
     - Revert "Compile with gcc-15 on all architectures"
+  * xfs: Enable XFS_SUPPORT_V4 so that v4 volumes keep working in trixie
+    (Closes: #1126710)
 
  -- Ben Hutchings <benh@debian.org>  Fri, 13 Mar 2026 00:42:15 +0100
 
