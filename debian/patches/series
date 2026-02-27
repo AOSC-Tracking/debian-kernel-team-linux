@@ -92,6 +92,7 @@ features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 # Security fixes
 # QSA-2026: Apparmor
 bugfix/all/qsa-2026-apparmor/0001-apparmor-validate-DFA-start-states-are-in-bounds-in-.patch
+bugfix/all/qsa-2026-apparmor/0002-apparmor-fix-memory-leak-in-verify_header.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
