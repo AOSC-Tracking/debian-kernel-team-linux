@@ -59,8 +59,9 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
     - scsi: qla2xxx: Query FW again before proceeding with login
     - [armhf] gpio: omap: do not register driver in probe()
     - [x86] ALSA: hda/realtek: Fix headset mic for TongFang X6AR55xU
-    - romfs: check sb_set_blocksize() return value
+    - romfs: check sb_set_blocksize() return value (CVE-2026-23238)
     - [x86] platform/x86: classmate-laptop: Add missing NULL pointer checks
+      (CVE-2026-23237)
     - gpiolib: acpi: Fix gpio count with string references
     - fs: dlm: fix invalid derefence of sb_lvbptr (CVE-2022-50516)
     - crypto: virtio - Remove duplicated virtqueue_kick in
@@ -68,10 +69,12 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
     - scsi: qla2xxx: Validate sp before freeing associated memory
       (CVE-2025-71236)
     - scsi: qla2xxx: Free sp in error path to fix system crash (CVE-2025-71232)
-    - scsi: qla2xxx: Fix bsg_done() causing double free
+    - scsi: qla2xxx: Fix bsg_done() causing double free (CVE-2025-71238)
     - fbdev: smscufx: properly copy ioctl memory to kernelspace
+      (CVE-2026-23236)
     - f2fs: fix out-of-bounds access in sysfs attribute read/write
-    - f2fs: fix to avoid UAF in f2fs_write_end_io()
+      (CVE-2026-23235)
+    - f2fs: fix to avoid UAF in f2fs_write_end_io() (CVE-2026-23234)
     - USB: serial: option: add Telit FN920C04 RNDIS compositions
 
   [ Ben Hutchings ]
