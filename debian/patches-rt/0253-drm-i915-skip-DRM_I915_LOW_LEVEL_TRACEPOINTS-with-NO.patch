@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 19 Dec 2018 10:47:02 +0100
 Subject: [PATCH 253/327] drm/i915: skip DRM_I915_LOW_LEVEL_TRACEPOINTS with
  NOTRACE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=52f31ddcccf0817bfcc1a0c864c60e1e9c22772e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=654e2786cb3128ed0099232e3079cd30cf496178
 
 The order of the header files is important. If this header file is
 included after tracepoint.h was included then the NOTRACE here becomes a

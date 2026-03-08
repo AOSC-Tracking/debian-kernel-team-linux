@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:31 -0400
 Subject: [PATCH 290/327] sched: Simplify migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=007de57d6ca9822363500633c99100b3e45e5116
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=98020d8e5055085f05befb57fed9d329be8bc99f
 
 commit c20cf065d4a619d394d23290093b1002e27dff86 upstream.
 

@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 14 Aug 2020 17:08:41 +0200
 Subject: [PATCH 166/327] locking: split out the rbtree definition
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6de1783fb21911c28e4eff75002b812ffd4fe90b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=42a9c48567ac28afdf4162fc323e62e122ea5fd1
 
 rtmutex.h needs the definition for rb_root_cached. By including kernel.h
 we will get to spinlock.h which requires rtmutex.h again.

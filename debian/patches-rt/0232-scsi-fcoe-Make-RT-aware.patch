@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sat, 12 Nov 2011 14:00:48 +0100
 Subject: [PATCH 232/327] scsi/fcoe: Make RT aware.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=950423ed97fb09192d0c2fcf1148de5b8c121ad6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=44693f79c6343b8ab202571c5b2c5a86b4dd15e1
 
 Do not disable preemption while taking sleeping locks. All user look safe
 for migrate_diable() only.

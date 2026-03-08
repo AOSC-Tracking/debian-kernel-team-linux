@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 8 Jul 2015 17:14:48 +0200
 Subject: [PATCH 264/327] jump-label: disable if stop_machine() is used
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=eef090d339a45243208e902cd35848f935425a93
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4295acadae01f69d2adeba5acf481b7025ec779a
 
 Some architectures are using stop_machine() while switching the opcode which
 leads to latency spikes.

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:06 +0100
 Subject: [PATCH 134/327] tasklets: Provide tasklet_disable_in_atomic()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b67b089b5ef4dd6dcf5a4417a38cfbe044d415f8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b6dc55a13ec6341b90a3d9d854b36647de393320
 
 Replacing the spin wait loops in tasklet_unlock_wait() with
 wait_var_event() is not possible as a handful of tasklet_disable()

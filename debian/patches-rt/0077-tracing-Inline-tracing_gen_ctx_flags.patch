@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 3 Feb 2021 11:05:24 -0500
 Subject: [PATCH 077/327] tracing: Inline tracing_gen_ctx_flags()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=21fd2a6050a46ea3adb151416a8f42c3af1f3b68
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bd53fcc6d77b6073f9e4f1fee04740c77c2be95c
 
 Inline tracing_gen_ctx_flags(). This allows to have one ifdef
 CONFIG_TRACE_IRQFLAGS_SUPPORT.

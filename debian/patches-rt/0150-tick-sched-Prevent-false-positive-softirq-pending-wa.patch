@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:57 +0100
 Subject: [PATCH 150/327] tick/sched: Prevent false positive softirq pending
  warnings on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=36993df02b551fc613a9ae6ee0b84e0bace70193
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=37708f4c282233998038710cfc45c7f8950162c0
 
 On RT a task which has soft interrupts disabled can block on a lock and
 schedule out to idle while soft interrupts are pending. This triggers the

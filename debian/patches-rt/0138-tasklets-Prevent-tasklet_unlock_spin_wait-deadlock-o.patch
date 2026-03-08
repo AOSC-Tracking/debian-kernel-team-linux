@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:10 +0100
 Subject: [PATCH 138/327] tasklets: Prevent tasklet_unlock_spin_wait() deadlock
  on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b3c9aeb34c5fdde592842939c4846bfc5df3cc54
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bc6aee2c9254074fa50efc7a9bb5b7b5e3edd041
 
 tasklet_unlock_spin_wait() spin waits for the TASKLET_STATE_SCHED bit in
 the tasklet state to be cleared. This works on !RT nicely because the

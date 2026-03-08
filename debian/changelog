@@ -78,11 +78,11 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
     - USB: serial: option: add Telit FN920C04 RNDIS compositions
 
   [ Ben Hutchings ]
-  * [rt] Update to 5.10.250-rt145
   * [armhf] Revert "ARM: 9468/1: fix memset64() on big-endian"
   * ip6_tunnel: Fix usage of skb_vlan_inet_prepare() (Closes: #1127597)
   * CI: Delete support for ccache, which was removed from common pipeline
   * CI: Update build job to work after another common pipeline change
+  * [rt] Update to 5.10.251-rt146
 
   [ Salvatore Bonaccorso ]
   * apparmor: fix kernel-doc complaints

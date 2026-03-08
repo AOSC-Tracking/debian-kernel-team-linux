@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:15 +0200
 Subject: [PATCH 018/327] sched: Add migrate_disable() tracepoints
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0e3f5ca38debd9558a8ad2d3982cfe94091695a8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=548e79d86bb9bd2b40ffd2574d19b907332f3765
 
 XXX write a tracer:
 

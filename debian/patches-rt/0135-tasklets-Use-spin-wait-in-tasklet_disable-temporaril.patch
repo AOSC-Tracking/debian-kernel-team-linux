@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:07 +0100
 Subject: [PATCH 135/327] tasklets: Use spin wait in tasklet_disable()
  temporarily
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2fc4b4d52619fc37536d460e0d77a78ba7946da0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a7c24eaf1dd65a8b335a72f99d46208d4661b700
 
 To ease the transition use spin waiting in tasklet_disable() until all
 usage sites from atomic context have been cleaned up.

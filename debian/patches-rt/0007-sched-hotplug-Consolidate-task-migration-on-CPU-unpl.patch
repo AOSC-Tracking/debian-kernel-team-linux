@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:04 +0200
 Subject: [PATCH 007/327] sched/hotplug: Consolidate task migration on CPU
  unplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=04db29b9118197379c2c78288c1d6d96c4477466
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c2b4e5b3603b2635a4f436ea25b805640f42113c
 
 With the new mechanism which kicks tasks off the outgoing CPU at the end of
 schedule() the situation on an outgoing CPU right before the stopper thread

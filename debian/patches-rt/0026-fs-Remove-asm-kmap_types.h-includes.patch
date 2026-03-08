@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:15 +0100
 Subject: [PATCH 026/327] fs: Remove asm/kmap_types.h includes
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=492ae32a183f4ae51f3eb80b9166c1fa07d69857
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a934f70b06642cdfa532495ccd3b22e662400d75
 
 Historical leftovers from the time where kmap() had fixed slots.
 

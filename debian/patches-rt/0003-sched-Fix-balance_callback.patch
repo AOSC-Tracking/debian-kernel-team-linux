@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:00 +0200
 Subject: [PATCH 003/327] sched: Fix balance_callback()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fb1396adab31fe075fa54ab9a78c28cc595b390e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f72d4a0024039575b1af59ab25fdc456e3d6357b
 
 The intent of balance_callback() has always been to delay executing
 balancing operations until the end of the current rq->lock section.
