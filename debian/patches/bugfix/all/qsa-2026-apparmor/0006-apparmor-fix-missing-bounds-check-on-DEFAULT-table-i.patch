@@ -1,7 +1,7 @@
-From 8977296de4e536cf7fed466a4a634f0e1511343e Mon Sep 17 00:00:00 2001
+From 32ef9e21844645607f4d24203cede23e1a76ceec Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Thu, 29 Jan 2026 16:51:11 +0100
-Subject: [PATCH 5/9] apparmor: fix missing bounds check on DEFAULT table in
+Subject: [PATCH 06/11] apparmor: fix missing bounds check on DEFAULT table in
  verify_dfa()
 
 The verify_dfa() function only checks DEFAULT_TABLE bounds when the state
@@ -59,8 +59,11 @@ therefore, causes both out-of-bounds reads and writes.
 Remove the MATCH_FLAG_DIFF_ENCODE condition to validate all DEFAULT_TABLE
 entries unconditionally.
 
-Reported-by: Qualys Security Advisory <qsa@qualys.com>
 Fixes: 031dcc8f4e84 ("apparmor: dfa add support for state differential encoding")
+Reported-by: Qualys Security Advisory <qsa@qualys.com>
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+Reviewed-by: Georgia Garcia <georgia.garcia@canonical.com>
+Reviewed-by: Cengiz Can <cengiz.can@canonical.com>
 Signed-off-by: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Signed-off-by: John Johansen <john.johansen@canonical.com>
 ---
@@ -68,7 +71,7 @@ Signed-off-by: John Johansen <john.johansen@canonical.com>
  1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/security/apparmor/match.c b/security/apparmor/match.c
-index 30c46b119869..2aad2cbed565 100644
+index 5fbfdd75afb5..98cf3b1f1649 100644
 --- a/security/apparmor/match.c
 +++ b/security/apparmor/match.c
 @@ -160,9 +160,10 @@ static int verify_dfa(struct aa_dfa *dfa)
@@ -85,5 +88,5 @@ index 30c46b119869..2aad2cbed565 100644
  			pr_err("AppArmor DFA state with invalid match flags");
  			goto out;
 -- 
-2.51.0
+2.53.0
 

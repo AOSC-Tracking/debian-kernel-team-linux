@@ -1,3 +1,9 @@
+linux (6.12.74-2) UNRELEASED; urgency=medium
+
+  * Refresh patchset to address multiple vulnerabilities in AppArmor
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 08 Mar 2026 08:48:53 +0100
+
 linux (6.12.74-1) trixie-security; urgency=high
 
   * New upstream stable update:

@@ -1,7 +1,7 @@
-From b5a3e17aa141158df81b9a155fa9927d318f4a40 Mon Sep 17 00:00:00 2001
+From 83417f15ea8253d96e6636fbb1c1cf95c0e6b6af Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Tue, 13 Jan 2026 09:09:43 +0100
-Subject: [PATCH 3/9] apparmor: replace recursive profile removal with
+Subject: [PATCH 03/11] apparmor: replace recursive profile removal with
  iterative approach
 
 The profile removal code uses recursion when removing nested profiles,
@@ -19,19 +19,22 @@ iterative approach in __remove_profile(). The function repeatedly
 finds and removes leaf profiles until the entire subtree is removed,
 maintaining the same removal semantic without recursion.
 
-Reported-by: Qualys Security Advisory <qsa@qualys.com>
 Fixes: c88d4c7b049e ("AppArmor: core policy routines")
+Reported-by: Qualys Security Advisory <qsa@qualys.com>
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+Reviewed-by: Georgia Garcia <georgia.garcia@canonical.com>
+Reviewed-by: Cengiz Can <cengiz.can@canonical.com>
 Signed-off-by: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Signed-off-by: John Johansen <john.johansen@canonical.com>
 ---
- security/apparmor/policy.c | 29 ++++++++++++++++++++++++++---
- 1 file changed, 26 insertions(+), 3 deletions(-)
+ security/apparmor/policy.c | 30 +++++++++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
 
 diff --git a/security/apparmor/policy.c b/security/apparmor/policy.c
-index 9108d74c6b46..cf1310f566b8 100644
+index 105706abf281..f6869ea00d1d 100644
 --- a/security/apparmor/policy.c
 +++ b/security/apparmor/policy.c
-@@ -191,19 +191,42 @@ static void __list_remove_profile(struct aa_profile *profile)
+@@ -184,19 +184,43 @@ static void __list_remove_profile(struct aa_profile *profile)
  }
  
  /**
@@ -62,10 +65,11 @@ index 9108d74c6b46..cf1310f566b8 100644
 +							struct aa_profile, base.list);
 +
 +			to_remove = curr;
-+			if (!list_is_last(&to_remove->base.list, &curr->parent->base.profiles))
++			if (!list_is_last(&to_remove->base.list,
++					  &aa_deref_parent(curr)->base.profiles))
 +				curr = list_next_entry(to_remove, base.list);
 +			else
-+				curr = curr->parent;
++				curr = aa_deref_parent(curr);
 +
 +			/* released by free_profile */
 +			aa_label_remove(&to_remove->label);
@@ -78,5 +82,5 @@ index 9108d74c6b46..cf1310f566b8 100644
  	aa_label_remove(&profile->label);
  	__aafs_profile_rmdir(profile);
 -- 
-2.51.0
+2.53.0
 

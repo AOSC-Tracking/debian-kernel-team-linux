@@ -1,7 +1,8 @@
-From 78252ac5610fc52e3186c62f57bd4ca60b07ffac Mon Sep 17 00:00:00 2001
+From 05302d7b0886b14de3d0e91a1b0c332f9ea0d292 Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Thu, 29 Jan 2026 17:08:25 +0100
-Subject: [PATCH 4/9] apparmor: fix side-effect bug in match_char() macro usage
+Subject: [PATCH 05/11] apparmor: fix side-effect bug in match_char() macro
+ usage
 
 The match_char() macro evaluates its character parameter multiple
 times when traversing differential encoding chains. When invoked
@@ -55,8 +56,11 @@ the input buffer boundary.
 Fix by extracting the character value before invoking match_char,
 ensuring single evaluation per outer loop.
 
-Reported-by: Qualys Security Advisory <qsa@qualys.com>
 Fixes: 074c1cd798cb ("apparmor: dfa move character match into a macro")
+Reported-by: Qualys Security Advisory <qsa@qualys.com>
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+Reviewed-by: Georgia Garcia <georgia.garcia@canonical.com>
+Reviewed-by: Cengiz Can <cengiz.can@canonical.com>
 Signed-off-by: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Signed-off-by: John Johansen <john.johansen@canonical.com>
 ---
@@ -64,10 +68,10 @@ Signed-off-by: John Johansen <john.johansen@canonical.com>
  1 file changed, 20 insertions(+), 10 deletions(-)
 
 diff --git a/security/apparmor/match.c b/security/apparmor/match.c
-index 8fa0a1494acd..30c46b119869 100644
+index 12e036f8ce0f..5fbfdd75afb5 100644
 --- a/security/apparmor/match.c
 +++ b/security/apparmor/match.c
-@@ -463,13 +463,18 @@ aa_state_t aa_dfa_match_len(struct aa_dfa *dfa, aa_state_t start,
+@@ -408,13 +408,18 @@ aa_state_t aa_dfa_match_len(struct aa_dfa *dfa, aa_state_t start,
  	if (dfa->tables[YYTD_ID_EC]) {
  		/* Equivalence class table defined */
  		u8 *equiv = EQUIV_TABLE(dfa);
@@ -91,7 +95,7 @@ index 8fa0a1494acd..30c46b119869 100644
  	}
  
  	return state;
-@@ -503,13 +508,18 @@ aa_state_t aa_dfa_match(struct aa_dfa *dfa, aa_state_t start, const char *str)
+@@ -448,13 +453,18 @@ aa_state_t aa_dfa_match(struct aa_dfa *dfa, aa_state_t start, const char *str)
  		/* Equivalence class table defined */
  		u8 *equiv = EQUIV_TABLE(dfa);
  		/* default is direct to next state */
@@ -116,5 +120,5 @@ index 8fa0a1494acd..30c46b119869 100644
  
  	return state;
 -- 
-2.51.0
+2.53.0
 
