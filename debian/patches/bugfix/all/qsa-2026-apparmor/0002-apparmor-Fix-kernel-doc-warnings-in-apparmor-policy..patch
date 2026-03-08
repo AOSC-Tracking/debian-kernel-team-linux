@@ -1,4 +1,4 @@
-From b87954138878b219df75572099f4947a682b3003 Mon Sep 17 00:00:00 2001
+From c988a0ed60fab11af1b1818696b3aca58f16e3bc Mon Sep 17 00:00:00 2001
 From: Gaosheng Cui <cuigaosheng1@huawei.com>
 Date: Sun, 25 Jun 2023 09:13:49 +0800
 Subject: [PATCH 02/13] apparmor: Fix kernel-doc warnings in apparmor/policy.c

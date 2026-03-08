@@ -91,7 +91,7 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
   * apparmor: fix side-effect bug in match_char() macro usage
   * apparmor: fix missing bounds check on DEFAULT table in verify_dfa()
   * apparmor: Fix double free of ns_name in aa_replace_profiles()
-  * apparmor: unprivileged local user can privilge escalate policy management
+  * apparmor: fix unprivileged local user can do privileged policy management
   * apparmor: fix differential encoding verification
   * apparmor: fix race on rawdata dereference
   * apparmor: fix race between freeing data and fs accessing it

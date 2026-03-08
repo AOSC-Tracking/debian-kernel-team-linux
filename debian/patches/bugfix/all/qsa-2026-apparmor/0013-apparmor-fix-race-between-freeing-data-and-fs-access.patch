@@ -1,4 +1,4 @@
-From 97b5310b4f44cddcefcd74a437399c3d60019eda Mon Sep 17 00:00:00 2001
+From 2f1a3a106cc5c1d47fa8f9e434db320ab171ff57 Mon Sep 17 00:00:00 2001
 From: John Johansen <john.johansen@canonical.com>
 Date: Sun, 1 Mar 2026 16:10:51 -0800
 Subject: [PATCH 13/13] apparmor: fix race between freeing data and fs
@@ -31,18 +31,20 @@ Signed-off-by: John Johansen <john.johansen@canonical.com>
 having e44a4dc4b36c ("apparmor: switch SECURITY_APPARMOR_HASH from sha1
 to sha256")]
 Signed-off-by: Salvatore Bonaccorso <carnil@debian.org>
+[bwh: Restore deletion of call to aa_get_proxy() in __aafs_profile_mkdir()]
+Signed-off-by: Ben Hutchings <benh@debian.org>
 ---
- security/apparmor/apparmorfs.c            | 184 +++++++++++++---------
+ security/apparmor/apparmorfs.c            | 192 +++++++++++++---------
  security/apparmor/include/label.h         |  16 +-
  security/apparmor/include/lib.h           |  12 ++
  security/apparmor/include/policy.h        |   8 +-
  security/apparmor/include/policy_unpack.h |   6 +-
  security/apparmor/label.c                 |  12 +-
  security/apparmor/policy_unpack.c         |   6 +-
- 7 files changed, 151 insertions(+), 93 deletions(-)
+ 7 files changed, 152 insertions(+), 100 deletions(-)
 
 diff --git a/security/apparmor/apparmorfs.c b/security/apparmor/apparmorfs.c
-index b37c1aa9a131..2a07eeafc16d 100644
+index 98ae0f69ab21..48b30ce8b83b 100644
 --- a/security/apparmor/apparmorfs.c
 +++ b/security/apparmor/apparmorfs.c
 @@ -32,6 +32,7 @@
@@ -234,7 +236,15 @@ index b37c1aa9a131..2a07eeafc16d 100644
  	if (!loaddata)
  		return -ENOENT;
  
-@@ -1451,38 +1524,38 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
+@@ -1413,7 +1486,6 @@ static void remove_rawdata_dents(struct aa_loaddata *rawdata)
+ 		if (!IS_ERR_OR_NULL(rawdata->dents[i])) {
+ 			aafs_remove(rawdata->dents[i]);
+ 			rawdata->dents[i] = NULL;
+-			aa_put_i_loaddata(rawdata);
+ 		}
+ 	}
+ }
+@@ -1452,45 +1524,41 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
  	if (IS_ERR(dir))
  		/* ->name freed when rawdata freed */
  		return PTR_ERR(dir);
@@ -246,6 +256,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  				      &seq_rawdata_abi_fops);
  	if (IS_ERR(dent))
  		goto fail;
+-	aa_get_i_loaddata(rawdata);
  	rawdata->dents[AAFS_LOADDATA_ABI] = dent;
  
 -	dent = aafs_create_file("revision", S_IFREG | 0444, dir, rawdata,
@@ -255,14 +266,17 @@ index b37c1aa9a131..2a07eeafc16d 100644
 +				&seq_rawdata_revision_fops);
  	if (IS_ERR(dent))
  		goto fail;
+-	aa_get_i_loaddata(rawdata);
  	rawdata->dents[AAFS_LOADDATA_REVISION] = dent;
  
  	if (aa_g_hash_policy) {
  		dent = aafs_create_file("sha1", S_IFREG | 0444, dir,
 -					      rawdata, &seq_rawdata_hash_fops);
-+					      &rawdata->count, &seq_rawdata_hash_fops);
++					&rawdata->count,
++					&seq_rawdata_hash_fops);
  		if (IS_ERR(dent))
  			goto fail;
+-		aa_get_i_loaddata(rawdata);
  		rawdata->dents[AAFS_LOADDATA_HASH] = dent;
  	}
  
@@ -272,6 +286,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  				&seq_rawdata_compressed_size_fops);
  	if (IS_ERR(dent))
  		goto fail;
+-	aa_get_i_loaddata(rawdata);
  	rawdata->dents[AAFS_LOADDATA_COMPRESSED_SIZE] = dent;
  
 -	dent = aafs_create_file("raw_data", S_IFREG | 0444,
@@ -280,8 +295,11 @@ index b37c1aa9a131..2a07eeafc16d 100644
 +				&rawdata->count, &rawdata_fops);
  	if (IS_ERR(dent))
  		goto fail;
+-	aa_get_i_loaddata(rawdata);
  	rawdata->dents[AAFS_LOADDATA_DATA] = dent;
-@@ -1495,7 +1568,6 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
+ 	d_inode(dent)->i_size = rawdata->size;
+ 
+@@ -1501,7 +1569,6 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
  
  fail:
  	remove_rawdata_dents(rawdata);
@@ -289,7 +307,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  	return PTR_ERR(dent);
  }
  
-@@ -1517,13 +1589,10 @@ void __aafs_profile_rmdir(struct aa_profile *profile)
+@@ -1523,13 +1590,10 @@ void __aafs_profile_rmdir(struct aa_profile *profile)
  		__aafs_profile_rmdir(child);
  
  	for (i = AAFS_PROF_SIZEOF - 1; i >= 0; --i) {
@@ -303,7 +321,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  		profile->dents[i] = NULL;
  	}
  }
-@@ -1553,14 +1622,7 @@ static struct dentry *create_profile_file(struct dentry *dir, const char *name,
+@@ -1559,14 +1623,7 @@ static struct dentry *create_profile_file(struct dentry *dir, const char *name,
  					  struct aa_profile *profile,
  					  const struct file_operations *fops)
  {
@@ -319,7 +337,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  }
  
  static int profile_depth(struct aa_profile *profile)
-@@ -1610,7 +1672,8 @@ static const char *rawdata_get_link_base(struct dentry *dentry,
+@@ -1616,7 +1673,8 @@ static const char *rawdata_get_link_base(struct dentry *dentry,
  					 struct delayed_call *done,
  					 const char *name)
  {
@@ -329,7 +347,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  	struct aa_label *label;
  	struct aa_profile *profile;
  	char *target;
-@@ -1741,7 +1804,7 @@ int __aafs_profile_mkdir(struct aa_profile *profile, struct dentry *parent)
+@@ -1747,27 +1805,24 @@ int __aafs_profile_mkdir(struct aa_profile *profile, struct dentry *parent)
  
  	if (profile->rawdata) {
  		dent = aafs_create("raw_sha1", S_IFLNK | 0444, dir,
@@ -338,7 +356,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  				   &rawdata_link_sha1_iops);
  		if (IS_ERR(dent))
  			goto fail;
-@@ -1749,19 +1812,17 @@ int __aafs_profile_mkdir(struct aa_profile *profile, struct dentry *parent)
+-		aa_get_proxy(profile->label.proxy);
  		profile->dents[AAFS_PROF_RAW_HASH] = dent;
  
  		dent = aafs_create("raw_abi", S_IFLNK | 0444, dir,
@@ -360,7 +378,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  		profile->dents[AAFS_PROF_RAW_DATA] = dent;
  	}
  
-@@ -1795,7 +1856,7 @@ static int ns_mkdir_op(struct inode *dir, struct dentry *dentry, umode_t mode)
+@@ -1801,7 +1856,7 @@ static int ns_mkdir_op(struct inode *dir, struct dentry *dentry, umode_t mode)
  	if (error)
  		return error;
  
@@ -369,7 +387,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  	AA_BUG(d_inode(ns_subns_dir(parent)) != dir);
  
  	/* we have to unlock and then relock to get locking order right
-@@ -1844,7 +1905,7 @@ static int ns_rmdir_op(struct inode *dir, struct dentry *dentry)
+@@ -1850,7 +1905,7 @@ static int ns_rmdir_op(struct inode *dir, struct dentry *dentry)
  	if (error)
  		return error;
  
@@ -378,7 +396,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  	/* rmdir calls the generic securityfs functions to remove files
  	 * from the apparmor dir. It is up to the apparmor ns locking
  	 * to avoid races.
-@@ -1914,27 +1975,6 @@ void __aafs_ns_rmdir(struct aa_ns *ns)
+@@ -1920,27 +1975,6 @@ void __aafs_ns_rmdir(struct aa_ns *ns)
  
  	__aa_fs_list_remove_rawdata(ns);
  
@@ -406,7 +424,7 @@ index b37c1aa9a131..2a07eeafc16d 100644
  	for (i = AAFS_NS_SIZEOF - 1; i >= 0; --i) {
  		aafs_remove(ns->dents[i]);
  		ns->dents[i] = NULL;
-@@ -1959,40 +1999,40 @@ static int __aafs_ns_mkdir_entries(struct aa_ns *ns, struct dentry *dir)
+@@ -1965,40 +1999,40 @@ static int __aafs_ns_mkdir_entries(struct aa_ns *ns, struct dentry *dir)
  		return PTR_ERR(dent);
  	ns_subdata_dir(ns) = dent;
  
@@ -601,7 +619,7 @@ index f6682a31df23..ea91591659b5 100644
  
  static inline int AUDIT_MODE(struct aa_profile *profile)
 diff --git a/security/apparmor/include/policy_unpack.h b/security/apparmor/include/policy_unpack.h
-index 70f0ac5069c0..45ea982d0f6c 100644
+index 930b4f6132cf..61cc9b5b8a1f 100644
 --- a/security/apparmor/include/policy_unpack.h
 +++ b/security/apparmor/include/policy_unpack.h
 @@ -67,7 +67,7 @@ enum {

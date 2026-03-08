@@ -1,4 +1,4 @@
-From 67002074a936eeaf70d5ed7bd5bfec679164b142 Mon Sep 17 00:00:00 2001
+From 775ccf619a8f683564c8e5654a42e3fa4caf083c Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Thu, 29 Jan 2026 16:51:11 +0100
 Subject: [PATCH 08/13] apparmor: fix missing bounds check on DEFAULT table in

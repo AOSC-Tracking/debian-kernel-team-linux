@@ -1,7 +1,7 @@
-From 71565a16055cafecc6d41c0ddc1e1e23c1237e16 Mon Sep 17 00:00:00 2001
+From fca309e095f7616602885cf2e98db79bb0e14f94 Mon Sep 17 00:00:00 2001
 From: John Johansen <john.johansen@canonical.com>
 Date: Fri, 7 Nov 2025 08:36:04 -0800
-Subject: [PATCH 10/13] apparmor: unprivileged local user can privilge escalate
+Subject: [PATCH 10/13] apparmor: fix unprivileged local user can do privileged
  policy management
 
 An unprivileged local user can load, replace, and remove profiles by
@@ -12,10 +12,10 @@ privileged process to write to the interface.
 This does require a privileged target that can be manipulated to do
 the write for the unprivileged process, but once such access is
 achieved full policy management is possible and all the possible
-implications that implies, from removing confinement, DOS of system or
+implications that implies: removing confinement, DoS of system or
 target applications by denying all execution, by-passing the
 unprivileged user namespace restriction, to exploiting kernel bugs for
-an LPE.
+a local privilege escalation.
 
 The policy management interface can not have its permissions simply
 changed from 0666 to 0600 because non-root processes need to be able
@@ -26,8 +26,11 @@ are a subset of the task that opened the interface. This is already
 done via policy for confined processes, but unconfined can delegate
 access to the opened fd, by-passing the usual policy check.
 
-Reported-by: Qualys Security Advisory <qsa@qualys.com>
 Fixes: c88d4c7b049e8 ("AppArmor: core policy routines")
+Reported-by: Qualys Security Advisory <qsa@qualys.com>
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
+Reviewed-by: Georgia Garcia <georgia.garcia@canonical.com>
+Reviewed-by: Cengiz Can <cengiz.can@canonical.com>
 Signed-off-by: John Johansen <john.johansen@canonical.com>
 [bwh: Backported to 5.10: aa_may_manage_policy() does not take a subj_cred
  parameter.  Do not add one but use current_cred(), which is what all its
@@ -121,7 +124,7 @@ index b5aa4231af68..f6682a31df23 100644
  
  #endif /* __AA_POLICY_H */
 diff --git a/security/apparmor/policy.c b/security/apparmor/policy.c
-index cf135f2f5161..8a40bab35b02 100644
+index cf135f2f5161..2898cac57b9a 100644
 --- a/security/apparmor/policy.c
 +++ b/security/apparmor/policy.c
 @@ -697,15 +697,43 @@ bool policy_admin_capable(struct aa_ns *ns)
@@ -175,8 +178,8 @@ index cf135f2f5161..8a40bab35b02 100644
  
 +	if (ocred && !is_subset_of_obj_privilege(current_cred(), label, ocred))
 +		return audit_policy(label, op, NULL, NULL,
-+					"not privileged for target profile",
-+					-EACCES);
++				    "not privileged for target profile",
++				    -EACCES);
 +
  	if (!policy_admin_capable(ns))
  		return audit_policy(label, op, NULL, NULL, "not policy admin",
