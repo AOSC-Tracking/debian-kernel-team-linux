@@ -1,4 +1,4 @@
-From 48a85a4617a3a9f52b7ef5b1bbc55c2307b0e2e7 Mon Sep 17 00:00:00 2001
+From 3955c80396688e4f3d0eeee04884bed375cbd733 Mon Sep 17 00:00:00 2001
 From: John Johansen <john.johansen@canonical.com>
 Date: Tue, 3 Mar 2026 11:08:02 -0800
 Subject: [PATCH 06/13] apparmor: fix: limit the number of levels of policy

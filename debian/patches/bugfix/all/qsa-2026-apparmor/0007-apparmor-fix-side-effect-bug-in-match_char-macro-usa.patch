@@ -1,4 +1,4 @@
-From ab98f2b3ff2a435f1d1f44d12886efa6daefbb87 Mon Sep 17 00:00:00 2001
+From bfb484fe91951894e6872e61bb8e85656fb2ada5 Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Thu, 29 Jan 2026 17:08:25 +0100
 Subject: [PATCH 07/13] apparmor: fix side-effect bug in match_char() macro

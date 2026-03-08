@@ -1,4 +1,4 @@
-From 3934cb2a704c85ea84e6409438775c63387e306b Mon Sep 17 00:00:00 2001
+From 05c8275824c0397544a6ac7c90ccda8eff4cef60 Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Thu, 15 Jan 2026 15:30:50 +0100
 Subject: [PATCH 03/13] apparmor: validate DFA start states are in bounds in

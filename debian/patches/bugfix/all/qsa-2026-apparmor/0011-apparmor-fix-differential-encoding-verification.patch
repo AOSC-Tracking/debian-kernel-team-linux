@@ -1,4 +1,4 @@
-From 2cb799b33207c3da854f9c7badd90601f725bcef Mon Sep 17 00:00:00 2001
+From 396e512aaf72adb6634d54fb7d1a11d9f0f5976e Mon Sep 17 00:00:00 2001
 From: John Johansen <john.johansen@canonical.com>
 Date: Fri, 17 Oct 2025 01:53:00 -0700
 Subject: [PATCH 11/13] apparmor: fix differential encoding verification

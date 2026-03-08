@@ -1,4 +1,4 @@
-From b56ba62909ed4a584390efd61b9c4c0fe3e96d9d Mon Sep 17 00:00:00 2001
+From 07dd632e17a7204094a3041a722f3c01c70fba65 Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Tue, 13 Jan 2026 09:09:43 +0100
 Subject: [PATCH 05/13] apparmor: replace recursive profile removal with

@@ -1,4 +1,4 @@
-From a0ba42abee0dba663d66827b0486c1f38eba75bb Mon Sep 17 00:00:00 2001
+From 08e860d626176663f5f53e839fc61e0e11b32728 Mon Sep 17 00:00:00 2001
 From: John Johansen <john.johansen@canonical.com>
 Date: Wed, 10 Sep 2025 06:22:17 -0700
 Subject: [PATCH 09/13] apparmor: Fix double free of ns_name in

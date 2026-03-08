@@ -1,4 +1,4 @@
-From ba697eb11595a78a65870e805728287cb22addf4 Mon Sep 17 00:00:00 2001
+From 1b595f1453b0229bb0e5784c72e36310bebd6069 Mon Sep 17 00:00:00 2001
 From: Massimiliano Pellizzer <massimiliano.pellizzer@canonical.com>
 Date: Tue, 20 Jan 2026 15:24:04 +0100
 Subject: [PATCH 04/13] apparmor: fix memory leak in verify_header

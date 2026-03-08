@@ -1,15 +1,18 @@
-From e5dac0f59d5bad46e2bcd5f2b83cbd5a7fdd3316 Mon Sep 17 00:00:00 2001
+From c7685c9d7bcb138c869043d6846ff83bd538b18e Mon Sep 17 00:00:00 2001
 From: John Johansen <john.johansen@canonical.com>
 Date: Tue, 24 Feb 2026 10:20:02 -0800
 Subject: [PATCH 12/13] apparmor: fix race on rawdata dereference
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 
-There is a race condition
-that leads to a use-after-free situation: because the rawdata inodes
-are not refcounted, an attacker can start open()ing one of the rawdata
-files, and at the same time remove the last reference to this rawdata
-(by removing the corresponding profile, for example), which frees its
-struct aa_loaddata; as a result, when seq_rawdata_open() is reached,
-i_private is a dangling pointer and freed memory is accessed.
+There is a race condition that leads to a use-after-free situation:
+because the rawdata inodes are not refcounted, an attacker can start
+open()ing one of the rawdata files, and at the same time remove the
+last reference to this rawdata (by removing the corresponding profile,
+for example), which frees its struct aa_loaddata; as a result, when
+seq_rawdata_open() is reached, i_private is a dangling pointer and
+freed memory is accessed.
 
 The rawdata inodes weren't refcounted to avoid a circular refcount and
 were supposed to be held by the profile rawdata reference.  However
@@ -17,23 +20,27 @@ during profile removal there is a window where the vfs and profile
 destruction race, resulting in the use after free.
 
 Fix this by moving to a double refcount scheme. Where the profile
-refcount on rawdat is used to break the circular dependency. Allowing
+refcount on rawdata is used to break the circular dependency. Allowing
 for freeing of the rawdata once all inode references to the rawdata
 are put.
 
-Reported-by: Qualys Security Advisory <qsa@qualys.com>
 Fixes: 5d5182cae401 ("apparmor: move to per loaddata files, instead of replicating in profiles")
+Reported-by: Qualys Security Advisory <qsa@qualys.com>
+Reviewed-by: Georgia Garcia <georgia.garcia@canonical.com>
+Reviewed-by: Maxime Bélair <maxime.belair@canonical.com>
+Reviewed-by: Cengiz Can <cengiz.can@canonical.com>
+Tested-by: Salvatore Bonaccorso <carnil@debian.org>
 Signed-off-by: John Johansen <john.johansen@canonical.com>
 Signed-off-by: Ben Hutchings <benh@debian.org>
 ---
- security/apparmor/apparmorfs.c            | 29 ++++-----
+ security/apparmor/apparmorfs.c            | 35 ++++++-----
  security/apparmor/include/policy_unpack.h | 71 ++++++++++++++---------
  security/apparmor/policy.c                | 12 ++--
  security/apparmor/policy_unpack.c         | 32 +++++++---
- 4 files changed, 87 insertions(+), 57 deletions(-)
+ 4 files changed, 93 insertions(+), 57 deletions(-)
 
 diff --git a/security/apparmor/apparmorfs.c b/security/apparmor/apparmorfs.c
-index 82297eef57ea..3e0fbfcd2013 100644
+index 82297eef57ea..ee5ba542bc9c 100644
 --- a/security/apparmor/apparmorfs.c
 +++ b/security/apparmor/apparmorfs.c
 @@ -79,7 +79,7 @@ static void rawdata_f_data_free(struct rawdata_f_data *private)
@@ -126,15 +133,18 @@ index 82297eef57ea..3e0fbfcd2013 100644
  	return error;
  }
  
-@@ -1414,7 +1416,6 @@ static void remove_rawdata_dents(struct aa_loaddata *rawdata)
+@@ -1414,9 +1416,9 @@ static void remove_rawdata_dents(struct aa_loaddata *rawdata)
  
  	for (i = 0; i < AAFS_LOADDATA_NDENTS; i++) {
  		if (!IS_ERR_OR_NULL(rawdata->dents[i])) {
 -			/* no refcounts on i_private */
  			aafs_remove(rawdata->dents[i]);
  			rawdata->dents[i] = NULL;
++			aa_put_i_loaddata(rawdata);
  		}
-@@ -1455,6 +1456,7 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
+ 	}
+ }
+@@ -1455,18 +1457,21 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
  	if (IS_ERR(dir))
  		/* ->name freed when rawdata freed */
  		return PTR_ERR(dir);
@@ -142,7 +152,42 @@ index 82297eef57ea..3e0fbfcd2013 100644
  	rawdata->dents[AAFS_LOADDATA_DIR] = dir;
  
  	dent = aafs_create_file("abi", S_IFREG | 0444, dir, rawdata,
-@@ -1493,13 +1495,12 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
+ 				      &seq_rawdata_abi_fops);
+ 	if (IS_ERR(dent))
+ 		goto fail;
++	aa_get_i_loaddata(rawdata);
+ 	rawdata->dents[AAFS_LOADDATA_ABI] = dent;
+ 
+ 	dent = aafs_create_file("revision", S_IFREG | 0444, dir, rawdata,
+ 				      &seq_rawdata_revision_fops);
+ 	if (IS_ERR(dent))
+ 		goto fail;
++	aa_get_i_loaddata(rawdata);
+ 	rawdata->dents[AAFS_LOADDATA_REVISION] = dent;
+ 
+ 	if (aa_g_hash_policy) {
+@@ -1474,6 +1479,7 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
+ 					      rawdata, &seq_rawdata_hash_fops);
+ 		if (IS_ERR(dent))
+ 			goto fail;
++		aa_get_i_loaddata(rawdata);
+ 		rawdata->dents[AAFS_LOADDATA_HASH] = dent;
+ 	}
+ 
+@@ -1482,24 +1488,25 @@ int __aa_fs_create_rawdata(struct aa_ns *ns, struct aa_loaddata *rawdata)
+ 				&seq_rawdata_compressed_size_fops);
+ 	if (IS_ERR(dent))
+ 		goto fail;
++	aa_get_i_loaddata(rawdata);
+ 	rawdata->dents[AAFS_LOADDATA_COMPRESSED_SIZE] = dent;
+ 
+ 	dent = aafs_create_file("raw_data", S_IFREG | 0444,
+ 				      dir, rawdata, &rawdata_fops);
+ 	if (IS_ERR(dent))
+ 		goto fail;
++	aa_get_i_loaddata(rawdata);
+ 	rawdata->dents[AAFS_LOADDATA_DATA] = dent;
+ 	d_inode(dent)->i_size = rawdata->size;
  
  	rawdata->ns = aa_get_ns(ns);
  	list_add(&rawdata->list, &ns->rawdata_list);
@@ -158,7 +203,7 @@ index 82297eef57ea..3e0fbfcd2013 100644
  }
  #endif /* CONFIG_SECURITY_APPARMOR_EXPORT_BINARY */
 diff --git a/security/apparmor/include/policy_unpack.h b/security/apparmor/include/policy_unpack.h
-index e89b701447bc..a4f987c7c055 100644
+index e89b701447bc..e06031c6d42e 100644
 --- a/security/apparmor/include/policy_unpack.h
 +++ b/security/apparmor/include/policy_unpack.h
 @@ -85,17 +85,29 @@ struct aa_ext {
@@ -237,8 +282,8 @@ index e89b701447bc..a4f987c7c055 100644
 - * Returns: point to reference
 - * Requires: @data to have a valid reference count on it. It is a bug
 - *           if the race to reap can be encountered when it is used.
-+ * Requires: @data to have a valid reference count on it.
 + * Returns: pointer to reference
++ * Requires: @data to have a valid reference count on it.
   */
  static inline struct aa_loaddata *
 -aa_get_loaddata(struct aa_loaddata *data)
