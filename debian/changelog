@@ -81,6 +81,21 @@ linux (5.10.251-1) UNRELEASED; urgency=medium
   * CI: Delete support for ccache, which was removed from common pipeline
   * CI: Update build job to work after another common pipeline change
 
+  [ Salvatore Bonaccorso ]
+  * apparmor: fix kernel-doc complaints
+  * apparmor: Fix kernel-doc warnings in apparmor/policy.c
+  * apparmor: validate DFA start states are in bounds in unpack_pdb
+  * apparmor: fix memory leak in verify_header
+  * apparmor: replace recursive profile removal with iterative approach
+  * apparmor: fix: limit the number of levels of policy namespaces
+  * apparmor: fix side-effect bug in match_char() macro usage
+  * apparmor: fix missing bounds check on DEFAULT table in verify_dfa()
+  * apparmor: Fix double free of ns_name in aa_replace_profiles()
+  * apparmor: unprivileged local user can privilge escalate policy management
+  * apparmor: fix differential encoding verification
+  * apparmor: fix race on rawdata dereference
+  * apparmor: fix race between freeing data and fs accessing it
+
  -- Ben Hutchings <benh@debian.org>  Sat, 21 Feb 2026 20:03:27 +0100
 
 linux (5.10.249-1) bullseye-security; urgency=high
