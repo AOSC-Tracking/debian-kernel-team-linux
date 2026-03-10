@@ -1,3 +1,176 @@
+linux-6.1 (6.1.164-1~deb11u1) bullseye-security; urgency=high
+
+  * Rebuild for bullseye
+
+ -- Ben Hutchings <benh@debian.org>  Tue, 10 Mar 2026 13:52:25 +0100
+
+linux (6.1.164-1) bookworm-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.163
+    - nvmet-tcp: add bounds checks in nvmet_tcp_build_pdu_iovec (CVE-2026-23112)
+    - [x86] kfence: fix booting on 32bit non-PAE systems
+    - [x86] platform/x86: intel_telemetry: Fix swapped arrays in PSS output
+    - rbd: check for EOD after exclusive lock is ensured to be held
+    - Revert "drm/amd: Check if ASPM is enabled from PCIe subsystem"
+    - KVM: Don't clobber irqfd routing type when deassigning irqfd
+    - netfilter: nft_set_pipapo: clamp maximum map bucket size to INT_MAX
+      (CVE-2025-38201)
+    - [arm*] binder: fix BR_FROZEN_REPLY error log
+    - binderfs: fix ida_alloc_max() upper bound
+    - [arm64] pmdomain: imx8mp-blk-ctrl: Keep gpc power domain on for system
+      wakeup
+    - [arm64] pmdomain: imx8mp-blk-ctrl: Keep usb phy power domain on for system
+      wakeup
+    - [arm64] pmdomain: imx8m-blk-ctrl: fix out-of-range access of bc->domains
+    - gve: Fix stats report corruption on queue count change
+    - tracing: Fix ftrace event field alignments
+    - gve: Correct ethtool rx_dropped calculation
+    - wifi: mac80211: ocb: skip rx_no_sta when interface is not joined
+    - wifi: wlcore: ensure skb headroom before skb_push
+    - net: usb: sr9700: support devices with virtual driver CD
+    - block,bfq: fix aux stat accumulation destination
+    - smb/server: call ksmbd_session_rpc_close() on error path in
+      create_smb2_pipe()
+    - [amd64] HID: intel-ish-hid: Update ishtp bus match to support device ID
+      table
+    - HID: multitouch: add MT_QUIRK_STICKY_FINGERS to MT_CLS_VTL
+    - btrfs: fix reservation leak in some error paths when inserting inline
+      extent
+    - [amd64] HID: intel-ish-hid: Reset enum_devices_done before enumeration
+    - HID: playstation: Center initial joystick axes to prevent spurious events
+    - ALSA: hda/realtek: add HP Laptop 15s-eq1xxx mute LED quirk
+    - netfilter: replace -EEXIST with -EBUSY
+    - HID: quirks: Add another Chicony HP 5MP Cameras to hid_ignore_list
+    - HID: i2c-hid: fix potential buffer overflow in i2c_hid_get_report()
+    - HID: Apply quirk HID_QUIRK_ALWAYS_POLL to Edifier QR30 (2d99:a101)
+    - ring-buffer: Avoid softlockup in ring_buffer_resize() during memory free
+    - wifi: mac80211: collect station statistics earlier when disconnect
+    - nvme-fc: release admin tagset if init fails
+    - wifi: cfg80211: Fix bitrate calculation overflow for HE rates
+    - scsi: target: iscsi: Fix use-after-free in
+      iscsit_dec_session_usage_count()
+    - ALSA: hda/realtek: Fix headset mic for TongFang X6AR55xU
+    - scsi: target: iscsi: Fix use-after-free in iscsit_dec_conn_usage_count()
+    - wifi: mac80211: don't increment crypto_tx_tailroom_needed_cnt twice
+    - [x86] platform/x86: toshiba_haps: Fix memory leaks in add/remove routines
+    - [x86] platform/x86: intel_telemetry: Fix PSS event register mask
+    - smb/client: fix memory leak in smb2_open_file()
+    - net: liquidio: Initialize netdev pointer before queue setup
+    - net: liquidio: Fix off-by-one error in PF setup_nic_devices() cleanup
+    - net: liquidio: Fix off-by-one error in VF setup_nic_devices() cleanup
+    - macvlan: fix error recovery in macvlan_common_newlink()
+    - net: don't touch dev->stats in BPF redirect paths
+    - tipc: use kfree_sensitive() for session key material
+    - [x86] drm/mgag200: fix mgag200_bmc_stop_scanout()
+    - [armhf] hwmon: (occ) Mark occ_init_attribute() as __printf
+    - netfilter: nf_tables: fix inverted genmask check in
+      nft_map_catchall_activate() (CVE-2026-23111)
+    - [amd64] ASoC: amd: fix memory leak in acp3x pdm dma ops
+    - hfsplus: fix slab-out-of-bounds read in hfsplus_uni2asc() (CVE-2025-40082)
+    - iommu: disable SVA when CONFIG_X86 is set (CVE-2025-71089)
+    - [arm64] spi: tegra: Fix a memory leak in tegra_slink_probe()
+    - ALSA: hda/realtek: Really fix headset mic for TongFang X6AR55xU.
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.164
+    - smb: client: split cached_fid bitfields to avoid shared-byte RMW races
+      (CVE-2026-23230)
+    - ksmbd: fix infinite loop caused by next_smb2_rcv_hdr_off reset in error
+      paths (CVE-2026-23220)
+    - smb: server: fix leak of active_num_conn in ksmbd_tcp_new_connection()
+      (CVE-2026-23228)
+    - crypto: octeontx - Fix length check to avoid truncation in
+      ucode_load_store
+    - crypto: omap - Allocate OMAP_CRYPTO_FORCE_COPY scatterlists correctly
+      (CVE-2026-23222)
+    - crypto: virtio - Add spinlock protection with virtqueue notification
+      (CVE-2026-23229)
+    - crypto: virtio - Remove duplicated virtqueue_kick in
+      virtio_crypto_skcipher_crypt_req
+    - nilfs2: Fix potential block overflow that cause system hang
+      (CVE-2025-71237)
+    - scsi: qla2xxx: Validate sp before freeing associated memory
+      (CVE-2025-71236)
+    - scsi: qla2xxx: Allow recovery for tape devices
+    - scsi: qla2xxx: Delay module unload while fabric scan in progress
+      (CVE-2025-71235)
+    - scsi: qla2xxx: Query FW again before proceeding with login
+    - gpio: omap: do not register driver in probe()
+    - btrfs: fix racy bitfield write in btrfs_clear_space_info_full()
+      (CVE-2025-68358)
+    - net: sfp: Fix quirk for Ubiquiti U-Fiber Instant SFP module
+    - smb: client: set correct id, uid and cruid for multiuser automounts
+      (CVE-2024-26822)
+    - scsi: qla2xxx: Fix bsg_done() causing double free
+    - PCI: endpoint: Automatically create a function specific attributes group
+    - PCI: endpoint: Remove unused field in struct pci_epf_group
+    - PCI: endpoint: Avoid creating sub-groups asynchronously (CVE-2025-71233)
+    - bus: fsl-mc: Replace snprintf and sprintf with sysfs_emit in sysfs show
+      functions
+    - bus: fsl-mc: fix use-after-free in driver_override_show() (CVE-2026-23221)
+    - scsi: qla2xxx: Remove dead code (GNN ID)
+    - scsi: qla2xxx: Reduce fabric scan duplicate code
+    - scsi: qla2xxx: Free sp in error path to fix system crash (CVE-2025-71232)
+    - cacheinfo: Decrement refcount in cache_setup_of_node()
+    - cacheinfo: Remove of_node_put() for fw_token
+    - ALSA: hda/realtek: Fix headset mic for TongFang X6AR55xU
+    - [x86] ASoC: amd: yc: Add ASUS ExpertBook PM1503CDA to quirks list
+    - gpio: sprd: Change sprd_gpio lock to raw_spin_lock
+    - ALSA: hda/realtek: Add quirk for Inspur S14-G1
+    - romfs: check sb_set_blocksize() return value
+    - [arm64,armhf] drm/tegra: hdmi: sor: Fix error: variable ‘j’ set but not
+      used
+    - [x86] platform/x86: classmate-laptop: Add missing NULL pointer checks
+    - [x86] ASoC: Intel: sof_es8336: Add DMI quirk for Huawei BOD-WXX9
+    - [x86] platform/x86: panasonic-laptop: Fix sysfs group leak in error path
+    - gpiolib: acpi: Fix gpio count with string references
+    - Revert "wireguard: device: enable threaded NAPI"
+    - mptcp: schedule rtx timer only after pushing data
+    - mptcp: ensure context reset on disconnect() (CVE-2025-71144)
+    - xsk: Fix race condition in AF_XDP generic RX path (CVE-2025-37920)
+    - devlink: rate: Unset parent pointer in devl_rate_nodes_destroy
+      (CVE-2025-40251)
+    - clk: mediatek: fix of_iomap memory leak (CVE-2023-53424)
+    - nfsd: don't ignore the return code of svc_proc_register() (CVE-2025-22026)
+    - ksmbd: set ATTR_CTIME flags when setting mtime (CVE-2024-57895)
+    - ACPI: APEI: send SIGBUS to current task if synchronous memory error not
+      recovered (CVE-2025-39763)
+    - net: stmmac: Fix accessing freed irq affinity_hint (CVE-2025-23155)
+    - net: dsa: free routing table on probe failure (CVE-2025-37786)
+    - mptcp: fix race in mptcp_pm_nl_flush_addrs_doit() (CVE-2026-23169)
+    - wifi: cfg80211: Add missing lock in cfg80211_check_and_end_cac()
+      (CVE-2025-38643)
+    - cpuset: Fix missing adaptation for cpuset_is_populated
+    - fbdev: rivafb: fix divide error in nv3_arb()
+    - fbdev: smscufx: properly copy ioctl memory to kernelspace
+    - f2fs: fix IS_CHECKPOINTED flag inconsistency issue caused by concurrent
+      atomic commit and checkpoint writes
+    - f2fs: fix to avoid UAF in f2fs_write_end_io()
+    - f2fs: fix out-of-bounds access in sysfs attribute read/write
+    - USB: serial: option: add Telit FN920C04 RNDIS compositions
+    - net: tunnel: make skb_vlan_inet_prepare() return drop reasons
+      (Closes: #1127597)
+
+  [ Ben Hutchings ]
+  * CI: Delete support for ccache, which was removed from common pipeline
+  * CI: Update build job to work after another common pipeline change
+
+  [ Salvatore Bonaccorso ]
+  * apparmor: fix kernel-doc complaints
+  * apparmor: Fix kernel-doc warnings in apparmor/policy.c
+  * apparmor: validate DFA start states are in bounds in unpack_pdb
+  * apparmor: fix memory leak in verify_header
+  * apparmor: replace recursive profile removal with iterative approach
+  * apparmor: fix: limit the number of levels of policy namespaces
+  * apparmor: fix side-effect bug in match_char() macro usage
+  * apparmor: fix missing bounds check on DEFAULT table in verify_dfa()
+  * apparmor: Fix double free of ns_name in aa_replace_profiles()
+  * apparmor: fix unprivileged local user can do privileged policy management
+  * apparmor: fix differential encoding verification
+  * apparmor: fix race on rawdata dereference
+  * apparmor: fix race between freeing data and fs accessing it
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 09 Mar 2026 07:45:42 +0100
+
 linux-6.1 (6.1.162-1~deb11u1) bullseye-security; urgency=high
 
   * Rebuild for bullseye
