@@ -1,3 +1,9 @@
+linux (6.19.6-2~bpo13+1) UNRELEASED; urgency=medium
+
+  * Rebuild for trixie-backports
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 13 Mar 2026 00:42:15 +0100
+
 linux (6.19.6-2) unstable; urgency=high
 
   * apparmor: validate DFA start states are in bounds in unpack_pdb
