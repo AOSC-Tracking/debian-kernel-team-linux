@@ -1,3 +1,81 @@
+linux (6.12.74-2~bpo12+1) bookworm-backports; urgency=high
+
+  * Rebuild for bookworm-backports
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 13 Mar 2026 15:32:42 +0100
+
+linux (6.12.74-2) trixie-security; urgency=high
+
+  * Refresh patchset to address multiple vulnerabilities in AppArmor
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 08 Mar 2026 20:54:04 +0100
+
+linux (6.12.74-1) trixie-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.74
+    - scsi: qla2xxx: Fix bsg_done() causing double free
+    - bnxt_en: Change FW message timeout warning
+    - bnxt_en: hide CONFIG_DETECT_HUNG_TASK specific code
+    - [arm64] bus: fsl-mc: Replace snprintf and sprintf with sysfs_emit in sysfs
+      show functions
+    - [arm64] bus: fsl-mc: fix use-after-free in driver_override_show()
+      (CVE-2026-23221)
+    - ALSA: hda/realtek: Fix headset mic for TongFang X6AR55xU
+    - [amd64] ASoC: amd: yc: Add ASUS ExpertBook PM1503CDA to quirks list
+    - ALSA: hda/realtek: Add quirk for Inspur S14-G1
+    - ALSA: hda/realtek - fixed speaker no sound
+    - romfs: check sb_set_blocksize() return value
+    - [arm64,armhf] drm/tegra: hdmi: sor: Fix error: variable ‘j’ set but not
+      used
+    - [amd64] platform/x86: classmate-laptop: Add missing NULL pointer checks
+    - [amd64] ASoC: Intel: sof_es8336: Add DMI quirk for Huawei BOD-WXX9
+    - [amd64] ASoC: amd: yc: Add quirk for HP 200 G2a 16
+    - ALSA: hda/realtek: Enable headset mic for Acer Nitro 5
+    - [amd64] platform/x86/amd/pmc: Add quirk for MECHREVO Wujie 15X Pro
+    - [amd64] platform/x86: panasonic-laptop: Fix sysfs group leak in error path
+    - [amd64] ASoC: cs42l43: Correct handling of 3-pole jack load detection
+    - tracing/dma: Cap dma_map_sg tracepoint arrays to prevent buffer overflow
+    - drm/amd/display: extend delta clamping logic to CM3 LUT helper
+    - drm/amd/display: remove assert around dpp_base replacement
+    - mm/hugetlb: fix copy_hugetlb_page_range() to use ->pt_share_count
+    - mm/hugetlb: fix hugetlb_pmd_shared() (CVE-2026-23100)
+    - mm/hugetlb: fix two comments related to huge_pmd_unshare()
+    - mm/hugetlb: fix excessive IPI broadcasts when unsharing PMD tables using
+      mmu_gather
+    - Revert "wireguard: device: enable threaded NAPI"
+    - cpuset: Fix missing adaptation for cpuset_is_populated
+    - fbdev: smscufx: properly copy ioctl memory to kernelspace
+    - f2fs: fix to add gc count stat in f2fs_gc_range
+    - f2fs: fix to check sysfs filename w/ gc_pin_file_thresh correctly
+    - f2fs: fix out-of-bounds access in sysfs attribute read/write
+    - f2fs: fix to avoid mapping wrong physical block for swapfile
+    - [arm64] iommu/arm-smmu-qcom: do not register driver in probe()
+    - f2fs: fix to avoid UAF in f2fs_write_end_io()
+    - f2fs: fix IS_CHECKPOINTED flag inconsistency issue caused by concurrent
+      atomic commit and checkpoint writes
+    - USB: serial: option: add Telit FN920C04 RNDIS compositions
+
+  [ Simone Weiß ]
+  * db-mok: Remove unused function, fixing compilation warning
+
+  [ Ben Hutchings ]
+  * CI: Delete support for ccache, which was removed from common pipeline
+  * CI: Update build job to work after another common pipeline change
+
+  [ Salvatore Bonaccorso ]
+  * apparmor: validate DFA start states are in bounds in unpack_pdb
+  * apparmor: fix memory leak in verify_header
+  * apparmor: replace recursive profile removal with iterative approach
+  * apparmor: fix side-effect bug in match_char() macro usage
+  * apparmor: fix missing bounds check on DEFAULT table in verify_dfa()
+  * apparmor: Fix double free of ns_name in aa_replace_profiles()
+  * apparmor: unprivileged local user can privilge escalate policy management
+  * apparmor: fix differential encoding verification
+  * apparmor: fix race on rawdata dereference
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 01 Mar 2026 13:47:48 +0100
+
 linux (6.12.73-1~bpo12+1) bookworm-backports; urgency=medium
 
   * Rebuild for bookworm-backports
