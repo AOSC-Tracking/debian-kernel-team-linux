@@ -1,4 +1,4 @@
-linux (6.12.75-1) UNRELEASED; urgency=medium
+linux (6.12.76-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.75
@@ -981,6 +981,9 @@ linux (6.12.75-1) UNRELEASED; urgency=medium
     - [amd64] drm/i915/wakeref: clean up INTEL_WAKEREF_PUT_* flag macros
     - xfs: fix copy-paste error in previous fix
     - [arm64] Fix sampling the "stable" virtual counter in preemptible section
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.76
+    - Revert "x86/kexec: add a sanity check on previous kernel's ima kexec
+      buffer"
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 13 Mar 2026 17:02:16 +0100
 
