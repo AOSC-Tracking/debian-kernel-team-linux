@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 14 Jul 2015 14:26:34 +0200
 Subject: [PATCH 243/327] panic: skip get_random_bytes for RT_FULL in
  init_oops_id
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a6ce8581fea6b34ff45aa814b6bae6b269558e75
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ea7576dea1e1d658f6b2908173e76ea7b20b220c
 
 Disable on -RT. If this is invoked from irq-context we will have problems
 to acquire the sleeping lock.

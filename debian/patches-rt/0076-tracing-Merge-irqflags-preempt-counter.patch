@@ -4,7 +4,7 @@ Subject: [PATCH 076/327] tracing: Merge irqflags + preempt counter.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4dc6c14a2bef54d7c4528a5d2d5d5d8407616729
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2a9035b6e6d86f96fc740921aae64dd2c83bb534
 
 The state of the interrupts (irqflags) and the preemption counter are
 both passed down to tracing_generic_entry_update(). Only one bit of
@@ -933,7 +933,7 @@ index b3a863c10c0a..028150029a77 100644
  NOKPROBE_SYMBOL(perf_trace_buf_update);
  
 diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index c9fc3c442681..8ba9ad262a4a 100644
+index da4a69e1929c..27ad90e41ff0 100644
 --- a/kernel/trace/trace_events.c
 +++ b/kernel/trace/trace_events.c
 @@ -259,22 +259,19 @@ void *trace_event_buffer_reserve(struct trace_event_buffer *fbuffer,
@@ -961,7 +961,7 @@ index c9fc3c442681..8ba9ad262a4a 100644
  	if (!fbuffer->event)
  		return NULL;
  
-@@ -3718,12 +3715,11 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3713,12 +3710,11 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	struct trace_buffer *buffer;
  	struct ring_buffer_event *event;
  	struct ftrace_entry *entry;
@@ -976,7 +976,7 @@ index c9fc3c442681..8ba9ad262a4a 100644
  	preempt_disable_notrace();
  	cpu = raw_smp_processor_id();
  	disabled = atomic_inc_return(&per_cpu(ftrace_test_event_disable, cpu));
-@@ -3731,11 +3727,9 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3726,11 +3722,9 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	if (disabled != 1)
  		goto out;
  
@@ -989,7 +989,7 @@ index c9fc3c442681..8ba9ad262a4a 100644
  	if (!event)
  		goto out;
  	entry	= ring_buffer_event_data(event);
-@@ -3743,7 +3737,7 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3738,7 +3732,7 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	entry->parent_ip		= parent_ip;
  
  	event_trigger_unlock_commit(&event_trace_file, buffer, event,

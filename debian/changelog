@@ -273,6 +273,9 @@ linux (5.10.252-1) UNRELEASED; urgency=medium
     - fbdev: of: display_timing: fix refcount leak in of_get_display_timings()
     - drm/amdgpu: keep vga memory on MacBooks with switchable graphics
 
+  [ Ben Hutchings ]
+  * [rt] Update to 5.10.252-rt147
+
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 
 linux (5.10.251-1) bullseye-security; urgency=high

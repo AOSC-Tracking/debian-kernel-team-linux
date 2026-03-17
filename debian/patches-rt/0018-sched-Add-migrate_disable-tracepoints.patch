@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:15 +0200
 Subject: [PATCH 018/327] sched: Add migrate_disable() tracepoints
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=548e79d86bb9bd2b40ffd2574d19b907332f3765
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=05ca20928ca6513880fd11e431fd30efe3d083b0
 
 XXX write a tracer:
 
@@ -79,7 +79,7 @@ index a146e670444d..44aa5f849fdd 100644
  			} else {
  				deactivate_task(src_rq, p, 0);
 diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index c916dbc2a016..5dc1ee8dcec2 100644
+index 9ea35ddf1e11..67cb9dbb3f74 100644
 --- a/kernel/sched/rt.c
 +++ b/kernel/sched/rt.c
 @@ -1891,7 +1891,12 @@ static int push_rt_task(struct rq *rq, bool pull)
@@ -96,7 +96,7 @@ index c916dbc2a016..5dc1ee8dcec2 100644
  			return 0;
  
  		cpu = find_lowest_rq(rq->curr);
-@@ -2237,6 +2242,7 @@ static void pull_rt_task(struct rq *this_rq)
+@@ -2242,6 +2247,7 @@ static void pull_rt_task(struct rq *this_rq)
  				goto skip;
  
  			if (is_migration_disabled(p)) {

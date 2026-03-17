@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 2 Feb 2021 18:01:04 +0100
 Subject: [PATCH 153/327] chelsio: cxgb: Disable the card on error in threaded
  interrupt
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=859ce7440a25ade7c458b7c00a29291974a7b938
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=43d9fc3f2582539e1c654d6318d89fceed44ec44
 
 t1_fatal_err() is invoked from the interrupt handler. The bad part is
 that it invokes (via t1_sge_stop()) del_timer_sync() and tasklet_kill().

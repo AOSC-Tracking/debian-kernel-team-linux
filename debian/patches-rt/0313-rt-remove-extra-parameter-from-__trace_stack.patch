@@ -4,7 +4,7 @@ Subject: [PATCH 313/327] rt: remove extra parameter from __trace_stack()
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3c985eaddc7b1584a5699099b21e406bc5a655d4
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2ae6417c91c71ed13dcedc583acd4b5a4d60de17
 
 Fix the build error below while keeping the current PREEMPT_RT code:
 

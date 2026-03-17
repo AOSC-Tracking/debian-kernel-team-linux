@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:48 +0100
 Subject: [PATCH 059/327] drm/i915: Replace io_mapping_map_atomic_wc()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c23d3c282887ea47a47cf6597c6ec9de46d02afb
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=606a0dc9d0dcb6882a1a9536658a6e9216074f0a
 
 None of these mapping requires the side effect of disabling pagefaults and
 preemption.

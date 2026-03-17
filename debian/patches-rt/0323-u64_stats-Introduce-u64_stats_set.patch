@@ -1,7 +1,7 @@
 From: "Ahmed S. Darwish" <a.darwish@linutronix.de>
 Date: Fri, 21 Feb 2025 18:44:25 +0100
 Subject: [PATCH 323/327] u64_stats: Introduce u64_stats_set()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=65345e34b780429289cdad76bf724f43b87c4df5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2bed8d2c88b622286e904bf51643a06e0a856894
 
 [ Upstream commit f2efdb17928924c9c935c136dea764a081032006 ]
 

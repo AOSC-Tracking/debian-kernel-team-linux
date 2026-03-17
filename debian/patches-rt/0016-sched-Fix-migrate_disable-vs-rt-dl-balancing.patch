@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:13 +0200
 Subject: [PATCH 016/327] sched: Fix migrate_disable() vs rt/dl balancing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b2e25028118e292a9d42daf833e165e7fabcaa5a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e674d1a40a23f4f196c10548ac3612ca043799e4
 
 In order to minimize the interference of migrate_disable() on lower
 priority tasks, which can be deprived of runtime due to being stuck
@@ -286,7 +286,7 @@ index 41e3f8301700..a146e670444d 100644
  
  	.task_tick		= task_tick_dl,
 diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index 95c07ef87ce1..c916dbc2a016 100644
+index 536e80a694e2..9ea35ddf1e11 100644
 --- a/kernel/sched/rt.c
 +++ b/kernel/sched/rt.c
 @@ -1873,7 +1873,7 @@ static struct task_struct *pick_next_pushable_task(struct rq *rq)
@@ -356,7 +356,7 @@ index 95c07ef87ce1..c916dbc2a016 100644
  		;
  }
  
-@@ -2109,7 +2135,8 @@ void rto_push_irq_work_func(struct irq_work *work)
+@@ -2114,7 +2140,8 @@ void rto_push_irq_work_func(struct irq_work *work)
  	 */
  	if (has_pushable_tasks(rq)) {
  		raw_spin_lock(&rq->lock);
@@ -366,7 +366,7 @@ index 95c07ef87ce1..c916dbc2a016 100644
  		raw_spin_unlock(&rq->lock);
  	}
  
-@@ -2134,7 +2161,7 @@ static void pull_rt_task(struct rq *this_rq)
+@@ -2139,7 +2166,7 @@ static void pull_rt_task(struct rq *this_rq)
  {
  	int this_cpu = this_rq->cpu, cpu;
  	bool resched = false;
@@ -375,7 +375,7 @@ index 95c07ef87ce1..c916dbc2a016 100644
  	struct rq *src_rq;
  	int rt_overload_count = rt_overloaded(this_rq);
  
-@@ -2181,6 +2208,7 @@ static void pull_rt_task(struct rq *this_rq)
+@@ -2186,6 +2213,7 @@ static void pull_rt_task(struct rq *this_rq)
  		 * double_lock_balance, and another CPU could
  		 * alter this_rq
  		 */
@@ -383,7 +383,7 @@ index 95c07ef87ce1..c916dbc2a016 100644
  		double_lock_balance(this_rq, src_rq);
  
  		/*
-@@ -2208,11 +2236,14 @@ static void pull_rt_task(struct rq *this_rq)
+@@ -2213,11 +2241,14 @@ static void pull_rt_task(struct rq *this_rq)
  			if (p->prio < src_rq->curr->prio)
  				goto skip;
  
@@ -403,7 +403,7 @@ index 95c07ef87ce1..c916dbc2a016 100644
  			/*
  			 * We continue with the search, just in
  			 * case there's an even higher prio task
-@@ -2222,6 +2253,13 @@ static void pull_rt_task(struct rq *this_rq)
+@@ -2227,6 +2258,13 @@ static void pull_rt_task(struct rq *this_rq)
  		}
  skip:
  		double_unlock_balance(this_rq, src_rq);
@@ -417,7 +417,7 @@ index 95c07ef87ce1..c916dbc2a016 100644
  	}
  
  	if (resched)
-@@ -2470,6 +2508,7 @@ const struct sched_class rt_sched_class
+@@ -2475,6 +2513,7 @@ const struct sched_class rt_sched_class
  	.rq_offline             = rq_offline_rt,
  	.task_woken		= task_woken_rt,
  	.switched_from		= switched_from_rt,
