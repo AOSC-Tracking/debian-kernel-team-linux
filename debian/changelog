@@ -1,4 +1,4 @@
-linux (6.12.78-1) UNRELEASED; urgency=medium
+linux (6.12.79-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.75
@@ -1748,6 +1748,7 @@ linux (6.12.78-1) UNRELEASED; urgency=medium
     - [amd64] perf/x86/intel: Add missing branch counters constraint apply
     - xen/privcmd: restrict usage in unprivileged domU (CVE-2026-31788)
     - xen/privcmd: add boot control for restricted usage in domU
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.79
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 13 Mar 2026 17:02:16 +0100
 
