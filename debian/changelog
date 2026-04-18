@@ -1,4 +1,4 @@
-linux (6.1.168-1) UNRELEASED; urgency=medium
+linux (6.1.169-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.165
@@ -1363,6 +1363,47 @@ linux (6.1.168-1) UNRELEASED; urgency=medium
     - ext4: fix lost error code reporting in __ext4_fill_super()
     - ext4: fix unused iterator variable warnings
     - ACPI: EC: Evaluate orphan _REG under EC device
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.169
+    - lib/crypto: chacha: Zeroize permuted_state before it leaves scope
+    - wifi: rt2x00usb: fix devres lifetime
+    - xfrm_user: fix info leak in build_report()
+    - mptcp: fix slab-use-after-free in __inet_lookup_established
+    - Input: uinput - fix circular locking dependency with ff-core
+    - Input: uinput - take event lock when submitting FF request "event"
+    - media: uvcvideo: Mark invalid entities with id UVC_INVALID_ENTITY_ID
+    - media: uvcvideo: Use heuristic to find stream entity
+    - usb: gadget: u_ether: Fix race between gether_disconnect and eth_stop
+    - Revert "ACPI: EC: Evaluate orphan _REG under EC device"
+    - ACPICA: Add a depth argument to acpi_execute_reg_methods()
+    - ACPI: EC: Evaluate _REG outside the EC scope more carefully
+    - usb: gadget: f_hid: move list and spinlock inits from bind to alloc
+    - rfkill: Use sysfs_emit() to instead of sprintf()
+    - rfkill: sync before userspace visibility/changes
+    - net: rfkill: reduce data->mtx scope in rfkill_fop_open
+    - net: rfkill: prevent unlimited numbers of rfkill events from being created
+    - seg6: separate dst_cache for input and output paths in seg6 lwtunnel
+    - Revert "mptcp: add needs_id for netlink appending addr"
+    - drm/scheduler: signal scheduled fence when kill job
+    - netfilter: nft_set_pipapo: do not rely on ZERO_SIZE_PTR
+    - netfilter: nft_ct: fix use-after-free in timeout object destroy
+    - xfrm: clear trailing padding in build_polexpire()
+    - tipc: fix bc_ackers underflow on duplicate GRP_ACK_MSG
+    - wifi: brcmsmac: Fix dma_free_coherent() size
+    - [arm64] dts: hisilicon: poplar: Correct PCIe reset GPIO polarity
+    - [arm64] dts: hisilicon: hi3798cv200: Add missing dma-ranges
+    - nfc: pn533: allocate rx skb before consuming bytes
+    - batman-adv: reject oversized global TT response buffers
+    - EDAC/mc: Fix error path ordering in edac_mc_alloc()
+    - net/tls: fix use-after-free in -EBUSY error path of tls_do_encryption
+    - batman-adv: hold claim backbone gateways by reference
+    - [x86] drm/i915/gt: fix refcount underflow in intel_engine_park_heartbeat
+    - net/mlx5: Update the list of the PCI supported devices
+    - mmc: vub300: fix NULL-deref on disconnect
+    - net: stmmac: fix integer underflow in chain mode
+    - rxrpc: fix reference count leak in rxrpc_server_keyring()
+    - rxrpc: Fix key/keyring checks in setsockopt(RXRPC_SECURITY_KEY/KEYRING)
+    - Revert "PCI: Enable ACS after configuring IOMMU for OF platforms"
+    - [x86] CPU: Fix FPDSS on Zen1 (CVE-2026-31628)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Mar 2026 15:48:35 +0100
 
