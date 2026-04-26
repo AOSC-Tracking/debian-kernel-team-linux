@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
-Subject: [PATCH 258/327] sched: Add support for lazy preemption
+Subject: [PATCH 258/328] sched: Add support for lazy preemption
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8635d20f5610e6a85821d7534ae3dc569362c287
 
 It has become an obsession to mitigate the determinism vs. throughput

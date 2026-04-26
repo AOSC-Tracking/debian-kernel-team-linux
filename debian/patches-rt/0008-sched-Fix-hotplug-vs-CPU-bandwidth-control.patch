@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:05 +0200
-Subject: [PATCH 008/327] sched: Fix hotplug vs CPU bandwidth control
+Subject: [PATCH 008/328] sched: Fix hotplug vs CPU bandwidth control
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=281f9ed2dc634b70239e011644d8d8715b409a95
 
 Since we now migrate tasks away before DYING, we should also move

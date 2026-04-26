@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Jul 2019 11:30:49 +0200
-Subject: [PATCH 275/327] powerpc: traps: Use PREEMPT_RT
+Subject: [PATCH 275/328] powerpc: traps: Use PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=31d02935f6047f2eb24a013136bea28c05caf723
 
 Add PREEMPT_RT to the backtrace if enabled.

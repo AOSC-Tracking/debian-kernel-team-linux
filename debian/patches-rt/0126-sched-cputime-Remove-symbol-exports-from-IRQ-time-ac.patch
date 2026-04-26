@@ -1,6 +1,6 @@
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:28 +0100
-Subject: [PATCH 126/327] sched/cputime: Remove symbol exports from IRQ time
+Subject: [PATCH 126/328] sched/cputime: Remove symbol exports from IRQ time
  accounting
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6bc8a5e4ccaa0fe17a6d4c9a1777bf2af6934dbb
 

@@ -1,6 +1,6 @@
 From: Ingo Molnar <mingo@elte.hu>
 Date: Fri, 3 Jul 2009 08:44:03 -0500
-Subject: [PATCH 189/327] mm: Allow only SLUB on RT
+Subject: [PATCH 189/328] mm: Allow only SLUB on RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9e9b9e791f6e3779eb049272fb4e68f2f3266088
 
 Memory allocation disables interrupts as part of the allocation and freeing

@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 17 Aug 2020 12:28:10 +0200
-Subject: [PATCH 183/327] u64_stats: Disable preemption on 32bit-UP/SMP with RT
+Subject: [PATCH 183/328] u64_stats: Disable preemption on 32bit-UP/SMP with RT
  during updates
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=af0951d07b1b0a34cded85075b80478e4552ae5b
 

@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:07 +0106
-Subject: [PATCH 105/327] printk: move console printing to kthreads
+Subject: [PATCH 105/328] printk: move console printing to kthreads
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bdfb86d845847d5c721463ddaf44fae6e6eb4deb
 
 Create a kthread for each console to perform console printing. Now

@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 12:48:01 +0106
-Subject: [PATCH 086/327] printk: introduce CONSOLE_LOG_MAX for improved
+Subject: [PATCH 086/328] printk: introduce CONSOLE_LOG_MAX for improved
  multi-line support
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c6abb62c3d42630a65ddcd4ff4739779d272d551
 

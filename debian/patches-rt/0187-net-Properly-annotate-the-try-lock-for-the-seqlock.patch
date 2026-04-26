@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 8 Sep 2020 16:57:11 +0200
-Subject: [PATCH 187/327] net: Properly annotate the try-lock for the seqlock
+Subject: [PATCH 187/328] net: Properly annotate the try-lock for the seqlock
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e20899823a984382356f575deb2044c903decd11
 
 In patch

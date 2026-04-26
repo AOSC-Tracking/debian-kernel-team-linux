@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:13 +0200
-Subject: [PATCH 016/327] sched: Fix migrate_disable() vs rt/dl balancing
+Subject: [PATCH 016/328] sched: Fix migrate_disable() vs rt/dl balancing
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e674d1a40a23f4f196c10548ac3612ca043799e4
 
 In order to minimize the interference of migrate_disable() on lower

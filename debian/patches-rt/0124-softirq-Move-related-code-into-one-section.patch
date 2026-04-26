@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:18 +0100
-Subject: [PATCH 124/327] softirq: Move related code into one section
+Subject: [PATCH 124/328] softirq: Move related code into one section
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a257ccb114683ce625165f53656a1f0747cbe176
 
 To prepare for adding a RT aware variant of softirq serialization and

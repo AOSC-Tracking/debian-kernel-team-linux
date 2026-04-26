@@ -1,6 +1,6 @@
 From: Priyanka Jain <Priyanka.Jain@freescale.com>
 Date: Thu, 17 May 2012 09:35:11 +0530
-Subject: [PATCH 245/327] net: Remove preemption disabling in netif_rx()
+Subject: [PATCH 245/328] net: Remove preemption disabling in netif_rx()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4068a9a6df1f3cdce21602684ad80e7ab9bf2e9
 
 1)enqueue_to_backlog() (called from netif_rx) should be

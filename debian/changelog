@@ -797,7 +797,8 @@ linux (5.10.253-1) UNRELEASED; urgency=medium
     - [x86] CPU: Fix FPDSS on Zen1 (CVE-2025-54505, CVE-2026-31628)
 
   [ Ben Hutchings ]
-  * [rt] Update to 5.10.252-rt147
+  * [rt] Update to 5.10.252-rt148:
+    - ipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT
 
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 

@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 17 Feb 2021 16:15:31 +0100
-Subject: [PATCH 082/327] printk: limit second loop of syslog_print_all
+Subject: [PATCH 082/328] printk: limit second loop of syslog_print_all
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6df9246e4c48eedf822e137df55123117cd16586
 
 The second loop of syslog_print_all() subtracts lengths that were

@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 13 Nov 2011 17:17:09 +0100
-Subject: [PATCH 219/327] softirq: Check preemption after reenabling interrupts
+Subject: [PATCH 219/328] softirq: Check preemption after reenabling interrupts
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bea9cb34ed7e22fda9328ddaf55e3c9dabc3ccef
 
 raise_softirq_irqoff() disables interrupts and wakes the softirq

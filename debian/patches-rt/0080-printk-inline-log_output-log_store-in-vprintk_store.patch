@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 9 Dec 2020 01:50:52 +0106
-Subject: [PATCH 080/327] printk: inline log_output(),log_store() in
+Subject: [PATCH 080/328] printk: inline log_output(),log_store() in
  vprintk_store()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e0136badca13a22272564a910d662e83a784c892
 

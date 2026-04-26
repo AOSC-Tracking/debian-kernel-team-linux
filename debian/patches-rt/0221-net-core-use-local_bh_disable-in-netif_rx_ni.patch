@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 16 Jun 2017 19:03:16 +0200
-Subject: [PATCH 221/327] net/core: use local_bh_disable() in netif_rx_ni()
+Subject: [PATCH 221/328] net/core: use local_bh_disable() in netif_rx_ni()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3480e1c1f0c36c29418a428a2d9595a7371e051c
 
 In 2004 netif_rx_ni() gained a preempt_disable() section around

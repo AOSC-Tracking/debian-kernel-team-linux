@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 26 Aug 2021 15:37:38 +0200
-Subject: [PATCH 299/327] sched: Fix get_push_task() vs migrate_disable()
+Subject: [PATCH 299/328] sched: Fix get_push_task() vs migrate_disable()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=69b2532fbda9490cfdef7c05bf695bceb67fb5fe
 
 push_rt_task() attempts to move the currently running task away if the

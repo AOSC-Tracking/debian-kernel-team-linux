@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:08 +0200
-Subject: [PATCH 011/327] sched: Fix migrate_disable() vs
+Subject: [PATCH 011/328] sched: Fix migrate_disable() vs
  set_cpus_allowed_ptr()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7abaea126a32f642c845b9ea76a0ef616130a652
 

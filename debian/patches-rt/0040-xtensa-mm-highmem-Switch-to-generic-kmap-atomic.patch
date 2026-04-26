@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:29 +0100
-Subject: [PATCH 040/327] xtensa/mm/highmem: Switch to generic kmap atomic
+Subject: [PATCH 040/328] xtensa/mm/highmem: Switch to generic kmap atomic
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=426230f41d5a86318e6843e0bfdec94a65fe266e
 
 No reason having the same code in every architecture

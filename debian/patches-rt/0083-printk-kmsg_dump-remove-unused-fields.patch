@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 21 Dec 2020 11:19:39 +0106
-Subject: [PATCH 083/327] printk: kmsg_dump: remove unused fields
+Subject: [PATCH 083/328] printk: kmsg_dump: remove unused fields
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=327f332553cbe704ff3bea42eae1d2db41ef731a
 
 struct kmsg_dumper still contains some fields that were used to

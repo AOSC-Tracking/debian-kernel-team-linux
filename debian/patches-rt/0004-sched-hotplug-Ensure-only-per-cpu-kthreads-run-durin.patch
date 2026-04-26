@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:01 +0200
-Subject: [PATCH 004/327] sched/hotplug: Ensure only per-cpu kthreads run
+Subject: [PATCH 004/328] sched/hotplug: Ensure only per-cpu kthreads run
  during hotplug
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b39e5d7c4b574c307aeedc22813ca6f3424f7dcc
 

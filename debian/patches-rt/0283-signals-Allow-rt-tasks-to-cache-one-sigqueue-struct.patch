@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 3 Jul 2009 08:44:56 -0500
-Subject: [PATCH 283/327] signals: Allow rt tasks to cache one sigqueue struct
+Subject: [PATCH 283/328] signals: Allow rt tasks to cache one sigqueue struct
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fa5100a3051efdf0625d7fee6177daf368a97190
 
 To avoid allocation allow rt tasks to cache one sigqueue struct in

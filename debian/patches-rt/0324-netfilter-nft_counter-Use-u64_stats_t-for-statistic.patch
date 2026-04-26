@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 21 Feb 2025 18:44:26 +0100
-Subject: [PATCH 324/327] netfilter: nft_counter: Use u64_stats_t for
+Subject: [PATCH 324/328] netfilter: nft_counter: Use u64_stats_t for
  statistic.
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6a9f897196aac6fcb023b725f751f15854bddb9f
 

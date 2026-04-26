@@ -1,6 +1,6 @@
 From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Thu, 31 Mar 2016 04:08:28 +0200
-Subject: [PATCH 281/327] drivers/block/zram: Replace bit spinlocks with
+Subject: [PATCH 281/328] drivers/block/zram: Replace bit spinlocks with
  rtmutex for -rt
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=13d19a97e2ee7554f98d23b9f0e67649a8cd4874
 

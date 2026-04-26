@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 17 Dec 2021 11:32:08 +0100
-Subject: [PATCH 311/327] stop_machine: Remove this_cpu_ptr() from
+Subject: [PATCH 311/328] stop_machine: Remove this_cpu_ptr() from
  print_stop_info().
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=224a1d0abe762c0b703216d6deaacee37d2886f1
 

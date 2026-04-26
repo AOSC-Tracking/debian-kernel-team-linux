@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 9 Dec 2020 01:50:53 +0106
-Subject: [PATCH 081/327] printk: remove logbuf_lock writer-protection of
+Subject: [PATCH 081/328] printk: remove logbuf_lock writer-protection of
  ringbuffer
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1ffae97a5d50a5802106e4c6eef18f616e5acd74
 

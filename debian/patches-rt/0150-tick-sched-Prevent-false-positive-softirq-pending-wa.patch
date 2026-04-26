@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:57 +0100
-Subject: [PATCH 150/327] tick/sched: Prevent false positive softirq pending
+Subject: [PATCH 150/328] tick/sched: Prevent false positive softirq pending
  warnings on RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f23dfcb1ff4c874aa30de3ca2cdedd9cdf04c3b4
 

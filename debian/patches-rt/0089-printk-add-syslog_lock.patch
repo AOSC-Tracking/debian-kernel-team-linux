@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 16:58:02 +0106
-Subject: [PATCH 089/327] printk: add syslog_lock
+Subject: [PATCH 089/328] printk: add syslog_lock
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=646f7b13efae64993e3fca1843c08b18778ee503
 
 The global variables @syslog_seq, @syslog_partial, @syslog_time

@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 23 Jun 2015 15:32:51 +0200
-Subject: [PATCH 239/327] irqwork: push most work into softirq context
+Subject: [PATCH 239/328] irqwork: push most work into softirq context
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b7561a58445d8710d40f294f22cf686c113b1e60
 
 Initially we defered all irqwork into softirq because we didn't want the

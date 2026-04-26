@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 4 Aug 2017 17:40:42 +0200
-Subject: [PATCH 227/327] locking: don't check for __LINUX_SPINLOCK_TYPES_H on
+Subject: [PATCH 227/328] locking: don't check for __LINUX_SPINLOCK_TYPES_H on
  -RT archs
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5ee917e21ce7ba9a3cd0881706ef50101fde98c5
 

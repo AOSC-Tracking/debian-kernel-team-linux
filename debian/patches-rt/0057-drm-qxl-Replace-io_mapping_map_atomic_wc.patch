@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:46 +0100
-Subject: [PATCH 057/327] drm/qxl: Replace io_mapping_map_atomic_wc()
+Subject: [PATCH 057/328] drm/qxl: Replace io_mapping_map_atomic_wc()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f99edc1dd439cdfecc7a55be0457c2c851b0aade
 
 None of these mapping requires the side effect of disabling pagefaults and

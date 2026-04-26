@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 26 Oct 2021 13:40:53 +0200
-Subject: [PATCH 306/327] drm/i915/gt: Queue and wait for the irq_work item.
+Subject: [PATCH 306/328] drm/i915/gt: Queue and wait for the irq_work item.
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e08ea7455e3d85ba37cd95775df775eecb375cfd
 
 Disabling interrupts and invoking the irq_work function directly breaks

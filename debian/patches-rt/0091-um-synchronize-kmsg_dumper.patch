@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 21 Dec 2020 11:10:03 +0106
-Subject: [PATCH 091/327] um: synchronize kmsg_dumper
+Subject: [PATCH 091/328] um: synchronize kmsg_dumper
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8a8fb89bac156460a2f0f6c8d74f661f4aea4cdf
 
 The kmsg_dumper can be called from any context and CPU, possibly

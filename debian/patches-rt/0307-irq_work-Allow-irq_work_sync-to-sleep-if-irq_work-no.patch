@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 24 Nov 2021 17:12:19 +0100
-Subject: [PATCH 307/327] irq_work: Allow irq_work_sync() to sleep if
+Subject: [PATCH 307/328] irq_work: Allow irq_work_sync() to sleep if
  irq_work() no IRQ support.
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=482bf30588578b28a9c0c6ae620c5014b2276a2c
 

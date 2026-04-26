@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 21 Nov 2016 19:31:08 +0100
-Subject: [PATCH 216/327] kernel/sched: move stack + kprobe clean up to
+Subject: [PATCH 216/328] kernel/sched: move stack + kprobe clean up to
  __put_task_struct()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a138a8717170eec41f2113832490b6e38fef8a27
 

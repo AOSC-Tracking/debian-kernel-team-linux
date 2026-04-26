@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 29 Oct 2021 10:07:11 +0200
-Subject: [PATCH 302/327] mm: Disable NUMA_BALANCING_DEFAULT_ENABLED and
+Subject: [PATCH 302/328] mm: Disable NUMA_BALANCING_DEFAULT_ENABLED and
  TRANSPARENT_HUGEPAGE on PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2cb7bf75954ef028d9d98a6e1e548e4bf8813bb9
 

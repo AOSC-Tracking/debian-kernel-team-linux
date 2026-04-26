@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:16 +0100
-Subject: [PATCH 027/327] sh/highmem: Remove all traces of unused cruft
+Subject: [PATCH 027/328] sh/highmem: Remove all traces of unused cruft
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=185f4c6117d2d316cedce264676c1ff7ee6ec58d
 
 For whatever reasons SH has highmem bits all over the place but does

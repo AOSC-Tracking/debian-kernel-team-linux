@@ -1,6 +1,6 @@
 From: Yong Zhang <yong.zhang@windriver.com>
 Date: Mon, 16 Apr 2012 15:01:56 +0800
-Subject: [PATCH 247/327] lockdep: selftest: Only do hardirq context test for
+Subject: [PATCH 247/328] lockdep: selftest: Only do hardirq context test for
  raw spinlock
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=276c08c3bb5c0e63422907c4a8e1b50f73f1e908
 

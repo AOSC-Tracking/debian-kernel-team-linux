@@ -1,6 +1,6 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:12 +0200
-Subject: [PATCH 015/327] sched, lockdep: Annotate ->pi_lock recursion
+Subject: [PATCH 015/328] sched, lockdep: Annotate ->pi_lock recursion
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=97e7d5766dc747e530fc82f8aaad8f5235a43c2c
 
 There's a valid ->pi_lock recursion issue where the actual PI code

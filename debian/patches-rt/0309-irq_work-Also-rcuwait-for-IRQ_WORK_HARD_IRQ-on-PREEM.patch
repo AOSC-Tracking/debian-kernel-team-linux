@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 24 Nov 2021 17:12:21 +0100
-Subject: [PATCH 309/327] irq_work: Also rcuwait for !IRQ_WORK_HARD_IRQ on
+Subject: [PATCH 309/328] irq_work: Also rcuwait for !IRQ_WORK_HARD_IRQ on
  PREEMPT_RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3000e8db82737fe857407afa05846125b6b10e15
 

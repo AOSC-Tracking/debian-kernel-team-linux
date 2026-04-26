@@ -1,6 +1,6 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 18 Aug 2020 10:30:00 +0200
-Subject: [PATCH 207/327] mm: memcontrol: Provide a local_lock for per-CPU
+Subject: [PATCH 207/328] mm: memcontrol: Provide a local_lock for per-CPU
  memcg_stock
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=80a8a3d85d6401fe9c77cb19d8c87b50dd8c4696
 

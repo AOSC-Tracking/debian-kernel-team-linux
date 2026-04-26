@@ -1,6 +1,6 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Wed, 20 Dec 2023 10:20:48 -0300
-Subject: [PATCH 322/327] rt: mm/page_alloc: backport missing bits from
+Subject: [PATCH 322/328] rt: mm/page_alloc: backport missing bits from
  __build_all_zonelists() fix
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bfb3b33ef3729424789a3a8ffe49cdc61822c5d5
 

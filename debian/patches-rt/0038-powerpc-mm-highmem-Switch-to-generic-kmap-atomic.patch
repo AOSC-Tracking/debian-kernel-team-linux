@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:27 +0100
-Subject: [PATCH 038/327] powerpc/mm/highmem: Switch to generic kmap atomic
+Subject: [PATCH 038/328] powerpc/mm/highmem: Switch to generic kmap atomic
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7818c0c2ee01cdc95b626ff61bbc46ee54d65a1f
 
 No reason having the same code in every architecture

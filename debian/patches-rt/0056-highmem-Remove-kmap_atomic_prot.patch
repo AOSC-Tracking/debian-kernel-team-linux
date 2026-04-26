@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:45 +0100
-Subject: [PATCH 056/327] highmem: Remove kmap_atomic_prot()
+Subject: [PATCH 056/328] highmem: Remove kmap_atomic_prot()
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9e60b017cafd325ccc320a873854d1d3b678fd07
 
 No more users.

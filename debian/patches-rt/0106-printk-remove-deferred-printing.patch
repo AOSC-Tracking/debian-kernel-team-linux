@@ -1,6 +1,6 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:08 +0106
-Subject: [PATCH 106/327] printk: remove deferred printing
+Subject: [PATCH 106/328] printk: remove deferred printing
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6284aedf99dbf383fb922d01509cf365e83ca240
 
 Since printing occurs either atomically or from the printing

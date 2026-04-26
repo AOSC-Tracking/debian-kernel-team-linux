@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 13 Sep 2011 16:42:35 +0200
-Subject: [PATCH 218/327] sched: Disable TTWU_QUEUE on RT
+Subject: [PATCH 218/328] sched: Disable TTWU_QUEUE on RT
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3444e3eabbb4871165a0b6fdbd86f873f1dddcea
 
 The queued remote wakeup mechanism can introduce rather large

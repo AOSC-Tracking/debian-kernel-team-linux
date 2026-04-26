@@ -1,6 +1,6 @@
 From: Anand Je Saipureddy <s.anandje1@gmail.com>
 Date: Sat, 23 Jul 2022 12:19:43 +0530
-Subject: [PATCH 315/327] ftrace: Fix improper usage of __trace_stack()
+Subject: [PATCH 315/328] ftrace: Fix improper usage of __trace_stack()
  function.
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5503edc1842c063254a9f0c9478b3dd606c7b681
 

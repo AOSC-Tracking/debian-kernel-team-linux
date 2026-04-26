@@ -1,6 +1,6 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:12 +0100
-Subject: [PATCH 118/327] ARM: irqstat: Get rid of duplicated declaration
+Subject: [PATCH 118/328] ARM: irqstat: Get rid of duplicated declaration
 Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f4cc30afe373411b3613d41a97e7e137499f98ad
 
 irq_cpustat_t is exactly the same as the asm-generic one. Define
