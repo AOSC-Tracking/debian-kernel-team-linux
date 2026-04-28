@@ -1,4 +1,4 @@
-linux (6.12.83-1) UNRELEASED; urgency=medium
+linux (6.12.84-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.75
@@ -2483,6 +2483,44 @@ linux (6.12.83-1) UNRELEASED; urgency=medium
     - PCI: Fix placement of pci_save_state() in pci_bus_add_device()
     - ipv6: add NULL checks for idev in SRv6 paths (CVE-2026-23442)
     - PCI: Revert "Enable ACS after configuring IOMMU for OF platforms"
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.84
+    - mm/userfaultfd: fix hugetlb fault mutex hash calculation
+    - PCI: endpoint: pci-epf-vntb: Remove duplicate resource teardown
+    - ima: verify if the segment size has changed
+    - ima: do not copy measurement list to kdump kernel
+    - wifi: mac80211: always free skb on ieee80211_tx_prepare_skb() failure
+    - [arm64] net: ethernet: mtk_eth_soc: initialize PPE per-tag-layer MTU
+      registers
+    - drm/amdgpu: replace PASID IDR with XArray
+    - mm/pagewalk: fix race between concurrent split and refault
+    - ksmbd: fix use-after-free in __ksmbd_close_fd() via durable scavenger
+    - scripts/dtc: Remove unused dts_version in dtc-lexer.l
+    - rxrpc: only handle RESPONSE during service challenge
+    - fs/ntfs3: validate rec->used in journal-replay file record check
+    - f2fs: fix to avoid memory leak in f2fs_rename()
+    - fuse: reject oversized dirents in page cache
+    - fuse: Check for large folio with SPLICE_F_MOVE
+    - fuse: quiet down complaints in fuse_conn_limit_write
+    - ksmbd: require minimum ACE size in smb_check_perm_dacl()
+    - smb: server: fix active_num_conn leak on transport allocation failure
+    - smb: server: fix max_connections off-by-one in tcp accept path
+    - smb: client: require a full NFS mode SID before reading mode bits
+    - smb: client: fix OOB read in smb2_ioctl_query_info QUERY_INFO path
+    - ksmbd: validate response sizes in ipc_validate_msg()
+    - ksmbd: validate num_aces and harden ACE walk in smb_inherit_dacl()
+    - ksmbd: fix out-of-bounds write in smb2_get_ea() EA alignment
+    - ksmbd: use check_add_overflow() to prevent u16 DACL size overflow
+    - f2fs: fix use-after-free of sbi in f2fs_compress_write_end_io()
+    - ALSA: usb-audio: apply quirk for MOONDROP JU Jiu
+    - ALSA: caiaq: take a reference on the USB device in create_card()
+    - net/packet: fix TOCTOU race on mmap'd vnet_hdr in tpacket_snd()
+    - [amd64] crypto: ccp: Don't attempt to copy CSR to userspace if PSP command
+      failed
+    - [amd64] crypto: ccp: Don't attempt to copy PDH cert to userspace if PSP
+      command failed
+    - [amd64] crypto: ccp: Don't attempt to copy ID to userspace if PSP command
+      failed
+    - rxrpc: Fix missing validation of ticket length in non-XDR key preparsing
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 13 Mar 2026 17:02:16 +0100
 
