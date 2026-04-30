@@ -117,6 +117,16 @@ bugfix/all/vfs-move-cap_convert_nscap-call-into-vfs_setxattr.patch
 bugfix/all/ovl-fail-on-invalid-uid-gid-mapping-at-copy-up.patch
 # QSA-2026: Apparmor
 bugfix/all/qsa-2026-apparmor/0003-apparmor-validate-DFA-start-states-are-in-bounds-in-.patch
+bugfix/all/crypto/0001-crypto-doc-fix-kernel-doc-notation-in-chacha.c-and-a.patch
+bugfix/all/crypto/0002-crypto-scatterwalk-Backport-memcpy_sglist.patch
+bugfix/all/crypto/0003-crypto-algif_aead-use-memcpy_sglist-instead-of-null-.patch
+bugfix/all/crypto/0004-crypto-algif_aead-Revert-to-operating-out-of-place.patch
+bugfix/all/crypto/0005-crypto-algif_aead-snapshot-IV-for-async-AEAD-request.patch
+bugfix/all/crypto/0006-crypto-authenc-use-memcpy_sglist-instead-of-null-skc.patch
+bugfix/all/crypto/0007-crypto-authencesn-Do-not-place-hiseq-at-end-of-dst-f.patch
+bugfix/all/crypto/0008-crypto-authencesn-Fix-src-offset-when-decrypting-in-.patch
+bugfix/all/crypto/0009-crypto-af_alg-Fix-page-reassignment-overflow-in-af_a.patch
+bugfix/all/crypto/0010-crypto-algif_aead-Fix-minimum-RX-size-check-for-decr.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
