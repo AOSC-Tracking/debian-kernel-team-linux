@@ -1418,6 +1418,9 @@ linux (6.1.170-1) UNRELEASED; urgency=medium
     - Buffer overflow in drivers/xen/sys-hypervisor.c (CVE-2026-31786)
     - xen/privcmd: fix double free via VMA splitting (CVE-2026-31787)
 
+  [ Salvatore Bonaccorso ]
+  * Revert "RDMA/rxe: Fix double free in rxe_srq_from_init"
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Mar 2026 15:48:35 +0100
 
 linux (6.1.164-1) bookworm-security; urgency=high
