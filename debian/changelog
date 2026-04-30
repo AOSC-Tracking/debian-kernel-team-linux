@@ -1,3 +1,21 @@
+linux (5.10.251-2) UNRELEASED; urgency=medium
+
+  * crypto: af-alg - fix NULL pointer dereference in scatterwalk
+  * crypto: doc - fix kernel-doc notation in chacha.c and af_alg.c
+  * crypto: scatterwalk - Backport memcpy_sglist()
+  * crypto: algif_aead - use memcpy_sglist() instead of null skcipher
+  * crypto: algif_aead - Revert to operating out-of-place
+    (CVE-2026-31431)
+  * crypto: algif_aead - snapshot IV for async AEAD requests
+  * crypto: authenc - use memcpy_sglist() instead of null skcipher
+  * crypto: authencesn - Do not place hiseq at end of dst for out-of-place
+    decryption
+  * crypto: authencesn - Fix src offset when decrypting in-place
+  * crypto: af_alg - Fix page reassignment overflow in af_alg_pull_tsgl
+  * crypto: algif_aead - Fix minimum RX size check for decryption
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 30 Apr 2026 17:59:34 +0200
+
 linux (5.10.251-1) bullseye-security; urgency=high
 
   * New upstream stable update:
