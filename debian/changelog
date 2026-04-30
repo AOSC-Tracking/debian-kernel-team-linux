@@ -1422,6 +1422,7 @@ linux (6.1.170-1) UNRELEASED; urgency=medium
   * Revert "RDMA/rxe: Fix double free in rxe_srq_from_init"
   * RDMA/rxe: Fix double free in rxe_srq_from_init
   * [amd64] x86/CPU: Only try to mitigate FPDSS on Zen1
+  * apparmor: validate default DFA states are in bounds
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Mar 2026 15:48:35 +0100
 

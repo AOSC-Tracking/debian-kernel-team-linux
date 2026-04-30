@@ -105,6 +105,7 @@ bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/Revert-RDMA-rxe-Fix-double-free-in-rxe_srq_from_init.patch
 bugfix/all/RDMA-rxe-Fix-double-free-in-rxe_srq_from_init.patch
+bugfix/all/apparmor-validate-default-DFA-states-are-in-bounds.patch
 
 # Miscellaneous features
 
