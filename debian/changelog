@@ -1,4 +1,4 @@
-linux (6.12.85-1) UNRELEASED; urgency=medium
+linux (6.12.85-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.75
@@ -2534,7 +2534,7 @@ linux (6.12.85-1) UNRELEASED; urgency=medium
     - xen/privcmd: fix double free via VMA splitting (CVE-2026-31787)
     - Buffer overflow in drivers/xen/sys-hypervisor.c (CVE-2026-31786)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 13 Mar 2026 17:02:16 +0100
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 30 Apr 2026 13:38:11 +0200
 
 linux (6.12.74-2) trixie-security; urgency=high
 
