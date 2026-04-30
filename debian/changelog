@@ -1420,6 +1420,7 @@ linux (6.1.170-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * Revert "RDMA/rxe: Fix double free in rxe_srq_from_init"
+  * RDMA/rxe: Fix double free in rxe_srq_from_init
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 15 Mar 2026 15:48:35 +0100
 
