@@ -1,4 +1,4 @@
-linux-6.1 (6.1.170-1~deb11u1) UNRELEASED; urgency=high
+linux-6.1 (6.1.170-1~deb11u1) bullseye-security; urgency=high
 
   [ Ben Hutchings ]
   * Rebuild for bullseye
@@ -6,7 +6,7 @@ linux-6.1 (6.1.170-1~deb11u1) UNRELEASED; urgency=high
   [ Bastian Blank ]
   * Remove architectures not existing in Debian
 
- -- Ben Hutchings <benh@debian.org>  Thu, 30 Apr 2026 21:25:55 +0200
+ -- Ben Hutchings <benh@debian.org>  Fri, 01 May 2026 00:41:34 +0200
 
 linux (6.1.170-1) bookworm-security; urgency=high
 
