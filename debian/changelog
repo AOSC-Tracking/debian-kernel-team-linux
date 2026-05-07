@@ -231,6 +231,9 @@ linux (6.12.86-1) UNRELEASED; urgency=medium
   * Fix ordering of kernel version strings for multiple Debian revisions
     (Closes: #1113728)
 
+  [ Salvatore Bonaccorso ]
+  * xfrm: esp: avoid in-place decrypt on shared skb frags
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 02 May 2026 21:00:10 +0200
 
 linux (6.12.85-1) trixie-security; urgency=high
