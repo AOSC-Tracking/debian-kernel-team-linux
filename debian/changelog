@@ -805,6 +805,15 @@ linux (5.10.254-1) UNRELEASED; urgency=medium
 
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 
+linux (5.10.251-4) bullseye-security; urgency=high
+
+  * rxrpc: input: Open-code skb_unshare()
+  * rxrpc: Fix conn-level packet handling to unshare RESPONSE packets
+  * rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present
+  * xfrm: esp: avoid in-place decrypt on shared skb frags
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 08 May 2026 11:43:47 +0200
+
 linux (5.10.251-3) bullseye-security; urgency=high
 
   [ Bastian Blank ]
