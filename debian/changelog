@@ -230,6 +230,11 @@ linux (6.12.86-1) UNRELEASED; urgency=medium
   [ Ben Hutchings ]
   * Fix ordering of kernel version strings for multiple Debian revisions
     (Closes: #1113728)
+  * rxrpc: Fix conn-level packet handling to unshare RESPONSE packets
+
+  [ Salvatore Bonaccorso ]
+  * xfrm: esp: avoid in-place decrypt on shared skb frags
+  * rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 02 May 2026 21:00:10 +0200
 
