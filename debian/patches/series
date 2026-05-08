@@ -142,6 +142,10 @@ bugfix/all/crypto/0007-crypto-authencesn-Do-not-place-hiseq-at-end-of-dst-f.patc
 bugfix/all/crypto/0008-crypto-authencesn-Fix-src-offset-when-decrypting-in-.patch
 bugfix/all/crypto/0009-crypto-af_alg-Fix-page-reassignment-overflow-in-af_a.patch
 bugfix/all/crypto/0010-crypto-algif_aead-Fix-minimum-RX-size-check-for-decr.patch
+bugfix/all/rxrpc-input-Open-code-skb_unshare.patch
+bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
+bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
+bugfix/all/xfrm-esp-avoid-in-place-decrypt-on-shared-skb-frags.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
