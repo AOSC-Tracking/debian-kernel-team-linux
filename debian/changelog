@@ -1,3 +1,15 @@
+linux (6.1.170-2) UNRELEASED; urgency=medium
+
+  [ Ben Hutchings ]
+  * rxrpc: input: Open-code skb_unshare()
+  * rxrpc: Fix conn-level packet handling to unshare RESPONSE packets
+  * rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present
+
+  [ Salvatore Bonaccorso ]
+  * xfrm: esp: avoid in-place decrypt on shared skb frags
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 07 May 2026 23:20:17 +0200
+
 linux (6.1.170-1) bookworm-security; urgency=high
 
   * New upstream stable update:
