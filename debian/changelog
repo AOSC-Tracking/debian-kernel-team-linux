@@ -1,4 +1,4 @@
-linux (6.12.86-1) UNRELEASED; urgency=medium
+linux (6.12.86-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.86
@@ -236,7 +236,7 @@ linux (6.12.86-1) UNRELEASED; urgency=medium
   * xfrm: esp: avoid in-place decrypt on shared skb frags
   * rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 02 May 2026 21:00:10 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 08 May 2026 08:54:02 +0200
 
 linux (6.12.85-1) trixie-security; urgency=high
 
