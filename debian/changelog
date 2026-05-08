@@ -1,4 +1,4 @@
-linux (7.0.4-1~bpo13+1) UNRELEASED; urgency=medium
+linux (7.0.4-1~bpo13+1) trixie-backports; urgency=medium
 
   * Rebuild for trixie-backports:
     - d/salsa-ci.yml: Set RELEASE to trixie-backports
@@ -6,7 +6,7 @@ linux (7.0.4-1~bpo13+1) UNRELEASED; urgency=medium
   * xfs: Enable XFS_SUPPORT_V4 so that v4 volumes keep working in trixie
     (Closes: #1126710)
 
- -- Ben Hutchings <benh@debian.org>  Sun, 03 May 2026 15:47:33 +0200
+ -- Ben Hutchings <benh@debian.org>  Fri, 08 May 2026 14:54:47 +0200
 
 linux (7.0.4-1) unstable; urgency=high
 
