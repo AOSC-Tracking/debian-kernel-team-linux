@@ -1,3 +1,10 @@
+linux (6.1.170-3) UNRELEASED; urgency=medium
+
+  * xfrm: esp: ipv4: fix up flags setting
+  * net: Fix icmp host relookup triggering ip_rt_bug (Closes: #1135514)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 08 May 2026 16:59:52 +0200
+
 linux (6.1.170-2) bookworm-security; urgency=high
 
   [ Ben Hutchings ]
