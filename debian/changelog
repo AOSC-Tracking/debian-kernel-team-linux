@@ -1,3 +1,30 @@
+linux-6.1 (6.1.170-3~deb11u1) bullseye-security; urgency=high
+
+  * Rebuild for bullseye
+
+ -- Ben Hutchings <benh@debian.org>  Sat, 09 May 2026 09:02:21 +0200
+
+linux (6.1.170-3) bookworm-security; urgency=high
+
+  * xfrm: esp: ipv4: fix up flags setting
+  * net: Fix icmp host relookup triggering ip_rt_bug (Closes: #1135514)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 08 May 2026 21:59:49 +0200
+
+linux (6.1.170-2) bookworm-security; urgency=high
+
+  [ Ben Hutchings ]
+  * rxrpc: input: Open-code skb_unshare()
+  * rxrpc: Fix conn-level packet handling to unshare RESPONSE packets
+  * rxrpc: Also unshare DATA/RESPONSE packets when paged frags are present
+
+  [ Salvatore Bonaccorso ]
+  * xfrm: esp: avoid in-place decrypt on shared skb frags
+  * Revert "wifi: cfg80211: stop NAN and P2P in cfg80211_leave"
+    (Closes: #1135599)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 08 May 2026 14:16:54 +0200
+
 linux-6.1 (6.1.170-1~deb11u1) bullseye-security; urgency=high
 
   [ Ben Hutchings ]
