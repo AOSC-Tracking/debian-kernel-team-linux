@@ -90,8 +90,6 @@ features/all/db-mok-keyring/KEYS-Make-use-of-platform-keyring-for-module-signatu
 features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 
 # Security fixes
-bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
-bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
