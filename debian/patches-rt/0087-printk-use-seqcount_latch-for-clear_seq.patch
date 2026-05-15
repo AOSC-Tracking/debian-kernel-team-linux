@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:41:58 +0106
 Subject: [PATCH 087/328] printk: use seqcount_latch for clear_seq
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4db98d200b53de54e7c8a1218647896302548d62
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1a6be97f936f3d99e20b650174cc7aab8d274c1b
 
 kmsg_dump_rewind_nolock() locklessly reads @clear_seq. However,
 this is not done atomically. Since @clear_seq is 64-bit, this

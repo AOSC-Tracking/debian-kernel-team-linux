@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:03 +0200
 Subject: [PATCH 006/328] workqueue: Manually break affinity on hotplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4867f41f72c4190d0b1902864c6023c24a744322
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7190646e1b2c615ee5186f18d93d072ce7bf3934
 
 Don't rely on the scheduler to force break affinity for us -- it will
 stop doing that for per-cpu-kthreads.

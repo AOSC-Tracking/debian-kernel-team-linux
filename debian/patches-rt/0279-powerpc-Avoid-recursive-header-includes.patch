@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 8 Jan 2021 19:48:21 +0100
 Subject: [PATCH 279/328] powerpc: Avoid recursive header includes
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3bd955e7f0260501f958f7cbc6e9ede089083f59
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0c1a809f62a78c33ca8f9b410d99d69c21e8dd3d
 
 - The include of bug.h leads to an include of printk.h which gets back
   to spinlock.h and complains then about missing xchg().

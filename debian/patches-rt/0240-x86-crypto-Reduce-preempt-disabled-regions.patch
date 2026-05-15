@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Mon, 14 Nov 2011 18:19:27 +0100
 Subject: [PATCH 240/328] x86: crypto: Reduce preempt disabled regions
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6eeb89844d421c6186e95fdfb418867f16fcb2da
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=507aed4947e16fb8578cbfd2ff4491418fd4f5f1
 
 Restrict the preempt disabled regions to the actual floating point
 operations and enable preemption for the administrative actions.

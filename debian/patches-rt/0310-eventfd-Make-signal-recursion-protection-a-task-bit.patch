@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 17 Dec 2021 11:32:09 +0100
 Subject: [PATCH 310/328] eventfd: Make signal recursion protection a task bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=619116b5c3baa8fa8a73a0e0237e8e0b44405981
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=45b9498f6e0a3d4b0238702f5399016b651b5dc0
 
 Upstream commit b542e383d8c005f06a131e2b40d5889b812f19c6
 

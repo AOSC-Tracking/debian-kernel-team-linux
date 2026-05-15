@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:08 +0100
 Subject: [PATCH 114/328] parisc: Remove bogus __IRQ_STAT macro
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=564e9932dca9c78b9d9a335e2c66a112256fdaa7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0964e2d1fc7c9f050d80768813c3a5fc61cdb75c
 
 This is a leftover from a historical array based implementation and unused.
 

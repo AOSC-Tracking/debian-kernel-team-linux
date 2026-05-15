@@ -325,4 +325,4 @@
 0325-rt-fix-build-issue-in-at_hdmac.patch
 0326-rt-fix-build-issue-in-be2net.patch
 0327-ipv6-fix-a-BUG-in-rt6_get_pcpu_route-under-PREEMPT_R.patch
-0328-Linux-5.10.252-rt148-REBASE.patch
+0328-Linux-5.10.255-rt151-REBASE.patch

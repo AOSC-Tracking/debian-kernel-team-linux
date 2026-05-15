@@ -2,7 +2,7 @@ From: Oleg Nesterov <oleg@redhat.com>
 Date: Tue, 3 Nov 2020 12:39:01 +0100
 Subject: [PATCH 224/328] ptrace: fix ptrace_unfreeze_traced() race with
  rt-lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6a2683ecb0ad5bf79ba2c30bce364c0754748fa9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=33fa0108eeeb964fd0348b65e7358c555842d1a6
 
 The patch "ptrace: fix ptrace vs tasklist_lock race" changed
 ptrace_freeze_traced() to take task->saved_state into account, but

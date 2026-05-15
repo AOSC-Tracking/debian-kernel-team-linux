@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:55:56 +0100
 Subject: [PATCH 149/328] softirq: Make softirq control and processing RT aware
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=23fe085165de2d85fea9670462a5c31872c8bf65
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5b00d4dc436013172ba7f77e542cfed8ae0c2514
 
 Provide a local lock based serialization for soft interrupts on RT which
 allows the local_bh_disabled() sections and servicing soft interrupts to be

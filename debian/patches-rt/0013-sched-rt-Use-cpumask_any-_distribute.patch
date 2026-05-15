@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:10 +0200
 Subject: [PATCH 013/328] sched,rt: Use cpumask_any*_distribute()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=911cfc3c49a465fadc836b6ac4dc44a4d6360872
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=64f1c56169ab620beef073034cce980db3b56c3d
 
 Replace a bunch of cpumask_any*() instances with
 cpumask_any*_distribute(), by injecting this little bit of random in

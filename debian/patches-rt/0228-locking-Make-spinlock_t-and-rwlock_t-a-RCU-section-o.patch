@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 19 Nov 2019 09:25:04 +0100
 Subject: [PATCH 228/328] locking: Make spinlock_t and rwlock_t a RCU section
  on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4a121f3f561a12a279bd6f84c97210ada65f9f5d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1ab312cefa9796e5053aedc9f8b1abf0b31ed0c4
 
 On !RT a locked spinlock_t and rwlock_t disables preemption which
 implies a RCU read section. There is code that relies on that behaviour.

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:11:19 +0200
 Subject: [PATCH 170/328] locking/rtmutex: add sleeping lock implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=324f02db98bc3ed8aad8c84125ca241875eb2054
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5e90b461dd5ea672a6305cbf6be430464704e794
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -368,7 +368,7 @@ index 000000000000..446da786e5d5
 +
 +#endif
 diff --git a/kernel/futex/core.c b/kernel/futex/core.c
-index 706cd446ec71..909dcd708a52 100644
+index 68b1ec649ebd..d1a890e421db 100644
 --- a/kernel/futex/core.c
 +++ b/kernel/futex/core.c
 @@ -1508,6 +1508,7 @@ static int wake_futex_pi(u32 __user *uaddr, u32 uval, struct futex_pi_state *pi_
@@ -397,7 +397,7 @@ index 706cd446ec71..909dcd708a52 100644
  
  	return ret;
  }
-@@ -2867,7 +2869,7 @@ static int futex_lock_pi(u32 __user *uaddr, unsigned int flags,
+@@ -2868,7 +2870,7 @@ static int futex_lock_pi(u32 __user *uaddr, unsigned int flags,
  		goto no_block;
  	}
  
@@ -406,7 +406,7 @@ index 706cd446ec71..909dcd708a52 100644
  
  	/*
  	 * On PREEMPT_RT_FULL, when hb->lock becomes an rt_mutex, we must not
-@@ -3213,7 +3215,7 @@ static int futex_wait_requeue_pi(u32 __user *uaddr, unsigned int flags,
+@@ -3214,7 +3216,7 @@ static int futex_wait_requeue_pi(u32 __user *uaddr, unsigned int flags,
  	 * The waiter is allocated on our stack, manipulated by the requeue
  	 * code while we sleep on uaddr.
  	 */

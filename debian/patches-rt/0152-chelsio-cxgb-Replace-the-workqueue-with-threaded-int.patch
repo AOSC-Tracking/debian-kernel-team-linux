@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 2 Feb 2021 18:01:03 +0100
 Subject: [PATCH 152/328] chelsio: cxgb: Replace the workqueue with threaded
  interrupt
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1a1dac4bfd00db0e25b24d94f9eccb762db00d60
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=96cd42d0076d63233ce25805b5cbd1c5d31db936
 
 The external interrupt (F_PL_INTR_EXT) needs to be handled in a process
 context and this is accomplished by utilizing a workqueue.

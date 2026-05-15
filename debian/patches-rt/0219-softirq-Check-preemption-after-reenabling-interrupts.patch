@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 13 Nov 2011 17:17:09 +0100
 Subject: [PATCH 219/328] softirq: Check preemption after reenabling interrupts
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bea9cb34ed7e22fda9328ddaf55e3c9dabc3ccef
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2f578c5527dae46b0a922f2f6787baba42f890b4
 
 raise_softirq_irqoff() disables interrupts and wakes the softirq
 daemon, but after reenabling interrupts there is no preemption check,
@@ -87,7 +87,7 @@ index 2f17b488d58e..7557bf7ecf1f 100644
  	return 0;
  }
 diff --git a/net/core/dev.c b/net/core/dev.c
-index ab0b7df70351..1b32471a1335 100644
+index 9e1e87536c1e..42402ad2bf85 100644
 --- a/net/core/dev.c
 +++ b/net/core/dev.c
 @@ -3052,6 +3052,7 @@ static void __netif_reschedule(struct Qdisc *q)

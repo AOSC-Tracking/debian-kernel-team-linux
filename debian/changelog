@@ -808,7 +808,7 @@ linux (5.10.256-1) UNRELEASED; urgency=medium
       op cache
 
   [ Ben Hutchings ]
-  * [rt] Update to 5.10.252-rt148:
+  * [rt] Update to 5.10.255-rt151:
     - ipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT
 
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100

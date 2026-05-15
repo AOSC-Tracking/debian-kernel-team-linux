@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
-Date: Wed, 8 Apr 2026 15:54:36 -0300
-Subject: [PATCH 328/328] Linux 5.10.252-rt148 REBASE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=49df9432b0a37b51ac234c99c3e33887796f40d3
+Date: Fri, 8 May 2026 16:01:46 -0300
+Subject: [PATCH 328/328] Linux 5.10.255-rt151 REBASE
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2d22e6c557d8ca0a3bb7d2dec4fdd528c6a45cd0
 
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
 ---
@@ -9,9 +9,9 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/localversion-rt b/localversion-rt
-index 21988f9ad53f..857407b62668 100644
+index 21988f9ad53f..7c59c4689f8b 100644
 --- a/localversion-rt
 +++ b/localversion-rt
 @@ -1 +1 @@
 --rt34
-+-rt148
++-rt151

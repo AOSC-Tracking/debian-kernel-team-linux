@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 29 Sep 2020 16:32:49 +0200
 Subject: [PATCH 158/328] locking/rtmutex: Move rt_mutex_init() outside of
  CONFIG_DEBUG_RT_MUTEXES
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=085fc70d351ad2dafaa2de52fa3e40650aebaa6e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=212cb75206d236dcfde440383f94d0e06c3c50ec
 
 rt_mutex_init() only initializes lockdep if CONFIG_DEBUG_RT_MUTEXES is
 enabled. The static initializer (DEFINE_RT_MUTEX) does not have such a

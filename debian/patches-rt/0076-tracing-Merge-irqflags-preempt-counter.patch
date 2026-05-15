@@ -4,7 +4,7 @@ Subject: [PATCH 076/328] tracing: Merge irqflags + preempt counter.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2a9035b6e6d86f96fc740921aae64dd2c83bb534
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9c4c9ca4fb5eb2d728d343c93a6fe087c7a9f7a8
 
 The state of the interrupts (irqflags) and the preemption counter are
 both passed down to tracing_generic_entry_update(). Only one bit of
@@ -194,7 +194,7 @@ index ab912cc60760..a95a2027eefd 100644
  		}
  	}
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 8f4d6c974372..4963028768fa 100644
+index 5bcd4cbeeb4f..65c7249fe293 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
 @@ -177,7 +177,7 @@ static union trace_eval_map_item *trace_eval_maps;
@@ -933,7 +933,7 @@ index b3a863c10c0a..028150029a77 100644
  NOKPROBE_SYMBOL(perf_trace_buf_update);
  
 diff --git a/kernel/trace/trace_events.c b/kernel/trace/trace_events.c
-index da4a69e1929c..27ad90e41ff0 100644
+index b85045161562..b54ceab174a4 100644
 --- a/kernel/trace/trace_events.c
 +++ b/kernel/trace/trace_events.c
 @@ -259,22 +259,19 @@ void *trace_event_buffer_reserve(struct trace_event_buffer *fbuffer,
@@ -961,7 +961,7 @@ index da4a69e1929c..27ad90e41ff0 100644
  	if (!fbuffer->event)
  		return NULL;
  
-@@ -3713,12 +3710,11 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3734,12 +3731,11 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	struct trace_buffer *buffer;
  	struct ring_buffer_event *event;
  	struct ftrace_entry *entry;
@@ -976,7 +976,7 @@ index da4a69e1929c..27ad90e41ff0 100644
  	preempt_disable_notrace();
  	cpu = raw_smp_processor_id();
  	disabled = atomic_inc_return(&per_cpu(ftrace_test_event_disable, cpu));
-@@ -3726,11 +3722,9 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3747,11 +3743,9 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	if (disabled != 1)
  		goto out;
  
@@ -989,7 +989,7 @@ index da4a69e1929c..27ad90e41ff0 100644
  	if (!event)
  		goto out;
  	entry	= ring_buffer_event_data(event);
-@@ -3738,7 +3732,7 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
+@@ -3759,7 +3753,7 @@ function_test_events_call(unsigned long ip, unsigned long parent_ip,
  	entry->parent_ip		= parent_ip;
  
  	event_trigger_unlock_commit(&event_trace_file, buffer, event,

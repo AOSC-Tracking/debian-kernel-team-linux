@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 9 Mar 2021 09:42:09 +0100
 Subject: [PATCH 137/328] tasklets: Replace spin wait in tasklet_kill()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=68be95de0e98c6e374501b97f6de4441ea38182d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dfe43b66c488c19e69396036d87d0fc2df920f24
 
 tasklet_kill() spin waits for TASKLET_STATE_SCHED to be cleared invoking
 yield() from inside the loop. yield() is an ill defined mechanism and the

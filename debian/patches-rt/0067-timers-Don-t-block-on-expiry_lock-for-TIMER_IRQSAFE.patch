@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 2 Nov 2020 14:14:24 +0100
 Subject: [PATCH 067/328] timers: Don't block on ->expiry_lock for
  TIMER_IRQSAFE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9ef52f755db42d680b3b64b952755d74f38c6356
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=254b13a30753c4237fcb9dcdbcbce5cc5f4eba69
 
 PREEMPT_RT does not spin and wait until a running timer completes its
 callback but instead it blocks on a sleeping lock to prevent a deadlock.

@@ -2,7 +2,7 @@ From: Mike Galbraith <umgwanakikbuti@gmail.com>
 Date: Sat, 27 Feb 2016 09:01:42 +0100
 Subject: [PATCH 251/328] drm/i915: Don't disable interrupts on PREEMPT_RT
  during atomic updates
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f92de50ad1542840f8e8e223f272d5b81e6a6386
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fcd479d16a2e4d9d0d9110c835d5c479f8fa84a1
 
 Commit
    8d7849db3eab7 ("drm/i915: Make sprite updates atomic")

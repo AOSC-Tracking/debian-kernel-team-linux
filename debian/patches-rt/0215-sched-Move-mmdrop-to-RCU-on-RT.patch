@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 6 Jun 2011 12:20:33 +0200
 Subject: [PATCH 215/328] sched: Move mmdrop to RCU on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fbd1fc140d527f32681878a77272df1066971f16
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0f4128f00525f9ea57dc565c0bf9eed10fa9380a
 
 Takes sleeping locks and calls into the memory allocator, so nothing
 we want to do in task switch and oder atomic contexts.
@@ -15,7 +15,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  4 files changed, 34 insertions(+), 1 deletion(-)
 
 diff --git a/include/linux/mm_types.h b/include/linux/mm_types.h
-index b6cf570dc98c..e7c3821ffd19 100644
+index 00a85b64e524..7cccd25d3c37 100644
 --- a/include/linux/mm_types.h
 +++ b/include/linux/mm_types.h
 @@ -12,6 +12,7 @@
@@ -59,7 +59,7 @@ index a856c4478d8c..e75e28b453b2 100644
   * mmget() - Pin the address space associated with a &struct mm_struct.
   * @mm: The address space to pin.
 diff --git a/kernel/fork.c b/kernel/fork.c
-index 310d63e2b4d0..41b4f8804c62 100644
+index 82c88ad657ef..1a5e4f4984b1 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
 @@ -691,6 +691,19 @@ void __mmdrop(struct mm_struct *mm)

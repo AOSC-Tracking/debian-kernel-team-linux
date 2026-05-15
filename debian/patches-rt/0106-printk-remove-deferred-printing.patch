@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:08 +0106
 Subject: [PATCH 106/328] printk: remove deferred printing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6284aedf99dbf383fb922d01509cf365e83ca240
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b21e8e0afefad682ac2fc6cb23e6ac8c776eb4c4
 
 Since printing occurs either atomically or from the printing
 kthread, there is no need for any deferring or tracking possible
@@ -407,7 +407,7 @@ index c23b127a6545..000000000000
 -	return vprintk_default(fmt, args);
 -}
 diff --git a/kernel/trace/trace.c b/kernel/trace/trace.c
-index 29d48636e317..e354eabf8095 100644
+index 0ef7e71ca3d4..990ba3dda057 100644
 --- a/kernel/trace/trace.c
 +++ b/kernel/trace/trace.c
 @@ -9539,7 +9539,6 @@ void ftrace_dump(enum ftrace_dump_mode oops_dump_mode)

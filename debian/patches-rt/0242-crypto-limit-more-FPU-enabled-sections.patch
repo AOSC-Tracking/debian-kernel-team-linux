@@ -4,7 +4,7 @@ Subject: [PATCH 242/328] crypto: limit more FPU-enabled sections
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f154bafe4e4d769398fa4651db68eabdeb9e3163
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a38019d401969d9170bd6fc7abb2f011d4b02e17
 
 Those crypto drivers use SSE/AVX/… for their crypto work and in order to
 do so in kernel they need to enable the "FPU" in kernel mode which

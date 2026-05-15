@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:17 +0100
 Subject: [PATCH 028/328] asm-generic: Provide kmap_size.h
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=005b7ff9779d70fd5905e8905d2f5a44c0c37ca8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=03b628644e47111fb9dcafe50f06fc6e7685da07
 
 kmap_types.h is a misnomer because the old atomic MAP based array does not
 exist anymore and the whole indirection of architectures including
