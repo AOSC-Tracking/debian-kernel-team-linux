@@ -805,6 +805,12 @@ linux (5.10.254-1) UNRELEASED; urgency=medium
 
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 
+linux (5.10.251-5) bullseye-security; urgency=medium
+
+  * ptrace: slightly saner 'get_dumpable()' logic
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 15 May 2026 12:09:08 +0200
+
 linux (5.10.251-4) bullseye-security; urgency=high
 
   * rxrpc: input: Open-code skb_unshare()
