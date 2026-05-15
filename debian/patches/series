@@ -146,6 +146,7 @@ bugfix/all/rxrpc-input-Open-code-skb_unshare.patch
 bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
 bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
 bugfix/all/xfrm-esp-avoid-in-place-decrypt-on-shared-skb-frags.patch
+bugfix/all/ptrace-slightly-saner-get_dumpable-logic.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch

@@ -1,3 +1,9 @@
+linux (5.10.251-5) bullseye-security; urgency=medium
+
+  * ptrace: slightly saner 'get_dumpable()' logic
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 15 May 2026 12:09:08 +0200
+
 linux (5.10.251-4) bullseye-security; urgency=high
 
   * rxrpc: input: Open-code skb_unshare()
