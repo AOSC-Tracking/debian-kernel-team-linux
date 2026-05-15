@@ -1,3 +1,16 @@
+linux (6.1.173-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.173
+    - [amd64] x86/CPU/AMD: Add ZenX generations flags
+    - [amd64] x86/CPU/AMD: Call the spectral chicken in the Zen2 init function
+    - [amd64] x86/CPU/AMD: Rename init_amd_zn() to init_amd_zen_common()
+    - [amd64] x86/CPU/AMD: Add X86_FEATURE_ZEN1
+    - [amd64] x86/CPU/AMD: Prevent improper isolation of shared resources in
+      Zen2's op cache
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 15 May 2026 16:50:22 +0200
+
 linux (6.1.172-1) bookworm-security; urgency=high
 
   * New upstream stable update:
