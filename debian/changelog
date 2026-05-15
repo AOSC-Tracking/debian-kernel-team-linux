@@ -1,4 +1,4 @@
-linux (5.10.254-1) UNRELEASED; urgency=medium
+linux (5.10.256-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.252
@@ -798,6 +798,14 @@ linux (5.10.254-1) UNRELEASED; urgency=medium
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.254
     - xen/privcmd: fix double free via VMA splitting (CVE-2026-31787)
     - Buffer overflow in drivers/xen/sys-hypervisor.c (CVE-2026-31786)
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.255
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.256
+    - [x86] CPU/AMD: Add ZenX generations flags
+    - [x86] CPU/AMD: Call the spectral chicken in the Zen2 init function
+    - [x86] CPU/AMD: Rename init_amd_zn() to init_amd_zen_common()
+    - [x86] CPU/AMD: Add X86_FEATURE_ZEN1
+    - [x86] CPU/AMD: Prevent improper isolation of shared resources in Zen2's
+      op cache
 
   [ Ben Hutchings ]
   * [rt] Update to 5.10.252-rt148:
