@@ -1,4 +1,4 @@
-linux (6.1.172-1) UNRELEASED; urgency=medium
+linux (6.1.172-1) bookworm-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.171
@@ -7,7 +7,7 @@ linux (6.1.172-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * ptrace: slightly saner 'get_dumpable()' logic
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 09 May 2026 14:30:42 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 15 May 2026 11:58:29 +0200
 
 linux (6.1.170-3) bookworm-security; urgency=high
 
