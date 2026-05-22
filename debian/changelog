@@ -1,6 +1,8 @@
 linux (6.12.88-2) UNRELEASED; urgency=medium
 
   * Bluetooth: btmtk: accept too short WMT FUNC_CTRL events (Closes: #1136790)
+  * net: skbuff: preserve shared-frag marker during coalescing (CVE-2026-46300)
+  * net: skbuff: propagate shared-frag marker through frag-transfer helpers
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 21 May 2026 21:00:54 +0200
 
