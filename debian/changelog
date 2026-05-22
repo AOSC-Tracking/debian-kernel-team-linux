@@ -1,4 +1,4 @@
-linux (6.12.90-1) UNRELEASED; urgency=medium
+linux (6.12.90-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.89
@@ -96,7 +96,7 @@ linux (6.12.90-1) UNRELEASED; urgency=medium
   * net: skbuff: preserve shared-frag marker during coalescing (CVE-2026-46300)
   * net: skbuff: propagate shared-frag marker through frag-transfer helpers
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 21 May 2026 21:00:54 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 22 May 2026 21:01:16 +0200
 
 linux (6.12.88-1) trixie-security; urgency=high
 
