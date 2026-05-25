@@ -1,3 +1,109 @@
+linux (6.12.90-1~bpo12+1) bookworm-backports; urgency=high
+
+  * Rebuild for bookworm-backports
+
+ -- Ben Hutchings <benh@debian.org>  Mon, 25 May 2026 21:09:08 +0200
+
+linux (6.12.90-1) trixie-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.89
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.90
+    - HID: playstation: Clamp num_touch_reports
+    - media: uvcvideo: Enable VB2_DMABUF for metadata stream
+    - [arm64] dts: lx2160a-cex7/lx2162a-sr-som: fix usd-cd & gpio pinmux
+    - [arm64] regulator: mt6357: fix OF node reference imbalance
+    - [arm64,armhf] regulator: rk808: fix OF node reference imbalance
+    - media: videobuf2: Set vma_flags in vb2_dma_sg_mmap
+    - [amd64] media: intel/ipu6: fix error pointer dereference
+    - media: saa7164: add ioremap return checks and cleanups
+    - spi: aspeed-smc: fix controller deregistration
+    - [amd64] platform/x86: hp-wmi: Ignore backlight and FnLock events
+    - vsock/virtio: fix MSG_PEEK ignoring skb offset when calculating bytes to
+      copy
+    - [arm64] drm/msm/gem: fix error handling in
+      msm_ioctl_gem_info_get_metadata()
+    - [amd64] drm/i915/psr: Init variable to avoid early exit from et alignment
+      loop
+    - drm/amdkfd: Clear VRAM on allocation to prevent stale data exposure
+    - drm/amdgpu: Use SMUIO 15.0.0 offsets for TSC upper and lower count.
+    - drm/amdgpu: gate VM CPU HDP flush on reset lock
+    - drm/amd/pm: fix incorrect FeatureCtrlMask setting on smu v14.0.x
+    - drm/amdkfd: Add upper bound check for num_of_nodes
+    - drm/amdgpu: Add bounds checking to ib_{get,set}_value
+    - drm/amdgpu/vcn4: Prevent OOB reads when parsing IB
+    - drm/amdgpu/vce: Prevent partial address patches
+    - drm/amdgpu/vcn4: Prevent OOB reads when parsing dec msg
+    - drm/amdgpu/vcn3: Prevent OOB reads when parsing dec msg
+    - drm/amd/display: Change dither policy for 10 bpc output back to dithering
+    - drm/gem: Fix inconsistent plane dimension calculation in
+      drm_gem_fb_init_with_funcs()
+    - drm/amdkfd: validate SVM ioctl nattr against buffer size
+    - drm/xe/bo: Fix bo leak on GGTT flag validation in xe_bo_init_locked()
+    - drm/xe: Fix dma-buf attachment leak in xe_gem_prime_import()
+    - drm/xe/bo: Fix bo leak on unaligned size validation in xe_bo_init_locked()
+    - drm/radeon: add missing revision check for CI
+    - drm/amdgpu: zero-initialize GART table on allocation
+    - drm/panel: himax-hx83102: restore MODE_LPM after sending disable cmds
+    - drm/amdgpu/gfx9: drop unnecessary 64-bit fence flag check in KIQ
+    - drm/panel: boe-tv101wum-nl6: restore MODE_LPM after sending disable cmds
+    - drm/amdkfd: Make all TLB-flushes heavy-weight
+    - drm/amdgpu/sdma4: replace BUG_ON with WARN_ON in fence emission
+    - drm/amdgpu/pm: add missing revision check for CI
+    - drm/amdgpu/pm: align Hawaii mclk workaround with radeon
+    - [arm64] dts: ti: k3-am62a7-sk: Fix pin name in comment from M19 to N22
+    - sctp: revalidate list cursor after sctp_sendmsg_to_asoc() in SCTP_SENDALL
+    - batman-adv: fix integer overflow on buff_pos
+    - batman-adv: reject new tp_meter sessions during teardown
+    - batman-adv: stop caching unowned originator pointers in BAT IV
+    - batman-adv: bla: prevent use-after-free when deleting claims
+    - batman-adv: bla: only purge non-released claims
+    - batman-adv: bla: put backbone reference on failed claim hash insert
+    - usb: typec: tcpm: reset internal port states on soft reset AMS
+    - usb: dwc3: Move GUID programming after PHY initialization
+    - ALSA: hda: cs35l56: Propagate ASP TX source control errors
+    - ALSA: misc: Use guard() for spin locks
+    - ALSA: core: Serialize deferred fasync state checks
+    - ALSA: seq: Notify client and port info changes
+    - ALSA: seq: Fix UMP group 16 filtering
+    - Bluetooth: hci_conn: fix potential UAF in create_big_sync
+    - [arm64,armhf] spi: tegra20-sflash: fix controller deregistration
+    - [arm64,armhf] spi: tegra114: fix controller deregistration
+    - mm/hugetlb_cma: round up per_node before logging it
+    - block: cleanup blkdev_report_zones()
+    - block: reorganize struct blk_zone_wplug
+    - block: fix zone write plug removal
+    - tracefs: Fix default permissions not being applied on initial mount
+    - fbcon: Avoid OOB font access if console rotation fails
+    - mm/damon/core: disallow time-quota setting zero esz
+    - mm/damon/core: implement damon_kdamond_pid()
+    - mm/damon/lru_sort: detect and use fresh enabled and kdamond_pid values
+    - mm/damon/reclaim: detect and use fresh enabled and kdamond_pid values
+    - bonding: fix use-after-free due to enslave fail after slave array update
+      (CVE-2026-23171)
+    - io_uring/kbuf: support min length left for incremental buffers
+    - Bluetooth: L2CAP: Fix null-ptr-deref in l2cap_sock_get_sndtimeo_cb()
+    - btrfs: remove fs_info argument from btrfs_sysfs_add_space_info_type()
+    - btrfs: fix double free in create_space_info_sub_group() error path
+    - btrfs: fix btrfs_ioctl_space_info() slot_count TOCTOU which can lead to
+      info-leak
+    - tracing/probes: Limit size of event probe to 3K
+    - batman-adv: stop tp_meter sessions during mesh teardown
+    - batman-adv: tp_meter: fix tp_num leak on kmalloc failure
+    - vsock: fix buffer size clamping order
+    - vsock/virtio: fix length and offset in tap skb for split packets
+    - vsock/virtio: fix empty payload in tap skb for non-linear buffers
+    - vsock/virtio: fix accept queue count leak on transport mismatch
+    - drm/amdgpu/vcn3: Avoid overflow on msg bound check
+    - drm/amdgpu/vcn4: Avoid overflow on msg bound check
+
+  [ Salvatore Bonaccorso ]
+  * Bluetooth: btmtk: accept too short WMT FUNC_CTRL events (Closes: #1136790)
+  * net: skbuff: preserve shared-frag marker during coalescing (CVE-2026-46300)
+  * net: skbuff: propagate shared-frag marker through frag-transfer helpers
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 22 May 2026 21:01:16 +0200
+
 linux (6.12.88-1~bpo12+1) bookworm-backports; urgency=high
 
   * Rebuild for bookworm-backports

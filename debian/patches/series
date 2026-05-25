@@ -75,6 +75,7 @@ features/x86/x86-make-x32-syscall-support-conditional.patch
 bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/documentation-use-relative-source-paths-in-abi-documentation.patch
+bugfix/all/Bluetooth-btmtk-accept-too-short-WMT-FUNC_CTRL-event.patch
 
 # Miscellaneous features
 
@@ -90,7 +91,8 @@ features/all/db-mok-keyring/KEYS-Make-use-of-platform-keyring-for-module-signatu
 features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 
 # Security fixes
-bugfix/all/ptrace-slightly-saner-get_dumpable-logic.patch
+bugfix/all/net-skbuff-preserve-shared-frag-marker-during-coales.patch
+bugfix/all/net-skbuff-propagate-shared-frag-marker-through-frag.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
