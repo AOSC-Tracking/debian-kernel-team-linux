@@ -221,10 +221,11 @@ class Gencontrol(Base):
                     self.templates.get('signed.source.lintian-overrides'), vars))
 
             with bundle_signed.open('changelog.head', 'w') as f:
+                name = bundle_signed.source.name
                 dist = self.changelog[0].distribution
                 urgency = self.changelog[0].urgency
                 f.write(f'''\
-linux-signed{vars['source_suffix']}-{vars['arch']} (@signedtemplate_sourceversion@) {dist}; urgency={urgency}
+{name} (@signedtemplate_sourceversion@) {dist}; urgency={urgency}
 
   * Sign kernel from {self.changelog[0].source} @signedtemplate_binaryversion@
 ''')
