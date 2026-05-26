@@ -14,6 +14,9 @@ linux (6.1.174-1) UNRELEASED; urgency=medium
     - net: skbuff: propagate shared-frag marker through frag-transfer helpers
       (CVE-2026-43503)
 
+  [ Salvatore Bonaccorso ]
+  * smb: client: reject userspace cifs.spnego descriptions
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 15 May 2026 16:50:22 +0200
 
 linux (6.1.172-1) bookworm-security; urgency=high
