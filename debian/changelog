@@ -816,6 +816,9 @@ linux (5.10.257-1) UNRELEASED; urgency=medium
   * [rt] Update to 5.10.255-rt151:
     - ipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT
 
+  [ Salvatore Bonaccorso ]
+  * smb: client: reject userspace cifs.spnego descriptions
+
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 
 linux (5.10.251-5) bullseye-security; urgency=medium

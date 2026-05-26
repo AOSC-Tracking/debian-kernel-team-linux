@@ -120,6 +120,7 @@ bugfix/all/qsa-2026-apparmor/0003-apparmor-validate-DFA-start-states-are-in-boun
 bugfix/all/rxrpc-input-Open-code-skb_unshare.patch
 bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
 bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
+bugfix/all/smb-client-reject-userspace-cifs.spnego-descriptions.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
