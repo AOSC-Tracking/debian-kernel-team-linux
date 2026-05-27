@@ -820,6 +820,8 @@ linux (5.10.257-1) UNRELEASED; urgency=medium
   * [x86] CPU/AMD: Move the Zen3 BTC_NO detection to the Zen3 init function
   * Revert "io_uring/poll: correctly handle io_poll_add() return value on
     update"
+  * net: usb: lan78xx: Fix double free issue with interrupt buffer allocation
+    (CVE-2024-53213)
 
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 

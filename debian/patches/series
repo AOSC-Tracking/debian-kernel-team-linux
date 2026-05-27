@@ -125,6 +125,7 @@ bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
 bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
 bugfix/all/revert-rdma-rxe-fix-double-free-in-rxe_srq_from_init.patch
 bugfix/all/rdma-rxe-fix-double-free-in-rxe_srq_from_init.patch
+bugfix/all/net-usb-lan78xx-Fix-double-free-issue-with-interrupt.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
