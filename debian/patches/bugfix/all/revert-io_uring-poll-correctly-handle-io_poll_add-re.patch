@@ -1,0 +1,78 @@
+From: Ben Hutchings <benh@debian.org>
+Date: Wed, 27 May 2026 14:06:59 +0200
+Subject: Revert "io_uring/poll: correctly handle io_poll_add() return value on update"
+
+This reverts commit 0552937a82e32acc0d9b9485b35b5d359996ae86, which
+was commit 84230ad2d2afbf0c44c32967e525c0ad92e26b4e upstream.  Further
+changes are needed to correctly backport the fix.
+---
+ io_uring/io_uring.c | 26 +++++++-------------------
+ 1 file changed, 7 insertions(+), 19 deletions(-)
+
+diff --git a/io_uring/io_uring.c b/io_uring/io_uring.c
+index dea1fb22c0ef..a5b3735ed420 100644
+--- a/io_uring/io_uring.c
++++ b/io_uring/io_uring.c
+@@ -5980,7 +5980,7 @@ static int io_poll_add_prep(struct io_kiocb *req, const struct io_uring_sqe *sqe
+ 	return 0;
+ }
+ 
+-static int __io_poll_add(struct io_kiocb *req, unsigned int issue_flags)
++static int io_poll_add(struct io_kiocb *req, unsigned int issue_flags)
+ {
+ 	struct io_poll_iocb *poll = &req->poll;
+ 	struct io_poll_table ipt;
+@@ -5992,21 +5992,11 @@ static int __io_poll_add(struct io_kiocb *req, unsigned int issue_flags)
+ 	if (!ret && ipt.error)
+ 		req_set_fail(req);
+ 	ret = ret ?: ipt.error;
+-	if (ret > 0) {
++	if (ret)
+ 		__io_req_complete(req, issue_flags, ret, 0);
+-		return ret;
+-	}
+ 	return 0;
+ }
+ 
+-static int io_poll_add(struct io_kiocb *req, unsigned int issue_flags)
+-{
+-	int ret;
+-
+-	ret = __io_poll_add(req, issue_flags);
+-	return ret < 0 ? ret : 0;
+-}
+-
+ static int io_poll_update(struct io_kiocb *req, unsigned int issue_flags)
+ {
+ 	struct io_ring_ctx *ctx = req->ctx;
+@@ -6022,7 +6012,6 @@ static int io_poll_update(struct io_kiocb *req, unsigned int issue_flags)
+ 		ret = preq ? -EALREADY : -ENOENT;
+ 		goto out;
+ 	}
+-	preq->result = -ECANCELED;
+ 	spin_unlock(&ctx->completion_lock);
+ 
+ 	if (req->poll_update.update_events || req->poll_update.update_user_data) {
+@@ -6035,17 +6024,16 @@ static int io_poll_update(struct io_kiocb *req, unsigned int issue_flags)
+ 		if (req->poll_update.update_user_data)
+ 			preq->user_data = req->poll_update.new_user_data;
+ 
+-		ret2 = __io_poll_add(preq, issue_flags);
++		ret2 = io_poll_add(preq, issue_flags);
+ 		/* successfully updated, don't complete poll request */
+ 		if (!ret2)
+ 			goto out;
+-		preq->result = ret2;
+-
+ 	}
+-	if (preq->result < 0)
+-		req_set_fail(preq);
+-	io_req_complete(preq, preq->result);
++	req_set_fail(preq);
++	io_req_complete(preq, -ECANCELED);
+ out:
++	if (ret < 0)
++		req_set_fail(req);
+ 	/* complete update request, we're done with it */
+ 	io_req_complete(req, ret);
+ 	io_ring_submit_unlock(ctx, !(issue_flags & IO_URING_F_NONBLOCK));
