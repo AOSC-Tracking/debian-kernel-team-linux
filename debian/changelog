@@ -823,6 +823,9 @@ linux (5.10.257-1) UNRELEASED; urgency=medium
   * net: usb: lan78xx: Fix double free issue with interrupt buffer allocation
     (CVE-2024-53213)
 
+  [ Salvatore Bonaccorso ]
+  * smb: client: reject userspace cifs.spnego descriptions
+
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 
 linux (5.10.251-5) bullseye-security; urgency=medium
