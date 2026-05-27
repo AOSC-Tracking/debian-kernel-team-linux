@@ -817,6 +817,7 @@ linux (5.10.257-1) UNRELEASED; urgency=medium
     - ipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT
   * Redo backport of "RDMA/rxe: Fix double free in rxe_srq_from_init"
   * [armhf] fbdev: vt8500lcdfb: Fix dma_free_coherent() cpu_addr parameter
+  * [x86] CPU/AMD: Move the Zen3 BTC_NO detection to the Zen3 init function
 
  -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
 

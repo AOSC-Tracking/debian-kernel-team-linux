@@ -76,6 +76,7 @@ bugfix/arm64/arm64-acpi-Add-fixup-for-HPE-m400-quirks.patch
 bugfix/x86/x86-32-disable-3dnow-in-generic-config.patch
 bugfix/x86/platform-x86-toshiba_haps-Fix-missing-newline-in-pr_.patch
 bugfix/arm/fbdev-vt8500lcdfb-fix-dma_free_coherent-cpu_addr-par.patch
+bugfix/x86/x86-cpu-amd-move-the-zen3-btc_no-detection-to-the-ze.patch
 
 # Arch features
 features/arm64/arm64-dts-rockchip-Add-basic-support-for-Kobol-s-Hel.patch
