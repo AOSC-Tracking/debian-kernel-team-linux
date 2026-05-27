@@ -1,3 +1,30 @@
+linux-6.1 (6.1.174-1~deb11u1) bullseye-security; urgency=high
+
+  * Rebuild for bullseye
+
+ -- Ben Hutchings <benh@debian.org>  Wed, 27 May 2026 19:31:42 +0200
+
+linux (6.1.174-1) bookworm-security; urgency=high
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.173
+    - [amd64] x86/CPU/AMD: Add ZenX generations flags
+    - [amd64] x86/CPU/AMD: Call the spectral chicken in the Zen2 init function
+    - [amd64] x86/CPU/AMD: Rename init_amd_zn() to init_amd_zen_common()
+    - [amd64] x86/CPU/AMD: Add X86_FEATURE_ZEN1
+    - [amd64] x86/CPU/AMD: Prevent improper isolation of shared resources in
+      Zen2's op cache
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.174
+    - net: skbuff: preserve shared-frag marker during coalescing
+      (CVE-2026-46300)
+    - net: skbuff: propagate shared-frag marker through frag-transfer helpers
+      (CVE-2026-43503)
+
+  [ Salvatore Bonaccorso ]
+  * smb: client: reject userspace cifs.spnego descriptions
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Tue, 26 May 2026 23:29:19 +0200
+
 linux-6.1 (6.1.172-1~deb11u1) bullseye-security; urgency=high
 
   * Rebuild for bullseye
