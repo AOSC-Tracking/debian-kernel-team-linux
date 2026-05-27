@@ -1,4 +1,4 @@
-linux (5.10.257-1) UNRELEASED; urgency=medium
+linux (5.10.257-1) bullseye-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.252
@@ -826,7 +826,7 @@ linux (5.10.257-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * smb: client: reject userspace cifs.spnego descriptions
 
- -- Ben Hutchings <benh@debian.org>  Thu, 06 Mar 2025 11:01:32 +0100
+ -- Ben Hutchings <benh@debian.org>  Wed, 27 May 2026 18:38:00 +0200
 
 linux (5.10.251-5) bullseye-security; urgency=medium
 
