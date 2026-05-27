@@ -1,0 +1,31 @@
+From: Ben Hutchings <benh@debian.org>
+Date: Fri, 27 Mar 2026 19:25:20 +0100
+Subject: fbdev: vt8500lcdfb: Fix dma_free_coherent() cpu_addr parameter
+
+Before commit 63a11adaceb8 "fbdev/vt8500lcdfb: Initialize fb_ops with
+fbdev macros", the virtual address of the screen buffer was stored in
+the fb_info::screen_base field and not fb_info::screen_buffer.  The
+backport of commit 88b3b9924337 ("fbdev: vt8500lcdfb: fix missing
+dma_free_coherent()") did not take that into account.
+
+Change the cpu_addr parameter to dma_free_coherent() accordingly.
+
+Fixes: 9a9bc60ed372 ("fbdev: vt8500lcdfb: fix missing dma_free_coherent()")
+Signed-off-by: Ben Hutchings <benh@debian.org>
+---
+ drivers/video/fbdev/vt8500lcdfb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/video/fbdev/vt8500lcdfb.c b/drivers/video/fbdev/vt8500lcdfb.c
+index ccd316aac467..1608d21a51ae 100644
+--- a/drivers/video/fbdev/vt8500lcdfb.c
++++ b/drivers/video/fbdev/vt8500lcdfb.c
+@@ -434,7 +434,7 @@ static int vt8500lcd_probe(struct platform_device *pdev)
+ 			  fbi->palette_cpu, fbi->palette_phys);
+ failed_free_mem_virt:
+ 	dma_free_coherent(&pdev->dev, fbi->fb.fix.smem_len,
+-			  fbi->fb.screen_buffer, fbi->fb.fix.smem_start);
++			  fbi->fb.screen_base, fbi->fb.fix.smem_start);
+ failed_free_io:
+ 	iounmap(fbi->regbase);
+ failed_free_res:
