@@ -1,3 +1,16 @@
+linux (6.12.90-2~bpo12+1) bookworm-backports; urgency=high
+
+  * Rebuild for bookworm-backports
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 28 May 2026 09:16:24 +0200
+
+linux (6.12.90-2) trixie-security; urgency=high
+
+  * smb: client: reject userspace cifs.spnego descriptions
+  * net/rds: reset op_nents when zerocopy page pin fails (CVE-2026-43494)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 27 May 2026 09:38:07 +0200
+
 linux (6.12.90-1~bpo12+1) bookworm-backports; urgency=high
 
   * Rebuild for bookworm-backports
