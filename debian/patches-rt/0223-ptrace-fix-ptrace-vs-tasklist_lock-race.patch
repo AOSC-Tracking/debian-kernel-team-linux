@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 29 Aug 2013 18:21:04 +0200
 Subject: [PATCH 223/328] ptrace: fix ptrace vs tasklist_lock race
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=182c28b0c59e65a891f4fe63bd284d3ff7deee20
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b1192bcaddd4bee6bd1b7869e3108c4b06cd1314
 
 As explained by Alexander Fyodorov <halcy@yandex.ru>:
 
@@ -30,7 +30,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  3 files changed, 68 insertions(+), 7 deletions(-)
 
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 63a62251155e..f743a4eac5e1 100644
+index e09536ab3843..a7b7e84a52bc 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -111,12 +111,8 @@ struct io_uring_task;
@@ -46,7 +46,7 @@ index 63a62251155e..f743a4eac5e1 100644
  #ifdef CONFIG_DEBUG_ATOMIC_SLEEP
  
  /*
-@@ -1885,6 +1881,51 @@ static inline int test_tsk_need_resched(struct task_struct *tsk)
+@@ -1888,6 +1884,51 @@ static inline int test_tsk_need_resched(struct task_struct *tsk)
  	return unlikely(test_tsk_thread_flag(tsk,TIF_NEED_RESCHED));
  }
  
@@ -99,7 +99,7 @@ index 63a62251155e..f743a4eac5e1 100644
   * cond_resched() and cond_resched_lock(): latency reduction via
   * explicit rescheduling in places that are safe. The return
 diff --git a/kernel/ptrace.c b/kernel/ptrace.c
-index aab480e24bd6..71acb6341e63 100644
+index fb21c2bf55c3..220978427233 100644
 --- a/kernel/ptrace.c
 +++ b/kernel/ptrace.c
 @@ -196,7 +196,14 @@ static bool ptrace_freeze_traced(struct task_struct *task)

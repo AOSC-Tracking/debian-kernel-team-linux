@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 9 Nov 2020 21:30:41 +0100
 Subject: [PATCH 068/328] kthread: Move prio/affinite change into the newly
  created thread
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5489827b7ea52e0600c1fe7684088accf430d8db
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a742eb90f039c237989ac6e2f7326cfc4d28158e
 
 With enabled threaded interrupts the nouveau driver reported the
 following:

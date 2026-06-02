@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 3 Jul 2009 08:44:56 -0500
 Subject: [PATCH 283/328] signals: Allow rt tasks to cache one sigqueue struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9d5a104f275d83dcfdcfd5447d1cd923da4b65c6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a5dcdb238866a088968673b58a53a260a5f4c3a8
 
 To avoid allocation allow rt tasks to cache one sigqueue struct in
 task struct.
@@ -16,10 +16,10 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  5 files changed, 69 insertions(+), 5 deletions(-)
 
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 831ea3595eaa..4203ed10ef87 100644
+index 8138a4dded28..99f8dd1b19c7 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -991,6 +991,7 @@ struct task_struct {
+@@ -994,6 +994,7 @@ struct task_struct {
  	/* Signal handlers: */
  	struct signal_struct		*signal;
  	struct sighand_struct __rcu		*sighand;
@@ -40,7 +40,7 @@ index b256f9c65661..ebf6c515a7b2 100644
  /* Test if 'sig' is valid signal. Use this instead of testing _NSIG directly */
  static inline int valid_signal(unsigned long sig)
 diff --git a/kernel/exit.c b/kernel/exit.c
-index cfdf2d275bba..1a16368a3d8d 100644
+index 99ab6d7a09ce..ae11230b3c64 100644
 --- a/kernel/exit.c
 +++ b/kernel/exit.c
 @@ -199,7 +199,7 @@ static void __exit_signal(struct task_struct *tsk)

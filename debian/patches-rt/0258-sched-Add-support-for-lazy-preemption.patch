@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
 Subject: [PATCH 258/328] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=80ac49f730f74dba03cede8e82252d7554d08dde
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bcc9c2a2f3037714bfa95906b206e5b600ea52d2
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -175,10 +175,10 @@ index e4f93d3a25c1..b21128758331 100644
  #endif /* CONFIG_SMP */
  
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index f743a4eac5e1..831ea3595eaa 100644
+index a7b7e84a52bc..8138a4dded28 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -1881,6 +1881,44 @@ static inline int test_tsk_need_resched(struct task_struct *tsk)
+@@ -1884,6 +1884,44 @@ static inline int test_tsk_need_resched(struct task_struct *tsk)
  	return unlikely(test_tsk_thread_flag(tsk,TIF_NEED_RESCHED));
  }
  

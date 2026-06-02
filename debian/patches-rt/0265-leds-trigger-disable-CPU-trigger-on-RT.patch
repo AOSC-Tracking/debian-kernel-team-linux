@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 23 Jan 2014 14:45:59 +0100
 Subject: [PATCH 265/328] leds: trigger: disable CPU trigger on -RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6d3798b08f689ce43b80da87af2f69686b03b22e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=03a3bcf4de99a177261cdbcd2f2fd078981010ff
 
 as it triggers:
 |CPU: 0 PID: 0 Comm: swapper Not tainted 3.12.8-rt10 #141

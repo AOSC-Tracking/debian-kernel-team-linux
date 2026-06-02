@@ -2,7 +2,7 @@ From: Anand Je Saipureddy <s.anandje1@gmail.com>
 Date: Sat, 23 Jul 2022 12:19:43 +0530
 Subject: [PATCH 315/328] ftrace: Fix improper usage of __trace_stack()
  function.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=40ed6a2665c3527f0fb8137dd5f646dbe9cb725b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=eb10f6029da48419a5b92643a5e8572deeb13bc2
 
 In kernel/trace/trace_events_trigger.c --> stacktrace_trigger() -->
 __trace_stack() is not defined as per the function definition.

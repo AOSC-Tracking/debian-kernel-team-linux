@@ -1,7 +1,7 @@
 From: Valentin Schneider <valentin.schneider@arm.com>
 Date: Tue, 8 Jun 2021 00:37:36 -0400
 Subject: [PATCH 295/328] sched: Don't defer CPU pick to migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6d1a9642a937325acc1e40fcc5fbb688f3892ca2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=aa9533029232168c8d120af84c881b4333eb42a7
 
 commit 475ea6c60279e9f2ddf7e4cf2648cd8ae0608361 upstream.
 

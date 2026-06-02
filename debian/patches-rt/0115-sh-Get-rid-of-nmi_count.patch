@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:09 +0100
 Subject: [PATCH 115/328] sh: Get rid of nmi_count()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=39da66b3ae5bac61cb6cff47274c946e4e918581
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=337706290313b307e89c56d61bf67aabc39c3c57
 
 nmi_count() is a historical leftover and SH is the only user. Replace it
 with regular per cpu accessors.

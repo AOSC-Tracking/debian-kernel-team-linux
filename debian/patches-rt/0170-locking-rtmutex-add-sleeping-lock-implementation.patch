@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:11:19 +0200
 Subject: [PATCH 170/328] locking/rtmutex: add sleeping lock implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5e90b461dd5ea672a6305cbf6be430464704e794
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e3ca8078076000bf1064f3c1a16e7723a2fa3d17
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -108,7 +108,7 @@ index b828b938c876..b02009f53026 100644
  #define DEFINE_RT_MUTEX(mutexname) \
  	struct rt_mutex mutexname = __RT_MUTEX_INITIALIZER(mutexname)
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 874a68e8fb54..d34e2e5ad732 100644
+index d4706c94d941..94e237ac87ed 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -140,6 +140,9 @@ struct io_uring_task;
@@ -131,7 +131,7 @@ index 874a68e8fb54..d34e2e5ad732 100644
  /*
   * set_special_state() should be used for those states when the blocking task
   * can not use the regular condition based wait-loop. In that case we must
-@@ -1020,6 +1026,7 @@ struct task_struct {
+@@ -1023,6 +1029,7 @@ struct task_struct {
  	raw_spinlock_t			pi_lock;
  
  	struct wake_q_node		wake_q;

@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:07 +0200
 Subject: [PATCH 010/328] sched: Add migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=12ecd97a3872026ebf3ad7226ff3467d7250bfe6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=45d346ec27f5159f1e62c16fb81ad687a30f956b
 
 Add the base migrate_disable() support (under protest).
 
@@ -107,7 +107,7 @@ index 9a70e1e315d3..fe9b6650e84f 100644
  DEFINE_LOCK_GUARD_0(preempt_notrace, preempt_disable_notrace(), preempt_enable_notrace())
  DEFINE_LOCK_GUARD_0(migrate, migrate_disable(), migrate_enable())
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 3613c3f43b83..6eb6584bf6be 100644
+index 540431e31681..fe7be844f8f0 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -725,6 +725,9 @@ struct task_struct {

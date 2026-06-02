@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 27 Oct 2020 11:09:50 +0100
 Subject: [PATCH 154/328] x86/fpu: Simplify fpregs_[un]lock()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d626b5395dc88eb4445db6ac1063bf27b4626d5c
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=514cd2c0a5b179d021761a824c9d26f63262ec15
 
 There is no point in disabling preemption and then disabling bottom
 halfs.

@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 24 Nov 2021 17:12:19 +0100
 Subject: [PATCH 307/328] irq_work: Allow irq_work_sync() to sleep if
  irq_work() no IRQ support.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7e2838b5089bfa43a91b101c0dff880826b259e1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b23fa936626a28d86329558f7b73147496596bbb
 
 irq_work() triggers instantly an interrupt if supported by the
 architecture. Otherwise the work will be processed on the next timer

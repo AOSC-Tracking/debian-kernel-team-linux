@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:15 +0100
 Subject: [PATCH 121/328] sh: irqstat: Use the generic irq_cpustat_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ab6f2e588bbeebcdead58f9e0fac2a1466e690be
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9f1bc47ccd20f3f86c564a30e3dd796ad5312566
 
 SH can now use the generic irq_cpustat_t. Define ack_bad_irq so the generic
 header does not emit the generic version of it.

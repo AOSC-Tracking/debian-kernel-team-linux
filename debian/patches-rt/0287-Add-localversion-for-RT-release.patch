@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 8 Jul 2011 20:25:16 +0200
 Subject: [PATCH 287/328] Add localversion for -RT release
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=04c929b7ce745c6c84ea327ab827e1bea5cda246
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dd71c4b036ff12b2f82bd79b97e8a810e114c490
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---

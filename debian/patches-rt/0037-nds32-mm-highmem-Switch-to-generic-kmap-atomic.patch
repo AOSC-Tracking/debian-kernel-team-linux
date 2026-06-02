@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:26 +0100
 Subject: [PATCH 037/328] nds32/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=975e9a5ce7711598674d6f81a9894db7ace1b617
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=38894cb4cdc11dee138e2dd9bc55724356b9a892
 
 The mapping code is odd and looks broken. See FIXME in the comment.
 

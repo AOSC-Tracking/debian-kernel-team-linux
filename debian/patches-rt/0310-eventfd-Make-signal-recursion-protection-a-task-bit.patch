@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 17 Dec 2021 11:32:09 +0100
 Subject: [PATCH 310/328] eventfd: Make signal recursion protection a task bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=45b9498f6e0a3d4b0238702f5399016b651b5dc0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0c4549349be25b757664ee3517125025246e29f1
 
 Upstream commit b542e383d8c005f06a131e2b40d5889b812f19c6
 
@@ -130,10 +130,10 @@ index c1bd4883e2fa..842d223dfe17 100644
  
  static inline void eventfd_ctx_do_read(struct eventfd_ctx *ctx, __u64 *cnt)
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 4203ed10ef87..64daf40cb290 100644
+index 99f8dd1b19c7..99cfa4ffe207 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
-@@ -847,6 +847,10 @@ struct task_struct {
+@@ -850,6 +850,10 @@ struct task_struct {
  	/* Stalled due to lack of memory */
  	unsigned			in_memstall:1;
  #endif

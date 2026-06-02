@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 28 Oct 2021 17:30:50 +0200
 Subject: [PATCH 303/328] fscache: Use only one fscache_object_cong_wait.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=605fc4593dfa27f61edc3cdcf9b10ee25eb64f8e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bbc375fbab90a645860c3f75f512b0422154aa6f
 
 In the commit mentioned below, fscache was converted from slow-work to
 workqueue. slow_work_enqueue() and slow_work_sleep_till_thread_needed()

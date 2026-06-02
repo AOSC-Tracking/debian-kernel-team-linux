@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:35 +0100
 Subject: [PATCH 046/328] sched: Make migrate_disable/enable() independent of
  RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fd3f33e848f79adecb564f1999f1edd3a1575cef
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=54967052f7b903de02e4189c34570623b5028562
 
 Now that the scheduler can deal with migrate disable properly, there is no
 real compelling reason to make it only available for RT.
@@ -150,7 +150,7 @@ index 95f19081cded..7756d78ef1b7 100644
  DEFINE_LOCK_GUARD_0(preempt, preempt_disable(), preempt_enable())
  DEFINE_LOCK_GUARD_0(preempt_notrace, preempt_disable_notrace(), preempt_enable_notrace())
 diff --git a/include/linux/sched.h b/include/linux/sched.h
-index 995428e3becc..c26f6e01abe0 100644
+index 96bb6106bbbb..a21466209411 100644
 --- a/include/linux/sched.h
 +++ b/include/linux/sched.h
 @@ -726,7 +726,7 @@ struct task_struct {
