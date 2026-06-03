@@ -1,3 +1,9 @@
+linux-6.12 (6.12.95-1~deb12u1) UNRELEASED; urgency=medium
+
+  * Rebuild for bookworm:
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 04 Jun 2026 01:43:30 +0200
+
 linux (6.12.95-1~bpo12+1) bookworm-backports; urgency=medium
 
   * Rebuild for bookworm-backports
