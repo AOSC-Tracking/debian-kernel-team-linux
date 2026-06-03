@@ -126,6 +126,10 @@ name_regex = '.*'
 [build]
 compiler = 'gcc-12'
 
+[packages]
+libc_dev = false
+tools_unversioned = false
+
 [relations.image]
 depends = [
   'initramfs-tools (>= 0.120+deb8u2) | linux-initramfs-tool',

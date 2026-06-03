@@ -1,6 +1,7 @@
 linux-6.12 (6.12.95-1~deb12u1) UNRELEASED; urgency=medium
 
   * Rebuild for bookworm:
+    - Disable building linux-libc-dev and unversioned tools packages
 
  -- Ben Hutchings <benh@debian.org>  Thu, 04 Jun 2026 01:43:30 +0200
 
