@@ -1,3 +1,18 @@
+linux (6.1.176-2) UNRELEASED; urgency=medium
+
+  * Backport changes in Microsoft Azure Network Adapter from 6.12.y:
+    - net: mana: Switch to page pool for jumbo frames
+    - net: mana: Record doorbell physical address in PF mode
+    - net: mana: fix use-after-free in add_adev() error path
+    - RDMA/mana_ib: Disable RX steering on RSS QP destroy
+    - RDMA/mana: Remove redefinition of basic u64 type
+    - net: mana: Fix spelling mistake "enforecement" -> "enforcement
+    - net: mana: Implement get_ringparam/set_ringparam for mana
+    - net: mana: Improve mana_set_channels() in low mem conditions
+    - net :mana :Request a V2 response version for MANA_QUERY_GF_STAT
+
+ -- Noah Meyerhans <noahm@debian.org>  Mon, 06 Jul 2026 09:48:03 -0400
+
 linux (6.1.176-1) bookworm-security; urgency=high
 
   * New upstream stable update:
