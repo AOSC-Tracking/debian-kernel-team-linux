@@ -2698,7 +2698,6 @@ CONFIG_CRASH_DUMP=y
 ##
 ## file: kernel/dma/Kconfig
 ##
-CONFIG_DMA_CMA=y
 CONFIG_CMA_SIZE_MBYTES=64
 
 ##
@@ -2711,11 +2710,6 @@ CONFIG_ENERGY_MODEL=y
 ##
 CONFIG_DEBUG_INFO_BTF=y
 CONFIG_MEMTEST=y
-
-##
-## file: mm/Kconfig
-##
-CONFIG_CMA=y
 
 ##
 ## file: mm/Kconfig.debug
