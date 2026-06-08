@@ -224,7 +224,7 @@ class Gencontrol(Base):
                 dist = self.changelog[0].distribution
                 urgency = self.changelog[0].urgency
                 f.write(f'''\
-linux-signed-{vars['arch']} (@signedtemplate_sourceversion@) {dist}; urgency={urgency}
+linux-signed{vars['source_suffix']}-{vars['arch']} (@signedtemplate_sourceversion@) {dist}; urgency={urgency}
 
   * Sign kernel from {self.changelog[0].source} @signedtemplate_binaryversion@
 ''')

@@ -5,6 +5,7 @@ linux-6.12 (6.12.95-1~deb12u1) UNRELEASED; urgency=medium
     - d/salsa-ci.yml: Set RELEASE to bookworm
     - lintian: Update source package names in overrides
     - d/c/defines.toml: Add debianrelease configuration for bookworm
+  * d/b/gencontrol.py: Fix name in signed package changelog
 
  -- Ben Hutchings <benh@debian.org>  Thu, 04 Jun 2026 01:43:30 +0200
 
