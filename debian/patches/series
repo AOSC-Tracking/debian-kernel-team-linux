@@ -106,8 +106,6 @@ bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
 bugfix/all/Revert-RDMA-rxe-Fix-double-free-in-rxe_srq_from_init.patch
 bugfix/all/RDMA-rxe-Fix-double-free-in-rxe_srq_from_init.patch
 bugfix/all/apparmor-validate-default-DFA-states-are-in-bounds.patch
-bugfix/all/revert-wifi-cfg80211-stop-nan-and-p2p-in-cfg80211_leave.patch
-bugfix/all/net-Fix-icmp-host-relookup-triggering-ip_rt_bug.patch
 
 # Miscellaneous features
 
@@ -128,7 +126,6 @@ debian/ntfs-mark-it-as-broken.patch
 bugfix/all/rxrpc-input-Open-code-skb_unshare.patch
 bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
 bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
-bugfix/all/smb-client-reject-userspace-cifs.spnego-descriptions.patch
 bugfix/all/bpf-Free-reuseport-cBPF-prog-after-RCU-grace-period.patch
 
 # Fix exported symbol versions
