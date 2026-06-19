@@ -127,6 +127,7 @@ bugfix/all/revert-rdma-rxe-fix-double-free-in-rxe_srq_from_init.patch
 bugfix/all/rdma-rxe-fix-double-free-in-rxe_srq_from_init.patch
 bugfix/all/net-usb-lan78xx-Fix-double-free-issue-with-interrupt.patch
 bugfix/all/smb-client-reject-userspace-cifs.spnego-descriptions.patch
+bugfix/all/ip6_vti-set-netns_immutable-on-the-fallback-device.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
