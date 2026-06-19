@@ -1583,6 +1583,9 @@ linux (6.12.94-1) UNRELEASED; urgency=medium
     - vsock/virtio: fix skb overhead overflow on 32-bit builds
     - netfilter: require Ethernet MAC header before using eth_hdr()
 
+  [ Salvatore Bonaccorso ]
+  * [rt] Refresh "ARM: enable irq in translation/section permission fault"
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 23 May 2026 21:56:00 +0200
 
 linux (6.12.90-2) trixie-security; urgency=high
