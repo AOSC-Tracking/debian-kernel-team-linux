@@ -1585,6 +1585,7 @@ linux (6.12.94-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * [rt] Refresh "ARM: enable irq in translation/section permission fault"
+  * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 23 May 2026 21:56:00 +0200
 
