@@ -1587,6 +1587,10 @@ linux (6.12.94-1) UNRELEASED; urgency=medium
   * [rt] Refresh "ARM: enable irq in translation/section permission fault"
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
 
+  [ Uwe Kleine-König ]
+  * [amd64] Enable CONFIG_PINCTRL_CS42L43 and CONFIG_SPI_CS42L43 explicitly
+    (Closes: #1136179)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 23 May 2026 21:56:00 +0200
 
 linux (6.12.90-2) trixie-security; urgency=high
