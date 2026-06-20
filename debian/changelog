@@ -1586,6 +1586,7 @@ linux (6.12.94-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * [rt] Refresh "ARM: enable irq in translation/section permission fault"
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
+  * net/netfilter: Enable NETFILTER_NETLINK_HOOK as module (Closes: #1139686)
 
   [ Uwe Kleine-König ]
   * [amd64] Enable CONFIG_PINCTRL_CS42L43 and CONFIG_SPI_CS42L43 explicitly
