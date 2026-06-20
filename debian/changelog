@@ -1,4 +1,4 @@
-linux (6.12.94-1) UNRELEASED; urgency=medium
+linux (6.12.94-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.91
@@ -1587,7 +1587,7 @@ linux (6.12.94-1) UNRELEASED; urgency=medium
   * [rt] Refresh "ARM: enable irq in translation/section permission fault"
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 23 May 2026 21:56:00 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 20 Jun 2026 09:03:06 +0200
 
 linux (6.12.90-2) trixie-security; urgency=high
 
