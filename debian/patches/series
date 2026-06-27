@@ -126,6 +126,7 @@ bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
 bugfix/all/net-sched-act_pedit-check-static-offsets-a-priori.patch
 bugfix/all/net-sched-act_pedit-rate-limit-datapath-messages.patch
 bugfix/all/net-sched-fix-pedit-partial-COW-leading-to-page-cach.patch
+bugfix/all/net-sched-act_pedit-free-pedit-keys-on-bail-from-off.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
