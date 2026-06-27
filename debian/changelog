@@ -1605,6 +1605,9 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
     - [x86] kvm/vmx: guard regparm(0) on vmread_error_trampoline for x86_32
       only
 
+  [ Salvatore Bonaccorso ]
+  * net/sched: act_pedit: check static offsets a priori
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 14 Jun 2026 21:11:42 +0200
 
 linux (6.1.174-1) bookworm-security; urgency=high
