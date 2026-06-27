@@ -1607,6 +1607,7 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * net/sched: act_pedit: check static offsets a priori
+  * net/sched: act_pedit: rate limit datapath messages
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 14 Jun 2026 21:11:42 +0200
 
