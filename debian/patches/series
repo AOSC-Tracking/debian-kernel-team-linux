@@ -91,6 +91,7 @@ features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 
 # Security fixes
 bugfix/all/ip6_vti-set-netns_immutable-on-the-fallback-device.patch
+bugfix/all/eventpoll-use-hlist_is_singular_node-in-__ep_remove.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
