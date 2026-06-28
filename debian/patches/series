@@ -97,6 +97,7 @@ bugfix/all/eventpoll-kill-__ep_remove.patch
 bugfix/all/eventpoll-drop-vestigial-__-prefix-from-ep_remove_-f.patch
 bugfix/all/eventpoll-rename-ep_remove_safe-back-to-ep_remove.patch
 bugfix/all/eventpoll-move-epi_fget-up.patch
+bugfix/all/eventpoll-fix-ep_remove-struct-eventpoll-struct-file.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch

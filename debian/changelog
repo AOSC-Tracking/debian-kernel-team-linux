@@ -8,6 +8,7 @@ linux (6.12.94-2) UNRELEASED; urgency=medium
   * eventpoll: drop vestigial __ prefix from ep_remove_{file,epi}()
   * eventpoll: rename ep_remove_safe() back to ep_remove()
   * eventpoll: move epi_fget() up
+  * eventpoll: fix ep_remove struct eventpoll / struct file UAF (CVE-2026-46242)
 
   [ Uwe Kleine-König ]
   * [amd64] Enable CONFIG_PINCTRL_CS42L43 and CONFIG_SPI_CS42L43 explicitly
