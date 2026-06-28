@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:15 +0200
 Subject: [PATCH 018/328] sched: Add migrate_disable() tracepoints
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c83e9c1ef81425415cf9aeab7337b159513666b0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=eb90264550e9832928326b7e51ef1e5d603ca8e5
 
 XXX write a tracer:
 
@@ -45,7 +45,7 @@ index 5039af667645..a5d81cec7f0a 100644
  
  /* This part must be outside protection */
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 7889b6037e61..e731c752ee48 100644
+index c6e0967cdccc..9ac25b8be213 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1741,6 +1741,8 @@ void migrate_disable(void)
@@ -79,7 +79,7 @@ index a146e670444d..44aa5f849fdd 100644
  			} else {
  				deactivate_task(src_rq, p, 0);
 diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index 9ea35ddf1e11..67cb9dbb3f74 100644
+index 5bf8fe240e99..e769fb6f47e1 100644
 --- a/kernel/sched/rt.c
 +++ b/kernel/sched/rt.c
 @@ -1891,7 +1891,12 @@ static int push_rt_task(struct rq *rq, bool pull)

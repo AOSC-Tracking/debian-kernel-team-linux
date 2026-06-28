@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:11:59 +0200
 Subject: [PATCH 002/328] stop_machine: Add function and caller debug info
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=25e404446f4514aaec51b1e4be894b500e460678
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c48880c30c9dff75acc575d6f22635b7dade2c64
 
 Crashes in stop-machine are hard to connect to the calling code, add a
 little something to help with that.

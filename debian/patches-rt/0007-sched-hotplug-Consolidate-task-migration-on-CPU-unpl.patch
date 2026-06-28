@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:04 +0200
 Subject: [PATCH 007/328] sched/hotplug: Consolidate task migration on CPU
  unplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7bbd6601481a1e475411d7a75f4b5980aff97a28
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f1ca749d981ee15b1e47ac3e58d6facb8f780e68
 
 With the new mechanism which kicks tasks off the outgoing CPU at the end of
 schedule() the situation on an outgoing CPU right before the stopper thread
@@ -92,7 +92,7 @@ index 7eab6e3e771f..0ffe96a042d4 100644
  	[CPUHP_AP_SMPBOOT_THREADS] = {
  		.name			= "smpboot/threads:online",
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index f094517a886a..d620b0f11e46 100644
+index 68c99c2fe82a..365f755c59be 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -6740,120 +6740,6 @@ void idle_task_exit(void)

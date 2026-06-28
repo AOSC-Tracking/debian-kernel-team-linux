@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 26 Oct 2012 18:50:54 +0100
 Subject: [PATCH 258/328] sched: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bcc9c2a2f3037714bfa95906b206e5b600ea52d2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fee202a7b0c210e941a91008e9129a8d228c3cfc
 
 It has become an obsession to mitigate the determinism vs. throughput
 loss of RT. Looking at the mainline semantics of preemption points
@@ -295,7 +295,7 @@ index cbe3aa495519..b5cd1e278eb5 100644
  	prompt "Preemption Model"
  	default PREEMPT_NONE
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 283d1c330045..1f706131d07b 100644
+index 2c32454f9528..b94e0c15cb2e 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -658,6 +658,48 @@ void resched_curr(struct rq *rq)
@@ -534,7 +534,7 @@ index 402fd37fb340..bc2466af142e 100644
  
  /*
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index 34db470c843a..f0fc599cf79c 100644
+index e8c13ac2bf11..16b42cb9ca41 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -1997,6 +1997,15 @@ extern void reweight_task(struct task_struct *p, const struct load_weight *lw);

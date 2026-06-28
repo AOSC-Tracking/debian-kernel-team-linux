@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 3 Jul 2009 08:44:56 -0500
 Subject: [PATCH 283/328] signals: Allow rt tasks to cache one sigqueue struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a5dcdb238866a088968673b58a53a260a5f4c3a8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7e6cdef3e6b56a45fda1b640b339df2e3f14d341
 
 To avoid allocation allow rt tasks to cache one sigqueue struct in
 task struct.
@@ -65,7 +65,7 @@ index d76bfa283f98..a8f1f618b3dd 100644
  	p->utime = p->stime = p->gtime = 0;
  #ifdef CONFIG_ARCH_HAS_SCALED_CPUTIME
 diff --git a/kernel/signal.c b/kernel/signal.c
-index 65feab0726df..117b620fe819 100644
+index f573f95b1fc6..14f2292b508e 100644
 --- a/kernel/signal.c
 +++ b/kernel/signal.c
 @@ -20,6 +20,7 @@
@@ -196,7 +196,7 @@ index 65feab0726df..117b620fe819 100644
  	/* We only dequeue private signals from ourselves, we don't let
  	 * signalfd steal them
  	 */
-@@ -1835,7 +1895,8 @@ EXPORT_SYMBOL(kill_pid);
+@@ -1836,7 +1896,8 @@ EXPORT_SYMBOL(kill_pid);
   */
  struct sigqueue *sigqueue_alloc(void)
  {

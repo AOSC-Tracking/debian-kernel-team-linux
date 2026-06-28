@@ -4,7 +4,7 @@ Subject: [PATCH 076/328] tracing: Merge irqflags + preempt counter.
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=30df832ecf5b04665d1e87a125cc64bc08336f85
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6a7417f1da6b6015c1d5f89cdc33edb65343ab33
 
 The state of the interrupts (irqflags) and the preemption counter are
 both passed down to tracing_generic_entry_update(). Only one bit of
@@ -890,7 +890,7 @@ index 8dce0e205c8e..e6145aaa2480 100644
  	if (tt)
  		event_triggers_post_call(file, tt);
 diff --git a/kernel/trace/trace_branch.c b/kernel/trace/trace_branch.c
-index eff099123aa2..e47fdb4c92fb 100644
+index 363302960ba9..30f72e0ecb5d 100644
 --- a/kernel/trace/trace_branch.c
 +++ b/kernel/trace/trace_branch.c
 @@ -37,7 +37,7 @@ probe_likely_condition(struct ftrace_likely_data *f, int val, int expect)

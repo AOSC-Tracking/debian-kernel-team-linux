@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:05 +0200
 Subject: [PATCH 008/328] sched: Fix hotplug vs CPU bandwidth control
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dfa39cfa22fe748030e2c457f5e3e84266de0268
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3aa322f81f822bc843d9fd5a73ac0d7660ed88fe
 
 Since we now migrate tasks away before DYING, we should also move
 bandwidth unthrottle, otherwise we can gain tasks from unthrottle
@@ -24,7 +24,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  3 files changed, 12 insertions(+), 6 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index d620b0f11e46..0ac844b47762 100644
+index 365f755c59be..68eebea2411a 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -6978,6 +6978,8 @@ int sched_cpu_activate(unsigned int cpu)
@@ -76,7 +76,7 @@ index 6548bd90c5c3..668254bdf854 100644
  
  static DEFINE_PER_CPU(struct callback_head, dl_push_head);
 diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index cc6950fc6061..f053507c68fc 100644
+index 2c49da90566b..618b1574ae07 100644
 --- a/kernel/sched/rt.c
 +++ b/kernel/sched/rt.c
 @@ -270,7 +270,7 @@ static void pull_rt_task(struct rq *this_rq);

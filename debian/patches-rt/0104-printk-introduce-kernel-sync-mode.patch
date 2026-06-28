@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:06 +0106
 Subject: [PATCH 104/328] printk: introduce kernel sync mode
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=56e3c8d4c803a971a90dac77a0001fce00aebe29
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bd54acd5294c46d1dfc23fd0031076192cec6bad
 
 When the kernel performs an OOPS, enter into "sync mode":
 
@@ -43,7 +43,7 @@ index 7aea795367ee..b4d6a8ce4217 100644
  	uint	ospeed;
  	void	*data;
 diff --git a/include/linux/printk.h b/include/linux/printk.h
-index c6bb48f0134c..3738374e2b3b 100644
+index 542482264977..a7bccb14a1c9 100644
 --- a/include/linux/printk.h
 +++ b/include/linux/printk.h
 @@ -46,6 +46,12 @@ static inline const char *printk_skip_headers(const char *buffer)

@@ -2,7 +2,7 @@ From: Valentin Schneider <valentin.schneider@arm.com>
 Date: Fri, 13 Nov 2020 11:24:14 +0000
 Subject: [PATCH 023/328] sched/core: Add missing completion for
  affine_move_task() waiters
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f838256872888b4688d24d200f562e457a4005d7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a9153b2c5a45ef189561d67177854f1abd707403
 
 Qian reported that some fuzzer issuing sched_setaffinity() ends up stuck on
 a wait_for_completion(). The problematic pattern seems to be:
@@ -43,7 +43,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  1 file changed, 12 insertions(+), 1 deletion(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 0c374eea1dd9..ded432ae842d 100644
+index 3df2db6485cb..1b7e43e1eac1 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1940,7 +1940,7 @@ static int migration_cpu_stop(void *data)

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 8 Sep 2020 07:32:20 +0200
 Subject: [PATCH 113/328] net: Move lockdep where it belongs
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=72b8bd87f2b55e88bf77f0c14d91d68403a806e3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d42c431027c09d7a1f3dc26b8873808405ac12e3
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---

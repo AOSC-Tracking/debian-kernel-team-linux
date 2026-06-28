@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:34 -0400
 Subject: [PATCH 293/328] sched: Fix affine_move_task() self-concurrency
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5875d5b5225171b7282fea71fc6d9d292a3bcffc
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=523de1a7084b143212d0ab6592a0d9d3452dd3e1
 
 commit 9e81889c7648d48dd5fe13f41cbc99f3c362484a upstream.
 
@@ -32,7 +32,7 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 12 insertions(+), 3 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index db09715444b4..a09c9af43d61 100644
+index 63fc6249ea13..b9a02e601b91 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1915,6 +1915,7 @@ struct migration_arg {

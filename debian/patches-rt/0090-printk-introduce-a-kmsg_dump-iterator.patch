@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 18 Dec 2020 11:40:08 +0000
 Subject: [PATCH 090/328] printk: introduce a kmsg_dump iterator
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fc4eb5c51853ecc6696d164f85b2eb172b3ffcf2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bab73acdcf80056828f05b4857026d5a5f3ca207
 
 Rather than store the iterator information into the registered
 kmsg_dump structure, create a separate iterator structure. The

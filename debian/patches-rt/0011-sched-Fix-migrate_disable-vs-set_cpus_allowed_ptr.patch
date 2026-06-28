@@ -2,7 +2,7 @@ From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:08 +0200
 Subject: [PATCH 011/328] sched: Fix migrate_disable() vs
  set_cpus_allowed_ptr()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c4d32d5ca99239e7ac4e6e14ae099d4a1c46d3d1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bf50cff942eb36e4c9f6b9ac55d1ad13d1bf2515
 
 Concurrent migrate_disable() and set_cpus_allowed_ptr() has
 interesting features. We rely on set_cpus_allowed_ptr() to not return
@@ -55,7 +55,7 @@ index fe7be844f8f0..118dbffac6ac 100644
  	int				migration_disabled;
  #endif
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 2482b974123c..6845227f6fe6 100644
+index afe00b7ce9e4..5af5867336a5 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1745,15 +1745,26 @@ void migrate_enable(void)

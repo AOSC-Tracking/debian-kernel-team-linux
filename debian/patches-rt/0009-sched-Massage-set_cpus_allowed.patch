@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:06 +0200
 Subject: [PATCH 009/328] sched: Massage set_cpus_allowed()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=11416bfb4d0815f10d97f511f198cc46feda2d98
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2d3556db8c9b7212bff6b27b1e8e8466ec086d81
 
 Thread a u32 flags word through the *set_cpus_allowed*() callchain.
 This will allow adding behavioural tweaks for future users.
@@ -15,7 +15,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  3 files changed, 26 insertions(+), 14 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 0ac844b47762..c5760baad6da 100644
+index 68eebea2411a..0b4876601a3d 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1837,13 +1837,14 @@ static int migration_cpu_stop(void *data)
@@ -145,7 +145,7 @@ index 668254bdf854..a7a830c90535 100644
  
  /* Assumes rq->lock is held */
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index 7acb28c6310d..8ce1dc2e680e 100644
+index 9824e82ac172..485851e3e0b1 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -1818,7 +1818,8 @@ struct sched_class {

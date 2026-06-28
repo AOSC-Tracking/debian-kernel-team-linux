@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
-Date: Mon, 1 Jun 2026 19:23:04 -0300
-Subject: [PATCH 328/328] Linux 5.10.257-rt153 REBASE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b2217c2ca3677a56c5ff918e036ba9c2efe76244
+Date: Mon, 22 Jun 2026 21:23:29 -0300
+Subject: [PATCH 328/328] Linux 5.10.259-rt155 REBASE
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3cf8563c72bc868ffb1273545882a56d31805d59
 
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
 ---
@@ -9,9 +9,9 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/localversion-rt b/localversion-rt
-index 21988f9ad53f..016ce64264b5 100644
+index 21988f9ad53f..a0eb4ea28f15 100644
 --- a/localversion-rt
 +++ b/localversion-rt
 @@ -1 +1 @@
 --rt34
-+-rt153
++-rt155

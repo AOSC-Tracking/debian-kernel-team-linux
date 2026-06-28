@@ -2,7 +2,7 @@ From: Chao Qin <chao.qin@intel.com>
 Date: Mon, 19 Jul 2021 10:26:50 +0800
 Subject: [PATCH 296/328] printk: Enhance the condition check of msleep in
  pr_flush()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8ca1fcf85c9f5d0bb40140e4e473aef8bfa9b9ad
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cbfe268d9247d6e89f368b7d0023d638415bb92f
 
 [ Upstream commit 83e9288d9c4295d1195e9d780fcbc42c72ba4a83 ]
 

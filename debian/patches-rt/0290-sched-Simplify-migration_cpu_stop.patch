@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:31 -0400
 Subject: [PATCH 290/328] sched: Simplify migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fbd3f5e23109ae38607793efcc87b6d8c108f095
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=117dfa0ec0d809953751e9ca0c1910e8f97979dc
 
 commit c20cf065d4a619d394d23290093b1002e27dff86 upstream.
 
@@ -27,7 +27,7 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 8 insertions(+), 48 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index c65197f9651c..bb091aa260ac 100644
+index 53efcb28e346..25a5854cbd56 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1949,8 +1949,8 @@ static struct rq *__migrate_task(struct rq *rq, struct rq_flags *rf,

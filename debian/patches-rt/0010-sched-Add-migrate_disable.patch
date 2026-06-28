@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:07 +0200
 Subject: [PATCH 010/328] sched: Add migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=45d346ec27f5159f1e62c16fb81ad687a30f956b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e8b462aef3ea689a8f441127f29e7a81b37adcfe
 
 Add the base migrate_disable() support (under protest).
 
@@ -121,7 +121,7 @@ index 540431e31681..fe7be844f8f0 100644
  #ifdef CONFIG_PREEMPT_RCU
  	int				rcu_read_lock_nesting;
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index c5760baad6da..2482b974123c 100644
+index 0b4876601a3d..afe00b7ce9e4 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1709,6 +1709,61 @@ void check_preempt_curr(struct rq *rq, struct task_struct *p, int flags)
@@ -315,7 +315,7 @@ index c5760baad6da..2482b974123c 100644
  
  		trace_sched_switch(preempt, prev, next);
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index 8ce1dc2e680e..493b8600d9e4 100644
+index 485851e3e0b1..4161bc005ae2 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -1906,14 +1906,16 @@ static inline bool sched_fair_runnable(struct rq *rq)

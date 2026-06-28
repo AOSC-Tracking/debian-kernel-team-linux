@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 17 Dec 2021 11:32:09 +0100
 Subject: [PATCH 310/328] eventfd: Make signal recursion protection a task bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0c4549349be25b757664ee3517125025246e29f1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=45d656b6fda977f462dda18688267df6c1dbeec0
 
 Upstream commit b542e383d8c005f06a131e2b40d5889b812f19c6
 
@@ -39,7 +39,7 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  4 files changed, 15 insertions(+), 14 deletions(-)
 
 diff --git a/fs/aio.c b/fs/aio.c
-index 43315af1c83a..7030157e9933 100644
+index e1e6a097a715..9616255a1792 100644
 --- a/fs/aio.c
 +++ b/fs/aio.c
 @@ -1776,7 +1776,7 @@ static int aio_poll_wake(struct wait_queue_entry *wait, unsigned mode, int sync,

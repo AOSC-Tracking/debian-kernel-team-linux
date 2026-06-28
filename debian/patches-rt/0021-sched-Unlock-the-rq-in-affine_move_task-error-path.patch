@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 9 Nov 2020 15:54:03 +0100
 Subject: [PATCH 021/328] sched: Unlock the rq in affine_move_task() error path
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=00066d9852b5d3c7f2fd99ceb9d96576baeea98a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=496eec05b6a4be59972f746e64d01db21c1dacc4
 
 Unlock the rq if returned early in the error path.
 
@@ -13,7 +13,7 @@ Link: https://lkml.kernel.org/r/20201106203921.GA48461@zipoli.concurrent-rt.com
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 36101aba4937..e9ecd36539b4 100644
+index f8cd94c5331c..94fa74f059ef 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -2227,8 +2227,10 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag

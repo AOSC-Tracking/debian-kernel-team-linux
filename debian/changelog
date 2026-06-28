@@ -1017,7 +1017,7 @@ linux (5.10.259-1) UNRELEASED; urgency=medium
     - media: rc: igorplugusb: fix control request setup packet (CVE-2026-46091)
 
   [ Ben Hutchings ]
-  * [rt] Update to 5.10.257-rt153
+  * [rt] Update to 5.10.259-rt155
   * Drop "Revert "io_uring/poll: correctly handle io_poll_add() return value
     on update""
 

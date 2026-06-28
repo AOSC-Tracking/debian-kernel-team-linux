@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:35 -0400
 Subject: [PATCH 294/328] sched: Simplify set_affinity_pending refcounts
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=137d46f788711457a7458cfa7c2fbcce6795e70e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9cbb0aec880005b527ad31900d2178cc1ad350e2
 
 commit 50caf9c14b1498c90cf808dbba2ca29bd32ccba4 upstream.
 
@@ -23,7 +23,7 @@ Signed-off-by: Steven Rostedt (VMware) <rostedt@goodmis.org>
  1 file changed, 20 insertions(+), 12 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index a09c9af43d61..a7d53a61471b 100644
+index b9a02e601b91..8eb741597644 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1913,6 +1913,10 @@ struct migration_arg {

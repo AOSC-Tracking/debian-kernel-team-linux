@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 6 Jun 2011 12:20:33 +0200
 Subject: [PATCH 215/328] sched: Move mmdrop to RCU on RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=852b93757b3b4f7b79486d90105a3c261dbe7ccd
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e78fb99a5251fb61d0be5df22d1e53403ad6e6d9
 
 Takes sleeping locks and calls into the memory allocator, so nothing
 we want to do in task switch and oder atomic contexts.
@@ -83,7 +83,7 @@ index 82c88ad657ef..1a5e4f4984b1 100644
  {
  	struct mm_struct *mm;
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index 919b5b131b79..98c78cc0a935 100644
+index 72773ebd1842..3a51a1e1bac1 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -4268,9 +4268,13 @@ static struct rq *finish_task_switch(struct task_struct *prev)

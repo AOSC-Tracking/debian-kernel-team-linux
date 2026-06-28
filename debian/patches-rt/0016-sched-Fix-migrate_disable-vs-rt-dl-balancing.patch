@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:13 +0200
 Subject: [PATCH 016/328] sched: Fix migrate_disable() vs rt/dl balancing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b2e90253dd6cb5ff92fc698c72962088931f89fd
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3806f33c0c9264034e24c31f0207dff1944cfea1
 
 In order to minimize the interference of migrate_disable() on lower
 priority tasks, which can be deprived of runtime due to being stuck
@@ -100,7 +100,7 @@ index 118dbffac6ac..96bb6106bbbb 100644
  #ifdef CONFIG_PREEMPT_RCU
  	int				rcu_read_lock_nesting;
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index ffa0ff0d256b..7889b6037e61 100644
+index 7628f80ed778..c6e0967cdccc 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -1776,11 +1776,6 @@ void migrate_enable(void)
@@ -286,7 +286,7 @@ index 41e3f8301700..a146e670444d 100644
  
  	.task_tick		= task_tick_dl,
 diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index 536e80a694e2..9ea35ddf1e11 100644
+index 30bc500dad53..5bf8fe240e99 100644
 --- a/kernel/sched/rt.c
 +++ b/kernel/sched/rt.c
 @@ -1873,7 +1873,7 @@ static struct task_struct *pick_next_pushable_task(struct rq *rq)
@@ -426,7 +426,7 @@ index 536e80a694e2..9ea35ddf1e11 100644
  
  	.task_tick		= task_tick_rt,
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index c9fe25183b04..2c5cecc29121 100644
+index 6ae99fe15afa..771bf6aa82cc 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -1061,6 +1061,8 @@ struct rq {

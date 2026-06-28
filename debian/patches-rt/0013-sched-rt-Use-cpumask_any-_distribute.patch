@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:10 +0200
 Subject: [PATCH 013/328] sched,rt: Use cpumask_any*_distribute()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a2430694d9d557f3552613e55bf9da89e45d77d1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f502771f781dae077cc8a219166d20ae6a00ef9d
 
 Replace a bunch of cpumask_any*() instances with
 cpumask_any*_distribute(), by injecting this little bit of random in
@@ -66,7 +66,7 @@ index a7a830c90535..8980f4c6fbb9 100644
  		return cpu;
  
 diff --git a/kernel/sched/rt.c b/kernel/sched/rt.c
-index f053507c68fc..31c4dd4ba6fb 100644
+index 618b1574ae07..9108cca5fd80 100644
 --- a/kernel/sched/rt.c
 +++ b/kernel/sched/rt.c
 @@ -1766,8 +1766,8 @@ static int find_lowest_rq(struct task_struct *task)

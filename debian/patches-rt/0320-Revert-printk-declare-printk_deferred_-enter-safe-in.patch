@@ -2,7 +2,7 @@ From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Thu, 8 Jun 2023 19:47:25 -0300
 Subject: [PATCH 320/328] Revert "printk: declare
  printk_deferred_{enter,safe}() in include/linux/printk.h"
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fb3eb2e785c92d71d29fdd8382f78d18cbd9bc3d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8589c7caa3041bc9f1a59b8854dce1155beae3f1
 
 This reverts commit 32232bcd4e5300e678718d5c29da4dfa07ade01e.
 
@@ -20,10 +20,10 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 19 deletions(-)
 
 diff --git a/include/linux/printk.h b/include/linux/printk.h
-index 83c7734e9802..7e4352467d83 100644
+index 39bd8d73d629..9bdcd4d84aec 100644
 --- a/include/linux/printk.h
 +++ b/include/linux/printk.h
-@@ -609,23 +609,4 @@ static inline void print_hex_dump_debug(const char *prefix_str, int prefix_type,
+@@ -623,23 +623,4 @@ static inline void print_hex_dump_devel(const char *prefix_str, int prefix_type,
  #define print_hex_dump_bytes(prefix_str, prefix_type, buf, len)	\
  	print_hex_dump_debug(prefix_str, prefix_type, 16, 1, buf, len, true)
  

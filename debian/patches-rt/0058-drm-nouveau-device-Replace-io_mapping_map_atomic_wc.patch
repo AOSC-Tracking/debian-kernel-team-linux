@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:47 +0100
 Subject: [PATCH 058/328] drm/nouveau/device: Replace
  io_mapping_map_atomic_wc()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7ec9a214b70a7e029fa7893ae873dfaef13a3931
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b31a95e1168d542ed531aca5c660ff47304b8ceb
 
 Neither fbmem_peek() nor fbmem_poke() require to disable pagefaults and
 preemption as a side effect of io_mapping_map_atomic_wc().

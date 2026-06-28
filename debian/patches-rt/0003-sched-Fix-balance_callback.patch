@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:00 +0200
 Subject: [PATCH 003/328] sched: Fix balance_callback()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bec897a399a821dd652802ed4f5274a3de136229
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c3d567b375cb824cb6a6695a971fe5948270ddca
 
 The intent of balance_callback() has always been to delay executing
 balancing operations until the end of the current rq->lock section.
@@ -28,7 +28,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 78 insertions(+), 44 deletions(-)
 
 diff --git a/kernel/sched/core.c b/kernel/sched/core.c
-index e5173a48eb9b..1f3c439a1d7b 100644
+index bcb313b1e1fd..f5fc2deac8b1 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
 @@ -3510,6 +3510,69 @@ static inline void finish_task(struct task_struct *prev)
@@ -216,7 +216,7 @@ index e5173a48eb9b..1f3c439a1d7b 100644
  
  	return 0;
 diff --git a/kernel/sched/sched.h b/kernel/sched/sched.h
-index 5f17507bd66b..4a35e28f0dd1 100644
+index 2a43d95dad38..5fd23e7bd8bb 100644
 --- a/kernel/sched/sched.h
 +++ b/kernel/sched/sched.h
 @@ -1225,6 +1225,9 @@ static inline void rq_pin_lock(struct rq *rq, struct rq_flags *rf)
