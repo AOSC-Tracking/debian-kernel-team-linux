@@ -1,7 +1,7 @@
 From: Clark Williams <clrkwllms@kernel.org>
-Date: Tue, 15 Apr 2025 15:31:04 -0500
-Subject: [PATCH 66/72] Linux 6.1.134-rt51 REBASE
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=31e8d81c604eeece9dd10f4ff8877b9b88049497
+Date: Thu, 26 Mar 2026 18:24:27 -0500
+Subject: [PATCH 69/72] Linux 6.1.167-rt62 REBASE
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d4bca563571526e84be1361d8020d3e83d081e64
 
 Signed-off-by: Clark Williams <clrkwllms@kernel.org>
 ---
@@ -9,9 +9,9 @@ Signed-off-by: Clark Williams <clrkwllms@kernel.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/localversion-rt b/localversion-rt
-index 272158183778..75493460c41f 100644
+index 8cdeb45db6e2..40d81d8e61b6 100644
 --- a/localversion-rt
 +++ b/localversion-rt
 @@ -1 +1 @@
---rt46
-+-rt51
+--rt59
++-rt62

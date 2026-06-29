@@ -1600,6 +1600,10 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
   [ Ben Hutchings ]
   * Refresh "rxrpc: Fix conn-level packet handling to unshare RESPONSE packets"
   * [rt] Add new signing key for Clark Williams
+  * [rt] Update to 6.1.176-rt64:
+    - ipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT
+    - [x86] kvm/vmx: guard regparm(0) on vmread_error_trampoline for x86_32
+      only
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 14 Jun 2026 21:11:42 +0200
 
