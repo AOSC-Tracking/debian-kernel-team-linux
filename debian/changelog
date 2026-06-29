@@ -1607,6 +1607,11 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
+  * net/sched: act_pedit: check static offsets a priori
+  * net/sched: act_pedit: rate limit datapath messages
+  * net/sched: fix pedit partial COW leading to page cache corruption
+    (CVE-2026-46331)
+  * net/sched: act_pedit: free pedit keys on bail from offset check
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 14 Jun 2026 21:11:42 +0200
 
