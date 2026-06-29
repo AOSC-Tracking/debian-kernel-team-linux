@@ -1337,7 +1337,7 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
       (CVE-2026-53195)
     - USB: serial: option: add usb-id for Dell Wireless DW5826e-m
     - USB: serial: kl5kusb105: fix bulk-out buffer overflow (CVE-2026-53194)
-    - ALSA: timer: Fix UAF at snd_timer_user_params() (CVE-2026-53192)
+    - ALSA: timer: Fix UAF at snd_timer_user_params()
     - drm/amd/display: Reject gpio_bitshift >= 32 in
       bios_parser_get_gpio_pin_info()
     - RDMA/srp: bound SRP_RSP sense copy by the received length
