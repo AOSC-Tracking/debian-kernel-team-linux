@@ -1021,6 +1021,9 @@ linux (5.10.259-1) UNRELEASED; urgency=medium
   * Drop "Revert "io_uring/poll: correctly handle io_poll_add() return value
     on update""
 
+  [ Salvatore Bonaccorso ]
+  * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
+
  -- Ben Hutchings <benh@debian.org>  Tue, 02 Jun 2026 17:10:35 +0200
 
 linux (5.10.257-1) bullseye-security; urgency=high
