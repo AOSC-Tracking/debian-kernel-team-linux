@@ -103,9 +103,6 @@ features/arm64/quartz64/arm64-dts-rockchip-Add-SOQuartz-Model-A-baseboard.patch
 # Miscellaneous bug fixes
 bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
-bugfix/all/Revert-RDMA-rxe-Fix-double-free-in-rxe_srq_from_init.patch
-bugfix/all/RDMA-rxe-Fix-double-free-in-rxe_srq_from_init.patch
-bugfix/all/apparmor-validate-default-DFA-states-are-in-bounds.patch
 
 # Miscellaneous features
 
@@ -126,7 +123,6 @@ debian/ntfs-mark-it-as-broken.patch
 bugfix/all/rxrpc-input-Open-code-skb_unshare.patch
 bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
 bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
-bugfix/all/bpf-Free-reuseport-cBPF-prog-after-RCU-grace-period.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
