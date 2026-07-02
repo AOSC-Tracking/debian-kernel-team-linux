@@ -70,6 +70,7 @@ bugfix/arm/arm-mm-export-__sync_icache_dcache-for-xen-privcmd.patch
 bugfix/powerpc/powerpc-boot-fix-missing-crc32poly.h-when-building-with-kernel_xz.patch
 bugfix/arm64/arm64-acpi-Add-fixup-for-HPE-m400-quirks.patch
 bugfix/alpha/alpha-fix-missing-symbol-versions-for-str-n-cat-cpy.patch
+bugfix/powerpc/powerpc-cpuidle-set-cpuidle_flag_polling-for-snooze-.patch
 
 # Arch features
 features/arm64/dt-bindings-rockchip-Add-Hardkernel-ODROID-M1-board.patch
@@ -102,6 +103,12 @@ features/arm64/quartz64/arm64-dts-rockchip-Add-SOQuartz-Model-A-baseboard.patch
 # Miscellaneous bug fixes
 bugfix/all/disable-some-marvell-phys.patch
 bugfix/all/fs-add-module_softdep-declarations-for-hard-coded-cr.patch
+bugfix/all/revert-net-ipv4-stop-checking-crypto_ahash_alignmask.patch
+bugfix/all/revert-net-ipv6-stop-checking-crypto_ahash_alignmask.patch
+bugfix/all/revert-bluetooth-l2cap-use-chan-timer-to-close-chann.patch
+bugfix/all/cgroup-cpuset-fix-misplaced-call-to-reset_migrate_dl.patch
+bugfix/all/media-uvcvideo-create-an-id-namespace-for-streaming-.patch
+bugfix/all/revert-media-rc-streamzap-error-handling-in-probe.patch
 
 # Miscellaneous features
 

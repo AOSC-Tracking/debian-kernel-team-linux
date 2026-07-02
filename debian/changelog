@@ -1605,6 +1605,14 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
     - [x86] kvm/vmx: guard regparm(0) on vmread_error_trampoline for x86_32
       only
   * [x86] Revert "x86/CPU: Only try to mitigate FPDSS on Zen1" as redundant
+  * Revert "net: ipv4: stop checking crypto_ahash_alignmask"
+  * Revert "net: ipv6: stop checking crypto_ahash_alignmask"
+  * Revert "Bluetooth: L2CAP: use chan timer to close channels in
+    cleanup_listen()"
+  * cgroup/cpuset: Fix misplaced call to reset_migrate_dl_data()
+  * media: uvcvideo: Create an ID namespace for streaming output terminals
+  * [ppc64el] cpuidle: Set CPUIDLE_FLAG_POLLING for snooze state
+  * Revert "media: rc: streamzap: Error handling in probe"
 
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
