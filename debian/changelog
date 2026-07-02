@@ -1613,6 +1613,8 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
   * media: uvcvideo: Create an ID namespace for streaming output terminals
   * [ppc64el] cpuidle: Set CPUIDLE_FLAG_POLLING for snooze state
   * Revert "media: rc: streamzap: Error handling in probe"
+  * Revert "epoll: use refcount to reduce ep_mutex contention"
+    (CVE-2025-38349, CVE-2026-43074, CVE-2026-46242)
 
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
