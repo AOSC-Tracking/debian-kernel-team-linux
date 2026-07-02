@@ -1020,6 +1020,11 @@ linux (5.10.259-1) UNRELEASED; urgency=medium
   * [rt] Update to 5.10.259-rt155
   * Drop "Revert "io_uring/poll: correctly handle io_poll_add() return value
     on update""
+  * Revert "Bluetooth: L2CAP: use chan timer to close channels in
+    cleanup_listen()"
+  * Revert "media: rc: streamzap: Error handling in probe"
+  * usb: type: ucsi: Fix misplaced call to ucsi_port_psy_changed() (regression
+    in 5.10.241)
 
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)

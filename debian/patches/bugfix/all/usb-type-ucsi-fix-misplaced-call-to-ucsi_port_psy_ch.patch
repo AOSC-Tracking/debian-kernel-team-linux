@@ -1,0 +1,35 @@
+From: Ben Hutchings <benh@debian.org>
+Date: Thu, 2 Jul 2026 13:10:40 +0200
+Subject: usb: type: ucsi: Fix misplaced call to ucsi_port_psy_changed()
+
+Commit 7a3f8d1a44db "usb: typec: ucsi: Update power_supply on power
+role change", a backport of commit 7616f006db07 upstream, added a call
+to ucsi_port_psy_changed() in the wrong if-statement in
+ucsi_handle_connector_change().
+
+Commit 8e4dd0c617b0 "usb: typec: ucsi: Don't update power_supply on
+power role change if not connected", a backport of commit d98d413ca65d
+upstream, added a call to ucsi_port_psy_changed() in the right place
+but did not replace the previously misplaced call.
+
+Delete the misplaced call.
+
+Fixes: 7a3f8d1a44db ("usb: typec: ucsi: Update power_supply on power role change")
+Fixes: 8e4dd0c617b0 ("usb: typec: ucsi: Don't update power_supply on power role change if not connected")
+Signed-off-by: Ben Hutchings <benh@debian.org>
+---
+ drivers/usb/typec/ucsi/ucsi.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/drivers/usb/typec/ucsi/ucsi.c b/drivers/usb/typec/ucsi/ucsi.c
+index db5628526b8a..8dc62d9d31ad 100644
+--- a/drivers/usb/typec/ucsi/ucsi.c
++++ b/drivers/usb/typec/ucsi/ucsi.c
+@@ -788,7 +788,6 @@ static void ucsi_handle_connector_change(struct work_struct *work)
+ 
+ 	if (con->status.change & UCSI_CONSTAT_CONNECT_CHANGE) {
+ 		typec_set_pwr_role(con->port, role);
+-		ucsi_port_psy_changed(con);
+ 
+ 		switch (UCSI_CONSTAT_PARTNER_TYPE(con->status.flags)) {
+ 		case UCSI_CONSTAT_PARTNER_TYPE_UFP:
