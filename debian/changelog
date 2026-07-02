@@ -1604,6 +1604,7 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
     - ipv6: fix a BUG in rt6_get_pcpu_route() under PREEMPT_RT
     - [x86] kvm/vmx: guard regparm(0) on vmread_error_trampoline for x86_32
       only
+  * [x86] Revert "x86/CPU: Only try to mitigate FPDSS on Zen1" as redundant
 
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
