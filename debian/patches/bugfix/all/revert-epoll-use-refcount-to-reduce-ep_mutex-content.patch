@@ -2,7 +2,6 @@ From: Ben Hutchings <benh@debian.org>
 Date: Thu, 2 Jul 2026 15:17:58 +0200
 Subject: Revert "epoll: use refcount to reduce ep_mutex contention"
 Bug-Debian-Security: https://security-tracker.debian.org/tracker/CVE-2025-38349
-Bug-Debian-Security: https://security-tracker.debian.org/tracker/CVE-2026-43074
 Bug-Debian-Security: https://security-tracker.debian.org/tracker/CVE-2026-46242
 
 This reverts commit a1f93804449d13f97dabd4b996817de4bf1ed67a, which

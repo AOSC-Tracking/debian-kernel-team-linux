@@ -42,6 +42,7 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
     - [arm*] drm/vc4: Protect madv read in vc4_gem_object_mmap() with madv_lock
     - epoll: use refcount to reduce ep_mutex contention
     - eventpoll: defer struct eventpoll free to RCU grace period
+      (CVE-2026-43074)
     - net: sched: act_csum: validate nested VLAN headers (CVE-2026-31684)
     - net: lapbether: handle NETDEV_PRE_TYPE_CHANGE (CVE-2026-43103)
     - ipv4: icmp: fix null-ptr-deref in icmp_build_probe() (CVE-2026-43099)
@@ -1614,7 +1615,7 @@ linux (6.1.176-1) UNRELEASED; urgency=medium
   * [ppc64el] cpuidle: Set CPUIDLE_FLAG_POLLING for snooze state
   * Revert "media: rc: streamzap: Error handling in probe"
   * Revert "epoll: use refcount to reduce ep_mutex contention"
-    (CVE-2025-38349, CVE-2026-43074, CVE-2026-46242)
+    (CVE-2025-38349, CVE-2026-46242)
 
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
