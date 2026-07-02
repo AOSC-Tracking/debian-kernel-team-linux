@@ -1,4 +1,4 @@
-linux (5.10.259-1) UNRELEASED; urgency=medium
+linux (5.10.259-1) bullseye-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.258
@@ -1029,7 +1029,7 @@ linux (5.10.259-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * ip6_vti: set netns_immutable on the fallback device. (CVE-2026-52909)
 
- -- Ben Hutchings <benh@debian.org>  Tue, 02 Jun 2026 17:10:35 +0200
+ -- Ben Hutchings <benh@debian.org>  Thu, 02 Jul 2026 16:19:48 +0200
 
 linux (5.10.257-1) bullseye-security; urgency=high
 
