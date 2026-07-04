@@ -203,6 +203,7 @@ linux (6.12.95-1) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * net/netfilter: Enable NETFILTER_NETLINK_HOOK as module (Closes: #1139686)
+  * [rt] Refresh "locking/rt: Annotate unlock followed by lock for sparse."
 
   [ Uwe Kleine-König ]
   * [amd64] Enable CONFIG_PINCTRL_CS42L43 and CONFIG_SPI_CS42L43 explicitly
