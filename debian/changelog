@@ -1,4 +1,4 @@
-linux (6.12.95-1) UNRELEASED; urgency=medium
+linux (6.12.95-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.95
@@ -209,7 +209,7 @@ linux (6.12.95-1) UNRELEASED; urgency=medium
   * [amd64] Enable CONFIG_PINCTRL_CS42L43 and CONFIG_SPI_CS42L43 explicitly
     (Closes: #1136179)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 20 Jun 2026 10:04:10 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 04 Jul 2026 20:24:27 +0200
 
 linux (6.12.94-1) trixie-security; urgency=high
 
