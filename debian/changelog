@@ -1,14 +1,208 @@
-linux (6.12.94-2) UNRELEASED; urgency=medium
+linux (6.12.95-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.95
+    - wifi: mt76: mt7921: avoid undesired changes of the preset regulatory
+      domain
+    - wifi: mt76: mt7921: fix a potential scan no APs
+    - wifi: mt76: mt7921: fix potential deadlock in mt7921_roc_abort_sync
+      (CVE-2026-53101)
+    - fuse: limit FUSE_NOTIFY_RETRIEVE to uptodate folios (CVE-2026-53167)
+    - gpiolib: Extract gpiochip_choose_fwnode() for wider use
+    - gpiolib: Remove redundant assignment of return variable
+    - gpio: Fix resource leaks on errors in gpiochip_add_data_with_key()
+      (CVE-2026-31732)
+    - io_uring/net: Avoid msghdr on op_connect/op_bind async data
+    - drm/xe/display: fix oops in suspend/shutdown without display
+      (CVE-2026-53142)
+    - [arm64] drm/v3d: Store the active job inside the queue's state
+    - [arm64] drm/v3d: Skip CSD when it has zeroed workgroups (CVE-2026-53139)
+    - eventpoll: use hlist_is_singular_node() in __ep_remove()
+    - eventpoll: split __ep_remove()
+    - eventpoll: kill __ep_remove()
+    - eventpoll: drop vestigial __ prefix from ep_remove_{file,epi}()
+    - eventpoll: rename ep_remove_safe() back to ep_remove()
+    - eventpoll: move epi_fget() up
+    - eventpoll: fix ep_remove struct eventpoll / struct file UAF
+      (CVE-2026-46242)
+    - iio: light: bh1780: fix PM runtime leak on error path (CVE-2026-43355)
+    - net: Drop the lock in skb_may_tx_timestamp() (CVE-2026-43216)
+    - Reapply "selftest/ptp: update ptp selftest to exercise the gettimex
+      options"
+    - debugobjects: Allow to refill the pool before SYSTEM_SCHEDULING
+    - debugobjects: Use LD_WAIT_CONFIG instead of LD_WAIT_SLEEP
+    - debugobjects: Do not fill_pool() if pi_blocked_on
+    - debugobjects: Dont call fill_pool() in early boot hardirq context
+    - RDMA/bnxt_re: zero shared page before exposing to userspace
+    - i2c: stub: Reject I2C block transfers with invalid length
+    - [amd64] agp/amd64: Fix broken error propagation in agp_amd64_probe()
+      (CVE-2026-53325)
+    - bpf: Reject sleepable kprobe_multi programs at attach time
+      (CVE-2026-43010)
+    - ACPI: scan: Use async schedule function in acpi_scan_clear_dep_fn()
+    - regulator: core: fix locking in regulator_resolve_supply() error path
+    - dlm: prevent NPD when writing a positive value to event_done
+      (CVE-2025-23131)
+    - xfs: remove the expr argument to XFS_TEST_ERROR
+    - xfs: fix error returns in CoW fork repair
+    - Revert "net: bonding: fix use-after-free in bond_xmit_broadcast()"
+    - net: bonding: add broadcast_neighbor option for 802.3ad
+    - bonding: add support for per-port LACP actor priority
+    - bonding: print churn state via netlink
+    - bonding: 3ad: implement proper RCU rules for port->aggregator
+      (CVE-2026-52975)
+    - net: bonding: fix use-after-free in bond_xmit_broadcast() (CVE-2026-31419)
+    - bonding: fix NULL pointer dereference in actor_port_prio setting
+    - staging: rtl8723bs: fix buffer over-read in rtw_update_protection
+      (CVE-2026-53179)
+    - fhandle: fix UAF due to unlocked ->mnt_ns read in may_decode_fh()
+      (CVE-2026-53341)
+    - Drivers: hv: vmbus: Improve the logic of reserving fb_mmio on Gen2 VMs
+    - hv: utils: handle and propagate errors in kvp_register
+    - locking/mutex: Remove wakeups from under mutex::wait_lock
+    - locking/rtmutex: Skip remove_waiter() when waiter is not enqueued
+    - phonet: Pass ifindex to fill_addr().
+    - phonet: Pass net and ifindex to phonet_address_notify().
+    - net: phonet: free phonet_device after RCU grace period (CVE-2026-53157)
+    - rxrpc: Fix the ACK parser to extract the SACK table for parsing
+      (CVE-2026-53151)
+    - fuse: re-lock request before replacing page cache folio
+    - ftrace: Update the mcount_loc check of skipped entries
+    - ftrace: Have ftrace pages output reflect freed pages
+    - ftrace: Do not over-allocate ftrace memory
+    - ftrace: Test mcount_loc addr before calling ftrace_call_addr()
+    - ftrace: Check against is_kernel_text() instead of kaslr_offset()
+    - net: ipv6: Make udp_tunnel6_xmit_skb() void
+    - sctp: disable BH before calling udp_tunnel_xmit_skb() (CVE-2026-53070)
+    - iio: light: veml6075: add bounds check to veml6075_it_ms index
+    - iio: adc: ti-ads1298: add bounds check to pga_settings index
+    - vc_screen: fix null-ptr-deref in vcs_notifier() during concurrent
+      vcs_write
+    - [arm64] serial: qcom_geni: Fix RX DMA stall when SE_DMA_RX_LEN_IN is zero
+    - ksmbd: reject non-VALID session in compound request branch
+    - media: vidtv: fix NULL pointer dereference in vidtv_mux_push_si
+    - virtiofs: fix UAF on submount umount
+    - [amd64] KVM: x86: Fix shadow paging use-after-free due to unexpected role
+      (CVE-2026-53359)
+    - [amd64] KVM: x86/mmu: Ensure hugepage is in by slot before checking max
+      mapping level
+    - Revert "PCI: qcom: Advertise Hotplug Slot Capability with no Command
+      Completion support"
+    - [amd64] KVM: SEV: Ignore MMIO requests of length '0'
+    - [amd64] KVM: SEV: Reject MMIO requests larger than 8 bytes with GHCB v2+
+    - [amd64] KVM: SEV: Ignore Port I/O requests of length '0'
+    - batman-adv: tp_meter: keep unacked list in ascending ordered
+    - batman-adv: tp_meter: initialize dup_acks explicitly
+    - batman-adv: tp_meter: initialize dec_cwnd explicitly
+    - batman-adv: tp_meter: avoid window underflow
+    - batman-adv: tp_meter: avoid divide-by-zero for dec_cwnd
+    - batman-adv: tp_meter: fix fast recovery precondition
+    - batman-adv: tp_meter: handle seqno wrap-around for fast recovery detection
+    - batman-adv: tp_meter: add only finished tp_vars to lists
+    - batman-adv: bla: annotate lasttime access with READ/WRITE_ONCE
+    - batman-adv: prevent ELP transmission interval underflow
+    - batman-adv: tp_meter: initialize last_recv_time during init
+    - batman-adv: ensure bcast is writable before modifying TTL
+    - batman-adv: fix (m|b)cast csum after decrementing TTL
+    - batman-adv: frag: ensure fragment is writable before modifying TTL
+    - batman-adv: frag: avoid underflow of TTL
+    - batman-adv: v: prevent OGM aggregation on disabled hardif
+    - batman-adv: tp_meter: restrict number of unacked list entries
+    - batman-adv: tp_meter: annotate last_recv_time access with READ/WRITE_ONCE
+    - batman-adv: tp_meter: prevent parallel modifications of last_recv
+    - batman-adv: tp_meter: handle overlapping packets
+    - batman-adv: tt: don't merge change entries with different VIDs
+    - batman-adv: tt: track roam count per VID
+    - batman-adv: dat: prevent false sharing between VLANs
+    - batman-adv: tvlv: enforce 2-byte alignment
+    - batman-adv: tvlv: avoid race of cifsnotfound handler state
+    - ipv6: account for fraggap on the paged allocation path (CVE-2026-53362)
+    - fs: constify file ptr in backing_file accessor helpers
+    - lsm: add backing_file LSM hooks
+    - selinux: fix overlayfs mmap() and mprotect() access checks
+    - inet: add indirect call wrapper for getfrag() calls
+    - ipv4: account for fraggap on the paged allocation path
+    - ntfs3: reject direct userspace writes to reserved $LX* xattrs
+    - [amd64] KVM: SEV: Move sev_free_vcpu() down below sev_es_unmap_ghcb()
+    - [amd64] KVM: SEV: Unmap and unpin the GHCB as needed on vCPU free
+    - af_unix: Set gc_in_progress to true in unix_gc(). (CVE-2026-53361)
+    - mtd: spi-nor: macronix: Add post_sfdp fixups for Quad Input Page Program
+    - mtd: spi-nor: macronix: add support for mx66{l2, u1}g45g
+    - mac802154: llsec: add skb_cow_data() before in-place crypto
+    - net: skmsg: preserve sg.copy across SG transforms
+    - net: ip_gre: require CAP_NET_ADMIN in the device netns for changelink
+    - apparmor: mediate the implicit connect of TCP fast open sendmsg
+    - apparmor: fix use-after-free in rawdata dedup loop
+    - NTB: epf: Avoid pci_iounmap() with offset when PEER_SPAD and CONFIG share
+      BAR
+    - fbdev: fix use-after-free in store_modes()
+    - kernel/fork: clear PF_BLOCK_TS in copy_process()
+    - block: invalidate cached plug timestamp after task switch
+    - err.h: use __always_inline on all error pointer helpers
+    - KEYS: fix overflow in keyctl_pkey_params_get_2()
+    - keys: Pin request_key_auth payload in instantiate paths
+    - wifi: mt76: mt76x2u: Add support for ELECOM WDC-867SU3S
+    - wifi: mt76: mt7925: don't disable AP BSS when removing TDLS peer
+    - wifi: ath11k: fix warning when unbinding
+    - wifi: rtlwifi: rtl8821ae: Fix C2H bit location in RX descriptor
+    - wifi: rtw88: increase TX report timeout to fix race condition
+    - wifi: rtw88: usb: fix memory leaks on USB write failures
+    - wifi: iwlwifi: mvm: fix race condition in PTP removal
+    - f2fs: validate compress cache inode only when enabled
+    - f2fs: fix to round down start offset of fallocate for pin file
+    - f2fs: validate ACL entry sizes in f2fs_acl_from_disk()
+    - f2fs: fix incorrect FI_NO_EXTENT handling in __destroy_extent_node()
+    - f2fs: keep atomic write retry from zeroing original data
+    - block: Avoid mounting the bdev pseudo-filesystem in userspace
+    - bpf: use kvfree() for replaced sysctl write buffer
+    - exfat: fix potential use-after-free in exfat_find_dir_entry()
+    - KVM: Replace guest-triggerable BUG_ON() in ioeventfd datamatch with
+      get_unaligned()
+    - gfs2: fix use-after-free in gfs2_qd_dealloc
+    - [arm64] pwrseq: core: fix use-after-free in pwrseq_debugfs_seq_next()
+    - hdlc_ppp: sync per-proto timers before freeing hdlc state
+    - blk-cgroup: fix UAF in __blkcg_rstat_flush()
+    - tipc: fix slab-use-after-free Read in tipc_aead_decrypt_done
+    - pNFS: Fix use-after-free in pnfs_update_layout()
+    - fpga: region: fix use-after-free in child_regions_with_firmware()
+    - rpmsg: char: Fix use-after-free on probe error path
+    - ocfs2: reject oversized group bitmap descriptors
+    - 9p: avoid putting oldfid in p9_client_walk() error path
+    - [amd64] KVM: x86: hyper-v: Bound the bank index when querying sparse banks
+    - [amd64] KVM: SVM: Fix page overflow in sev_dbg_crypt() for ENCRYPT path
+    - power: reset: linkstation-poweroff: fix use-after-free in the
+      linkstation_poweroff_init()
+    - [riscv64] mm: Extract helper mark_new_valid_map()
+    - [riscv64] kfence: Call mark_new_valid_map() for kfence_unprotect()
+    - fbdev: Fix fb_new_modelist to prevent null-ptr-deref in
+      fb_videomode_to_var
+    - fbdev: modedb: fix a possible UAF in fb_find_mode()
+    - fbdev: modedb: Fix misaligned fields in the 1920x1080-60 mode
+    - i2c: core: fix adapter registration race
+    - NFSD: Fix SECINFO_NO_NAME decode error cleanup
+    - nfsd: fix posix_acl leak on SETACL decode failure
+    - nfsd: check get_user() return when reading princhashlen
+    - nfsd: avoid leaking pre-allocated openowner on unconfirmed retry race
+    - nfsd: reset write verifier on deferred writeback errors
+    - NFSv4/pNFS: reject zero-length r_addr in nfs4_decode_mp_ds_addr
+    - NFS: Prevent resource leak in nfs_alloc_server()
+    - ksmbd: fix out-of-bounds read in smb_check_perm_dacl()
+    - serial: 8250_dw: unregister 8250 port if clk_notifier_register() fails
+    - drivers/base/memory: set mem->altmap after successful device registration
+    - Documentation: ioctl-number: Fix linuxppc-dev mailto link
+    - Documentation: ioctl-number: Extend "Include File" column width
+    - [amd64] crypto: qat - Replace kzalloc() + copy_from_user() with
+      memdup_user()
+    - [amd64] crypto: qat - Return pointer directly in adf_ctl_alloc_resources
+    - [amd64] crypto: qat - remove unused character device and IOCTLs
+    - net/tcp-ao: fix use-after-free of key in del_async path
+    - locking: rtmutex: Fix wake_q logic in task_blocks_on_rt_mutex
+    - net: bonding: update the slave array for broadcast mode
+    - bonding: annotate data-races arcound churn variables
+    - bonding: do not set usable_slaves for broadcast mode
 
   [ Salvatore Bonaccorso ]
   * net/netfilter: Enable NETFILTER_NETLINK_HOOK as module (Closes: #1139686)
-  * eventpoll: use hlist_is_singular_node() in __ep_remove()
-  * eventpoll: split __ep_remove()
-  * eventpoll: kill __ep_remove()
-  * eventpoll: drop vestigial __ prefix from ep_remove_{file,epi}()
-  * eventpoll: rename ep_remove_safe() back to ep_remove()
-  * eventpoll: move epi_fget() up
-  * eventpoll: fix ep_remove struct eventpoll / struct file UAF (CVE-2026-46242)
 
   [ Uwe Kleine-König ]
   * [amd64] Enable CONFIG_PINCTRL_CS42L43 and CONFIG_SPI_CS42L43 explicitly
