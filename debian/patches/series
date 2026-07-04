@@ -90,14 +90,6 @@ features/all/db-mok-keyring/KEYS-Make-use-of-platform-keyring-for-module-signatu
 features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 
 # Security fixes
-bugfix/all/ip6_vti-set-netns_immutable-on-the-fallback-device.patch
-bugfix/all/eventpoll-use-hlist_is_singular_node-in-__ep_remove.patch
-bugfix/all/eventpoll-split-__ep_remove.patch
-bugfix/all/eventpoll-kill-__ep_remove.patch
-bugfix/all/eventpoll-drop-vestigial-__-prefix-from-ep_remove_-f.patch
-bugfix/all/eventpoll-rename-ep_remove_safe-back-to-ep_remove.patch
-bugfix/all/eventpoll-move-epi_fget-up.patch
-bugfix/all/eventpoll-fix-ep_remove-struct-eventpoll-struct-file.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
