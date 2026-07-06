@@ -1,3 +1,119 @@
+linux (5.10.260-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.260
+    - net/sched: act_pedit: use NLA_POLICY for parsing 'ex' keys
+    - net/sched: transition act_pedit to rcu and percpu stats
+    - net/sched: simplify tcf_pedit_act
+    - net/sched: act_pedit: remove extra check for key type
+    - net/sched: act_pedit: check static offsets a priori
+    - net/sched: act_pedit: rate limit datapath messages
+    - net/sched: act_pedit: Parse L3 Header for L4 offset
+    - net/sched: fix pedit partial COW leading to page cache corruption
+      (CVE-2026-46331)
+    - net/sched: act_pedit: free pedit keys on bail from offset check
+    - fuse: limit FUSE_NOTIFY_RETRIEVE to uptodate folios (CVE-2026-53167)
+    - [arm*] slimbus: qcom-ngd-ctrl: Register callbacks after creating the ngd
+      (CVE-2026-53332)
+    - drm/amd/display: Bound VBIOS record-chain walk loops (CVE-2026-53138)
+    - net: add skb_header_pointer_careful() helper
+    - net/sched: cls_u32: use skb_header_pointer_careful() (CVE-2026-23204)
+    - drm/amd/display: Use krealloc_array() in dal_vector_reserve()
+      (CVE-2026-53329)
+    - net: 9p: fix refcount leak in p9_read_work() error handling
+      (CVE-2022-50114)
+    - netdevsim: Fix memory leak of nsim_dev->fa_cookie (CVE-2022-49803)
+    - batman-adv: tt: reject oversized local TVLV buffers
+    - batman-adv: tt: prevent TVLV entry number overflow
+    - vfio/iommu_type1: replace kfree with kvfree
+    - RDMA/bnxt_re: zero shared page before exposing to userspace
+    - i2c: stub: Reject I2C block transfers with invalid length
+    - net: qualcomm: rmnet: fix endpoint use-after-free in rmnet_dellink()
+    - [x86] agp/amd64: Fix broken error propagation in agp_amd64_probe()
+      (CVE-2026-53325)
+    - regulator: core: fix locking in regulator_resolve_supply() error path
+      (CVE-2026-46252)
+    - vc_screen: fix null-ptr-deref in vcs_notifier() during concurrent
+      vcs_write
+    - media: vidtv: fix NULL pointer dereference in vidtv_mux_push_si
+    - [x86] crypto: qat - Replace kzalloc() + copy_from_user() with
+      memdup_user()
+    - [x86] crypto: qat - Return pointer directly in adf_ctl_alloc_resources
+    - [x86] crypto: qat - remove unused character device and IOCTLs
+    - net/sched: act_pedit: fix action bind logic
+    - batman-adv: tp_meter: keep unacked list in ascending ordered
+    - batman-adv: tp_meter: initialize dup_acks explicitly
+    - batman-adv: tp_meter: initialize dec_cwnd explicitly
+    - batman-adv: tp_meter: avoid window underflow
+    - batman-adv: tp_meter: avoid divide-by-zero for dec_cwnd
+    - batman-adv: tp_meter: fix fast recovery precondition
+    - batman-adv: tp_meter: handle seqno wrap-around for fast recovery
+      detection
+    - batman-adv: tp_meter: add only finished tp_vars to lists
+    - batman-adv: bla: annotate lasttime access with READ/WRITE_ONCE
+    - batman-adv: prevent ELP transmission interval underflow
+    - batman-adv: tp_meter: initialize last_recv_time during init
+    - batman-adv: frag: ensure fragment is writable before modifying TTL
+    - batman-adv: frag: avoid underflow of TTL
+    - batman-adv: v: prevent OGM aggregation on disabled hardif
+    - batman-adv: tp_meter: restrict number of unacked list entries
+    - batman-adv: tp_meter: annotate last_recv_time access with READ/WRITE_ONCE
+    - batman-adv: tp_meter: prevent parallel modifications of last_recv
+    - batman-adv: tp_meter: handle overlapping packets
+    - batman-adv: tt: don't merge change entries with different VIDs
+    - batman-adv: tt: track roam count per VID
+    - batman-adv: dat: prevent false sharing between VLANs
+    - batman-adv: tvlv: enforce 2-byte alignment
+    - batman-adv: tvlv: avoid race of cifsnotfound handler state
+    - ring-buffer: Remove ring_buffer_read_prepare_sync()
+    - ext4: add bounds check for inline data length in ext4_read_inline_page
+      (CVE-2026-31451)
+    - crypto: af_alg - Set merge to zero early in af_alg_sendmsg
+      (CVE-2025-39931)
+    - [armel,armhf] net: cpsw_new: Fix potential unregister of netdev that has
+      not been registered yet (CVE-2026-43219)
+    - mac802154: llsec: add skb_cow_data() before in-place crypto
+    - KEYS: fix overflow in keyctl_pkey_params_get_2()
+    - keys: Pin request_key_auth payload in instantiate paths
+    - wifi: mt76: mt76x2u: Add support for ELECOM WDC-867SU3S
+    - wifi: ath11k: fix warning when unbinding
+    - wifi: rtlwifi: rtl8821ae: Fix C2H bit location in RX descriptor
+    - f2fs: validate ACL entry sizes in f2fs_acl_from_disk()
+    - bpf: use kvfree() for replaced sysctl write buffer
+    - exfat: fix potential use-after-free in exfat_find_dir_entry()
+    - tipc: fix slab-use-after-free Read in tipc_aead_decrypt_done
+    - pNFS: Fix use-after-free in pnfs_update_layout()
+    - fpga: region: fix use-after-free in child_regions_with_firmware()
+    - ocfs2: reject oversized group bitmap descriptors
+    - [x86] KVM: SVM: Fix page overflow in sev_dbg_crypt() for ENCRYPT path
+    - fbdev: Fix fb_new_modelist to prevent null-ptr-deref in
+      fb_videomode_to_var
+    - fbdev: modedb: Fix misaligned fields in the 1920x1080-60 mode
+    - NFSD: Fix SECINFO_NO_NAME decode error cleanup
+    - nfsd: fix posix_acl leak on SETACL decode failure
+    - nfsd: check get_user() return when reading princhashlen
+    - dlm: prevent NPD when writing a positive value to event_done
+      (CVE-2025-23131)
+    - usb: cdns3: gadget: fix NULL pointer dereference in ep_queue
+      (CVE-2026-31755)
+    - bnxt_en: Modify bnxt_disable_int_sync() to be called more than once.
+    - bnxt_en: Fix NULL pointer dereference (CVE-2026-53177)
+    - [x86] hv: utils: handle and propagate errors in kvp_register
+    - mptcp: fix missing wakeups in edge scenarios
+    - [arm*] misc: fastrpc: Add dma_mask to fastrpc_channel_ctx
+    - [arm*] misc: fastrpc: Fix NULL pointer dereference in rpmsg callback
+      (CVE-2026-53158)
+    - [x86] Drivers: hv: vmbus: Improve the logic of reserving fb_mmio on Gen2
+      VMs
+    - phonet: Pass ifindex to fill_addr().
+    - phonet: Pass net and ifindex to phonet_address_notify().
+    - net: phonet: free phonet_device after RCU grace period (CVE-2026-53157)
+    - [arm*] misc: fastrpc: fix DMA address corruption due to find_vma misuse
+      (CVE-2026-53159)
+    - virtiofs: fix UAF on submount umount
+
+ -- Ben Hutchings <benh@debian.org>  Mon, 06 Jul 2026 18:29:22 +0200
+
 linux (5.10.259-1) bullseye-security; urgency=high
 
   * New upstream stable update:
