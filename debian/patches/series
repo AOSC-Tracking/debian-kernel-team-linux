@@ -200,5 +200,14 @@ features/all/ethernet-microsoft/0042-net-mana-Avoid-open-coded-arithmetic.patch
 features/all/ethernet-microsoft/0043-net-mana-Add-flex-array-to-struct-mana_cfg_rx_steer_.patch
 features/all/ethernet-microsoft/0044-net-mana-Allow-variable-size-indirection-table.patch
 features/all/ethernet-microsoft/0045-net-mana-Support-holes-in-device-list-reply-msg.patch
+features/all/ethernet-microsoft/0046-net-mana-Switch-to-page-pool-for-jumbo-frames.patch
+features/all/ethernet-microsoft/0047-net-mana-Record-doorbell-physical-address-in-PF-mode.patch
+features/all/ethernet-microsoft/0048-net-mana-fix-use-after-free-in-add_adev-error-path.patch
+features/all/ethernet-microsoft/0049-RDMA-mana_ib-Disable-RX-steering-on-RSS-QP-destroy.patch
+features/all/ethernet-microsoft/0050-RDMA-mana-Remove-redefinition-of-basic-u64-type.patch
+features/all/ethernet-microsoft/0051-net-mana-Fix-spelling-mistake-enforecement-enforceme.patch
+features/all/ethernet-microsoft/0052-net-mana-Implement-get_ringparam-set_ringparam-for-m.patch
+features/all/ethernet-microsoft/0053-net-mana-Improve-mana_set_channels-in-low-mem-condit.patch
+features/all/ethernet-microsoft/0054-net-mana-Request-a-V2-response-version-for-MANA_QUER.patch
 
 # ABI maintenance
