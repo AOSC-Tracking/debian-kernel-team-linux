@@ -1,3 +1,139 @@
+linux (6.1.177-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.177
+    - fuse: limit FUSE_NOTIFY_RETRIEVE to uptodate folios (CVE-2026-53167)
+    - [x86] KVM: VMX: Make vmread_error_trampoline() uncallable from C code
+    - drm/amd/display: Bound VBIOS record-chain walk loops (CVE-2026-53138)
+    - netfilter: nf_tables: always increment set element count
+    - netfilter: nf_tables: fix set size with rbtree backend
+    - netfilter: nf_tables: unconditionally bump set->nelems before insertion
+      (CVE-2026-23272)
+    - [arm64] drm/v3d: Store the active job inside the queue's state
+    - [arm64] drm/v3d: Skip CSD when it has zeroed workgroups (CVE-2026-53139)
+    - batman-adv: tt: prevent TVLV entry number overflow
+    - [x86] KVM: nVMX: Add a helper to get highest pending from Posted Interrupt
+      vector
+    - [x86] KVM: nVMX: Check for pending posted interrupts when looking for
+      nested events
+    - [x86] KVM: nVMX: Fold requested virtual interrupt check into
+      has_nested_events()
+    - net: annotate data-races around sk->sk_{data_ready,write_space}
+      (CVE-2026-23302)
+    - [armhf] group is_permission_fault() with is_translation_fault()
+    - [armhf] allow __do_kernel_fault() to report execution of memory faults
+    - [armhf] fix hash_name() fault
+    - [armhf] fix branch predictor hardening
+    - RDMA/bnxt_re: zero shared page before exposing to userspace
+    - i2c: stub: Reject I2C block transfers with invalid length
+    - net: qualcomm: rmnet: fix endpoint use-after-free in rmnet_dellink()
+    - [amd64] agp/amd64: Fix broken error propagation in agp_amd64_probe()
+      (CVE-2026-53325)
+    - af_unix: Reject SIOCATMARK on non-stream sockets (CVE-2026-52928)
+    - ring-buffer: Remove ring_buffer_read_prepare_sync()
+    - regulator: core: fix locking in regulator_resolve_supply() error path
+    - dlm: prevent NPD when writing a positive value to event_done
+      (CVE-2025-23131)
+    - netfilter: nf_tables: always walk all pending catchall elements
+      (CVE-2026-23278)
+    - vc_screen: fix null-ptr-deref in vcs_notifier() during concurrent
+      vcs_write
+    - ksmbd: reject non-VALID session in compound request branch
+    - media: vidtv: fix NULL pointer dereference in vidtv_mux_push_si
+    - virtiofs: fix UAF on submount umount
+    - perf bench: Avoid NDEBUG warning
+    - perf block-range: Move debug code behind ifndef NDEBUG
+    - [x86] KVM: x86: Fix shadow paging use-after-free due to unexpected role
+      (CVE-2026-53359)
+    - [x86] KVM: x86/mmu: Ensure hugepage is in by slot before checking max
+      mapping level
+    - Revert "ptp: add testptp mask test"
+    - mm/mglru: skip special VMAs in lru_gen_look_around()
+    - batman-adv: tp_meter: keep unacked list in ascending ordered
+    - batman-adv: tp_meter: initialize dup_acks explicitly
+    - batman-adv: tp_meter: initialize dec_cwnd explicitly
+    - batman-adv: tp_meter: avoid window underflow
+    - batman-adv: tp_meter: avoid divide-by-zero for dec_cwnd
+    - batman-adv: tp_meter: fix fast recovery precondition
+    - batman-adv: tp_meter: handle seqno wrap-around for fast recovery detection
+    - batman-adv: tp_meter: add only finished tp_vars to lists
+    - batman-adv: bla: annotate lasttime access with READ/WRITE_ONCE
+    - batman-adv: prevent ELP transmission interval underflow
+    - batman-adv: tp_meter: initialize last_recv_time during init
+    - batman-adv: ensure bcast is writable before modifying TTL
+    - batman-adv: fix (m|b)cast csum after decrementing TTL
+    - batman-adv: frag: ensure fragment is writable before modifying TTL
+    - batman-adv: frag: avoid underflow of TTL
+    - batman-adv: v: prevent OGM aggregation on disabled hardif
+    - batman-adv: tp_meter: restrict number of unacked list entries
+    - batman-adv: tp_meter: annotate last_recv_time access with READ/WRITE_ONCE
+    - batman-adv: tp_meter: prevent parallel modifications of last_recv
+    - batman-adv: tp_meter: handle overlapping packets
+    - batman-adv: tt: don't merge change entries with different VIDs
+    - batman-adv: tt: track roam count per VID
+    - batman-adv: dat: prevent false sharing between VLANs
+    - batman-adv: tvlv: enforce 2-byte alignment
+    - batman-adv: tvlv: avoid race of cifsnotfound handler state
+    - ntfs3: reject direct userspace writes to reserved $LX* xattrs
+    - ext4: add bounds check for inline data length in ext4_read_inline_page
+    - mac802154: llsec: add skb_cow_data() before in-place crypto
+    - net: skmsg: preserve sg.copy across SG transforms
+    - apparmor: mediate the implicit connect of TCP fast open sendmsg
+    - apparmor: fix use-after-free in rawdata dedup loop
+    - NTB: epf: Avoid pci_iounmap() with offset when PEER_SPAD and CONFIG share
+      BAR
+    - KEYS: fix overflow in keyctl_pkey_params_get_2()
+    - keys: Pin request_key_auth payload in instantiate paths
+    - wifi: mt76: mt76x2u: Add support for ELECOM WDC-867SU3S
+    - wifi: ath11k: fix warning when unbinding
+    - wifi: rtlwifi: rtl8821ae: Fix C2H bit location in RX descriptor
+    - f2fs: validate compress cache inode only when enabled
+    - f2fs: fix to round down start offset of fallocate for pin file
+    - f2fs: validate ACL entry sizes in f2fs_acl_from_disk()
+    - bpf: use kvfree() for replaced sysctl write buffer
+    - exfat: fix potential use-after-free in exfat_find_dir_entry()
+    - hdlc_ppp: sync per-proto timers before freeing hdlc state
+    - tipc: fix slab-use-after-free Read in tipc_aead_decrypt_done
+    - pNFS: Fix use-after-free in pnfs_update_layout()
+    - irqchip/imgpdc: Fix resource leak, add missing chained handler cleanup on
+      remove
+    - fpga: region: fix use-after-free in child_regions_with_firmware()
+    - ocfs2: reject oversized group bitmap descriptors
+    - 9p: avoid putting oldfid in p9_client_walk() error path
+    - [x86] KVM: SVM: Fix page overflow in sev_dbg_crypt() for ENCRYPT path
+    - power: reset: linkstation-poweroff: fix use-after-free in the
+      linkstation_poweroff_init()
+    - fbdev: Fix fb_new_modelist to prevent null-ptr-deref in
+      fb_videomode_to_var
+    - fbdev: modedb: Fix misaligned fields in the 1920x1080-60 mode
+    - NFSD: Fix SECINFO_NO_NAME decode error cleanup
+    - nfsd: fix posix_acl leak on SETACL decode failure
+    - nfsd: check get_user() return when reading princhashlen
+    - NFSv4/pNFS: reject zero-length r_addr in nfs4_decode_mp_ds_addr
+    - ksmbd: fix out-of-bounds read in smb_check_perm_dacl()
+    - rpmsg: char: Add lock to avoid race when rpmsg device is released
+    - mptcp: pm: fix extra_subflows underflow on userspace PM subflow creation
+    - mptcp: fix missing wakeups in edge scenarios
+    - hv: utils: handle and propagate errors in kvp_register
+    - misc: fastrpc: Add dma_mask to fastrpc_channel_ctx
+    - misc: fastrpc: Fix NULL pointer dereference in rpmsg callback
+      (CVE-2026-53158)
+    - Drivers: hv: vmbus: Improve the logic of reserving fb_mmio on Gen2 VMs
+    - locking/rtmutex: Skip remove_waiter() when waiter is not enqueued
+      (CVE-2026-53163)
+    - phonet: Pass ifindex to fill_addr().
+    - phonet: Pass net and ifindex to phonet_address_notify().
+    - net: phonet: free phonet_device after RCU grace period (CVE-2026-53157)
+    - fuse: re-lock request before replacing page cache folio
+    - serial: 8250_dw: unregister 8250 port if clk_notifier_register() fails
+    - Documentation: ioctl-number: Extend "Include File" column width
+    - crypto: qat - Replace kzalloc() + copy_from_user() with memdup_user()
+    - crypto: qat - Return pointer directly in adf_ctl_alloc_resources
+    - crypto: qat - remove unused character device and IOCTLs
+    - ipv6: account for fraggap on the paged allocation path (CVE-2026-53362)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 08 Jul 2026 21:53:45 +0200
+
 linux (6.1.176-1) bookworm-security; urgency=high
 
   * New upstream stable update:

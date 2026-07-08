@@ -129,11 +129,6 @@ debian/ntfs-mark-it-as-broken.patch
 bugfix/all/rxrpc-input-Open-code-skb_unshare.patch
 bugfix/all/rxrpc-Fix-conn-level-packet-handling-to-unshare-RESP.patch
 bugfix/all/rxrpc-Also-unshare-DATA-RESPONSE-packets-when-paged-.patch
-bugfix/all/ip6_vti-set-netns_immutable-on-the-fallback-device.patch
-bugfix/all/net-sched-act_pedit-check-static-offsets-a-priori.patch
-bugfix/all/net-sched-act_pedit-rate-limit-datapath-messages.patch
-bugfix/all/net-sched-fix-pedit-partial-COW-leading-to-page-cach.patch
-bugfix/all/net-sched-act_pedit-free-pedit-keys-on-bail-from-off.patch
 bugfix/all/revert-epoll-use-refcount-to-reduce-ep_mutex-content.patch
 
 # Fix exported symbol versions
