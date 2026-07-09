@@ -67,5 +67,4 @@
 0068-ipv6-fix-a-BUG-in-rt6_get_pcpu_route-under-PREEMPT_R.patch
 0069-Linux-6.1.167-rt62-REBASE.patch
 0070-tools-lib-bpf-fix-const-qualifier-discard-in-resolve.patch
-0071-kvm-vmx-guard-regparm-0-on-vmread_error_trampoline-f.patch
 0072-Linux-6.1.176-rt64-REBASE.patch

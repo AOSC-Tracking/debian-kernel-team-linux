@@ -137,6 +137,8 @@ linux (6.1.177-1) UNRELEASED; urgency=medium
     handlers"
   * [rt] Drop "debugobjects,locking: Annotate debug_object_fill_pool() wait type
     violation" (applied upstream)
+  * [rt] Drop "kvm/vmx: guard regparm(0) on vmread_error_trampoline for x86_32
+    only"
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 08 Jul 2026 21:53:45 +0200
 
