@@ -135,6 +135,8 @@ linux (6.1.177-1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * [rt] Refresh "ARM: enable irq in translation/section permission fault
     handlers"
+  * [rt] Drop "debugobjects,locking: Annotate debug_object_fill_pool() wait type
+    violation" (applied upstream)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 08 Jul 2026 21:53:45 +0200
 
