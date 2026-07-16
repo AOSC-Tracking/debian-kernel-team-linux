@@ -140,6 +140,18 @@ linux (6.1.177-1) UNRELEASED; urgency=medium
   * [rt] Drop "kvm/vmx: guard regparm(0) on vmread_error_trampoline for x86_32
     only"
 
+  [ Noah Meyerhans ]
+  * Backport changes in Microsoft Azure Network Adapter from 6.12.y:
+    - net: mana: Switch to page pool for jumbo frames
+    - net: mana: Record doorbell physical address in PF mode
+    - net: mana: fix use-after-free in add_adev() error path
+    - RDMA/mana_ib: Disable RX steering on RSS QP destroy
+    - RDMA/mana: Remove redefinition of basic u64 type
+    - net: mana: Fix spelling mistake "enforecement" -> "enforcement
+    - net: mana: Implement get_ringparam/set_ringparam for mana
+    - net: mana: Improve mana_set_channels() in low mem conditions
+    - net :mana :Request a V2 response version for MANA_QUERY_GF_STAT
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 08 Jul 2026 21:53:45 +0200
 
 linux (6.1.176-1) bookworm-security; urgency=high
