@@ -1,4 +1,4 @@
-linux (6.1.177-1) UNRELEASED; urgency=medium
+linux (6.1.177-1) bookworm-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.177
@@ -155,7 +155,7 @@ linux (6.1.177-1) UNRELEASED; urgency=medium
   [ Ben Hutchings ]
   * ipv4: account for fraggap on the paged allocation path (CVE-2026-53366)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 08 Jul 2026 21:53:45 +0200
+ -- Ben Hutchings <benh@debian.org>  Thu, 16 Jul 2026 10:07:17 +0200
 
 linux (6.1.176-1) bookworm-security; urgency=high
 
