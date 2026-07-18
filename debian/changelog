@@ -1,3 +1,10 @@
+linux (6.12.95-2) UNRELEASED; urgency=medium
+
+  [ Han Gao ]
+  * [riscv64] set NR_CPUS to 128 (Closes: #1140651)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 18 Jul 2026 17:47:20 +0200
+
 linux (6.12.95-1) trixie-security; urgency=high
 
   * New upstream stable update:
