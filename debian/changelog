@@ -369,6 +369,10 @@ linux (6.12.96-1) UNRELEASED; urgency=medium
   [ Han Gao ]
   * [riscv64] set NR_CPUS to 128 (Closes: #1140651)
 
+  [ Salvatore Bonaccorso ]
+  * [rt] Refresh "locking/rt: Annotate unlock followed by lock for sparse."
+    (context changes)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 18 Jul 2026 17:47:20 +0200
 
 linux (6.12.95-1) trixie-security; urgency=high
