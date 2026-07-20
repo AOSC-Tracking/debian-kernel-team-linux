@@ -1,4 +1,4 @@
-linux (6.12.96-1) UNRELEASED; urgency=medium
+linux (6.12.96-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.96
@@ -373,7 +373,7 @@ linux (6.12.96-1) UNRELEASED; urgency=medium
   * [rt] Refresh "locking/rt: Annotate unlock followed by lock for sparse."
     (context changes)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 18 Jul 2026 17:47:20 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 20 Jul 2026 09:13:07 +0200
 
 linux (6.12.95-1) trixie-security; urgency=high
 
