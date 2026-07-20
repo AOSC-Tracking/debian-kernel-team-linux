@@ -19,15 +19,15 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
-@@ -1610,6 +1610,7 @@
- 					   unsigned int state,
+@@ -1618,6 +1618,7 @@
  					   struct hrtimer_sleeper *timeout,
- 					   struct rt_mutex_waiter *waiter)
+ 					   struct rt_mutex_waiter *waiter,
+ 					   struct wake_q_head *wake_q)
 +	__releases(&lock->wait_lock) __acquires(&lock->wait_lock)
  {
  	struct rt_mutex *rtm = container_of(lock, struct rt_mutex, rtmutex);
  	struct task_struct *owner;
-@@ -1823,6 +1824,7 @@
+@@ -1837,6 +1838,7 @@
   */
  static void __sched rtlock_slowlock_locked(struct rt_mutex_base *lock,
  					   struct wake_q_head *wake_q)
