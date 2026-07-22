@@ -1,4 +1,4 @@
-linux-6.12 (6.12.96-1~deb12u1) UNRELEASED; urgency=medium
+linux-6.12 (6.12.96-1~deb12u1) bookworm-security; urgency=high
 
   * Rebuild for bookworm:
     - Disable building linux-libc-dev and unversioned tools packages
@@ -8,7 +8,7 @@ linux-6.12 (6.12.96-1~deb12u1) UNRELEASED; urgency=medium
   * d/b/gencontrol.py: Fix name in signed package changelog
   * Include rsync in Build-Depends-Arch for any build including tools
 
- -- Ben Hutchings <benh@debian.org>  Thu, 04 Jun 2026 01:43:30 +0200
+ -- Ben Hutchings <benh@debian.org>  Wed, 22 Jul 2026 23:10:58 +0200
 
 linux (6.12.96-1) trixie-security; urgency=high
 
