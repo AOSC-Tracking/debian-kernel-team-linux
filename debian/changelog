@@ -1,4 +1,4 @@
-linux (6.12.97-1) UNRELEASED; urgency=medium
+linux (6.12.98-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.97
@@ -1243,6 +1243,8 @@ linux (6.12.97-1) UNRELEASED; urgency=medium
     - Bluetooth: L2CAP: fix tx ident leak for commands without a response
     - dpll: fix NULL pointer dereference in dpll_msg_add_pin_ref_sync()
     - tools/testing: add linux/args.h header and fix radix, VMA tests
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.98
+    - ext4: fix fd leak in EXT4_IOC_MOVE_EXT cross-sb validation
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 24 Jul 2026 23:20:39 +0200
 
