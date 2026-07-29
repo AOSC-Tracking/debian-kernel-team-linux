@@ -1,4 +1,4 @@
-linux (6.12.98-1) UNRELEASED; urgency=medium
+linux (6.12.99-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.97
@@ -1245,6 +1245,8 @@ linux (6.12.98-1) UNRELEASED; urgency=medium
     - tools/testing: add linux/args.h header and fix radix, VMA tests
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.98
     - ext4: fix fd leak in EXT4_IOC_MOVE_EXT cross-sb validation
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.99
+    - mm: refactor mm_access() to not return NULL
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 24 Jul 2026 23:20:39 +0200
 
