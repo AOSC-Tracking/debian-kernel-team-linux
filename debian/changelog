@@ -1,4 +1,4 @@
-linux (5.10.261-1) UNRELEASED; urgency=medium
+linux (5.10.262-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.260
@@ -788,6 +788,8 @@ linux (5.10.261-1) UNRELEASED; urgency=medium
     - perf/x86/amd/core: Always use the NMI latency mitigation
     - tools/resolve_btfids: Fix some error messages
     - tools/resolve_btfids: Emit warnings and patch zero id for missing symbols
+    https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.262
+    - posix-cpu-timers: Prevent UAF caused by non-leader exec() race
 
   [ Emilio Pozuelo Monfort ]
   * [rt] Update to 5.10.261-rt157
