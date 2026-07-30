@@ -1,4 +1,4 @@
-linux (6.12.99-1) UNRELEASED; urgency=medium
+linux (6.12.100-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.97
@@ -1247,6 +1247,9 @@ linux (6.12.99-1) UNRELEASED; urgency=medium
     - ext4: fix fd leak in EXT4_IOC_MOVE_EXT cross-sb validation
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.99
     - mm: refactor mm_access() to not return NULL
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.100
+    - posix-cpu-timers: Prevent UAF caused by non-leader exec() race
+      (CVE-2026-64560)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 24 Jul 2026 23:20:39 +0200
 
