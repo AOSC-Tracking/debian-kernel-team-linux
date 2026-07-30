@@ -793,6 +793,8 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
 
   [ Emilio Pozuelo Monfort ]
   * [rt] Update to 5.10.261-rt157
+  * [rt] Refresh:
+    - Refresh "signals: Allow rt tasks to cache one sigqueue struct"
 
  -- Ben Hutchings <benh@debian.org>  Mon, 06 Jul 2026 18:29:22 +0200
 

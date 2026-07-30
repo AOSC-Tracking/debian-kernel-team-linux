@@ -49,9 +49,9 @@ index 99ab6d7a09ce..ae11230b3c64 100644
  	 */
 -	flush_sigqueue(&tsk->pending);
 +	flush_task_sigqueue(tsk);
- 	tsk->sighand = NULL;
- 	spin_unlock(&sighand->siglock);
  
+ 	/*
+ 	 * Ensure that all preceeding state is visible. Pairs with
 diff --git a/kernel/fork.c b/kernel/fork.c
 index d76bfa283f98..a8f1f618b3dd 100644
 --- a/kernel/fork.c
