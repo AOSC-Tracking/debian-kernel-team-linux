@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:01 +0106
 Subject: [PATCH 099/328] console: add write_atomic interface
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=97fd12bbbd84037f9dad6693e19d4f0e6e0054e0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5d479b0093da4215913933ae07493392627508a4
 
 Add a write_atomic() callback to the console. This is an optional
 function for console drivers. The function must be atomic (including
@@ -157,3 +157,6 @@ index e7257fb4f446..3b41f2988579 100644
 +	prb_unlock(&printk_cpulock, flags);
 +}
 +EXPORT_SYMBOL(console_atomic_unlock);
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:33 -0400
 Subject: [PATCH 292/328] sched: Optimize migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5aa2b33d199d40d49ca5b224a03a56a4ee33f9d9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a0ba6e9de4115cdfd93661438d27f2c84aa568eb
 
 commit 3f1bc119cd7fc987c8ed25ffb717f99403bb308c upstream.
 
@@ -52,3 +52,6 @@ index 57064059b73e..63fc6249ea13 100644
  	} else if (pending) {
  		/*
  		 * This happens when we get migrated between migrate_enable()'s
+-- 
+2.47.3
+

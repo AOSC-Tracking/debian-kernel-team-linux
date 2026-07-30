@@ -1,7 +1,7 @@
 From: Xie Yongji <xieyongji@bytedance.com>
 Date: Mon, 13 Sep 2021 19:19:28 +0800
 Subject: [PATCH 312/328] aio: Fix incorrect usage of eventfd_signal_allowed()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a2458c9013e43b232068cf2c32356da7dfd1cdd2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d2ec6a9c3e7b39bbb719a2bc4657fbca7a0e45aa
 
 commit 4b3749865374899e115aa8c48681709b086fe6d3 upstream.
 
@@ -32,3 +32,6 @@ index 9616255a1792..f502a7c84190 100644
  			iocb = NULL;
  			INIT_WORK(&req->work, aio_poll_put_work);
  			schedule_work(&req->work);
+-- 
+2.47.3
+

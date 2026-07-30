@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 14 Sep 2016 14:35:49 +0200
 Subject: [PATCH 184/328] fs/dcache: use swait_queue instead of waitqueue
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=04617e2da4797d79b52749ecaf48bd8027838568
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=519e9ccec75b7d663ae4a341d9f4a24993445201
 
 __d_lookup_done() invokes wake_up_all() while holding a hlist_bl_lock()
 which disables preemption. As a workaround convert it to swait.
@@ -36,7 +36,7 @@ index dae9a57d7ec0..9a6a0ec4d1fb 100644
  	_enter("%p{%pd},%llx", dentry, dentry, vnode->fid.vnode);
  
 diff --git a/fs/cifs/readdir.c b/fs/cifs/readdir.c
-index 9e62d75f2465..431fc4a99e91 100644
+index 9a7315aa24e0..e66bc2c77a07 100644
 --- a/fs/cifs/readdir.c
 +++ b/fs/cifs/readdir.c
 @@ -81,7 +81,7 @@ cifs_prime_dcache(struct dentry *parent, struct qstr *name,
@@ -133,7 +133,7 @@ index debebcbe702f..3f75ff5a1734 100644
  	if (unlikely(IS_DEADDIR(dir_inode)))
  		return ERR_PTR(-ENOENT);
 diff --git a/fs/nfs/dir.c b/fs/nfs/dir.c
-index 75af965740a4..39543e8e91c5 100644
+index a4af76714953..ffc06afc93c1 100644
 --- a/fs/nfs/dir.c
 +++ b/fs/nfs/dir.c
 @@ -485,7 +485,7 @@ void nfs_prime_dcache(struct dentry *parent, struct nfs_entry *entry,
@@ -177,7 +177,7 @@ index 5fa11e1aca4c..984f26eb888c 100644
  	status = -EBUSY;
  	spin_lock(&dentry->d_lock);
 diff --git a/fs/proc/base.c b/fs/proc/base.c
-index b09cc9e6d591..cd3569db9742 100644
+index b4e58fb07f48..9f2df0683266 100644
 --- a/fs/proc/base.c
 +++ b/fs/proc/base.c
 @@ -97,6 +97,7 @@
@@ -188,7 +188,7 @@ index b09cc9e6d591..cd3569db9742 100644
  #include <trace/events/oom.h>
  #include "internal.h"
  #include "fd.h"
-@@ -2125,7 +2126,7 @@ bool proc_fill_cache(struct file *file, struct dir_context *ctx,
+@@ -2111,7 +2112,7 @@ bool proc_fill_cache(struct file *file, struct dir_context *ctx,
  
  	child = d_hash_and_lookup(dir, &qname);
  	if (!child) {
@@ -257,3 +257,6 @@ index e1c655f928c7..f230b1ac7f91 100644
  	raw_spin_lock_irq(&q->lock);
  	list_splice_init(&q->task_list, &tmp);
  	while (!list_empty(&tmp)) {
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Matt Fleming <matt@codeblueprint.co.uk>
 Date: Tue, 7 Apr 2020 10:54:13 +0100
 Subject: [PATCH 284/328] signal: Prevent double-free of user struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5b2b6176fc741a0c2b5d029bf73a320e917ff289
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2b48ff92dc89a15070a0b11f934f9b06ee7e27f0
 
 The way user struct reference counting works changed significantly with,
 
@@ -46,3 +46,6 @@ index 14f2292b508e..ad64184e07aa 100644
  	} else
  		  __sigqueue_free(q);
  }
+-- 
+2.47.3
+

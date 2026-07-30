@@ -1,7 +1,7 @@
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:29 +0100
 Subject: [PATCH 127/328] s390/vtime: Use the generic IRQ entry accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a5aefa4363e7991131351cc117212f3bb11a26b0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=094abc89d7f189f623484ce77857c6d201f54530
 
 s390 has its own version of IRQ entry accounting because it doesn't
 account the idle time the same way the other architectures do. Only
@@ -120,3 +120,6 @@ index 0c0c905a61d2..c06dac0d3f3b 100644
  
  void cputime_adjust(struct task_cputime *curr, struct prev_cputime *prev,
  		    u64 *ut, u64 *st)
+-- 
+2.47.3
+

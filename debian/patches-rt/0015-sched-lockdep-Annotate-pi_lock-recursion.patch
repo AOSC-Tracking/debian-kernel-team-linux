@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:12 +0200
 Subject: [PATCH 015/328] sched, lockdep: Annotate ->pi_lock recursion
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8d800470c6e273abc829bfb91fea4f9c52f24712
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f179bbe10313d7def4fa7c8bf9735c070e456ae0
 
 There's a valid ->pi_lock recursion issue where the actual PI code
 tries to wake up the stop task. Make lockdep aware so it doesn't
@@ -46,3 +46,6 @@ index a267a822eac9..7628f80ed778 100644
  	}
  
  	cpu_rq(cpu)->stop = stop;
+-- 
+2.47.3
+

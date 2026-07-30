@@ -2,13 +2,14 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 10 Jun 2011 11:04:15 +0200
 Subject: [PATCH 160/328] locking/rtmutex: Handle the various new futex race
  conditions
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ee3d702c619c55520fd2a51dcca59e8cd145c7a8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a7e929369374d37bb1969bd320f24154d416736d
 
 RT opens a few new interesting race conditions in the rtmutex/futex
 combo due to futex hash bucket lock being a 'sleeping' spinlock and
 therefor not disabling preemption.
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
+Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
 ---
  kernel/futex/core.c             | 77 ++++++++++++++++++++++++++-------
  kernel/locking/rtmutex.c        | 36 ++++++++++++---
@@ -19,7 +20,7 @@ diff --git a/kernel/futex/core.c b/kernel/futex/core.c
 index df86c0e49418..68b1ec649ebd 100644
 --- a/kernel/futex/core.c
 +++ b/kernel/futex/core.c
-@@ -2165,6 +2165,16 @@ static int futex_requeue(u32 __user *uaddr1, unsigned int flags,
+@@ -2165,6 +2165,16 @@ retry_private:
  				 */
  				requeue_pi_wake_futex(this, &key2, hb2);
  				continue;
@@ -141,7 +142,7 @@ index df86c0e49418..68b1ec649ebd 100644
  			ret = 0;
  
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index 36e59d620535..c1a37ce74217 100644
+index a27735576c01..0c0db13eb707 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
 @@ -136,6 +136,11 @@ static void fixup_rt_mutex_waiters(struct rt_mutex *lock)
@@ -207,16 +208,16 @@ index 36e59d620535..c1a37ce74217 100644
  			chain_walk = 1;
  	} else if (rt_mutex_cond_detect_deadlock(waiter, chwalk)) {
  		chain_walk = 1;
-@@ -1066,7 +1088,7 @@ static void remove_waiter(struct rt_mutex *lock,
- {
+@@ -1069,7 +1091,7 @@ static void remove_waiter(struct rt_mutex *lock,
  	bool is_top_waiter = (waiter == rt_mutex_top_waiter(lock));
  	struct task_struct *owner = rt_mutex_owner(lock);
+ 	struct task_struct *waiter_task = waiter->task;
 -	struct rt_mutex *next_lock;
 +	struct rt_mutex *next_lock = NULL;
  
  	lockdep_assert_held(&lock->wait_lock);
  
-@@ -1092,7 +1114,8 @@ static void remove_waiter(struct rt_mutex *lock,
+@@ -1098,7 +1120,8 @@ static void remove_waiter(struct rt_mutex *lock,
  	rt_mutex_adjust_prio(owner);
  
  	/* Store the lock on which owner is blocked or NULL */
@@ -226,7 +227,7 @@ index 36e59d620535..c1a37ce74217 100644
  
  	raw_spin_unlock(&owner->pi_lock);
  
-@@ -1128,7 +1151,8 @@ void rt_mutex_adjust_pi(struct task_struct *task)
+@@ -1134,7 +1157,8 @@ void rt_mutex_adjust_pi(struct task_struct *task)
  	raw_spin_lock_irqsave(&task->pi_lock, flags);
  
  	waiter = task->pi_blocked_on;
@@ -249,3 +250,6 @@ index b1455dc2366f..096b16cfb096 100644
  extern struct task_struct *rt_mutex_next_owner(struct rt_mutex *lock);
  extern void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
  				       struct task_struct *proxy_owner);
+-- 
+2.47.3
+

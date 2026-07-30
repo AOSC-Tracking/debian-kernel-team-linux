@@ -1,7 +1,7 @@
 From: Salvatore Bonaccorso <carnil@debian.org>
 Date: Fri, 20 Jan 2023 19:23:03 +0100
 Subject: [PATCH 316/328] rt: arm64: make _TIF_WORK_MASK bits contiguous
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dcbca66ba39402795a521406963ae35e9b30c0c7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=70f4df7c77b676b04ca91ad07f0b3f7439226bb2
 
 As same as in commit 870d16757ba8 ("arm64: make _TIF_WORK_MASK bits
 contiguous") in mainline, we need to make the bits of _TIF_WORK_MASK to
@@ -51,3 +51,6 @@ index 6eb36a2126e8..2afd9ceb66c9 100644
  #define TIF_MEMDIE		18	/* is terminating due to OOM killer */
  #define TIF_FREEZE		19
  #define TIF_RESTORE_SIGMASK	20
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:03 +0106
 Subject: [PATCH 101/328] printk: relocate printk_delay() and vprintk_default()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=92e64b74cb03c796b6604ba5a941027df2e83b21
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d5e016e092aec1c1bfcf7f07d3432bc9793ab4ec
 
 Move printk_delay() and vprintk_default() "as is" further up so that
 they can be used by new functions in an upcoming commit.
@@ -83,3 +83,6 @@ index 3b41f2988579..969e8328ae40 100644
  /**
   * printk - print a kernel message
   * @fmt: format string
+-- 
+2.47.3
+

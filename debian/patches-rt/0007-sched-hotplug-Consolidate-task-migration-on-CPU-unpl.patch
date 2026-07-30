@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 23 Oct 2020 12:12:04 +0200
 Subject: [PATCH 007/328] sched/hotplug: Consolidate task migration on CPU
  unplug
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f1ca749d981ee15b1e47ac3e58d6facb8f780e68
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9c0dd13637a4ed6dee3b4c15609d6e8d4de34acc
 
 With the new mechanism which kicks tasks off the outgoing CPU at the end of
 schedule() the situation on an outgoing CPU right before the stopper thread
@@ -65,7 +65,7 @@ index 9a62ffdd296f..412cdaba33eb 100644
  #endif
  
 diff --git a/kernel/cpu.c b/kernel/cpu.c
-index 7eab6e3e771f..0ffe96a042d4 100644
+index 08c2b2e30f23..fa65f7c09541 100644
 --- a/kernel/cpu.c
 +++ b/kernel/cpu.c
 @@ -1674,7 +1674,7 @@ static struct cpuhp_step cpuhp_hp_states[] = {
@@ -277,3 +277,6 @@ index 68c99c2fe82a..365f755c59be 100644
  	BUG_ON(rq->nr_running != 1);
  	rq_unlock_irqrestore(rq, &rf);
  
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 17 Feb 2021 18:23:16 +0100
 Subject: [PATCH 094/328] printk: kmsg_dump: use kmsg_dump_rewind
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1192acc7eb57c7fd8126f54e806181184766be06
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=57c8973a9de5dc899668aed2fe07b005a7b25c5b
 
 kmsg_dump() is open coding the kmsg_dump_rewind(). Call
 kmsg_dump_rewind() instead.
@@ -36,3 +36,6 @@ index 98f0fc8e3a8b..9016c6eaac38 100644
  
  		/* invoke dumper which will iterate over records */
  		dumper->dump(dumper, reason, &iter);
+-- 
+2.47.3
+

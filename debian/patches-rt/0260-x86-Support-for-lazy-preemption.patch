@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 1 Nov 2012 11:03:47 +0100
 Subject: [PATCH 260/328] x86: Support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fa264395221e05cf0415a6a59fff1199933de7f9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=541dbda94c876376fed2060ef38697db344acd55
 
 Implement the x86 pieces for lazy preempt.
 
@@ -165,3 +165,6 @@ index f32250adb681..cdf97ea30b4c 100644
  			schedule();
  
  #ifdef ARCH_RT_DELAYS_SIGNAL_SEND
+-- 
+2.47.3
+

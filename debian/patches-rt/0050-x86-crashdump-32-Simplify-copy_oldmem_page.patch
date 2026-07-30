@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:39 +0100
 Subject: [PATCH 050/328] x86/crashdump/32: Simplify copy_oldmem_page()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5015afd6aec94b4b05496581bf16d044bcce9b11
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a414e006543f2e0e8dbd8f9d34ce813b2f4df6a9
 
 Replace kmap_atomic_pfn() with kmap_local_pfn() which is preemptible and
 can take page faults.
@@ -93,3 +93,6 @@ index 33ee47670b99..5fcac46aaf6b 100644
 +	return csize;
  }
 -arch_initcall(kdump_buf_page_init);
+-- 
+2.47.3
+

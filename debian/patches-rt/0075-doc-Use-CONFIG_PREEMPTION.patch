@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 15 Dec 2020 15:16:49 +0100
 Subject: [PATCH 075/328] doc: Use CONFIG_PREEMPTION
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f6832ba7e0c6783ed971b2e5fbbd6216b3fc8eef
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b52e140784b5e2075a0b384bb79cf0ec7af86ef1
 
 CONFIG_PREEMPTION is selected by CONFIG_PREEMPT and by CONFIG_PREEMPT_RT.
 Both PREEMPT and PREEMPT_RT require the same functionality which today
@@ -84,7 +84,7 @@ index 0f7e0237ea14..17d38480ef5c 100644
  reason is that an RCU read-side critical section might be preempted,
  which means that a subsequent ``synchronize_rcu()`` really does have to
  wait for something, as opposed to simply returning immediately.
-@@ -2010,7 +2010,7 @@ The compiler must not be permitted to transform this source code into
+@@ -2010,7 +2010,7 @@ the following:
         5 rcu_read_unlock();
         6 do_something_with(v, user_v);
  
@@ -182,7 +182,7 @@ diff --git a/Documentation/RCU/stallwarn.rst b/Documentation/RCU/stallwarn.rst
 index c9ab6af4d3be..e97d1b4876ef 100644
 --- a/Documentation/RCU/stallwarn.rst
 +++ b/Documentation/RCU/stallwarn.rst
-@@ -25,7 +25,7 @@ So your kernel printed an RCU CPU stall warning.  The next question is
+@@ -25,7 +25,7 @@ warnings:
  
  -	A CPU looping with bottom halves disabled.
  
@@ -191,7 +191,7 @@ index c9ab6af4d3be..e97d1b4876ef 100644
  	without invoking schedule().  If the looping in the kernel is
  	really expected and desirable behavior, you might need to add
  	some calls to cond_resched().
-@@ -44,7 +44,7 @@ So your kernel printed an RCU CPU stall warning.  The next question is
+@@ -44,7 +44,7 @@ warnings:
  	result in the ``rcu_.*kthread starved for`` console-log message,
  	which will include additional debugging information.
  
@@ -204,7 +204,7 @@ diff --git a/Documentation/RCU/whatisRCU.rst b/Documentation/RCU/whatisRCU.rst
 index fb3ff76c3e73..3b2b1479fd0f 100644
 --- a/Documentation/RCU/whatisRCU.rst
 +++ b/Documentation/RCU/whatisRCU.rst
-@@ -684,7 +684,7 @@ so there can be no deadlock cycle.
+@@ -684,7 +684,7 @@ Quick Quiz #1:
  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  This section presents a "toy" RCU implementation that is based on
  "classic RCU".  It is also short on performance (but only for updates) and
@@ -213,7 +213,7 @@ index fb3ff76c3e73..3b2b1479fd0f 100644
  kernels.  The definitions of rcu_dereference() and rcu_assign_pointer()
  are the same as those shown in the preceding section, so they are omitted.
  ::
-@@ -740,7 +740,7 @@ to that data item, so we can safely reclaim it.
+@@ -740,7 +740,7 @@ Quick Quiz #2:
  Quick Quiz #3:
  		If it is illegal to block in an RCU read-side
  		critical section, what the heck do you do in
@@ -222,7 +222,7 @@ index fb3ff76c3e73..3b2b1479fd0f 100644
  
  :ref:`Answers to Quick Quiz <8_whatisRCU>`
  
-@@ -1094,7 +1094,7 @@ the right tool for your job.
+@@ -1094,7 +1094,7 @@ Quick Quiz #2:
  		overhead is **negative**.
  
  Answer:
@@ -231,7 +231,7 @@ index fb3ff76c3e73..3b2b1479fd0f 100644
  		kernel where a routing table is used by process-context
  		code, but can be updated by irq-context code (for example,
  		by an "ICMP REDIRECT" packet).	The usual way of handling
-@@ -1121,10 +1121,10 @@ the right tool for your job.
+@@ -1121,10 +1121,10 @@ Answer:
  Quick Quiz #3:
  		If it is illegal to block in an RCU read-side
  		critical section, what the heck do you do in
@@ -244,3 +244,6 @@ index fb3ff76c3e73..3b2b1479fd0f 100644
  		critical sections, it permits preemption of RCU
  		read-side critical sections.  It also permits
  		spinlocks blocking while in RCU read-side critical
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 15 Apr 2015 19:00:47 +0200
 Subject: [PATCH 206/328] slub: Disable SLUB_CPU_PARTIAL
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=73cd6d5df1707b0660fc2e5e8e78eaa9a71cb9b8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f1efaa87760aff1f69ca900903cf5b990cc03095
 
 |BUG: sleeping function called from invalid context at kernel/locking/rtmutex.c:915
 |in_atomic(): 1, irqs_disabled(): 0, pid: 87, name: rcuop/7
@@ -48,3 +48,6 @@ index 431494edee20..e4af3d46584b 100644
  	bool "SLUB per cpu partial cache"
  	help
  	  Per cpu partial caches accelerate objects allocation and freeing
+-- 
+2.47.3
+

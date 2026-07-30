@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 6 Sep 2021 18:19:16 +0200
 Subject: [PATCH 305/328] locking: Drop might_resched() from
  might_sleep_no_state_check()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5f9eac769de137fa41aad6efe9b98e9b026072ef
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3603ae2447d69b1aae746856a89083b3680735c6
 
 might_sleep_no_state_check() serves the same purpose as might_sleep()
 except it is used before sleeping locks are acquired and therefore does
@@ -34,3 +34,6 @@ index 7b4fdd5b2f7b..4e88ae0b2578 100644
  
  /**
   * cant_sleep - annotation for functions that cannot sleep
+-- 
+2.47.3
+

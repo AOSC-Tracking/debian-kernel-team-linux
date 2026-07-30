@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Tue, 26 Jan 2021 17:43:19 +0106
 Subject: [PATCH 092/328] printk: remove logbuf_lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=80b2696e4cebedea95c698843f07239a8a179992
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ec94f827418c7740e7f850fb381b8395257f2e27
 
 Since the ringbuffer is lockless, there is no need for it to be
 protected by @logbuf_lock. Remove @logbuf_lock.
@@ -281,7 +281,7 @@ index 6e7e8137427e..a135f27d21ef 100644
  		break;
  	/* Size of the log buffer */
  	case SYSLOG_ACTION_SIZE_BUFFER:
-@@ -2636,7 +2602,6 @@ void console_unlock(void)
+@@ -2636,7 +2602,6 @@ again:
  		size_t len;
  
  		printk_safe_enter_irqsave(flags);
@@ -289,7 +289,7 @@ index 6e7e8137427e..a135f27d21ef 100644
  skip:
  		if (!prb_read_valid(prb, console_seq, &r))
  			break;
-@@ -2680,7 +2645,6 @@ void console_unlock(void)
+@@ -2680,7 +2645,6 @@ skip:
  				console_msg_format & MSG_FORMAT_SYSLOG,
  				printk_time);
  		console_seq++;
@@ -297,7 +297,7 @@ index 6e7e8137427e..a135f27d21ef 100644
  
  		/*
  		 * While actively printing out messages, if another printk()
-@@ -2707,8 +2671,6 @@ void console_unlock(void)
+@@ -2707,8 +2671,6 @@ skip:
  
  	console_locked = 0;
  
@@ -306,7 +306,7 @@ index 6e7e8137427e..a135f27d21ef 100644
  	up_console_sem();
  
  	/*
-@@ -2717,9 +2679,7 @@ void console_unlock(void)
+@@ -2717,9 +2679,7 @@ skip:
  	 * there's a new owner and the console_unlock() from them will do the
  	 * flush, no worries.
  	 */
@@ -480,3 +480,6 @@ index 2e9e3ed7d63e..7df8a88d4115 100644
  	if (this_cpu_read(printk_context) & PRINTK_NMI_CONTEXT_MASK)
  		return vprintk_nmi(fmt, args);
  
+-- 
+2.47.3
+

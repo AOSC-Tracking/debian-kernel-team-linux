@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Sat, 27 May 2017 19:02:06 +0200
 Subject: [PATCH 225/328] kernel/sched: add {put|get}_cpu_light()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c4353be48aed9364cc6b6fe834dd45d4814c6c4a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3f7c313f0e9c1c50bce666f103356326e96a92ca
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 ---
@@ -22,3 +22,6 @@ index 04f44e0aa2e0..cae66815f9e2 100644
  /*
   * Callback to arch code if there's nosmp or maxcpus=0 on the
   * boot command line:
+-- 
+2.47.3
+

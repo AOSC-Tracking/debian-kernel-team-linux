@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:45 +0100
 Subject: [PATCH 056/328] highmem: Remove kmap_atomic_prot()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=14b4a8e9b2fd70250a6946338d19c8c48fbd57bb
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9eba5b52eb83015bc2acf616b84b0b6992ba449a
 
 No more users.
 
@@ -46,3 +46,6 @@ index 3590af5aad96..bd15bf9164c2 100644
  static inline void __kunmap_atomic(void *addr)
  {
  #ifdef ARCH_HAS_FLUSH_ON_KUNMAP
+-- 
+2.47.3
+

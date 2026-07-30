@@ -1,7 +1,7 @@
 From: Ingo Molnar <mingo@elte.hu>
 Date: Fri, 3 Jul 2009 08:29:57 -0500
 Subject: [PATCH 285/328] genirq: Disable irqpoll on -rt
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=157e1639560d8fb61de6fb4f54b55ada6881bc24
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=55dd28d1a265ab5d433314e327e8fb29e76ce7c2
 
 Creates long latencies for no value
 
@@ -37,3 +37,6 @@ index f865e5f4d382..dc7311dd74b1 100644
  	irqfixup = 2;
  	printk(KERN_WARNING "Misrouted IRQ fixup and polling support "
  				"enabled\n");
+-- 
+2.47.3
+

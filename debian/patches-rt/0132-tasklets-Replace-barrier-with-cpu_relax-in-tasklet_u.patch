@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:04 +0100
 Subject: [PATCH 132/328] tasklets: Replace barrier() with cpu_relax() in
  tasklet_unlock_wait()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5829cc8e40b60194a8bb44e9abf69cd3eb7547a7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=270fce15e4f075889fff5c0a75f89f5b3bfc8b47
 
 A barrier() in a tight loop which waits for something to happen on a remote
 CPU is a pointless exercise. Replace it with cpu_relax() which allows HT
@@ -29,3 +29,6 @@ index 4994465ad1d9..8314036bc1ee 100644
  }
  #else
  #define tasklet_trylock(t) 1
+-- 
+2.47.3
+

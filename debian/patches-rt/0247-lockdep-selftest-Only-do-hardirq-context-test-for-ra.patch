@@ -2,7 +2,7 @@ From: Yong Zhang <yong.zhang@windriver.com>
 Date: Mon, 16 Apr 2012 15:01:56 +0800
 Subject: [PATCH 247/328] lockdep: selftest: Only do hardirq context test for
  raw spinlock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=47828430714c858bee799c8b27f287858128e7b0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a779f5bcc1485c432caac1162dde6217ced7450e
 
 On -rt there is no softirq context any more and rwlock is sleepable,
 disable softirq context test and rwlock+irq test.
@@ -56,3 +56,6 @@ index 76c52b0b76d3..663c071bc445 100644
  	ww_tests();
  
  	force_read_lock_recursive = 0;
+-- 
+2.47.3
+

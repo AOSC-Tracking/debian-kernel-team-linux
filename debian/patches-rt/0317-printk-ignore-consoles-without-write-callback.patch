@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 17 Feb 2023 09:53:44 +0106
 Subject: [PATCH 317/328] printk: ignore consoles without write() callback
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c86ff3c212e2df196ed289dcc13c15fb6f191dc4
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=755d035a8f3eb8ea9821fe73323b7f63c452453e
 
 The ttynull driver does not provide an implementation for the write()
 callback. This leads to a NULL pointer dereference in the related
@@ -24,7 +24,7 @@ diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
 index 32617271ade3..db268a1dd434 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -2267,6 +2267,10 @@ static int printk_kthread_func(void *data)
+@@ -2267,6 +2267,10 @@ out:
  /* Must be called within console_lock(). */
  static void start_printk_kthread(struct console *con)
  {
@@ -44,3 +44,6 @@ index 32617271ade3..db268a1dd434 100644
  			printk_seq = atomic64_read(&con->printk_seq);
  			if (printk_seq < seq)
  				diff += seq - printk_seq;
+-- 
+2.47.3
+

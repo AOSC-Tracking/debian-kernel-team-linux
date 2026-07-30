@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:41:56 +0106
 Subject: [PATCH 084/328] printk: refactor kmsg_dump_get_buffer()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=656c8fda9a475d48de1e6a63ec9a87a04d4e1022
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0ccdec166f05b479ba8298cb8026fe4e9dfcad1e
 
 kmsg_dump_get_buffer() requires nearly the same logic as
 syslog_print_all(), but uses different variable names and
@@ -139,3 +139,6 @@ index faa56c3f7cdb..8356f0b0321d 100644
  	return ret;
  }
  EXPORT_SYMBOL_GPL(kmsg_dump_get_buffer);
+-- 
+2.47.3
+

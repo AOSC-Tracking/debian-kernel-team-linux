@@ -789,6 +789,9 @@ linux (5.10.261-1) UNRELEASED; urgency=medium
     - tools/resolve_btfids: Fix some error messages
     - tools/resolve_btfids: Emit warnings and patch zero id for missing symbols
 
+  [ Emilio Pozuelo Monfort ]
+  * [rt] Update to 5.10.261-rt157
+
  -- Ben Hutchings <benh@debian.org>  Mon, 06 Jul 2026 18:29:22 +0200
 
 linux (5.10.259-1) bullseye-security; urgency=high

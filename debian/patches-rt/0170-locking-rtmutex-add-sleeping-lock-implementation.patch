@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:11:19 +0200
 Subject: [PATCH 170/328] locking/rtmutex: add sleeping lock implementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7fd77f7d91c5b23e3415b73c7f46e87d472a0034
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=57b6e94758499ca18fb3e916f0a64572f7db342c
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -397,7 +397,7 @@ index 68b1ec649ebd..d1a890e421db 100644
  
  	return ret;
  }
-@@ -2868,7 +2870,7 @@ static int futex_lock_pi(u32 __user *uaddr, unsigned int flags,
+@@ -2868,7 +2870,7 @@ retry_private:
  		goto no_block;
  	}
  
@@ -416,7 +416,7 @@ index 68b1ec649ebd..d1a890e421db 100644
  	ret = get_futex_key(uaddr2, flags & FLAGS_SHARED, &key2, FUTEX_WRITE);
  	if (unlikely(ret != 0))
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index 4fd836338f9d..d06f3760473b 100644
+index e23cdb597c44..b157add2c868 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
 @@ -8,6 +8,11 @@
@@ -551,7 +551,7 @@ index 4fd836338f9d..d06f3760473b 100644
  			/*
  			 * The current top waiter stays enqueued. We
  			 * don't have to change anything in the lock
-@@ -922,6 +958,289 @@ static int try_to_take_rt_mutex(struct rt_mutex *lock, struct task_struct *task,
+@@ -922,6 +958,289 @@ takeit:
  	return 1;
  }
  
@@ -861,7 +861,7 @@ index 4fd836338f9d..d06f3760473b 100644
  	raw_spin_unlock(&current->pi_lock);
  }
  
-@@ -1158,21 +1481,22 @@ void rt_mutex_adjust_pi(struct task_struct *task)
+@@ -1164,21 +1487,22 @@ void rt_mutex_adjust_pi(struct task_struct *task)
  		return;
  	}
  	next_lock = waiter->lock;
@@ -886,7 +886,7 @@ index 4fd836338f9d..d06f3760473b 100644
  }
  
  /**
-@@ -1286,7 +1610,7 @@ rt_mutex_slowlock(struct rt_mutex *lock, int state,
+@@ -1292,7 +1616,7 @@ rt_mutex_slowlock(struct rt_mutex *lock, int state,
  	unsigned long flags;
  	int ret = 0;
  
@@ -895,7 +895,7 @@ index 4fd836338f9d..d06f3760473b 100644
  
  	/*
  	 * Technically we could use raw_spin_[un]lock_irq() here, but this can
-@@ -1359,7 +1683,8 @@ static inline int rt_mutex_slowtrylock(struct rt_mutex *lock)
+@@ -1365,7 +1689,8 @@ static inline int rt_mutex_slowtrylock(struct rt_mutex *lock)
   * Return whether the current task needs to call rt_mutex_postunlock().
   */
  static bool __sched rt_mutex_slowunlock(struct rt_mutex *lock,
@@ -905,7 +905,7 @@ index 4fd836338f9d..d06f3760473b 100644
  {
  	unsigned long flags;
  
-@@ -1413,7 +1738,7 @@ static bool __sched rt_mutex_slowunlock(struct rt_mutex *lock,
+@@ -1419,7 +1744,7 @@ static bool __sched rt_mutex_slowunlock(struct rt_mutex *lock,
  	 *
  	 * Queue the next waiter for wakeup once we release the wait_lock.
  	 */
@@ -914,7 +914,7 @@ index 4fd836338f9d..d06f3760473b 100644
  	raw_spin_unlock_irqrestore(&lock->wait_lock, flags);
  
  	return true; /* call rt_mutex_postunlock() */
-@@ -1450,9 +1775,11 @@ rt_mutex_fasttrylock(struct rt_mutex *lock,
+@@ -1456,9 +1781,11 @@ rt_mutex_fasttrylock(struct rt_mutex *lock,
  /*
   * Performs the wakeup of the top-waiter and re-enables preemption.
   */
@@ -927,7 +927,7 @@ index 4fd836338f9d..d06f3760473b 100644
  
  	/* Pairs with preempt_disable() in rt_mutex_slowunlock() */
  	preempt_enable();
-@@ -1461,15 +1788,17 @@ void rt_mutex_postunlock(struct wake_q_head *wake_q)
+@@ -1467,15 +1794,17 @@ void rt_mutex_postunlock(struct wake_q_head *wake_q)
  static inline void
  rt_mutex_fastunlock(struct rt_mutex *lock,
  		    bool (*slowfn)(struct rt_mutex *lock,
@@ -948,7 +948,7 @@ index 4fd836338f9d..d06f3760473b 100644
  }
  
  int __sched __rt_mutex_lock_state(struct rt_mutex *lock, int state)
-@@ -1600,16 +1929,13 @@ void __sched __rt_mutex_unlock(struct rt_mutex *lock)
+@@ -1606,16 +1935,13 @@ void __sched __rt_mutex_unlock(struct rt_mutex *lock)
  void __sched rt_mutex_unlock(struct rt_mutex *lock)
  {
  	mutex_release(&lock->dep_map, _RET_IP_);
@@ -969,7 +969,7 @@ index 4fd836338f9d..d06f3760473b 100644
  {
  	lockdep_assert_held(&lock->wait_lock);
  
-@@ -1626,23 +1952,35 @@ bool __sched __rt_mutex_futex_unlock(struct rt_mutex *lock,
+@@ -1632,23 +1958,35 @@ bool __sched __rt_mutex_futex_unlock(struct rt_mutex *lock,
  	 * avoid inversion prior to the wakeup.  preempt_disable()
  	 * therein pairs with rt_mutex_postunlock().
  	 */
@@ -1008,7 +1008,7 @@ index 4fd836338f9d..d06f3760473b 100644
  }
  
  /**
-@@ -1678,7 +2016,7 @@ void __rt_mutex_init(struct rt_mutex *lock, const char *name,
+@@ -1684,7 +2022,7 @@ void __rt_mutex_init(struct rt_mutex *lock, const char *name,
  	if (name && key)
  		debug_rt_mutex_init(lock, name, key);
  }
@@ -1017,7 +1017,7 @@ index 4fd836338f9d..d06f3760473b 100644
  
  /**
   * rt_mutex_init_proxy_locked - initialize and lock a rt_mutex on behalf of a
-@@ -1698,6 +2036,14 @@ void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
+@@ -1704,6 +2042,14 @@ void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
  				struct task_struct *proxy_owner)
  {
  	__rt_mutex_init(lock, NULL, NULL);
@@ -1032,7 +1032,7 @@ index 4fd836338f9d..d06f3760473b 100644
  	debug_rt_mutex_proxy_lock(lock, proxy_owner);
  	rt_mutex_set_owner(lock, proxy_owner);
  }
-@@ -1720,6 +2066,26 @@ void rt_mutex_proxy_unlock(struct rt_mutex *lock)
+@@ -1726,6 +2072,26 @@ void rt_mutex_proxy_unlock(struct rt_mutex *lock)
  	rt_mutex_set_owner(lock, NULL);
  }
  
@@ -1059,7 +1059,7 @@ index 4fd836338f9d..d06f3760473b 100644
  /**
   * __rt_mutex_start_proxy_lock() - Start lock acquisition for another task
   * @lock:		the rt_mutex to take
-@@ -1792,6 +2158,9 @@ int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
+@@ -1798,6 +2164,9 @@ int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
  		ret = 0;
  	}
  
@@ -1069,7 +1069,7 @@ index 4fd836338f9d..d06f3760473b 100644
  	return ret;
  }
  
-@@ -1881,6 +2250,9 @@ int rt_mutex_wait_proxy_lock(struct rt_mutex *lock,
+@@ -1887,6 +2256,9 @@ int rt_mutex_wait_proxy_lock(struct rt_mutex *lock,
  	 * have to fix that up.
  	 */
  	fixup_rt_mutex_waiters(lock);
@@ -1208,3 +1208,6 @@ index 0ce00b9f1338..5633fa762e18 100644
  		put_task_struct(task);
  	}
  }
+-- 
+2.47.3
+

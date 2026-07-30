@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 15 Feb 2021 18:44:12 +0100
 Subject: [PATCH 131/328] smp: Wake ksoftirqd on PREEMPT_RT instead
  do_softirq().
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6d8c46394f1fb492fd7c75e37c82a19914d48e3b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0423b7b7bdb4eb044b4cac4cec836ad4566179d2
 
 The softirq implementation on PREEMPT_RT does not provide do_softirq().
 The other user of do_softirq() is replaced with a local_bh_disable()
@@ -42,3 +42,6 @@ index c6b3ad79c72b..f5493a8ff1db 100644
  
  	local_irq_restore(flags);
  }
+-- 
+2.47.3
+

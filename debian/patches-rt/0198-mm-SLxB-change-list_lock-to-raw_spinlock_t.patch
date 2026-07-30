@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 28 May 2018 15:24:22 +0200
 Subject: [PATCH 198/328] mm/SLxB: change list_lock to raw_spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=471cf5c0fd09fda2697d2d0feebb93e8bb0643c0
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3e8760da599b7b4bd2ac5d132dc04187f4e0474e
 
 The list_lock is used with used with IRQs off on RT. Make it a raw_spinlock_t
 otherwise the interrupts won't be disabled on -RT.  The locking rules remain
@@ -317,7 +317,7 @@ index b2cc2cf7d8a3..677c0651ef66 100644
  	if (n->shared) {
  		struct array_cache *shared_array = n->shared;
  		int max = shared_array->limit - shared_array->avail;
-@@ -3402,7 +3402,7 @@ static void cache_flusharray(struct kmem_cache *cachep, struct array_cache *ac)
+@@ -3402,7 +3402,7 @@ free_done:
  		STATS_SET_FREEABLE(cachep, i);
  	}
  #endif
@@ -394,7 +394,7 @@ index 30daba09da35..d25927821d1e 100644
  	slab_lock(page);
  
  	if (s->flags & SLAB_CONSISTENCY_CHECKS) {
-@@ -1254,7 +1254,7 @@ static noinline int free_debug_processing(
+@@ -1254,7 +1254,7 @@ out:
  			 bulk_cnt, cnt);
  
  	slab_unlock(page);
@@ -421,7 +421,7 @@ index 30daba09da35..d25927821d1e 100644
  	return object;
  }
  
-@@ -2251,7 +2251,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
+@@ -2251,7 +2251,7 @@ redo:
  			 * that acquire_slab() will see a slab page that
  			 * is frozen
  			 */
@@ -430,7 +430,7 @@ index 30daba09da35..d25927821d1e 100644
  		}
  	} else {
  		m = M_FULL;
-@@ -2263,7 +2263,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
+@@ -2263,7 +2263,7 @@ redo:
  			 * slabs from diagnostic functions will not see
  			 * any frozen slabs.
  			 */
@@ -439,7 +439,7 @@ index 30daba09da35..d25927821d1e 100644
  		}
  #endif
  	}
-@@ -2288,7 +2288,7 @@ static void deactivate_slab(struct kmem_cache *s, struct page *page,
+@@ -2288,7 +2288,7 @@ redo:
  		goto redo;
  
  	if (lock)
@@ -510,7 +510,7 @@ index 30daba09da35..d25927821d1e 100644
  	return;
  
  slab_empty:
-@@ -3077,7 +3077,7 @@ static void __slab_free(struct kmem_cache *s, struct page *page,
+@@ -3077,7 +3077,7 @@ slab_empty:
  		remove_full(s, n, page);
  	}
  
@@ -597,3 +597,6 @@ index 30daba09da35..d25927821d1e 100644
  	}
  
  	for (i = 0; i < t.count; i++) {
+-- 
+2.47.3
+

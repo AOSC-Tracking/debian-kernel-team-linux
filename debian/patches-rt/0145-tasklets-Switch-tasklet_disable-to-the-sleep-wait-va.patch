@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:17 +0100
 Subject: [PATCH 145/328] tasklets: Switch tasklet_disable() to the sleep wait
  variant
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0ceea067713ca558860352c3de9abb1e0a119a61
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7cfeec66468bb88b5cca14d89c705e12ab852573
 
  -- NOT FOR IMMEDIATE MERGING --
 
@@ -29,3 +29,6 @@ index fa0ac88f5846..a60cf0f1aa76 100644
  	smp_mb();
  }
  
+-- 
+2.47.3
+

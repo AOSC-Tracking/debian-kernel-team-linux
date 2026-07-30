@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 3 Jul 2009 08:44:56 -0500
 Subject: [PATCH 283/328] signals: Allow rt tasks to cache one sigqueue struct
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7e6cdef3e6b56a45fda1b640b339df2e3f14d341
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e237533d89c0e17cc02d1ea8a647b3662813ee73
 
 To avoid allocation allow rt tasks to cache one sigqueue struct in
 task struct.
@@ -178,7 +178,7 @@ index f573f95b1fc6..14f2292b508e 100644
  /*
   * Flush all pending signals for this kthread.
   */
-@@ -594,7 +652,7 @@ static void collect_signal(int sig, struct sigpending *list, kernel_siginfo_t *i
+@@ -594,7 +652,7 @@ still_pending:
  			(info->si_code == SI_TIMER) &&
  			(info->si_sys_private);
  
@@ -206,3 +206,6 @@ index f573f95b1fc6..14f2292b508e 100644
  
  	if (q)
  		q->flags |= SIGQUEUE_PREALLOC;
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 16 Jun 2017 19:03:16 +0200
 Subject: [PATCH 221/328] net/core: use local_bh_disable() in netif_rx_ni()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=abfd7fb634e10413cea98b873606f4f6cc19e184
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=76d51e5f606658e4664136d4d04ce56d147c5055
 
 In 2004 netif_rx_ni() gained a preempt_disable() section around
 netif_rx() and its do_softirq() + testing for it. The do_softirq() part
@@ -35,3 +35,6 @@ index 43956f616698..c66f2664cf0c 100644
  	trace_netif_rx_ni_exit(err);
  
  	return err;
+-- 
+2.47.3
+

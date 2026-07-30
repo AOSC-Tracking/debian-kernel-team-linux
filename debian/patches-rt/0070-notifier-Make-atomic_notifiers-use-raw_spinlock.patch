@@ -1,7 +1,7 @@
 From: Valentin Schneider <valentin.schneider@arm.com>
 Date: Sun, 22 Nov 2020 20:19:04 +0000
 Subject: [PATCH 070/328] notifier: Make atomic_notifiers use raw_spinlock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=78101c3c5a0d006987167fa6c20a57b65087f223
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d2ab00f8c02db944343324874c490c64623050b1
 
 Booting a recent PREEMPT_RT kernel (v5.10-rc3-rt7-rebase) on my arm64 Juno
 leads to the idle task blocking on an RT sleeping spinlock down some
@@ -126,3 +126,6 @@ index 1b019cbca594..c20782f07643 100644
  
  	return ret;
  }
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:05 +0106
 Subject: [PATCH 103/328] printk: change @console_seq to atomic64_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=caf2992cdca67d7599edd391829b0b1265defc05
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ca5286c4bb0b3b46f3aa5ec67c5b397f79e828bc
 
 In preparation for atomic printing, change @console_seq to atomic
 so that it can be accessed without requiring @console_sem.
@@ -50,7 +50,7 @@ index b9acc357d029..9cd71f8e0620 100644
  
  	if (console_suspended) {
  		up_console_sem();
-@@ -2636,12 +2638,14 @@ void console_unlock(void)
+@@ -2636,12 +2638,14 @@ again:
  		size_t len;
  
  skip:
@@ -69,7 +69,7 @@ index b9acc357d029..9cd71f8e0620 100644
  		}
  
  		if (suppress_message_printing(r.info->level)) {
-@@ -2650,13 +2654,13 @@ void console_unlock(void)
+@@ -2650,13 +2654,13 @@ skip:
  			 * directly to the console when we received it, and
  			 * record that has level above the console loglevel.
  			 */
@@ -85,7 +85,7 @@ index b9acc357d029..9cd71f8e0620 100644
  			exclusive_console = NULL;
  		}
  
-@@ -2677,7 +2681,7 @@ void console_unlock(void)
+@@ -2677,7 +2681,7 @@ skip:
  		len = record_print_text(&r,
  				console_msg_format & MSG_FORMAT_SYSLOG,
  				printk_time);
@@ -94,7 +94,7 @@ index b9acc357d029..9cd71f8e0620 100644
  
  		/*
  		 * While actively printing out messages, if another printk()
-@@ -2708,7 +2712,7 @@ void console_unlock(void)
+@@ -2708,7 +2712,7 @@ skip:
  	 * there's a new owner and the console_unlock() from them will do the
  	 * flush, no worries.
  	 */
@@ -126,3 +126,6 @@ index b9acc357d029..9cd71f8e0620 100644
  		spin_unlock_irqrestore(&syslog_lock, flags);
  	}
  	console_unlock();
+-- 
+2.47.3
+

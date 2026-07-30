@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:34 -0400
 Subject: [PATCH 293/328] sched: Fix affine_move_task() self-concurrency
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=523de1a7084b143212d0ab6592a0d9d3452dd3e1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4df41663b7201b1152028c469361ebd36ad762b2
 
 commit 9e81889c7648d48dd5fe13f41cbc99f3c362484a upstream.
 
@@ -90,3 +90,6 @@ index 63fc6249ea13..b9a02e601b91 100644
  
  		if (flags & SCA_MIGRATE_ENABLE)
  			return 0;
+-- 
+2.47.3
+

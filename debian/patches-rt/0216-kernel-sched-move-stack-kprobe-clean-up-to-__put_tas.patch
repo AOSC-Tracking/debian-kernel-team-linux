@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Mon, 21 Nov 2016 19:31:08 +0100
 Subject: [PATCH 216/328] kernel/sched: move stack + kprobe clean up to
  __put_task_struct()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dd7e64ed49bd817daa1b1e5905df9dbf05e6aa99
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=47fcf8ba478125da25c83ff575403ad841f0c6de
 
 There is no need to free the stack before the task struct (except for reasons
 mentioned in commit 68f24b08ee89 ("sched/core: Free the stack early if
@@ -75,3 +75,6 @@ index 3a51a1e1bac1..d91d9ec59e4c 100644
  		put_task_struct_rcu_user(prev);
  	}
  
+-- 
+2.47.3
+

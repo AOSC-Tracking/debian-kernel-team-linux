@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 11 Oct 2019 13:14:29 +0200
 Subject: [PATCH 273/328] ARM: Allow to enable RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4258d83cc4e5fc4be391a247c2e4db0d6bf03b81
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d664c5fee60e546e5b2280683421ac87ae8f033a
 
 Allow to select RT.
 
@@ -30,3 +30,6 @@ index d468d87b484c..565be31d5c59 100644
  	select RTC_LIB
  	select SET_FS
  	select SYS_SUPPORTS_APM_EMULATION
+-- 
+2.47.3
+

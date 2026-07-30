@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 17 Feb 2021 18:28:05 +0100
 Subject: [PATCH 095/328] printk: console: remove unnecessary safe buffer usage
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c3cc2e860b3dd700f98f9a2f29753fface3c689d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=60e4b2305086831eaf068d335dd149fe36058f8d
 
 Upon registering a console, safe buffers are activated when setting
 up the sequence number to replay the log. However, these are already
@@ -42,3 +42,6 @@ index 9016c6eaac38..44b5bee0414d 100644
  	}
  	console_unlock();
  	console_sysfs_notify();
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 12 Oct 2017 17:34:38 +0200
 Subject: [PATCH 176/328] locking/rtmutex: add ww_mutex addon for mutex-rt
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e1b30c2bf95b4b583b82386ceb8cfe9b14191b06
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ecc92c8ac6cab4f605a9a1618836e74a23b045e7
 
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
@@ -52,7 +52,7 @@ index 6ecf2a0220db..3145de598645 100644
  	struct task_struct *task;
  	unsigned long stamp;
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index 99cb78e1a3da..194eab4907f4 100644
+index 10d869a1440e..c9b9940e984a 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
 @@ -24,6 +24,7 @@
@@ -104,7 +104,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  static inline int
  try_to_take_rt_mutex(struct rt_mutex *lock, struct task_struct *task,
  		     struct rt_mutex_waiter *waiter)
-@@ -1512,7 +1547,8 @@ void rt_mutex_init_waiter(struct rt_mutex_waiter *waiter, bool savestate)
+@@ -1518,7 +1553,8 @@ void rt_mutex_init_waiter(struct rt_mutex_waiter *waiter, bool savestate)
  static int __sched
  __rt_mutex_slowlock(struct rt_mutex *lock, int state,
  		    struct hrtimer_sleeper *timeout,
@@ -114,7 +114,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  {
  	int ret = 0;
  
-@@ -1530,6 +1566,12 @@ __rt_mutex_slowlock(struct rt_mutex *lock, int state,
+@@ -1536,6 +1572,12 @@ __rt_mutex_slowlock(struct rt_mutex *lock, int state,
  			break;
  		}
  
@@ -127,7 +127,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  		raw_spin_unlock_irq(&lock->wait_lock);
  
  		schedule();
-@@ -1561,16 +1603,106 @@ static void rt_mutex_handle_deadlock(int res, int detect_deadlock,
+@@ -1567,16 +1609,106 @@ static void rt_mutex_handle_deadlock(int res, int detect_deadlock,
  	}
  }
  
@@ -235,7 +235,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  
  	set_current_state(state);
  
-@@ -1580,14 +1712,24 @@ int __sched rt_mutex_slowlock_locked(struct rt_mutex *lock, int state,
+@@ -1586,14 +1718,24 @@ int __sched rt_mutex_slowlock_locked(struct rt_mutex *lock, int state,
  
  	ret = task_blocks_on_rt_mutex(lock, waiter, current, chwalk);
  
@@ -263,7 +263,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  	}
  
  	/*
-@@ -1604,7 +1746,8 @@ int __sched rt_mutex_slowlock_locked(struct rt_mutex *lock, int state,
+@@ -1610,7 +1752,8 @@ int __sched rt_mutex_slowlock_locked(struct rt_mutex *lock, int state,
  static int __sched
  rt_mutex_slowlock(struct rt_mutex *lock, int state,
  		  struct hrtimer_sleeper *timeout,
@@ -273,7 +273,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  {
  	struct rt_mutex_waiter waiter;
  	unsigned long flags;
-@@ -1622,7 +1765,8 @@ rt_mutex_slowlock(struct rt_mutex *lock, int state,
+@@ -1628,7 +1771,8 @@ rt_mutex_slowlock(struct rt_mutex *lock, int state,
  	 */
  	raw_spin_lock_irqsave(&lock->wait_lock, flags);
  
@@ -283,7 +283,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  
  	raw_spin_unlock_irqrestore(&lock->wait_lock, flags);
  
-@@ -1752,14 +1896,16 @@ static bool __sched rt_mutex_slowunlock(struct rt_mutex *lock,
+@@ -1758,14 +1902,16 @@ static bool __sched rt_mutex_slowunlock(struct rt_mutex *lock,
   */
  static inline int
  rt_mutex_fastlock(struct rt_mutex *lock, int state,
@@ -302,7 +302,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  }
  
  static inline int
-@@ -1804,7 +1950,7 @@ rt_mutex_fastunlock(struct rt_mutex *lock,
+@@ -1810,7 +1956,7 @@ rt_mutex_fastunlock(struct rt_mutex *lock,
  int __sched __rt_mutex_lock_state(struct rt_mutex *lock, int state)
  {
  	might_sleep();
@@ -311,7 +311,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  }
  
  /**
-@@ -2248,7 +2394,7 @@ int rt_mutex_wait_proxy_lock(struct rt_mutex *lock,
+@@ -2254,7 +2400,7 @@ int rt_mutex_wait_proxy_lock(struct rt_mutex *lock,
  	raw_spin_lock_irq(&lock->wait_lock);
  	/* sleep on the mutex */
  	set_current_state(TASK_INTERRUPTIBLE);
@@ -320,7 +320,7 @@ index 99cb78e1a3da..194eab4907f4 100644
  	/*
  	 * try_to_take_rt_mutex() sets the waiter bit unconditionally. We might
  	 * have to fix that up.
-@@ -2318,3 +2464,97 @@ bool rt_mutex_cleanup_proxy_lock(struct rt_mutex *lock,
+@@ -2324,3 +2470,97 @@ bool rt_mutex_cleanup_proxy_lock(struct rt_mutex *lock,
  
  	return cleanup;
  }
@@ -451,3 +451,6 @@ index a0771c150041..274172d5bb3a 100644
  	/*
  	 * The slowlock() above is guaranteed to return with the rtmutex (for
  	 * ret = 0) is now held, so there can't be a writer active. Increment
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: "Luis Claudio R. Goncalves" <lgoncalv@redhat.com>
 Date: Tue, 25 Feb 2025 18:04:53 -0300
 Subject: [PATCH 325/328] rt: fix build issue in at_hdmac
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=eacf02c63c97cb877b3934179720448239dfcb74
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f895fd9ff3f2c1eb161aa16270d2a900f61c716b
 
 The problem described here is specific to v5.10-rt.
 
@@ -64,3 +64,6 @@ index 0a4175b87979..6bae9fabe370 100644
  
  	desc = atc_first_queued(atchan);
  	list_move_tail(&desc->desc_node, &atchan->active_list);
+-- 
+2.47.3
+

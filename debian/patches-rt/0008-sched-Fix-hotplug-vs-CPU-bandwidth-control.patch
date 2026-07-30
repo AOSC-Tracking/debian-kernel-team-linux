@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:05 +0200
 Subject: [PATCH 008/328] sched: Fix hotplug vs CPU bandwidth control
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3aa322f81f822bc843d9fd5a73ac0d7660ed88fe
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1979a687f8bfc05388325d4eb9d69f7cf6a60881
 
 Since we now migrate tasks away before DYING, we should also move
 bandwidth unthrottle, otherwise we can gain tasks from unthrottle
@@ -88,3 +88,6 @@ index 2c49da90566b..618b1574ae07 100644
  }
  
  static inline int rt_overloaded(struct rq *rq)
+-- 
+2.47.3
+

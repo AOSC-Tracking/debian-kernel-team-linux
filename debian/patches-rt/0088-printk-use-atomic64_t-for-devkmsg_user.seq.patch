@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Thu, 10 Dec 2020 15:33:40 +0106
 Subject: [PATCH 088/328] printk: use atomic64_t for devkmsg_user.seq
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e70d12deaf574c9b90b99a93f28768df2234421f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=214f28ceb1b38c1e03d70ad638edae161eef9c1f
 
 @user->seq is indirectly protected by @logbuf_lock. Once @logbuf_lock
 is removed, @user->seq will be no longer safe from an atomicity point
@@ -19,7 +19,7 @@ diff --git a/kernel/printk/printk.c b/kernel/printk/printk.c
 index d85e24330bcd..d240d5b5a91c 100644
 --- a/kernel/printk/printk.c
 +++ b/kernel/printk/printk.c
-@@ -664,7 +664,7 @@ static ssize_t msg_print_ext_body(char *buf, size_t size,
+@@ -664,7 +664,7 @@ out:
  
  /* /dev/kmsg - userspace message inject/listen interface */
  struct devkmsg_user {
@@ -106,3 +106,6 @@ index d85e24330bcd..d240d5b5a91c 100644
  	logbuf_unlock_irq();
  
  	file->private_data = user;
+-- 
+2.47.3
+

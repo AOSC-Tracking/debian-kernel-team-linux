@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 1 Nov 2012 10:14:11 +0100
 Subject: [PATCH 262/328] powerpc: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=fdfb39c978a6fa993735c2283ac075d2c4e3a979
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d403ef59e042fe0c7ec7a93c4f404539bec151af
 
 Implement the powerpc pieces for lazy preempt.
 
@@ -102,7 +102,7 @@ diff --git a/arch/powerpc/kernel/entry_32.S b/arch/powerpc/kernel/entry_32.S
 index 459f5d00b990..fc9517a97640 100644
 --- a/arch/powerpc/kernel/entry_32.S
 +++ b/arch/powerpc/kernel/entry_32.S
-@@ -414,7 +414,9 @@ _GLOBAL(DoSyscall)
+@@ -414,7 +414,9 @@ ret_from_syscall:
  	mtmsr	r10
  	lwz	r9,TI_FLAGS(r2)
  	li	r8,-MAX_ERRNO
@@ -113,7 +113,7 @@ index 459f5d00b990..fc9517a97640 100644
  	bne-	syscall_exit_work
  	cmplw	0,r3,r8
  	blt+	syscall_exit_cont
-@@ -530,13 +532,13 @@ _ASM_NOKPROBE_SYMBOL(syscall_exit_finish)
+@@ -530,13 +532,13 @@ syscall_dotrace:
  	b	syscall_dotrace_cont
  
  syscall_exit_work:
@@ -129,7 +129,7 @@ index 459f5d00b990..fc9517a97640 100644
  	bne-	1f
  	lwz	r11,_CCR(r1)			/* Load CR */
  	neg	r3,r3
-@@ -545,12 +547,12 @@ _ASM_NOKPROBE_SYMBOL(syscall_exit_finish)
+@@ -545,12 +547,12 @@ syscall_exit_work:
  
  1:	stw	r6,RESULT(r1)	/* Save result */
  	stw	r3,GPR3(r1)	/* Update return value */
@@ -144,7 +144,7 @@ index 459f5d00b990..fc9517a97640 100644
  	addi	r12,r2,TI_FLAGS
  3:	lwarx	r8,0,r12
  	andc	r8,r8,r11
-@@ -927,7 +929,14 @@ user_exc_return:		/* r10 contains MSR_KERNEL here */
+@@ -927,7 +929,14 @@ resume_kernel:
  	cmpwi	0,r0,0		/* if non-zero, just restore regs and return */
  	bne	restore_kuap
  	andi.	r8,r8,_TIF_NEED_RESCHED
@@ -159,7 +159,7 @@ index 459f5d00b990..fc9517a97640 100644
  	lwz	r3,_MSR(r1)
  	andi.	r0,r3,MSR_EE	/* interrupts off? */
  	beq	restore_kuap	/* don't schedule if so */
-@@ -1248,7 +1257,7 @@ _ASM_NOKPROBE_SYMBOL(ret_from_mcheck_exc)
+@@ -1248,7 +1257,7 @@ global_dbcr0:
  #endif /* !(CONFIG_4xx || CONFIG_BOOKE) */
  
  do_work:			/* r10 contains MSR_KERNEL here */
@@ -168,7 +168,7 @@ index 459f5d00b990..fc9517a97640 100644
  	beq	do_user_signal
  
  do_resched:			/* r10 contains MSR_KERNEL here */
-@@ -1267,7 +1276,7 @@ do_resched:			/* r10 contains MSR_KERNEL here */
+@@ -1267,7 +1276,7 @@ recheck:
  	LOAD_REG_IMMEDIATE(r10,MSR_KERNEL)
  	mtmsr	r10		/* disable interrupts */
  	lwz	r9,TI_FLAGS(r2)
@@ -190,7 +190,7 @@ index f579ce46eef2..715ff292a8f8 100644
  	beq	2f
  	bl	restore_interrupts
  	SCHEDULE_USER
-@@ -1132,12 +1132,20 @@ _GLOBAL(ret_from_except_lite)
+@@ -1132,12 +1132,20 @@ resume_kernel:
  	bne-	0b
  1:
  
@@ -213,7 +213,7 @@ index f579ce46eef2..715ff292a8f8 100644
  	cmpwi	cr0,r8,0
  	bne	restore
  	ld	r0,SOFTE(r1)
-@@ -1158,7 +1166,7 @@ _GLOBAL(ret_from_except_lite)
+@@ -1158,7 +1166,7 @@ resume_kernel:
  	 * interrupted after loading SRR0/1.
  	 */
  	wrteei	0
@@ -226,7 +226,7 @@ diff --git a/arch/powerpc/kernel/syscall_64.c b/arch/powerpc/kernel/syscall_64.c
 index 310bcd768cd5..ae3212dcf562 100644
 --- a/arch/powerpc/kernel/syscall_64.c
 +++ b/arch/powerpc/kernel/syscall_64.c
-@@ -193,7 +193,7 @@ notrace unsigned long syscall_exit_prepare(unsigned long r3,
+@@ -193,7 +193,7 @@ again:
  	ti_flags = READ_ONCE(*ti_flagsp);
  	while (unlikely(ti_flags & (_TIF_USER_WORK_MASK & ~_TIF_RESTORE_TM))) {
  		local_irq_enable();
@@ -235,7 +235,7 @@ index 310bcd768cd5..ae3212dcf562 100644
  			schedule();
  		} else {
  			/*
-@@ -277,7 +277,7 @@ notrace unsigned long interrupt_exit_user_prepare(struct pt_regs *regs, unsigned
+@@ -277,7 +277,7 @@ again:
  	ti_flags = READ_ONCE(*ti_flagsp);
  	while (unlikely(ti_flags & (_TIF_USER_WORK_MASK & ~_TIF_RESTORE_TM))) {
  		local_irq_enable(); /* returning to user: may enable */
@@ -261,3 +261,6 @@ index 310bcd768cd5..ae3212dcf562 100644
  			}
  		}
  
+-- 
+2.47.3
+

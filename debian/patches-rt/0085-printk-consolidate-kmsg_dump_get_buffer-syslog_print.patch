@@ -2,7 +2,7 @@ From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 13 Jan 2021 11:29:53 +0106
 Subject: [PATCH 085/328] printk: consolidate
  kmsg_dump_get_buffer/syslog_print_all code
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=257788166c82ef6d31cdc7ced72bf08a73732612
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9ec4afded28b7347fc8dd9c3c4831f45cf0c2410
 
 The logic for finding records to fit into a buffer is the same for
 kmsg_dump_get_buffer() and syslog_print_all(). Introduce a helper
@@ -141,3 +141,6 @@ index 8356f0b0321d..b20ca15205ba 100644
  
  	/*
  	 * Next kmsg_dump_get_buffer() invocation will dump block of
+-- 
+2.47.3
+
