@@ -1,4 +1,4 @@
-linux (6.1.179-1) UNRELEASED; urgency=medium
+linux (6.1.180-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.178
@@ -1149,6 +1149,9 @@ linux (6.1.179-1) UNRELEASED; urgency=medium
     - [x86] perf/x86/amd/core: Always use the NMI latency mitigation
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.179
     - mm: refactor mm_access() to not return NULL
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.180
+    - posix-cpu-timers: Prevent UAF caused by non-leader exec() race
+      (CVE-2026-64560)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 31 Jul 2026 07:42:41 +0200
 
