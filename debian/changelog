@@ -112,162 +112,162 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
       (CVE-2026-53159)
     - virtiofs: fix UAF on submount umount
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.261
-    - nvmet-tcp: fix race between ICReq handling and queue teardown
-    - nfsd: release layout stid on setlease failure
-    - nfsd: reset write verifier on deferred writeback errors
-    - userfaultfd: gate must_wait writability check on pte_present()
+    - nvmet-tcp: fix race between ICReq handling and queue teardown (CVE-2026-46135)
+    - nfsd: release layout stid on setlease failure (CVE-2026-53399)
+    - nfsd: reset write verifier on deferred writeback errors (CVE-2026-53393)
+    - userfaultfd: gate must_wait writability check on pte_present() (CVE-2026-64514)
     - clk: imx: Add check for kcalloc
     - nfsd: move name lookup out of nfsd4_list_rec_dir()
     - nfsd: change nfs4_client_to_reclaim() to allocate data
     - mmc: renesas_sdhi: Add quirk entry for RZ/G2H SoC
-    - KVM: Replace guest-triggerable BUG_ON() in ioeventfd datamatch with get_unaligned()
-    - bus: mhi: host: Add alignment check for event ring read pointer
-    - netfilter: nf_log: validate MAC header was set before dumping it
+    - KVM: Replace guest-triggerable BUG_ON() in ioeventfd datamatch with get_unaligned() (CVE-2026-63806)
+    - bus: mhi: host: Add alignment check for event ring read pointer (CVE-2023-52494)
+    - netfilter: nf_log: validate MAC header was set before dumping it (CVE-2026-52942)
     - skmsg: convert struct sk_msg_sg::copy to a bitmap
-    - net: skmsg: preserve sg.copy across SG transforms
-    - apparmor: fix use-after-free in rawdata dedup loop
-    - net: ip_gre: require CAP_NET_ADMIN in the device netns for changelink
-    - apparmor: mediate the implicit connect of TCP fast open sendmsg
+    - net: skmsg: preserve sg.copy across SG transforms (CVE-2026-63830)
+    - apparmor: fix use-after-free in rawdata dedup loop (CVE-2026-63827)
+    - net: ip_gre: require CAP_NET_ADMIN in the device netns for changelink (CVE-2026-63829)
+    - apparmor: mediate the implicit connect of TCP fast open sendmsg (CVE-2026-63828)
     - f2fs: adjust zone capacity when considering valid block count
     - f2fs: fix to round down start offset of fallocate for pin file
-    - f2fs: validate orphan inode entry count
-    - f2fs: bound i_inline_xattr_size for non-inline-xattr inodes
+    - f2fs: validate orphan inode entry count (CVE-2026-63818)
+    - f2fs: bound i_inline_xattr_size for non-inline-xattr inodes (CVE-2026-63815)
     - f2fs: fix potential deadlock in f2fs_balance_fs()
     - f2fs: fix listxattr handling of corrupted xattr entries
-    - NFSv4/flexfiles: reject zero filehandle version count
-    - fbdev: fbcon: fix out-of-bounds read in err_out of fbcon_do_set_font()
+    - NFSv4/flexfiles: reject zero filehandle version count (CVE-2026-53392)
+    - fbdev: fbcon: fix out-of-bounds read in err_out of fbcon_do_set_font() (CVE-2026-53402)
     - i2c: core: fix irq domain leak on adapter registration failure
     - i2c: core: fix hang on adapter registration failure
     - i2c: core: fix NULL-deref on adapter registration failure
     - i2c: core: fix adapter debugfs creation
-    - i2c: core: fix adapter registration race
-    - hdlc_ppp: sync per-proto timers before freeing hdlc state
-    - xfrm: defensively unhash xfrm_state lists in __xfrm_state_delete
+    - i2c: core: fix adapter registration race (CVE-2026-53400)
+    - hdlc_ppp: sync per-proto timers before freeing hdlc state (CVE-2026-63803)
+    - xfrm: defensively unhash xfrm_state lists in __xfrm_state_delete (CVE-2026-46116)
     - usb: gadget: function: rndis: add length check to response query
-    - usb: gadget: function: rndis: add length check for header
-    - iio: accel: bmc150: clamp the device-reported FIFO frame count
-    - iio: accel: kxsd9: fix runtime PM imbalance on write_raw() error
-    - iio: adc: lpc32xx: Initialize completion before requesting IRQ
+    - usb: gadget: function: rndis: add length check for header (CVE-2026-64505)
+    - iio: accel: bmc150: clamp the device-reported FIFO frame count (CVE-2026-64504)
+    - iio: accel: kxsd9: fix runtime PM imbalance on write_raw() error (CVE-2026-64503)
+    - iio: adc: lpc32xx: Initialize completion before requesting IRQ (CVE-2026-64500)
     - iio: adc: ti-ads124s08: Return reset GPIO lookup errors
-    - iio: chemical: scd30: Cleanup initializations and fix sign-extension bug
-    - iio: event: Fix event FIFO reset race
-    - iio: gyro: bmg160: bail out when bandwidth/filter is not in table
+    - iio: chemical: scd30: Cleanup initializations and fix sign-extension bug (CVE-2026-64497)
+    - iio: event: Fix event FIFO reset race (CVE-2026-64496)
+    - iio: gyro: bmg160: bail out when bandwidth/filter is not in table (CVE-2026-64495)
     - iio: gyro: bmg160: wait full startup time after mode change at probe
     - iio: imu: bmi160: add IRQF_NO_THREAD to data-ready trigger IRQ
     - iio: imu: st_lsm6dsx: deselect shub page before reading whoami
     - iio: light: al3010: fix incorrect scale for the highest gain range
-    - iio: light: gp2ap002: fix runtime PM leak on read error
+    - iio: light: gp2ap002: fix runtime PM leak on read error (CVE-2026-64494)
     - iio: light: opt3001: fix missing state reset on timeout
     - iio: light: veml6030: fix channel type when pushing events
     - iio: magnetometer: ak8975: Add missed pm_runtime_put_autosuspend() call
     - iio: temperature: ltc2983: Fix reinit_completion() called after conversion start
-    - ALSA: caiaq: fix out-of-bounds read in the Traktor Kontrol S4 input parser
-    - ALSA: es1938: check snd_ctl_new1() return value
-    - ALSA: firewire: isight: bound the sample count to the packet payload
-    - ALSA: usb-audio: avoid kobject path lookup in DualSense match
+    - ALSA: caiaq: fix out-of-bounds read in the Traktor Kontrol S4 input parser (CVE-2026-64487)
+    - ALSA: es1938: check snd_ctl_new1() return value (CVE-2026-64484)
+    - ALSA: firewire: isight: bound the sample count to the packet payload (CVE-2026-64483)
+    - ALSA: usb-audio: avoid kobject path lookup in DualSense match (CVE-2026-64478)
     - ALSA: usb-audio: Propagate errors in scarlett_ctl_enum_put()
     - ALSA: usb-audio: Propagate US-16x08 write errors in route/mix EQ-switch put callbacks
     - ALSA: usb-audio: Roll back quirk control caches on write errors
     - ALSA: usb-audio: Update Babyface Pro control caches only after successful writes
     - ALSA: usb-audio: Update US-16x08 EQ/comp shadow state after successful writes
-    - Bluetooth: btusb: fix use-after-free on registration failure
-    - binder: fix UAF in binder_thread_release()
-    - usb: xhci: Fix sleep in atomic context in xhci_free_streams()
+    - Bluetooth: btusb: fix use-after-free on registration failure (CVE-2026-64471)
+    - binder: fix UAF in binder_thread_release() (CVE-2026-64469)
+    - usb: xhci: Fix sleep in atomic context in xhci_free_streams() (CVE-2026-64465)
     - PCI: altera: Do not dispose parent IRQ mapping
     - PCI: host-common: Request bus reassignment when not probe-only
-    - netfilter: ipset: fix race between dump and ip_set_list resize
+    - netfilter: ipset: fix race between dump and ip_set_list resize (CVE-2026-64189)
     - virtio-mmio: fix device release warning on module unload
-    - hwrng: virtio: clamp device-reported used.len at copy_data()
-    - USB: chaoskey: Fix slab-use-after-free in chaoskey_release()
-    - 6lowpan: fix NHC entry use-after-free on error path
-    - tipc: fix out-of-bounds read in broadcast Gap ACK blocks
+    - hwrng: virtio: clamp device-reported used.len at copy_data() (CVE-2026-64456)
+    - USB: chaoskey: Fix slab-use-after-free in chaoskey_release() (CVE-2026-64455)
+    - 6lowpan: fix NHC entry use-after-free on error path (CVE-2026-64452)
+    - tipc: fix out-of-bounds read in broadcast Gap ACK blocks (CVE-2026-64450)
     - media: staging: ipu3-imgu: Add range check for imgu_css_cfg_acc_stripe
     - crypto: amlogic - avoid double cleanup in meson_crypto_probe()
-    - net: af_key: initialize alg_key_len for IPComp states
-    - audit: Fix data races of skb_queue_len() readers on audit_queue
+    - net: af_key: initialize alg_key_len for IPComp states (CVE-2026-64436)
+    - audit: Fix data races of skb_queue_len() readers on audit_queue (CVE-2026-64435)
     - debugobjects: Plug race against a concurrent OOM disable
-    - gpio: eic-sprd: use raw_spinlock_t in the irq startup path
-    - io_uring/io-wq: re-check IO_WQ_BIT_EXIT for each linked work item
-    - ipv4: igmp: remove multicast group from hash table on device destruction
-    - net: ipv4: bound TCP reordering sysctl writes and MTU probe sizes
-    - mfd: cros_ec: Delay dev_set_drvdata() until probe success
-    - netfilter: ebtables: module names must be null-terminated
-    - netfilter: ebtables: terminate table name before find_table_lock()
-    - Bluetooth: bnep: pin L2CAP connection during netdev registration
-    - Bluetooth: fix UAF in bt_accept_dequeue()
-    - Bluetooth: L2CAP: validate option length before reading conf opt value
-    - net: Drop the lock in skb_may_tx_timestamp()
-    - sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT
-    - cpufreq: Fix hotplug-suspend race during reboot
-    - cpufreq: pcc: fix use-after-free and double free in _OSC evaluation
-    - posix-cpu-timers: Fix pid refcount leak in do_cpu_nanosleep() error path
+    - gpio: eic-sprd: use raw_spinlock_t in the irq startup path (CVE-2026-64429)
+    - io_uring/io-wq: re-check IO_WQ_BIT_EXIT for each linked work item (CVE-2026-64425)
+    - ipv4: igmp: remove multicast group from hash table on device destruction (CVE-2026-64423)
+    - net: ipv4: bound TCP reordering sysctl writes and MTU probe sizes (CVE-2026-64422)
+    - mfd: cros_ec: Delay dev_set_drvdata() until probe success (CVE-2026-64420)
+    - netfilter: ebtables: module names must be null-terminated (CVE-2026-64412)
+    - netfilter: ebtables: terminate table name before find_table_lock() (CVE-2026-64411)
+    - Bluetooth: bnep: pin L2CAP connection during netdev registration (CVE-2026-64408)
+    - Bluetooth: fix UAF in bt_accept_dequeue() (CVE-2026-64406)
+    - Bluetooth: L2CAP: validate option length before reading conf opt value (CVE-2026-64403)
+    - net: Drop the lock in skb_may_tx_timestamp() (CVE-2026-43216)
+    - sched/rt: Have RT_PUSH_IPI be default off for non PREEMPT_RT (CVE-2026-64374)
+    - cpufreq: Fix hotplug-suspend race during reboot (CVE-2026-64373)
+    - cpufreq: pcc: fix use-after-free and double free in _OSC evaluation (CVE-2026-64372)
+    - posix-cpu-timers: Fix pid refcount leak in do_cpu_nanosleep() error path (CVE-2026-64370)
     - HID: wacom: stop hardware after post-start probe failures
-    - HID: lg-g15: cancel pending work on remove to fix a use-after-free
+    - HID: lg-g15: cancel pending work on remove to fix a use-after-free (CVE-2026-64362)
     - HID: sensor-hub: Add sensor_hub_input_attr_read_values() for multi-byte reads
-    - hfs/hfsplus: zero-initialize buffer in hfs_bnode_read
-    - nilfs2: reject CLEAN_SEGMENTS ioctl with out-of-range segment numbers
-    - net: usb: kalmia: bound RX frame length in kalmia_rx_fixup()
+    - hfs/hfsplus: zero-initialize buffer in hfs_bnode_read (CVE-2026-64360)
+    - nilfs2: reject CLEAN_SEGMENTS ioctl with out-of-range segment numbers (CVE-2026-64359)
+    - net: usb: kalmia: bound RX frame length in kalmia_rx_fixup() (CVE-2026-64351)
     - usb: cdc_acm: Add quirk for Uniden BC125AT scanner
     - USB: core: add USB_QUIRK_NO_LPM for VIA Labs USB 2.0 hub
-    - usb: gadget: composite: fix dead empty check in the USB_DT_OTG handler
-    - USB: idmouse: fix use-after-free on disconnect race
-    - USB: ldusb: fix use-after-free on disconnect race
-    - USB: iowarrior: fix use-after-free on disconnect
+    - usb: gadget: composite: fix dead empty check in the USB_DT_OTG handler (CVE-2026-64347)
+    - USB: idmouse: fix use-after-free on disconnect race (CVE-2026-64344)
+    - USB: ldusb: fix use-after-free on disconnect race (CVE-2026-64343)
+    - USB: iowarrior: fix use-after-free on disconnect (CVE-2026-64342)
     - USB: quirks: add NO_LPM for the Samsung T5 EVO Portable SSD
-    - USB: legousbtower: fix use-after-free on disconnect race
+    - USB: legousbtower: fix use-after-free on disconnect race (CVE-2026-64340)
     - usb: sl811-hcd: disable controller wakeup on remove
     - USB: storage: include US_FL_NO_SAME in quirks mask
-    - USB: misc: uss720: unregister parport on probe failure
-    - usb: mtu3: unmap request DMA on queue failure
+    - USB: misc: uss720: unregister parport on probe failure (CVE-2026-64338)
+    - usb: mtu3: unmap request DMA on queue failure (CVE-2026-64337)
     - USB: serial: option: add Telit Cinterion FE990D50 compositions
-    - USB: serial: digi_acceleport: fix broken rx after throttle
-    - USB: serial: digi_acceleport: fix hard lockup on disconnect
-    - USB: ulpi: fix memory leak on registration failure
+    - USB: serial: digi_acceleport: fix broken rx after throttle (CVE-2026-64335)
+    - USB: serial: digi_acceleport: fix hard lockup on disconnect (CVE-2026-64334)
+    - USB: ulpi: fix memory leak on registration failure (CVE-2026-64332)
     - USB: usb-storage: ene_ub6250: restore media-ready check
     - usbip: tools: support SuperSpeedPlus devices
-    - usbip: vudc: fix NULL deref in vep_dequeue()
-    - usb: typec: tcpm: Validate SVID index in svdm_consume_modes()
+    - usbip: vudc: fix NULL deref in vep_dequeue() (CVE-2026-64331)
+    - usb: typec: tcpm: Validate SVID index in svdm_consume_modes() (CVE-2026-64330)
     - usb: typec: ucsi: Invert DisplayPort role assignment
     - usb: typec: ucsi: Pass full DP config payload in SET_NEW_CAM for DP alt mode
     - iio: adc: spear: Initialize completion before requesting IRQ
     - iio: temperature: ltc2983: Fix n_wires default bypassing rotation check
-    - udf: validate free block extents against the partition length
-    - udf: validate VAT header length against the VAT inode size
-    - udf: validate sparing table length as an entry count, not a byte count
+    - udf: validate free block extents against the partition length (CVE-2026-64324)
+    - udf: validate VAT header length against the VAT inode size (CVE-2026-64323)
+    - udf: validate sparing table length as an entry count, not a byte count (CVE-2026-64322)
     - dm-ioctl: report an error if a device has no table
-    - partitions: aix: bound the pp_count scan to the ppe array
-    - isofs: bound Rock Ridge symlink components to the SL record
-    - crypto: caam - use print_hex_dump_devel to guard key hex dumps
-    - crypto: caam - use print_hex_dump_devel to guard key hex dumps again
-    - crypto: ecc - Fix carry overflow in vli multiplication
-    - crypto: pcrypt - restore callback for non-parallel fallback
-    - crypto: drbg - Fix returning success on failure in CTR_DRBG
+    - partitions: aix: bound the pp_count scan to the ppe array (CVE-2026-64318)
+    - isofs: bound Rock Ridge symlink components to the SL record (CVE-2026-64317)
+    - crypto: caam - use print_hex_dump_devel to guard key hex dumps (CVE-2026-64316) (CVE-2026-64315)
+    - crypto: caam - use print_hex_dump_devel to guard key hex dumps (CVE-2026-64316) (CVE-2026-64315) again
+    - crypto: ecc - Fix carry overflow in vli multiplication (CVE-2026-64313)
+    - crypto: pcrypt - restore callback for non-parallel fallback (CVE-2026-64312)
+    - crypto: drbg - Fix returning success on failure in CTR_DRBG (CVE-2026-64306)
     - crypto: drbg - Fix drbg_max_addtl() on 64-bit kernels
     - crypto: drbg - Fix the fips_enabled priority boost
     - crypto: talitos - use dma_sync_single_for_cpu() before reading descriptor header
     - spi: fsl-lpspi: replace dmaengine_terminate_all() with dmaengine_terminate_sync()
-    - spi: fsl-lpspi: terminate the RX channel on TX prepare failure path
-    - tracing: Prevent out-of-bounds read in glob matching
-    - NFSv4: include MAY_WRITE in open permission mask for O_TRUNC
-    - exfat: bound uniname advance in exfat_find_dir_entry()
+    - spi: fsl-lpspi: terminate the RX channel on TX prepare failure path (CVE-2026-64303)
+    - tracing: Prevent out-of-bounds read in glob matching (CVE-2026-64299)
+    - NFSv4: include MAY_WRITE in open permission mask for O_TRUNC (CVE-2026-64298)
+    - exfat: bound uniname advance in exfat_find_dir_entry() (CVE-2026-64296)
     - KVM: VMX: Grab vmcs12 on CR8 interception update iff vCPU is in guest mode
     - udmabuf: fix DMA direction mismatch in release_udmabuf()
     - i2c: stm32f7: truncate clock period instead of rounding it
     - Input: synaptics-rmi4 - unregister function handlers on physical driver registration failure
-    - Input: synaptics-rmi4 - bound the F3A keymap to the GPIO count
-    - Input: synaptics-rmi4 - bound the F30 keymap to the GPIO/LED count
-    - Input: elan_i2c - prevent division by zero and arithmetic underflow
-    - Input: goodix - clamp the device-reported contact count
-    - Input: iforce - bound the device-reported force-feedback effect index
-    - Input: touchwin - reset the packet index on every complete packet
+    - Input: synaptics-rmi4 - bound the F3A keymap to the GPIO count (CVE-2026-64277)
+    - Input: synaptics-rmi4 - bound the F30 keymap to the GPIO/LED count (CVE-2026-64276)
+    - Input: elan_i2c - prevent division by zero and arithmetic underflow (CVE-2026-64275)
+    - Input: goodix - clamp the device-reported contact count (CVE-2026-64274)
+    - Input: iforce - bound the device-reported force-feedback effect index (CVE-2026-64273)
+    - Input: touchwin - reset the packet index on every complete packet (CVE-2026-64271)
     - Input: maplemouse - fix NULL pointer dereference in open()
     - Input: mms114 - fix multi-touch slot corruption
     - Input: maple_keyb - set driver data before registering input device
     - Input: maplemouse - set driver data before registering input device
     - Input: maplecontrol - set driver data before registering input device
-    - RDMA/siw: bound Read Response placement to the RREAD length
+    - RDMA/siw: bound Read Response placement to the RREAD length (CVE-2026-64268)
     - fuse: fix device node leak in cuse_process_init_reply()
-    - fuse: re-lock request before returning from fuse_ref_folio()
+    - fuse: re-lock request before returning from fuse_ref_folio() (CVE-2026-64266)
     - sched/fair: Only update stats for allowed CPUs when looking for dst group
     - crypto: algif_skcipher - force synchronous processing on trees without ctx->state
     - tools/mm/slabinfo: fix total_objects attribute name
@@ -291,7 +291,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - pinctrl: sunxi: fix regulator leak in sunxi_pmx_request() error path
     - crypto: atmel-sha204a - fix blocking and non-blocking rng logic
     - crypto: ecrdsa - fix unknown OID check in ecrdsa_param_curve
-    - crypto: asymmetric_keys - fix OOB read in pefile_digest_pe_contents
+    - crypto: asymmetric_keys - fix OOB read in pefile_digest_pe_contents (CVE-2026-64544)
     - iommu/amd: Fix a stale comment about which legacy mode is user visible
     - clk: scmi: Fix clock rate rounding
     - thermal: hwmon: Fix critical temperature attribute removal
@@ -378,7 +378,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - net/sched: sch_codel: Do not call qdisc_tree_reduce_backlog during peek before restoring qlen
     - kcm: use WRITE_ONCE() when changing lower socket callbacks
     - netfilter: nf_conncount: callers must hold rcu read lock
-    - bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data()
+    - bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data() (CVE-2026-64548)
     - bpf, sockmap: fix integer overflow in bpf_msg_pop_data() bounds check
     - MIPS: mm: Fix out-of-bounds write in maar_res_walk()
     - powerpc/perf: fix preempt count underflow in fsl_emb_pmu_del
@@ -426,7 +426,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - sparc: led: avoid trimming a newline from empty writes
     - xfrm: validate selector family and prefixlen during match
     - octeontx2-pf: Fix leak of SQ timestamp buffer on teardown
-    - net: psample: fix info leak in PSAMPLE_ATTR_DATA
+    - net: psample: fix info leak in PSAMPLE_ATTR_DATA (CVE-2026-64553)
     - sctp: hold socket lock when dumping endpoints in sctp_diag
     - arm64/hw_breakpoint: reject unaligned watchpoints that would truncate BAS
     - thermal: intel: Fix dangling resources on thermal_throttle_online() failure
@@ -441,8 +441,8 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - rtc: abx80x: fix the RTC_VL_CLR clearing all status flags
     - rtc: ds1307: handle oscillator stop flag for ds1337/ds1339/ds3231
     - bpf: Fix stack slot index in nospec checks
-    - drm/edid: fix OOB read in drm_parse_tiled_block()
-    - ipv6: Fix null-ptr-deref in fib6_nh_mtu_change().
+    - drm/edid: fix OOB read in drm_parse_tiled_block() (CVE-2026-64546)
+    - ipv6: Fix null-ptr-deref in fib6_nh_mtu_change(). (CVE-2026-64538)
     - ipv4: fib: Don't ignore error route in local/main tables.
     - netfilter: nf_conncount: prevent connlimit drops for early confirmed ct
     - netfilter: nft_synproxy: stop bypassing the priv->info snapshot
@@ -464,7 +464,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - gpio: htc-egpio: use managed gpiochip registration
     - seg6: validate SRH length before reading fixed fields
     - hwmon: adm1275: Prevent reading uninitialized stack
-    - usbnet: gl620a: fix out-of-bounds read in genelink_rx_fixup()
+    - usbnet: gl620a: fix out-of-bounds read in genelink_rx_fixup() (CVE-2026-64540)
     - tracing/events: Fix to check the simple_tsk_fn creation
     - virtio_net: disable cb when NAPI is busy-polled
     - cxgb4: Fix decode strings dump for T6 adapters
@@ -477,7 +477,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - ata: sata_gemini: unwind clocks on IDE pinctrl errors
     - HID: picolcd: prevent NULL pointer dereference in picolcd_send_and_wait()
     - HID: core: Fix OOB read in hid_get_report for numbered reports
-    - net: usb: net1080: validate packet_len before pad-byte access in rx_fixup
+    - net: usb: net1080: validate packet_len before pad-byte access in rx_fixup (CVE-2026-64547)
     - gue: validate REMCSUM private option length
     - netfilter: xt_u32: reject invalid shift counts
     - netfilter: xt_rateest: fix u64 truncation in xt_rateest_mt()
@@ -489,10 +489,10 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - net: qualcomm: rmnet: don't use C bit-fields in rmnet checksum header
     - net: ethernet: rmnet: Support for ingress MAPv5 checksum offload
     - net: qualcomm: rmnet: add tx packets aggregation
-    - net: qualcomm: rmnet: validate MAP frame length before ingress parsing
-    - net/smc: fix UAF in smc_cdc_rx_handler() by pinning the socket
+    - net: qualcomm: rmnet: validate MAP frame length before ingress parsing (CVE-2026-64550)
+    - net/smc: fix UAF in smc_cdc_rx_handler() by pinning the socket (CVE-2026-64541)
     - Bluetooth: ISO: exclude RFU bits from ISO_SDU_Length
-    - Bluetooth: bpa10x: avoid OOB read of revision string in bpa10x_setup()
+    - Bluetooth: bpa10x: avoid OOB read of revision string in bpa10x_setup() (CVE-2026-64549)
     - ring-buffer: Fix event length with forced 8-byte alignment
     - net: usb: lan78xx: disable VLAN filter in promiscuous mode
     - net/sched: cake: reject overhead values that underflow length
@@ -537,7 +537,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - netfilter: nf_conntrack_reasm: guard mac_header adjustment after IPv6 defrag
     - netfilter: nf_conncount: fix zone comparison in tuple dedup
     - netfilter: xt_nat: reject unsupported target families
-    - netfilter: bridge: fix stale prevhdr pointer in br_ip6_fragment()
+    - netfilter: bridge: fix stale prevhdr pointer in br_ip6_fragment() (CVE-2026-64554)
     - gpu: host1x: Fix device reference leak in host1x_device_parse_dt() error path
     - soc: ti: k3-ringacc: Fix access mode for k3_ringacc_ring_pop_tail_io/proxy
     - soc: fsl: qe: panic on ioremap() failure in qe_reset()
@@ -587,7 +587,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - tpm: Make the TPM character devices non-seekable
     - time: Fix off-by-one in compat settimeofday() usec validation
     - spi: uniphier: Fix completion initialization order before devm_request_irq()
-    - sctp: validate STALE_COOKIE cause length before reading staleness
+    - sctp: validate STALE_COOKIE cause length before reading staleness (CVE-2026-64551)
     - nvmet-rdma: handle inline data with a nonzero offset
     - can: isotp: use unconditional synchronize_rcu() in isotp_release()
     - can: bcm: fix lockless bound/ifindex race and silent RX_SETUP failure
@@ -623,10 +623,10 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - ieee802154: allow legacy LLSEC ADD/DEL ops to pass strict validation
     - ieee802154: ca8210: fix cas_ctl leak on spi_async failure
     - ieee802154: ca8210: fix pointer truncation in kfifo on 64-bit
-    - nvmet-tcp: check INIT_FAILED before nvmet_req_uninit in digest error path
+    - nvmet-tcp: check INIT_FAILED before nvmet_req_uninit in digest error path (CVE-2026-64534)
     - batman-adv: retrieve ethhdr after potential skb realloc on RX
     - batman-adv: ensure minimal ethernet header on TX
-    - rtmutex: Use waiter::task instead of current in remove_waiter()
+    - rtmutex: Use waiter::task instead of current in remove_waiter() (CVE-2026-43499)
     - locking/rtmutex: Skip remove_waiter() when waiter is not enqueued
     - bnx2x: fix potential memory leak in bnx2x_alloc_mem_bp()
     - hwmon: (w83627hf) remove VID sysfs files on error and remove
@@ -666,7 +666,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - crypto: crypto4xx - Remove ahash-related code
     - crypto: crypto4xx - Remove insecure and unused rng_alg
     - batman-adv: clean untagged VLAN on netdev registration failure
-    - ACPI: NFIT: core: Fix acpi_nfit_init() error cleanup
+    - ACPI: NFIT: core: Fix acpi_nfit_init() error cleanup (CVE-2026-64510)
     - iio: imu: adis: add IRQF_NO_THREAD to non-FIFO trigger IRQ
     - iio: hid-sensor-rotation: Fix stale or zero output when reading raw values
     - iio: imu: inv_icm42600: make timestamp module chip independent
@@ -679,14 +679,14 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - iio: imu: inv_icm42600: fix timestamping by limiting FIFO reading
     - bitops: make BYTES_TO_BITS() treewide-available
     - iio: common: st_sensors: honour channel endianness in read_axis_data
-    - ALSA: aoa: check snd_ctl_new1() return value
+    - ALSA: aoa: check snd_ctl_new1() return value (CVE-2026-64488)
     - Bluetooth: btintel: Fix offset calculation boot address parameter
     - Bluetooth: btintel: Check firmware version before download
-    - Bluetooth: btusb: fix use-after-free on marvell probe failure
+    - Bluetooth: btusb: fix use-after-free on marvell probe failure (CVE-2026-64470)
     - Bluetooth: btusb: fix wakeup source leak on probe failure
-    - vfio/pci: Release the VGA arbiter client on register_device() failure
-    - binder: fix UAF in binder_free_transaction()
-    - PCI: altera: Fix resource leaks on probe failure
+    - vfio/pci: Release the VGA arbiter client on register_device() failure (CVE-2026-64475)
+    - binder: fix UAF in binder_free_transaction() (CVE-2026-64468)
+    - PCI: altera: Fix resource leaks on probe failure (CVE-2026-64462)
     - media: atomisp: replace boolean comparison of values with bool variables
     - media: staging: media: atomisp: Fix sh_css.c brace coding style issues
     - media: staging: media: atomisp: Fix the rest of sh_css.c brace issues
@@ -697,7 +697,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - cifs: remove check of list iterator against head past the loop body
     - smb2: small refactor in smb2_check_message()
     - cifs: remove unused server parameter from calc_smb_size()
-    - smb: client: restrict implied bcc[0] exemption to responses without data area
+    - smb: client: restrict implied bcc[0] exemption to responses without data area (CVE-2026-64448)
     - PCI: imx6: Fix IMX6SX_GPR12_PCIE_TEST_POWERDOWN handling
     - staging: rtl8723bs: split too long line
     - staging: rtl8723bs: remove commented out RT_ASSERT occurrences
@@ -706,15 +706,15 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - staging: rtl8723bs: remove 5Ghz code blocks
     - staging: rtl8723bs: remove commented out condition
     - staging: rtl8723bs: clean up comparsions to NULL
-    - staging: rtl8723bs: fix WEP length underflow and OOB read in OnAuth()
+    - staging: rtl8723bs: fix WEP length underflow and OOB read in OnAuth() (CVE-2026-64445)
     - staging: rtl8723bs: Fix space issues
-    - staging: rtl8723bs: fix heap buffer overflow in rtw_cfg80211_set_wpa_ie()
-    - staging: rtl8723bs: fix OOB reads in IE loops in issue_assocreq() and join_cmd_hdl()
+    - staging: rtl8723bs: fix heap buffer overflow in rtw_cfg80211_set_wpa_ie() (CVE-2026-64446)
+    - staging: rtl8723bs: fix OOB reads in IE loops in issue_assocreq() and join_cmd_hdl() (CVE-2026-64442)
     - PCI: controller: Use dev_fwnode() instead of of_fwnode_handle()
     - PCI: mediatek: Convert bool to single quirks entry and bitmap
-    - PCI: mediatek: Fix IRQ domain leak when port fails to enable
+    - PCI: mediatek: Fix IRQ domain leak when port fails to enable (CVE-2026-64461)
     - staging: rtl8723bs: remove DBG_871X log argument
-    - crypto: qat - fix VF2PF work teardown race in adf_disable_sriov()
+    - crypto: qat - fix VF2PF work teardown race in adf_disable_sriov() (CVE-2026-64438)
     - PCI: Prevent resource tree corruption when BAR resize fails
     - PCI: Free saved list without holding pci_bus_sem
     - PCI: Fix restoring BARs on BAR resize rollback path
@@ -723,41 +723,41 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - PCI: Skip Resizable BAR restore on read error
     - coresight: etb10: restore atomic_t for shared reading state
     - netfilter: ebtables: Use vmalloc_array() to improve code
-    - netfilter: ebtables: zero chainstack array
+    - netfilter: ebtables: zero chainstack array (CVE-2026-64413)
     - Bluetooth: L2CAP: Fix not tracking outstanding TX ident
     - Bluetooth: L2CAP: Fix deadlock in l2cap_conn_del()
-    - Bluetooth: L2CAP: cancel pending_rx_work before taking conn->lock
-    - smb: client: Fix next buffer leak in receive_encrypted_standard()
-    - smb: client: mask server-provided mode to 07777 in modefromsid
+    - Bluetooth: L2CAP: cancel pending_rx_work before taking conn->lock (CVE-2026-64206)
+    - smb: client: Fix next buffer leak in receive_encrypted_standard() (CVE-2026-64381)
+    - smb: client: mask server-provided mode to 07777 in modefromsid (CVE-2026-64379)
     - smb: client: use unaligned reads in parse_posix_ctxt()
-    - smb: client: harden POSIX SID length parsing
-    - writeback: fix race between cgroup_writeback_umount() and inode_switch_wbs()
+    - smb: client: harden POSIX SID length parsing (CVE-2026-64380)
+    - writeback: fix race between cgroup_writeback_umount() and inode_switch_wbs() (CVE-2026-64378)
     - X.509: Fix validation of ASN.1 certificate header
     - proc: use generic setattr() for /proc/$PID/net
     - proc: rename proc_setattr to proc_nochmod_setattr
-    - proc: protect ptrace_may_access() with exec_update_lock (FD links)
+    - proc: protect ptrace_may_access() with exec_update_lock (FD links) (CVE-2026-64375)
     - HID: add haptics page defines
-    - HID: multitouch: fix out-of-bounds bit access on mt_io_flags
+    - HID: multitouch: fix out-of-bounds bit access on mt_io_flags (CVE-2026-64364)
     - cpufreq: intel_pstate: Sync policy->cur during CPU offline
-    - proc: protect ptrace_may_access() with exec_update_lock (part 1)
-    - HID: appleir: fix UAF on pending key_up_timer in remove()
+    - proc: protect ptrace_may_access() with exec_update_lock (part 1) (CVE-2026-64371)
+    - HID: appleir: fix UAF on pending key_up_timer in remove() (CVE-2026-64363)
     - serial: 8250_mid: Remove 8250_pci usage
     - serial: 8250_mid: Disable DMA for selected platforms
     - xfs: reflect sb features in xfs_mount
     - xfs: fix unreachable BIGTIME check in dquot flush validation
     - xfs: use null daddr for unset first bad log block
     - hfs/hfsplus: prevent getting negative values of offset/length
-    - hfs/hfsplus: fix u32 overflow in check_and_correct_requested_length
+    - hfs/hfsplus: fix u32 overflow in check_and_correct_requested_length (CVE-2026-64361)
     - usb: gadget: function: Simplify diagnostic messaging in printer
-    - usb: gadget: f_printer: take kref only for successful open
-    - usb: free iso schedules on failed submit
+    - usb: gadget: f_printer: take kref only for successful open (CVE-2026-64345)
+    - usb: free iso schedules on failed submit (CVE-2026-64348)
     - usb: iowarrior: remove inherent race with minor number
-    - USB: serial: digi_acceleport: fix write buffer corruption
+    - USB: serial: digi_acceleport: fix write buffer corruption (CVE-2026-64333)
     - drm/i2c/sil164: Drop no-op remove function
     - leds: lm3697: Remove duplicated error reporting in .remove()
     - leds: lm3601x: Improve error reporting for problems during .remove()
     - gpio: pca953x: Make platform teardown callback return void
-    - usb: typec: ucsi: ccg: Fix use-after-free of ucsi on remove
+    - usb: typec: ucsi: ccg: Fix use-after-free of ucsi on remove (CVE-2026-64329)
     - usb: atm: ueagle-atm: wait for pre-firmware load in .disconnect()
     - usb: typec: tcpm: Fix VDM type for Enter Mode commands
     - usb: gadget: f_fs: initialize reset_work at allocation time
@@ -767,7 +767,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - usb: gadget: f_fs: Tie read_buffer lifetime to ffs_epfile
     - btrfs: do not trim a device which is not writeable
     - crypto: qat - fix restarting state leak on allocation failure
-    - crypto: qat - validate RSA CRT component lengths
+    - crypto: qat - validate RSA CRT component lengths (CVE-2026-64304)
     - audit: add audit_log_nf_skb helper function
     - audit: fix potential integer overflow in audit_log_n_hex()
     - posix-cpu-timers: Use u64 multiplication in update_rlimit_cpu()
@@ -789,7 +789,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - tools/resolve_btfids: Fix some error messages
     - tools/resolve_btfids: Emit warnings and patch zero id for missing symbols
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.262
-    - posix-cpu-timers: Prevent UAF caused by non-leader exec() race
+    - posix-cpu-timers: Prevent UAF caused by non-leader exec() race (CVE-2026-64560)
 
   [ Emilio Pozuelo Monfort ]
   * [rt] Update to 5.10.261-rt157
