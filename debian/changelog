@@ -1,4 +1,4 @@
-linux (5.10.262-1) UNRELEASED; urgency=medium
+linux (5.10.262-1) bullseye-security; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v5.x/ChangeLog-5.10.260
@@ -969,7 +969,7 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
   * [rt] Refresh:
     - Refresh "signals: Allow rt tasks to cache one sigqueue struct"
 
- -- Ben Hutchings <benh@debian.org>  Mon, 06 Jul 2026 18:29:22 +0200
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Fri, 31 Jul 2026 11:44:47 +0200
 
 linux (5.10.259-1) bullseye-security; urgency=high
 
