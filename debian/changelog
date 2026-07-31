@@ -1,4 +1,4 @@
-linux (6.1.178-1) UNRELEASED; urgency=medium
+linux (6.1.179-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.178
@@ -1147,6 +1147,8 @@ linux (6.1.178-1) UNRELEASED; urgency=medium
     - iio: imu: inv_icm42600: fix timestamp clock period by using lower value
     - ALSA: seq: Fix uninitialised heap leak in snd_seq_event_dup()
     - [x86] perf/x86/amd/core: Always use the NMI latency mitigation
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.179
+    - mm: refactor mm_access() to not return NULL
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 31 Jul 2026 07:42:41 +0200
 
