@@ -314,8 +314,6 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - IB/mlx4: Fix refcount leak in add_port() error path
     - RDMA/hns: Fix warning in poll cq direct mode
     - PM: sleep: Use complete() in device_pm_sleep_init()
-    - MIPS: Fix big-endian stack argument fetching in o32 wrapper
-    - MIPS: DEC: Remove do_IRQ() call indirection
     - mtd: spi-nor: Drop duplicate Kconfig dependency
     - nvme-multipath: fix flex array size in struct nvme_ns_head
     - workqueue: drop spurious '*' from print_worker_info() fn declaration
@@ -346,7 +344,6 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - netfilter: conntrack: call nf_ct_gre_keymap_destroy() if master helper is pptp
     - bpf: Update transport_header when encapsulating UDP tunnel in lwt
     - wifi: wcn36xx: fix OOB read from firmware count in PRINT_REG_INFO indication
-    - riscv: stacktrace: Remove bogus -0x4 offset in non-FP walk_stackframe
     - ACPI: IPMI: Fix message kref handling on dead device
     - cpufreq: Documentation: fix conservative governor freq_step description
     - spi: ep93xx: fix double-free of zeropage on DMA setup failure
@@ -381,9 +378,6 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - bpf, sockmap: reject overflowing copy + len in bpf_msg_push_data() (CVE-2026-64548)
     - bpf, sockmap: fix integer overflow in bpf_msg_pop_data() bounds check
     - MIPS: mm: Fix out-of-bounds write in maar_res_walk()
-    - powerpc/perf: fix preempt count underflow in fsl_emb_pmu_del
-    - powerpc/powernv: fix preempt count leak in pnv_kexec_wait_secondaries_down
-    - powerpc/kexec: fix double get_cpu() imbalance in kexec_prepare_cpus
     - KEYS: Use acquire when reading state in keyring search
     - tipc: fix UAF in tipc_l2_send_msg()
     - tcp: ipv6: clamp default adverting MSS to avoid GSO_BY_FRAGS (0xFFFF)
@@ -436,8 +430,6 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - netfilter: ipset: fix order of kfree_rcu() and rcu_assign_pointer()
     - netfilter: nft_meta_bridge: fix NFT_META_BRI_IIFPVID stack leak
     - irqchip/crossbar: Fix parent domain resource leak
-    - selftests/mm: clarify alternate unmapping in compaction_test
-    - selftests/mm: allow PUD-level entries in compound testcase of hmm tests
     - rtc: abx80x: fix the RTC_VL_CLR clearing all status flags
     - rtc: ds1307: handle oscillator stop flag for ds1337/ds1339/ds3231
     - bpf: Fix stack slot index in nospec checks
@@ -561,10 +553,6 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - nvdimm/btt: Free arena sub-allocations on discover_arenas() error path
     - lockd: Plug nlm_file leak when nlm_do_fopen() fails
     - lockd: Plug nlm_file refcount leak on cached nlm_do_fopen() failure
-    - MIPS: ip22-gio: fix gio device memory leak
-    - MIPS: ip22-gio: fix kfree() of static object
-    - MIPS: ip22-gio: fix device reference leak in probe
-    - MIPS: DEC: Ensure 32-bit stack location for o32 prom_printf()
     - power: supply: charger-manager: fix refcount leak in is_full_charged()
     - proc: only bump parent nlink when registering directories
     - mtd: slram: remove failed entries from the device list
@@ -638,7 +626,6 @@ linux (5.10.262-1) UNRELEASED; urgency=medium
     - orangefs: keep the readdir entry size 64-bit in fill_from_part()
     - ata: pata_pxa: Fix DMA channel leak on probe error
     - hwmon: (asus_atk0110) Check package count before accessing element
-    - s390/monwriter: Reject buffer reuse with different data length
     - mac802154: remove interfaces with RCU list deletion
     - llc: fix SAP refcount leak in llc_ui_autobind()
     - ipvs: use parsed transport offset in SCTP state lookup
