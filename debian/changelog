@@ -1,4 +1,4 @@
-linux-6.12 (6.12.100-1~deb12u1) UNRELEASED; urgency=medium
+linux-6.12 (6.12.100-1~deb12u1) bookworm-security; urgency=high
 
   [ Ben Hutchings ]
   * Rebuild for bookworm
@@ -6,7 +6,7 @@ linux-6.12 (6.12.100-1~deb12u1) UNRELEASED; urgency=medium
   [ Bastian Blank ]
   * d/b/gencontrol.py: Re-use source name in generated changelog entry
 
- -- Ben Hutchings <benh@debian.org>  Sat, 25 Jul 2026 14:27:49 +0200
+ -- Ben Hutchings <benh@debian.org>  Sun, 02 Aug 2026 19:24:39 +0200
 
 linux (6.12.100-1) trixie-security; urgency=high
 
