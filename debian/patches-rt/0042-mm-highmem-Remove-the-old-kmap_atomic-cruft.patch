@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:31 +0100
 Subject: [PATCH 042/328] mm/highmem: Remove the old kmap_atomic cruft
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ab92ada2734f82fc10d8148e70e84337d0e66317
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2db34ed1652ca320d2f78ef976f62e8c770709a4
 
 All users gone.
 
@@ -133,3 +133,6 @@ index 77677c6844f7..499dfafd36b7 100644
  #ifndef arch_kmap_local_pre_unmap
  # define arch_kmap_local_pre_unmap(vaddr)		do { } while (0)
  #endif
+-- 
+2.47.3
+

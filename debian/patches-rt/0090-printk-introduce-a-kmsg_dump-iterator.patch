@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Fri, 18 Dec 2020 11:40:08 +0000
 Subject: [PATCH 090/328] printk: introduce a kmsg_dump iterator
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bab73acdcf80056828f05b4857026d5a5f3ca207
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9c23f0e4c2933b0558647e83693d15496305f2fc
 
 Rather than store the iterator information into the registered
 kmsg_dump structure, create a separate iterator structure. The
@@ -129,7 +129,7 @@ index e4abac6c9727..f38349ad00ea 100644
  		printf("%s", line);
  	}
 diff --git a/drivers/hv/vmbus_drv.c b/drivers/hv/vmbus_drv.c
-index 2fed2b169a91..8bc62b512732 100644
+index 8d5245b74d23..a33554b9e85f 100644
 --- a/drivers/hv/vmbus_drv.c
 +++ b/drivers/hv/vmbus_drv.c
 @@ -1359,7 +1359,8 @@ static void vmbus_isr(void)
@@ -417,7 +417,7 @@ index 4ea5c7f8f98a..6e7e8137427e 100644
  	ret = true;
  out:
  	if (len)
-@@ -3516,7 +3513,7 @@ bool kmsg_dump_get_line_nolock(struct kmsg_dumper *dumper, bool syslog,
+@@ -3516,7 +3513,7 @@ out:
  
  /**
   * kmsg_dump_get_line - retrieve one kmsg log line
@@ -426,7 +426,7 @@ index 4ea5c7f8f98a..6e7e8137427e 100644
   * @syslog: include the "<4>" prefixes
   * @line: buffer to copy the line to
   * @size: maximum size of the buffer
-@@ -3531,14 +3528,14 @@ bool kmsg_dump_get_line_nolock(struct kmsg_dumper *dumper, bool syslog,
+@@ -3531,14 +3528,14 @@ out:
   * A return value of FALSE indicates that there are no more records to
   * read.
   */
@@ -555,3 +555,6 @@ index 4ea5c7f8f98a..6e7e8137427e 100644
  	logbuf_unlock_irqrestore(flags);
  }
  EXPORT_SYMBOL_GPL(kmsg_dump_rewind);
+-- 
+2.47.3
+

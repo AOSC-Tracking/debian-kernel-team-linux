@@ -2,7 +2,7 @@ From: Yajun Deng <yajun.deng@linux.dev>
 Date: Wed, 3 Aug 2022 14:24:30 +0800
 Subject: [PATCH 314/328] locking/rtmutex: switch to EXPORT_SYMBOL() for
  ww_mutex_lock{,_interruptible}()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=48fc02319d5538d5e22ab056cf3a24ff8dfa805f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f724bb5d8484059e6875c88d2fac5d2725d32b31
 
 We can use EXPORT_SYMBOL() instead of EXPORT_SYMBOL_GPL() in
 ww_mutex_lock_interruptible() and ww_mutex_lock(). That match
@@ -16,10 +16,10 @@ Signed-off-by: Luis Claudio R. Goncalves <lgoncalv@redhat.com>
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index bec7e07a80dc..0b40709c3285 100644
+index e52047da4e09..6e6f249b5316 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
-@@ -2516,7 +2516,7 @@ ww_mutex_lock_interruptible(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
+@@ -2522,7 +2522,7 @@ ww_mutex_lock_interruptible(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
  
  	return ret;
  }
@@ -28,7 +28,7 @@ index bec7e07a80dc..0b40709c3285 100644
  
  int __sched
  ww_mutex_lock(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
-@@ -2536,7 +2536,7 @@ ww_mutex_lock(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
+@@ -2542,7 +2542,7 @@ ww_mutex_lock(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
  
  	return ret;
  }
@@ -37,3 +37,6 @@ index bec7e07a80dc..0b40709c3285 100644
  
  void __sched ww_mutex_unlock(struct ww_mutex *lock)
  {
+-- 
+2.47.3
+

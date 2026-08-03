@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:07 +0200
 Subject: [PATCH 010/328] sched: Add migrate_disable()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e8b462aef3ea689a8f441127f29e7a81b37adcfe
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=284170296eb2e7827962efc4611eb5c9fde19035
 
 Add the base migrate_disable() support (under protest).
 
@@ -353,3 +353,6 @@ index 2916606a9333..dbb96ebf661f 100644
  	/*
  	 * It is valid to assume CPU-locality during early bootup:
  	 */
+-- 
+2.47.3
+

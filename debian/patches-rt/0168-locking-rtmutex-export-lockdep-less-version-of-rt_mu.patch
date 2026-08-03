@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 16:36:39 +0200
 Subject: [PATCH 168/328] locking/rtmutex: export lockdep-less version of
  rt_mutex's lock, trylock and unlock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5d97497a073dcb0399d42e21ccb5af58e89f5479
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=db2807a1b0f63d737b79f9790ede2ac392cffac6
 
 Required for lock implementation ontop of rtmutex.
 
@@ -14,10 +14,10 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  2 files changed, 41 insertions(+), 16 deletions(-)
 
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index febebbce7f42..4fd836338f9d 100644
+index 2e18a5ca709e..e23cdb597c44 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
-@@ -1472,12 +1472,33 @@ rt_mutex_fastunlock(struct rt_mutex *lock,
+@@ -1478,12 +1478,33 @@ rt_mutex_fastunlock(struct rt_mutex *lock,
  		rt_mutex_postunlock(&wake_q);
  }
  
@@ -53,7 +53,7 @@ index febebbce7f42..4fd836338f9d 100644
  }
  
  #ifdef CONFIG_DEBUG_LOCK_ALLOC
-@@ -1518,16 +1539,7 @@ EXPORT_SYMBOL_GPL(rt_mutex_lock);
+@@ -1524,16 +1545,7 @@ EXPORT_SYMBOL_GPL(rt_mutex_lock);
   */
  int __sched rt_mutex_lock_interruptible(struct rt_mutex *lock)
  {
@@ -71,7 +71,7 @@ index febebbce7f42..4fd836338f9d 100644
  }
  EXPORT_SYMBOL_GPL(rt_mutex_lock_interruptible);
  
-@@ -1544,6 +1556,14 @@ int __sched __rt_mutex_futex_trylock(struct rt_mutex *lock)
+@@ -1550,6 +1562,14 @@ int __sched __rt_mutex_futex_trylock(struct rt_mutex *lock)
  	return __rt_mutex_slowtrylock(lock);
  }
  
@@ -86,7 +86,7 @@ index febebbce7f42..4fd836338f9d 100644
  /**
   * rt_mutex_trylock - try to lock a rt_mutex
   *
-@@ -1559,10 +1579,7 @@ int __sched rt_mutex_trylock(struct rt_mutex *lock)
+@@ -1565,10 +1585,7 @@ int __sched rt_mutex_trylock(struct rt_mutex *lock)
  {
  	int ret;
  
@@ -98,7 +98,7 @@ index febebbce7f42..4fd836338f9d 100644
  	if (ret)
  		mutex_acquire(&lock->dep_map, 0, 1, _RET_IP_);
  
-@@ -1570,6 +1587,11 @@ int __sched rt_mutex_trylock(struct rt_mutex *lock)
+@@ -1576,6 +1593,11 @@ int __sched rt_mutex_trylock(struct rt_mutex *lock)
  }
  EXPORT_SYMBOL_GPL(rt_mutex_trylock);
  
@@ -124,3 +124,6 @@ index b5a2affa59d5..9d1e974ca9c3 100644
  int __sched rt_mutex_slowlock_locked(struct rt_mutex *lock, int state,
  				     struct hrtimer_sleeper *timeout,
  				     enum rtmutex_chainwalk chwalk,
+-- 
+2.47.3
+

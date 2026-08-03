@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 6 Oct 2020 13:07:17 +0200
 Subject: [PATCH 177/328] locking/rtmutex: Use custom scheduling function for
  spin-schedule()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bda150c7e0597042ecb5a4218c78c4b678cec6ed
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ef62555ff41e883307d76b81b6369b4baf46574a
 
 PREEMPT_RT builds the rwsem, mutex, spinlock and rwlock typed locks on
 top of a rtmutex lock. While blocked task->pi_blocked_on is set
@@ -106,7 +106,7 @@ index e5af028c08b4..994c25640e15 100644
  
  extern void normalize_rt_tasks(void);
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index 194eab4907f4..0893512f8769 100644
+index c9b9940e984a..0f396b5cc2c5 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
 @@ -1067,7 +1067,7 @@ void __sched rt_spin_lock_slowlock_locked(struct rt_mutex *lock,
@@ -135,7 +135,7 @@ diff --git a/kernel/sched/core.c b/kernel/sched/core.c
 index 5633fa762e18..9f810c719d34 100644
 --- a/kernel/sched/core.c
 +++ b/kernel/sched/core.c
-@@ -5000,7 +5000,7 @@ pick_next_task(struct rq *rq, struct task_struct *prev, struct rq_flags *rf)
+@@ -5000,7 +5000,7 @@ restart:
   *
   * WARNING: must be called with preemption disabled!
   */
@@ -237,3 +237,6 @@ index 5633fa762e18..9f810c719d34 100644
  		local_irq_disable();
  		sched_preempt_enable_no_resched();
  	} while (need_resched());
+-- 
+2.47.3
+

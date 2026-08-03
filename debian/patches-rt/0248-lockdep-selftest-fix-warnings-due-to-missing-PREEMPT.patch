@@ -2,7 +2,7 @@ From: Josh Cartwright <josh.cartwright@ni.com>
 Date: Wed, 28 Jan 2015 13:08:45 -0600
 Subject: [PATCH 248/328] lockdep: selftest: fix warnings due to missing
  PREEMPT_RT conditionals
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1cd5eb0c52893fd9645a49333f055b8a1dc62db2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d94b5f88e5a8aea408afed7087a13fb8d5c54b80
 
 "lockdep: Selftest: Only do hardirq context test for raw spinlock"
 disabled the execution of certain tests with PREEMPT_RT, but did
@@ -143,3 +143,6 @@ index 663c071bc445..98c376b02dff 100644
  /*
   * read-lock / write-lock recursion that is unsafe.
   */
+-- 
+2.47.3
+

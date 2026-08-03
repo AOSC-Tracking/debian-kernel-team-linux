@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Sun, 13 Nov 2011 17:17:09 +0100
 Subject: [PATCH 219/328] softirq: Check preemption after reenabling interrupts
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a8c904c8f58bc6f98723f549138c14439700462d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=44808b8c0708d790480e8dc793fb301734aa6291
 
 raise_softirq_irqoff() disables interrupts and wakes the softirq
 daemon, but after reenabling interrupts there is no preemption check,
@@ -106,7 +106,7 @@ index 9183fbc434d2..43956f616698 100644
  }
  EXPORT_SYMBOL(__dev_kfree_skb_irq);
  
-@@ -4635,6 +4637,7 @@ static int enqueue_to_backlog(struct sk_buff *skb, int cpu,
+@@ -4635,6 +4637,7 @@ drop:
  	rps_unlock(sd);
  
  	local_irq_restore(flags);
@@ -145,3 +145,6 @@ index 9183fbc434d2..43956f616698 100644
  
  #ifdef CONFIG_RPS
  	remsd = oldsd->rps_ipi_list;
+-- 
+2.47.3
+

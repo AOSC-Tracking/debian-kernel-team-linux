@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 21 Dec 2020 11:10:03 +0106
 Subject: [PATCH 091/328] um: synchronize kmsg_dumper
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=69c48b7c8bdf6658f97c4ec6f9cfabc11bf7f64a
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8551e22f4c8b1936b2361fce118a293c39706d3f
 
 The kmsg_dumper can be called from any context and CPU, possibly
 from multiple CPUs simultaneously. Since a static buffer is used
@@ -55,3 +55,6 @@ index f38349ad00ea..173999422ed8 100644
  }
  
  static struct kmsg_dumper kmsg_dumper = {
+-- 
+2.47.3
+

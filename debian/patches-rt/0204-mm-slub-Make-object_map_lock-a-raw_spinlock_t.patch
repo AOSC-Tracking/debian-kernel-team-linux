@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Thu, 16 Jul 2020 18:47:50 +0200
 Subject: [PATCH 204/328] mm/slub: Make object_map_lock a raw_spinlock_t
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d85ce57fbc326ca535d61ec37475ca8903508c68
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9f2ca622773d2cb78be896eab7583f63c0b48697
 
 The variable object_map is protected by object_map_lock. The lock is always
 acquired in debug code and within already atomic context
@@ -44,3 +44,6 @@ index f07f3c74f50f..e56c89561d77 100644
  }
  
  static inline unsigned int size_from_object(struct kmem_cache *s)
+-- 
+2.47.3
+

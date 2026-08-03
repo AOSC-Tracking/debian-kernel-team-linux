@@ -2,7 +2,7 @@ From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:31 +0100
 Subject: [PATCH 129/328] irqtime: Move irqtime entry accounting after irq
  offset incrementation
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=adfc3f944f31da64e0380c33c7241b6da71835eb
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=84a75ffbc1fea34d320254fff2b344bcfb4cb4ac
 
 IRQ time entry is currently accounted before HARDIRQ_OFFSET or
 SOFTIRQ_OFFSET are incremented. This is convenient to decide to which
@@ -188,7 +188,7 @@ index 617009ccd82c..b8f42b3ba8ca 100644
  
  restart:
  	/* Reset the pending bitmask before enabling irqs */
-@@ -365,8 +365,8 @@ asmlinkage __visible void __softirq_entry __do_softirq(void)
+@@ -365,8 +365,8 @@ restart:
  		wakeup_softirqd();
  	}
  
@@ -207,3 +207,6 @@ index 617009ccd82c..b8f42b3ba8ca 100644
  	preempt_count_sub(HARDIRQ_OFFSET);
  	if (!in_interrupt() && local_softirq_pending())
  		invoke_softirq();
+-- 
+2.47.3
+

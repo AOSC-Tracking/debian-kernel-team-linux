@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:29 +0100
 Subject: [PATCH 040/328] xtensa/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=e5e3e1baa20b3cc9ed5585397fa528539e3581d7
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4d0a8717743a35bfce385a1c6273d8a7bfcb8625
 
 No reason having the same code in every architecture
 
@@ -160,3 +160,6 @@ index 673196fe862e..0735ca5e8f86 100644
 -	kmap_pte = virt_to_kpte(kmap_vstart);
  	kmap_waitqueues_init();
  }
+-- 
+2.47.3
+

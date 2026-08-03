@@ -4,7 +4,7 @@ Subject: [PATCH 249/328] lockdep: disable self-test
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=71e5e1400b406c6906187b41d0cb1ccfd4db45c6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3e3fe5cff4175af18ee6ad59fad243f1b9f97a3e
 
 The self-test wasn't always 100% accurate for RT. We disabled a few
 tests which failed because they had a different semantic for RT. Some
@@ -29,3 +29,6 @@ index c20729cd67b1..0d1527509673 100644
  	help
  	  Say Y here if you want the kernel to run a short self-test during
  	  bootup. The self-test checks whether common types of locking bugs
+-- 
+2.47.3
+

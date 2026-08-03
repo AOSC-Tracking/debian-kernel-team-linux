@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:06 +0200
 Subject: [PATCH 009/328] sched: Massage set_cpus_allowed()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=2d3556db8c9b7212bff6b27b1e8e8466ec086d81
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ea9a5ade32f3cf55393d8af3111a09a705812054
 
 Thread a u32 flags word through the *set_cpus_allowed*() callchain.
 This will allow adding behavioural tweaks for future users.
@@ -84,7 +84,7 @@ index 68eebea2411a..0b4876601a3d 100644
  
  	if (p->flags & PF_KTHREAD) {
  		/*
-@@ -1960,7 +1967,7 @@ static int __set_cpus_allowed_ptr(struct task_struct *p,
+@@ -1960,7 +1967,7 @@ out:
  
  int set_cpus_allowed_ptr(struct task_struct *p, const struct cpumask *new_mask)
  {
@@ -169,3 +169,6 @@ index 9824e82ac172..485851e3e0b1 100644
  
  #endif
  
+-- 
+2.47.3
+

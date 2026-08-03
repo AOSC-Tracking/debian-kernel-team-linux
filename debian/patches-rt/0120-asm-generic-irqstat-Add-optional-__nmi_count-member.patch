@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:14 +0100
 Subject: [PATCH 120/328] asm-generic/irqstat: Add optional __nmi_count member
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=f301805608de0ecdc461eb01b43fadee62033ba1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b27bffd28e57e534d78b8accd27c002d5a43b149
 
 Add an optional __nmi_count member to irq_cpustat_t so more architectures
 can use the generic version.
@@ -28,3 +28,6 @@ index d14214dfc10b..f5dd99781e3c 100644
  } ____cacheline_aligned irq_cpustat_t;
  
  #include <linux/irq_cpustat.h>	/* Standard mappings for irq_cpustat_t above */
+-- 
+2.47.3
+

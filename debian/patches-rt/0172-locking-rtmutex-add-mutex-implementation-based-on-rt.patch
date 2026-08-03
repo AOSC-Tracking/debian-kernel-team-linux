@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:17:03 +0200
 Subject: [PATCH 172/328] locking/rtmutex: add mutex implementation based on
  rtmutex
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a3ac79b5ae7932d86909fbee4d65a17466d79917
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cde5f41cd14d0742b02da8de3c7e41c82dd47516
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -379,3 +379,6 @@ index 000000000000..2b849e6b9b4a
 +	return 1;
 +}
 +EXPORT_SYMBOL(atomic_dec_and_mutex_lock);
+-- 
+2.47.3
+

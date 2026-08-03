@@ -1,7 +1,7 @@
 From: Steven Rostedt <rostedt@goodmis.org>
 Date: Tue, 14 Jul 2015 14:26:34 +0200
 Subject: [PATCH 161/328] futex: Fix bug on when a requeued RT task times out
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9ca398b6f52ae27142aa94c36c1d0e2b030cd4d9
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5a2d9a41e7b607bf4622e0fa3e9937500ccb0889
 
 Requeue with timeout causes a bug with PREEMPT_RT.
 
@@ -52,7 +52,7 @@ Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
  2 files changed, 31 insertions(+), 1 deletion(-)
 
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index c1a37ce74217..ab947be42f5e 100644
+index 0c0db13eb707..a12f15ec6af4 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
 @@ -138,7 +138,8 @@ static void fixup_rt_mutex_waiters(struct rt_mutex *lock)
@@ -65,7 +65,7 @@ index c1a37ce74217..ab947be42f5e 100644
  }
  
  /*
-@@ -1723,6 +1724,34 @@ int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
+@@ -1729,6 +1730,34 @@ int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
  	if (try_to_take_rt_mutex(lock, task, NULL))
  		return 1;
  
@@ -112,3 +112,6 @@ index 096b16cfb096..37cd6b3bf6f4 100644
  
  extern struct task_struct *rt_mutex_next_owner(struct rt_mutex *lock);
  extern void rt_mutex_init_proxy_locked(struct rt_mutex *lock,
+-- 
+2.47.3
+

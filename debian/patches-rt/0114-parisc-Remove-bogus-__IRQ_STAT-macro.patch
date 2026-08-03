@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 13 Nov 2020 15:02:08 +0100
 Subject: [PATCH 114/328] parisc: Remove bogus __IRQ_STAT macro
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=902087e3b9052087b50a60b6de582e1c5266ffe5
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d4f0a72036f803a0ad4dc43029d3b98e6364bec0
 
 This is a leftover from a historical array based implementation and unused.
 
@@ -25,3 +25,6 @@ index 7f7039516e53..fad29aa6f45f 100644
  #define inc_irq_stat(member)	this_cpu_inc(irq_stat.member)
  #define __inc_irq_stat(member)	__this_cpu_inc(irq_stat.member)
  #define ack_bad_irq(irq) WARN(1, "unexpected IRQ trap at vector %02x\n", irq)
+-- 
+2.47.3
+

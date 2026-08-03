@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:12 +0100
 Subject: [PATCH 140/328] net: sundance: Use tasklet_disable_in_atomic().
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=310b38a9692d5595959e1d932deb2328b9d85755
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=a3cf5e5e4e76747e865bf3fa2e4f6f0274c048c9
 
 tasklet_disable() is used in the timer callback. This might be distangled,
 but without access to the hardware that's a bit risky.
@@ -33,3 +33,6 @@ index e3a8858915b3..df0eab479d51 100644
  	iowrite16(0, ioaddr + IntrEnable);
  	printk(KERN_WARNING "%s: Transmit timed out, TxStatus %2.2x "
  		   "TxFrameId %2.2x,"
+-- 
+2.47.3
+

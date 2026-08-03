@@ -1,7 +1,7 @@
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:30 +0100
 Subject: [PATCH 128/328] sched/vtime: Consolidate IRQ time accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c81a5a2efae5d9d3cc742c0a233e2c8de28f2851
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4f336a4833d643434b3ec309813a05d6a23928ef
 
 The 3 architectures implementing CONFIG_VIRT_CPU_ACCOUNTING_NATIVE
 all have their own version of irq time accounting that dispatch the
@@ -297,3 +297,6 @@ index c06dac0d3f3b..016470a62ef8 100644
  }
  
  void cputime_adjust(struct task_cputime *curr, struct prev_cputime *prev,
+-- 
+2.47.3
+

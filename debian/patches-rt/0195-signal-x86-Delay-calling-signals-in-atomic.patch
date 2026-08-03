@@ -1,7 +1,7 @@
 From: Oleg Nesterov <oleg@redhat.com>
 Date: Tue, 14 Jul 2015 14:26:34 +0200
 Subject: [PATCH 195/328] signal/x86: Delay calling signals in atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ac5e00619fce8b60716db95cbf13303ab6baa49f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c04a7dbed640ff2ead456be94842e59b0f9f9c6e
 
 On x86_64 we must disable preemption before we enable interrupts
 for stack faults, int3 and debugging, because the current task is using
@@ -134,3 +134,6 @@ index 285079d08d1a..f573f95b1fc6 100644
  	spin_lock_irqsave(&t->sighand->siglock, flags);
  	action = &t->sighand->action[sig-1];
  	ignored = action->sa.sa_handler == SIG_IGN;
+-- 
+2.47.3
+

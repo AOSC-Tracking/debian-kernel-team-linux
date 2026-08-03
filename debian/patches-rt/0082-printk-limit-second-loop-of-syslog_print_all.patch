@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 17 Feb 2021 16:15:31 +0100
 Subject: [PATCH 082/328] printk: limit second loop of syslog_print_all
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=39f97ba351ca4d789179ed95516574bb1791c032
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bd71efc840ca1b14c483933eb7af8a94344ea488
 
 The second loop of syslog_print_all() subtracts lengths that were
 added in the first loop. With commit b031a684bfd0 ("printk: remove
@@ -50,3 +50,6 @@ index d4f1aa00a2d1..faa56c3f7cdb 100644
  			break;
  		len -= get_record_print_text_size(&info, line_count, true, time);
  	}
+-- 
+2.47.3
+

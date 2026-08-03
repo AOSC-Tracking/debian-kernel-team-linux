@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:31 -0400
 Subject: [PATCH 290/328] sched: Simplify migration_cpu_stop()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=117dfa0ec0d809953751e9ca0c1910e8f97979dc
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c5f5784841667dd127f47b443fb89941e9d4e6d2
 
 commit c20cf065d4a619d394d23290093b1002e27dff86 upstream.
 
@@ -128,7 +128,7 @@ index 53efcb28e346..25a5854cbd56 100644
  		/*
  		 * When migrate_enable() hits a rq mis-match we can't reliably
  		 * determine is_migration_disabled() and so have to chase after
-@@ -2073,7 +2034,6 @@ static int migration_cpu_stop(void *data)
+@@ -2073,7 +2034,6 @@ out:
  		complete_all(&pending->done);
  
  	/* For pending->{arg,stop_work} */
@@ -136,3 +136,6 @@ index 53efcb28e346..25a5854cbd56 100644
  	if (pending && refcount_dec_and_test(&pending->refs))
  		wake_up_var(&pending->refs);
  
+-- 
+2.47.3
+

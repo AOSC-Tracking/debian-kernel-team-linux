@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 28 Jul 2011 13:32:57 +0200
 Subject: [PATCH 266/328] tty/serial/omap: Make the locking RT aware
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=aa9966b682ab30efbc7106470bf149b158ddae66
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=077f404e00bcb62a9974b609b40ae3bfbd6b5b68
 
 The lock is a sleeping lock and local_irq_save() is not the
 optimsation we are looking for. Redo it to make it work on -RT and
@@ -43,3 +43,6 @@ index 84e8158088cd..342005ed5ebf 100644
  }
  
  static int __init
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Ingo Molnar <mingo@elte.hu>
 Date: Fri, 3 Jul 2009 08:29:37 -0500
 Subject: [PATCH 203/328] mm: page_alloc: rt-friendly per-cpu pages
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=74157d92c5da360e5c88c6886a225271c88c380e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ef5d1fa2abf513479f0d4e778b6bb9dadb6cddda
 
 rt-friendly per-cpu pages: convert the irqs-off per-cpu locking
 method into a preemptible, explicit-per-cpu-locks method.
@@ -164,7 +164,7 @@ index 4a77857c713a..69b5caa6753a 100644
  
  out:
  	/* Separate test+clear to avoid unnecessary atomics */
-@@ -3549,7 +3558,7 @@ struct page *rmqueue(struct zone *preferred_zone,
+@@ -3549,7 +3558,7 @@ out:
  	return page;
  
  failed:
@@ -191,3 +191,6 @@ index 4a77857c713a..69b5caa6753a 100644
  }
  
  #ifdef CONFIG_MEMORY_HOTREMOVE
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:13 +0200
 Subject: [PATCH 016/328] sched: Fix migrate_disable() vs rt/dl balancing
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=3806f33c0c9264034e24c31f0207dff1944cfea1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=69146ec0a985f572524e9be87e2e3bc9631e2d0d
 
 In order to minimize the interference of migrate_disable() on lower
 priority tasks, which can be deprived of runtime due to being stuck
@@ -115,7 +115,7 @@ index 7628f80ed778..c6e0967cdccc 100644
  static inline bool rq_has_pinned_tasks(struct rq *rq)
  {
  	return rq->nr_pinned;
-@@ -1985,6 +1980,49 @@ static int migration_cpu_stop(void *data)
+@@ -1985,6 +1980,49 @@ out:
  	return 0;
  }
  
@@ -333,7 +333,7 @@ index 30bc500dad53..5bf8fe240e99 100644
  	if (WARN_ON(next_task == rq->curr))
  		return 0;
  
-@@ -1941,12 +1969,10 @@ static int push_rt_task(struct rq *rq)
+@@ -1941,12 +1969,10 @@ retry:
  	deactivate_task(rq, next_task, 0);
  	set_task_cpu(next_task, lowest_rq->cpu);
  	activate_task(lowest_rq, next_task, 0);
@@ -347,7 +347,7 @@ index 30bc500dad53..5bf8fe240e99 100644
  out:
  	put_task_struct(next_task);
  
-@@ -1956,7 +1982,7 @@ static int push_rt_task(struct rq *rq)
+@@ -1956,7 +1982,7 @@ out:
  static void push_rt_tasks(struct rq *rq)
  {
  	/* push_rt_task will return true if it moved an RT */
@@ -489,3 +489,6 @@ index 6ae99fe15afa..771bf6aa82cc 100644
  #endif
  
  #ifdef CONFIG_CPU_IDLE
+-- 
+2.47.3
+

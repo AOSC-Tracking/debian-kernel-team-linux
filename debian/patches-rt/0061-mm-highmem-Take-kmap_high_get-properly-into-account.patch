@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Nov 2020 11:59:32 +0100
 Subject: [PATCH 061/328] mm/highmem: Take kmap_high_get() properly into
  account
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=910800ce545c0c08a21c25877a04e78e511874f1
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=6dcaac03f7008309925083716e0358cc87518694
 
 kunmap_local() warns when the virtual address to unmap is below
 PAGE_OFFSET. This is correct except for the case that the mapping was
@@ -66,3 +66,6 @@ index 8db577e5290c..72b9a2d95c72 100644
  		return;
  	}
  
+-- 
+2.47.3
+

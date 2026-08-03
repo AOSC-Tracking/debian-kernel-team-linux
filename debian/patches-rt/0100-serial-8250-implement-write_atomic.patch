@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:02 +0106
 Subject: [PATCH 100/328] serial: 8250: implement write_atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=665b2e56ddf4018617e7dc82afe592818c26d2db
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=144f992bdcbb0d347bc1d4d1b27f54eca1d921b7
 
 Implement a non-sleeping NMI-safe write_atomic() console function in
 order to support emergency console printing.
@@ -494,3 +494,6 @@ index abb928361270..77de68ed2d60 100644
  int serial8250_console_setup(struct uart_port *port, char *options, bool probe);
  int serial8250_console_exit(struct uart_port *port);
  
+-- 
+2.47.3
+

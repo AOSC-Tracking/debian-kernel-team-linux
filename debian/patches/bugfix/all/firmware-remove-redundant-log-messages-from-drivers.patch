@@ -2127,7 +2127,7 @@ upstream submission.
  	size = fw_entry->size;
 @@ -704,10 +702,6 @@ static int uea_load_firmware(struct usb_
  	ret = request_firmware_nowait(THIS_MODULE, 1, fw_name, &usb->dev,
- 					GFP_KERNEL, usb,
+ 					GFP_KERNEL, intf,
  					uea_upload_pre_firmware);
 -	if (ret)
 -		uea_err(usb, "firmware %s is not available\n", fw_name);

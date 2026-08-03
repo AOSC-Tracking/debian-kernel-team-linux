@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Feb 2021 17:26:04 +0100
 Subject: [PATCH 201/328] mm: slub: Don't resize the location tracking cache on
  PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=add7806d259f578ccd6008a98f8bb8c2cb92019e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0a50bf11231038b9417a166171f066bd3f927b1e
 
 The location tracking cache has a size of a page and is resized if its
 current size is too small.
@@ -31,3 +31,6 @@ index 22ad66e6cd8c..f07f3c74f50f 100644
  	order = get_order(sizeof(struct location) * max);
  
  	l = (void *)__get_free_pages(flags, order);
+-- 
+2.47.3
+

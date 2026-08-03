@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Thu, 12 Oct 2017 17:31:14 +0200
 Subject: [PATCH 175/328] locking/rtmutex: wire up RT's locking
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=4c7eb5f4c1caac4e7144f267f4410016a1d19ad6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=54d558418e5b81d252c0c2bfc80c12ccd1631814
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
@@ -345,3 +345,6 @@ index 80b0a9e5a468..88af3fb5d4b0 100644
  }
 +
 +#endif
+-- 
+2.47.3
+

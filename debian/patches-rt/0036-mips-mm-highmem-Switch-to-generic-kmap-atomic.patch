@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 3 Nov 2020 10:27:25 +0100
 Subject: [PATCH 036/328] mips/mm/highmem: Switch to generic kmap atomic
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=510f550e3668ee735abf60acc96204d467441238
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b763ae51f4a668cdf7ce249d7b2cdad346f4d378
 
 No reason having the same code in every architecture
 
@@ -192,7 +192,7 @@ index 5fec7f45d79a..57e2f08f00d0 100644
 -	kmap_pte = virt_to_kpte(kmap_vstart);
 -}
 diff --git a/arch/mips/mm/init.c b/arch/mips/mm/init.c
-index 32e7b869a291..f0fcf36dd70b 100644
+index bd819340d1ff..3780719ad753 100644
 --- a/arch/mips/mm/init.c
 +++ b/arch/mips/mm/init.c
 @@ -36,7 +36,6 @@
@@ -203,7 +203,7 @@ index 32e7b869a291..f0fcf36dd70b 100644
  #include <asm/maar.h>
  #include <asm/mmu_context.h>
  #include <asm/sections.h>
-@@ -402,9 +401,6 @@ void __init paging_init(void)
+@@ -406,9 +405,6 @@ void __init paging_init(void)
  
  	pagetable_init();
  
@@ -213,3 +213,6 @@ index 32e7b869a291..f0fcf36dd70b 100644
  #ifdef CONFIG_ZONE_DMA
  	max_zone_pfns[ZONE_DMA] = MAX_DMA_PFN;
  #endif
+-- 
+2.47.3
+

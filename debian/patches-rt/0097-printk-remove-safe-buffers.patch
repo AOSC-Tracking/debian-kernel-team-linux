@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:00 +0106
 Subject: [PATCH 097/328] printk: remove safe buffers
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=efc59954b84e7c672af597a722f0f4465a9c07d4
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5f5714800e0635192ab325c1e53a1c3571431462
 
 With @logbuf_lock removed, the high level printk functions for
 storing messages are lockless. Messages can be stored from any
@@ -366,7 +366,7 @@ index 5f7068c1125c..493d488b42fb 100644
  	bool do_cond_resched, retry;
  	struct printk_info info;
  	struct printk_record r;
-@@ -2669,7 +2634,6 @@ void console_unlock(void)
+@@ -2669,7 +2634,6 @@ again:
  		size_t ext_len = 0;
  		size_t len;
  
@@ -374,7 +374,7 @@ index 5f7068c1125c..493d488b42fb 100644
  skip:
  		if (!prb_read_valid(prb, console_seq, &r))
  			break;
-@@ -2726,12 +2690,8 @@ void console_unlock(void)
+@@ -2726,12 +2690,8 @@ skip:
  		call_console_drivers(ext_text, ext_len, text, len);
  		start_critical_timings();
  
@@ -388,7 +388,7 @@ index 5f7068c1125c..493d488b42fb 100644
  
  		if (do_cond_resched)
  			cond_resched();
-@@ -2748,8 +2708,6 @@ void console_unlock(void)
+@@ -2748,8 +2708,6 @@ skip:
  	 * flush, no worries.
  	 */
  	retry = prb_read_valid(prb, console_seq, NULL);
@@ -871,3 +871,6 @@ index 8abe1870dba4..b09a490f5f70 100644
  	clear_bit_unlock(0, &backtrace_flag);
  	put_cpu();
  }
+-- 
+2.47.3
+

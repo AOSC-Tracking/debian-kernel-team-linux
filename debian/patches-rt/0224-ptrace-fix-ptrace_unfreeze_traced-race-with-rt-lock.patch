@@ -2,7 +2,7 @@ From: Oleg Nesterov <oleg@redhat.com>
 Date: Tue, 3 Nov 2020 12:39:01 +0100
 Subject: [PATCH 224/328] ptrace: fix ptrace_unfreeze_traced() race with
  rt-lock
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=1aa9efae6d98131f61d724a5913c9a795c113d65
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=73e0a38e98658b14c1bd254c336f6f3667de2586
 
 The patch "ptrace: fix ptrace vs tasklist_lock race" changed
 ptrace_freeze_traced() to take task->saved_state into account, but
@@ -59,3 +59,6 @@ index 220978427233..25a40625d9fc 100644
  	spin_unlock_irq(&task->sighand->siglock);
  }
  
+-- 
+2.47.3
+

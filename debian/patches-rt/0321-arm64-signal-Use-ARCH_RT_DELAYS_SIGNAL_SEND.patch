@@ -1,7 +1,7 @@
 From: Wang Yong <wang.yong12@zte.com.cn>
 Date: Tue, 12 Sep 2023 15:14:28 +0800
 Subject: [PATCH 321/328] arm64: signal: Use ARCH_RT_DELAYS_SIGNAL_SEND
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=160eb869383e5a17fa05c59de5e7118b6c638214
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=72a7729c483cb5193526ebedeb9ad65887dee554
 
 The ltp test prompts the following bug information under the 5.10 kernel:
 BUG: sleeping function called from invalid context at kernel/locking/rtmutex.c:969
@@ -83,3 +83,6 @@ index 94eed0dc3afc..5b08f55ec85d 100644
  			if (thread_flags & _TIF_UPROBE)
  				uprobe_notify_resume(regs);
  
+-- 
+2.47.3
+

@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 17 Dec 2021 11:32:08 +0100
 Subject: [PATCH 311/328] stop_machine: Remove this_cpu_ptr() from
  print_stop_info().
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=95acf25be722c64082a4924836f95f59b557382b
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=870659f67bddd66859c547b9f9ef9df646ce7a25
 
 This aligns the patch ("stop_machine: Add function and caller debug
 info) with commit
@@ -32,3 +32,6 @@ index dbf585cf4b9f..971d8acceaec 100644
  
  	if (task != stopper->thread)
  		return;
+-- 
+2.47.3
+

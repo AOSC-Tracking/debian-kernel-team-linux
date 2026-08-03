@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Tue, 8 Jun 2021 00:37:35 -0400
 Subject: [PATCH 294/328] sched: Simplify set_affinity_pending refcounts
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9cbb0aec880005b527ad31900d2178cc1ad350e2
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=669ea50e6967271e2f8b3d3323803905af3e78cb
 
 commit 50caf9c14b1498c90cf808dbba2ca29bd32ccba4 upstream.
 
@@ -37,7 +37,7 @@ index b9a02e601b91..8eb741597644 100644
  struct set_affinity_pending {
  	refcount_t		refs;
  	unsigned int		stop_pending;
-@@ -2048,10 +2052,6 @@ static int migration_cpu_stop(void *data)
+@@ -2048,10 +2052,6 @@ out:
  	if (complete)
  		complete_all(&pending->done);
  
@@ -104,7 +104,7 @@ index b9a02e601b91..8eb741597644 100644
  		if (complete)
  			complete_all(&pending->done);
  	}
-@@ -2346,7 +2351,7 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
+@@ -2346,7 +2351,7 @@ do_complete:
  	wait_for_completion(&pending->done);
  
  	if (refcount_dec_and_test(&pending->refs))
@@ -113,7 +113,7 @@ index b9a02e601b91..8eb741597644 100644
  
  	/*
  	 * Block the original owner of &pending until all subsequent callers
-@@ -2354,6 +2359,9 @@ static int affine_move_task(struct rq *rq, struct task_struct *p, struct rq_flag
+@@ -2354,6 +2359,9 @@ do_complete:
  	 */
  	wait_var_event(&my_pending.refs, !refcount_read(&my_pending.refs));
  
@@ -123,3 +123,6 @@ index b9a02e601b91..8eb741597644 100644
  	return 0;
  }
  
+-- 
+2.47.3
+

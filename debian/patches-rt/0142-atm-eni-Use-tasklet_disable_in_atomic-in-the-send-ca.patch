@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 9 Mar 2021 09:42:14 +0100
 Subject: [PATCH 142/328] atm: eni: Use tasklet_disable_in_atomic() in the
  send() callback
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=92b5d8772ea607e4404fa0e3ec03b331eaf6b94c
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=72f20e8100ea040ca69fc601cee6912f37bb286a
 
 The atmdev_ops::send callback which calls tasklet_disable() is invoked with
 bottom halfs disabled from net_device_ops::ndo_start_xmit(). All other
@@ -36,3 +36,6 @@ index 9fcc49be499f..a31ffe16e626 100644
  	res = do_tx(skb);
  	tasklet_enable(&ENI_DEV(vcc->dev)->task);
  	if (res == enq_ok) return 0;
+-- 
+2.47.3
+

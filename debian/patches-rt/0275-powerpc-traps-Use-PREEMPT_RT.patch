@@ -1,7 +1,7 @@
 From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 26 Jul 2019 11:30:49 +0200
 Subject: [PATCH 275/328] powerpc: traps: Use PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=241519971a056dbd80d1b7e0cd6f417331ef3fe8
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b96d87bcdcf4e9ac6b75a164e0b2f2d3dedd3f93
 
 Add PREEMPT_RT to the backtrace if enabled.
 
@@ -33,3 +33,6 @@ index 54bfbcda294d..399f592069b5 100644
  	       IS_ENABLED(CONFIG_SMP) ? " SMP" : "",
  	       IS_ENABLED(CONFIG_SMP) ? (" NR_CPUS=" __stringify(NR_CPUS)) : "",
  	       debug_pagealloc_enabled() ? " DEBUG_PAGEALLOC" : "",
+-- 
+2.47.3
+

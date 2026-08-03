@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:11:59 +0200
 Subject: [PATCH 002/328] stop_machine: Add function and caller debug info
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c48880c30c9dff75acc575d6f22635b7dade2c64
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=7da22c0e3d39a2f30df01a214fb58f84f649ffd3
 
 Crashes in stop-machine are hard to connect to the calling code, add a
 little something to help with that.
@@ -14,6 +14,8 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  lib/dump_stack.c             |  2 ++
  3 files changed, 27 insertions(+), 3 deletions(-)
 
+diff --git a/include/linux/stop_machine.h b/include/linux/stop_machine.h
+index 63ea9aff368f..46fb3ebdd16e 100644
 --- a/include/linux/stop_machine.h
 +++ b/include/linux/stop_machine.h
 @@ -24,6 +24,7 @@ typedef int (*cpu_stop_fn_t)(void *arg);
@@ -33,7 +35,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  #else	/* CONFIG_SMP */
  
  #include <linux/workqueue.h>
-@@ -80,6 +83,8 @@ static inline bool stop_one_cpu_nowait(u
+@@ -80,6 +83,8 @@ static inline bool stop_one_cpu_nowait(unsigned int cpu,
  	return false;
  }
  
@@ -42,6 +44,8 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  #endif	/* CONFIG_SMP */
  
  /*
+diff --git a/kernel/stop_machine.c b/kernel/stop_machine.c
+index 890b79cf0e7c..dbf585cf4b9f 100644
 --- a/kernel/stop_machine.c
 +++ b/kernel/stop_machine.c
 @@ -42,11 +42,23 @@ struct cpu_stopper {
@@ -68,7 +72,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  /* static data for stop_cpus */
  static DEFINE_MUTEX(stop_cpus_mutex);
  static bool stop_cpus_in_progress;
-@@ -123,7 +135,7 @@ static bool cpu_stop_queue_work(unsigned
+@@ -123,7 +135,7 @@ static bool cpu_stop_queue_work(unsigned int cpu, struct cpu_stop_work *work)
  int stop_one_cpu(unsigned int cpu, cpu_stop_fn_t fn, void *arg)
  {
  	struct cpu_stop_done done;
@@ -77,7 +81,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  
  	cpu_stop_init_done(&done, 1);
  	if (!cpu_stop_queue_work(cpu, &work))
-@@ -331,7 +343,8 @@ int stop_two_cpus(unsigned int cpu1, uns
+@@ -331,7 +343,8 @@ int stop_two_cpus(unsigned int cpu1, unsigned int cpu2, cpu_stop_fn_t fn, void *
  	work1 = work2 = (struct cpu_stop_work){
  		.fn = multi_cpu_stop,
  		.arg = &msdata,
@@ -87,7 +91,7 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  	};
  
  	cpu_stop_init_done(&done, 2);
-@@ -367,7 +380,7 @@ int stop_two_cpus(unsigned int cpu1, uns
+@@ -367,7 +380,7 @@ int stop_two_cpus(unsigned int cpu1, unsigned int cpu2, cpu_stop_fn_t fn, void *
  bool stop_one_cpu_nowait(unsigned int cpu, cpu_stop_fn_t fn, void *arg,
  			struct cpu_stop_work *work_buf)
  {
@@ -114,17 +118,19 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  		WARN_ONCE(preempt_count(),
  			  "cpu_stop: %ps(%p) leaked preempt count\n", fn, arg);
  		goto repeat;
+diff --git a/lib/dump_stack.c b/lib/dump_stack.c
+index a00ee6eedc7c..f5a33b6f773f 100644
 --- a/lib/dump_stack.c
 +++ b/lib/dump_stack.c
 @@ -12,6 +12,7 @@
- #include <linux/atomic.h>
  #include <linux/kexec.h>
  #include <linux/utsname.h>
-+#include <linux/stop_machine.h>
  #include <generated/package.h>
++#include <linux/stop_machine.h>
  
  static char dump_stack_arch_desc_str[128];
-@@ -59,6 +60,7 @@ void dump_stack_print_info(const char *l
+ 
+@@ -57,6 +58,7 @@ void dump_stack_print_info(const char *log_lvl)
  		       log_lvl, dump_stack_arch_desc_str);
  
  	print_worker_info(log_lvl, current);
@@ -132,3 +138,6 @@ Signed-off-by: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
  }
  
  /**
+-- 
+2.47.3
+

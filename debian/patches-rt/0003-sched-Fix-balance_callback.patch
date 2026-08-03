@@ -1,7 +1,7 @@
 From: Peter Zijlstra <peterz@infradead.org>
 Date: Fri, 23 Oct 2020 12:12:00 +0200
 Subject: [PATCH 003/328] sched: Fix balance_callback()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c3d567b375cb824cb6a6695a971fe5948270ddca
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=cf5212c3fc1c2d28e5176409c4f1308d4d894591
 
 The intent of balance_callback() has always been to delay executing
 balancing operations until the end of the current rq->lock section.
@@ -198,7 +198,7 @@ index bcb313b1e1fd..f5fc2deac8b1 100644
  	struct rq_flags rf;
  	int reset_on_fork;
  	int queue_flags = DEQUEUE_SAVE | DEQUEUE_MOVE | DEQUEUE_NOCLOCK;
-@@ -5465,6 +5495,7 @@ static int __sched_setscheduler(struct task_struct *p,
+@@ -5465,6 +5495,7 @@ change:
  
  	/* Avoid rq from going away on us: */
  	preempt_disable();
@@ -206,7 +206,7 @@ index bcb313b1e1fd..f5fc2deac8b1 100644
  	task_rq_unlock(rq, p, &rf);
  
  	if (pi) {
-@@ -5474,7 +5505,7 @@ static int __sched_setscheduler(struct task_struct *p,
+@@ -5474,7 +5505,7 @@ change:
  	}
  
  	/* Run balance callbacks after we've adjusted the PI chain: */
@@ -229,3 +229,6 @@ index 2a43d95dad38..5fd23e7bd8bb 100644
  }
  
  static inline void rq_unpin_lock(struct rq *rq, struct rq_flags *rf)
+-- 
+2.47.3
+

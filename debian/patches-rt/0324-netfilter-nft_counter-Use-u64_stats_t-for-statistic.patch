@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Fri, 21 Feb 2025 18:44:26 +0100
 Subject: [PATCH 324/328] netfilter: nft_counter: Use u64_stats_t for
  statistic.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0bd0f4e4f1db98d2e798a91befc8bd4afa7eabfd
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=547696d314b53939f1f4a22f0e156c883c071632
 
 [ Upstream commit 4a1d3acd6ea86075e77fcc1188c3fc372833ba73 ]
 
@@ -218,3 +218,6 @@ index ea102b9a168b..79508b5f71d1 100644
  
  	err = nft_register_obj(&nft_counter_obj_type);
  	if (err < 0)
+-- 
+2.47.3
+

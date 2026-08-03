@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Wed, 28 Oct 2020 18:55:27 +0100
 Subject: [PATCH 066/328] lib/test_lockup: Minimum fix to get it compiled on
  PREEMPT_RT
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=779bfee0663c7bf49f05721572eb4d45b8bc003e
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=932dd47bf866d72f7a02397550a698e78ac054a0
 
 On PREEMPT_RT the locks are quite different so they can't be tested as
 it is done below. The alternative is test for the waitlock within
@@ -59,3 +59,6 @@ index 78a630bbd03d..d27a80502204 100644
  #endif
  
  	if ((wait_state != TASK_RUNNING ||
+-- 
+2.47.3
+

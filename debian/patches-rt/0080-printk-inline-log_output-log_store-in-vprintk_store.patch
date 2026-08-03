@@ -2,7 +2,7 @@ From: John Ogness <john.ogness@linutronix.de>
 Date: Wed, 9 Dec 2020 01:50:52 +0106
 Subject: [PATCH 080/328] printk: inline log_output(),log_store() in
  vprintk_store()
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=92c50f67cad409987d6f7d6d3d8a7ec444a22af6
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=64b68b468c08c61a6d6cc131d1b5391aeadf47d3
 
 In preparation for removing logbuf_lock, inline log_output()
 and log_store() into vprintk_store(). This will simplify dealing
@@ -195,3 +195,6 @@ index 3a7fd61c0e7b..0a052815093d 100644
  }
  
  asmlinkage int vprintk_emit(int facility, int level,
+-- 
+2.47.3
+

@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Wed, 31 Oct 2012 12:04:11 +0100
 Subject: [PATCH 261/328] arm: Add support for lazy preemption
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=144534f0385d36bed391b80a30af5179cd6d602f
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=9239c0590ddcbda218fef5ebd9a2b586a46224df
 
 Implement the arm pieces for lazy preempt.
 
@@ -84,7 +84,7 @@ diff --git a/arch/arm/kernel/entry-armv.S b/arch/arm/kernel/entry-armv.S
 index 030351d169aa..d6086559168d 100644
 --- a/arch/arm/kernel/entry-armv.S
 +++ b/arch/arm/kernel/entry-armv.S
-@@ -206,11 +206,18 @@ ENDPROC(__dabt_svc)
+@@ -206,11 +206,18 @@ __irq_svc:
  
  #ifdef CONFIG_PREEMPTION
  	ldr	r8, [tsk, #TI_PREEMPT]		@ get preempt count
@@ -105,7 +105,7 @@ index 030351d169aa..d6086559168d 100644
  #endif
  
  	svc_exit r5, irq = 1			@ return from exception
-@@ -225,8 +232,14 @@ ENDPROC(__irq_svc)
+@@ -225,8 +232,14 @@ svc_preempt:
  1:	bl	preempt_schedule_irq		@ irq en/disable is done inside
  	ldr	r0, [tsk, #TI_FLAGS]		@ get new tasks TI_FLAGS
  	tst	r0, #_TIF_NEED_RESCHED
@@ -125,7 +125,7 @@ diff --git a/arch/arm/kernel/entry-common.S b/arch/arm/kernel/entry-common.S
 index 9b3c737575e9..a30b1a1cc4d1 100644
 --- a/arch/arm/kernel/entry-common.S
 +++ b/arch/arm/kernel/entry-common.S
-@@ -92,6 +92,7 @@ ENDPROC(ret_fast_syscall)
+@@ -92,6 +92,7 @@ __ret_fast_syscall:
  	ldr	r1, [tsk, #TI_FLAGS]		@ re-check for syscall tracing
  	movs	r1, r1, lsl #16
  	beq	no_work_pending
@@ -147,3 +147,6 @@ index a3a38d0a4c85..f04ccf19ab1f 100644
  			schedule();
  		} else {
  			if (unlikely(!user_mode(regs)))
+-- 
+2.47.3
+

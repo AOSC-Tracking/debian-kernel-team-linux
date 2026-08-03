@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Tue, 8 Sep 2020 07:32:20 +0200
 Subject: [PATCH 113/328] net: Move lockdep where it belongs
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d42c431027c09d7a1f3dc26b8873808405ac12e3
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=c6d43a0dd815212b73134523dd70fa728f76775f
 
 Signed-off-by: Thomas Gleixner <tglx@linutronix.de>
 ---
@@ -40,3 +40,6 @@ index 963ea323362a..13a355dcd05d 100644
  	return true;
  }
  EXPORT_SYMBOL(lock_sock_fast);
+-- 
+2.47.3
+

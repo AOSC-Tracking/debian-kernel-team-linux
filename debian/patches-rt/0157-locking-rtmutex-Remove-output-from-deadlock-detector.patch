@@ -2,7 +2,7 @@ From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 Date: Tue, 29 Sep 2020 16:05:11 +0200
 Subject: [PATCH 157/328] locking/rtmutex: Remove output from deadlock
  detector.
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=db00d44a6064b0d0a5d5250468cc73003d9f9cbc
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=8980de38191744d34e9329b0636b7ce814ef1c68
 
 In commit
   f5694788ad8da ("rt_mutex: Add lockdep annotations")
@@ -232,7 +232,7 @@ index fc549713bba3..659e93e256c6 100644
 -	debug_rt_mutex_print_deadlock(w);
 -}
 diff --git a/kernel/locking/rtmutex.c b/kernel/locking/rtmutex.c
-index cac92e9fcb65..c9e5748cb4fe 100644
+index 2dda10b9b316..8cba6a98da25 100644
 --- a/kernel/locking/rtmutex.c
 +++ b/kernel/locking/rtmutex.c
 @@ -597,7 +597,6 @@ static int rt_mutex_adjust_prio_chain(struct task_struct *task,
@@ -243,7 +243,7 @@ index cac92e9fcb65..c9e5748cb4fe 100644
  		raw_spin_unlock(&lock->wait_lock);
  		ret = -EDEADLK;
  		goto out_unlock_pi;
-@@ -1189,8 +1188,6 @@ __rt_mutex_slowlock(struct rt_mutex *lock, int state,
+@@ -1195,8 +1194,6 @@ __rt_mutex_slowlock(struct rt_mutex *lock, int state,
  
  		raw_spin_unlock_irq(&lock->wait_lock);
  
@@ -252,7 +252,7 @@ index cac92e9fcb65..c9e5748cb4fe 100644
  		schedule();
  
  		raw_spin_lock_irq(&lock->wait_lock);
-@@ -1213,10 +1210,7 @@ static void rt_mutex_handle_deadlock(int res, int detect_deadlock,
+@@ -1219,10 +1216,7 @@ static void rt_mutex_handle_deadlock(int res, int detect_deadlock,
  		return;
  
  	raw_spin_unlock_irq(&lock->wait_lock);
@@ -264,7 +264,7 @@ index cac92e9fcb65..c9e5748cb4fe 100644
  	while (1) {
  		set_current_state(TASK_INTERRUPTIBLE);
  		schedule();
-@@ -1765,8 +1759,6 @@ int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
+@@ -1771,8 +1765,6 @@ int __rt_mutex_start_proxy_lock(struct rt_mutex *lock,
  		ret = 0;
  	}
  
@@ -308,3 +308,6 @@ index e6913103d7ff..b1455dc2366f 100644
  	int prio;
  	u64 deadline;
  };
+-- 
+2.47.3
+

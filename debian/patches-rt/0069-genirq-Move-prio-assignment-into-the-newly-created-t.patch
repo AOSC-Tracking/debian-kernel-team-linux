@@ -2,7 +2,7 @@ From: Thomas Gleixner <tglx@linutronix.de>
 Date: Mon, 9 Nov 2020 23:32:39 +0100
 Subject: [PATCH 069/328] genirq: Move prio assignment into the newly created
  thread
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=5df900e01bad2c7b4478ce92698dc003ea3d681d
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0f99ce1df8d58d016efc76696a92e12d084bbdf0
 
 With enabled threaded interrupts the nouveau driver reported the
 following:
@@ -57,3 +57,6 @@ index 4998e8a56156..5c86c2385c21 100644
  	/*
  	 * We keep the reference to the task struct even if
  	 * the thread dies to avoid that the interrupt code
+-- 
+2.47.3
+

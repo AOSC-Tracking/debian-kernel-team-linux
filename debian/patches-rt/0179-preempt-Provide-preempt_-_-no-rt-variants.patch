@@ -1,7 +1,7 @@
 From: Thomas Gleixner <tglx@linutronix.de>
 Date: Fri, 24 Jul 2009 12:38:56 +0200
 Subject: [PATCH 179/328] preempt: Provide preempt_*_(no)rt variants
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=ebbe3a5c8c42e989135008928d3a900e869b0012
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=0e8112b04aad0ace6dda384a69daf61f20cca48b
 
 RT needs a few preempt_disable/enable points which are not necessary
 otherwise. Implement variants to avoid #ifdeffery.
@@ -47,3 +47,6 @@ index 73948e1aa140..f3eb978c4178 100644
  #ifdef CONFIG_PREEMPT_NOTIFIERS
  
  struct preempt_notifier;
+-- 
+2.47.3
+

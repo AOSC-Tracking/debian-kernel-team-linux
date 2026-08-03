@@ -1,7 +1,7 @@
 From: John Ogness <john.ogness@linutronix.de>
 Date: Mon, 30 Nov 2020 01:42:06 +0106
 Subject: [PATCH 104/328] printk: introduce kernel sync mode
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=bd54acd5294c46d1dfc23fd0031076192cec6bad
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=d8af7a2ea269e4d019cc12ac07b72dda2bcd9602
 
 When the kernel performs an OOPS, enter into "sync mode":
 
@@ -304,3 +304,6 @@ index 9cd71f8e0620..9eb87c5610c2 100644
  	rcu_read_lock();
  	list_for_each_entry_rcu(dumper, &dump_list, list) {
  		enum kmsg_dump_reason max_reason = dumper->max_reason;
+-- 
+2.47.3
+

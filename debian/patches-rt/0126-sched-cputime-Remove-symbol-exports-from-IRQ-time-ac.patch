@@ -2,7 +2,7 @@ From: Frederic Weisbecker <frederic@kernel.org>
 Date: Wed, 2 Dec 2020 12:57:28 +0100
 Subject: [PATCH 126/328] sched/cputime: Remove symbol exports from IRQ time
  accounting
-Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=dd3db0fad5f6be5677d7d4510ea2c4c5ac748c51
+Origin: https://git.kernel.org/cgit/linux/kernel/git/rt/linux-stable-rt.git/commit?id=b7d898c4c79fcf868b1a06967f67a7ad9e9c98ee
 
 account_irq_enter_time() and account_irq_exit_time() are not called
 from modules. EXPORT_SYMBOL_GPL() can be safely removed from the IRQ
@@ -67,3 +67,6 @@ index f03b3af2fb79..0c0c905a61d2 100644
  #endif /* __ARCH_HAS_VTIME_ACCOUNT */
  
  void cputime_adjust(struct task_cputime *curr, struct prev_cputime *prev,
+-- 
+2.47.3
+
