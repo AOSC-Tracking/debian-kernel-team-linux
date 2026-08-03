@@ -612,6 +612,10 @@ linux (6.12.101-1) UNRELEASED; urgency=medium
     - KVM: SVM: Bump asid_generation on CPU online to avoid ASID collision after
       hotplug
 
+  [ Salvatore Bonaccorso ]
+  * [rt] Refresh "locking/rt: Add sparse annotation for RCU." (context
+    changes)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 03 Aug 2026 15:49:50 +0200
 
 linux (6.12.100-1) trixie-security; urgency=high
