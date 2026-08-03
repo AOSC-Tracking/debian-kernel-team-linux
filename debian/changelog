@@ -1,4 +1,4 @@
-linux (6.1.180-1) UNRELEASED; urgency=medium
+linux (6.1.180-1) bookworm-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.178
@@ -1154,9 +1154,9 @@ linux (6.1.180-1) UNRELEASED; urgency=medium
       (CVE-2026-64560)
 
   [ Salvatore Bonaccorso ]
-  net/bluetooth: Do not set BT_HS (removed upstream)
+  * net/bluetooth: Do not set BT_HS (removed upstream)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 31 Jul 2026 07:42:41 +0200
+ -- Ben Hutchings <benh@debian.org>  Mon, 03 Aug 2026 20:40:40 +0200
 
 linux (6.1.177-1) bookworm-security; urgency=high
 
