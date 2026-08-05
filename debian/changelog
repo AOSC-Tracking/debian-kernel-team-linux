@@ -1,4 +1,4 @@
-linux (6.12.101-1) UNRELEASED; urgency=medium
+linux (6.12.101-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.101
@@ -617,7 +617,7 @@ linux (6.12.101-1) UNRELEASED; urgency=medium
     changes)
   * rhashtable: clear stale iter->p on table restart (CVE-2026-64563)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 03 Aug 2026 15:49:50 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 05 Aug 2026 20:19:23 +0200
 
 linux (6.12.100-1) trixie-security; urgency=high
 
