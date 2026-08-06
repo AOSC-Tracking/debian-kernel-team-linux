@@ -1,3 +1,9 @@
+linux-6.1 (6.1.180-1~deb11u1) UNRELEASED; urgency=medium
+
+  * Rebuild for bullseye.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Thu, 06 Aug 2026 08:57:31 +0200
+
 linux (6.1.180-1) bookworm-security; urgency=high
 
   * New upstream stable update:
