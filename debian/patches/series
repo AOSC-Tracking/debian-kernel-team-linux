@@ -90,6 +90,7 @@ features/all/db-mok-keyring/KEYS-Make-use-of-platform-keyring-for-module-signatu
 features/all/db-mok-keyring/trust-machine-keyring-by-default.patch
 
 # Security fixes
+bugfix/all/rhashtable-clear-stale-iter-p-on-table-restart.patch
 
 # Fix exported symbol versions
 bugfix/all/module-disable-matching-missing-version-crc.patch
