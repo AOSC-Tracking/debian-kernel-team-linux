@@ -1,3 +1,15 @@
+linux (6.1.182-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.181
+    - [x86] bugs: Make Safe-RET robust against interrupt injection
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.182
+    - Revert "x86/bugs: Make Safe-RET robust against interrupt injection"
+    - [x86] bugs: Make Safe-RET robust against interrupt injection
+      (CVE-2026-68480)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 06 Aug 2026 20:12:07 +0200
+
 linux (6.1.180-1) bookworm-security; urgency=high
 
   * New upstream stable update:
