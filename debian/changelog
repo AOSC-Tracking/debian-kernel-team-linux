@@ -5,6 +5,10 @@ linux (7.2-1~exp1) UNRELEASED; urgency=medium
   [ Bastian Blank ]
   * Install vmlinuz into modules directory.
 
+  [ Uwe Kleine-König ]
+  * [arm64] Enable modular support for the i2c variant of ES8328 for analog
+    audio on e.g. Orange Pi 5 (Closes: #1143942).
+
  -- Bastian Blank <waldi@debian.org>  Fri, 14 Aug 2026 20:15:59 +0200
 
 linux (7.2~rc7-1~exp1) experimental; urgency=medium
