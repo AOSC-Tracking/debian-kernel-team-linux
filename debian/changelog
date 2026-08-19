@@ -9,6 +9,9 @@ linux (7.2.3-1~exp1) UNRELEASED; urgency=medium
   * [amd64] drivers/platform/x86: Enable INTEL_SCU_PLATFORM as module
     (Closes: #1145131)
 
+  [ Aurelien Jarno ]
+  * [riscv64] Backport support for SpacemiT K1 cpufreq from 7.3
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Wed, 02 Sep 2026 13:13:46 +0200
 
 linux (7.2.2-1~exp1) experimental; urgency=medium
