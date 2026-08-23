@@ -1,4 +1,4 @@
-linux (6.12.104-1) UNRELEASED; urgency=medium
+linux (6.12.105-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.102
@@ -548,6 +548,241 @@ linux (6.12.104-1) UNRELEASED; urgency=medium
       sw->ports
     - [amd64] thunderbolt: Fix bandwidth group reservation indexing
     - bpf: tcp: fix double sock release on batch realloc
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.105
+    - block: stop the timeout timer when releasing a never added disk
+    - bpf: Fix linked reg delta tracking when src_reg == dst_reg
+      (CVE-2026-53092)
+    - bpf: Clear delta when clearing reg id for non-{add,sub} ops
+    - f2fs: fix UAF issue in f2fs_merge_page_bio() (CVE-2025-40054)
+    - mtd: ubi: skip programming unused bits in ubi headers
+    - ubi: fastmap: fix ubi->fm memory leak
+    - mm/damon/ops-common: putback folios on invalid migrate nid
+      (CVE-2026-74644)
+    - mm/damon: adjust isolated pages stat for DAMOS_MIGRATE_{HOT,COLD}
+    - igc: fix netdev not re-attached after resume if interface is down
+    - ipvs: separate destination availability state
+    - net: mana: Fix EQ leak in mana_remove on NULL port
+    - [amd64] crypto: ccp: Add external API interface for PSP module
+      initialization
+    - [amd64] KVM: SVM: Ensure PSP module is initialized if KVM module is
+      built-in
+    - selinux: require every boolean value to be defined
+    - selinux: reject a class permission count below its inherited common
+    - selinux: do not cancel a policy conversion that never started
+    - selinux: reject an unclaimed class value in security_get_classes()
+    - mptcp: avoid combining some incoming suboptions
+    - mptcp: options: reset DSS fields in case of unexpected size
+    - mptcp: fastopen: only mark MPTFO subflows with SYN data
+    - [s390x] qeth: validate user buffer length in SNMP and ARP query ioctls
+    - [amd64] ASoC: SOF: sof-audio: Fix error path in
+      sof_widget_setup_unlocked()
+    - fbdev: core: Fix pointer desynchronization in fb_io_read()
+    - drm/panthor: skip zero-sized firmware sections
+    - drm/amdgpu: reject oversized IBs with per-ring packet limits
+    - drm/amdgpu: read TRUNCATE_COORD_MODE on gfx12
+    - drm/amdgpu: fix aperture iounmap skipped on device removal
+    - [amd64] ASoC: SOF: topology: Use acpi mach from the machine driver
+    - Input: xpad - add support for ZENAIM LEVERLESS
+    - Input: cs40l50-vibra - validate custom data from user space
+    - [powerpc*] pseries: pci - logic bug
+    - Input: synaptics-rmi4 - fix F55 transmitter electrode count typo
+    - Input: focaltech - fix array out-of-bounds in focaltech_process_rel_packet
+    - Input: psxpad-spi - set driver data before use
+    - Input: atkbd - skip deactivate for Xiaomi Book Pro 14's internal keyboard
+    - Input: iforce - validate input packet lengths
+    - [powerpc*] pseries: lparcfg - fix kbuf[] underflow
+    - Input: synaptics-rmi4 - zero report size on F54 work error
+    - Input: synaptics-rmi4 - bound the F54 report size to the allocated buffer
+    - Input: synaptics-rmi4 - block s_input when F54 queue is busy
+    - Input: synaptics-rmi4 - propagate F54 worker errors to V4L2 queue
+    - Input: hynitron_cstxxx - validate touch count and finger IDs
+    - [arm64] crypto: qce - fix error path in devm_qce_register_algs
+    - gpio: sloppy-logic-analyzer: fix use-after-free via debugfs trigger on
+      unbind
+    - [arm64] pmdomain: arm: Fix -EINVAL from scmi_pd_set_perf_state() on state
+      0
+    - libceph: fix multiple unsafe decodes in decode_locker()
+    - ftrace: Protect direct_functions in ftrace_find_rec_direct
+    - ftrace: Fix off-by-one fentry site disable in ftrace_free_mem()
+    - Input: sur40 - fix input device registration ordering
+    - Input: sur40 - fix V4L error path cleanup
+    - libceph: Avoid using invalid osd indices from primary_temp
+    - ceph: fix MDS random selection readiness predicate
+    - libceph: tolerate addrvecs with multiple entries of the same type
+    - [armhf] mmc: omap_hsmmc: fix busy_timeout overflow in ns conversion on
+      32-bit
+    - mmc: sdhci: unmap the bounce buffer before device release
+    - mmc: sdhci: make tuning_err a signed int
+    - drm/connector/hdmi: Fix out of bounds memory read
+    - drm/xe: Order ring writes before ring tail updates
+    - drm/radeon: fix autosuspend cleanup during teardown
+    - [s390x] vfio_ccw: Free all memory if cp_init() fails
+    - [s390x] vfio_ccw: Limit the number of channel program segments
+    - [s390x] vfio_ccw: Cancel existing workqueues
+    - [s390x] vfio_ccw: Ensure index for read/write regions are within range
+    - [s390x] vfio_ccw: Ensure first IDAW remains constant
+    - [s390x] vfio_ccw: Fix out of bounds check on CCW array
+    - [s390x] vfio_ccw: Move cp cleanup out of not operational
+    - [s390x] vfio_ccw: Selectively expand io_mutex
+    - [s390x] vfio_ccw: Calculate idal length based on idaw type
+    - [s390x] vfio_ccw: Implement a crw lock
+    - drm/amd/display: fix BT.2020 YCbCr limited output CSC matrix
+    - drm/amd/display: fix BT.2020 YCbCr output CSC matrices for DCE
+    - drm/amdgpu: Reject UVD message with invalid number of h265 refs
+    - drm/amdgpu: fix nbif 6.3.1 l1 low power not functional
+    - drm/amdgpu: check ASPM on the dGPU host link
+    - drm/amdgpu: validate GEM_CREATE domain combinations
+    - drm/amdgpu: Reject UVD message with dimensions above 4096
+    - drm/amdgpu: Implement insert_end for VCE 3
+    - drm/amdgpu: Fix UVD min buffer sizes
+    - drm/amdgpu: Fix UVD dpb min size calculation for H264
+    - drm/amdgpu: Fix UVD decode image min size calculation
+    - drm/amdgpu: disallow multiple FENCE chunks in one submit
+    - xfs: clear zapped attr fork state when bmap repair finds no attr fork
+    - xfs: zero i_nlink before repair puts inode on unlinked list
+    - xfs: only check mergeability of bnobt records
+    - xfs: don't double-lock when deleting a self-referential directory
+    - xfs: set the prev pointer when reinserting an inode on the unlinked list
+    - xfs: pass runtime errors from xrep_iunlink_mark_ondisk_rec up to callers
+    - xfs: nlink scrub must take IOLOCK before determining ILOCK state
+    - xfs: load next_agino from the correct xfarray in xrep_iunlink_relink_prev
+    - xfs: fix ilock leak on error in xfs_dq_get_next_id
+    - xfs: don't zap the attr fork on repair when there are queued pptr updates
+    - xfs: don't walk off the end of a null sc->sa.agi_bp in AGI repair
+    - xfs: fix allocated inodes that show up in the unlinked list
+    - xfs: fix another iunlink infinite loop bug in online fsck
+    - xfs: don't return EFSCORRUPTED when scrubbing corrupt parent pointers
+    - xfs: avoid UAF on sc->tempip in xrep_tempfile_create
+    - xfs: fix exchange-range reflink flag clearing issue with INO1_WRITTEN
+    - xfs: don't swallow dquot recovery verification errors
+    - xfs: check xfarray iteration errors when committing unlinked inode lists
+    - xfs: check v5 superblock features early
+    - ceph: Remove ceph_writepage()
+    - ceph: Use a folio in ceph_page_mkwrite()
+    - ceph: Convert ceph_find_incompatible() to take a folio
+    - ceph: Convert writepage_nounlock() to write_folio_nounlock()
+    - ceph: fix writeback_count leak in write_folio_nounlock()
+    - ceph: avoid fs reclaim while using current->journal_info
+    - ceph: fix hanging __ceph_get_caps() with stale mds_wanted
+    - libceph: Amend checking to fix `make W=1` build breakage
+    - libceph: bound pg_{temp,upmap,upmap_items} length to CEPH_PG_MAX_SIZE
+      (CVE-2026-68159)
+    - mm/khugepaged: guard is_zero_pfn() calls with pte_present()
+    - userfaultfd: prevent registration of special VMAs (CVE-2026-68166)
+    - libceph: fix two unsafe bare decodes in decode_lockers() (CVE-2026-68082)
+    - net/sched: serialize qdisc_rtab_list against concurrent get/put
+      (CVE-2026-68138)
+    - super: remove pointless s_root checks
+    - super: skip dying superblocks early
+    - super: use a common iterator (Part 1)
+    - super: use common iterator (Part 2)
+    - fs/super: fix emergency thaw double-unlock of s_umount
+    - super: fix emergency thaw deadlock on frozen block devices
+      (CVE-2026-68132)
+    - smb: move smb_version_values to common/smbglob.h
+    - smb: move get_rfc1002_len() to common/smbglob.h
+    - smb/server: rename include guard in smb_common.h
+    - ksmbd: rename smb2_get_msg to smb_get_msg
+    - smb/server: fix minimum SMB1 PDU size
+    - smb/server: fix minimum SMB2 PDU size
+    - ksmbd: validate minimum PDU size for transform requests (CVE-2026-68431)
+    - eventpoll: pin files while checking reverse paths
+    - tcp: Pass flags to __tcp_send_ack
+    - tcp: fast path functions later
+    - tcp: reorganize tcp_sock_write_txrx group for variables later
+    - tcp: challenge ACK for non-exact RST in SYN-RECEIVED (CVE-2026-68118)
+    - iommufd: Fix wrong hwpt passed to iommufd_auto_response_faults on replace
+    - btrfs: add debug build only WARN
+    - btrfs: add space_info argument to btrfs_chunk_alloc()
+    - btrfs: remove fs_info argument from btrfs_zoned_activate_one_bg()
+    - btrfs: zoned: fix missing chunk metadata reservation
+    - [amd64] KVM: x86: Cancel delayed I/O APIC EOI handling before destroying
+      vCPUs (CVE-2026-74517)
+    - [arm64] ASoC: tas2562: Validate values for volume writes
+    - ata: libata-scsi: terminate deferred commands on time out
+    - igc: remove napi_synchronize() in igc_down()
+    - ksmbd: conn lock to serialize smb2 negotiate
+    - ksmbd: reject repeated SMB2 NEGOTIATE requests (CVE-2026-74494)
+    - net: pktgen: fix code style (WARNING: Block comments)
+    - net: pktgen: fix proc entry use-after-free (CVE-2026-74479)
+    - binfmt_misc: don't leak the user namespace when the mount fails
+      (CVE-2026-74483)
+    - fsnotify, lsm: Decouple fsnotify from lsm
+    - fsnotify: opt-in for permission events at file open time
+    - fs: don't block write during exec on pre-content watched files
+    - binfmt_misc: restore write access when removing an entry (CVE-2026-74487)
+    - vrf: Make pcpu_dstats update functions available to other modules.
+    - vxlan: Handle stats using NETDEV_PCPU_STAT_DSTATS.
+    - vxlan: use pskb_network_may_pull() for transmit path header pulls
+      (CVE-2026-74474)
+    - ice: fix VF interrupts cleanup
+    - include/linux/fs.h: add inode_lock_killable()
+    - smb: client: fix race with fallocate(2) and AIO+DIO
+    - cifs: add fscache_resize_cookie() to cifs_setsize()
+    - can: rcar_canfd: change the initializing flow for clocks and resets
+    - drm/amd/pm: Use same metric table for APU
+    - drm/amd/pm: Use macro to initialize metrics table
+    - drm/amd/pm: fix torn gpu metrics reads
+    - drm/amdgpu: remove unused function parameter
+    - drm/amdgpu: move debug_vm handling to amdgpu_cs_parser_fini
+    - drm/amd/pm: adjust the visibility of pp_table sysfs node
+    - drm/amd/pm: fix pptable use-after-free (CVE-2026-74450)
+    - net: tap: set skb->dev before parsing virtio net header in
+      tap_get_user_xdp() (CVE-2026-74684)
+    - drm/vmwgfx: take fman->lock around fence list mutation in fifo_down
+    - ring-buffer: Simplify functions with __free(kfree) to free allocations
+    - ring-buffer: Initialise reader page order in rb_allocate_cpu_buffer()
+      (CVE-2026-74602)
+    - mm/pagewalk: split walk_page_range_novma() into kernel/user parts
+    - mm/vmalloc: acquire init_mm lock on huge vmap to avoid ptdump UAF
+      (CVE-2026-74672)
+    - mm/ptdump: always stabilise against page table freeing using init_mm
+      (CVE-2026-74599)
+    - KVM: SVM: Serialize accesses to the owner and mirror list with separate
+      lock (CVE-2026-74607)
+    - ring-buffer: Simplify ring_buffer_read_page() with guard()
+    - ring-buffer: Make ring_buffer_{un}map() simpler with guard(mutex)
+    - ring-buffer: Prevent resizing of persistent ring buffer
+    - [amd64] x86/mce: Remove __mcheck_cpu_init_early()
+    - [amd64] x86/mce: Set CR4.MCE last during init
+    - [amd64] x86/mce: Set up the polling timer before CMCI discovery
+    - [amd64] ASoC: SOF: ipc4-topology: Refresh copier IPC payload before widget
+      setup
+    - net/x25: fix use-after-free of the socket by its timers (CVE-2026-74628)
+    - [arm64] tegra: Add EL2 virtual timer interrupt for Tegra194
+    - crypto: ccm - Set rfc4309 maxauthsize from child
+    - netfilter: ipset: fix refcount race between list:set GC and swap
+    - netfilter: nf_tables_offload: suppress WARN_ON_ONCE for ENOMEM in abort
+      path
+    - netfilter: flowtable: publish GC-visible tuple last
+    - netfilter: ipset: fix list type element drift bug
+    - netfilter: ipset: let destroy callbacks adjust ext mem size
+    - ipvlan: inherit needed_headroom and needed_tailroom from phy_dev
+    - macvlan: inherit needed_headroom and needed_tailroom from lowerdev
+    - veth: fix queue index used to wake the peer txq in veth_poll
+    - tcp: fix icsk_ack.ato bitfield overflow
+    - net: packet: fix wrong transport_header when sending VLAN-tagged frame
+    - net/tls: Fail tls_sw_splice_read() after a failed async decrypt
+    - af_packet: Don't send zero-byte data in tpacket_snd().
+    - net/sched: act_api: fix TOCTOU NULL deref on a->goto_chain
+    - net/sched: cls_u32: skip hash tables in u32_bind_class()
+    - net: ethernet: ti: am65-cpsw-nuss: Fix port_id extraction from SRC TAG
+    - net/sched: cls_bpf: reject dev-bound programs bound to a different device
+    - drm/xe/oa: Fix sync entry leak on OA config emit failure
+    - erofs: fix EROFS_FS_ZIP_LZMA_DEFAULT_MAX_STREAMS on some UP platforms
+    - perf: Unify perf_event_free_task() / perf_event_exit_task_context()
+    - perf/core: Fix group leader use-after-free after sibling detach
+      (CVE-2026-74637)
+    - fs: unlock the superblock during iterate_supers_type
+    - binfmt_misc: use exe_file_deny_write_access() for the interpreter clone
+    - net: harmonize tstats and dstats
+    - ip_tunnel: adapt iptunnel_xmit_stats() to NETDEV_PCPU_STAT_DSTATS
+    - ring-buffer: Remove jump to out label in ring_buffer_swap_cpu()
+    - ring-buffer: Use current_context for safe per-CPU buffer swap
+      (CVE-2026-74601)
+    - ALSA: hda/realtek: Enable headset mic on F+ FLAPTOP r
+    - net: ethernet: mtk_eth_soc: only use legacy mode on missing IRQ name
+    - net: ethernet: mtk_eth_soc: improve support for named interrupts
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 07 Aug 2026 08:05:33 +0200
 
