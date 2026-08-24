@@ -784,6 +784,10 @@ linux (6.12.105-1) UNRELEASED; urgency=medium
     - net: ethernet: mtk_eth_soc: only use legacy mode on missing IRQ name
     - net: ethernet: mtk_eth_soc: improve support for named interrupts
 
+  [ Salvatore Bonaccorso ]
+  * drivers/mmc/host: Enable MMC_ALCOR as module (Closes: #1142912)
+  * drivers/misc/cardreader: Enable MISC_ALCOR_PCI as module (Closes: #1142912)
+
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 07 Aug 2026 08:05:33 +0200
 
 linux (6.12.101-1) trixie-security; urgency=high
