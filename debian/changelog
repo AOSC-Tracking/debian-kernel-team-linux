@@ -1,4 +1,4 @@
-linux (6.12.105-1) UNRELEASED; urgency=medium
+linux (6.12.105-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.102
@@ -788,7 +788,7 @@ linux (6.12.105-1) UNRELEASED; urgency=medium
   * drivers/mmc/host: Enable MMC_ALCOR as module (Closes: #1142912)
   * drivers/misc/cardreader: Enable MISC_ALCOR_PCI as module (Closes: #1142912)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 07 Aug 2026 08:05:33 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Mon, 24 Aug 2026 22:05:50 +0200
 
 linux (6.12.101-1) trixie-security; urgency=high
 
