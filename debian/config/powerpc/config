@@ -14,7 +14,8 @@ CONFIG_HIGHMEM=y
 # CONFIG_44x is not set
 ## end choice
 CONFIG_ALTIVEC=y
-# CONFIG_SMP is not set
+CONFIG_SMP=y
+CONFIG_NR_CPUS=4
 
 ##
 ## file: arch/powerpc/platforms/512x/Kconfig
