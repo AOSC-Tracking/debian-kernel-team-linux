@@ -4,6 +4,7 @@ linux (7.2-1~exp1) UNRELEASED; urgency=medium
 
   [ Bastian Blank ]
   * Install vmlinuz into modules directory.
+  * [alpha,powerpc,sparc64] Only provide SMP kernels. (closes: #1145154)
 
   [ Salvatore Bonaccorso ]
   * Compile with gcc-16 on all architectures (Closes: #1144298)
