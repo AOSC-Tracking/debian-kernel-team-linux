@@ -2236,6 +2236,11 @@ CONFIG_KEXEC_BZIMAGE_VERIFY_SIG=y
 CONFIG_CRASH_DUMP=y
 
 ##
+## file: kernel/dma/Kconfig
+##
+CONFIG_CMA_SIZE_MBYTES=0
+
+##
 ## file: kernel/irq/Kconfig
 ##
 CONFIG_SPARSE_IRQ=y
