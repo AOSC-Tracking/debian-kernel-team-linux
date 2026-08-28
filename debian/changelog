@@ -1,4 +1,4 @@
-linux (6.12.106-1) UNRELEASED; urgency=medium
+linux (6.12.107-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.106
@@ -85,6 +85,9 @@ linux (6.12.106-1) UNRELEASED; urgency=medium
     - Bluetooth: ISO: do not force BT_LISTEN after a failed BIG sync
     - Bluetooth: hci_aml: validate firmware segment lengths
     - net: gro: properly validate BIG TCP aggregation criteria
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.107
+    - inet: frags: strip GSO state from fragments before reassembly
+      (CVE-2026-80590)
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 28 Aug 2026 10:21:10 +0200
 
