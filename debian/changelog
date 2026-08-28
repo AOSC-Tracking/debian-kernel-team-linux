@@ -1,3 +1,93 @@
+linux (6.12.106-1) UNRELEASED; urgency=medium
+
+  * New upstream stable update:
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.106
+    - PCI: host-generic: Fix NULL pointer dereference on 32-bit CAM systems
+    - Bluetooth: RFCOMM: take rfcomm_mutex for the deferred setup accept
+    - ALSA: scarlett2: Use a private URB for the notification endpoint
+    - rndis_host: add overflow check in rndis_rx_fixup()
+    - gpio: ml-ioh: use raw_spinlock_t for the register lock (CVE-2026-80562)
+    - gve: fix zero-length skb frag with header-split
+    - hwmon: (ltc4286) Fix symbol namespace of MODULE_IMPORT_NS()
+    - netfs: Fix potential UAF in netfs_unlock_abandoned_read_pages()
+      (CVE-2026-64216)
+    - inet: frags: add inet_frag_putn() helper
+    - ipv4: frags: remove ipq_put()
+    - inet: frags: change inet_frag_kill() to defer refcount updates
+    - inet: frags: save a pair of atomic operations in reassembly
+    - inet: frags: publish queues before arming timer (CVE-2026-74662)
+    - serial: 8250_of: clear stuck empty-FIFO RX-timeout on LPC32xx
+      (CVE-2026-74653)
+    - NTB: ntb_netdev: Preserve RX queue depth on allocation failure
+      (CVE-2026-74626)
+    - serial: amba-pl011: synchronize DMA teardown
+    - serial: sc16is7xx: rename EFR mutex with generic name
+    - serial: sc16is7xx: use guards for simple mutex locks
+    - serial: sc16is7xx: enable THRI before filling TX FIFO
+    - xfs: namespace the maximum length/refcount symbols
+    - xfs: don't use a xfs_log_iovec for ri_buf in log recovery
+    - xfs: bounds-check buffer log item's dirty bitmap (CVE-2026-80536)
+    - xfs: hoist per-bucket unlinked list check to helper
+    - xfs: don't livelock in scrub on a circular unlinked list
+    - ALSA: dummy: Check card index validity at probe
+    - ocfs2: fix missing metadata reservation for large xattrs
+    - null_blk: fix UBSAN shift-out-of-bounds when zone_size is 0 or overflows
+    - kcov: fix data corruption and race conditions on PREEMPT_RT
+    - ext4: stop retrying saturated xattr cache entries
+    - ext4: clear error before retrying inode xattr space fallback
+    - ext4: propagate errors from fast commit range replay
+    - xfs: validate attr entry pointer before field access
+    - libceph: fix OOB read in decode_watchers() via missing bounds check
+      (CVE-2026-80557)
+    - nfc: digital: clamp SENSF_RES length to the destination buffer
+    - nfc: fdp: bound the device-reported read length and fix an skb leak
+    - nfc: microread: validate target discovery payload lengths
+    - nfc: llcp: bound the connect_sn TLV walk to the skb
+    - nfc: llcp: fix OOB read and u8 offset wrap in TLV parsers
+    - nfc: llcp: reject PDUs shorter than the LLCP header
+    - nfc: pn533: purge fragmented skbs during cleanup
+    - nfc: st21nfca: validate ATR_REQ length against the received frame
+    - nfc: nci: fix out-of-bounds write in nci_target_auto_activated()
+    - nfc: nci: fix uninit-value in the RF discover/activated NTF handlers
+    - nfc: nci: free destination parameters when closing a connection
+    - ndisc: ndisc_send_redirect() cleanup
+    - Input: byd - synchronize timer deletion before freeing private data
+      (CVE-2026-80572)
+    - ipv4: reject undersized MTUs in ip_do_fragment()
+    - ipv6: fix use-after-free in ip6_finish_output2()
+    - nvmet-auth: zero the AUTH_RECEIVE response buffer
+    - nvmet-fc: fix invalid free in LS IOD error path
+    - nvmet-tcp: bound SGL data length before allocating command buffers
+    - nvmet-tcp: Do not WARN on remotely-controlled oversized SGL allocations
+    - mptcp: pm: fix data race in add_addr timer callback
+    - [arm64] ASoC: codecs: lpass-tx-macro: Fix enum kcontrol accesses
+      (CVE-2026-80583)
+    - drm/xe: Fix DPT allocation paths.
+    - HID: magicmouse: fix battery reporting for Bluetooth Magic Trackpad USB-C
+    - HID: magicmouse: re-enable multitouch after reset-resume
+    - HID: magicmouse: do not keep a stale msc->input if no input is claimed
+    - HID: magicmouse: Prevent out-of-bounds (OOB) read during DOUBLE_REPORT_ID
+    - HID: core: fix OOB read of field->usage in hid_set_field()
+    - net/ionic: avoid OOB TX partner lookup for hwstamp RXQ
+    - xfrm: fix sk_dst_cache double-free in xfrm_user_policy() (CVE-2026-64581)
+    - ipv4: start using dst_dev_rcu() (CVE-2025-40074)
+    - mptcp: pm: fix memory leak from alloc-during-teardown race
+    - Input: atkbd - skip deactivate for HONOR FMB-P's internal keyboard
+    - Input: atkbd - skip deactivate for HONOR ZQC-P
+    - HID: nintendo: fix out-of-bounds read in joycon_ctlr_read_handler()
+    - HID: nintendo: register input device after capabilities are set
+    - HID: nintendo: stop device IO before hid_hw_stop on probe failure
+    - HID: core: fix number/pointer type confusion on long items
+    - HID: sensor: custom: Fix use-after-free in enable_sensor
+    - HID: hyperv: validate initial device info bounds
+    - Bluetooth: hci_event: fix LE list UAF on reset
+    - Bluetooth: hci_event: validate LE Set CIG Parameters response
+    - Bluetooth: ISO: do not force BT_LISTEN after a failed BIG sync
+    - Bluetooth: hci_aml: validate firmware segment lengths
+    - net: gro: properly validate BIG TCP aggregation criteria
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 28 Aug 2026 10:21:10 +0200
+
 linux (6.12.105-1) trixie-security; urgency=high
 
   * New upstream stable update:
