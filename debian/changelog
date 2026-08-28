@@ -1,4 +1,4 @@
-linux (7.2.2-1~exp1) UNRELEASED; urgency=medium
+linux (7.2.2-1~exp1) experimental; urgency=medium
 
   * New upstream stable update:
 
@@ -19,7 +19,7 @@ linux (7.2.2-1~exp1) UNRELEASED; urgency=medium
   [ Salvatore Bonaccorso ]
   * Compile with gcc-16 on all architectures (Closes: #1144298)
 
- -- Bastian Blank <waldi@debian.org>  Fri, 14 Aug 2026 20:15:59 +0200
+ -- Bastian Blank <waldi@debian.org>  Fri, 28 Aug 2026 14:12:10 +0200
 
 linux (7.2~rc7-1~exp1) experimental; urgency=medium
 
