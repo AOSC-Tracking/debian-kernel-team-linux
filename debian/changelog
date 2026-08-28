@@ -1,4 +1,4 @@
-linux (6.1.184-1) UNRELEASED; urgency=medium
+linux (6.1.185-1) UNRELEASED; urgency=medium
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.181
@@ -1107,6 +1107,90 @@ linux (6.1.184-1) UNRELEASED; urgency=medium
     - ring-buffer: Remove jump to out label in ring_buffer_swap_cpu()
     - ring-buffer: Use current_context for safe per-CPU buffer swap
       (CVE-2026-74601)
+    https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.1.185
+    - PCI: host-generic: Fix NULL pointer dereference on 32-bit CAM systems
+    - Bluetooth: RFCOMM: take rfcomm_mutex for the deferred setup accept
+    - rndis_host: add overflow check in rndis_rx_fixup()
+    - ALSA: dummy: Check card index validity at probe
+    - ocfs2: fix missing metadata reservation for large xattrs
+    - null_blk: fix UBSAN shift-out-of-bounds when zone_size is 0 or overflows
+    - kcov: fix data corruption and race conditions on PREEMPT_RT
+    - ext4: stop retrying saturated xattr cache entries
+    - ext4: clear error before retrying inode xattr space fallback
+    - xfs: validate attr entry pointer before field access
+    - [arm*] misc: fastrpc: Rework fastrpc_req_munmap
+    - [arm*] misc: fastrpc: Remove buffer from list prior to unmap operation
+      (CVE-2026-74647)
+    - NTB: ntb_netdev: Preserve RX queue depth on allocation failure
+      (CVE-2026-74626)
+    - serial: amba-pl011: synchronize DMA teardown
+    - perf/core: Fix child_total_time_enabled accounting bug at task exit
+    - perf: Fix cgroup state vs ERROR
+    - perf: Fix dangling cgroup pointer in cpuctx
+    - perf/core: Fix group leader use-after-free after sibling detach
+      (CVE-2026-74637)
+    - packet: use consistent hard_header_len in non-ring send paths
+      (CVE-2026-74582)
+    - packet: use consistent hard_header_len in TX_RING send path
+      (CVE-2026-74668)
+    - serial: sc16is7xx: fix copy-paste errors in EFR_SWFLOWx_BIT constants
+    - serial: sc16is7xx: convert bitmask definitions to use BIT() macro
+    - serial: sc16is7xx: rename EFR mutex with generic name
+    - serial: sc16is7xx: use guards for simple mutex locks
+    - serial: sc16is7xx: enable THRI before filling TX FIFO
+    - net/packet: convert po->pressure to an atomic flag
+    - packet: synchronize pressure clearing with ring reconfiguration
+      (CVE-2026-74666)
+    - inet: frags: publish queues before arming timer (CVE-2026-74662)
+    - drm/amdgpu: disallow multiple FENCE chunks in one submit (CVE-2026-80539)
+    - xfs: don't use a xfs_log_iovec for ri_buf in log recovery
+    - xfs: bounds-check buffer log item's dirty bitmap (CVE-2026-80536)
+    - drm/amdgpu: check ASPM on the dGPU host link
+    - gpio: ml-ioh: use raw_spinlock_t for the register lock (CVE-2026-80562)
+    - tls: fix lockless read of strp->msg_ready in ->poll
+    - tls: handle data disappearing from under the TLS ULP (CVE-2025-38616)
+    - iomap: adjust read range correctly for non-block-aligned positions
+      (CVE-2025-68794)
+    - nfc: digital: clamp SENSF_RES length to the destination buffer
+    - nfc: fdp: bound the device-reported read length and fix an skb leak
+    - nfc: microread: validate target discovery payload lengths
+    - nfc: llcp: bound the connect_sn TLV walk to the skb
+    - nfc: llcp: fix OOB read and u8 offset wrap in TLV parsers
+    - nfc: llcp: reject PDUs shorter than the LLCP header
+    - nfc: pn533: purge fragmented skbs during cleanup
+    - nfc: st21nfca: validate ATR_REQ length against the received frame
+    - nfc: nci: fix out-of-bounds write in nci_target_auto_activated()
+    - nfc: nci: fix uninit-value in the RF discover/activated NTF handlers
+    - nfc: nci: free destination parameters when closing a connection
+    - ndisc: ndisc_send_redirect() cleanup
+    - libceph: fix OOB read in decode_watchers() via missing bounds check
+      (CVE-2026-80557)
+    - ipv4: reject undersized MTUs in ip_do_fragment()
+    - ipv6: fix use-after-free in ip6_finish_output2()
+    - nvmet-auth: zero the AUTH_RECEIVE response buffer
+    - nvmet-fc: fix invalid free in LS IOD error path
+    - nvmet-tcp: Do not WARN on remotely-controlled oversized SGL allocations
+    - Input: byd - synchronize timer deletion before freeing private data
+      (CVE-2026-80572)
+    - ASoC: codecs: lpass-tx-macro: Fix enum kcontrol accesses (CVE-2026-80583)
+    - mptcp: pm: ADD_ADDR rtx: always decrease sk refcount (CVE-2026-46158)
+    - mptcp: pm: ADD_ADDR rtx: free sk if last (CVE-2026-46170)
+    - mptcp: pm: fix data race in add_addr timer callback
+    - HID: magicmouse: do not keep a stale msc->input if no input is claimed
+    - HID: magicmouse: Prevent out-of-bounds (OOB) read during DOUBLE_REPORT_ID
+    - HID: core: fix OOB read of field->usage in hid_set_field()
+    - xfrm: fix sk_dst_cache double-free in xfrm_user_policy() (CVE-2026-64581)
+    - Input: atkbd - skip deactivate for HONOR FMB-P's internal keyboard
+    - Input: atkbd - skip deactivate for HONOR ZQC-P
+    - can: use skb hash instead of private variable in headroom
+    - can: isotp: fix timer drain order, wakeup handling and tx_gen ordering
+    - [arm*] misc: fastrpc: Fix double free of 'buf' in error path
+    - HID: nintendo: fix out-of-bounds read in joycon_ctlr_read_handler()
+    - HID: core: fix number/pointer type confusion on long items
+    - HID: sensor: custom: Fix use-after-free in enable_sensor
+    - HID: hyperv: validate initial device info bounds
+    - Bluetooth: hci_event: fix LE list UAF on reset
+    - net: gro: properly validate BIG TCP aggregation criteria
 
  -- Salvatore Bonaccorso <carnil@debian.org>  Thu, 06 Aug 2026 20:12:07 +0200
 
