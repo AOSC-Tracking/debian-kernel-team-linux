@@ -1,4 +1,4 @@
-linux (6.12.107-1) UNRELEASED; urgency=medium
+linux (6.12.107-1) trixie-security; urgency=high
 
   * New upstream stable update:
     https://www.kernel.org/pub/linux/kernel/v6.x/ChangeLog-6.12.106
@@ -89,7 +89,7 @@ linux (6.12.107-1) UNRELEASED; urgency=medium
     - inet: frags: strip GSO state from fragments before reassembly
       (CVE-2026-80590)
 
- -- Salvatore Bonaccorso <carnil@debian.org>  Fri, 28 Aug 2026 10:21:10 +0200
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sat, 29 Aug 2026 06:19:09 +0200
 
 linux (6.12.105-1) trixie-security; urgency=high
 
