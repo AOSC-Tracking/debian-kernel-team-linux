@@ -893,7 +893,7 @@ linux (6.1.186-1) UNRELEASED; urgency=medium
     - mm/mm_init: fix uninitialized struct pages for ZONE_DEVICE
       (CVE-2026-72172)
     - 9p: skip nlink update in cacheless mode to fix WARN_ON (CVE-2026-72170)
-    - mtd: maps: vmu-flash: fix fault in unaligned fixup (CVE-2026-72168)
+    - mtd: maps: vmu-flash: fix fault in unaligned fixup
     - net: thunderbolt: Fix frags[] overflow by bounding frame_count
       (CVE-2026-72157)
     - taskstats: fill_stats_for_tgid: use for_each_thread()
