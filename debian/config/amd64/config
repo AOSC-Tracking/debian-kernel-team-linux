@@ -2066,6 +2066,7 @@ CONFIG_TYPEC=m
 ## file: drivers/usb/typec/mux/Kconfig
 ##
 CONFIG_TYPEC_MUX_PI3USB30532=m
+CONFIG_TYPEC_MUX_INTEL_PMC=m
 
 ##
 ## file: drivers/usb/typec/tcpm/Kconfig
