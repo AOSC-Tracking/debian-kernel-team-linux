@@ -8,6 +8,7 @@ linux (7.2.3-1~exp1) UNRELEASED; urgency=medium
     (Closes: #1145131)
   * [amd64] drivers/platform/x86: Enable INTEL_SCU_PLATFORM as module
     (Closes: #1145131)
+  * linux-image: Bump Pre-Depends version on linux-base (>= 4.17~)
 
   [ Aurelien Jarno ]
   * [riscv64] Backport support for SpacemiT K1 cpufreq from 7.3
